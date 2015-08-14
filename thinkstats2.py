@@ -1630,7 +1630,9 @@ class EstimatedPdf(Pdf):
 
         n: size of sample
         """
-        return self.kde.resample(n)
+        # NOTE: we have to flatten because resample returns a 2-D
+        # array for some reason.
+        return self.kde.resample(n).flatten()
 
 
 def CredibleInterval(pmf, percentage=90):
