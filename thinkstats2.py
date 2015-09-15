@@ -1771,6 +1771,16 @@ def EvalBinomialPmf(k, n, p):
     return stats.binom.pmf(k, n, p)
     
 
+def MakeBinomialPmf(n, p):
+    """Evaluates the binomial PMF.
+
+    Returns the distribution of successes in n trials with probability p.
+    """
+    pmf = Pmf()
+    for k in range(n+1):
+        pmf[k] = stats.binom.pmf(k, n, p)
+    return pmf
+
 def EvalHypergeomPmf(k, N, K, n):
     """Evaluates the hypergeometric PMF.
 
