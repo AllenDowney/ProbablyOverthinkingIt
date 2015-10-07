@@ -2184,7 +2184,7 @@ def Jitter(values, jitter=0.5):
     returns: new numpy array
     """
     n = len(values)
-    return np.random.uniform(-jitter, +jitter, n) + values
+    return np.random.normal(0, jitter, n) + values
 
 
 def NormalProbabilityPlot(sample, fit_color='0.8', **options):
