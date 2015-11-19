@@ -289,6 +289,200 @@ def resample_and_fill(cycles):
     return df
 
 
+store = pd.HDFStore('ess.resamples.h5')
+
+
+
+def random_name():
+    t = [random.choice(string.ascii_letters) for i in range(6)]
+    return ''.join(t)
+
+def add_frames(n):
+    for i in range(n):
+        name = random_name()
+        print(name)
+        df = ess.resample_and_fill(cycles)
+        store.put(name, df)
+
+
+class Country:
+    def __init__(self, code, nobs):
+        self.code = code
+        self.name = ess.country_name(code)
+        self.nobs = nobs
+        self.mean_map = {}
+        self.param_map = {}
+
+    def add_mean(self, means):
+        self.mean_seq.append(means)
+        
+    def add_params(self, params):
+        self.param_seq.append(params)
+        
+    def add_params2(self, params):
+        self.param2_seq.append(params)
+        
+    def get_means(self, varname):
+        t = [mean[varname] for mean in self.mean_seq]
+        return np.array(t)
+
+    def get_params(self, varname):
+        t = [params[varname] for params in self.param_seq]
+        return np.array(t)
+
+    def get_params2(self, varname):
+        t = [params[varname] for params in self.param2_seq]
+        return np.array(t)
+
+
+def make_country_map():
+    keys = store.keys()
+    key = random.choice(keys)
+    df = store.get(key)
+
+    grouped = df.groupby('cntry')
+    country_map = {}
+
+    for code, group in grouped:
+        country_map[code] = Country(code, len(group))
+        print(country_map[code].name)
+
+    return country_map
+
+
+formula1 = ('hasrelig_f ~ inwyr07_f + yrbrn60_f + '
+            'edurank_f + hincrank_f +'
+            'tvtot_f + rdtot_f + nwsptot_f + netuse_f')
+
+formula2 = ('rlgdgr_f ~ inwyr07_f + yrbrn60_f + '
+            'edurank_f + hincrank_f +'
+            'tvtot_f + rdtot_f + nwsptot_f + netuse_f')
+
+def process_frame(df):
+    grouped = df.groupby('cntry')
+    for code, group in grouped:
+        country = country_map[code]
+        country.add_mean(group.mean())
+    
+        model = smf.logit(formula1, data=group)    
+        results = model.fit(disp=False)
+        country.add_params(results.params)
+        
+        model = smf.ols(formula2, data=group)    
+        results = model.fit(disp=False)
+        country.add_params2(results.params)
+
+
+def process_all_frames():
+
+    for key in store.keys():
+        print(key)
+        df = store.get(key)
+        process_frame(df)
+
+
+def extract_params(country_map, param_func, varname):
+    """Extracts parameters.
+    
+    country_map: map from country code to Country
+    param_func: function that takes country and returns param list
+    varname: name of variable to get the mean of
+    
+    returns: list of (code, name, param, low, high, mean) tuple
+    """
+    t = []
+    for code, country in sorted(country_map.items()):
+        name = country.name
+
+        params = param_func(country)
+        param = np.median(params)
+        low = np.percentile(params, 2.5)
+        high = np.percentile(params, 97.5)
+    
+        means = country.get_means(varname)
+        mean = np.median(means)
+    
+        t.append((code, name, param, low, high, mean))
+    
+    t.sort(key=lambda x: x[2])
+    return t
+
+
+def extract_vars(country_map, exp_var, dep_var):
+    def param_func(country):
+        return country.get_params(exp_var)
+
+    t = extract_params(country_map, param_func, dep_var)
+    return t
+
+
+def extract_vars2(country_map, exp_var, dep_var):
+    def param_func(country):
+        return country.get_params2(exp_var)
+
+    t = extract_params(country_map, param_func, dep_var)
+    return t
+
+
+def plot_cis(t):
+    plt.figure(figsize=(8,8))
+
+    n = len(t)
+    ys = n - np.arange(n)
+    codes, names, params, lows, highs, means = zip(*t)
+    plt.hlines(ys, lows, highs, color='blue', linewidth=2, alpha=0.5)
+    plt.plot(params, ys, 'ws', markeredgewidth=0, markersize=15)
+
+    for param, y, code in zip(params, ys, codes):
+        plt.text(param, y, code, fontsize=10, color='blue', 
+                 horizontalalignment='center',
+                 verticalalignment='center')
+
+    plt.vlines(0, 0, n+1, color='gray', alpha=0.5)
+    plt.yticks(ys, names)
+
+
+def plot_scatter(t):
+    plt.figure(figsize=(8,8))
+
+    codes, names, params, lows, highs, means = zip(*t)
+
+    for param, mean, code in zip(params, means, codes):
+        plt.text(param, mean, code, fontsize=10, color='blue', 
+                 horizontalalignment='center',
+                 verticalalignment='center')
+        
+    corr = np.corrcoef(params, means)[0][1]
+    print(corr)
+
+
+
+def make_plot2(country_map, exp_var, dep_var):
+    def param_func(country):
+        return country.get_params(exp_var)
+
+    t = extract_params(country_map, param_func, dep_var)
+    plot_scatter(t)
+
+
+
+def make_plot3(country_map, exp_var, dep_var):
+    def param_func(country):
+        return country.get_params2(exp_var)
+
+    t = extract_params(country_map, param_func, dep_var)
+    plot_cis(t)
+
+
+
+def make_plot4(country_map, exp_var, dep_var):
+    def param_func(country):
+        return country.get_params2(exp_var)
+
+    t = extract_params(country_map, param_func, dep_var)
+    plot_scatter(t)
+
+
 def main():
     read_and_clean()
 
