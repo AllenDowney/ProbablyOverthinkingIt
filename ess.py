@@ -11,6 +11,7 @@ import pandas as pd
 
 import thinkstats2
 import thinkplot
+import matplotlib.pyplot as plt
 
 import statsmodels.formula.api as smf
 
@@ -289,29 +290,27 @@ def resample_and_fill(cycles):
     return df
 
 
-store = pd.HDFStore('ess.resamples.h5')
-
-
-
 def random_name():
     t = [random.choice(string.ascii_letters) for i in range(6)]
     return ''.join(t)
 
-def add_frames(n):
+
+def add_frames(store, cycles, n):
     for i in range(n):
         name = random_name()
         print(name)
-        df = ess.resample_and_fill(cycles)
+        df = resample_and_fill(cycles)
         store.put(name, df)
 
 
 class Country:
     def __init__(self, code, nobs):
         self.code = code
-        self.name = ess.country_name(code)
+        self.name = country_name(code)
         self.nobs = nobs
-        self.mean_map = {}
-        self.param_map = {}
+        self.mean_seq = []
+        self.param_seq = []
+        self.param2_seq = []
 
     def add_mean(self, means):
         self.mean_seq.append(means)
@@ -456,31 +455,6 @@ def plot_scatter(t):
     print(corr)
 
 
-
-def make_plot2(country_map, exp_var, dep_var):
-    def param_func(country):
-        return country.get_params(exp_var)
-
-    t = extract_params(country_map, param_func, dep_var)
-    plot_scatter(t)
-
-
-
-def make_plot3(country_map, exp_var, dep_var):
-    def param_func(country):
-        return country.get_params2(exp_var)
-
-    t = extract_params(country_map, param_func, dep_var)
-    plot_cis(t)
-
-
-
-def make_plot4(country_map, exp_var, dep_var):
-    def param_func(country):
-        return country.get_params2(exp_var)
-
-    t = extract_params(country_map, param_func, dep_var)
-    plot_scatter(t)
 
 
 def main():
