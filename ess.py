@@ -13,6 +13,9 @@ import thinkstats2
 import thinkplot
 import matplotlib.pyplot as plt
 
+import random
+import string
+
 import statsmodels.formula.api as smf
 
 from iso_country_codes import COUNTRY
@@ -296,6 +299,12 @@ def random_name():
 
 
 def add_frames(store, cycles, n):
+    """Generate filled resamples and put them in the store.
+
+    store: h5 store object
+    cycles: list of DataFrames
+    n: how many resamples to generate
+    """
     for i in range(n):
         name = random_name()
         print(name)
@@ -311,6 +320,8 @@ class Country:
         self.mean_seq = []
         self.param_seq = []
         self.param2_seq = []
+        self.range_seq = []
+        self.range2_seq = []
 
     def add_mean(self, means):
         self.mean_seq.append(means)
@@ -320,6 +331,12 @@ class Country:
         
     def add_params2(self, params):
         self.param2_seq.append(params)
+        
+    def add_ranges(self, ranges):
+        self.range_seq.append(ranges)
+        
+    def add_ranges2(self, ranges):
+        self.range2_seq.append(ranges)
         
     def get_means(self, varname):
         t = [mean[varname] for mean in self.mean_seq]
@@ -331,6 +348,14 @@ class Country:
 
     def get_params2(self, varname):
         t = [params[varname] for params in self.param2_seq]
+        return np.array(t)
+
+    def get_ranges(self, varname):
+        t = [ranges[varname] for ranges in self.range_seq]
+        return np.array(t)
+
+    def get_ranges2(self, varname):
+        t = [ranges[varname] for ranges in self.range2_seq]
         return np.array(t)
 
 
@@ -455,10 +480,11 @@ def plot_scatter(t):
     print(corr)
 
 
-
-
 def main():
-    read_and_clean()
+    cycles = read_and_clean()
+    store = pd.HDFStore('ess.resamples.h5')
+    print(store)
+    add_frames(store, cycles, n=101)
 
 
 if __name__ == '__main__':
