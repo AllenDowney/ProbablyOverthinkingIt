@@ -28,14 +28,18 @@ def get_country(code):
     return COUNTRY[code]
 
 # colors by colorbrewer2.org
-RED = '#e41a1c'
-BLUE = '#377eb8'
-GREEN = '#4daf4a'
-PURPLE = '#984ea3'
-ORANGE = '#ff7f00'
-YELLOW = '#ffff33'
-BROWN = '#a65628'
-PINK = '#f781bf'
+BLUE1 = '#a6cee3'
+BLUE2 = '#1f78b4'
+GREEN1 = '#b2df8a'
+GREEN2 = '#33a02c'
+PINK = '#fb9a99'
+RED = '#e31a1c'
+ORANGE1 = '#fdbf6f'
+ORANGE2 = '#ff7f00'
+PURPLE1 = '#cab2d6'
+PURPLE2 = '#6a3d9a'
+YELLOW = '#ffff99'
+BROWN = '#b15928'
 
 
 def country_name(code):
@@ -398,7 +402,7 @@ def process_all_frames(store, country_map, num,
         process_frame(df, country_map, reg_func, formula, model_num)
         
 
-def extract_params(country_map, param_func, varname):
+def extract_params(country_map, param_func, varname=None):
     """Extracts parameters.
     
     country_map: map from country code to Country
@@ -416,8 +420,11 @@ def extract_params(country_map, param_func, varname):
         low = np.percentile(params, 2.5)
         high = np.percentile(params, 97.5)
     
-        means = country.get_means(varname)
-        mean = np.median(means)
+        if varname is not None:
+            means = country.get_means(varname)
+            mean = np.median(means)
+        else:
+            mean = np.nan
     
         t.append((code, name, param, low, high, mean))
     
@@ -473,23 +480,24 @@ def plot_cis(t, color='blue'):
     codes, names, params, lows, highs, means = zip(*t)
 
     # plot confidence intervals
-    plt.hlines(ys, lows, highs, color=color, linewidth=2, alpha=0.5)
+    plt.hlines(ys, lows, highs, color=color, linewidth=2)
     plot_params(params, ys, codes, color)
     plt.vlines(0, 0, n+1, color='gray', alpha=0.5)
     plt.yticks(ys, names)
 
 
-CDF_STYLE_MAP = {}
-CDF_STYLE_MAP['hasrelig_f'] = (BROWN, 'affiliation')
-CDF_STYLE_MAP['rlgdgr_f'] = (BROWN, 'religiosity')
-CDF_STYLE_MAP['edurank_f'] = (ORANGE, 'education')
-CDF_STYLE_MAP['hincrank_f'] = (PINK, 'income')
-CDF_STYLE_MAP['tvtot_f'] = (RED, 'television')
-CDF_STYLE_MAP['rdtot_f'] = (GREEN, 'radio')
-CDF_STYLE_MAP['nwsptot_f'] = (BLUE, 'newspaper')
-CDF_STYLE_MAP['netuse_f'] = (PURPLE, 'Internet')
-CDF_STYLE_MAP['inwyr07_f'] = ('gray', 'int year')
-CDF_STYLE_MAP['yrbrn60_f'] = ('gray', 'year born')
+STYLE_MAP = {}
+STYLE_MAP['inwyr07_f'] = (GREEN1, 'year asked')
+STYLE_MAP['yrbrn60_f'] = (GREEN2, 'year born')
+STYLE_MAP['hincrank_f'] = (ORANGE1, 'income')
+STYLE_MAP['edurank_f'] = (ORANGE2, 'education')
+STYLE_MAP['tvtot_f'] = (RED, 'television')
+STYLE_MAP['rdtot_f'] = (BLUE1, 'radio')
+STYLE_MAP['nwsptot_f'] = (BLUE2, 'newspaper')
+STYLE_MAP['netuse_f'] = (PURPLE2, 'Internet')
+STYLE_MAP['delta'] = (PURPLE2, 'Internet')
+STYLE_MAP['hasrelig_f'] = (BROWN, 'affiliation')
+STYLE_MAP['rlgdgr_f'] = (BROWN, 'religiosity')
 
 
 def plot_cdfs(country_map, extract_func, cdfnames):
@@ -500,7 +508,7 @@ def plot_cdfs(country_map, extract_func, cdfnames):
     cdfnames: list of string variable names to plot cdfs of
     """
     def extract(exp_var):
-        t = extract_func(country_map, exp_var, 'hasrelig_f')
+        t = extract_func(country_map, exp_var, None)
         t.sort(key=lambda x: x[2])
         return t
 
@@ -523,7 +531,7 @@ def plot_cdfs(country_map, extract_func, cdfnames):
 
     for varname in cdfnames:
         t = extract(varname)
-        color, label = CDF_STYLE_MAP[varname]
+        color, label = STYLE_MAP[varname]
         ys = plot(t, color, label)
 
     plt.vlines(0, 0, 1, color='gray', linewidth=2, alpha=0.4)
@@ -581,18 +589,21 @@ def compute_range(country, group, results, varname):
     
     returns: Range object
     """
+    def logistic(results):
+        return hasattr(results, 'prsquared')
+
     def predict(results, df):
         pred = results.predict(df)[0]
 
         # if the prediction is from logistic regression, multiply
         # by 100 to get percentage points
-        if hasattr(results, 'prsquared'):
+        if logistic(results):
             pred *= 100
 
         return pred
 
     def set_to_percentile(df, varname, percentile):
-        val = np.percentile(group[varname], percentile)
+        val = cdf.Percentile(percentile)
         df[varname] = val
 
         # when you vary yrbrn60_f, you have to vary yrbrn60_f2
@@ -600,16 +611,28 @@ def compute_range(country, group, results, varname):
         if varname == 'yrbrn60_f':
             set_to_percentile(df, 'yrbrn60_f2', percentile)
 
+    # start with all values set to their mean
     df = group.mean()
     middle = predict(results, df)
 
+    cdf = thinkstats2.Cdf(group[varname])
+
+    # change one variable to its 25th percentile
     set_to_percentile(df, varname, 25)
     low = predict(results, df)
     
+    # change to the 75th percentile
     set_to_percentile(df, varname, 75)
     high = predict(results, df)
-    
-    return Range(low, middle, high, high-low)
+
+    if logistic(results):
+        width = high-low
+    else:
+        # compute width in terms of standard deviatons
+        std = np.std(results.model.endog)
+        width = (high - low) / std
+
+    return Range(low, middle, high, width)
 
 
 def add_ranges(country, group, results):
@@ -675,7 +698,7 @@ def extract_ranges2(country_map, exp_var, dep_var):
 
 
 def classify_countries(country_map, varname, extract_func):
-    t = extract_func(country_map, varname, 'hasrelig_f')
+    t = extract_func(country_map, varname, None)
     codes, names, params, lows, highs, means = zip(*t)
     signs = np.sign(params)
     sigs = np.sign(np.array(lows) * np.array(highs))
