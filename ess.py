@@ -629,8 +629,9 @@ def compute_range(country, group, results, varname):
         width = high-low
     else:
         # compute width in terms of standard deviatons
-        std = np.std(results.model.endog)
-        width = (high - low) / std
+        #std = np.std(results.model.endog)
+        #width = (high - low) / std
+        width = high-low
 
     return Range(low, middle, high, width)
 
