@@ -10,7 +10,6 @@ import numpy as np
 import pandas as pd
 
 import thinkstats2
-import thinkplot
 import matplotlib.pyplot as plt
 
 import random
@@ -22,10 +21,30 @@ from iso_country_codes import COUNTRY
 for k, v in COUNTRY.items():
     COUNTRY[k] = v.title()
 COUNTRY['RU'] = 'Russia'
+COUNTRY['GB'] = 'UK'
+COUNTRY['CZ'] = 'Czech Rep'
+
+def get_country(code):
+    return COUNTRY[code]
+
+# colors by colorbrewer2.org
+BLUE1 = '#a6cee3'
+BLUE2 = '#1f78b4'
+GREEN1 = '#b2df8a'
+GREEN2 = '#33a02c'
+PINK = '#fb9a99'
+RED = '#e31a1c'
+ORANGE1 = '#fdbf6f'
+ORANGE2 = '#ff7f00'
+PURPLE1 = '#cab2d6'
+PURPLE2 = '#6a3d9a'
+YELLOW = '#ffff99'
+BROWN = '#b15928'
 
 
 def country_name(code):
     return COUNTRY[code]
+
 
 def read_cycle(filename):
     """Reads a file containing ESS data and selects columns.
@@ -233,33 +252,6 @@ def run_logits(grouped, formula, var):
         print(country, nobs, '%0.3g'%param, stars, arrow, sep='\t')
 
 
-
-def run_all_models():
-    formula = ('hasrelig_f ~ inwyr07_f + yrbrn60_f + edurank_f + hincrank_f +'
-               'tvtot_f + rdtot_f + nwsptot_f + netuse_f')
-    res = run_model(df, formula)
-    res.summary()
-
-    formula = ('hasrelig_f ~ inwyr07_f + yrbrn60_f + edurank_f + hincrank_f +'
-               'tvtot_f + rdtot_f + nwsptot_f + netuse_f')
-
-    run_logits(grouped, formula, 'netuse_f')
-
-
-    # In[41]:
-
-    run_logits(grouped, formula, 'hincrank_f')
-
-
-    # In[42]:
-
-    run_logits(grouped, formula, 'edurank_f')
-
-    formula = ('rlgdgr_f ~ inwyr07_f + yrbrn60_f + edurank_f + hincrank_f +'
-               'tvtot_f + rdtot_f + nwsptot_f + netuse_f')
-
-
-
 def run_ols(grouped, formula, var):
     for code, group in grouped:
         model = smf.ols(formula, data=group)    
@@ -294,18 +286,22 @@ def resample_and_fill(cycles):
 
 
 def random_name():
+    """Generates a random string of letters.
+
+    returns: string
+    """
     t = [random.choice(string.ascii_letters) for i in range(6)]
     return ''.join(t)
 
 
-def add_frames(store, cycles, n):
-    """Generate filled resamples and put them in the store.
+def add_frames(store, cycles, num):
+    """Generates filled resamples and put them in the store.
 
     store: h5 store object
     cycles: list of DataFrames
-    n: how many resamples to generate
+    num: how many resamples to generate
     """
-    for i in range(n):
+    for i in range(num):
         name = random_name()
         print(name)
         df = resample_and_fill(cycles)
@@ -359,53 +355,54 @@ class Country:
         return np.array(t)
 
 
-def make_country_map():
-    keys = store.keys()
-    key = random.choice(keys)
-    df = store.get(key)
-
-    grouped = df.groupby('cntry')
-    country_map = {}
-
-    for code, group in grouped:
-        country_map[code] = Country(code, len(group))
-        print(country_map[code].name)
-
-    return country_map
-
-
-formula1 = ('hasrelig_f ~ inwyr07_f + yrbrn60_f + '
-            'edurank_f + hincrank_f +'
-            'tvtot_f + rdtot_f + nwsptot_f + netuse_f')
-
-formula2 = ('rlgdgr_f ~ inwyr07_f + yrbrn60_f + '
-            'edurank_f + hincrank_f +'
-            'tvtot_f + rdtot_f + nwsptot_f + netuse_f')
-
-def process_frame(df):
+def process_frame(df, country_map, reg_func, formula, model_num):
+    """Processes one frame.
+    
+    df: DataFrame
+    country_map: map from code to Country
+    reg_func: function used to compute regression
+    formula: string Patsy formula
+    model_num: which model we're running
+    """
     grouped = df.groupby('cntry')
     for code, group in grouped:
         country = country_map[code]
         country.add_mean(group.mean())
+
+        # run the model
+        model = reg_func(formula, data=group)    
+        results = model.fit(disp=False)
+
+        # extract parameters and range of effect sizes
+        if model_num == 1:
+            country.add_params(results.params)
+            add_ranges(country, group, results)
+        else:
+            country.add_params2(results.params)
+            add_ranges2(country, group, results)
+
+
+def process_all_frames(store, country_map, num, 
+                       reg_func, formula, model_num):
+    """Loops through the store and processes frames.
     
-        model = smf.logit(formula1, data=group)    
-        results = model.fit(disp=False)
-        country.add_params(results.params)
-        
-        model = smf.ols(formula2, data=group)    
-        results = model.fit(disp=False)
-        country.add_params2(results.params)
-
-
-def process_all_frames():
-
-    for key in store.keys():
-        print(key)
+    store: store
+    country_map: map from code to Country
+    num: how many resamplings to process
+    reg_func: function used to compute regression
+    formula: string Patsy formula
+    model_num: which model we're running
+    """
+    for i, key in enumerate(store.keys()):
+        if i >= num:
+            break
+        print(i, key)
         df = store.get(key)
-        process_frame(df)
+        df['yrbrn60_f2'] = df.yrbrn60_f ** 2
+        process_frame(df, country_map, reg_func, formula, model_num)
+        
 
-
-def extract_params(country_map, param_func, varname):
+def extract_params(country_map, param_func, varname=None):
     """Extracts parameters.
     
     country_map: map from country code to Country
@@ -423,8 +420,11 @@ def extract_params(country_map, param_func, varname):
         low = np.percentile(params, 2.5)
         high = np.percentile(params, 97.5)
     
-        means = country.get_means(varname)
-        mean = np.median(means)
+        if varname is not None:
+            means = country.get_means(varname)
+            mean = np.median(means)
+        else:
+            mean = np.nan
     
         t.append((code, name, param, low, high, mean))
     
@@ -448,36 +448,290 @@ def extract_vars2(country_map, exp_var, dep_var):
     return t
 
 
-def plot_cis(t):
-    plt.figure(figsize=(8,8))
+def plot_params(params, ys, codes, color):
+    """Plots parameters using country codes on top of white squares.
 
-    n = len(t)
-    ys = n - np.arange(n)
-    codes, names, params, lows, highs, means = zip(*t)
-    plt.hlines(ys, lows, highs, color='blue', linewidth=2, alpha=0.5)
+    t: list of (code, name, param, low, high, mean)
+    color: string
+    hlines: whether to plot lines for the confidence intervals
+    """
+
+    # plot white squares
     plt.plot(params, ys, 'ws', markeredgewidth=0, markersize=15)
 
+    # plot codes as text
     for param, y, code in zip(params, ys, codes):
-        plt.text(param, y, code, fontsize=10, color='blue', 
+        plt.text(param, y, code, fontsize=10, color=color, 
                  horizontalalignment='center',
                  verticalalignment='center')
 
+    return ys
+
+
+def plot_cis(t, color='blue'):
+    """Plots confidence intervals.
+
+    t: list of (code, name, param, low, high, mean)
+    color: string
+    """
+    plt.figure(figsize=(8, 8))
+    n = len(t)
+    ys = np.arange(1, n+1, dtype=float)
+    codes, names, params, lows, highs, means = zip(*t)
+
+    # plot confidence intervals
+    plt.hlines(ys, lows, highs, color=color, linewidth=2)
+    plot_params(params, ys, codes, color)
     plt.vlines(0, 0, n+1, color='gray', alpha=0.5)
     plt.yticks(ys, names)
 
 
-def plot_scatter(t):
-    plt.figure(figsize=(8,8))
+STYLE_MAP = {}
+STYLE_MAP['inwyr07_f'] = (GREEN1, 'year asked')
+STYLE_MAP['yrbrn60_f'] = (GREEN2, 'year born')
+STYLE_MAP['hincrank_f'] = (ORANGE1, 'income')
+STYLE_MAP['edurank_f'] = (ORANGE2, 'education')
+STYLE_MAP['tvtot_f'] = (RED, 'television')
+STYLE_MAP['rdtot_f'] = (BLUE1, 'radio')
+STYLE_MAP['nwsptot_f'] = (BLUE2, 'newspaper')
+STYLE_MAP['netuse_f'] = (PURPLE2, 'Internet')
+STYLE_MAP['delta'] = (PURPLE2, 'Internet')
+STYLE_MAP['hasrelig_f'] = (BROWN, 'affiliation')
+STYLE_MAP['rlgdgr_f'] = (BROWN, 'religiosity')
+
+
+def plot_cdfs(country_map, extract_func, cdfnames):
+    """Plots cdfs for estimated parameters or ranges.
+
+    country_map: map from code to Country
+    extract_func: function to extract params or ranges
+    cdfnames: list of string variable names to plot cdfs of
+    """
+    def extract(exp_var):
+        t = extract_func(country_map, exp_var, None)
+        t.sort(key=lambda x: x[2])
+        return t
+
+    def plot(t, color, label):
+        n = len(t)
+        ys = np.arange(1, n+1, dtype=float)
+        codes, names, params, lows, highs, means = zip(*t)
+    
+        cdf = thinkstats2.Cdf(params)
+        print(cdf.Mean(), cdf.Percentile(50))
+        plt.plot(cdf.xs, cdf.ps, label=label,
+                 linewidth=3,
+                 color=color, alpha=0.6)
+        
+        # it's possible to plot the country codes on top of the CDFs,
+        # but turns out not to look so great
+        # plot_params(params, ys, codes, color)
+
+    plt.figure(figsize=(8, 8))
+
+    for varname in cdfnames:
+        t = extract(varname)
+        color, label = STYLE_MAP[varname]
+        ys = plot(t, color, label)
+
+    plt.vlines(0, 0, 1, color='gray', linewidth=2, alpha=0.4)
+
+
+def plot_scatter(t, color='blue'):
+    """Makes a scatter plot.
+
+    t: list of (code, name, param, low, high, mean)
+    color: string
+    factor: what to multiply the parameter by
+    """
+    plt.figure(figsize=(8, 8))
 
     codes, names, params, lows, highs, means = zip(*t)
 
     for param, mean, code in zip(params, means, codes):
-        plt.text(param, mean, code, fontsize=10, color='blue', 
+        plt.text(param, mean, code, fontsize=10, color=color, 
                  horizontalalignment='center',
                  verticalalignment='center')
         
-    corr = np.corrcoef(params, means)[0][1]
+    corr = np.corrcoef(params[2:-2], means[2:-2])[0][1]
     print(corr)
+
+
+def make_countries(store):
+    keys = store.keys()
+    key = random.choice(keys)
+    df = store.get(key)
+
+    grouped = df.groupby('cntry')
+    country_map = {}
+
+    for code, group in grouped:
+        country_map[code] = Country(code, len(group))
+        print(country_map[code].name)
+        
+    return country_map
+
+
+class Range():
+    __slots__ = ['low', 'middle', 'high', 'width']
+
+    def __init__(self, *args):
+        self.__dict__.update(zip(self.__slots__, args))
+
+
+def compute_range(country, group, results, varname):
+    """Computes the range in the dependent variable.
+    
+    country: Country object
+    group: DataFrame
+    results: regression results
+    varname: explanatory variable
+    
+    returns: Range object
+    """
+    def logistic(results):
+        return hasattr(results, 'prsquared')
+
+    def predict(results, df):
+        pred = results.predict(df)[0]
+
+        # if the prediction is from logistic regression, multiply
+        # by 100 to get percentage points
+        if logistic(results):
+            pred *= 100
+
+        return pred
+
+    def set_to_percentile(df, varname, percentile):
+        val = cdf.Percentile(percentile)
+        df[varname] = val
+
+        # when you vary yrbrn60_f, you have to vary yrbrn60_f2
+        # at the same time
+        if varname == 'yrbrn60_f':
+            set_to_percentile(df, 'yrbrn60_f2', percentile)
+
+    # start with all values set to their mean
+    df = group.mean()
+    middle = predict(results, df)
+
+    cdf = thinkstats2.Cdf(group[varname])
+
+    # change one variable to its 25th percentile
+    set_to_percentile(df, varname, 25)
+    low = predict(results, df)
+    
+    # change to the 75th percentile
+    set_to_percentile(df, varname, 75)
+    high = predict(results, df)
+
+    if logistic(results):
+        width = high-low
+    else:
+        # compute width in terms of standard deviatons
+        #std = np.std(results.model.endog)
+        #width = (high - low) / std
+        width = high-low
+
+    return Range(low, middle, high, width)
+
+
+def add_ranges(country, group, results):
+    """Adds model 1 ranges for each variable to the country object.
+    
+    country: Country object
+    group: DataFrame
+    results: regression results    
+    """
+    ranges = {}
+    for varname in results.params.index:
+        if varname in ['Intercept', 'yrbrn60_f2']:
+            continue
+        ranges[varname] = compute_range(country, group, 
+                                        results, varname)
+    
+    country.add_ranges(ranges)
+
+    
+def add_ranges2(country, group, results):
+    """Adds model2 ranges for each variable to the country object.
+    
+    country: Country object
+    group: DataFrame
+    results: regression results    
+    """
+    ranges = {}
+    for varname in results.params.index:
+        if varname == 'Intercept':
+            continue
+        ranges[varname] = compute_range(country, group, 
+                                        results, varname)
+    
+    country.add_ranges2(ranges)
+
+
+def extract_ranges(country_map, exp_var, dep_var):
+    """Extracts results for plotting.
+    
+    country_map: map from code to Country object
+    exp_var: string
+    dep_var: string
+    
+    returns: list of (codes, names, params, lows, highs, means)
+    """
+    def param_func(country):
+        ranges = country.get_ranges(exp_var)
+        widths = [r.width for r in ranges]
+        return widths
+    
+    t = extract_params(country_map, param_func, dep_var)
+    return t
+
+
+def extract_ranges2(country_map, exp_var, dep_var):
+    def param_func(country):
+        ranges = country.get_ranges2(exp_var)
+        widths = [r.width for r in ranges]
+        return widths
+    
+    t = extract_params(country_map, param_func, dep_var)
+    return t
+
+
+def classify_countries(country_map, varname, extract_func):
+    t = extract_func(country_map, varname, None)
+    codes, names, params, lows, highs, means = zip(*t)
+    signs = np.sign(params)
+    sigs = np.sign(np.array(lows) * np.array(highs))
+    d = {}
+    for sign in [-1, 1]:
+        for sig in [-1, 1]:
+            d[sign, sig] = sum((signs==sign) & (sigs==sig))
+    d[1, -1] += sum(signs==0)
+    return d
+
+
+def make_table(country_map, varnames, extract_func):
+    keys = [(-1, 1), (-1, -1), (1, -1), (1, 1)]
+    ts = []
+    for varname in varnames:
+        d = classify_countries(country_map, varname, extract_func)
+        t = [varname]
+        t.extend([d[key] for key in keys])
+        t.append(sum(d.values()))
+        ts.append(t)
+    
+    ts.sort(key=lambda t: t[1], reverse=True)
+    return ts
+
+
+def print_table(ts, sep='  \t', end='\n'):
+    print('varname', 'neg*', 'neg', 'pos', 'pos*',
+          sep=sep, end=end)
+    print('---------', '----', '---', '---', '----', 
+          sep=sep, end=end)
+    for t in ts:
+        print(*t, sep=sep, end=end)
 
 
 def main():
