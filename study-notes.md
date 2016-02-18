@@ -13,5 +13,5 @@
 - Learn to use functions like `extract_res()`, access the regression results and make easy printouts
 - Learn to use the **try-except** method
 
-There seems to be a little mistake in the notebook, the `formula` has to be redefined before performing national regression, sine `smf.logit` only take 0-1 variables
+There seems to be a little mistake in the notebook, the `formula` has to be redefined before performing national regression, since `smf.logit` only take 0-1 variables
 
