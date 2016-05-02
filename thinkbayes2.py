@@ -501,7 +501,7 @@ class Pmf(_DictWrapper):
         """
         return 1 - (self > obj)
 
-    def Normalize(self, fraction=1.0):
+    def Normalize(self, fraction=1):
         """Normalizes this PMF so the sum of all probs is fraction.
 
         Args:
@@ -513,7 +513,7 @@ class Pmf(_DictWrapper):
             raise ValueError("Normalize: Pmf is under a log transform")
 
         total = self.Total()
-        if total == 0.0:
+        if total == 0:
             raise ValueError('Normalize: total probability is zero.')
             #logging.warning('Normalize: total probability is zero.')
             #return total
