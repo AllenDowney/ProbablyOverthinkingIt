@@ -1781,6 +1781,35 @@ def MakeBinomialPmf(n, p):
         pmf[k] = stats.binom.pmf(k, n, p)
     return pmf
 
+
+def EvalGeometricPmf(k, p, loc=0):
+    """Evaluates the geometric PMF.
+
+    With loc=0: Probability of `k` trials to get one success.
+    With loc=-1: Probability if `k` trials before first success.
+
+    k: number of trials
+    p: probability of success
+    """
+    return stats.geom.pmf(k, p, loc=loc)
+    
+
+def MakeGeometricPmf(p, loc=0, high=10):
+    """Evaluates the binomial PMF.
+
+    With loc=0: PMF of trials to get one success.
+    With loc=-1: PMF of trials before first success.
+
+    p: probability of success
+    high: upper bound where PMF is truncated
+    """
+    pmf = Pmf()
+    for k in range(high):
+        pmf[k] = stats.geom.pmf(k, p, loc=loc)
+    pmf.Normalize()
+    return pmf
+
+
 def EvalHypergeomPmf(k, N, K, n):
     """Evaluates the hypergeometric PMF.
 
