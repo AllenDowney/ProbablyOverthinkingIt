@@ -164,10 +164,11 @@ class _DictWrapper(object):
         return id(self)
 
     def __str__(self):
-        cls = self.__class__.__name__
-        return '%s(%s)' % (cls, str(self.d))
+        return self.label if self.label else repr(self)
 
-    __repr__ = __str__
+    def __repr__(self):
+        cls = self.__class__.__name__
+        return '%s(%s)' % (cls, str(self.d))        
 
     def __eq__(self, other):
         return self.d == other.d
@@ -995,9 +996,10 @@ class Cdf(object):
         self.ps /= self.ps[-1]
 
     def __str__(self):
-        return 'Cdf(%s, %s)' % (str(self.xs), str(self.ps))
+        return self.label if self.label else repr(self)
 
-    __repr__ = __str__
+    def __repr__(self):
+        return 'Cdf(%s, %s)' % (str(self.xs), str(self.ps))
 
     def __len__(self):
         return len(self.xs)
@@ -1786,10 +1788,10 @@ def EvalGeometricPmf(k, p, loc=0):
     """Evaluates the geometric PMF.
 
     With loc=0: Probability of `k` trials to get one success.
-    With loc=-1: Probability if `k` trials before first success.
+    With loc=-1: Probability of `k` trials before first success.
 
     k: number of trials
-    p: probability of success
+    p: probability of success on each trial
     """
     return stats.geom.pmf(k, p, loc=loc)
     
