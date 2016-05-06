@@ -126,6 +126,11 @@ class Interpolator(object):
         return y
 
 
+# When we plot Hist, Pmf and Cdf objects, they don't appear in
+# the legend unless we override the default label.
+DEFAULT_LABEL = '_nolegend_' 
+
+
 class _DictWrapper(object):
     """An object that contains a dictionary."""
 
@@ -135,7 +140,7 @@ class _DictWrapper(object):
         obj: Hist, Pmf, Cdf, Pdf, dict, pandas Series, list of pairs
         label: string label
         """
-        self.label = label if label is not None else '_nolegend_'
+        self.label = label if label is not None else DEFAULT_LABEL
         self.d = {}
 
         # flag whether the distribution is under a log transform
@@ -164,11 +169,18 @@ class _DictWrapper(object):
         return id(self)
 
     def __str__(self):
-        return self.label if self.label else repr(self)
+        cls = self.__class__.__name__
+        if self.label == DEFAULT_LABEL:
+            return '%s(%s)' % (cls, str(self.d))
+        else:
+            return self.label
 
     def __repr__(self):
         cls = self.__class__.__name__
-        return '%s(%s)' % (cls, str(self.d))        
+        if self.label == DEFAULT_LABEL:
+            return '%s(%s)' % (cls, repr(self.d))
+        else:
+            return '%s(%s, %s)' % (cls, repr(self.d), repr(self.label))
 
     def __eq__(self, other):
         return self.d == other.d
@@ -951,7 +963,7 @@ class Cdf(object):
         ps: list of cumulative probabilities
         label: string label
         """
-        self.label = label if label is not None else '_nolegend_'
+        self.label = label if label is not None else DEFAULT_LABEL
 
         if isinstance(obj, (_DictWrapper, Cdf, Pdf)):
             if not label:
@@ -996,10 +1008,19 @@ class Cdf(object):
         self.ps /= self.ps[-1]
 
     def __str__(self):
-        return self.label if self.label else repr(self)
+        cls = self.__class__.__name__
+        if self.label == DEFAULT_LABEL:
+            return '%s(%s, %s)' % (cls, str(self.xs), str(self.ps))
+        else:
+            return self.label
 
     def __repr__(self):
-        return 'Cdf(%s, %s)' % (str(self.xs), str(self.ps))
+        cls = self.__class__.__name__
+        if self.label == DEFAULT_LABEL:
+            return '%s(%s, %s)' % (cls, str(self.xs), str(self.ps))
+        else:
+            return '%s(%s, %s, %s)' % (cls, str(self.xs), str(self.ps), 
+                                       repr(self.label))
 
     def __len__(self):
         return len(self.xs)
