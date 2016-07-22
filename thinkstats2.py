@@ -501,7 +501,7 @@ class Pmf(_DictWrapper):
         """
         return 1 - (self > obj)
 
-    def Normalize(self, fraction=1.0):
+    def Normalize(self, fraction=1):
         """Normalizes this PMF so the sum of all probs is fraction.
 
         Args:
@@ -513,7 +513,7 @@ class Pmf(_DictWrapper):
             raise ValueError("Normalize: Pmf is under a log transform")
 
         total = self.Total()
-        if total == 0.0:
+        if total == 0:
             raise ValueError('Normalize: total probability is zero.')
             #logging.warning('Normalize: total probability is zero.')
             #return total
@@ -615,6 +615,8 @@ class Pmf(_DictWrapper):
         except AttributeError:
             return self.AddConstant(other)
 
+    __radd__ = __add__
+
     def AddPmf(self, other):
         """Computes the Pmf of the sum of values drawn from self and other.
 
@@ -635,6 +637,9 @@ class Pmf(_DictWrapper):
 
         returns: new Pmf
         """
+        if other == 0:
+            return self
+
         pmf = Pmf()
         for v1, p1 in self.Items():
             pmf.Set(v1 + other, p1)
@@ -2637,7 +2642,8 @@ def ReadStataDct(dct_file, **options):
 
     returns: FixedWidthVariables object
     """
-    type_map = dict(byte=int, int=int, long=int, float=float, double=float)
+    type_map = dict(byte=int, int=int, long=int, 
+                    numeric=float, float=float, double=float)
 
     var_info = []
     for line in open(dct_file, **options):
