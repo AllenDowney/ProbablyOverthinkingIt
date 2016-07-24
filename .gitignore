@@ -1,3 +1,7 @@
+# ESS data files
+data/
+ESS*.dta
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
