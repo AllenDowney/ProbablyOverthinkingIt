@@ -1,5 +1,7 @@
 name: Blog
-
+channels:
+  - defaults
+  - conda-forge
 dependencies:
   - python=3.7
   - jupyter
@@ -14,6 +16,8 @@ dependencies:
   - html5lib
   - networkx
   - scipy
+  - pymc3
+  - arviz
   - pip
   - pip:
     - empiricaldist
