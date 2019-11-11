@@ -9,6 +9,7 @@ dependencies:
   - matplotlib
   - seaborn
   - pandas
+  - xlrd
   - pytables
   - lxml
   - beautifulsoup4
