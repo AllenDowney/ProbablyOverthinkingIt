@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables and values &#8212; Elements of Data Science</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Times and places" href="02_times.html" />
+    <link rel="prev" title="Elements of Data Science" href="README.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Elements of Data Science</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="README.html">
+   Elements of Data Science
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Variables and values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_times.html">
+   Times and places
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_arrays.html">
+   Lists and arrays
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_loops.html">
+   Loops and files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_dictionaries.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_dataframes.html">
+   DataFrames and Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_distributions.html">
+   Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09_relationships.html">
+   Relationships
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11_resampling.html">
+   Resampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="12_bootstrap.html">
+   Bootstrap Sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="13_hypothesis.html">
+   Hypothesis Testing
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01_variables.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AllenDowney/ElementsOfDataScience"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/AllenDowney/ElementsOfDataScience/master?urlpath=tree/01_variables.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numbers">
+   Numbers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arithmetic">
+   Arithmetic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#math-functions">
+   Math functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables">
+   Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculation-with-variables">
+   Calculation with variables
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="variables-and-values">
+<h1>Variables and values<a class="headerlink" href="#variables-and-values" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ElementsOfDataScience/blob/master/01_variables.ipynb">Click here to run this notebook on Colab</a> or
+<a class="reference external" href="https://github.com/AllenDowney/ElementsOfDataScience/raw/master/01_variables.ipynb">click here to download it</a>.</p>
+<p>Data Science is the use of data to answers questions and guide decision making.
+For example, a topic of current debate is whether we should raise the minimum wage in the United States.
+Some economists think that raising the minimum wage would raise families out of poverty; others think it would cause more unemployment.
+But economic theory can only take us so far.
+At some point, we need data.</p>
+<p>A successful data science project requires three elements:</p>
+<ul class="simple">
+<li><p>A question: For example, what is the relationship between the minimum wage and unemployment?</p></li>
+<li><p>Data: To answer this question, the best data would be results from a well designed experiment.  But if we can’t get ideal data, we have to work with what we can get.</p></li>
+<li><p>Methods: With the right data, simple methods are often enough to find answers and present them clearly.  But sometimes we need more specialized tools.</p></li>
+</ul>
+<p>In an ideal world, we would pose a question, find data, and choose the appropriate methods, in that order.
+More often, the data science is iterative.  We might start with one question, get stuck, and pivot to a different question.
+Or we might explore a new dataset and discover the questions it can answer.
+Or we might start with a tool and look for problems it can solve.
+Most data science projects require flexibility and persistence.</p>
+<p>The goal of this book is to give you the tools you need to execute a data science project from beginning to end, including these steps:</p>
+<ul class="simple">
+<li><p>Choosing questions, data, and methods that go together.</p></li>
+<li><p>Finding data or collecting it yourself.</p></li>
+<li><p>Cleaning and validating data.</p></li>
+<li><p>Exploring datasets, visualizing distributions and relationships between variables.</p></li>
+<li><p>Modeling data and generating predictions.</p></li>
+<li><p>Designing data visualizations that tell a compelling story.</p></li>
+<li><p>Communicating results effectively.</p></li>
+</ul>
+<p>We’ll start with basic programming concepts and work our way toward data science tools.</p>
+<p>I won’t assume that you already know about programming, statistics, or data science. When I use a term, I try to define it immediately, and when I use a programming feature, I try to explain it clearly.</p>
+<p>This book is in the form of Jupyter notebooks. Jupyter is a software development tool you can run in a web browser, so you don’t have to install any software. A Jupyter notebook is a document that contains text, Python code, and results. So you can read it like a book, but you can also modify the code, run it, develop new programs, and test them.</p>
+<p>The notebooks contain exercises where you can practice what you learn. I encourage you to do the exercises as you go along.</p>
+<p>The topics in this chapter are:</p>
+<ul class="simple">
+<li><p>Using Jupyter to write and run Python code.</p></li>
+<li><p>Basic programming features in Python: variables and values.</p></li>
+<li><p>Translating formulas from math notation to Python.</p></li>
+</ul>
+<p>Along the way, we’ll review a couple of math topics I assume you have seen before, logarithms and algebra.</p>
+<div class="section" id="numbers">
+<h2>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h2>
+<p>Python provides tools for working with many kinds of data, including numbers, words, dates, times, and locations (latitude and longitude).</p>
+<p>Let’s start with numbers.  Python can work with several types of numbers, but the two most common are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code>, which represents integer values like <code class="docutils literal notranslate"><span class="pre">3</span></code>, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>, which represents numbers that have a fraction part, like <code class="docutils literal notranslate"><span class="pre">3.14159</span></code>.</p></li>
+</ul>
+<p>Most often, we use <code class="docutils literal notranslate"><span class="pre">int</span></code> to represent counts and <code class="docutils literal notranslate"><span class="pre">float</span></code> to represent measurements.
+Here’s an example of an <code class="docutils literal notranslate"><span class="pre">int</span></code> and a <code class="docutils literal notranslate"><span class="pre">float</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">3.14159</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.14159
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">float</span></code> is short for “floating-point”, which is the name for the way these numbers are stored.</p>
+</div>
+<div class="section" id="arithmetic">
+<h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">¶</a></h2>
+<p>Python provides operators that perform arithmetic.  The operators that perform addition and subtraction are <code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>The operators that perform multiplication and division are <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">/</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6666666666666666
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the operator for exponentiation is <code class="docutils literal notranslate"><span class="pre">**</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unlike math notation, Python does not allow “implicit multiplication”.  For example, in math notation, if you write <span class="math notranslate nohighlight">\(3 (2 + 1)\)</span>, that’s understood to be the same as <span class="math notranslate nohighlight">\(3 \times (2+ 1)\)</span>.
+Python does not allow that notation.
+If you want to multiply, you have to use the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator.</p>
+<p>The arithmetic operators follow the rules of precedence you might have learned as “PEMDAS”:</p>
+<ul class="simple">
+<li><p>Parentheses before</p></li>
+<li><p>Exponentiation before</p></li>
+<li><p>Multiplication and division before</p></li>
+<li><p>Addition and subtraction</p></li>
+</ul>
+<p>So in this expression:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<p>The multiplication happens first.  If that’s not what you want, you can use parentheses to make the order of operations explicit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Write a Python expression that raises <code class="docutils literal notranslate"><span class="pre">1+2</span></code> to the power <code class="docutils literal notranslate"><span class="pre">3*4</span></code>.  The answer should be <code class="docutils literal notranslate"><span class="pre">531441</span></code>.</p>
+</div>
+<div class="section" id="math-functions">
+<h2>Math functions<a class="headerlink" href="#math-functions" title="Permalink to this headline">¶</a></h2>
+<p>Python provides functions that compute all the usual mathematical functions, like <code class="docutils literal notranslate"><span class="pre">sin</span></code> and <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code> and <code class="docutils literal notranslate"><span class="pre">log</span></code>.
+However, they are not part of Python itself; they are in a <strong>library</strong>, which is a collection of functions that supplement the Python language.</p>
+<p>Actually, there are several libraries that provide math functions; the one we’ll use is called NumPy, which stands for “Numerical Python”, and is pronounced “num’ pie”.
+Before you can use a library, you have to “import” it.  Here’s how we import NumPy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is conventional to import <code class="docutils literal notranslate"><span class="pre">numpy</span></code> as <code class="docutils literal notranslate"><span class="pre">np</span></code>, which means we can refer to it by the short name <code class="docutils literal notranslate"><span class="pre">np</span></code> rather than the longer name <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.
+Names like this are case-sensitive, which means that <code class="docutils literal notranslate"><span class="pre">numpy</span></code> is not the same as <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>.  So even though the name of the library is NumPy, when we import it we have to call it <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p>
+<p>But assuming we import <code class="docutils literal notranslate"><span class="pre">np</span></code> correctly, we can use it to read the value <code class="docutils literal notranslate"><span class="pre">pi</span></code>, which is an approximation of the mathematical constant <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is a <code class="docutils literal notranslate"><span class="pre">float</span></code> with 16 digits.  As you might know, we can’t represent <span class="math notranslate nohighlight">\(\pi\)</span> with a finite number of digits, so this result is only approximate.</p>
+<p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> provides <code class="docutils literal notranslate"><span class="pre">log</span></code>, which computes the natural logarithm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.605170185988092
+</pre></div>
+</div>
+</div>
+</div>
+<p>And <code class="docutils literal notranslate"><span class="pre">exp</span></code>, which raises the constant <code class="docutils literal notranslate"><span class="pre">e</span></code> to a power.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.718281828459045
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Use these functions to confirm the mathematical identity <span class="math notranslate nohighlight">\(\log(e^x) = x\)</span>, which should be true for any value of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>With floating-point values, this identity should work for values of <span class="math notranslate nohighlight">\(x\)</span> between -700 and 700.  What happens when you try it with larger and smaller values?</p>
+<p>As this example shows, floating-point numbers are finite approximations, which means they don’t always behave like math.</p>
+<p>As another example, let’s see what happens when you add up <code class="docutils literal notranslate"><span class="pre">0.1</span></code> three times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.30000000000000004
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result is close to <code class="docutils literal notranslate"><span class="pre">0.3</span></code>, but not exact.<br />
+We’ll see other examples of floating-point approximation later, and learn some ways to deal with it.</p>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>A variable is a name that refers to a value.
+The following statement assigns the value <code class="docutils literal notranslate"><span class="pre">5</span></code> to a variable named <code class="docutils literal notranslate"><span class="pre">x</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The variable we just created has the name <code class="docutils literal notranslate"><span class="pre">x</span></code> and the value <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p>
+<p>If we use <code class="docutils literal notranslate"><span class="pre">x</span></code> as part of an arithmetic operation, it represents the value <code class="docutils literal notranslate"><span class="pre">5</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">x</span></code> with <code class="docutils literal notranslate"><span class="pre">numpy</span></code> functions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>148.4131591025766
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the result from <code class="docutils literal notranslate"><span class="pre">exp</span></code> is a <code class="docutils literal notranslate"><span class="pre">float</span></code>, even though the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> is an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p><strong>Exercise:</strong> If you have not programmed before, one of the things you have to get used to is that programming languages are picky about details.  Natural languages, like English, and semi-formal languages, like math notation, are more forgiving.</p>
+<p>As an example, in math notation, parentheses and square brackets mean the same thing, you can write</p>
+<p><span class="math notranslate nohighlight">\(\sin (\omega t)\)</span></p>
+<p>or</p>
+<p><span class="math notranslate nohighlight">\(\sin [\omega t]\)</span></p>
+<p>Either one is fine.  And you can leave out the parentheses altogether, as long as the meaning is clear:</p>
+<p><span class="math notranslate nohighlight">\(\sin \omega t\)</span></p>
+<p>In Python, every character counts.  For example, the following are all different:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">Exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>While you are learning, I encourage you to make mistakes on purpose to see what goes wrong.  Read the error messages carefully.  Sometimes they are helpful and tell you exactly what’s wrong.  Other times they can be misleading.  But if you have seen the message before, you might remember some likely causes.</p>
+<p><strong>Exercise:</strong> Search the NumPy documentation to find the function that computes square roots, and use it to compute a floating-point approximation of the golden ratio:</p>
+<p><span class="math notranslate nohighlight">\(\phi = \frac{1 + \sqrt{5}}{2}\)</span></p>
+<p>Hint: The result should be close to <code class="docutils literal notranslate"><span class="pre">1.618</span></code>.</p>
+</div>
+<div class="section" id="calculation-with-variables">
+<h2>Calculation with variables<a class="headerlink" href="#calculation-with-variables" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s use variables to solve a problem involving mathematical calculation.
+Suppose we have the following formula for computing compound interest from Wikipedia (see <a class="reference external" href="https://en.wikipedia.org/wiki/Compound_interest#Periodic_compounding">https://en.wikipedia.org/wiki/Compound_interest#Periodic_compounding</a>):</p>
+<p>“The total accumulated value, including the principal sum <span class="math notranslate nohighlight">\(P\)</span> plus compounded interest <span class="math notranslate nohighlight">\(I\)</span>, is given by the formula:</p>
+<p><span class="math notranslate nohighlight">\(V=P\left(1+{\frac {r}{n}}\right)^{nt}\)</span></p>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the original principal sum</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span> is the total accumulated value</p></li>
+<li><p><span class="math notranslate nohighlight">\(r\)</span> is the nominal annual interest rate</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is the compounding frequency</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> is the overall length of time the interest is applied (expressed using the same time units as <span class="math notranslate nohighlight">\(r\)</span>, usually years).</p></li>
+</ul>
+<p>“Suppose a principal amount of $1,500 is deposited in a bank paying an annual interest rate of 4.3%, compounded quarterly.
+Then the balance after 6 years is found by using the formula above, with</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="mi">1500</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">0.043</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can compute the total accumulated value by translating the mathematical formula into Python syntax:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1938.8368221341054
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Continuing the example from Wikipedia:</p>
+<p>“Suppose the same amount of $1,500 is compounded biennially”, so <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">1/2</span></code>.</p>
+<p>What would the total value be after 6 years?  Hint: we expect the answer to be a bit less than the previous answer.</p>
+<p><strong>Exercise:</strong> If interest is compounded continuously, the value after time <span class="math notranslate nohighlight">\(t\)</span> is given by the formula:</p>
+<p><span class="math notranslate nohighlight">\(V=P~e^{rt}\)</span></p>
+<p>Translate this equation into Python and use it compute the value of the investment in the previous example with continuous compounding.  Hint: we expect the answer to be a bit more than the previous answers.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">Elements of Data Science</a>
+    <a class='right-next' id="next-link" href="02_times.html" title="next page">Times and places</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Allen B. Downey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
