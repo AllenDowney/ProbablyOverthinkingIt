@@ -1,9 +1,8 @@
-name: Blog
+name: ProbablyOverthinkingIt
 channels:
-  - defaults
   - conda-forge
 dependencies:
-  - python=3.7
+  - python
   - jupyter
   - numpy
   - matplotlib
@@ -16,11 +15,10 @@ dependencies:
   - html5lib
   - networkx
   - scipy
-  - pymc3
-  - arviz
+  - statsmodels
+  - lifelines
+  - git-lfs
+  - jupyter-book
   - pip
   - pip:
     - empiricaldist
-
-
-
