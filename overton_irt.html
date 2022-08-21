@@ -310,18 +310,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#item-response-theory">
+   Item Response Theory
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-conservatism">
    Estimating Conservatism
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Estimating Conservatism
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-operations-for-the-win">
-   Array Operations For the Win
+  <a class="reference internal nav-link" href="#array-operations-for-speed">
+   Array Operations For Speed
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -379,18 +379,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#item-response-theory">
+   Item Response Theory
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-conservatism">
    Estimating Conservatism
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Estimating Conservatism
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-operations-for-the-win">
-   Array Operations For the Win
+  <a class="reference internal nav-link" href="#array-operations-for-speed">
+   Array Operations For Speed
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -881,8 +881,8 @@ The differences between the groups range from 11 to 27 percentage points.</p>
 <p>These results include respondents over the interval from 1973 to 2021, so they are not a snapshot of recent conditions.
 Rather, they show the issues that have distinguished conservatives from liberals over the last 50 years.</p>
 </section>
-<section id="estimating-conservatism">
-<h1>Estimating Conservatism<a class="headerlink" href="#estimating-conservatism" title="Permalink to this headline">#</a></h1>
+<section id="item-response-theory">
+<h1>Item Response Theory<a class="headerlink" href="#item-response-theory" title="Permalink to this headline">#</a></h1>
 <p>Now that we’ve chosen questions that distinguish liberals and conservatives, the next step is to estimate the conservatism of each respondent.
 If all respondents answered all of the questions, this would be relatively easy, but they didn’t.</p>
 <p>Some were surveyed before a particular question was added to the survey or after it was removed.
@@ -1016,8 +1016,8 @@ Someone with efficacy 6 is very conservative; their probability of choosing a co
 </div>
 <p>Someone with efficacy 0 is expected to give about 7 conservative responses our of 15 questions.</p>
 </section>
-<section id="id1">
-<h1>Estimating Conservatism<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<section id="estimating-conservatism">
+<h1>Estimating Conservatism<a class="headerlink" href="#estimating-conservatism" title="Permalink to this headline">#</a></h1>
 <p>Now let’s see how we can estimate <span class="math notranslate nohighlight">\(e_i\)</span> for a respondent based on their answers.
 I’ll start with a weakly informative prior that suggest people are more likely to be in the middle and less likely to be at the extremes.</p>
 <div class="cell docutils container">
@@ -1174,8 +1174,8 @@ Wall time: 27.7 s
 </div>
 <p>Doing the calculation one row at a time takes longer than I’d like. So before we look at the results, let’s speed it up.</p>
 </section>
-<section id="array-operations-for-the-win">
-<h1>Array Operations For the Win<a class="headerlink" href="#array-operations-for-the-win" title="Permalink to this headline">#</a></h1>
+<section id="array-operations-for-speed">
+<h1>Array Operations For Speed<a class="headerlink" href="#array-operations-for-speed" title="Permalink to this headline">#</a></h1>
 <p>To eliminate the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we can compute the results for all respondents
 with a single 3-D array: one row for each respondent, one column for each question,
 one page for each hypothetical value of <span class="math notranslate nohighlight">\(e\)</span>.</p>
