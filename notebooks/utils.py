@@ -153,7 +153,7 @@ def error_func_gauss(params, series):
     return error
 
 
-def fit_model(series):
+def fit_gaussian(series):
     """Fit a Gaussian model.
 
     series: Series of values
@@ -175,7 +175,7 @@ def gaussian_model(series, iters=201):
     """
     n = len(series)
     # mu, sigma = series.mean(), series.std()
-    mu, sigma = fit_model(series)
+    mu, sigma = fit_gaussian(series)
     cdf_series = make_cdf(series)
 
     a = np.empty(shape=(iters, len(cdf_series)))
