@@ -1,0 +1,933 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Are You Normal? Hint: No. &#8212; Probably Overthinking It</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Measuring the Overton Window" href="overton_irt.html" />
+    <link rel="prev" title="Probably Overthinking It" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Probably Overthinking It</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Are You Normal? Hint: No.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="overton_irt.html">
+   Measuring the Overton Window
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ProbablyOverthinkingIt/master?urlpath=tree/gaussian.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/gaussian.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#present-arms">
+   Present… Arms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why">
+   Why?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-distributions">
+   Comparing Distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-gaussian-is-it">
+   How Gaussian Is It?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-myth-of-the-average-man">
+   The Myth of the “Average Man”
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-big-five">
+   The Big Five
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#we-are-all-equally-weird">
+   We Are All Equally Weird
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Are You Normal? Hint: No.</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#present-arms">
+   Present… Arms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why">
+   Why?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-distributions">
+   Comparing Distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-gaussian-is-it">
+   How Gaussian Is It?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-myth-of-the-average-man">
+   The Myth of the “Average Man”
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-big-five">
+   The Big Five
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#we-are-all-equally-weird">
+   We Are All Equally Weird
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="are-you-normal-hint-no">
+<h1>Are You Normal? Hint: No.<a class="headerlink" href="#are-you-normal-hint-no" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/gaussian.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
+
+<span class="c1"># On Colab, we might need to update matplotlib to get plt.stairs (added in 3.6.2)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install empiricaldist
+    <span class="o">!</span>pip install -U matplotlib
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+        
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What does it mean to be normal? And what does it mean to be weird?
+I think there are two factors that underlie our intuition for these ideas:</p>
+<ul class="simple">
+<li><p>“Normal” and “weird” are related to the idea of average. If by some measurement you are close to the average, you are normal; if you are far from the average, you are weird.</p></li>
+<li><p>“Normal” and “weird” are also related to the idea of rarity. If some ability or characteristic of yours is common, it is normal; if it’s rare, it’s weird.</p></li>
+</ul>
+<p>Intuitively, most people think that these things go together; that is, we expect measurements close to the average be common, and measurements far from average to be rare.</p>
+<p>For many things this intuition is valid.
+For example, the average height of adults in the United States is about 170 cm.
+Most people are close to this average: about 64% of adults are within 10 cm plus or minus; 93% are within 20 cm.
+And few people are far from average: only 1% of the population is shorter than 145 cm or taller than 195 cm.</p>
+<p>The numbers in the previous paragraph come from the <a class="reference external" href="https://www.cdc.gov/brfss/index.html">Behavioral Risk Factor Surveillance System</a> (BRFSS).
+Here is the <a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_brfss.ipynb">notebook I used to download and clean the data</a>.</p>
+<p>I generated a sample from the dataset, which we can download like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/brfss_sample.hdf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>But what is true when we consider a single characteristic turns out to be partly false when we consider a few characteristics at once, and spectacularly false when we consider more than a few.
+In fact, when we consider the many ways people are different, we find that</p>
+<ul class="simple">
+<li><p>People near the average are rare or non-existent,</p></li>
+<li><p>Everyone is far from average, and</p></li>
+<li><p>Everyone is roughly the same distance from average.</p></li>
+</ul>
+<p>At least in a mathematical sense, no one is normal, everyone is weird, and everyone is the same amount of weird.</p>
+<section id="present-arms">
+<h2>Present… Arms<a class="headerlink" href="#present-arms" title="Permalink to this headline">#</a></h2>
+<p>Here’s the ANSUR data, originally downloaded from <a class="reference external" href="https://www.openlab.psu.edu/ansur2/">The OPEN Design Lab</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/ANSURIIFEMALEPublic.csv&quot;</span><span class="p">)</span>
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/ANSURIIMALEPublic.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since heights are in mm, I converted to cm.</p>
+<p>The following function plots histograms using <code class="docutils literal notranslate"><span class="pre">plt.stairs</span></code>.</p>
+<p>Here are the histograms of male and female heights.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_26_0.png" src="_images/gaussian_26_0.png" />
+</div>
+</div>
+<p>The following cell shows a way to calculate a Gaussian curve – for clarity I used base 10 (instead of <span class="math notranslate nohighlight">\(e\)</span>) and no parameters.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_28_0.png" src="_images/gaussian_28_0.png" />
+</div>
+</div>
+<p>The following function plots a Gaussian curve with the same mean and std as the data.</p>
+<p>The scale parameter is arbitrary – I chose it to be roughly the same height as the histogram, which is also arbitrary. Avoiding this arbitrariness is one reason I prefer to use CDF to compare the distribution of data with a model.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_31_0.png" src="_images/gaussian_31_0.png" />
+</div>
+</div>
+</section>
+<section id="why">
+<h2>Why?<a class="headerlink" href="#why" title="Permalink to this headline">#</a></h2>
+<p>The following function generates simulated values that are the sum of a number of random factors, shifted and scaled so they have the same mean and std as the given data.</p>
+<p>The result shows that values generated this way can resemble the actual data.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_36_0.png" src="_images/gaussian_36_0.png" />
+</div>
+</div>
+</section>
+<section id="comparing-distributions">
+<h2>Comparing Distributions<a class="headerlink" href="#comparing-distributions" title="Permalink to this headline">#</a></h2>
+<p>Here are the examples in the book.</p>
+<p>And here’s a figure that shows the CDFs and the highlighted examples.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_42_0.png" src="_images/gaussian_42_0.png" />
+</div>
+</div>
+<p>The following figure shows the CDFs of the data compared to the CDF of a Gaussian model chosen to fit the data.</p>
+</section>
+<section id="how-gaussian-is-it">
+<h2>How Gaussian Is It?<a class="headerlink" href="#how-gaussian-is-it" title="Permalink to this headline">#</a></h2>
+<p>Here are the names of the measurements.</p>
+<p>To find the measurements that fit a Gaussian model the best and the worst, I use the following function, which computes the maximum vertical distance between the CDF of the data and the model.</p>
+<p>The following function computes this distance for all of the measurements.</p>
+<p>Now we can make a list of results for all measurements, male and female.</p>
+<p>Here are the measurements where the distance between the data and the model is smallest.</p>
+<p>And here are the measurements where it’s the biggest.</p>
+<p>Most of the best-fitting measurements are male, most of the worst-fitting are female. That’s because the sample size is smaller for the female participants, which means there is more deviation from the model due to chance.</p>
+<p>Here’s the measurement that fits the Gaussian model the best.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_66_0.png" src="_images/gaussian_66_0.png" />
+</div>
+</div>
+<p>The measurement with the highest distance is <code class="docutils literal notranslate"><span class="pre">interpupillarybreadth</span></code>. But based on the figure below, that appears to be an artifact due to a single measurement. In retrospect, I could have computed distances in a way that would not be thrown off by this anomaly.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_69_0.png" src="_images/gaussian_69_0.png" />
+</div>
+</div>
+<p>What I reported in the book is <code class="docutils literal notranslate"><span class="pre">radialestylionlength</span></code>, which is second and the list and seems to be legitimately the measurement that is the worst fit for the model.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_72_0.png" src="_images/gaussian_72_0.png" />
+</div>
+</div>
+</section>
+<section id="the-myth-of-the-average-man">
+<h2>The Myth of the “Average Man”<a class="headerlink" href="#the-myth-of-the-average-man" title="Permalink to this headline">#</a></h2>
+<p>Here are the measurements from ANSUR that are the closest to the measurements in Daniels’s report.</p>
+<p>The following table shows the names of these measurements, the mean and standard deviations of the values, the low and high ends of the range considered “approximately average”, and the percentage of survey participants who fall in the range.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Measurement</th>
+      <th>Mean</th>
+      <th>Std Dev</th>
+      <th>Low</th>
+      <th>High</th>
+      <th>% in range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Stature (height)</th>
+      <td>175.6</td>
+      <td>6.9</td>
+      <td>173.6</td>
+      <td>177.7</td>
+      <td>23.2</td>
+    </tr>
+    <tr>
+      <th>Chest Circumference</th>
+      <td>105.9</td>
+      <td>8.7</td>
+      <td>103.2</td>
+      <td>108.5</td>
+      <td>22.9</td>
+    </tr>
+    <tr>
+      <th>Sleeve Length</th>
+      <td>89.6</td>
+      <td>4.0</td>
+      <td>88.4</td>
+      <td>90.8</td>
+      <td>23.1</td>
+    </tr>
+    <tr>
+      <th>Crotch Height</th>
+      <td>84.6</td>
+      <td>4.6</td>
+      <td>83.2</td>
+      <td>86.0</td>
+      <td>22.1</td>
+    </tr>
+    <tr>
+      <th>Vertical Trunk Circ.</th>
+      <td>166.5</td>
+      <td>9.0</td>
+      <td>163.8</td>
+      <td>169.2</td>
+      <td>24.2</td>
+    </tr>
+    <tr>
+      <th>Hip Breadth Sitting</th>
+      <td>37.9</td>
+      <td>3.0</td>
+      <td>37.0</td>
+      <td>38.8</td>
+      <td>24.8</td>
+    </tr>
+    <tr>
+      <th>Neck Circumference</th>
+      <td>39.8</td>
+      <td>2.6</td>
+      <td>39.0</td>
+      <td>40.5</td>
+      <td>25.2</td>
+    </tr>
+    <tr>
+      <th>Waist Circumference</th>
+      <td>94.1</td>
+      <td>11.2</td>
+      <td>90.7</td>
+      <td>97.4</td>
+      <td>22.1</td>
+    </tr>
+    <tr>
+      <th>Thigh Circumference</th>
+      <td>62.5</td>
+      <td>5.8</td>
+      <td>60.8</td>
+      <td>64.3</td>
+      <td>24.9</td>
+    </tr>
+    <tr>
+      <th>Crotch Length</th>
+      <td>35.6</td>
+      <td>2.9</td>
+      <td>34.7</td>
+      <td>36.5</td>
+      <td>22.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here are the measurements where there are the biggest differences between the Daniels dataset and the ANSUR dataset (you can ignore the two very large differences, which are the result of using measurements that are defined differently).</p>
+<p>The other differences suggest that members of the Army and Marines now are bigger than members of the Air Force in 1950.</p>
+<p>The following cells replicate the analysis in Daniels, computing the number of people who are close to the average in each measurement, considered in succession.</p>
+<p>The following table shows the number of people who make it past each of the “hurdles”.</p>
+<p>The same is true if you design for the average woman.
+The ANSUR dataset includes fewer women than men: 1986 compared to 4086.
+So we can use a more generous definition of “approximately average”, including anyone within 0.4 standard deviations of the mean.</p>
+<p>Even so, we find only 2 women who make it past the first eight hurdles, 1 who makes it past nine, and none that make it past all ten.</p>
+</section>
+<section id="the-big-five">
+<h2>The Big Five<a class="headerlink" href="#the-big-five" title="Permalink to this headline">#</a></h2>
+<p>The Big Five data is originally from the <a class="reference external" href="https://openpsychometrics.org/_rawdata/">Open-Source Psychometrics Project</a>.</p>
+<p>Here is the <a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_big_five.ipynb">notebook I used to download and clean the data</a>.</p>
+<p>I did some preliminary cleaning and put the result in an HDF file.</p>
+<p>The survey consists of 50 questions, with 10 questions intended to measure each of the five personality traits.
+People respond on a five-point scale from “Strongly Disagree” to “Strongly Agree”.
+I scored the responses like this:</p>
+<ul class="simple">
+<li><p>“Strongly agree” scores 2 points.</p></li>
+<li><p>“Agree” scores 1 point,</p></li>
+<li><p>“Neutral” scores 0 points,</p></li>
+<li><p>“Disagree” scores -1 point, and</p></li>
+<li><p>“Strongly disagree” scores -2 points.</p></li>
+</ul>
+<p>For some questions, the scale is reversed; for example, if someone strongly agrees that they are “quiet around strangers,” that counts as -2 points on the extroversion score.</p>
+<p>Since there are 10 questions for each trait, the maximum score is 20 and the minimum score is -20.
+For each of the five traits, the following figure shows the distributions of total scores for more than 800,000 respondents.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_113_0.png" src="_images/gaussian_113_0.png" />
+</div>
+</div>
+<p>The figures on the left show histograms; the figures on the right show CDFs.
+In both figures, the shaded line is a Gaussian distribution I chose to fit the data.
+The Gaussian model fits the first three distributions well (extroversion, emotional stability, and conscientiousness) except in the extreme tails.</p>
+<p>Let’s see what happens if we apply Daniels’s analysis to the Big Five data.
+The following table shows the mean and standard deviation of the five scores, the range of values we’ll consider “approximately average”, and the percentage of the sample that falls in that range.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Trait</th>
+      <th>Mean</th>
+      <th>Std Dev</th>
+      <th>Low</th>
+      <th>High</th>
+      <th>% in range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Extroversion</th>
+      <td>-0.4</td>
+      <td>9.1</td>
+      <td>-3.1</td>
+      <td>2.3</td>
+      <td>23.4</td>
+    </tr>
+    <tr>
+      <th>Emotional stability</th>
+      <td>-0.7</td>
+      <td>8.6</td>
+      <td>-3.2</td>
+      <td>1.9</td>
+      <td>20.9</td>
+    </tr>
+    <tr>
+      <th>Conscientiousness</th>
+      <td>3.7</td>
+      <td>7.4</td>
+      <td>1.4</td>
+      <td>5.9</td>
+      <td>20.2</td>
+    </tr>
+    <tr>
+      <th>Agreeableness</th>
+      <td>7.7</td>
+      <td>7.3</td>
+      <td>5.5</td>
+      <td>9.9</td>
+      <td>21.1</td>
+    </tr>
+    <tr>
+      <th>Openness</th>
+      <td>8.5</td>
+      <td>5.2</td>
+      <td>7.0</td>
+      <td>10.1</td>
+      <td>28.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>For each trait, the “average” range contains 20-28% of the population.
+Now if we treat each trait as a hurdle and select people who are close to average on each one, the following table shows the results.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Trait</th>
+      <th>Counts</th>
+      <th>Percentages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Extroversion</th>
+      <td>204077</td>
+      <td>23.4</td>
+    </tr>
+    <tr>
+      <th>Emotional stability</th>
+      <td>46988</td>
+      <td>5.4</td>
+    </tr>
+    <tr>
+      <th>Conscientiousness</th>
+      <td>10976</td>
+      <td>1.3</td>
+    </tr>
+    <tr>
+      <th>Agreeableness</th>
+      <td>2981</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <th>Openness</th>
+      <td>926</td>
+      <td>0.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The first column shows the number of people who make it past each hurdle; the second column shows the percentages.</p>
+<p>Of the 873,173 people we started with, about 204,000 are close to the average in extroversion.
+Of those, about 47,000 are close to the average in emotional stability.
+And so on, until we find 926 who are close to average on all five traits, which is barely one person in a thousand.</p>
+</section>
+<section id="we-are-all-equally-weird">
+<h2>We Are All Equally Weird<a class="headerlink" href="#we-are-all-equally-weird" title="Permalink to this headline">#</a></h2>
+<p>Using the Big Five data again, I counted the number of traits where each respondent falls outside the range we defined as “approximately average”.
+We can think of the result as a kind of “weirdness score”, where 5 means they are far from average on all five traits, and 0 means they are far from average on none.</p>
+<p>The following figure shows the distribution of these scores for the roughly 800,000 people who completed the Big Five survey.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_131_0.png" src="_images/gaussian_131_0.png" />
+</div>
+</div>
+<p>As we’ve already seen, very few people are close to average on all five traits.
+Almost everyone is weird in two or more ways, and the majority (68%) are weird in four or five ways!</p>
+<p>The distribution of weirdness is similar with physical traits.
+Using the 93 measurements in the ANSUR dataset, we can count the number of ways each participant deviates from average.
+The following figure shows the distribution of these counts for the male ANSUR participants.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_138_0.png" src="_images/gaussian_138_0.png" />
+</div>
+</div>
+<p>Nearly everyone in this dataset is “weird” in at least 40 ways, and 90% of them are weird in at least 57 ways.
+With enough measurements, being weird is normal.</p>
+<p>Now I’ll use the ANSUR measurements to compute all possible ratios of two measurements.
+With 93 measurements and 4278 ratios, there are a total of 4317 ways to be weird.
+The following figure shows the distribution of weirdness scores for the male participants.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/gaussian_147_0.png" src="_images/gaussian_147_0.png" />
+</div>
+</div>
+<p>With these measurements, all participants fall in a relatively narrow range of weirdness.
+The most “normal” participant deviates from average in 2446 ways; the weirdest in 4038 ways.</p>
+<p>Probably Overthinking It</p>
+<p>Copyright 2022 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Probably Overthinking It</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="overton_irt.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Measuring the Overton Window</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
