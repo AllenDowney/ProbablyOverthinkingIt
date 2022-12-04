@@ -1,0 +1,5 @@
+format: jb-book
+root: intro
+chapters:
+- file: gaussian
+- file: overton_irt.ipynb

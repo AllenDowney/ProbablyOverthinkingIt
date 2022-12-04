@@ -1,0 +1,11 @@
+# Book settings
+title: Probably Overthinking It
+author: Allen B. Downey
+
+execute:
+  execute_notebooks: 'off'
+
+repository:
+  url: https://github.com/AllenDowney/ProbablyOverthinkingIt
+html:
+  use_repository_button: true
