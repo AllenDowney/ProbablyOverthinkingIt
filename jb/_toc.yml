@@ -2,4 +2,5 @@ format: jb-book
 root: intro
 chapters:
 - file: gaussian
+- file: inspection
 - file: overton_irt.ipynb

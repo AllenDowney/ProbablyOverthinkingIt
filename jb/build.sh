@@ -5,6 +5,7 @@
 
 # copy the notebooks
 cp ../notebooks/gaussian.ipynb .
+cp ../notebooks/inspection.ipynb .
 cp ../notebooks/overton_irt.ipynb .
 
 # build the HTML version
