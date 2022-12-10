@@ -1,24 +1,23 @@
+from copy import deepcopy
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-from copy import deepcopy
-
-from empiricaldist import Pmf, Cdf, Surv
 
 from scipy.optimize import minimize
 from scipy.optimize import least_squares
 
 from scipy.stats import gaussian_kde
 from scipy.stats import binom
-from scipy.stats import gamma
-from scipy.stats import poisson
 from scipy.stats import t as t_dist
 from scipy.stats import binom
 from scipy.stats import norm
 
 import statsmodels.formula.api as smf
+from statsmodels.nonparametric.smoothers_lowess import lowess
+
+from empiricaldist import Pmf, Cdf, Surv
 
 
 def values(series):
@@ -249,6 +248,8 @@ def make_uniform(qs, name=None, **options):
     return pmf
 
 
+# INSPECTION
+
 def kdeplot(sample, xs, label=None, **options):
     """Use KDE to plot the density function.
 
@@ -261,7 +262,7 @@ def kdeplot(sample, xs, label=None, **options):
     plt.yticks([])
     decorate(ylabel="Likelihood")
 
-from statsmodels.nonparametric.smoothers_lowess import lowess
+
 
 
 def make_lowess(series, frac=0.5):
