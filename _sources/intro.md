@@ -14,10 +14,15 @@ Before you read these notebooks, please keep in mind:
 
 **Chapter 1**
 
-[Run the code from Chapter 1 on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/gaussian.ipynb)
+[Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/gaussian.ipynb)
 
 [Run the code that cleans the BRFSS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_brfss.ipynb)
 
 [Run the code that cleans the Big Five data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_big_five.ipynb)
+
+
+**Chapter 2**
+
+[Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/inspection.ipynb)
 
 

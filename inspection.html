@@ -1,0 +1,1734 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Relay Races and Revolving Doors &#8212; Probably Overthinking It</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Measuring the Overton Window" href="overton_irt.html" />
+    <link rel="prev" title="Are You Normal? Hint: No." href="gaussian.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Probably Overthinking It</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="gaussian.html">
+   Are You Normal? Hint: No.
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Relay Races and Revolving Doors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="overton_irt.html">
+   Measuring the Overton Window
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ProbablyOverthinkingIt/master?urlpath=tree/inspection.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/inspection.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#class-size">
+   Class Size
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unbiasing-the-data">
+   Unbiasing the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-s-my-train">
+   Where’s My Train?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#are-you-popular-hint-no">
+   Are you popular? Hint: no.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-superspreaders">
+   Finding Superspreaders
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#road-rage">
+   Road Rage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#just-visiting">
+   Just Visiting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recidivism">
+   Recidivism
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Relay Races and Revolving Doors</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#class-size">
+   Class Size
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unbiasing-the-data">
+   Unbiasing the Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#where-s-my-train">
+   Where’s My Train?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#are-you-popular-hint-no">
+   Are you popular? Hint: no.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-superspreaders">
+   Finding Superspreaders
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#road-rage">
+   Road Rage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#just-visiting">
+   Just Visiting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recidivism">
+   Recidivism
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="relay-races-and-revolving-doors">
+<h1>Relay Races and Revolving Doors<a class="headerlink" href="#relay-races-and-revolving-doors" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/inspection.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install empiricaldist
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+        
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When you run 209 miles, you have a lot of time to think. In 2010, I was
+a member of a 12-person team that ran a 209-mile relay race in New Hampshire.</p>
+<p>Long-distance relay races are an unusual format, and this was the first
+(and last!) time I participated in one. I ran the third leg, so when I
+joined the race, it had been going for a few hours and runners were
+spread out over several miles of the course.</p>
+<p>After I ran a few miles, I noticed something unusual:</p>
+<ul class="simple">
+<li><p>There were more fast runners in the race than I expected. Several times I was overtaken by runners much faster than me.</p></li>
+<li><p>There were also more slow runners than I expected. When I passed other runners, I was often much faster than them.</p></li>
+</ul>
+<p>At first I thought this pattern might reflect the kind of people who
+sign up for a 209-mile race. Maybe, for some reason, this format appeals
+primarily to runners who are much faster than average or much slower,
+and not as much to middle-of-the-pack runners like me.</p>
+<p>After the race, with more oxygen available to my brain, I realized that
+this explanation is wrong. To my embarrassment, I was fooled by a common
+statistical error, one that I teach students in my classes!</p>
+<p>The error is called length-biased sampling, and its effect is called the
+inspection paradox. If you have not heard of it, this chapter will
+change your life, because once you learn about the inspection paradox,
+you see it everywhere.</p>
+<p>To explain it, I’ll start with simple examples and we will work our way
+up. Some of the examples are fun, but some are more serious. For
+example, length-biased sampling shows up in the criminal justice system
+and distorts our perception of prison sentences and the risk of repeat
+offenders.</p>
+<p>But it’s not all bad news; if you are aware of the inspection paradox,
+sometimes you can use it to measure indirectly quantities that would be
+hard or impossible to measure directly. As an example, I’ll explain a
+clever system used during the COVID pandemic to track infections and
+identify superspreaders.</p>
+<p>But let’s start with class sizes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="class-size">
+<h2>Class Size<a class="headerlink" href="#class-size" title="Permalink to this headline">#</a></h2>
+<p>The class sizes in this section come from data reported by
+Purdue University for undergraduate class sizes in the 2013–14 academic
+year.</p>
+<p><a class="reference external" href="https://www.purdue.edu/datadigest/2013-14/InstrStuLIfe/DistUGClasses.html">The data was originally posted here</a></p>
+<p><a class="reference external" href="https://web.archive.org/web/20160415011613/https://www.purdue.edu/datadigest/2013-14/InstrStuLIfe/DistUGClasses.html">Now archived here</a></p>
+<p>It typed in the number of classes in the row labeled “Total all classes”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">39</span><span class="p">),</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">49</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">)]</span>
+
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">138</span><span class="p">,</span> <span class="mi">635</span><span class="p">,</span> <span class="mi">1788</span><span class="p">,</span> <span class="mi">1979</span><span class="p">,</span> <span class="mi">796</span><span class="p">,</span> <span class="mi">354</span><span class="p">,</span> <span class="mi">487</span><span class="p">,</span> <span class="mi">333</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the class sizes are specified in ranges, I used the following function to generate uniform random samples within each range.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_sample</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate a sample from a distribution.</span>
+
+<span class="sd">    sizes: sequence of (low, high) pairs</span>
+<span class="sd">    counts: sequence of integers</span>
+
+<span class="sd">    returns: NumPy array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">),</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="n">generate_sample</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1 138
+2 9 635
+10 19 1788
+20 29 1979
+30 39 796
+40 49 354
+50 99 487
+100 300 333
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function takes a sample and generates a new random sample, using the given weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resample_weighted</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate a biased sample.</span>
+
+<span class="sd">    sample: NumPy array</span>
+<span class="sd">    weights: NumPy array</span>
+
+<span class="sd">    returns: NumPy array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">weights</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the distribution of class sizes as given in the report.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span><span class="p">,</span> <span class="n">kdeplot</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by the Dean&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Class size&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of class sizes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_17_0.png" src="_images/inspection_17_0.png" />
+</div>
+</div>
+<p>The upper bound in this figure, 300, is just my guess. The original data
+indicates how many classes are bigger than 100, but it doesn’t say how
+much bigger. For this example, though, we don’t have to be too precise.</p>
+<p>Now here’s what the distribution would look like if we sampled students.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by the Dean&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by students&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Class size&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of class sizes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_19_0.png" src="_images/inspection_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.611827956989245
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>92.59815668202765
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="unbiasing-the-data">
+<h2>Unbiasing the Data<a class="headerlink" href="#unbiasing-the-data" title="Permalink to this headline">#</a></h2>
+<p>Now suppose we collect a biased sample of 500 class sizes and apply the inverse weights to estimate the unbiased distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reweighted</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sample</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by the Dean&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by students&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">reweighted</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reweighted student sample&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Class size&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of class sizes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_25_0.png" src="_images/inspection_25_0.png" />
+</div>
+</div>
+<p>If the estimate were perfect, the solid and dotted lines would be
+identical. But with a limited sample size, we underestimate the number
+of small classes by a little and overestimate the number of classes with
+50-80 students. Nevertheless, it works pretty well.</p>
+<p>This strategy works in other cases where the actual distribution is not
+available, deliberately or not. If we can collect a good quality sample
+from the biased distribution, we can approximate the actual distribution
+by drawing a sample from the biased data. This process is an example of
+weighted resampling. It’s “weighted” in the sense
+that some items are given more weight than others, that is, more
+probability of being sampled. And it’s called “resampling” because we’re
+drawing a random sample from something that is itself a random sample.</p>
+</section>
+<section id="where-s-my-train">
+<h2>Where’s My Train?<a class="headerlink" href="#where-s-my-train" title="Permalink to this headline">#</a></h2>
+<p>I collected the following data from the Red Line, which is a
+subway line in Boston, Massachusetts. The MBTA, which operates the Red
+Line, provides a real-time data service, which I used to record the
+arrival times for 70 trains between 4pm and 5pm over several days.
+I don’t remember when, but I think it was in 2010.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mf">428.0</span><span class="p">,</span>
+    <span class="mf">705.0</span><span class="p">,</span>
+    <span class="mf">407.0</span><span class="p">,</span>
+    <span class="mf">465.0</span><span class="p">,</span>
+    <span class="mf">433.0</span><span class="p">,</span>
+    <span class="mf">425.0</span><span class="p">,</span>
+    <span class="mf">204.0</span><span class="p">,</span>
+    <span class="mf">506.0</span><span class="p">,</span>
+    <span class="mf">143.0</span><span class="p">,</span>
+    <span class="mf">351.0</span><span class="p">,</span>
+    <span class="mf">450.0</span><span class="p">,</span>
+    <span class="mf">598.0</span><span class="p">,</span>
+    <span class="mf">464.0</span><span class="p">,</span>
+    <span class="mf">749.0</span><span class="p">,</span>
+    <span class="mf">341.0</span><span class="p">,</span>
+    <span class="mf">586.0</span><span class="p">,</span>
+    <span class="mf">754.0</span><span class="p">,</span>
+    <span class="mf">256.0</span><span class="p">,</span>
+    <span class="mf">378.0</span><span class="p">,</span>
+    <span class="mf">435.0</span><span class="p">,</span>
+    <span class="mf">176.0</span><span class="p">,</span>
+    <span class="mf">405.0</span><span class="p">,</span>
+    <span class="mf">360.0</span><span class="p">,</span>
+    <span class="mf">519.0</span><span class="p">,</span>
+    <span class="mf">648.0</span><span class="p">,</span>
+    <span class="mf">374.0</span><span class="p">,</span>
+    <span class="mf">483.0</span><span class="p">,</span>
+    <span class="mf">537.0</span><span class="p">,</span>
+    <span class="mf">578.0</span><span class="p">,</span>
+    <span class="mf">534.0</span><span class="p">,</span>
+    <span class="mf">577.0</span><span class="p">,</span>
+    <span class="mf">619.0</span><span class="p">,</span>
+    <span class="mf">538.0</span><span class="p">,</span>
+    <span class="mf">331.0</span><span class="p">,</span>
+    <span class="mf">186.0</span><span class="p">,</span>
+    <span class="mf">629.0</span><span class="p">,</span>
+    <span class="mf">193.0</span><span class="p">,</span>
+    <span class="mf">360.0</span><span class="p">,</span>
+    <span class="mf">660.0</span><span class="p">,</span>
+    <span class="mf">484.0</span><span class="p">,</span>
+    <span class="mf">512.0</span><span class="p">,</span>
+    <span class="mf">315.0</span><span class="p">,</span>
+    <span class="mf">457.0</span><span class="p">,</span>
+    <span class="mf">404.0</span><span class="p">,</span>
+    <span class="mf">740.0</span><span class="p">,</span>
+    <span class="mf">388.0</span><span class="p">,</span>
+    <span class="mf">357.0</span><span class="p">,</span>
+    <span class="mf">485.0</span><span class="p">,</span>
+    <span class="mf">567.0</span><span class="p">,</span>
+    <span class="mf">160.0</span><span class="p">,</span>
+    <span class="mf">428.0</span><span class="p">,</span>
+    <span class="mf">387.0</span><span class="p">,</span>
+    <span class="mf">901.0</span><span class="p">,</span>
+    <span class="mf">187.0</span><span class="p">,</span>
+    <span class="mf">622.0</span><span class="p">,</span>
+    <span class="mf">616.0</span><span class="p">,</span>
+    <span class="mf">585.0</span><span class="p">,</span>
+    <span class="mf">474.0</span><span class="p">,</span>
+    <span class="mf">442.0</span><span class="p">,</span>
+    <span class="mf">499.0</span><span class="p">,</span>
+    <span class="mf">437.0</span><span class="p">,</span>
+    <span class="mf">620.0</span><span class="p">,</span>
+    <span class="mf">351.0</span><span class="p">,</span>
+    <span class="mf">286.0</span><span class="p">,</span>
+    <span class="mf">373.0</span><span class="p">,</span>
+    <span class="mf">232.0</span><span class="p">,</span>
+    <span class="mf">393.0</span><span class="p">,</span>
+    <span class="mf">745.0</span><span class="p">,</span>
+    <span class="mf">636.0</span><span class="p">,</span>
+    <span class="mf">758.0</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the unbiased distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">16.5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by MBTA&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time between trains (min)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of time between trains&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_32_0.png" src="_images/inspection_32_0.png" />
+</div>
+</div>
+<p>And here’s the biased distribution as seen by passengers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">16.5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by MBTA&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by passengers&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time between trains (min)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of time between trains&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_34_0.png" src="_images/inspection_34_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8.570714285714285, 7.7680952380952375)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.332250352479615
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the actual distribution, the average time between trains is 7.8
+minutes; in the biased distribution, as seen by a random passenger, it
+is 9.2 minutes, about 20% longer.</p>
+</section>
+<section id="are-you-popular-hint-no">
+<h2>Are you popular? Hint: no.<a class="headerlink" href="#are-you-popular-hint-no" title="Permalink to this headline">#</a></h2>
+<p>To demonstrate the friendship paradox, I used data from a sample of about 4000
+Facebook users from the <a class="reference external" href="http://snap.stanford.edu/">Stanford Network Analysis Project (SNAP)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://snap.stanford.edu/data/facebook_combined.txt.gz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function reads the Facebook data and builds a NetworkX graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+
+<span class="k">def</span> <span class="nf">read_graph</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read a graph from a file.</span>
+
+<span class="sd">    filename: string</span>
+
+<span class="sd">    return: Graph</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">G</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb</span> <span class="o">=</span> <span class="n">read_graph</span><span class="p">(</span><span class="s2">&quot;facebook_combined.txt.gz&quot;</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fb</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fb</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4039, 88234)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="p">[</span><span class="n">fb</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">fb</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4039
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1045
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">high</span> <span class="o">=</span> <span class="mi">250</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the unbiased distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Random sample of people&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of friends&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of number of friends&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_48_0.png" src="_images/inspection_48_0.png" />
+</div>
+</div>
+<p>And here’s the biased distribution.
+Compared to the unbiased distribution, people with more than 50 friends are
+overrepresented; people with fewer friends are underrepresented.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Random sample of people&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Random sample of friends&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of friends&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of number of friends&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_50_0.png" src="_images/inspection_50_0.png" />
+</div>
+</div>
+<p>The difference between the distributions is substantial: in the unbiased
+sample, the average user has 44 friends; in the biased sample, the
+average friend has 104, more than twice as many. And if you are a random
+person in this sample, the probability that your friend is more popular
+than you is about 76%.</p>
+<p>If you are a bottlenose dolphin in Doubtful Sound, New Zealand, you interact regularly with between 1 and 12 other dolphins, according to the researchers who mapped your social network.
+If I choose one of your “friends” at random and compare them to you, the probability is about 65% that your friend has more friends than you.</p>
+<p>The dolphin data is from <a class="reference external" href="https://networkrepository.com/soc_dolphins.php">The Network Data Repository</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;http://nrvis.com/download/data/soc/soc-dolphins.zip&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="s1">&#39;soc-dolphins.mtx&#39;</span><span class="p">):</span>
+    <span class="o">!</span>unzip soc-dolphins.zip
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">mmread</span>
+
+<span class="n">array</span> <span class="o">=</span> <span class="n">mmread</span><span class="p">(</span><span class="s1">&#39;soc-dolphins.mtx&#39;</span><span class="p">)</span>
+<span class="n">dolphins</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_scipy_sparse_array</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dolphins</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dolphins</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(62, 159)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="p">[</span><span class="n">dolphins</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">dolphins</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 6,  8,  4,  3,  1,  4,  6,  5,  6,  7,  5,  1,  1,  8, 12,  7,  6,
+        9,  7,  4,  9,  6,  1,  3,  6,  3,  3,  5,  5,  9,  5,  1,  3, 10,
+        5,  1,  7, 11,  8,  2,  8,  5,  6,  7,  4, 11,  2,  6,  1,  2,  7,
+       10,  4,  2,  7,  2,  2,  9,  1,  5,  1,  3])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pmf</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Friend count&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of dolphins&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of friend counts&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_56_0.png" src="_images/inspection_56_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">high</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Random sample of dolphins&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Random sample of friends&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of friends in social network&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of social network size&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_58_0.png" src="_images/inspection_58_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.854838709677419, 5.129032258064516)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span> <span class="o">&gt;</span> <span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6290322580645161
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="finding-superspreaders">
+<h2>Finding Superspreaders<a class="headerlink" href="#finding-superspreaders" title="Permalink to this headline">#</a></h2>
+<p>To quantify this effect, let’s suppose that 70% of infected people don’t infect anyone else, as in the Hong Kong study, and the other 30% infect between 1 and 15 other people, uniformly distributed. The average of this distribution is 2.4, which is a plausible value of <span class="math notranslate nohighlight">\(R\)</span>.</p>
+<p>Now suppose we discover an infected patient, trace forward, and find
+someone the patient infected. On average, we expect this person to
+infect 2.4 other people.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">70</span>
+<span class="n">unbiased</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">t1</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">])</span>
+<span class="n">unbiased</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15,  1,  2,
+        3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+        0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the mean of the biased distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">unbiased</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.29
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.2875
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="road-rage">
+<h2>Road Rage<a class="headerlink" href="#road-rage" title="Permalink to this headline">#</a></h2>
+<p>In the following figure, the solid line shows the actual distribution of
+speeds from the James Joyce Ramble, a 10K race in Massachusetts.</p>
+<p>The original web page is not available, but we can get it from the Internet Archive</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://web.archive.org/web/20100429073703/http://coolrunning.com/results/10/ma/Apr25_27thAn_set1.shtml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Apr25_27thAn_set1.shtml&quot;</span><span class="p">),</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">speeds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;pre&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]:</span>
+        <span class="n">place</span><span class="p">,</span> <span class="n">place_in_div</span><span class="p">,</span> <span class="n">div</span><span class="p">,</span> <span class="n">gun</span><span class="p">,</span> <span class="n">net</span><span class="p">,</span> <span class="n">pace</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+        <span class="n">place</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">place</span><span class="p">)</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pace</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)]</span>
+        <span class="n">secs</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">s</span>
+        <span class="n">kph</span> <span class="o">=</span> <span class="mf">1.61</span> <span class="o">/</span> <span class="n">secs</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+        <span class="n">speeds</span><span class="p">[</span><span class="n">place</span><span class="p">]</span> <span class="o">=</span> <span class="n">kph</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">speeds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1591
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following is the distribution a spectator would see if they watched all of the runners go by.
+The dashed line shows the biased distribution that would be seen by a runner going 11 kilometers per hour (kph).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="n">speeds</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">speeds</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">speeds</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by spectator&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Running speed (kph)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of running speed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_74_0.png" src="_images/inspection_74_0.png" />
+</div>
+</div>
+<p>And here’s the biased view seen be someone running 11 kph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">unbiased</span> <span class="o">-</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">biased</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by spectator&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by runner at 11 kph&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Running speed (kph)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of running speed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_77_0.png" src="_images/inspection_77_0.png" />
+</div>
+</div>
+<p>In the actual distribution, there are a lot of runners near 11 kph, but if you run at that speed, you are unlikely to see them.
+As a result, the biased distribution has few runners near 11 kph and more at the extremes.
+And it has two modes, one near 9 kph and one near 13 kph.
+So that explains my oxygen-deprived confusion.</p>
+</section>
+<section id="just-visiting">
+<h2>Just Visiting<a class="headerlink" href="#just-visiting" title="Permalink to this headline">#</a></h2>
+<p>I downloaded data from the <a class="reference external" href="https://www.bop.gov/about/statistics/statistics_inmate_sentences.jsp">U.S. Federal Bureau of Prisons</a> (BOP) in June 2019.
+I archived the page so you can download it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;../data/BOP Statistics_ Sentences Imposed.html&quot;</span><span class="p">):</span>
+    <span class="o">!</span>wget https://raw.githubusercontent.com/AllenDowney/InspectionParadox/master/BOP%20Statistics_%20Sentences%20Imposed.html
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-12-10 11:07:34--  https://raw.githubusercontent.com/AllenDowney/InspectionParadox/master/BOP%20Statistics_%20Sentences%20Imposed.html
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 24902 (24K) [text/plain]
+Saving to: ‘BOP Statistics_ Sentences Imposed.html.2’
+
+BOP Statistics_ Sen 100%[===================&gt;]  24.32K  --.-KB/s    in 0.002s  
+
+2022-12-10 11:07:34 (10.6 MB/s) - ‘BOP Statistics_ Sentences Imposed.html.2’ saved [24902/24902]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;BOP Statistics_ Sentences Imposed.html&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sentence</th>
+      <th># of Inmates</th>
+      <th>% of Inmates</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0 to 1 year*</td>
+      <td>5155</td>
+      <td>2.3 %</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>&gt; 1 year to &lt; 3 years**</td>
+      <td>18619</td>
+      <td>11.3%</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3 years to &lt; 5 years</td>
+      <td>17897</td>
+      <td>10.9%</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5 years to &lt; 10 years</td>
+      <td>41887</td>
+      <td>25.4%</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10 years to &lt; 15 years</td>
+      <td>34995</td>
+      <td>21.3%</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>15 years to &lt; 20 years</td>
+      <td>18674</td>
+      <td>11.3%</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>20 years or more but &lt; Life</td>
+      <td>22738</td>
+      <td>13.8%</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Life</td>
+      <td>4600</td>
+      <td>2.8%</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here are the low and high sentences for each range.
+I assume that the minimum sentence is about a week,
+that sentences “less than life” are 40 years,
+and that a life sentence is between 40 and 60 years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">0.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;# of Inmates&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_sample_continuous</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate a sample from a distribution.</span>
+
+<span class="sd">    sizes: sequence of (low, high) pairs</span>
+<span class="sd">    counts: sequence of integers</span>
+
+<span class="sd">    returns: NumPy array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">),</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">generate_sample_continuous</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5155 0.02 1
+18619 1 3
+17897 3 5
+41887 5 10
+34995 10 15
+18674 15 20
+22738 20 40
+4600 40 60
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.85</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">biased</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the following figure, the dashed line shows the distribution of sentences as reported by the BOP.
+The solid line shows the unbiased distribution I estimated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Unbiased distribution&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Sampled BOP data&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Prison sentence (years)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of federal prison sentences&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_90_0.png" src="_images/inspection_90_0.png" />
+</div>
+</div>
+<p>In the BOP sample, sentences less than three years are underrepresented and longer sentences are overrepresented.</p>
+<p>If the length of your stay is <span class="math notranslate nohighlight">\(y\)</span>, the chance of overlapping with a prisoner whose sentence is <span class="math notranslate nohighlight">\(x\)</span> is proportional to <span class="math notranslate nohighlight">\(x + y\)</span>.
+In the following figure, the dotted line shows what the resulting sample looks like when <span class="math notranslate nohighlight">\(y\)</span> is 13 months.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">unbiased</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">13</span> <span class="o">/</span> <span class="mi">12</span>
+
+<span class="n">weights</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kerman</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s1">&#39;Actual distribution&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s1">&#39;Sampled BOP data&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">kdeplot</span><span class="p">(</span><span class="n">kerman</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s1">&#39;Seen during a 13 month sentence&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Prison sentence (years)&#39;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of federal prison sentences&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_94_0.png" src="_images/inspection_94_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>The mean of the actual distribution is 3.6 years; the mean of the biased distribution is almost 13 years, more than three times longer! To a 13-month observer, the mean is about 10 years, still much greater than the actual mean.</p></li>
+<li><p>In the actual distribution, about 45% of prisoners have sentences less than a year. If you visit a prison once, fewer than 5% of the prisoners you see are short-timers. If you stay for 13 months, your estimate is better but still not accurate: about 15% of the prisoners you meet are short-timers.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the unbiased distribution, almost half of prisoners serve less than one year.</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4573633518670434
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0313250083553611
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kerman</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.14339014978883724
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5116851817207166
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.770277541686598
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kerman</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.196918727005256
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="recidivism">
+<h2>Recidivism<a class="headerlink" href="#recidivism" title="Permalink to this headline">#</a></h2>
+<p>Rhodes, William, Gerald Gaes, Jeremy Luallen, Ryan Kling, Tom Rich, and Michael Shively. “Following incarceration, most released offenders never return to prison.” Crime &amp; Delinquency 62, no. 8 (2016): 1003-1025.</p>
+<p>This 2016 paper in the journal <em>Crime &amp; Delinquency</em>
+showed how the inspection paradox affects our estimates of recidivism, that is, the number of people released from prison who later return to prison.
+Based on data from 17 states, collected between 2000 and 2012, the authors compute the number of admissions to prison in an event-based sample, on page 1015.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+
+<span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.51</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">ks</span><span class="p">)</span>
+<span class="n">pmf</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Event-based sample&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of admissions&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Fraction of prisoners&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of admissions to prison&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_104_0.png" src="_images/inspection_104_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fraction of recidivists in the event-based sample</span>
+
+<span class="mi">1</span> <span class="o">-</span> <span class="n">pmf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this sample, 51% of the prisoners served only one sentence; the other 49% were recidivists. We can use this data to simulate an individual-based sample.
+In the following figure, the dashed line shows the result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="n">pmf</span> <span class="o">/</span> <span class="n">ks</span>
+<span class="n">unbiased</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+
+<span class="c1"># fraction of recidivists in biased sample</span>
+<span class="mi">1</span> <span class="o">-</span> <span class="n">unbiased</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">unbiased</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.2750533049040512, 0.7249466950959488)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Event-based sample&quot;</span><span class="p">)</span>
+<span class="n">unbiased</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Individual-based sample&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Total number of sentences&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Fraction of prisoners&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of sentences&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/inspection_108_0.png" src="_images/inspection_108_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">unbiased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.89, 1.421464108031272)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the individual-based sample, most prisoners serve one sentence; only 28% are recidivists.
+That’s substantially lower than the recidivism rate in the event-based sample, which is 49%.</p>
+<p>Probably Overthinking It</p>
+<p>Copyright 2022 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="gaussian.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Are You Normal? Hint: No.</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="overton_irt.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Measuring the Overton Window</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
