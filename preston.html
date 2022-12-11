@@ -1,0 +1,2721 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Defy Tradition, Save the World &#8212; Probably Overthinking It</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Measuring the Overton Window" href="overton_irt.html" />
+    <link rel="prev" title="Relay Races and Revolving Doors" href="inspection.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Probably Overthinking It</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="gaussian.html">
+   Are You Normal? Hint: No.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inspection.html">
+   Relay Races and Revolving Doors
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Defy Tradition, Save the World
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="overton_irt.html">
+   Measuring the Overton Window
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ProbablyOverthinkingIt/master?urlpath=tree/preston.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/preston.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#family-size">
+   Family Size
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-depression-and-the-baby-boom">
+   The Depression and the Baby Boom
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-recently">
+   More Recently
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preston-s-paradox">
+   Preston’s Paradox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-child-fewer">
+   One Child Fewer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-the-long-run">
+   In The Long Run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-reality">
+   In Reality
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-the-present">
+   In the Present
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#technical-note-the-poisson-distribution">
+   Technical Note: The Poisson distribution
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Defy Tradition, Save the World</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#family-size">
+   Family Size
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-depression-and-the-baby-boom">
+   The Depression and the Baby Boom
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-recently">
+   More Recently
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preston-s-paradox">
+   Preston’s Paradox
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-child-fewer">
+   One Child Fewer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-the-long-run">
+   In The Long Run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-reality">
+   In Reality
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-the-present">
+   In the Present
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#technical-note-the-poisson-distribution">
+   Technical Note: The Poisson distribution
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="defy-tradition-save-the-world">
+<h1>Defy Tradition, Save the World<a class="headerlink" href="#defy-tradition-save-the-world" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/preston.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install empiricaldist
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+        
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose you are the ruler of a small country where the population is growing quickly.
+Your advisers warn you that unless this growth slows down, the population will exceed the capacity of the farms and the peasants will starve.</p>
+<p>The Royal Demographer informs you that the average family size is currently 3; that is, each woman in the kingdom bears three children, on average.
+He explains that the replacement level is close to 2, so if family sizes decrease by one, the population will level off at a sustainable size.</p>
+<p>One of your advisors asks: “What if we make a new law that says every woman has to have fewer children than her mother?”</p>
+<p>It sounds promising.
+As a benevolent despot, you are reluctant to restrict your subjects’ reproductive freedom, but it seems like such a policy could be effective at reducing family size with minimal imposition.</p>
+<p>“Make it so,” you say.</p>
+<p>Twenty-five years later, you summon the Royal Demographer to find out how things are going.</p>
+<p>“Your Highness,” they say, “I have good news and bad news. The good news is that adherence to the new law has been perfect. Since it was put into effect, every woman in the kingdom has had fewer children than her mother.”</p>
+<p>“That’s amazing,” you say. “What’s the bad news?”</p>
+<p>“The bad news is that the average family size has increased from 3.0 to 3.3, so the population is growing faster than before, and we are running out of food.”</p>
+<p>“How is that possible?” you ask.
+“If every woman has fewer children than her mother, family sizes have to get smaller, and population growth has to slow down.”</p>
+<p>Actually, that’s not true.</p>
+<p>In 1976, Samuel Preston, a demographer at the University of Washington, published a paper that presents three surprising phenomena.</p>
+<p>The first is the relationship between two measurements of family size: what we get if we ask women how many children they have, and what we get if we ask people how many children their mother had.
+In general, the average family size is smaller if ask women about their children, and larger if we ask children about their mothers.</p>
+<p>The second phenomenon is related to changes in American family sizes during the 20th century.
+Suppose you compare family sizes during the Great Depression (roughly the 1930s) and the Baby Boom (1946-64).
+If you survey women who bore children during these periods, the average family was bigger during the Baby Boom.
+But if you ask their children how big their families were, the average was bigger during the Depression.</p>
+<p>The third phenomenon is what we learned in your imaginary kingdom, which I will call Preston’s Paradox: Even if every woman has fewer children than her mother, family sizes can get bigger, on average.</p>
+<p>To see how that’s possible, we’ll start with the two measurements of family size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the Census data</span>
+
+<span class="n">download</span><span class="p">(</span>
+    <span class="s2">&quot;https://www2.census.gov/programs-surveys/demo/tables/fertility/time-series/his-cps/h2.xlsx&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rename_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">:</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Unnamed: 1&quot;</span><span class="p">:</span> <span class="s2">&quot;Total&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Unnamed: 11&quot;</span><span class="p">:</span> <span class="s2">&quot;Rate per 1000&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;h2.xlsx&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Unnamed: 7&quot;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">rename_dict</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Total</th>
+      <th>Total</th>
+      <th>None</th>
+      <th>One</th>
+      <th>Two</th>
+      <th>Three</th>
+      <th>Four</th>
+      <th>Five and six</th>
+      <th>Seven or more</th>
+      <th>Rate per 1000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>All Marital Statuses</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>.Women 45 to 50</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>.2018</td>
+      <td>12524</td>
+      <td>100</td>
+      <td>15.4</td>
+      <td>19.8</td>
+      <td>35.4</td>
+      <td>17.3</td>
+      <td>7.4</td>
+      <td>3.6</td>
+      <td>1.2</td>
+      <td>1999</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>.2016</td>
+      <td>12537</td>
+      <td>100</td>
+      <td>17.1</td>
+      <td>19.7</td>
+      <td>33.6</td>
+      <td>18.2</td>
+      <td>7.7</td>
+      <td>3.4</td>
+      <td>0.5</td>
+      <td>1936</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>.2014</td>
+      <td>12760</td>
+      <td>100</td>
+      <td>16.7</td>
+      <td>18.7</td>
+      <td>33.8</td>
+      <td>19.2</td>
+      <td>7.6</td>
+      <td>3.2</td>
+      <td>0.9</td>
+      <td>1981</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select women ages 40-44, and drop a row of missing data</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">35</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">rows</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Total</th>
+      <th>Total</th>
+      <th>None</th>
+      <th>One</th>
+      <th>Two</th>
+      <th>Three</th>
+      <th>Four</th>
+      <th>Five and six</th>
+      <th>Seven or more</th>
+      <th>Rate per 1000</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>.2018</td>
+      <td>9896</td>
+      <td>100</td>
+      <td>15</td>
+      <td>18.7</td>
+      <td>34.6</td>
+      <td>18.6</td>
+      <td>8.7</td>
+      <td>3.8</td>
+      <td>0.7</td>
+      <td>2036</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>.2016</td>
+      <td>9924</td>
+      <td>100</td>
+      <td>14.4</td>
+      <td>18.3</td>
+      <td>34.9</td>
+      <td>19.6</td>
+      <td>7.9</td>
+      <td>3.9</td>
+      <td>1</td>
+      <td>2068</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>.2014</td>
+      <td>10301</td>
+      <td>100</td>
+      <td>15.3</td>
+      <td>18.3</td>
+      <td>34.6</td>
+      <td>20.2</td>
+      <td>7.6</td>
+      <td>3.3</td>
+      <td>0.8</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>.2012</td>
+      <td>10516</td>
+      <td>100</td>
+      <td>15.1</td>
+      <td>18.9</td>
+      <td>34.9</td>
+      <td>19.9</td>
+      <td>7.2</td>
+      <td>3.4</td>
+      <td>0.7</td>
+      <td>1998</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>.2010</td>
+      <td>10374</td>
+      <td>100</td>
+      <td>18.8</td>
+      <td>18.5</td>
+      <td>33.3</td>
+      <td>19.1</td>
+      <td>6.8</td>
+      <td>2.7</td>
+      <td>0.8</td>
+      <td>1907</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>.2008</td>
+      <td>10748</td>
+      <td>100</td>
+      <td>17.8</td>
+      <td>18.4</td>
+      <td>36.2</td>
+      <td>17.8</td>
+      <td>6.1</td>
+      <td>3.1</td>
+      <td>0.5</td>
+      <td>1901</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>.2006</td>
+      <td>11235</td>
+      <td>100</td>
+      <td>20.4</td>
+      <td>16.9</td>
+      <td>34.4</td>
+      <td>18.5</td>
+      <td>6.4</td>
+      <td>3.1</td>
+      <td>0.5</td>
+      <td>1862</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>.2004</td>
+      <td>11535</td>
+      <td>100</td>
+      <td>19.3</td>
+      <td>17.4</td>
+      <td>34.5</td>
+      <td>18.1</td>
+      <td>7.4</td>
+      <td>2.9</td>
+      <td>0.5</td>
+      <td>1895</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>.2002</td>
+      <td>11561</td>
+      <td>100</td>
+      <td>17.9</td>
+      <td>17.4</td>
+      <td>35.4</td>
+      <td>18.9</td>
+      <td>6.8</td>
+      <td>2.8</td>
+      <td>0.8</td>
+      <td>1930</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>.2000</td>
+      <td>11447</td>
+      <td>100</td>
+      <td>19</td>
+      <td>16.4</td>
+      <td>35</td>
+      <td>19.1</td>
+      <td>7.2</td>
+      <td>2.8</td>
+      <td>0.5</td>
+      <td>1913</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>.1998</td>
+      <td>11113</td>
+      <td>100</td>
+      <td>19</td>
+      <td>17.3</td>
+      <td>35.8</td>
+      <td>18.2</td>
+      <td>6.1</td>
+      <td>3</td>
+      <td>0.5</td>
+      <td>1877</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>.1995</td>
+      <td>10244</td>
+      <td>100</td>
+      <td>17.5</td>
+      <td>17.6</td>
+      <td>35.2</td>
+      <td>18.5</td>
+      <td>7.4</td>
+      <td>3</td>
+      <td>0.9</td>
+      <td>1961</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>.1994</td>
+      <td>9972</td>
+      <td>100</td>
+      <td>17.5</td>
+      <td>17.1</td>
+      <td>35.3</td>
+      <td>18.9</td>
+      <td>7</td>
+      <td>3.3</td>
+      <td>0.8</td>
+      <td>1965</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>.1992</td>
+      <td>9416</td>
+      <td>100</td>
+      <td>15.7</td>
+      <td>17.3</td>
+      <td>36.6</td>
+      <td>19</td>
+      <td>7</td>
+      <td>3.6</td>
+      <td>0.8</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>.1990</td>
+      <td>8905</td>
+      <td>100</td>
+      <td>16</td>
+      <td>16.9</td>
+      <td>35</td>
+      <td>19.4</td>
+      <td>8</td>
+      <td>3.9</td>
+      <td>0.9</td>
+      <td>2045</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>.1988</td>
+      <td>8155</td>
+      <td>100</td>
+      <td>14.7</td>
+      <td>14.9</td>
+      <td>35.2</td>
+      <td>20.7</td>
+      <td>8.8</td>
+      <td>4.9</td>
+      <td>0.8</td>
+      <td>2147</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>.1987</td>
+      <td>7854</td>
+      <td>100</td>
+      <td>14.2</td>
+      <td>14.9</td>
+      <td>35</td>
+      <td>19.7</td>
+      <td>9.3</td>
+      <td>5.5</td>
+      <td>1.4</td>
+      <td>2218</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>.1986</td>
+      <td>7262</td>
+      <td>100</td>
+      <td>13.2</td>
+      <td>14.5</td>
+      <td>33.5</td>
+      <td>20.4</td>
+      <td>10.3</td>
+      <td>6.5</td>
+      <td>1.6</td>
+      <td>2302</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>.1985</td>
+      <td>7226</td>
+      <td>100</td>
+      <td>11.4</td>
+      <td>12.6</td>
+      <td>32.9</td>
+      <td>23.1</td>
+      <td>10.9</td>
+      <td>7.1</td>
+      <td>2</td>
+      <td>2447</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>.1984</td>
+      <td>6932</td>
+      <td>100</td>
+      <td>11.1</td>
+      <td>12.2</td>
+      <td>30.5</td>
+      <td>23.5</td>
+      <td>12</td>
+      <td>8.2</td>
+      <td>2.6</td>
+      <td>2558</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>.1983</td>
+      <td>6657</td>
+      <td>100</td>
+      <td>10.1</td>
+      <td>11.8</td>
+      <td>28.7</td>
+      <td>23.3</td>
+      <td>13.8</td>
+      <td>9.5</td>
+      <td>3</td>
+      <td>2688</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>.1982</td>
+      <td>6336</td>
+      <td>100</td>
+      <td>11</td>
+      <td>9.4</td>
+      <td>27.5</td>
+      <td>24.1</td>
+      <td>13.8</td>
+      <td>10.4</td>
+      <td>3.9</td>
+      <td>2783</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>.1981</td>
+      <td>6122</td>
+      <td>100</td>
+      <td>9.5</td>
+      <td>10.1</td>
+      <td>27</td>
+      <td>24.6</td>
+      <td>14.1</td>
+      <td>9.9</td>
+      <td>4.9</td>
+      <td>2861</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>.1980</td>
+      <td>5983</td>
+      <td>100</td>
+      <td>10.1</td>
+      <td>9.6</td>
+      <td>24.6</td>
+      <td>22.6</td>
+      <td>15.5</td>
+      <td>11.6</td>
+      <td>6</td>
+      <td>2988</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>.1979</td>
+      <td>5868</td>
+      <td>100</td>
+      <td>9.8</td>
+      <td>9.9</td>
+      <td>24</td>
+      <td>22.5</td>
+      <td>15.4</td>
+      <td>13</td>
+      <td>5.4</td>
+      <td>2996</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>.1977</td>
+      <td>5877</td>
+      <td>100</td>
+      <td>10.9</td>
+      <td>10.3</td>
+      <td>21.7</td>
+      <td>20.3</td>
+      <td>14.2</td>
+      <td>15.2</td>
+      <td>7.3</td>
+      <td>3132</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>.1976</td>
+      <td>5684</td>
+      <td>100</td>
+      <td>10.2</td>
+      <td>9.6</td>
+      <td>21.7</td>
+      <td>22.7</td>
+      <td>15.8</td>
+      <td>13.9</td>
+      <td>6.2</td>
+      <td>3091</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the index to integers</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10000</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>One of the challenges of the data in this chapter is that it summarizes the tails.
+For example, the Census data only go up to “Seven or more”.</p>
+<p>But the effect of length-biased sampling depends strongly on the tail, so we have to make some guesses to fill in the values that have been summarized.</p>
+<p>To do that, I’ll assume that the distribution of large family sizes is Poisson and fill in the tail accordingly.
+I’ll use <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> to search for parameters of the tail that best match the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+
+
+<span class="k">def</span> <span class="nf">make_poisson</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">13</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a Poisson distribution.</span>
+<span class="sd">    </span>
+<span class="sd">    mu: mean</span>
+<span class="sd">    high: upper bound</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">mu</span><span class="p">),</span> <span class="n">xs</span><span class="p">)</span>
+    <span class="n">pmf</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pmf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_model</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">13</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add a Poisson tail to a row of data.</span>
+<span class="sd">    </span>
+<span class="sd">    mu: mean of the Poisson model</span>
+<span class="sd">    row: row of actual data</span>
+<span class="sd">    high: upper bound</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">make_poisson</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+    <span class="n">pmf</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+
+    <span class="n">pmf</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+    <span class="n">pmf</span> <span class="o">*=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">actual</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">pmf</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">actual</span>
+    <span class="k">return</span> <span class="n">pmf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Error function used to find the mean.</span>
+<span class="sd">    </span>
+<span class="sd">    params: list of parameters, in this case just mu</span>
+<span class="sd">    row: the row of actual data</span>
+<span class="sd">    </span>
+<span class="sd">    returns: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Rate per 1000&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">]</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">]</span>
+<span class="n">error_func</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.012207906747516262
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+
+
+<span class="k">def</span> <span class="nf">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">13</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find the value of mu that best fits the data.</span>
+<span class="sd">    </span>
+<span class="sd">    row: row of actual data</span>
+<span class="sd">    high: upper bound</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># With a single parameter and a single error, it is</span>
+    <span class="c1"># overkill to use least_squares. But the fitting function</span>
+    <span class="c1"># later in this notebook is more complicated, so I kept them similar.</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">row</span><span class="p">,))</span>
+
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pmf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subset_mean</span><span class="p">(</span><span class="n">subset</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the mean of an incomplete Pmf.</span>
+<span class="sd">    </span>
+<span class="sd">    subset: a conditional part of a Pmf</span>
+<span class="sd">    </span>
+<span class="sd">    returns: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">pmf</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pmf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_fit</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot the fitted model along with the original data.</span>
+<span class="sd">    </span>
+<span class="sd">    row: actual data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">]</span>
+    <span class="n">xs</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset_mean</span><span class="p">(</span><span class="n">pmf</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">])</span>
+    <span class="n">xs</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset_mean</span><span class="p">(</span><span class="n">pmf</span><span class="p">[</span><span class="mi">7</span><span class="p">:])</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pmf</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">pmf</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">]),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pmf</span><span class="p">[</span><span class="mi">7</span><span class="p">:])])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">actual</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following figure shows that the model, with a complete tail, yields summarized results like the original.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_fit</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_25_0.png" src="_images/preston_25_0.png" />
+</div>
+</div>
+<section id="family-size">
+<h2>Family Size<a class="headerlink" href="#family-size" title="Permalink to this headline">#</a></h2>
+<p>Every other year, as part of the Current Population Survey (CPS), the Census Bureau surveys a representative sample women in the United States and asks, among other things, how many children they have ever born.
+To measure completed family sizes, they select women aged 40-44 (of course, some women bear children in their forties, so these estimates might be a little low).</p>
+<p>I used their data from 2018 to estimate the current distribution of family sizes.
+The following figure shows the result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bias_pmf</span><span class="p">(</span><span class="n">pmf</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the length-biased PMF.</span>
+<span class="sd">    </span>
+<span class="sd">    pmf: Pmf</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">ps</span> <span class="o">*</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span>
+    <span class="n">biased</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="p">)</span>
+    <span class="n">biased</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">biased</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0360000024952996
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0017397260995224
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_percent</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot a PMF as percentages.&quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">series</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+
+<span class="n">plot_percent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Census 2018&quot;</span><span class="p">)</span>
+<span class="n">plot_percent</span><span class="p">(</span>
+    <span class="n">biased</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Estimated family of orientation&quot;</span>
+<span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of family sizes&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_31_0.png" src="_images/preston_31_0.png" />
+</div>
+</div>
+<p>The circles show the percentage of women who bore each number of children.
+For example, about 15% of the women in the sample had no children; almost 35% of them had two.</p>
+<p>If we take the distribution of family size from a sample of women, multiply each bar by the corresponding value of <span class="math notranslate nohighlight">\(k\)</span>, and then divide through by the total, the result is the distribution of family size from a sample of children.
+In the previous figure, the square markers show this distribution.</p>
+<p>As expected, children would report more large families (three or more children), fewer families with one child, and no families with zero children.</p>
+<p>In general, the average family size is smaller if we survey women than if we survey their children.
+In this example, the average reported by women is close to 2; the average reported by their children would be close to 3.</p>
+</section>
+<section id="the-depression-and-the-baby-boom">
+<h2>The Depression and the Baby Boom<a class="headerlink" href="#the-depression-and-the-baby-boom" title="Permalink to this headline">#</a></h2>
+<p>Preston used data from the U.S. Census Bureau to compare family sizes at several points between 1890 and 1970.
+Among the results, he finds:</p>
+<ul class="simple">
+<li><p>In 1950, the average family size reported by the women in the survey was 2.3. In 1970, it was 2.7. This increase was not surprising because the first group did most of their childbearing during the Great Depression, the second group mostly during the Baby Boom.</p></li>
+<li><p>However, if we survey the children of these women, and ask about their mothers, the average in the 1950 sample would be 4.9; in the 1970 sample it would be 4.5. This decrease was surprising.</p></li>
+</ul>
+<p>According to the women in the survey, families got bigger between 1950 and 1970, by almost half a child.
+According to their children, families got smaller during the same interval, by almost half a child.</p>
+<p>Preston’s paper presents the distributions in a figure, so I used a graph digitizing tool to extract them numerically.
+Because this process introduces small errors, I adjusted the results to match the average family sizes Preston computed.
+The following figure shows these distributions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span>
+    <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/preston_data.csv&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># When I made this dataset, I didn&#39;t change the default labels for the columns.</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;preston_data.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>X.1</th>
+      <th>Y.1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.048717</td>
+      <td>0.270525</td>
+      <td>-0.025345</td>
+      <td>0.154177</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.995326</td>
+      <td>0.173150</td>
+      <td>0.988026</td>
+      <td>0.134487</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.000930</td>
+      <td>0.192124</td>
+      <td>1.960587</td>
+      <td>0.242959</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.008009</td>
+      <td>0.128759</td>
+      <td>2.980574</td>
+      <td>0.190334</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3.997074</td>
+      <td>0.080072</td>
+      <td>3.989164</td>
+      <td>0.119451</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4.998472</td>
+      <td>0.044988</td>
+      <td>4.979379</td>
+      <td>0.065036</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>5.995842</td>
+      <td>0.029952</td>
+      <td>5.979842</td>
+      <td>0.034606</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>6.992782</td>
+      <td>0.017064</td>
+      <td>6.992206</td>
+      <td>0.019928</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>8.003205</td>
+      <td>0.012053</td>
+      <td>7.988714</td>
+      <td>0.009189</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>8.983352</td>
+      <td>0.007757</td>
+      <td>8.998418</td>
+      <td>0.007757</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>9.993272</td>
+      <td>0.005251</td>
+      <td>9.993343</td>
+      <td>0.004893</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>10.988053</td>
+      <td>0.003103</td>
+      <td>10.972987</td>
+      <td>0.003103</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>11.997757</td>
+      <td>0.001671</td>
+      <td>11.982691</td>
+      <td>0.001671</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>12.992323</td>
+      <td>0.000597</td>
+      <td>12.977257</td>
+      <td>0.000597</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Y contains the PMF values from 1950</span>
+
+<span class="n">pmf1950</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">pmf1950</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.967064439140811
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Y.1 contains the PMF values from 1970</span>
+
+<span class="n">pmf1970</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Y.1&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">pmf1970</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9881861575178994
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the raw data look like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percent</span><span class="p">(</span><span class="n">pmf1950</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1950&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plot_percent</span><span class="p">(</span><span class="n">pmf1970</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1970&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of family sizes in the U.S.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_41_0.png" src="_images/preston_41_0.png" />
+</div>
+</div>
+<p>The data past x=6 are not very accurate, and the PMFs are not normalized.</p>
+<p>However, we also have the means of X and C to help us adjust the PMFs.</p>
+<p>The following function takes mu, which is the Poisson parameter of the tail, and scale, which is the normalizing constant for the actual data, and returns a normalized PMF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_model2</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">pmf</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add a Poisson tail to a given dataset.</span>
+<span class="sd">    </span>
+<span class="sd">    mu: mean</span>
+<span class="sd">    scale: multiplier</span>
+<span class="sd">    pmf: given distribution</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">pmf</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">*</span> <span class="n">scale</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">make_poisson</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+    <span class="n">model</span> <span class="o">*=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">actual</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">model</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">actual</span>
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the job is to estimate the parameters to best fit the data.
+As a starting place, <code class="docutils literal notranslate"><span class="pre">(8,</span> <span class="pre">1)</span></code> does ok.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">make_model2</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pmf1950</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1950</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="_images/preston_46_1.png" src="_images/preston_46_1.png" />
+</div>
+</div>
+<p>But we can use <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> to improve it. Here’s the error function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func2</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">pmf</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Error function for fitting a model.</span>
+<span class="sd">        </span>
+<span class="sd">    params: mu and scale</span>
+<span class="sd">    pmf: Pmf</span>
+<span class="sd">    stats: the mean of X and C</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mu</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">params</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">make_model2</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">pmf</span><span class="p">)</span>
+    <span class="n">error1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">stats</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">error2</span> <span class="o">=</span> <span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">stats</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">error1</span><span class="p">,</span> <span class="n">error2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the stats from 1950.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="mf">2.292</span><span class="p">,</span> <span class="mf">4.909</span>
+<span class="n">error_func2</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">pmf1950</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.11168500538590553, 0.3107205927152643)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following function find the best fit and returns a <code class="docutils literal notranslate"><span class="pre">Pmf</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_pmf2</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find a model that reproduces the published summary stats.</span>
+
+<span class="sd">    pmf: given data</span>
+<span class="sd">    stats: mean of X and C</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func2</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">stats</span><span class="p">))</span>
+
+    <span class="n">mu</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">make_model2</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">pmf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model1950</span> <span class="o">=</span> <span class="n">fit_pmf2</span><span class="p">(</span><span class="n">pmf1950</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best 7.918333883292565 1.0151176906214459
+</pre></div>
+</div>
+</div>
+</div>
+<p>The means of C and X and just about right.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model1950</span><span class="p">)</span>
+<span class="n">model1950</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.2920000000000007, 4.908999999999998, (2.292, 4.909))
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the agreement looks good enough.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1950</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">model1950</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_57_0.png" src="_images/preston_57_0.png" />
+</div>
+</div>
+<p>Here’s the model for the 1970 data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span> <span class="o">=</span> <span class="mf">2.705</span><span class="p">,</span> <span class="mf">4.461</span>
+<span class="n">model1970</span> <span class="o">=</span> <span class="n">fit_pmf2</span><span class="p">(</span><span class="n">pmf1970</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best 6.92744420810399 1.0005469812609125
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model1970</span><span class="p">)</span>
+<span class="n">model1970</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.7050000000000565, 4.460999999999886, (2.705, 4.461))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1970</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">model1970</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_61_0.png" src="_images/preston_61_0.png" />
+</div>
+</div>
+<p>Here are the two models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percent</span><span class="p">(</span><span class="n">model1950</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Census 1950&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plot_percent</span><span class="p">(</span><span class="n">model1970</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Census 1970&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of family sizes in the U.S.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_63_0.png" src="_images/preston_63_0.png" />
+</div>
+</div>
+<p>Family size was more variable in the 1950 cohort.
+The standard deviation of the distribution was about 2.4; in the 1970 cohort it was about 2.2.
+This variability is the reason for the difference between the two ways of measuring family size.</p>
+<p>As Preston derived, there is a mathematical relationship between the average family size as reported by women, which he calls <span class="math notranslate nohighlight">\(X\)</span>, and the average family size as reported by their children, which he calls <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(C = X + V/X\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(V\)</span> is the variance of the distribution (the square of standard deviation).</p>
+<p>Compared to 1950, <span class="math notranslate nohighlight">\(X\)</span> was bigger in 1970, but <span class="math notranslate nohighlight">\(V\)</span> was smaller; and as it turns out, <span class="math notranslate nohighlight">\(C\)</span> was smaller, too.
+That’s how family sizes can be bigger if we survey mothers and smaller if we survey their children.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1950</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">model1950</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.2705250596658711, 0.2746147738232479)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1970</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">model1970</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.1541766109785203, 0.15426094269559656)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model1950</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span> <span class="n">model1970</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.4491149421780913, 2.179444883450747)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">model1950</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">model1950</span><span class="o">.</span><span class="n">var</span><span class="p">()</span> <span class="o">/</span> <span class="n">X</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.2920000000000007, 4.908999999999999)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">model1970</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">model1970</span><span class="o">.</span><span class="n">var</span><span class="p">()</span> <span class="o">/</span> <span class="n">X</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">C</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.7050000000000565, 4.460999999999887)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-recently">
+<h2>More Recently<a class="headerlink" href="#more-recently" title="Permalink to this headline">#</a></h2>
+<p>With more recent Census data, we can see what has happened to family sizes since 1970.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">make_lowess</span><span class="p">,</span> <span class="n">plot_series_lowess</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following figure shows the average number of children born to women aged 40-44 when they were surveyed.
+The first cohort was interviewed in 1976, the last in 2018.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span>
+    <span class="n">rows</span><span class="p">[</span><span class="s2">&quot;Rate per 1000&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Average family size&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;d&quot;</span>
+<span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average family size 1976-2018&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_74_0.png" src="_images/preston_74_0.png" />
+</div>
+</div>
+<p>Between 1976 and 1990, average family size fell from more than 3 to less than 2.
+Since 2010, it has increased a little.</p>
+<p>To see where those changes came from, let’s see how each part of the distribution has changed.
+The following figure shows the percentage of women with 0, 1, or 2 children, plotted over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="s2">&quot;Two&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="s2">&quot;One&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percentage of families with 0, 1, or 2 children&quot;</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">39</span><span class="p">],</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_76_0.png" src="_images/preston_76_0.png" />
+</div>
+</div>
+<p>The fraction of small families has increased; most notably, between 1976 and 1990, the percentage of women with two children increased from 22% to 35%.
+The percentage of women with one child or zero also increased.</p>
+<p>The following figure shows how the percentage of large families changed over the same period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="s2">&quot;Three&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="s2">&quot;Four&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="s2">&quot;Five and six&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;5-6&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;p&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="s2">&quot;Seven or more&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;7+&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;8&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Percentage of families with 3 or more children&quot;</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_78_0.png" src="_images/preston_78_0.png" />
+</div>
+</div>
+<p>The proportion of large families declined substantially, especially the percentage of families with 5-6 children, which was 14% in 1976 and 4% in 2018.
+Over the same period, the percentage of families with seven or more children declined from 6% to less than 1%.</p>
+<p>We can use this data to see how the two measures of family size have changed over time.</p>
+<p>The following figure shows <span class="math notranslate nohighlight">\(X\)</span>, which is the average number of children ever born to the women who were surveyed, and <span class="math notranslate nohighlight">\(C\)</span>, which is the average we would measure if we surveyed their children.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1976</span><span class="p">,</span> <span class="mi">1990</span><span class="p">,</span> <span class="mi">1998</span><span class="p">,</span> <span class="mi">2008</span><span class="p">,</span> <span class="mi">2018</span><span class="p">]:</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">year</span><span class="p">]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">C</span> <span class="o">-</span> <span class="n">X</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Rate per 1000&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1976 3.0910000000007147 4.433126835158552 1.342126835157837 3091
+1990 2.045000038403182 3.055184644518847 1.010184606115665 2045
+1998 1.8770000809557768 2.8402939128993694 0.9632938319435926 1877
+2008 1.9010000215051315 2.8941684703733275 0.993168448868196 1901
+2018 2.0360000024952996 3.0017397260995224 0.9657397236042229 2036
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">rows</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">c_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">rows</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">x_series</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">c_series</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">c_series</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Averaged over children, C&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">x_series</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Averaged over women, X&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Average family size&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Two measures of average family size&quot;</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_83_0.png" src="_images/preston_83_0.png" />
+</div>
+</div>
+<p>Between 1976 and 1990, the average family size reported by women, <span class="math notranslate nohighlight">\(X\)</span>, decreased from 3.1 to 2.0.
+Over the same period, the average family size reported by children, <span class="math notranslate nohighlight">\(C\)</span>, decreased from 4.4 to 2.8.
+Since 1990, <span class="math notranslate nohighlight">\(X\)</span> has been close to 2 and <span class="math notranslate nohighlight">\(C\)</span> has been close to 3.</p>
+</section>
+<section id="preston-s-paradox">
+<h2>Preston’s Paradox<a class="headerlink" href="#preston-s-paradox" title="Permalink to this headline">#</a></h2>
+<p>Now we are ready to explain the surprising result from the imaginary kingdom at the beginning of the chapter.</p>
+<p>But using the actual distribution from 1970 as a starting place, we can simulate what would have happened in different scenarios.</p>
+<p>First, let’s suppose that every woman has the same number of children as her mother.
+As a small example, suppose there are only two families, one with two children and the other with four, so the average family size is three.</p>
+<p>Assuming that half of the children are girls, in the next generation there would be one woman from a two-child family and two children from a four-child family.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">=</span> <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">pmf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">pmf</span><span class="p">)</span>
+<span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.333333333333333
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased2</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span>
+<span class="n">biased2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1979</span> <span class="o">+</span> <span class="mi">25</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8950000219673087
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1979</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.9960000001442606
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.25534466920534
+</pre></div>
+</div>
+</div>
+</div>
+<p>If each of these women has the same number of children as her mother, one would have two children and the other two would have four.
+So the average family size would be 3.33.</p>
+<p>In the next generation, there would be one woman with two children, again, but there would be four with four. So the average family size would be 3.6.</p>
+<p>In successive generations, the number of four-child families would increase exponentially, and the average family size would quickly approach to 4.</p>
+<p>We can do the same calculation with a more realistic distribution.
+The following figure shows the actual distribution of family sizes from 1979 (solid line) and the result of this calculation, which simulates the “same as mother” scenario (dashed line).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual 1979&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plot_percent</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Same as mother scenario&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C4&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of family sizes&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_94_0.png" src="_images/preston_94_0.png" />
+</div>
+</div>
+<p>The mean of the original distribution is 3; the mean of the simulated distribution is 4.3.</p>
+<p>If we repeat the process, the average family size would be 5.2 in the next generation, 6.1 in the next, and 6.9 in the next.
+Eventually, nearly all women would have 13 children, which is the maximum in this dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 5.205672599164491
+3 6.10968948800601
+4 6.924225284367675
+5 7.637134370388916
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following simulations are intended to confirm that the results we just computed are correct.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Simulate the same as mother or one less models.</span>
+<span class="sd">    </span>
+<span class="sd">    sample: sample of family sizes</span>
+<span class="sd">    p: probability of having one child less than, or the same as, one&#39;s mother</span>
+<span class="sd">    </span>
+<span class="sd">    returns: sample of next generation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">children</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">])</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">children</span><span class="p">)</span>
+
+    <span class="c1"># return a random sample of half of the children</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">res</span><span class="p">)[</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Generate a sample from the model to start.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">gen0</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.964
+</pre></div>
+</div>
+</div>
+</div>
+<p>Simulate the next generation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen1</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">gen0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">gen1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.1827000808407435
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare the simulation results to the biased model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">biased</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">gen1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_104_0.png" src="_images/preston_104_0.png" />
+</div>
+</div>
+</section>
+<section id="one-child-fewer">
+<h2>One Child Fewer<a class="headerlink" href="#one-child-fewer" title="Permalink to this headline">#</a></h2>
+<p>Suppose every woman has precisely one child fewer than her mother.
+We can simulate this behavior by computing the biased distribution, as in the previous section, and then shifting the result one child to the left.</p>
+<p>The following figure shows the actual distribution from 1979 again, along with the result of this simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shift_pmf</span><span class="p">(</span><span class="n">pmf</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Shift the values to the left by one.</span>
+<span class="sd">    </span>
+<span class="sd">    pmf: Pmf</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">qs</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">return</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1979</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.9960000001442606
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.25534466920534
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted</span> <span class="o">=</span> <span class="n">shift_pmf</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span>
+<span class="n">shifted</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.25534466920534
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual 1979&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plot_percent</span><span class="p">(</span><span class="n">shifted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;One child fewer scenario&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of family sizes&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_110_0.png" src="_images/preston_110_0.png" />
+</div>
+</div>
+<p>The simulated distribution has been length-biased, which increases the average, and then shifted to the left, which decreases the average.
+In general, the net effect could be an increase or a decrease;
+in this example, it’s an increase from 3.0 to 3.3.</p>
+</section>
+<section id="in-the-long-run">
+<h2>In The Long Run<a class="headerlink" href="#in-the-long-run" title="Permalink to this headline">#</a></h2>
+<p>If we repeat this process and simulate the next generation, the average family size increases again, to 3.5. In the next generation it increases to 3.8.</p>
+<p>It might seem like it would increase forever, but if every woman has one child fewer than her mother, in each generation the <em>maximum</em> family size decreases by one.
+So eventually the <em>average</em> comes down.</p>
+<p>The following figure shows the average family size over 10 generations, where Generation 0 follows the actual distribution from 1979.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">shifted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">shifted</span> <span class="o">=</span> <span class="n">shift_pmf</span><span class="p">(</span><span class="n">bias_pmf</span><span class="p">(</span><span class="n">shifted</span><span class="p">))</span>
+    <span class="n">sizes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">shifted</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">sizes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    2.996000
+1    3.255345
+2    3.497601
+3    3.797560
+4    3.937929
+5    3.910277
+6    3.776723
+7    3.553760
+8    3.220451
+9    2.768708
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Family size&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Generation number&#39;</span><span class="p">,</span>
+         <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Average family size&#39;</span><span class="p">,</span>
+         <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">],</span>
+         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Average family size over ten generations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_114_0.png" src="_images/preston_114_0.png" />
+</div>
+</div>
+<p>Family size would increase for four generations, peaking at 3.9.
+Then it would take another five generations to fall below the starting value.</p>
+</section>
+<section id="in-reality">
+<h2>In Reality<a class="headerlink" href="#in-reality" title="Permalink to this headline">#</a></h2>
+<p>The average family size, as seen by the children of the women surveyed in 1979, was 4.3.
+But when those children grew up and the women among them were surveyed in 1990, they reported an average family size close to 2.
+So on average, they had 2.3 fewer children than their mothers.</p>
+<p>The following function simulates a generation where each woman has 2-3 children fewer than her mother.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate3</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Simulate a scenario where people have 2-3 children less than their mother did.</span>
+<span class="sd">    </span>
+<span class="sd">    sample: sample of family sizes</span>
+<span class="sd">    p: probability of having three less than one&#39;s mother</span>
+<span class="sd">    </span>
+<span class="sd">    returns: sample of next generation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">everybody</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">everybody</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">children</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="n">k</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">])</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">children</span><span class="p">)</span>
+
+    <span class="n">everybody</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">everybody</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">everybody</span> <span class="o">-</span> <span class="n">res</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">everybody</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">res</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">diff</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    
+    <span class="c1"># return a randomly-chosen half of the children</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">simulate3</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.3333333333333335 0.5 1.8333333333333333
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1979</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.9960000001442606
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.25534466920534
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.973
+</pre></div>
+</div>
+</div>
+</div>
+<p>By adjusting the parameter <code class="docutils literal notranslate"><span class="pre">p</span></code>, we can find a simulation that roughly reproduces the changes in fertility between 1979 and 1990.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen1</span> <span class="o">=</span> <span class="n">simulate3</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.33</span><span class="p">)</span>
+<span class="n">gen1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.237672384796502 2.003363605785402 2.2343087790111
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0061907004912185
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="in-the-present">
+<h2>In the Present<a class="headerlink" href="#in-the-present" title="Permalink to this headline">#</a></h2>
+<p>The women surveyed in 1990 had 2.3 fewer children than their mothers, on average.
+If that pattern had continued for another generation, the average family size in 2018 would have been about 0.8.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1990</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.045000038403182
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0441
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gen1</span> <span class="o">=</span> <span class="n">simulate3</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">gen1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0621300327772616 0.8037767232522871 2.258353309524974
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8013968129057644
+</pre></div>
+</div>
+</div>
+</div>
+<p>In fact, the average family size in 2018 was very close to 2; this is close to what we would expect if every woman had one child fewer than her mother.
+The following distribution shows the actual distribution in 2018, compared to the result if we start with the 1990 distribution and simulate the “one child fewer” scenario.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1990</span><span class="p">]</span>
+<span class="n">model1990</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">model1990</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.045000038403182
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted</span> <span class="o">=</span> <span class="n">shift_pmf</span><span class="p">(</span><span class="n">bias_pmf</span><span class="p">(</span><span class="n">model1990</span><span class="p">))</span>
+<span class="n">shifted</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.055184644518847
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">]</span>
+<span class="n">model2018</span> <span class="o">=</span> <span class="n">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">model2018</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0360000024952996
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_pmf_from_model</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a Pmf with the same index as the data.</span>
+<span class="sd">    </span>
+<span class="sd">    model: Pmf with a complete tail</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;5-6&quot;</span><span class="p">,</span> <span class="s2">&quot;7+&quot;</span><span class="p">]</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">ps</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ps</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">ps</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_pmf_from_row</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a Pmf from a row of data.</span>
+<span class="sd">    </span>
+<span class="sd">    row: Series</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;5-6&quot;</span><span class="p">,</span> <span class="s2">&quot;7+&quot;</span><span class="p">]</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">actual</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pmf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2018</span><span class="p">]</span>
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">make_pmf_from_row</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="n">plot_percent</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual 2018&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">make_pmf_from_model</span><span class="p">(</span><span class="n">shifted</span><span class="p">)</span>
+<span class="n">plot_percent</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predicted from 1990&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of family size&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_134_0.png" src="_images/preston_134_0.png" />
+</div>
+</div>
+<p>The means of the two distributions are almost the same, but the shapes are different.
+But at least on average, it seems like women in the U.S. have been following the “one child fewer” policy for the last 30 years.</p>
+</section>
+<section id="technical-note-the-poisson-distribution">
+<h2>Technical Note: The Poisson distribution<a class="headerlink" href="#technical-note-the-poisson-distribution" title="Permalink to this headline">#</a></h2>
+<p>Suppose every year, for 20 years, you roll a 10-sided die, and every year, if you roll a 10, you have a baby.
+On average, you would have a total of two babies.
+But as the dice fall, you might have more or fewer.
+Across the population, what would the distribution of family size look like?</p>
+<p>Under these assumptions, it would follow the Poisson distribution, named after French mathematician Siméon Denis Poisson, who wrote about it in 1837, modeling the number of wrongful criminal convictions per year.</p>
+<p>The Poisson distribution is relevant to Preston’s Paradox for two reasons:</p>
+<ul class="simple">
+<li><p>Since 1990, the distribution of family size in the U.S. has come to resemble a Poisson distribution.</p></li>
+<li><p>Under the “one child fewer” policy, the Poisson distribution is completely unchanged from one generation to the next.</p></li>
+</ul>
+<p>The following figure demonstrates the first point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_pmf_from_poisson</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a Poisson distribution and summarize it.</span>
+<span class="sd">    </span>
+<span class="sd">    mu: mean of the distribution</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pmf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;5-6&quot;</span><span class="p">,</span> <span class="s2">&quot;7+&quot;</span><span class="p">]</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">mu</span><span class="p">)</span>
+    <span class="n">ps</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+=</span> <span class="n">ps</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+    <span class="n">ps</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">rows</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">15</span><span class="p">]:</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">make_pmf_from_row</span><span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">year</span><span class="p">])</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Actual 1990 - 2018&quot;</span> <span class="k">if</span> <span class="n">year</span> <span class="o">==</span> <span class="mi">2018</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">pmf</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+
+<span class="n">pmf</span> <span class="o">=</span> <span class="n">make_pmf_from_poisson</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pmf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Poisson distribution&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentage of families&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of family size and Poisson model&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_138_0.png" src="_images/preston_138_0.png" />
+</div>
+</div>
+<p>The bars show the actual distributions for selected years from 1990 to 2018, with the shaded areas representing variation from year to year.
+The line shows a Poisson distribution with an average value of 2, which is close to the actual average during this interval.</p>
+<p>In reality, there are more zero- and two-child families than we would expect from a Poisson distribution, and fewer one-child families.
+But given the complexities of childbearing, it is surprising that the simple dice-rolling model does as well as this.</p>
+<p>Now suppose that the family sizes actually follow a Poisson distribution, and let’s see what happens in the “one child fewer” scenario.
+The following figure shows three distributions:</p>
+<ul class="simple">
+<li><p>A Poisson distribution with mean 2, plotted with bars,</p></li>
+<li><p>The biased distribution of family size we would see if we surveyed children, plotted with a dashed line, and</p></li>
+<li><p>The distribution of family size those children would have under the “one child fewer” policy, plotted with a dotted line.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">make_poisson</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9999996439174659
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">biased</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.999997685463117
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted</span> <span class="o">=</span> <span class="n">shift_pmf</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span>
+<span class="n">shifted</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.999997685463117
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">[:</span><span class="mi">13</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Poisson distribution&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">biased</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Biased&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="p">)</span>
+<span class="n">shifted</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Biased and shifted&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of children&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Fraction of families&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/preston_143_0.png" src="_images/preston_143_0.png" />
+</div>
+</div>
+<p>The biased distribution is identical to the original distribution, but shifted to the right by one.
+When we apply the “one child fewer” policy, it shifts the distribution to the left by one, right back where it started.</p>
+<p>Probably Overthinking It</p>
+<p>Copyright 2022 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="inspection.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Relay Races and Revolving Doors</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="overton_irt.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Measuring the Overton Window</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -26,3 +26,8 @@ Before you read these notebooks, please keep in mind:
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/inspection.ipynb)
 
 
+**Chapter 3**
+
+[Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/preston.ipynb)
+
+
