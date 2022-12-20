@@ -31,3 +31,8 @@ Before you read these notebooks, please keep in mind:
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/preston.ipynb)
 
 
+**Chapter 4**
+
+[Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/lognormal.ipynb)
+
+[Run the code that cleans the NSFG data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nsfg_clean.ipynb)

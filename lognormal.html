@@ -1,0 +1,2372 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Extremes, Outliers, and GOATs &#8212; Probably Overthinking It</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Measuring the Overton Window" href="overton_irt.html" />
+    <link rel="prev" title="Defy Tradition, Save the World" href="preston.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Probably Overthinking It</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="gaussian.html">
+   Are You Normal? Hint: No.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inspection.html">
+   Relay Races and Revolving Doors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="preston.html">
+   Defy Tradition, Save the World
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Extremes, Outliers, and GOATs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="overton_irt.html">
+   Measuring the Overton Window
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ProbablyOverthinkingIt/master?urlpath=tree/lognormal.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/lognormal.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-exception">
+   The Exception
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#birth-weights-are-gaussian">
+   Birth Weights are Gaussian
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-weight-gain">
+   Simulating Weight Gain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-speeds">
+   Running Speeds
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chess-rankings">
+   Chess Rankings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-greatest-of-all-time">
+   The Greatest of All Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-and-related-reading">
+   Sources and related reading
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Extremes, Outliers, and GOATs</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-exception">
+   The Exception
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#birth-weights-are-gaussian">
+   Birth Weights are Gaussian
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-weight-gain">
+   Simulating Weight Gain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-speeds">
+   Running Speeds
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chess-rankings">
+   Chess Rankings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-greatest-of-all-time">
+   The Greatest of All Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-and-related-reading">
+   Sources and related reading
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="extremes-outliers-and-goats">
+<h1>Extremes, Outliers, and GOATs<a class="headerlink" href="#extremes-outliers-and-goats" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/lognormal.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install empiricaldist
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+        
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+
+<span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Technical note: The following function is an example of a computational method I often use to fit a distribution to data.</p>
+<p>Conventional methods are generally based on moment-matching or computing maximum-likelihood estimators for the parameters.</p>
+<p>But often the question we care about is whether there is a distribution in a particular family that is a good match for a given empirical distribution. The best way to answer that question is to plot the CDFs of the data and the model and compare them visually to see where they agree or disagree.</p>
+<p>If that’s the evaluation metric, then the right thing to optimize is the distance between the distributions, averaged in some way over the range of the quantities.</p>
+<p>There are several ways you could do that. The option I use here is to write an error function that takes hypothetical set of parameters and</p>
+<ol class="simple">
+<li><p>Makes an object that represents a distribution with those parameters.</p></li>
+<li><p>Chooses a range of percentiles and finds the corresponding quantiles in the data.</p></li>
+<li><p>Evaluates the model distribution at those quantiles, and</p></li>
+<li><p>Computes the vertical distance between the resulting percentiles and the target percentiles.</p></li>
+</ol>
+<p>Then I use <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> to find the parameters that minimize the sum of the squares of these distances.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+
+<span class="k">def</span> <span class="nf">fit_normal</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find the model that minimizes the errors in percentiles.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">series</span><span class="p">):</span>
+        <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="n">cdf</span> <span class="o">=</span> <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+        <span class="n">qs</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">])</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">error</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">series</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">series</span><span class="p">,),</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e3</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">res</span><span class="o">.</span><span class="n">success</span>
+    <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span>
+    <span class="k">return</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+
+
+<span class="k">def</span> <span class="nf">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find the bounds on a normal CDF analytically.&quot;&quot;&quot;</span>
+    <span class="c1"># find the correct probabilities</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
+
+    <span class="c1"># find the upper and lower percentiles of</span>
+    <span class="c1"># a binomial distribution</span>
+    <span class="n">p_low</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">p_high</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_low</span>
+
+    <span class="n">low</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p_low</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">low</span><span class="p">[</span><span class="n">ps</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p_high</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gaussian</span> <span class="kn">import</span> <span class="n">make_cdf</span>
+
+
+<span class="k">def</span> <span class="nf">make_plot</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">model_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot a CDF with a Gaussian model.</span>
+<span class="sd">    </span>
+<span class="sd">    series: data</span>
+<span class="sd">    model_label: string label for the model</span>
+<span class="sd">    plot_bounds: boolean, whether to plot the expected upper bound</span>
+<span class="sd">    qs: values where the error bounds should be evaluated (optional)</span>
+<span class="sd">    options: passed to plt.plot</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cdf</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">fit_normal</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">))</span>
+    <span class="n">upper</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">plot_bounds</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">qs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">q_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">upper</span><span class="p">)</span>
+        <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">q_max</span><span class="p">)</span>
+
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+        <span class="n">qs</span><span class="p">,</span> <span class="n">low</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">model_label</span>
+    <span class="p">)</span>
+
+    <span class="n">cdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In Chapter 1 we saw that many measurements in the natural world follow a Gaussian distribution, and I posited an explanation: if we add up many random factors, the distribution of the sum tends to be Gaussian.</p>
+<p>The average height in the United States is about 170 cm.
+The tallest person ever was 272 cm, which is certainly tall, but it is only 60% greater than the mean.
+And in all likelihood, no one will ever be substantially taller.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://en.wikipedia.org/wiki/List_of_tallest_people</span>
+
+<span class="mi">272</span> <span class="o">/</span> <span class="mi">170</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>160.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The heaviest person ever reliably measured was almost eight times the current average in the United States.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://en.wikipedia.org/wiki/List_of_heaviest_people</span>
+
+<span class="mi">653</span> <span class="o">/</span> <span class="mi">82</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.963414634146342
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose we start with an absolute beginner at chess, named A.
+You could easily find a more experienced player – call them B – who would beat A 90% of the time.
+And it would not be hard to find a player C who could beat B 90% of the time; in fact, C would be pretty close to average.</p>
+<p>Then you could find a player D who could beat C 90% of the time and a player E who could beat D about as often.</p>
+<p>In a Gaussian distribution, that’s about all you would get. If A is a rank beginner and C is average, E would be one of the best, and it would be hard to find someone substantially better.
+But the distribution of chess skill is lognormal and it extends farther to the right than a Gaussian.
+In fact, we can find a player F who beats E, a player G who beats F, and a player H who beats G, at each step more than 90% of the time.
+And the world champion in this distribution would still beat H almost 90% of the time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3400</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;ABCDEFGHI&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A     100
+B     500
+C     900
+D    1300
+E    1700
+F    2100
+G    2500
+H    2900
+I    3300
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elo_prob</span><span class="p">(</span><span class="n">diff</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">diff</span> <span class="o">/</span> <span class="mi">400</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elo_prob</span><span class="p">(</span><span class="mi">400</span><span class="p">),</span> <span class="n">elo_prob</span><span class="p">(</span><span class="mi">300</span><span class="p">),</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9090909090909091, 0.8490204427886767)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-exception">
+<h2>The Exception<a class="headerlink" href="#the-exception" title="Permalink to this headline">#</a></h2>
+<p>I’ll use data from the Behavioral Risk Factor Surveillance System
+(BRFSS), which is an annual survey run by the U.S. Centers for Disease Control and Prevention (CDC).</p>
+<p>The 2020 dataset includes information about demographics, health, and health risks
+from a large, representative sample of adults in the United States: a total of 195,055 men and 205,903 women.
+Among the data are the self-reported weights of the respondents, recorded in kilograms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/brfss_sample.hdf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s2">&quot;brfss_sample.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;brfss&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">male</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;_SEX&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">female</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;_SEX&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="n">male</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">female</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(196055, 205903)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;WTKG3&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>
+<span class="n">weight</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    365435.000000
+mean         82.025558
+std          21.153435
+min          21.061554
+25%          67.199892
+50%          79.483232
+75%          92.775075
+max         289.686997
+Name: WTKG3, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following figure shows the distribution of these weights, represented using cumulative distribution functions (CDFs).
+The lighter lines show Gaussian models that best fit the data;
+the crosses at the top show the locations of the largest weights we expect to find in samples this size from a Gaussian distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Female participants&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Male participants&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Weight (kg)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of weight, BRFSS&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_24_0.png" src="_images/lognormal_24_0.png" />
+</div>
+</div>
+<p>If these distributions were Gaussian, the heaviest woman in the sample would be about 150 kg, and the heaviest man would be 167 kg.
+In fact, the heaviest woman is 286 kg and the heaviest man is 290 kg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">upper_bound</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the expected maximum value from a Gaussian model</span>
+<span class="sd">    </span>
+<span class="sd">    Use the sample to fit a Gaussian model and compute the largest</span>
+<span class="sd">    value we expect from a sample that size.</span>
+<span class="sd">    </span>
+<span class="sd">    series: sample</span>
+<span class="sd">    </span>
+<span class="sd">    returns: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">fit_normal</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">))</span>
+    <span class="n">upper</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">upper</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">upper_bound</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">]),</span> <span class="n">upper_bound</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(149.94520956032576, 167.30677493324202)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(286.4292088274667, 289.68699690382215)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Place labels on the x-axis on a log scale.</span>
+<span class="sd">    </span>
+<span class="sd">    labels: sequence of numbers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following figure shows the distributions of the logarithms of weight along with Gaussian models that best fit them.</p>
+<p>At the top of the figure, the labels indicate the logarithms.
+At the bottom, the labels indicate the weights themselves.
+Notice that the logarithms are equally spaced, but the weights are not.</p>
+<p>The vertical dotted lines show the correspondence between the weights and their logarithms for the three examples I just mentioned: 50 kg, 100 kg, and 150 kg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.6989700043360187, 2.1760912590556813)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">two_scale</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="n">sample2</span><span class="p">,</span> <span class="n">label1</span><span class="p">,</span> <span class="n">label2</span><span class="p">,</span> <span class="n">xlabel1</span><span class="p">,</span> <span class="n">xlabel2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot two distributions and label the top and bottom.</span>
+<span class="sd">    </span>
+<span class="sd">    The sequence of operations is a little tricky.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># find the range of qs to use for both distributions</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">sample2</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">sample2</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># plot the first distribution</span>
+    <span class="n">make_plot</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="n">qs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+    <span class="n">h1</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of weight, log scale&quot;</span><span class="p">)</span>
+    <span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+    <span class="c1"># plot the second distribution</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+    <span class="n">make_plot</span><span class="p">(</span><span class="n">sample2</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="n">qs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label2</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+    <span class="n">h2</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">h1</span> <span class="o">+</span> <span class="n">h2</span><span class="p">,</span> <span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span><span class="p">)</span>
+
+    <span class="c1"># label the axes</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+
+<span class="n">log_weight_male</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">])</span>
+<span class="n">log_weight_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">])</span>
+
+<span class="n">two_scale</span><span class="p">(</span>
+    <span class="n">log_weight_female</span><span class="p">,</span>
+    <span class="n">log_weight_male</span><span class="p">,</span>
+    <span class="s2">&quot;Female participants&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Male participants&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Weight (kg)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Weight (log base 10 kg)&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_33_0.png" src="_images/lognormal_33_0.png" />
+</div>
+</div>
+</section>
+<section id="birth-weights-are-gaussian">
+<h2>Birth Weights are Gaussian<a class="headerlink" href="#birth-weights-are-gaussian" title="Permalink to this headline">#</a></h2>
+<p>To explore the distribution of birth weight, I’ll use data from the National Survey of Family Growth (NSFG), which is run by the CDC, the same people we have to thank for the BRFSS.</p>
+<p>Between 2015 and 2017, the NSFG collected data from a representative sample of women in the United States.
+Among other information, the survey records the birth weights of their children.
+Excluding babies who were born pre-term, I selected weights for 3430 male and 3379 female babies.
+The following figure shows the distributions of these birth weights along with Gaussian curves that best fit them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/nsfg_sample.hdf5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;nsfg_sample.hdf5&#39;</span><span class="p">,</span> <span class="s1">&#39;nsfg&#39;</span><span class="p">)</span>
+<span class="n">nsfg</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9553, 13)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">live</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;outcome&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">live</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6810
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;nbrnaliv&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">single</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6648
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullterm</span> <span class="o">=</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;prglngth&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">37</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;prglngth&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">fullterm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5702
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">live</span> <span class="o">&amp;</span> <span class="n">fullterm</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5676
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;birthwgt_lb1&quot;</span><span class="p">]</span>
+<span class="n">ounces</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;birthwgt_oz1&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pounds_clean</span> <span class="o">=</span> <span class="n">pounds</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">ounces_clean</span> <span class="o">=</span> <span class="n">ounces</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+<span class="n">birth_weight</span> <span class="o">=</span> <span class="p">(</span><span class="n">pounds_clean</span> <span class="o">+</span> <span class="n">ounces_clean</span> <span class="o">/</span> <span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="mi">454</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">male</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;babysex1&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">male</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3430
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">female</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;babysex1&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="n">female</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3379
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">birth_weight_male</span> <span class="o">=</span> <span class="n">birth_weight</span><span class="p">[</span><span class="n">fullterm</span> <span class="o">&amp;</span> <span class="n">male</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="n">birth_weight_male</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    2764.000000
+mean        3.441670
+std         0.505128
+min         1.362000
+25%         3.149625
+50%         3.433375
+75%         3.745500
+max         5.448000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">birth_weight_female</span> <span class="o">=</span> <span class="n">birth_weight</span><span class="p">[</span><span class="n">fullterm</span> <span class="o">&amp;</span> <span class="n">female</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="n">birth_weight_female</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    2769.000000
+mean        3.317344
+std         0.484603
+min         0.766125
+25%         2.979375
+50%         3.319875
+75%         3.632000
+max         5.419625
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">birth_weight_male</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Male babies&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">birth_weight_female</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Female babies&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Birth weight (kg)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of birth weight, NSFG&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_47_0.png" src="_images/lognormal_47_0.png" />
+</div>
+</div>
+<p>The Gaussian model fits the distribution of birth weights well.
+The heaviest babies are a little heavier than we would expect from a Gaussian distribution with this sample size, but the distributions are roughly symmetric, not skewed to the right like the distribution of adult weight.</p>
+<p>The following figure shows the logarithms of birth weights compared to a Gaussian distribution.
+The data deviate from the model, especially toward the low end.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">birth_weight_male</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Male babies&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">birth_weight_female</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Female babies&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Birth weight (log 10 kg)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of birth weight, NSFG&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_49_0.png" src="_images/lognormal_49_0.png" />
+</div>
+</div>
+</section>
+<section id="simulating-weight-gain">
+<h2>Simulating Weight Gain<a class="headerlink" href="#simulating-weight-gain" title="Permalink to this headline">#</a></h2>
+<p>I wrote a simulation that starts with the birth weights we saw in the previous section and generates 40 random growth rates, one for each year from birth to age 40.
+The growth rates vary from about 20-40%; in other words, each simulated person gains 20-40% of their current weight each year.
+The following figure shows the results and a Gaussian model, both on a log scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+
+<span class="k">def</span> <span class="nf">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.03</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Simulate a simple model of annual weight gain.</span>
+<span class="sd">    </span>
+<span class="sd">    start: sequence of starting weights</span>
+<span class="sd">    mu, sigma: parameters of the distributions of growth factors</span>
+<span class="sd">    </span>
+<span class="sd">    returns: simulated adult weights.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># don&#39;t try to hoist this, because the number of rows varies</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="n">rvs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span>
+
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">rvs</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">+</span> <span class="n">mu</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">factors</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">sim_weight</span> <span class="o">=</span> <span class="n">product</span> <span class="o">*</span> <span class="n">start</span>
+    <span class="k">return</span> <span class="n">sim_weight</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">birth_weight_male</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># convert grams to kilograms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">0.03</span>
+<span class="n">sim_weight</span> <span class="o">=</span> <span class="n">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">sim_weight</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    2764.000000
+mean      124.106176
+std        37.610535
+min        37.526516
+25%        97.827188
+50%       118.558147
+75%       144.844003
+max       354.605442
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_weight</span><span class="p">),</span>
+    <span class="n">model_label</span><span class="o">=</span><span class="s2">&quot;Gaussian model&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulated weights&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C4&quot;</span><span class="p">,</span>
+    <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Adult weight (kg)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of weight compared to simulation&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_54_0.png" src="_images/lognormal_54_0.png" />
+</div>
+</div>
+<p>The Gaussian model fits the logarithms of the simulated weights, which means that the distribution is lognormal.
+This outcome is explained by a corollary of the Central Limit Theorem: if you multiply together a large number of random quantities, the distribution of the product tends to be lognormal.</p>
+<p>It might not be obvious that the simulation multiplies random quantities, but that’s what happens when we apply successive growth rates.
+For example, suppose someone weighs 50 kg at the beginning of a simulated year.
+If they gain 20%, their weight at the end of the year would be 50 kg times 120%, which is 60 kg.
+If they gain 30% during the next year, their weight at the end would by 60 kg times 130%, which is 78 kg.</p>
+<p>In two years, they gained a total of 28 kg, which is 56% of their starting weight.
+Where did 56% come from? It’s not the sum of 20% and 30%; rather, it comes from the product of 120% and 130%, which is 156%.</p>
+<p>So their weight at the end of the simulation is the product of their starting weight and 40 random growth rates.
+As a result, the distribution of simulated weights is approximately lognormal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">28</span> <span class="o">/</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="mf">1.3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.56, 1.56)
+</pre></div>
+</div>
+</div>
+</div>
+<p>By adjusting the range of growth rates, we can tune the simulation to match the data.
+The following figure shows the actual distributions from the BRFSS along with the simulation results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func_sim_weight</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">log_weight</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Simulate weights with given parameters and compute differences</span>
+<span class="sd">    between the results and the actual weights.</span>
+<span class="sd">    </span>
+<span class="sd">    params: mu and sigma for the dist of growth rates</span>
+<span class="sd">    start: sequence of starting weights</span>
+<span class="sd">    log_weight: sequence of adult weights, log scale</span>
+<span class="sd">    </span>
+<span class="sd">    returns: sequence of differences</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">sim_weight</span> <span class="o">=</span> <span class="n">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">log_sim_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_weight</span><span class="p">)</span>
+
+    <span class="n">diff_mean</span> <span class="o">=</span> <span class="n">log_sim_weight</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">log_weight</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">diff_std</span> <span class="o">=</span> <span class="n">log_sim_weight</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">-</span> <span class="n">log_weight</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">,</span> <span class="n">diff_std</span>
+    <span class="k">return</span> <span class="n">error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Search for the parameters that yield simulated weights that best fit the adult male weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.03</span>
+
+<span class="n">error_func_sim_weight</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">log_weight_male</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.1, 0.03)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-2.773388608450743, 0.0522087828881688)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">log_weight_male</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func_sim_weight</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.1  0.03]
+[1.10000002 0.03      ]
+[1.1        0.03000001]
+[1.27449077 0.02147319]
+[1.27449079 0.02147319]
+[1.27449077 0.0214732 ]
+[1.28922056 0.01840052]
+[1.28922058 0.01840052]
+[1.28922056 0.01840053]
+[1.28931344 0.01823682]
+[1.28931346 0.01823682]
+[1.28931344 0.01823684]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.28931344, 0.01823682])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_weight_male</span> <span class="o">=</span> <span class="n">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="n">log_sim_weight_male</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_weight_male</span><span class="p">)</span>
+<span class="n">cdf_log_sim_weight_male</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">log_sim_weight_male</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Search for the parameters that yield simulated weights that best fit the adult female weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">birth_weight_female</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">log_weight_female</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func_sim_weight</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.1  0.03]
+[1.10000002 0.03      ]
+[1.1        0.03000001]
+[1.27059272 0.02364102]
+[1.27059274 0.02364102]
+[1.27059272 0.02364103]
+[1.28460523 0.0215002 ]
+[1.28460525 0.0215002 ]
+[1.28460523 0.02150021]
+[1.28468727 0.02142869]
+[1.28468729 0.02142869]
+[1.28468727 0.02142871]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_weight_female</span> <span class="o">=</span> <span class="n">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="n">log_sim_weight_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_weight_female</span><span class="p">)</span>
+<span class="n">cdf_log_sim_weight_female</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">log_sim_weight_female</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_log_weight_male</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">log_weight_male</span><span class="p">)</span>
+<span class="n">cdf_log_weight_female</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">log_weight_female</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_log_sim_weight_female</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulated female weights&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span>
+<span class="p">)</span>
+<span class="n">cdf_log_weight_female</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual female weights&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+
+<span class="n">cdf_log_sim_weight_male</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulated male weights&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">cdf_log_weight_male</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual male weights&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Adult weight (kg)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distributions of weight compared to simulation&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_67_0.png" src="_images/lognormal_67_0.png" />
+</div>
+</div>
+<p>The results from the simulation are a good match for the actual distributions.</p>
+<p>Qualitatively, the biggest difference is that the Gaussian distribution is symmetric, so the tallest people and the shortest are about the same distance from the mean.
+In the BRFSS dataset, the average height is 170 cm. The 99th percentile is about 23 cm above the mean and the 1st percentile is about 20 cm below, so that’s roughly symmetric.</p>
+<p>Taking it to the extremes, the tallest person ever reliably measured was Robert Wadlow, who was 272 cm, which is 102 cm from the mean.
+And the shortest adult was Chandra Bahadur Dangi, who was 55 cm, which is 115 cm from the mean.
+That’s pretty close to symmetric, too.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_symmetry</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;See how far the percentiles are from the mean in each direction.</span>
+<span class="sd">    </span>
+<span class="sd">    series: sequence of values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">percentiles</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;percentiles&quot;</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;diffs&quot;</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;HTM4&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_symmetry</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean 170.16244793762374
+percentiles [150. 193.]
+diffs [-20.16244794  22.83755206]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">272</span> <span class="o">-</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">55</span> <span class="o">-</span> <span class="mi">170</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(102, -115)
+</pre></div>
+</div>
+</div>
+</div>
+<p>On the other hand, the distribution of weights is not symmetric: the heaviest people are substantially farther from the mean than the lightest.
+In the United States, the average weight is about 82 kg.
+The heaviest person in the BRFSS dataset is 64 kg above average, but the lightest is only 36 kg below.</p>
+<p>Taking it to the extremes, the heaviest person person ever reliably measured was, regrettably, 553 kg heavier than the average.
+In order to be the same distance below the mean, the weight of the lightest person would be 471 kg lighter than zero, which is impossible.
+So the Gaussian model of weight is not just a bad fit for the data, it produces absurdities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_symmetry</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean 82.02555804201864
+percentiles [ 46.16635988 145.67363337]
+diffs [-35.85919816  63.64807533]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">average</span> <span class="o">=</span> <span class="mi">82</span>
+<span class="mi">146</span> <span class="o">-</span> <span class="n">average</span><span class="p">,</span> <span class="mi">635</span> <span class="o">-</span> <span class="n">average</span><span class="p">,</span> <span class="n">average</span> <span class="o">-</span> <span class="mi">553</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(64, 553, -471)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In contrast, on a log scale the distribution of weight is close to symmetric.
+In the adult weights from the BRFSS, the 99th percentile of the logarithms is 0.26 above the mean and the 1st percentile is 0.24 below the mean.
+At the extremes, the log of the heaviest weight is 0.9 above the mean.
+In order for the lightest person to be the same distance below the mean, they would have to weigh 10 kg, which might sound impossible, but <a class="reference external" href="https://en.wikipedia.org/wiki/Luc%C3%ADa_Z%C3%A1rate">the lightest adult</a>, according to Guinness World Records, was 2.1 kg at age 17.
+I’m not sure how reliable that measurement is, but it is at least close to the minimum we expect based on symmetry of the logarithms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_symmetry</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean 1.9004295903025548
+percentiles [1.66432563 2.16338095]
+diffs [-0.23610396  0.26295136]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9004295903025548
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">635</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9023441349894208
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_min</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">635</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span>
+<span class="n">log_min</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="n">log_min</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.998085455313134, 9.956013006853965)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">2.1</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.5782102955686355
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-speeds">
+<h2>Running Speeds<a class="headerlink" href="#running-speeds" title="Permalink to this headline">#</a></h2>
+<p>When I was 42 years old, I could run 200 meters in about 30 seconds (with wind assistance).
+But a good high school runner is faster than me.
+At a recent meet, the fastest girl at a nearby high school ran 200 meters in about 27 seconds, and the fastest boy ran under 24 seconds.</p>
+<p>So, in terms of speed, a fast high school girl is 11% faster than me, a fast high school boy is 12% faster than her;
+Nigel Talton, in his prime, was 11% faster than him, Wallace Spearmon was about 8% faster than Talton, and Usain Bolt is about 5% faster than Spearmon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Me&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;High School Girl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;High School Boy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Talton&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Spearmon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Bolt&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mf">21.66</span><span class="p">,</span> <span class="mf">20.1</span><span class="p">,</span> <span class="mf">19.19</span><span class="p">]</span>
+<span class="n">run_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">times</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+<span class="n">run_frame</span><span class="p">[</span><span class="s2">&quot;speed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">/</span> <span class="n">run_frame</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span>
+<span class="n">run_frame</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">% c</span><span class="s2">hange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">run_frame</span><span class="p">[</span><span class="s2">&quot;speed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+<span class="n">run_frame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>speed</th>
+      <th>% change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Me</th>
+      <td>30.00</td>
+      <td>6.666667</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>High School Girl</th>
+      <td>27.00</td>
+      <td>7.407407</td>
+      <td>0.111111</td>
+    </tr>
+    <tr>
+      <th>High School Boy</th>
+      <td>24.00</td>
+      <td>8.333333</td>
+      <td>0.125000</td>
+    </tr>
+    <tr>
+      <th>Talton</th>
+      <td>21.66</td>
+      <td>9.233610</td>
+      <td>0.108033</td>
+    </tr>
+    <tr>
+      <th>Spearmon</th>
+      <td>20.10</td>
+      <td>9.950249</td>
+      <td>0.077612</td>
+    </tr>
+    <tr>
+      <th>Bolt</th>
+      <td>19.19</td>
+      <td>10.422095</td>
+      <td>0.047421</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To demonstrate, I’ll use data from the James Joyce Ramble, which is the 10 kilometer race where I ran my previously-mentioned personal record time.
+I downloaded the times for the 1,592 finishers and converted them to speeds in kilometers per hour.
+The following figure shows the distribution of these speeds on a logarithmic scale, along with a Gaussian model I fit to the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://web.archive.org/web/20100429073703/http://coolrunning.com/results/10/ma/Apr25_27thAn_set1.shtml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Apr25_27thAn_set1.shtml&quot;</span><span class="p">),</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">speeds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;pre&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]:</span>
+        <span class="n">place</span><span class="p">,</span> <span class="n">place_in_div</span><span class="p">,</span> <span class="n">div</span><span class="p">,</span> <span class="n">gun</span><span class="p">,</span> <span class="n">net</span><span class="p">,</span> <span class="n">pace</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+        <span class="n">place</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">place</span><span class="p">)</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pace</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)]</span>
+        <span class="n">secs</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">s</span>
+        <span class="n">kph</span> <span class="o">=</span> <span class="mf">1.61</span> <span class="o">/</span> <span class="n">secs</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+        <span class="n">speeds</span><span class="p">[</span><span class="n">place</span><span class="p">]</span> <span class="o">=</span> <span class="n">kph</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">speeds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1591
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">speeds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_89_0.png" src="_images/lognormal_89_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_speeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">speeds</span><span class="p">)</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">log_speeds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_90_0.png" src="_images/lognormal_90_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">log_speeds</span><span class="p">)</span>
+<span class="n">cdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+
+<span class="n">h1</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Running speed (kph)&quot;</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+
+<span class="n">dist</span> <span class="o">=</span> <span class="n">fit_normal</span><span class="p">(</span><span class="n">log_speeds</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">log_speeds</span><span class="p">)</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">qs</span><span class="p">,</span> <span class="n">low</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gaussian model&quot;</span>
+<span class="p">)</span>
+<span class="n">h2</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">h1</span> <span class="o">+</span> <span class="n">h2</span><span class="p">,</span> <span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">)</span>
+
+<span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="c1">#plt.xlabel(&quot;Running speed (log base 10 kph)&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of running speed, log scale&quot;</span><span class="p">)</span>
+<span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_91_0.png" src="_images/lognormal_91_0.png" />
+</div>
+</div>
+<p>I generated five random factors from a Gaussian distribution and multiplied them together.
+I adjusted the mean and standard deviation of the Gaussians so that the resulting distribution fit the data; the following figure shows the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">speeds</span><span class="p">)</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">rvs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_speeds</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generate a sample of running speeds by multiplying factors.</span>
+<span class="sd">    </span>
+<span class="sd">    Using the same set of rvs, scale them to the given mean and std.</span>
+<span class="sd">    </span>
+<span class="sd">    mu, sigma: parameters of a normal distribution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">rvs</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">+</span> <span class="n">mu</span>
+    <span class="n">performance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">factors</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">performance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_speeds</span> <span class="o">=</span> <span class="n">simulate_speeds</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">)</span>
+
+<span class="n">make_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_speeds</span><span class="p">))</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">speeds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_95_0.png" src="_images/lognormal_95_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func_running</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">log_speeds</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run simulation with given params and compute</span>
+<span class="sd">    differences from the mean and standard deviation of the data.</span>
+<span class="sd">    </span>
+<span class="sd">    params: passed to simulation</span>
+<span class="sd">    log_speeds: data to match</span>
+<span class="sd">    </span>
+<span class="sd">    returns: tuple of two errors</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sim_speeds</span> <span class="o">=</span> <span class="n">simulate_speeds</span><span class="p">(</span><span class="o">*</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">log_sim_speeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_speeds</span><span class="p">)</span>
+
+    <span class="n">diff_mean</span> <span class="o">=</span> <span class="n">log_sim_speeds</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">log_speeds</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">diff_std</span> <span class="o">=</span> <span class="n">log_sim_speeds</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">-</span> <span class="n">log_speeds</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">diff_mean</span><span class="p">,</span> <span class="n">diff_std</span>
+    <span class="k">return</span> <span class="n">error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.06</span>
+<span class="n">error_func_running</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">log_speeds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.8328797969155864, -0.018541752148148835)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">log_speeds</span><span class="p">,)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func_running</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">diff_step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">res</span><span class="o">.</span><span class="n">success</span>
+<span class="n">res</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.61636344, 0.11794022])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_speeds</span> <span class="o">=</span> <span class="n">simulate_speeds</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_speeds</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulated running speeds&quot;</span>
+<span class="p">)</span>
+<span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">speeds</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual running speeds&quot;</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Running speed (log10 kph)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of running speed compared to simulation&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_99_0.png" src="_images/lognormal_99_0.png" />
+</div>
+</div>
+<p>If there are at least five factors affect running speed, and each person’s limit depends on their worst factor, that would explain why the distribution of running speed is lognormal.</p>
+</section>
+<section id="chess-rankings">
+<h2>Chess Rankings<a class="headerlink" href="#chess-rankings" title="Permalink to this headline">#</a></h2>
+<p>I <a class="reference external" href="https://www.chess.com/leaderboard/live">collected data from Chess.com</a>, which is a popular internet chess server that hosts individual games and tournaments for players from all over the world.
+Their leader board shows the distribution of Elo ratings for almost six million players who have used their service.
+The following figure shows the distribution of these scores on a log scale, along with a lognormal model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/chess_elo_ratings.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chess</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;chess_elo_ratings.csv&quot;</span><span class="p">)</span>
+<span class="n">chess</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ELO</th>
+      <th># PLAYERS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>100</td>
+      <td>106342</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>200</td>
+      <td>219973</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>300</td>
+      <td>356353</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>400</td>
+      <td>487607</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>500</td>
+      <td>570153</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chess</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ELO</th>
+      <th># PLAYERS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>27</th>
+      <td>2800</td>
+      <td>523</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2900</td>
+      <td>241</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>3000</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>3100</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>3200</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_model_to_cdf</span><span class="p">(</span><span class="n">cdf</span><span class="p">,</span> <span class="n">x0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Find the model that minimizes the errors in percentiles.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">)</span>
+        <span class="n">qs</span> <span class="o">=</span> <span class="n">cdf</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
+        <span class="c1"># print(qs)</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+        <span class="c1"># print(cdf(qs))</span>
+        <span class="c1"># print(norm.cdf(qs, mu, sigma))</span>
+        <span class="k">return</span> <span class="n">error</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e3</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">res</span><span class="o">.</span><span class="n">success</span>
+    <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_normal_model</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot the error bounds based on a Gaussian model.</span>
+<span class="sd">    </span>
+<span class="sd">    dist: norm object</span>
+<span class="sd">    n: sample size</span>
+<span class="sd">    low, high: range of quantities to plot over</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">low</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+
+<span class="n">pmf_chess</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">chess</span><span class="p">[</span><span class="s2">&quot;# PLAYERS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">chess</span><span class="p">[</span><span class="s2">&quot;ELO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">pmf_chess</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
+<span class="n">N</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5987898
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_chess</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">pmf_chess</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(814.9840227739351, array(800.))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_chess</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100     98.224051
+200     94.550425
+300     88.599205
+400     80.455996
+500     70.934241
+600     60.640078
+700     50.479467
+800     40.905774
+900     32.580314
+1000    25.410620
+1100    19.575601
+1200    14.800302
+1300    11.037880
+1400     8.119510
+1500     5.890381
+1600     4.208121
+1700     2.955578
+1800     2.031965
+1900     1.373220
+2000     0.880860
+2100     0.554017
+2200     0.338733
+2300     0.201690
+2400     0.117170
+2500     0.063511
+2600     0.032900
+2700     0.014513
+2800     0.005778
+2900     0.001754
+3000     0.000317
+3100     0.000050
+3200     0.000000
+Name: , dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_log_chess</span> <span class="o">=</span> <span class="n">pmf_chess</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">)</span>
+<span class="n">cdf_log_chess</span> <span class="o">=</span> <span class="n">pmf_log_chess</span><span class="o">.</span><span class="n">make_cdf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="n">pmf_log_chess</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">pmf_log_chess</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">x0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.8464761577835587, 0.25442825374680383)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_model_to_cdf</span><span class="p">(</span><span class="n">cdf_log_chess</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.84647616 0.25442825]
+[2.8464762  0.25442825]
+[2.84647616 0.25442827]
+[2.83678398 0.24883847]
+[2.83678403 0.24883847]
+[2.83678398 0.24883848]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_chess</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="n">Cdf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">pmf</span><span class="o">.</span><span class="n">make_cdf</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+
+    <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Elo rating&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">)</span>
+
+
+<span class="n">plot_chess</span><span class="p">(</span><span class="n">pmf_log_chess</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of chess scores&quot;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">]</span>
+<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_113_0.png" src="_images/lognormal_113_0.png" />
+</div>
+</div>
+<p>The lognormal model does not fit the data particularly well.
+But that might be misleading, because unlike running speeds, Elo scores have no natural zero point.
+The conventional zero point was chosen arbitrarily, which means we can shift it up or down without changing what the scores mean relative to each other.</p>
+<p>With that in mind, suppose we shift the entire scale so that the lowest point is 550 rather than 100.
+The following figure shows the distribution of these shifted scores on a log scale, along with a lognormal model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_chess2</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">pmf_chess</span><span class="o">.</span><span class="n">ps</span><span class="p">,</span> <span class="n">pmf_chess</span><span class="o">.</span><span class="n">qs</span> <span class="o">+</span> <span class="mi">450</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_log_chess2</span> <span class="o">=</span> <span class="n">pmf_chess2</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">)</span>
+<span class="n">cdf_log_chess2</span> <span class="o">=</span> <span class="n">pmf_log_chess2</span><span class="o">.</span><span class="n">make_cdf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="n">pmf_log_chess2</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">pmf_log_chess2</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">x0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.0789722328987064, 0.1422676157538474)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_model_to_cdf</span><span class="p">(</span><span class="n">cdf_log_chess2</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.07897223 0.14226762]
+[3.07897228 0.14226762]
+[3.07897223 0.14226763]
+[3.06208626 0.15169365]
+[3.06208631 0.15169365]
+[3.06208626 0.15169366]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_chess</span><span class="p">(</span><span class="n">pmf_log_chess2</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of shifted chess scores&quot;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">]</span>
+<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_119_0.png" src="_images/lognormal_119_0.png" />
+</div>
+</div>
+<p>With this adjustment, the lognormal model fits the data well.</p>
+</section>
+<section id="the-greatest-of-all-time">
+<h2>The Greatest of All Time<a class="headerlink" href="#the-greatest-of-all-time" title="Permalink to this headline">#</a></h2>
+<p>And more often than not, these top performers are not just a little better than the rest, they are a <em>lot</em> better.
+To demonstrate this point, I generated a random sample of 100,000 people from a lognormal distribution loosely based on chess ratings.
+Then I generated a sample from a Gaussian distribution with the same mean and variance.
+The following figure shows the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">top_three</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the expected values of the top 3 in a given distribution.</span>
+<span class="sd">    </span>
+<span class="sd">    n: sample size</span>
+<span class="sd">    dist: SciPy stats distribution object</span>
+<span class="sd">    </span>
+<span class="sd">    returns: array of three quantities</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span>
+<span class="n">rvs</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">0.295</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">lognormal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">rvs</span><span class="p">)</span> <span class="o">+</span> <span class="mi">500</span>
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">lognormal</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">lognormal</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(658.7170292835305, 122.27837304897953)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lognormal</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">lognormal_top3</span> <span class="o">=</span> <span class="n">lognormal</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">lognormal_top3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2913, 3066, 3155])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normal</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">normal</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">normal</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(658.2820476691168, 122.91277471624949)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normal</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">normal_top3</span> <span class="o">=</span> <span class="n">normal</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">normal_top3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1123, 1146, 1161])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_lognormal</span> <span class="o">=</span> <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">lognormal</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">cdf_normal</span> <span class="o">=</span> <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">normal</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_lognormal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lognormal&quot;</span><span class="p">)</span>
+<span class="n">cdf_normal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gaussian&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lognormal</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">100.3</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">normal</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">100.3</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Skill level&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of random scores from Gaussian and lognormal models&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/lognormal_128_0.png" src="_images/lognormal_128_0.png" />
+</div>
+</div>
+<p>The crosses indicate the top three scorers in each sample.
+In the Gaussian distribution, the top three scores are 1123, 1146, and 1161.
+They are barely distinguishable in the figure, and and if we think of them as Elo scores, there is not much difference between them. According to the Elo formula, we expect the top player to beat the #3 player about 55% of the time.</p>
+<p>In the lognormal distribution, the top three scores are 2913, 3066, and 3155.
+They are clearly distinct in the figure and substantially different in practice.
+In this example, we expect the top player to beat #3 about 80% of the time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">normal_top3</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">normal_top3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">diff</span><span class="p">,</span> <span class="n">elo_prob</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(38, 0.5544693740216761)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">lognormal_top3</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">lognormal_top3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">diff</span><span class="p">,</span> <span class="n">elo_prob</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242, 0.8010809398289456)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In reality, the top-rated chess players in the world are more tightly clustered than my simulated players.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elo_prob</span><span class="p">(</span><span class="mi">2864</span> <span class="o">-</span> <span class="mi">2799</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5924662305843318
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The ANSUR-II dataset is available from the Open Design Lab at Penn State \cite{ansur2012}.</p></li>
+<li><p>Data from the Behavioral Risk Factor Surveillance System (BRFSS) data is available from the Centers for Disease Control and Prevention (CDC) \cite{brfss2020}.</p></li>
+<li><p>The running speed data is originally from Cool Running, now available from the Internet Archive \cite{cool2010}.</p></li>
+<li><p>The chess data is from the <a class="reference external" href="http://Chess.com">Chess.com</a> leaderboard \cite{chess2022}.</p></li>
+</ul>
+<p>Probably Overthinking It</p>
+<p>Copyright 2022 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="preston.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Defy Tradition, Save the World</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="overton_irt.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Measuring the Overton Window</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
