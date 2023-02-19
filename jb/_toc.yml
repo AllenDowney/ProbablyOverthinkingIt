@@ -3,4 +3,7 @@ root: intro
 chapters:
 - file: gaussian
 - file: inspection
+- file: preston
+- file: lognormal
+- file: nbue
 - file: overton_irt.ipynb
