@@ -11,7 +11,6 @@ from scipy.optimize import least_squares
 from scipy.stats import gaussian_kde
 from scipy.stats import binom
 from scipy.stats import t as t_dist
-from scipy.stats import binom
 from scipy.stats import norm
 
 import statsmodels.formula.api as smf
@@ -30,8 +29,8 @@ def values(series):
     returns: Pandas DataFrame
     """
     series = series.value_counts(dropna=False).sort_index()
-    series.index.name = 'values'
-    series.name = 'counts'
+    series.index.name = "values"
+    series.name = "counts"
     return pd.DataFrame(series)
 
 
@@ -42,8 +41,8 @@ def write_table(table, label, **options):
     label: string
     options: passed to DataFrame.to_latex
     """
-    filename = f'tables/{label}.tex'
-    fp = open(filename, 'w')
+    filename = f"tables/{label}.tex"
+    fp = open(filename, "w")
     s = table.to_latex(**options)
     fp.write(s)
     fp.close()
@@ -56,8 +55,8 @@ def write_pmf(pmf, label):
     label: string
     """
     df = pd.DataFrame()
-    df['qs'] = pmf.index
-    df['ps'] = pmf.values
+    df["qs"] = pmf.index
+    df["ps"] = pmf.values
     write_table(df, label, index=False)
 
 
@@ -84,8 +83,8 @@ def decorate(**options):
     The keyword arguments can be any of the axis properties
     https://matplotlib.org/api/axes_api.html
     """
-    legend = options.pop('legend', True)
-    loc = options.pop('loc', 'best')
+    legend = options.pop("legend", True)
+    loc = options.pop("loc", "best")
     ax = plt.gca()
     ax.set(**options)
 
@@ -102,9 +101,9 @@ def anchor_legend(x, y):
     x: x coordinate
     y: y coordinate
     """
-    plt.legend(bbox_to_anchor=(x, y), loc='upper left', ncol=1)
+    plt.legend(bbox_to_anchor=(x, y), loc="upper left", ncol=1)
     plt.tight_layout()
-    
+
 
 def savefig(root, **options):
     """Save the current figure.
@@ -112,24 +111,25 @@ def savefig(root, **options):
     root: string filename root
     options: passed to plt.savefig
     """
-    format = options.pop('format', None)
+    format = options.pop("format", None)
     if format:
         formats = [format]
     else:
-        formats = ['pdf', 'png']
+        formats = ["pdf", "png"]
 
     for format in formats:
-        fname = f'figs/{root}.{format}'
+        fname = f"figs/{root}.{format}"
         plt.savefig(fname, **options)
 
 
 # GAUSSIAN
 
+
 def make_cdf(seq):
     """Make a CDF from a sequence.
-    
+
     Scale to show percentages rather than probabilities.
-    
+
     Returns: Cdf
     """
     cdf = Cdf.from_seq(seq)
@@ -139,10 +139,10 @@ def make_cdf(seq):
 
 def make_normal_pmf(qs, mu, sigma):
     """Make a PMF for a normal distribution.
-    
+
     qs: quantities
     mu, sigma: parameters
-    
+
     returns Pmf
     """
     ps = norm.pdf(qs, mu, sigma)
@@ -153,15 +153,16 @@ def make_normal_pmf(qs, mu, sigma):
 
 def make_normal_model(pmf):
     """Make a normal model from a PMF.
-    
+
     pmf: Pmf
-    
+
     returns: Pmf
     """
     pmf = pmf / pmf.sum()
     mu, sigma = pmf.mean(), pmf.std()
     qs = np.linspace(0, pmf.qs.max(), 200)
     return make_normal_pmf(qs, mu, sigma)
+
 
 def error_func_gauss(params, series):
     """Error function used to fit a Gaussian model.
@@ -193,11 +194,12 @@ def fit_gaussian(series):
 
 def fit_normal(series):
     """Find the model that minimizes the errors in percentiles.
-    
+
     series: Series of quantities
 
     returns: scipy.stats.norm object
     """
+
     def error_func(params, series):
         mu, sigma = params
         cdf = Cdf.from_seq(series)
@@ -240,7 +242,7 @@ def gaussian_model(series, iters=201):
 
 def gaussian_plot(series, plot_model=True, **options):
     """Plot a Gaussian model with error bounds.
-    
+
     series: Series of values
     plot_model: boolean, whether to plot the error bounds
     options: passed to Cdf.plot
@@ -299,6 +301,7 @@ def make_uniform(qs, name=None, **options):
 
 # INSPECTION
 
+
 def kdeplot(sample, xs, label=None, **options):
     """Use KDE to plot the density function.
 
@@ -310,8 +313,6 @@ def kdeplot(sample, xs, label=None, **options):
     plt.plot(xs, density, label=label, **options)
     plt.yticks([])
     decorate(ylabel="Likelihood")
-
-
 
 
 def make_lowess(series, frac=0.5):
@@ -336,7 +337,7 @@ def plot_series_lowess(series, plot_series=False, frac=0.7, **options):
     series: pd.Series
     color: string or tuple
     """
-    color = options.pop('color', 'C0')
+    color = options.pop("color", "C0")
     if "label" not in options:
         options["label"] = series.name
 
@@ -355,10 +356,10 @@ def plot_series_lowess(series, plot_series=False, frac=0.7, **options):
 
 def percentile_rows(series_seq, ps):
     """Computes percentiles from aligned series.
-    
+
     series_seq: list of sequences
     ps: cumulative probabilities
-    
+
     returns: Series of x-values, NumPy array with selected rows
     """
     df = pd.concat(series_seq, axis=1).dropna()
@@ -375,7 +376,7 @@ def percentile_rows(series_seq, ps):
 
 def plot_percentiles(series_seq, ps=None, label=None, **options):
     """Plot the low, median, and high percentiles.
-    
+
     series_seq: sequence of Series
     ps: percentiles to use for low, medium and high
     label: string label for the median line
@@ -383,20 +384,22 @@ def plot_percentiles(series_seq, ps=None, label=None, **options):
     """
     ps = ps if ps is not None else [0.05, 0.5, 0.95]
     assert len(ps) == 3
-    
+
     xs, rows = percentile_rows(series_seq, ps)
     low, med, high = rows
     plt.plot(xs, med, alpha=0.5, label=label, **options)
     plt.fill_between(xs, low, high, linewidth=0, alpha=0.2, **options)
 
+
 # NBUE
+
 
 def remaining_lifetimes_pmf(pmf, qs=None):
     """Compute remaining lifetimes from a PMF.
-    
+
     pmf: Pmf
     qs: quantities
-    
+
     returns: Series that maps from ages to average remaining lifetimes
     """
     qs = np.linspace(0, pmf.qs.max(), 200) if qs is None else qs
@@ -414,7 +417,7 @@ def plot_remaining_lifetimes(
     pmf_model, surv_km, surv_low, surv_high, label="", data_label="", qs=None
 ):
     """Plot remaining lifetimes with confidence intervals.
-    
+
     pmf_model: Pmf
     surv_km: Surv object
     surv_low, surv_high: lower and upper bounds of CI
@@ -501,12 +504,12 @@ def empirical_error_bounds(surv, n, qs, con_level=0.95):
 
 def normal_error_bounds(dist, n, qs, con_level=0.95):
     """Find the bounds on a normal CDF analytically.
-    
+
     dist: scipy.stats.norm object
     n: sample size
     qs: quantities
     alpha: fraction excluded from the CI
-    
+
     returns: tuple of arrays (low, high)
     """
     # find the correct probabilities
@@ -584,7 +587,7 @@ def minimize_df(df0, surv, bounds=[(1, 1e6)], ps=None):
         surv_model = truncated_t_sf(qs_model, df, mu, sigma)
 
         errors = np.log10(surv(qs)) - np.log10(surv_model(qs))
-        return np.sum(errors**2)
+        return np.sum(errors ** 2)
 
     params = (df0,)
     res = minimize(error_func_tail, x0=params, bounds=bounds, tol=1e-3, method="Powell")
@@ -594,12 +597,13 @@ def minimize_df(df0, surv, bounds=[(1, 1e6)], ps=None):
 
 # SIMPSON
 
-def get_regression_result(results, varname='x'):
+
+def get_regression_result(results, varname="x"):
     """Get regression results for a given variable.
-    
+
     result: regression result object
     varname: string
-    
+
     returns: list of param, pvalue, stderr, conf_int
     """
     param = results.params[varname]
@@ -611,10 +615,10 @@ def get_regression_result(results, varname='x'):
 
 def valid_group(group, yvarname, min_values=100, min_nonplurality=20):
     """Check if a group meets the criteria for running regression.
-    
+
     group: DataFrame
     yvarname: string
-    
+
     returns: boolean
     """
     # make sure we have enough values
@@ -659,7 +663,7 @@ def prepare_yvar(df, yvarname, yvalue=None):
     d[yvalue] = 1
     df["y"] = yvar.replace(d)
 
-    
+
 def chunk_series(df, xvarname, size=300):
     """Break a population into chunks and compute a mean for each chunk.
 
@@ -681,16 +685,15 @@ def chunk_series(df, xvarname, size=300):
 
 
 def run_subgroups(gss, xvarname, yvarname, gvarname, yvalue=None):
-    """
-    """
+    """ """
     if xvarname == yvarname:
         return False, False, False, 0
 
-    is_continuous = (yvarname == 'log_realinc') or (yvalue == 'continuous')
+    is_continuous = (yvarname == "log_realinc") or (yvalue == "continuous")
 
     # prepare the y variable
     if is_continuous:
-        gss['y'] = gss[yvarname]
+        gss["y"] = gss[yvarname]
         ylabel = yvarname
     else:
         # if discrete, code so `yvalue` is 1;
@@ -705,22 +708,22 @@ def run_subgroups(gss, xvarname, yvarname, gvarname, yvalue=None):
         d = counts.copy()
         d[:] = 0
         d[yvalue] = 1
-        gss['y'] = yvar.replace(d)
-        ylabel = yvarname + '=' + str(yvalue)
+        gss["y"] = yvar.replace(d)
+        ylabel = yvarname + "=" + str(yvalue)
 
-    gss['x'] = gss[xvarname]
+    gss["x"] = gss[xvarname]
 
     # run the overall model
-    formula = 'y ~ x'
+    formula = "y ~ x"
     if is_continuous:
         results = smf.ols(formula, data=gss).fit(disp=False)
     else:
         results = smf.logit(formula, data=gss).fit(disp=False)
 
     # start the DataFrame
-    columns = ['param', 'pvalue', 'stderr', 'conf_inf']
+    columns = ["param", "pvalue", "stderr", "conf_inf"]
     result_df = pd.DataFrame(columns=columns, dtype=object)
-    result_df.loc['all'] = get_regression_result(results)
+    result_df.loc["all"] = get_regression_result(results)
 
     # run the subgroups
     grouped = gss.groupby(gvarname)
@@ -736,6 +739,7 @@ def run_subgroups(gss, xvarname, yvarname, gvarname, yvalue=None):
 
     result_df.ylabel = ylabel
     return result_df
+
 
 xvarname_binned = {
     "log_realinc": "log_realinc10",
@@ -877,8 +881,7 @@ def decorate_table(**options):
 
 
 def compress_table(table):
-    """Make the header just one line.
-    """
+    """Make the header just one line."""
     table.columns.name = table.index.name
     table.index.name = None
     return table
@@ -929,16 +932,33 @@ Re80 = (0.988, 0.646, 0.532, 0.7)
 
 from cycler import cycler
 
-color_list = [Bl30, Or70, Gr50, Re60, Pu20, Gray70, Re80, Gray50,
-              Gr70, Bl50, Re40, Pu70, Or50, Gr30, Bl70, Pu50, Gray30]
+color_list = [
+    Bl30,
+    Or70,
+    Gr50,
+    Re60,
+    Pu20,
+    Gray70,
+    Re80,
+    Gray50,
+    Gr70,
+    Bl50,
+    Re40,
+    Pu70,
+    Or50,
+    Gr30,
+    Bl70,
+    Pu50,
+    Gray30,
+]
 color_cycle = cycler(color=color_list)
 
 
 def convert_color_list():
     for r, g, b, a in color_list:
         r, g, b = (np.array([r, g, b]) * 255).astype(int)
-        s = '%02x%02x%02x' % (r, g, b)
-        print(f"'{s}', ", end='')
+        s = "%02x%02x%02x" % (r, g, b)
+        print(f"'{s}', ", end="")
 
 
 def set_pyplot_params():
@@ -950,5 +970,5 @@ def set_pyplot_params():
 
     plt.style.use("matplotlibrc")
     plt.rcParams["font.sans-serif"] = ["Roboto"]
-    plt.rcParams['axes.prop_cycle'] = color_cycle
-    plt.rcParams['lines.linewidth'] = 1.5
+    plt.rcParams["axes.prop_cycle"] = color_cycle
+    plt.rcParams["lines.linewidth"] = 1.5
