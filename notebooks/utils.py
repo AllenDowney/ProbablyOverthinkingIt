@@ -137,6 +137,32 @@ def make_cdf(seq):
     return cdf
 
 
+def make_normal_pmf(qs, mu, sigma):
+    """Make a PMF for a normal distribution.
+    
+    qs: quantities
+    mu, sigma: parameters
+    
+    returns Pmf
+    """
+    ps = norm.pdf(qs, mu, sigma)
+    pmf_normal = Pmf(ps, qs)
+    pmf_normal.normalize()
+    return pmf_normal
+
+
+def make_normal_model(pmf):
+    """Make a normal model from a PMF.
+    
+    pmf: Pmf
+    
+    returns: Pmf
+    """
+    pmf = pmf / pmf.sum()
+    mu, sigma = pmf.mean(), pmf.std()
+    qs = np.linspace(0, pmf.qs.max(), 200)
+    return make_normal_pmf(qs, mu, sigma)
+
 def error_func_gauss(params, series):
     """Error function used to fit a Gaussian model.
 
@@ -146,6 +172,7 @@ def error_func_gauss(params, series):
     returns: differences between CDF of values and Gaussian model
     """
     mu, sigma = params
+    # TODO: check why we're only checking three points
     qs = series.quantile([0.1, 0.50, 0.9])
     cdf = Cdf.from_seq(series)
     error = cdf(qs) - norm.cdf(qs, mu, sigma)
@@ -162,6 +189,28 @@ def fit_gaussian(series):
     params = series.mean(), series.std()
     res = least_squares(error_func_gauss, x0=params, args=(series,))
     return res.x
+
+
+def fit_normal(series):
+    """Find the model that minimizes the errors in percentiles.
+    
+    series: Series of quantities
+
+    returns: scipy.stats.norm object
+    """
+    def error_func(params, series):
+        mu, sigma = params
+        cdf = Cdf.from_seq(series)
+        ps = np.linspace(0.01, 0.99)
+        qs = series.quantile(ps)
+        error = cdf(qs) - norm.cdf(qs, mu, sigma)
+        return error
+
+    params = series.mean(), series.std()
+    res = least_squares(error_func, x0=params, args=(series,), ftol=1e3)
+    assert res.success
+    mu, sigma = res.x
+    return norm(mu, sigma)
 
 
 def gaussian_model(series, iters=201):
@@ -324,6 +373,71 @@ def percentile_rows(series_seq, ps):
     return xs, rows
 
 
+def plot_percentiles(series_seq, ps=None, label=None, **options):
+    """Plot the low, median, and high percentiles.
+    
+    series_seq: sequence of Series
+    ps: percentiles to use for low, medium and high
+    label: string label for the median line
+    options: options passed plt.plot and plt.fill_between
+    """
+    ps = ps if ps is not None else [0.05, 0.5, 0.95]
+    assert len(ps) == 3
+    
+    xs, rows = percentile_rows(series_seq, ps)
+    low, med, high = rows
+    plt.plot(xs, med, alpha=0.5, label=label, **options)
+    plt.fill_between(xs, low, high, linewidth=0, alpha=0.2, **options)
+
+# NBUE
+
+def remaining_lifetimes_pmf(pmf, qs=None):
+    """Compute remaining lifetimes from a PMF.
+    
+    pmf: Pmf
+    qs: quantities
+    
+    returns: Series that maps from ages to average remaining lifetimes
+    """
+    qs = np.linspace(0, pmf.qs.max(), 200) if qs is None else qs
+
+    series = pd.Series(index=qs, dtype=float)
+    for q in qs:
+        conditional = Pmf(pmf[pmf.qs >= q])
+        conditional.normalize()
+        series[q] = conditional.mean() - q
+
+    return series
+
+
+def plot_remaining_lifetimes(
+    pmf_model, surv_km, surv_low, surv_high, label="", data_label="", qs=None
+):
+    """Plot remaining lifetimes with confidence intervals.
+    
+    pmf_model: Pmf
+    surv_km: Surv object
+    surv_low, surv_high: lower and upper bounds of CI
+    label: string label for the model
+    data_label: string label for the data
+    """
+    if pmf_model is not None:
+        series = remaining_lifetimes_pmf(pmf_model, qs)
+        series.plot(color="C4", ls=":", label=label)
+
+    series = remaining_lifetimes_pmf(surv_km.make_pmf(), qs)
+    series.plot(ls="--", color="C1", label=data_label)
+
+    series_low = remaining_lifetimes_pmf(surv_low.make_pmf(), qs)
+    series_high = remaining_lifetimes_pmf(surv_high.make_pmf(), qs)
+    plt.fill_between(series.index, series_low, series_high, color="C1", alpha=0.1)
+
+    decorate(xlabel="Current survival time", ylabel="Average remaining survival time")
+
+
+# LONGTAIL
+
+
 def make_surv(seq):
     """Make a non-standard survival function, P(X>=x)"""
     pmf = Pmf.from_seq(seq)
@@ -369,20 +483,44 @@ def fit_truncated_normal(surv):
     return res.x
 
 
-def empirical_error_bounds(surv, n, qs, alpha=0.95):
+def empirical_error_bounds(surv, n, qs, con_level=0.95):
     """Find the bounds on a normal CDF analytically."""
     # find the correct probabilities
     ps = surv.make_cdf()(qs)
 
     # find the upper and lower percentiles of
     # a binomial distribution
-    p_low = (1 - alpha) / 2
+    p_low = (1 - con_level) / 2
     p_high = 1 - p_low
 
     low = binom.ppf(p_low, n, ps) / n
     low[ps == 1] = 1
     high = binom.ppf(p_high, n, ps) / n
     return 1 - low, 1 - high
+
+
+def normal_error_bounds(dist, n, qs, con_level=0.95):
+    """Find the bounds on a normal CDF analytically.
+    
+    dist: scipy.stats.norm object
+    n: sample size
+    qs: quantities
+    alpha: fraction excluded from the CI
+    
+    returns: tuple of arrays (low, high)
+    """
+    # find the correct probabilities
+    ps = dist.cdf(qs)
+
+    # find the upper and lower percentiles of
+    # a binomial distribution
+    p_low = (1 - con_level) / 2
+    p_high = 1 - p_low
+
+    low = binom.ppf(p_low, n, ps) / n
+    low[ps == 1] = 1
+    high = binom.ppf(p_high, n, ps) / n
+    return low, high
 
 
 def plot_error_bounds(surv, n, **options):
