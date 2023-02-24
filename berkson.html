@@ -1,0 +1,1726 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Jumping to Conclusions &#8212; Probably Overthinking It</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Measuring the Overton Window" href="overton_irt.html" />
+    <link rel="prev" title="Better Than New" href="nbue.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Probably Overthinking It</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="gaussian.html">
+   Are You Normal? Hint: No.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inspection.html">
+   Relay Races and Revolving Doors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="preston.html">
+   Defy Tradition, Save the World
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lognormal.html">
+   Extremes, Outliers, and GOATs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nbue.html">
+   Better Than New
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Jumping to Conclusions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="overton_irt.html">
+   Measuring the Overton Window
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/AllenDowney/ProbablyOverthinkingIt/master?urlpath=tree/berkson.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/berkson.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#math-and-verbal-skills">
+   Math and Verbal Skills
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elite-university">
+   Elite University
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#less-elite-more-correlated">
+   Less Elite, More Correlated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#secondtier-college">
+   Secondtier College
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#berkson-s-paradox-in-hospital-data">
+   Berkson’s Paradox in Hospital Data
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Jumping to Conclusions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#math-and-verbal-skills">
+   Math and Verbal Skills
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elite-university">
+   Elite University
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#less-elite-more-correlated">
+   Less Elite, More Correlated
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#secondtier-college">
+   Secondtier College
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#berkson-s-paradox-in-hospital-data">
+   Berkson’s Paradox in Hospital Data
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="jumping-to-conclusions">
+<h1>Jumping to Conclusions<a class="headerlink" href="#jumping-to-conclusions" title="Permalink to this headline">#</a></h1>
+<p>This is one of the Jupyter notebooks I used in my preparation of <em>Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions</em>.</p>
+<p>The book is scheduled to be published by University of Chicago Press in 2023.
+If you would like to get infrequent email announcements about the book, please
+<a class="reference external" href="http://eepurl.com/h0nfbX">sign up for my mailing list</a>.</p>
+<p>Before you read these notebooks, please keep in mind:</p>
+<ul class="simple">
+<li><p>There is some explanatory text in the notebooks, but some of the examples will not make sense until you have read the corresponding chapter in the book.</p></li>
+<li><p>While preparing these notebooks, I made some changes to improve the readability of the code. There might be small differences between what appears in the book and what you get when you run the code.</p></li>
+</ul>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/berkson.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install empiricaldist
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+        
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+
+<span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In 1986, Michael Anthony Jerome “Spud” Webb was the shortest player in the National Basketball Association (NBA);
+he was 5 feet 6 inches (168 cm).
+Nevertheless, that year he won the NBA Slam Dunk Contest after successfully executing the elevator two-handed double pump dunk and the reverse two-handed strawberry jam.</p>
+<p>This performance was possible because Webb’s vertical leap was at least 42 inches (107 cm), bringing the top of his head to 9 feet (275 cm) and his outstretched hand well above the basketball rim at 10 feet (305 cm).</p>
+<p>During the same year, I played intercollegiate volleyball at the Massachusetts Institute of Technology (MIT).
+Although the other players and I were less elite athletes than Spud Webb, I noticed a similar relationship between height and vertical leap.
+Consistently, the shorter players on the team jumped higher than the taller players.</p>
+<p>At the time, I wondered if there might be a biokinetic reason for the relationship: maybe shorter legs provide some kind of mechanical advantage.
+It turns out that there is no such reason; according to a 2003 paper on physical characteristics that predict jumping ability, there is “no significant relationship” between body height and vertical leap.</p>
+<p>By now, you have probably figured out the error in my thinking.
+In order to play competitive volleyball, it helps to be tall.
+If you are not tall, it helps if you can jump.
+If you are not tall and can’t jump, you probably don’t play competitive volleyball, you don’t play in the NBA, and you definitely don’t win a slam dunk contest.</p>
+<p>In the general population, there is no correlation between height and jumping ability, but intercollegiate athletes are not a representative sample of the population, and elite athletes even less so.
+They have been selected based on their height and jumping ability, and the selection process creates the relationship between these traits.</p>
+<p>This phenomenon is called Berkson’s paradox after a researcher who wrote about it in 1946.
+I’ll present his findings later, but first let’s look at another example from college.</p>
+<section id="math-and-verbal-skills">
+<h2>Math and Verbal Skills<a class="headerlink" href="#math-and-verbal-skills" title="Permalink to this headline">#</a></h2>
+<p>Among students at a given college or university, do you think math and verbal skills are correlated, anti-correlated, or uncorrelated?
+In other words, if someone is above average at one of these skills, would you expect them to be above average on the other, or below average, or do you think they are unrelated?</p>
+<p>To answer this question, I will use data from the National Longitudinal Survey of Youth 1997 (NLSY97), which “follows the lives of a sample of 8,984 American youth born between 1980-84”.
+The public data set includes the participants’ scores on several standardized tests, including the tests most often used in college admissions, the SAT and ACT.</p>
+<p>I used the <a class="reference external" href="https://www.nlsinfo.org/investigator/pages/login">NLS Investigator</a> to create excerpt that contains the variables I’ll use for this analysis. With their permission, I can redistribute this except. The following cell downloads the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/&quot;</span>
+
+<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s2">&quot;stand_test_corr.csv.gz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;stand_test_corr.csv.gz&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8984, 29)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>R0000100</th>
+      <th>R0536300</th>
+      <th>R0536401</th>
+      <th>R0536402</th>
+      <th>R1235800</th>
+      <th>R1482600</th>
+      <th>R5473600</th>
+      <th>R5473700</th>
+      <th>R7237300</th>
+      <th>R7237400</th>
+      <th>...</th>
+      <th>R9794001</th>
+      <th>R9829600</th>
+      <th>S1552600</th>
+      <th>S1552700</th>
+      <th>Z9033700</th>
+      <th>Z9033800</th>
+      <th>Z9033900</th>
+      <th>Z9034000</th>
+      <th>Z9034100</th>
+      <th>Z9034200</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>9</td>
+      <td>1981</td>
+      <td>1</td>
+      <td>4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>...</td>
+      <td>1998</td>
+      <td>45070</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>4</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>-4</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>1</td>
+      <td>7</td>
+      <td>1982</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>...</td>
+      <td>1998</td>
+      <td>58483</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>4</td>
+      <td>5</td>
+      <td>4</td>
+      <td>5</td>
+      <td>-4</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2</td>
+      <td>9</td>
+      <td>1983</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>...</td>
+      <td>-4</td>
+      <td>27978</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>-4</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1981</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>...</td>
+      <td>-4</td>
+      <td>37012</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>1</td>
+      <td>10</td>
+      <td>1982</td>
+      <td>1</td>
+      <td>2</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>...</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>-4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>6</td>
+      <td>3</td>
+      <td>-4</td>
+      <td>-4</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div></div></div>
+</div>
+<p>The <a class="reference external" href="https://www.nlsinfo.org/investigator/pages/search?s=NLSY97">columns are documented in the codebook</a>.  The following dictionary maps the current column names to more memorable names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;R9793200&quot;</span><span class="p">:</span> <span class="s2">&quot;psat_math&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;R9793300&quot;</span><span class="p">:</span> <span class="s2">&quot;psat_verbal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;R9793400&quot;</span><span class="p">:</span> <span class="s2">&quot;act_comp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;R9793500&quot;</span><span class="p">:</span> <span class="s2">&quot;act_eng&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;R9793600&quot;</span><span class="p">:</span> <span class="s2">&quot;act_math&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;R9793700&quot;</span><span class="p">:</span> <span class="s2">&quot;act_read&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;R9793800&quot;</span><span class="p">:</span> <span class="s2">&quot;sat_verbal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;R9793900&quot;</span><span class="p">:</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">,</span>
+    <span class="c1"># &#39;B0004600&#39;: &#39;college_gpa&#39;,</span>
+<span class="p">}</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For this analysis I’ll use only the SAT math and verbal scores. If you are curious, you could do something similar with ACT scores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">varnames</span><span class="p">:</span>
+    <span class="n">invalid</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">200</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">invalid</span><span class="p">,</span> <span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this cohort, about 1400 participants took the SAT.
+Their average scores were 502 on the verbal section and 503 on the math section, both close to the national average, which is calibrated to be 500.</p>
+<p>The standard deviation of their scores was 108 on the verbal section and 110 on the math section, both a little higher than the overall standard deviation, which is calibrated to be 100.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    1400.000000
+mean      501.678571
+std       108.343678
+min       200.000000
+25%       430.000000
+50%       500.000000
+75%       570.000000
+max       800.000000
+Name: sat_verbal, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    1399.000000
+mean      503.213009
+std       109.901382
+min       200.000000
+25%       430.000000
+50%       500.000000
+75%       580.000000
+max       800.000000
+Name: sat_math, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sat_verbal</th>
+      <th>sat_math</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>sat_verbal</th>
+      <td>1.000000</td>
+      <td>0.734739</td>
+    </tr>
+    <tr>
+      <th>sat_math</th>
+      <td>0.734739</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To show how the scores are related, here’s a scatter plot showing a data point for each participant, with verbal scores on the horizontal axis and math scores on the vertical.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;SAT Verbal&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;SAT Math&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAT scores, NLSY97&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/berkson_23_0.png" src="_images/berkson_23_0.png" />
+</div>
+</div>
+<p>People who do well on one section tend to do well on the other.
+The correlation between scores is 0.73, so someone who is one standard deviation above the mean on the verbal test is expected to be 0.73 standard deviations above the mean on the math test. For example, if you select people whose verbal score is near 600, which is 100 points above the mean, the average of their math scores is 570, about 70 points above the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">near600</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">550</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">650</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near600</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>572.4468085106383
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="elite-university">
+<h2>Elite University<a class="headerlink" href="#elite-university" title="Permalink to this headline">#</a></h2>
+<p>Consider an imaginary institution of higher learning called Elite University.
+To be admitted to E.U., let’s suppose, your total SAT score (sum of the verbal and math scores) has to be 1320 or higher.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sat_total</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">]</span>
+<span class="n">sat_total</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    1398.000000
+mean     1004.892704
+std       203.214916
+min       430.000000
+25%       860.000000
+50%      1000.000000
+75%      1140.000000
+max      1580.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">admitted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1320</span><span class="p">]</span>
+<span class="n">rejected</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1320</span><span class="p">]</span>
+<span class="n">admitted</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sat_verbal</th>
+      <th>sat_math</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>95.000000</td>
+      <td>95.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>699.894737</td>
+      <td>698.947368</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>53.703178</td>
+      <td>46.206606</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>550.000000</td>
+      <td>580.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>660.000000</td>
+      <td>660.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>700.000000</td>
+      <td>710.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>735.000000</td>
+      <td>730.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>800.000000</td>
+      <td>800.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we select participants from the NLSY who meet this requirement, their average score on both sections is about 700, the standard deviation is about 50, and the correlation of the two scores is -0.33.
+So if someone is one standard deviation above the E.U. mean on one test, we expect them to be one third of a standard deviation <em>below</em> the mean on the other, on average.
+For example, if you meet an E.U. student who got a 760 on the verbal section (60 points above the E.U. mean), you would expect them to get a 680 on the math section (20 points below the mean).</p>
+<p>In the population of test takers, the correlation between scores is positive.
+But in the population of E.U. students, the correlation is negative.
+The following figure shows how this happens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">admitted</span><span class="p">[[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sat_verbal</th>
+      <th>sat_math</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>sat_verbal</th>
+      <td>1.0000</td>
+      <td>-0.3353</td>
+    </tr>
+    <tr>
+      <th>sat_math</th>
+      <td>-0.3353</td>
+      <td>1.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">])</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;admitted&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">rejected</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">rejected</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;rejected&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span>
+<span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;SAT Verbal&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;SAT Math&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAT scores, Elite University&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/berkson_32_0.png" src="_images/berkson_32_0.png" />
+</div>
+</div>
+<p>The circles in the upper right show students who meet the requirement for admission to Elite University.
+The dashed line shows the average math score for students at each level of verbal score.
+If you meet someone at E.U. with a relatively low verbal score, you expect them to have a high math score. Why? Because otherwise, they would not be at Elite University.
+And conversely, if you meet someone with a relatively low math score, they must have a high verbal score.</p>
+</section>
+<section id="less-elite-more-correlated">
+<h2>Less Elite, More Correlated<a class="headerlink" href="#less-elite-more-correlated" title="Permalink to this headline">#</a></h2>
+<p>Of course, not all colleges require a total SAT score of 1320.
+Most are less selective, and some don’t consider standardized test scores at all.</p>
+<p>So let’s see what happens to the correlation between math and verbal scores as we vary admission requirements.
+As in the previous example, I’ll use a model of the selection process that will annoy anyone who works in college admission:</p>
+<ul class="simple">
+<li><p>Suppose that every college has a simple threshold for the total SAT score. Any applicant who exceeds that threshold will be offered admission.</p></li>
+<li><p>And suppose that the students who accept the offer are a random sample from the ones who are admitted.</p></li>
+</ul>
+<p>The following figure shows a range of thresholds on the horizontal axis, from a total score of 700 up to 1400.
+On the vertical axis, it shows the correlation between math and verbal scores among the students whose scores exceed the threshold, based on the NLSY data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">thresh</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">1450</span><span class="p">,</span> <span class="mi">50</span><span class="p">):</span>
+    <span class="n">admitted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="n">thresh</span><span class="p">]</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">admitted</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">admitted</span><span class="p">[[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+    <span class="n">corr_series</span><span class="p">[</span><span class="n">thresh</span><span class="p">]</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">corr_series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>700     0.685154
+750     0.661058
+800     0.620211
+850     0.576750
+900     0.519278
+950     0.452663
+1000    0.392761
+1050    0.301356
+1100    0.193192
+1150    0.087910
+1200   -0.019167
+1250   -0.102005
+1300   -0.245565
+1350   -0.323388
+1400   -0.413395
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0.7&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">corr_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="c1"># plt.plot(1320, -0.33, &#39;^&#39;, color=&#39;C0&#39;)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Minimum total SAT score&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Correlation of scores&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Correlation vs admission requirement&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/berkson_36_0.png" src="_images/berkson_36_0.png" />
+</div>
+</div>
+<p>At a college that requires a total score of 700, math and verbal scores are positively correlated.
+At a selective college where the threshold is around 1200, the correlation is close to 0.  And at an elite school where the threshold is over 1300, the correlation is negative.</p>
+</section>
+<section id="secondtier-college">
+<h2>Secondtier College<a class="headerlink" href="#secondtier-college" title="Permalink to this headline">#</a></h2>
+<p>Suppose at Secondtier College (it’s pronounced “se-con-tee-ay”), a student with a total score of 1200 or more is admitted, but a student with 1300 or more is likely to go somewhere else.</p>
+<p>Using data from the NLSY again, the following figure shows the verbal and math score for applicants in three groups: rejected, enrolled, and the ones who were accepted but went somewhere else.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rejected</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">]</span>
+<span class="n">rejected</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1138, 29)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elsewhere</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1300</span><span class="p">]</span>
+<span class="n">elsewhere</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(118, 29)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enrolled</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1200</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1300</span><span class="p">)]</span>
+<span class="n">enrolled</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(142, 29)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">])</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">730</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">xs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">rejected</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span>
+    <span class="n">rejected</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;rejected&quot;</span><span class="p">,</span>
+    <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span>
+    <span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;.&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;enrolled&quot;</span><span class="p">,</span>
+    <span class="n">ms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">elsewhere</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span>
+    <span class="n">elsewhere</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;elsewhere&quot;</span><span class="p">,</span>
+    <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;SAT Verbal&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;SAT Math&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAT scores, Secondtier College&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/berkson_43_0.png" src="_images/berkson_43_0.png" />
+</div>
+</div>
+<p>Among the students who enrolled, the correlation between math and verbal scores is strongly negative, about -0.84.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enrolled</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sat_verbal</th>
+      <th>sat_math</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>sat_verbal</th>
+      <td>1.000000</td>
+      <td>-0.843266</td>
+    </tr>
+    <tr>
+      <th>sat_math</th>
+      <td>-0.843266</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enrolled</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sat_verbal</th>
+      <th>sat_math</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>142.000000</td>
+      <td>142.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>608.661972</td>
+      <td>631.267606</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>42.846069</td>
+      <td>49.045632</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>500.000000</td>
+      <td>480.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>572.500000</td>
+      <td>600.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>600.000000</td>
+      <td>630.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>640.000000</td>
+      <td>670.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>720.000000</td>
+      <td>720.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">near650</span> <span class="o">=</span> <span class="p">(</span><span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">630</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">680</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near650</span><span class="p">,</span> <span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>651.25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near650</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>590.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>At Secondtier, if you meet a student who got 650 on the verbal section, about 50 points above the mean, you should expect them to get 590 on the verbal section, about 40 points below the mean.</p>
+<p>So we have the answer to the question I posed: depending on how colleges select students, math and verbal scores might be correlated, unrelated, or anti-correlated.</p>
+</section>
+<section id="berkson-s-paradox-in-hospital-data">
+<h2>Berkson’s Paradox in Hospital Data<a class="headerlink" href="#berkson-s-paradox-in-hospital-data" title="Permalink to this headline">#</a></h2>
+<p>Berkson’s paradox is named for Joseph Berkson, who led the Division of Biometry and Medical Statistics at the Mayo Clinic in Rochester, Minnesota.
+In 1946, he wrote a paper pointing out the danger of using patients in a clinic or hospital as a sample.</p>
+<p>As an example, he uses the relationship between cholecystic disease (inflammation of the gall bladder) and diabetes.
+At the time, these conditions were thought to be related so that, “in certain medical circles, the gall bladder was being removed as a treatment for diabetes.”
+His tone suggests what he thinks of these “medical circles”.</p>
+<p>Berkson showed that the apparent relationship between the two conditions might be the result of using hospital patients as a sample.
+To demonstrate the point, he generated a simulated population where 1% have diabetes, 3% have cholecystitis, and the conditions are unrelated; that is, having one condition does not, in fact, change the probability of having the other.</p>
+<p>Then he simulated what happens if we use hospital patients as a sample.
+He assumes that people with either condition are more likely to go to the hospital, and therefore more likely to appear in the hospital sample, compared to people with neither condition.</p>
+<p>In the hospital sample, he finds that there is a negative correlation between the conditions; that is, people with cholecystitis are less likely to have diabetes.</p>
+<p>I’ll demonstrate with a simplified version of Berkson’s experiment.
+Consider a population of one million people where 1% have diabetes, 3% have cholecystitis, and the conditions are unrelated.
+We’ll assume that someone with either condition has a 5% chance of appearing in the hospital sample, and someone with neither condition has a 1% chance.</p>
+<p>Here are the proportions as specified in the example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_d</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">p_c</span> <span class="o">=</span> <span class="mf">0.03</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To make the table, it is helpful to define the complementary proportions, too.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q_d</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_d</span>
+<span class="n">q_c</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now here are the fraction of people in each quadrant of the “four-fold table”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="n">p_c</span> <span class="o">*</span> <span class="n">p_d</span><span class="p">,</span> <span class="n">p_c</span> <span class="o">*</span> <span class="n">q_d</span><span class="p">],</span> <span class="p">[</span><span class="n">q_c</span> <span class="o">*</span> <span class="n">p_d</span><span class="p">,</span> <span class="n">q_c</span> <span class="o">*</span> <span class="n">q_d</span><span class="p">]],</span>
+        <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;No C&quot;</span><span class="p">],</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;No D&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="o">*</span> <span class="mi">1_000_000</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>No C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D</th>
+      <td>300.0</td>
+      <td>9700.0</td>
+    </tr>
+    <tr>
+      <th>No D</th>
+      <td>29700.0</td>
+      <td>960300.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D       0.03
+No D    0.03
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the probabilities that a patient appears in the hospital sample, given that they have one of the conditions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_d</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">s_c</span> <span class="o">=</span> <span class="mf">0.05</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D     C          300.0
+      No C      9700.0
+No D  C        29700.0
+      No C    960300.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>So here are the probabilities for each of the four quadrants.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s_d</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s_c</span><span class="p">),</span> <span class="n">s_c</span><span class="p">,</span> <span class="n">s_d</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
+<span class="n">f</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.09750000000000003, 0.05, 0.05, 0.01]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can compute the number of people from each quadrant we expect to see in the hospital sample.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">stack</span><span class="p">(),</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">))</span>
+<span class="n">enum</span><span class="p">[</span><span class="s2">&quot;expected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">]</span>
+<span class="n">enum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>number</th>
+      <th>f</th>
+      <th>expected</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">D</th>
+      <th>C</th>
+      <td>300.0</td>
+      <td>0.0975</td>
+      <td>29.25</td>
+    </tr>
+    <tr>
+      <th>No C</th>
+      <td>9700.0</td>
+      <td>0.0500</td>
+      <td>485.00</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">No D</th>
+      <th>C</th>
+      <td>29700.0</td>
+      <td>0.0500</td>
+      <td>1485.00</td>
+    </tr>
+    <tr>
+      <th>No C</th>
+      <td>960300.0</td>
+      <td>0.0100</td>
+      <td>9603.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital</span> <span class="o">=</span> <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;expected&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<span class="n">hospital</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>No C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D</th>
+      <td>29.25</td>
+      <td>485.0</td>
+    </tr>
+    <tr>
+      <th>No D</th>
+      <td>1485.00</td>
+      <td>9603.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we simulate this sampling process, we can compute the number of people in the hospital sample with and without cholecystitis, and with and without diabetes.
+The following table shows the results in the form of what Berkson calls a “fourfold table”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">hospital</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>No C</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>D</th>
+      <td>29</td>
+      <td>485</td>
+      <td>514</td>
+    </tr>
+    <tr>
+      <th>No D</th>
+      <td>1485</td>
+      <td>9603</td>
+      <td>11088</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The columns labeled “C” and “No C” represent hospital patients with and without cholecystitis; the rows labeled “D” and “No D” represent patients with and without diabetes.
+The results indicate that, from a population of one million people:</p>
+<ul class="simple">
+<li><p>We expect a total 514 people with diabetes (top row) to appear in a sample of hospital patients; of them, we expect 29 to also have cholecystitis, and</p></li>
+<li><p>We expect 11,088 people without diabetes (bottom row) to appear in the sample; of them, we expect 1485 to have cholecystitis.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">hospital</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D       0.056879
+No D    0.133929
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we compute the rate in each row, we find:</p>
+<ul class="simple">
+<li><p>In the group with diabetes, about 5.6% have cholecystitis, and</p></li>
+<li><p>In the group without diabetes, about 13% have cholecystitis.</p></li>
+</ul>
+<p>So in the sample, the correlation between the conditions is negative: if you have diabetes, you are substantially less likely to have cholecystitis.
+But we know that there is no such relationship in the simulated population, because we designed it that way. So why does this relationship appear in the hospital sample?</p>
+<p>Here are the pieces of the explanation:</p>
+<ul class="simple">
+<li><p>People with either condition are more likely to go to the hospital, compared to people with neither condition.</p></li>
+<li><p>If you find someone at the hospital who has cholecystitis, that’s likely to be the reason they are in the hospital.</p></li>
+<li><p>If they <em>don’t</em> have cholecystitis, they are probably there for another reason, so they are more likely to have diabetes.</p></li>
+</ul>
+<p>That’s the end of the computational part of this chapter; the other examples are narrative.</p>
+<p>Probably Overthinking It</p>
+<p>Copyright 2022 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="nbue.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Better Than New</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="overton_irt.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Measuring the Overton Window</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Allen B. Downey<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
