@@ -6,4 +6,5 @@ chapters:
 - file: preston
 - file: lognormal
 - file: nbue
+- file: berkson
 - file: overton_irt.ipynb
