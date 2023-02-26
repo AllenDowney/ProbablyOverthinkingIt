@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -139,6 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="berkson.html">
    Jumping to Conclusions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="birthweight.html">
+   Causation, Collision, and Confusion
   </a>
  </li>
  <li class="toctree-l1">
@@ -449,7 +454,7 @@ title="Print to PDF"
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip install empiricaldist
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
 </pre></div>
 </div>
 </div>
@@ -1087,7 +1092,7 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">least_sq
 
 
 <span class="k">def</span> <span class="nf">make_poisson</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">13</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make a Poisson distribution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a Poisson distribution.</span>
 <span class="sd">    </span>
 <span class="sd">    mu: mean</span>
 <span class="sd">    high: upper bound</span>
@@ -1105,7 +1110,7 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">least_sq
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_model</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">13</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add a Poisson tail to a row of data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a Poisson tail to a row of data.</span>
 <span class="sd">    </span>
 <span class="sd">    mu: mean of the Poisson model</span>
 <span class="sd">    row: row of actual data</span>
@@ -1129,7 +1134,7 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">least_sq
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Error function used to find the mean.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Error function used to find the mean.</span>
 <span class="sd">    </span>
 <span class="sd">    params: list of parameters, in this case just mu</span>
 <span class="sd">    row: the row of actual data</span>
@@ -1164,7 +1169,7 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">least_sq
 
 
 <span class="k">def</span> <span class="nf">fit_row</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">13</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Find the value of mu that best fits the data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the value of mu that best fits the data.</span>
 <span class="sd">    </span>
 <span class="sd">    row: row of actual data</span>
 <span class="sd">    high: upper bound</span>
@@ -1187,7 +1192,7 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">least_sq
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subset_mean</span><span class="p">(</span><span class="n">subset</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the mean of an incomplete Pmf.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the mean of an incomplete Pmf.</span>
 <span class="sd">    </span>
 <span class="sd">    subset: a conditional part of a Pmf</span>
 <span class="sd">    </span>
@@ -1203,7 +1208,7 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">least_sq
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_fit</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot the fitted model along with the original data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the fitted model along with the original data.</span>
 <span class="sd">    </span>
 <span class="sd">    row: actual data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1242,7 +1247,7 @@ The following figure shows the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bias_pmf</span><span class="p">(</span><span class="n">pmf</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the length-biased PMF.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the length-biased PMF.</span>
 <span class="sd">    </span>
 <span class="sd">    pmf: Pmf</span>
 <span class="sd">    </span>
@@ -1286,7 +1291,7 @@ The following figure shows the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_percent</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot a PMF as percentages.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a PMF as percentages.&quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">series</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1534,7 +1539,7 @@ The following figure shows these distributions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_model2</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">pmf</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add a Poisson tail to a given dataset.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a Poisson tail to a given dataset.</span>
 <span class="sd">    </span>
 <span class="sd">    mu: mean</span>
 <span class="sd">    scale: multiplier</span>
@@ -1587,7 +1592,7 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func2</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">pmf</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Error function for fitting a model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Error function for fitting a model.</span>
 <span class="sd">        </span>
 <span class="sd">    params: mu and scale</span>
 <span class="sd">    pmf: Pmf</span>
@@ -1622,7 +1627,7 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_pmf2</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Find a model that reproduces the published summary stats.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find a model that reproduces the published summary stats.</span>
 
 <span class="sd">    pmf: given data</span>
 <span class="sd">    stats: mean of X and C</span>
@@ -2077,7 +2082,7 @@ Eventually, nearly all women would have 13 children, which is the maximum in thi
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Simulate the same as mother or one less models.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate the same as mother or one less models.</span>
 <span class="sd">    </span>
 <span class="sd">    sample: sample of family sizes</span>
 <span class="sd">    p: probability of having one child less than, or the same as, one&#39;s mother</span>
@@ -2149,7 +2154,7 @@ We can simulate this behavior by computing the biased distribution, as in the pr
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shift_pmf</span><span class="p">(</span><span class="n">pmf</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Shift the values to the left by one.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Shift the values to the left by one.</span>
 <span class="sd">    </span>
 <span class="sd">    pmf: Pmf</span>
 <span class="sd">    </span>
@@ -2286,7 +2291,7 @@ So on average, they had 2.3 fewer children than their mothers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate3</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Simulate a scenario where people have 2-3 children less than their mother did.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate a scenario where people have 2-3 children less than their mother did.</span>
 <span class="sd">    </span>
 <span class="sd">    sample: sample of family sizes</span>
 <span class="sd">    p: probability of having three less than one&#39;s mother</span>
@@ -2486,7 +2491,7 @@ The following distribution shows the actual distribution in 2018, compared to th
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_pmf_from_model</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make a Pmf with the same index as the data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a Pmf with the same index as the data.</span>
 <span class="sd">    </span>
 <span class="sd">    model: Pmf with a complete tail</span>
 <span class="sd">    </span>
@@ -2504,7 +2509,7 @@ The following distribution shows the actual distribution in 2018, compared to th
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_pmf_from_row</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make a Pmf from a row of data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a Pmf from a row of data.</span>
 <span class="sd">    </span>
 <span class="sd">    row: Series</span>
 <span class="sd">    </span>
@@ -2558,7 +2563,7 @@ Across the population, what would the distribution of family size look like?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_pmf_from_poisson</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make a Poisson distribution and summarize it.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a Poisson distribution and summarize it.</span>
 <span class="sd">    </span>
 <span class="sd">    mu: mean of the distribution</span>
 <span class="sd">    </span>
@@ -2679,7 +2684,7 @@ When we apply the “one child fewer” policy, it shifts the distribution to th
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true

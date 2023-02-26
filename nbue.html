@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -139,6 +139,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="berkson.html">
    Jumping to Conclusions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="birthweight.html">
+   Causation, Collision, and Confusion
   </a>
  </li>
  <li class="toctree-l1">
@@ -428,7 +433,7 @@ If you would like to get infrequent email announcements about the book, please
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip install empiricaldist
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
 </pre></div>
 </div>
 </div>
@@ -485,7 +490,7 @@ If you would like to get infrequent email announcements about the book, please
 
 
 <span class="k">def</span> <span class="nf">make_plot</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">model_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot the data and a normal model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the data and a normal model.</span>
 <span class="sd">    </span>
 <span class="sd">    series: Series</span>
 <span class="sd">    model_label: string</span>
@@ -744,7 +749,7 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remaining_lifetimes_seq</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute average remaining lifetimes.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute average remaining lifetimes.</span>
 <span class="sd">    </span>
 <span class="sd">    seq: sequence of quantities</span>
 <span class="sd">    qs: ages to evaluate</span>
@@ -768,7 +773,7 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resample</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Resample a sequence of quantities.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Resample a sequence of quantities.</span>
 <span class="sd">    </span>
 <span class="sd">    xs: quantities</span>
 <span class="sd">    </span>
@@ -826,7 +831,7 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percentile_rows</span><span class="p">(</span><span class="n">series_seq</span><span class="p">,</span> <span class="n">ps</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Computes percentiles from aligned series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes percentiles from aligned series.</span>
 
 <span class="sd">    series_seq: list of sequences</span>
 <span class="sd">    ps: cumulative probabilities</span>
@@ -864,7 +869,7 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_percentiles</span><span class="p">(</span><span class="n">series_seq</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot the low, median, and high percentiles.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the low, median, and high percentiles.</span>
 <span class="sd">    </span>
 <span class="sd">    series_seq: sequence of Series</span>
 <span class="sd">    ps: percentiles to use for low, medium and high</span>
@@ -1438,7 +1443,7 @@ Name: duration, dtype: float64
 
 
 <span class="k">def</span> <span class="nf">km_fit</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">observed</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute a survival function by Kaplan-Meier estimation.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute a survival function by Kaplan-Meier estimation.</span>
 <span class="sd">    </span>
 <span class="sd">    duration: sequence of durations for complete and incomplete cases</span>
 <span class="sd">    observed: sequence booleans indicating whether each case is complete</span>
@@ -1510,7 +1515,7 @@ Name: duration, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_fit</span><span class="p">(</span><span class="n">surv_km</span><span class="p">,</span> <span class="n">surv_low</span><span class="p">,</span> <span class="n">surv_high</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot an estimated survival curve with error bounds.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot an estimated survival curve with error bounds.</span>
 <span class="sd">    </span>
 <span class="sd">    surv_km: estimated Surv</span>
 <span class="sd">    surv_low, surv_high: lower and upper bounds</span>
@@ -1590,7 +1595,7 @@ The following figure shows the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gray_box</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">170</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make a gray box that spans the y-axis.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a gray box that spans the y-axis.</span>
 
 <span class="sd">    x_max: location of the right bound</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1718,7 +1723,7 @@ To demonstrate, I chose a lognormal distribution that fits the actual distributi
 
 
 <span class="k">def</span> <span class="nf">fit_lognormal</span><span class="p">(</span><span class="n">surv</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fit a lognormal distribution to a survival function.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit a lognormal distribution to a survival function.</span>
 <span class="sd">    </span>
 <span class="sd">    surv: Surv object</span>
 <span class="sd">    xs: places to evaluate the survival function</span>
@@ -1879,7 +1884,7 @@ They chose Sweden because it “has the deepest historical record of high-qualit
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_series</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make a pandas Series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a pandas Series.</span>
 <span class="sd">    </span>
 <span class="sd">    x: values for the index</span>
 <span class="sd">    y: values of the series</span>
@@ -1949,7 +1954,7 @@ dtype: float64
 
 
 <span class="k">def</span> <span class="nf">make_hazard</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make a Hazard function by interpolating a Series.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a Hazard function by interpolating a Series.</span>
 <span class="sd">    </span>
 <span class="sd">    series: Series</span>
 <span class="sd">    </span>
@@ -2269,7 +2274,7 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_hazard</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Read age-specific death rates and make a Hazard object.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read age-specific death rates and make a Hazard object.</span>
 
 <span class="sd">    filename: string</span>
 
@@ -2753,7 +2758,7 @@ dtype: int64
 
 
 <span class="k">def</span> <span class="nf">plot_mortality</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plot columns from a mortality DataFrame.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot columns from a mortality DataFrame.</span>
 <span class="sd">    </span>
 <span class="sd">    df: DataFrame</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -3007,7 +3012,7 @@ So let’s see what happens if we include the second effect as well, that is, if
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pred_hazard</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">pred_frame</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">hazard</span> <span class="o">=</span> <span class="n">Hazard</span><span class="p">(</span><span class="mi">10</span> <span class="o">**</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pred_frame</span><span class="p">))</span>
     <span class="n">hazard</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pred_frame</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>
@@ -3039,7 +3044,7 @@ So let’s see what happens if we include the second effect as well, that is, if
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_pred</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Use a regression model to generate predictions.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use a regression model to generate predictions.</span>
 <span class="sd">    </span>
 <span class="sd">    subset: DataFrame</span>
 <span class="sd">    results: RegressionResults</span>
@@ -3109,7 +3114,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hypothetical_results</span><span class="p">(</span><span class="n">b2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Make RegressionResults with a counterfactual slope.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make RegressionResults with a counterfactual slope.</span>
 <span class="sd">    </span>
 <span class="sd">    b2: slope</span>
 <span class="sd">    </span>
@@ -3128,7 +3133,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hazard_hypo_progress</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="n">upper</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute a Hazard function with hypothetical progress.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute a Hazard function with hypothetical progress.</span>
 
 <span class="sd">    b2: slope</span>
 <span class="sd">    upper: upper end of the qs</span>
@@ -3458,7 +3463,7 @@ But eventually, if adult mortality decreases fast enough, everyone will have the
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true

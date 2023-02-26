@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -37,7 +37,7 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Jumping to Conclusions" href="berkson.html" />
+    <link rel="prev" title="Causation, Collision, and Confusion" href="birthweight.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -138,6 +138,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="berkson.html">
    Jumping to Conclusions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="birthweight.html">
+   Causation, Collision, and Confusion
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -451,7 +456,7 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="k">if</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
-    <span class="o">!</span>pip install empiricaldist
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
 </pre></div>
 </div>
 </div>
@@ -472,7 +477,7 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 
 
 <span class="k">def</span> <span class="nf">make_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.7</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Use LOWESS to compute a smooth line.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use LOWESS to compute a smooth line.</span>
 
 <span class="sd">    series: pd.Series</span>
 
@@ -492,7 +497,7 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_series_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plots a series of data points and a smooth line.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots a series of data points and a smooth line.</span>
 
 <span class="sd">    series: pd.Series</span>
 <span class="sd">    color: string or tuple</span>
@@ -520,7 +525,7 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Decorate the current axes.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorate the current axes.</span>
 
 <span class="sd">    Call decorate with keyword arguments like</span>
 <span class="sd">    decorate(title=&#39;Title&#39;,</span>
@@ -565,7 +570,7 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 </div>
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir -p ../data
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>../data
 
 <span class="n">filename</span> <span class="o">=</span> <span class="n">download</span><span class="p">(</span>
     <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/gss_eds.3.hdf&quot;</span>
@@ -1187,7 +1192,7 @@ I’m using <code class="docutils literal notranslate"><span class="pre">ns</spa
 <div class="cell tag_hide-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">estimate_conservatism</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the posterior distribution of conservatism.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the posterior distribution of conservatism.</span>
 
 <span class="sd">    row: pd.Series of True, False, or NaN, one per question</span>
 
@@ -1520,7 +1525,7 @@ Based on their responses to the fifteen questions, they would be indistinguishab
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1535,11 +1540,11 @@ Based on their responses to the fifteen questions, they would be indistinguishab
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="berkson.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="birthweight.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Jumping to Conclusions</p>
+            <p class="prev-next-title">Causation, Collision, and Confusion</p>
         </div>
     </a>
 </div>

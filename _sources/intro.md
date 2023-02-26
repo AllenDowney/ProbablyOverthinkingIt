@@ -49,3 +49,9 @@ Before you read these notebooks, please keep in mind:
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/berkson.ipynb)
 
+
+**Chapter 7**
+
+[Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/birthweight.ipynb)
+
+[Run the code that [prepares] the NCHS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_nchs.ipynb)
