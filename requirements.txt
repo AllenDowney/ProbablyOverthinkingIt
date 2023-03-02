@@ -7,6 +7,5 @@ openpyxl
 pandas
 seaborn
 scipy==1.7
-sklearn
 statsmodels==0.12
 tables
