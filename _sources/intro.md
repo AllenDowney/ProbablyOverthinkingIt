@@ -16,9 +16,9 @@ Before you read these notebooks, please keep in mind:
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/gaussian.ipynb)
 
-[Run the code that cleans the BRFSS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_brfss.ipynb)
+[Run the code that prepares the BRFSS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_brfss.ipynb)
 
-[Run the code that cleans the Big Five data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_big_five.ipynb)
+[Run the code that prepares the Big Five data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_big_five.ipynb)
 
 
 **Chapter 2**
@@ -35,9 +35,9 @@ Before you read these notebooks, please keep in mind:
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/lognormal.ipynb)
 
-[Run the code that cleans the BRFSS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_brfss.ipynb)
+[Run the code that prepares the BRFSS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_brfss.ipynb)
 
-[Run the code that cleans the NSFG data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nsfg_clean.ipynb)
+[Run the code that prepares the NSFG data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nsfg_clean.ipynb)
 
 
 **Chapter 5**
@@ -54,4 +54,13 @@ Before you read these notebooks, please keep in mind:
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/birthweight.ipynb)
 
-[Run the code that [prepares] the NCHS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_nchs.ipynb)
+[Run the code that prepares the NCHS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_nchs.ipynb)
+
+
+**Chapter 8**
+
+[Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/longtail.ipynb)
+
+[Run the code that prepares the earthquake data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_quake.ipynb)
+
+[Run the code that prepares the solar flare data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_flare.ipynb)
