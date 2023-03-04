@@ -10,6 +10,8 @@ cp ../notebooks/preston.ipynb .
 cp ../notebooks/lognormal.ipynb .
 cp ../notebooks/nbue.ipynb .
 cp ../notebooks/berkson.ipynb .
+cp ../notebooks/birthweight.ipynb .
+cp ../notebooks/longtail.ipynb .
 cp ../notebooks/overton_irt.ipynb .
 
 # build the HTML version
