@@ -1,3 +1,10 @@
+"""Supporting code for Probably Overthinking It
+
+https://probablyoverthinking.it
+
+
+"""
+
 from copy import deepcopy
 
 import pandas as pd
@@ -42,7 +49,7 @@ def write_table(table, label, **options):
     options: passed to DataFrame.to_latex
     """
     filename = f"tables/{label}.tex"
-    fp = open(filename, "w")
+    fp = open(filename, "w", encoding="utf8")
     s = table.to_latex(**options)
     fp.write(s)
     fp.close()
@@ -111,14 +118,14 @@ def savefig(root, **options):
     root: string filename root
     options: passed to plt.savefig
     """
-    format = options.pop("format", None)
-    if format:
-        formats = [format]
+    fmat = options.pop("format", None)
+    if fmat:
+        formats = [fmat]
     else:
         formats = ["pdf", "png"]
 
-    for format in formats:
-        fname = f"figs/{root}.{format}"
+    for f in formats:
+        fname = f"figs/{root}.{f}"
         plt.savefig(fname, **options)
 
 
@@ -354,6 +361,9 @@ def plot_series_lowess(series, plot_series=False, frac=0.7, **options):
         smooth.plot(color=color, **options)
 
 
+# NBUE
+
+
 def percentile_rows(series_seq, ps):
     """Computes percentiles from aligned series.
 
@@ -366,7 +376,7 @@ def percentile_rows(series_seq, ps):
     xs = df.index
     array = df.values.transpose()
     array = np.sort(array, axis=0)
-    nrows, ncols = array.shape
+    nrows, _ = array.shape
 
     ps = np.asarray(ps)
     indices = (ps * nrows).astype(int)
@@ -465,7 +475,6 @@ def truncated_normal_sf(qs, mu, sigma):
 
 
 def fit_truncated_normal(surv):
-
     low, high = surv.qs.min(), surv.qs.max()
     qs_model = np.linspace(low, high, 1000)
 
@@ -826,8 +835,8 @@ def label_table(table, nudge={}, frac=0.7, **options):
     frac: parameter of make_lowess
     options: passed to plt.text
     """
-    underride(options, va="center", alpha=0.8)
-    for i, series in enumerate(table.values()):
+    underride(options, va="center", alpha=0.8, fontsize="small")
+    for series in table.values():
         label = f"{series.name}s"
 
         x = series.index[-1] + 0.5
@@ -850,7 +859,7 @@ def label_table_left(table, nudge={}, frac=0.7, **options):
     options: passed to plt.text
     """
     underride(options, va="center", ha="right", alpha=0.8)
-    for i, series in enumerate(table.values()):
+    for series in table.values():
         label = f"{series.name}s"
 
         x = series.index[0] - 0.5
@@ -968,7 +977,38 @@ def set_pyplot_params():
     f = plt.figure()
     plt.close(f)
 
-    plt.style.use("matplotlibrc")
+    # for the book
+    # plt.rcParams["figure.figsize"] = (3.835, 3.835 / 2)
+    # plt.rcParams["font.size"] = 7.9
+    # plt.rcParams["legend.fontsize"] = 7.4
+    # plt.rcParams["axes.titlesize"] = 8.4
+    # plt.rcParams["font.sans-serif"] = ["Source Sans Pro"]
+
+    plt.rcParams["figure.figsize"] = 6, 4
+    plt.rcParams["figure.dpi"] = 75
+
+    plt.rcParams["axes.titlesize"] = "medium"
     plt.rcParams["font.sans-serif"] = ["Roboto"]
+    plt.rcParams["font.size"] = 12
+
     plt.rcParams["axes.prop_cycle"] = color_cycle
     plt.rcParams["lines.linewidth"] = 1.5
+
+    plt.rcParams["axes.titlelocation"] = "left"
+    plt.rcParams["axes.spines.top"] = False
+    plt.rcParams["axes.spines.bottom"] = False
+    plt.rcParams["axes.spines.left"] = False
+    plt.rcParams["axes.spines.right"] = False
+    plt.rcParams["xtick.top"] = False
+    plt.rcParams["xtick.bottom"] = False
+    plt.rcParams["ytick.left"] = False
+    plt.rcParams["ytick.right"] = False
+
+    plt.rcParams["legend.frameon"] = True
+    plt.rcParams["legend.framealpha"] = 0.4
+    plt.rcParams["legend.facecolor"] = "none"
+    plt.rcParams["legend.edgecolor"] = "0.8"
+
+    plt.rcParams["lines.markersize"] = 4
+    plt.rcParams["lines.markeredgewidth"] = 0
+
