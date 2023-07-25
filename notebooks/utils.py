@@ -12,6 +12,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from cycler import cycler
+
 from scipy.optimize import minimize
 from scipy.optimize import least_squares
 
@@ -939,7 +941,6 @@ Re60 = (0.939, 0.239, 0.178, 0.7)
 Re70 = (0.985, 0.448, 0.322, 0.7)
 Re80 = (0.988, 0.646, 0.532, 0.7)
 
-from cycler import cycler
 
 color_list = [
     Bl30,
@@ -988,7 +989,8 @@ def set_pyplot_params():
     plt.rcParams["figure.dpi"] = 75
 
     plt.rcParams["axes.titlesize"] = "medium"
-    plt.rcParams["font.sans-serif"] = ["Roboto"]
+    # Not available on Colab
+    # plt.rcParams["font.sans-serif"] = ["Roboto"]
     plt.rcParams["font.size"] = 12
 
     plt.rcParams["axes.prop_cycle"] = color_cycle
@@ -1011,4 +1013,4 @@ def set_pyplot_params():
 
     plt.rcParams["lines.markersize"] = 4
     plt.rcParams["lines.markeredgewidth"] = 0
-
+    
