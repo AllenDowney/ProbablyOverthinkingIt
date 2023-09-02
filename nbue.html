@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Better Than New &#8212; Probably Overthinking It</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +63,87 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'nbue';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Jumping to Conclusions" href="berkson.html" />
     <link rel="prev" title="Extremes, Outliers, and GOATs" href="lognormal.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Probably Overthinking It</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,317 +152,200 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="gaussian.html">
-   Are You Normal? Hint: No.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="inspection.html">
-   Relay Races and Revolving Doors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="preston.html">
-   Defy Tradition, Save the World
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lognormal.html">
-   Extremes, Outliers, and GOATs
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Better Than New
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="berkson.html">
-   Jumping to Conclusions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="birthweight.html">
-   Causation, Collision, and Confusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="longtail.html">
-   The Long Tail of Disaster
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="overton_irt.html">
-   Measuring the Overton Window
-  </a>
- </li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ProbablyOverthinkingIt/master?urlpath=tree/nbue.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/nbue.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/nbue.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#light-bulbs">
-   Light Bulbs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#any-day-now">
-   Any day now
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cancer-survival-times">
-   Cancer survival times
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#life-expectancy-at-birth">
-   Life Expectancy At Birth
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#child-mortality">
-   Child mortality
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-immortal-swede">
-   The Immortal Swede
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Better Than New</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#light-bulbs">
-   Light Bulbs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#any-day-now">
-   Any day now
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cancer-survival-times">
-   Cancer survival times
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#life-expectancy-at-birth">
-   Life Expectancy At Birth
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#child-mortality">
-   Child mortality
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-immortal-swede">
-   The Immortal Swede
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Better Than New</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">Light Bulbs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#any-day-now">Any day now</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancer-survival-times">Cancer survival times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#life-expectancy-at-birth">Life Expectancy At Birth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#child-mortality">Child mortality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-immortal-swede">The Immortal Swede</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="better-than-new">
-<h1>Better Than New<a class="headerlink" href="#better-than-new" title="Permalink to this headline">#</a></h1>
+<h1>Better Than New<a class="headerlink" href="#better-than-new" title="Permalink to this heading">#</a></h1>
 <p>This is one of the Jupyter notebooks I used in my preparation of <em>Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions</em>.</p>
 <p>The book is scheduled to be published by University of Chicago Press in 2023.
 If you would like to get infrequent email announcements about the book, please
@@ -557,7 +482,7 @@ So, it turns out, a patient who survives one year after diagnosis is then <em>mo
 </ul>
 <p>In this chapter I’ll demonstrate and explain each of these effects, starting with light bulbs.</p>
 <section id="light-bulbs">
-<h2>Light Bulbs<a class="headerlink" href="#light-bulbs" title="Permalink to this headline">#</a></h2>
+<h2>Light Bulbs<a class="headerlink" href="#light-bulbs" title="Permalink to this heading">#</a></h2>
 <p>The data are available in a gist:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -717,7 +642,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_23_0.png" src="_images/nbue_23_0.png" />
+<img alt="_images/aba4aaa2f618d1cefa83b0ecc5cc834fdf238a2411c8bddc1db79adde51a9930.png" src="_images/aba4aaa2f618d1cefa83b0ecc5cc834fdf238a2411c8bddc1db79adde51a9930.png" />
 </div>
 </div>
 <p>The shaded area shows how much variation we expect from the Gaussian model.
@@ -905,7 +830,7 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_41_0.png" src="_images/nbue_41_0.png" />
+<img alt="_images/bb6b1d6f00d457f0f836b53175a90713ed5776c1286a30d38e83e74c5ab07089.png" src="_images/bb6b1d6f00d457f0f836b53175a90713ed5776c1286a30d38e83e74c5ab07089.png" />
 </div>
 </div>
 <p>The x-axis shows elapsed times since the installation of a hypothetical light bulb.
@@ -926,7 +851,7 @@ In this example, a bulb that has been burning for 1000 hours is expected to last
 </div>
 </section>
 <section id="any-day-now">
-<h2>Any day now<a class="headerlink" href="#any-day-now" title="Permalink to this headline">#</a></h2>
+<h2>Any day now<a class="headerlink" href="#any-day-now" title="Permalink to this heading">#</a></h2>
 <p>Now let’s consider the question posed by the imaginary obstetrician at lunch.
 Suppose you visit a maternity ward and meet women who are starting their 39th, 40th, and 41st week of pregnancy.
 Which one do you think will deliver first?</p>
@@ -1098,7 +1023,7 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_54_0.png" src="_images/nbue_54_0.png" />
+<img alt="_images/e377a58c3c2a2f7fd91c4b0c7312961d512251020cb09f9a35e12b7d33c5edbf.png" src="_images/e377a58c3c2a2f7fd91c4b0c7312961d512251020cb09f9a35e12b7d33c5edbf.png" />
 </div>
 </div>
 <p>About 41% of these births were during the 39th week of pregnancy, and another 18% during the 40th week.</p>
@@ -1179,7 +1104,7 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_62_0.png" src="_images/nbue_62_0.png" />
+<img alt="_images/ddf35f29727021d87a6857d3627a5cdc046f0aa030a4b7ced153b7d46e743cef.png" src="_images/ddf35f29727021d87a6857d3627a5cdc046f0aa030a4b7ced153b7d46e743cef.png" />
 </div>
 </div>
 <p>Between weeks 36 and 39, the curve behaves as we expect: as time goes on, we get closer to the finish line.
@@ -1296,7 +1221,7 @@ Name: 50.0, dtype: float64
 </div>
 </section>
 <section id="cancer-survival-times">
-<h2>Cancer survival times<a class="headerlink" href="#cancer-survival-times" title="Permalink to this headline">#</a></h2>
+<h2>Cancer survival times<a class="headerlink" href="#cancer-survival-times" title="Permalink to this heading">#</a></h2>
 <p>Finally, let’s consider the surprising result reported by the imaginary oncologist at lunch: for many cancers, a patient who has survived a year after diagnosis is expected to live longer than someone who has just been diagnosed.</p>
 <p>To demonstrate and explain this result, I’ll use data from the the Surveillance, Epidemiology, and End Results (SEER) program, which is run by the U.S. National Institutes of Health (NIH).
 Starting in 1973, SEER has collected data on cancer cases from registries in several locations in the United States.
@@ -1437,7 +1362,7 @@ Name: duration, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_78_0.png" src="_images/nbue_78_0.png" />
+<img alt="_images/90c0e53b8a9d30ab4cba06850ce3eca224d273a1d618c5af14a5f9de38e952bd.png" src="_images/90c0e53b8a9d30ab4cba06850ce3eca224d273a1d618c5af14a5f9de38e952bd.png" />
 </div>
 </div>
 <p>With Kaplan-Meier estimation, we can use all cases to estimate the survival function.</p>
@@ -1562,7 +1487,7 @@ Name: duration, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_84_0.png" src="_images/nbue_84_0.png" />
+<img alt="_images/f824f7ce8cc01132d250c116395c64a2286ef5c110dee5796a493de162468fb3.png" src="_images/f824f7ce8cc01132d250c116395c64a2286ef5c110dee5796a493de162468fb3.png" />
 </div>
 </div>
 <p>The survival curve shows the probability of survival past a given time on a scale from 0 to 1.
@@ -1626,7 +1551,7 @@ The following figure shows the result.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_89_0.png" src="_images/nbue_89_0.png" />
+<img alt="_images/7a1237504c9b09f116194a09489fe2de0c4d878080fc4e48b9dc098ea1d1eef4.png" src="_images/7a1237504c9b09f116194a09489fe2de0c4d878080fc4e48b9dc098ea1d1eef4.png" />
 </div>
 </div>
 <p>At the time of diagnosis, the average survival time is about 14 months.
@@ -1675,7 +1600,7 @@ But that would be a very misleading picture.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_93_0.png" src="_images/nbue_93_0.png" />
+<img alt="_images/5e4252da4990268de586ee6c41927f9e04e2a5c265c5a938f4361ac46020ce70.png" src="_images/5e4252da4990268de586ee6c41927f9e04e2a5c265c5a938f4361ac46020ce70.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1713,7 +1638,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_96_0.png" src="_images/nbue_96_0.png" />
+<img alt="_images/8c69aba9b1162c0c59b5c0e7b73c67738bd7bd6b1dc422eeb943fe2d4cb4b2c7.png" src="_images/8c69aba9b1162c0c59b5c0e7b73c67738bd7bd6b1dc422eeb943fe2d4cb4b2c7.png" />
 </div>
 </div>
 <p>With the Gaussian model, the average remaining survival time starts around 20 months,
@@ -1789,14 +1714,14 @@ To demonstrate, I chose a lognormal distribution that fits the actual distributi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_103_0.png" src="_images/nbue_103_0.png" />
+<img alt="_images/8c70eea35dfeb472d11371734786df9b29b1ea71f18a542e53f010b7a7f3f63f.png" src="_images/8c70eea35dfeb472d11371734786df9b29b1ea71f18a542e53f010b7a7f3f63f.png" />
 </div>
 </div>
 <p>During the first 24 months, the model is a little too optimistic, and after 120 months it is much too optimistic.
 But the lognormal model gets the shape of the curve right: if your mental model of the distribution is lognormal, you would have a reasonably accurate understanding of the situation.</p>
 </section>
 <section id="life-expectancy-at-birth">
-<h2>Life Expectancy At Birth<a class="headerlink" href="#life-expectancy-at-birth" title="Permalink to this headline">#</a></h2>
+<h2>Life Expectancy At Birth<a class="headerlink" href="#life-expectancy-at-birth" title="Permalink to this heading">#</a></h2>
 <p>In 2012, a team of demographers at the University of Southern California estimated life expectancy for people born in Sweden in the early 1800s and 1900s.
 They chose Sweden because it “has the deepest historical record of high-quality [demographic] data.”</p>
 <p>For ages from 0 to 91 years, they estimated the mortality rate, which is the fraction of people at each age who die.</p>
@@ -1994,7 +1919,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_117_0.png" src="_images/nbue_117_0.png" />
+<img alt="_images/1aa04f30c1b01b24bf435a63ff6c4404b5212cfeb1fdc37083e5417119e90fa7.png" src="_images/1aa04f30c1b01b24bf435a63ff6c4404b5212cfeb1fdc37083e5417119e90fa7.png" />
 </div>
 </div>
 <p>The notable feature is that mortality rates were lower for the later cohort at every age.</p>
@@ -2097,7 +2022,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_126_0.png" src="_images/nbue_126_0.png" />
+<img alt="_images/a7d14d38e902d0c1850dddae7485c717051b19edcd1156e914f72594d849384a.png" src="_images/a7d14d38e902d0c1850dddae7485c717051b19edcd1156e914f72594d849384a.png" />
 </div>
 </div>
 <p>In both cohorts, used was better than new, at least for the first few years of life.</p>
@@ -2163,7 +2088,7 @@ dtype: float64
 </div>
 </section>
 <section id="child-mortality">
-<h2>Child mortality<a class="headerlink" href="#child-mortality" title="Permalink to this headline">#</a></h2>
+<h2>Child mortality<a class="headerlink" href="#child-mortality" title="Permalink to this heading">#</a></h2>
 <p>The following figure shows the percentage of children who die before age 5 for four geographical regions, from 1900 to 2019.
 These data were combined from several sources by Gapminder, a foundation based in Sweden that “promotes sustainable global development […] by increased use and understanding of statistics.”</p>
 <p>Documentation of the data is at <a class="reference external" href="https://www.gapminder.org/data/documentation/gd005">https://www.gapminder.org/data/documentation/gd005</a></p>
@@ -2270,7 +2195,7 @@ These data were combined from several sources by Gapminder, a foundation based i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_136_0.png" src="_images/nbue_136_0.png" />
+<img alt="_images/2de8c3bf3c26ab9001e1b79c7d60229c5222b7bd90bb8d34a5cf1a22e222760c.png" src="_images/2de8c3bf3c26ab9001e1b79c7d60229c5222b7bd90bb8d34a5cf1a22e222760c.png" />
 </div>
 </div>
 <p>In every region, child mortality has decreased consistently and substantially.</p>
@@ -2408,7 +2333,7 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_145_0.png" src="_images/nbue_145_0.png" />
+<img alt="_images/a794f1e239a026d61bb423f38fbffb9878ddc6c7e305a77ba11ca248f3dab981.png" src="_images/a794f1e239a026d61bb423f38fbffb9878ddc6c7e305a77ba11ca248f3dab981.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2430,7 +2355,7 @@ dtype: float64
 </div>
 </section>
 <section id="the-immortal-swede">
-<h2>The Immortal Swede<a class="headerlink" href="#the-immortal-swede" title="Permalink to this headline">#</a></h2>
+<h2>The Immortal Swede<a class="headerlink" href="#the-immortal-swede" title="Permalink to this heading">#</a></h2>
 <p>Going back to the data from Sweden, the following figure shows the mortality rate for each age group, updated every ten years from 2000 to 2019.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2789,7 +2714,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_153_0.png" src="_images/nbue_153_0.png" />
+<img alt="_images/b710f6dda55b7cf962f38eece7b6bfc1ae834bed682bcca66da5e14ede238096.png" src="_images/b710f6dda55b7cf962f38eece7b6bfc1ae834bed682bcca66da5e14ede238096.png" />
 </div>
 </div>
 <p>The straight-line increase after age 35 was described by Benjamin Gompertz in 1825, so this phenomenon is called the Gompertz Law.
@@ -2845,7 +2770,7 @@ If we zoom in on the age range from 40 to 80, we can see the changes in adult mo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_158_0.png" src="_images/nbue_158_0.png" />
+<img alt="_images/93cff887ca8d2eefb0b8e502a71bc8edabbe00271d07f6b6d64214142dfd2508.png" src="_images/93cff887ca8d2eefb0b8e502a71bc8edabbe00271d07f6b6d64214142dfd2508.png" />
 </div>
 </div>
 <p>In these age groups, the decreases in mortality have been remarkably consistent.
@@ -3092,7 +3017,7 @@ So let’s see what happens if we include the second effect as well, that is, if
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_169_0.png" src="_images/nbue_169_0.png" />
+<img alt="_images/8a0284292366007e3971c1c204483c14b72201989143eee78d71228a995a630f.png" src="_images/8a0284292366007e3971c1c204483c14b72201989143eee78d71228a995a630f.png" />
 </div>
 </div>
 <p>The line labeled “With current progress” indicates the mortality rates we expect for a hypothetical Swede who was 40 in 2020.
@@ -3113,7 +3038,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_171_0.png" src="_images/nbue_171_0.png" />
+<img alt="_images/a35a0cfe5c1cad3b7139389a281284ce4c1b79b504f5783b28dd591f5faa848d.png" src="_images/a35a0cfe5c1cad3b7139389a281284ce4c1b79b504f5783b28dd591f5faa848d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3211,7 +3136,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_179_0.png" src="_images/nbue_179_0.png" />
+<img alt="_images/84a1ff2f9e4d041a9c66fe61568d026ebbbdfec22130196e111bfafd6484ff72.png" src="_images/84a1ff2f9e4d041a9c66fe61568d026ebbbdfec22130196e111bfafd6484ff72.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3229,7 +3154,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_180_0.png" src="_images/nbue_180_0.png" />
+<img alt="_images/2ff7486077d8f5c95f018d2c0cf4353b242dcf669798882c429716f002f870b8.png" src="_images/2ff7486077d8f5c95f018d2c0cf4353b242dcf669798882c429716f002f870b8.png" />
 </div>
 </div>
 <p>The dashed line on the left shows the survival curve we expect if there is no further decrease in mortality rates; in that scenario, life expectancy at age 40 is 82 years and the probability of living to 100 is only 1.4%.</p>
@@ -3310,7 +3235,7 @@ Life expectancy at age 40 would be 102 and the probability of living to 100 woul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_189_0.png" src="_images/nbue_189_0.png" />
+<img alt="_images/ff463fe776ea267b98cc47d62a5fc5f86ab5814a063c9f357c70ba74c093a6cb.png" src="_images/ff463fe776ea267b98cc47d62a5fc5f86ab5814a063c9f357c70ba74c093a6cb.png" />
 </div>
 </div>
 <p>In this scenario, some people live to be 300 years old!
@@ -3353,7 +3278,7 @@ And, as shown in the following figure, average remaining lifetimes decrease with
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_192_0.png" src="_images/nbue_192_0.png" />
+<img alt="_images/9deaeeb588198f0078e2aae143f14185f1f1f030f702c661eefe914123396f00.png" src="_images/9deaeeb588198f0078e2aae143f14185f1f1f030f702c661eefe914123396f00.png" />
 </div>
 </div>
 <p>With faster progress, people live longer, but they still have the new-better-than-used property: as each year passes, they get closer to the grave, on average.</p>
@@ -3379,7 +3304,7 @@ The result is a survival curve that looks like this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/nbue_194_0.png" src="_images/nbue_194_0.png" />
+<img alt="_images/6af4b2f686da9d34f5a52df623d0452eb9682f663200910d592577fad46e66cb.png" src="_images/6af4b2f686da9d34f5a52df623d0452eb9682f663200910d592577fad46e66cb.png" />
 </div>
 </div>
 <p>The difference between 4 and 4.9 is qualitative.
@@ -3476,50 +3401,110 @@ But eventually, if adult mortality decreases fast enough, everyone will have the
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lognormal.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Extremes, Outliers, and GOATs</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lognormal.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Extremes, Outliers, and GOATs</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="berkson.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="berkson.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Jumping to Conclusions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#light-bulbs">Light Bulbs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#any-day-now">Any day now</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancer-survival-times">Cancer survival times</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#life-expectancy-at-birth">Life Expectancy At Birth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#child-mortality">Child mortality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-immortal-swede">The Immortal Swede</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

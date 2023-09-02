@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Measuring the Overton Window &#8212; Probably Overthinking It</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,55 +63,85 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'overton_irt';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="The Long Tail of Disaster" href="longtail.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Probably Overthinking It</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -109,364 +150,233 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="gaussian.html">
-   Are You Normal? Hint: No.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="inspection.html">
-   Relay Races and Revolving Doors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="preston.html">
-   Defy Tradition, Save the World
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lognormal.html">
-   Extremes, Outliers, and GOATs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="nbue.html">
-   Better Than New
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="berkson.html">
-   Jumping to Conclusions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="birthweight.html">
-   Causation, Collision, and Confusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="longtail.html">
-   The Long Tail of Disaster
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Measuring the Overton Window
-  </a>
- </li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ProbablyOverthinkingIt/master?urlpath=tree/overton_irt.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/overton_irt.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/overton_irt.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports-and-function-definitions">
-   Imports and Function Definitions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-the-data">
-   Read the Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quantifying-political-beliefs">
-   Quantifying Political Beliefs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#item-response-theory">
-   Item Response Theory
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estimating-conservatism">
-   Estimating Conservatism
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-operations-for-speed">
-   Array Operations For Speed
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conservatism-over-time">
-   Conservatism Over Time
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#are-we-polarized">
-   Are We Polarized?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appendix-the-fifteen-questions">
-   Appendix: The Fifteen Questions
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Measuring the Overton Window</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#imports-and-function-definitions">
-   Imports and Function Definitions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#read-the-data">
-   Read the Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#quantifying-political-beliefs">
-   Quantifying Political Beliefs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#item-response-theory">
-   Item Response Theory
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estimating-conservatism">
-   Estimating Conservatism
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-operations-for-speed">
-   Array Operations For Speed
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conservatism-over-time">
-   Conservatism Over Time
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#are-we-polarized">
-   Are We Polarized?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#appendix-the-fifteen-questions">
-   Appendix: The Fifteen Questions
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Measuring the Overton Window</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-and-function-definitions">Imports and Function Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-data">Read the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-political-beliefs">Quantifying Political Beliefs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#item-response-theory">Item Response Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-conservatism">Estimating Conservatism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-operations-for-speed">Array Operations For Speed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservatism-over-time">Conservatism Over Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-we-polarized">Are We Polarized?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-the-fifteen-questions">Appendix: The Fifteen Questions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="measuring-the-overton-window">
-<h1>Measuring the Overton Window<a class="headerlink" href="#measuring-the-overton-window" title="Permalink to this headline">#</a></h1>
+<h1>Measuring the Overton Window<a class="headerlink" href="#measuring-the-overton-window" title="Permalink to this heading">#</a></h1>
 <p>One of the chapters in <em>Probably Overthinking It</em> is about the <a class="reference external" href="https://en.wikipedia.org/wiki/Overton_window">Overton window</a>.
 While working on that chapter, I used a bit of Bayesian inference that is too technical to explain in the book. So I’ll explain it here.</p>
 <p>If you would like to get occasional email announcements about the book, please <a class="reference external" href="http://eepurl.com/h0nfbX">sign up for my mailing list</a>.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/overton_irt.ipynb">Click here to run this notebook on Colab</a></p>
 <section id="imports-and-function-definitions">
-<h2>Imports and Function Definitions<a class="headerlink" href="#imports-and-function-definitions" title="Permalink to this headline">#</a></h2>
+<h2>Imports and Function Definitions<a class="headerlink" href="#imports-and-function-definitions" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
 
-<span class="k">if</span> <span class="s1">&#39;google.colab&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -475,8 +385,14 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.nonparametric.smoothers_lowess</span> <span class="kn">import</span> <span class="n">lowess</span>
 
@@ -498,8 +414,14 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_series_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots a series of data points and a smooth line.</span>
@@ -526,8 +448,14 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorate the current axes.</span>
@@ -551,18 +479,24 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="read-the-data">
-<h2>Read the Data<a class="headerlink" href="#read-the-data" title="Permalink to this headline">#</a></h2>
+<h2>Read the Data<a class="headerlink" href="#read-the-data" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data_dir</span><span class="o">=</span><span class="s2">&quot;../data&quot;</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span> <span class="o">/</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
 
@@ -572,28 +506,36 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>../data
-
-<span class="n">filename</span> <span class="o">=</span> <span class="n">download</span><span class="p">(</span>
-    <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/gss_eds.3.hdf&quot;</span>
-<span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/PoliticalAlignmentCaseStudy/raw/master/gss_pacs_resampled.hdf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;gss_pacs_resampled.hdf&#39;
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <p>The HDF file contains three resamplings of the GSS data, with the keys <code class="docutils literal notranslate"><span class="pre">gss0</span></code>, <code class="docutils literal notranslate"><span class="pre">gss1</span></code>, and <code class="docutils literal notranslate"><span class="pre">gss2</span></code>. The resampled data correct for stratified sampling in the GSS survey design, and provide a coarse estimate of variability due to random sampling. I do development and testing with one resampling, then check that the results are consistent with the others.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;../data/gss_eds.3.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;gss0&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;../data/gss_pacs_resampled.hdf&#39;</span><span class="p">,</span> <span class="s1">&#39;gss0&#39;</span><span class="p">)</span>
 <span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(68846, 205)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(72390, 204)
 </pre></div>
 </div>
 </div>
@@ -618,7 +560,7 @@ While working on that chapter, I used a bit of Bayesian inference that is too te
 </div>
 </section>
 <section id="quantifying-political-beliefs">
-<h2>Quantifying Political Beliefs<a class="headerlink" href="#quantifying-political-beliefs" title="Permalink to this headline">#</a></h2>
+<h2>Quantifying Political Beliefs<a class="headerlink" href="#quantifying-political-beliefs" title="Permalink to this heading">#</a></h2>
 <p>One of my goals in the chapter is to quantify liberal and conservative beliefs and see how they have changed over time, using data from the <a class="reference external" href="https://www.norc.org/Research/Projects/Pages/general-social-survey.aspx">General Social Survey</a> (GSS).
 So, how do we classify beliefs as conservative or liberal? And then, how do we track those beliefs over time?</p>
 <p>To answer the first question, I started with a list of about 120 core GSS questions that ask about political beliefs, broadly defined.
@@ -650,10 +592,11 @@ Here’s how many respondents are in each group.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Moderate        22764
-Conservative    20175
-Liberal         16091
-Name: polviews3, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>polviews3
+Moderate        23893
+Conservative    21335
+Liberal         17043
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -684,6 +627,11 @@ Most of the questions are binary, but some allow a range of responses.</p>
 </div>
 </div>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;homosex&quot;</span><span class="p">,</span>
@@ -705,14 +653,15 @@ Most of the questions are binary, but some allow a range of responses.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<p>I’ll extract the answers to the fifteen questions into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> of boolean values, <code class="docutils literal notranslate"><span class="pre">True</span></code> if the respondent chose a conservative response, <code class="docutils literal notranslate"><span class="pre">False</span></code> if they didn’t and <code class="docutils literal notranslate"><span class="pre">NaN</span></code> if they were not asked the question or didn’t answer.</p>
+<p>I’ll extract the answers to the fifteen questions into a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> of boolean values, <code class="docutils literal notranslate"><span class="pre">1</span></code> if the respondent chose a conservative response, <code class="docutils literal notranslate"><span class="pre">0</span></code> if they didn’t and <code class="docutils literal notranslate"><span class="pre">NaN</span></code> if they were not asked the question or didn’t answer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">questions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">questions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">order</span><span class="p">:</span>
-    <span class="n">questions</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">convervative_values</span><span class="p">[</span><span class="n">varname</span><span class="p">])</span>
+    <span class="n">questions</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">convervative_values</span><span class="p">[</span><span class="n">varname</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">null</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
     <span class="n">questions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">null</span><span class="p">,</span> <span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 </pre></div>
@@ -727,21 +676,21 @@ Most of the questions are binary, but some allow a range of responses.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sexeduc     0.122929
-gunlaw      0.247819
-fepol       0.287904
-letdie1     0.316477
-pornlaw     0.367240
-racopen     0.380694
-natenvir    0.382039
-natfare     0.472846
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sexeduc     0.123340
+gunlaw      0.250037
+fepol       0.282195
+letdie1     0.314927
+pornlaw     0.363665
+racopen     0.375597
+natenvir    0.379655
+natfare     0.467340
 divlaw      0.490939
-premarsx    0.545128
-abany       0.588012
-prayer      0.594113
-grass       0.690127
-cappun      0.705069
-homosex     0.713381
+premarsx    0.533950
+abany       0.583890
+prayer      0.589122
+grass       0.677196
+homosex     0.695584
+cappun      0.700537
 dtype: float64
 </pre></div>
 </div>
@@ -783,39 +732,39 @@ dtype: float64
   <tbody>
     <tr>
       <th>homosex</th>
-      <td>81.363959</td>
-      <td>54.459276</td>
-      <td>71.769861</td>
+      <td>80.092662</td>
+      <td>52.337900</td>
+      <td>69.696157</td>
     </tr>
     <tr>
       <th>cappun</th>
-      <td>79.261273</td>
-      <td>57.245743</td>
-      <td>72.613789</td>
+      <td>79.086744</td>
+      <td>56.185338</td>
+      <td>72.306497</td>
     </tr>
     <tr>
       <th>grass</th>
-      <td>76.623485</td>
-      <td>55.189621</td>
-      <td>68.815800</td>
+      <td>75.236948</td>
+      <td>53.986284</td>
+      <td>67.425543</td>
     </tr>
     <tr>
       <th>abany</th>
-      <td>69.393097</td>
-      <td>42.422392</td>
-      <td>58.990651</td>
+      <td>69.427806</td>
+      <td>41.452613</td>
+      <td>58.497102</td>
     </tr>
     <tr>
       <th>prayer</th>
-      <td>66.921885</td>
-      <td>44.062427</td>
-      <td>62.498961</td>
+      <td>66.719078</td>
+      <td>43.253610</td>
+      <td>61.895926</td>
     </tr>
     <tr>
       <th>premarsx</th>
-      <td>65.049536</td>
-      <td>39.609566</td>
-      <td>52.174831</td>
+      <td>64.186184</td>
+      <td>38.025460</td>
+      <td>51.221477</td>
     </tr>
     <tr>
       <th>divlaw</th>
@@ -825,51 +774,51 @@ dtype: float64
     </tr>
     <tr>
       <th>natfare</th>
-      <td>58.052196</td>
-      <td>34.203772</td>
-      <td>47.860577</td>
+      <td>57.672645</td>
+      <td>33.460116</td>
+      <td>47.237803</td>
     </tr>
     <tr>
       <th>natenvir</th>
-      <td>48.406063</td>
-      <td>26.042243</td>
-      <td>37.303550</td>
+      <td>48.662821</td>
+      <td>25.057568</td>
+      <td>37.155963</td>
     </tr>
     <tr>
       <th>pornlaw</th>
-      <td>44.139460</td>
-      <td>25.118250</td>
-      <td>35.899019</td>
+      <td>43.918968</td>
+      <td>24.732184</td>
+      <td>35.467433</td>
     </tr>
     <tr>
       <th>racopen</th>
-      <td>42.616966</td>
-      <td>28.081674</td>
-      <td>37.242922</td>
+      <td>42.058961</td>
+      <td>27.613412</td>
+      <td>36.762226</td>
     </tr>
     <tr>
       <th>letdie1</th>
-      <td>38.537514</td>
-      <td>24.079807</td>
-      <td>28.392569</td>
+      <td>38.439965</td>
+      <td>23.696370</td>
+      <td>28.359148</td>
     </tr>
     <tr>
       <th>fepol</th>
-      <td>33.398927</td>
-      <td>21.514669</td>
-      <td>27.885540</td>
+      <td>32.729614</td>
+      <td>20.872513</td>
+      <td>27.501363</td>
     </tr>
     <tr>
       <th>gunlaw</th>
-      <td>31.128774</td>
-      <td>18.574552</td>
-      <td>23.464968</td>
+      <td>31.936266</td>
+      <td>18.122198</td>
+      <td>23.732719</td>
     </tr>
     <tr>
       <th>sexeduc</th>
-      <td>18.266558</td>
-      <td>7.241553</td>
-      <td>9.396167</td>
+      <td>18.406276</td>
+      <td>7.037597</td>
+      <td>9.610372</td>
     </tr>
   </tbody>
 </table>
@@ -903,6 +852,11 @@ dtype: float64
 </div>
 <p>The following figure shows, for each question, the percentage of liberals, moderates, and conservatives who chose one of the conservative responses.</p>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polview_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Conservative&quot;</span><span class="p">,</span> <span class="s2">&quot;Moderate&quot;</span><span class="p">,</span> <span class="s2">&quot;Liberal&quot;</span><span class="p">]</span>
 
@@ -913,8 +867,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
@@ -934,8 +894,9 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_31_0.png" src="_images/overton_irt_31_0.png" />
+<img alt="_images/eb401606ebc716c15615adcd28cb3913bc07c594a71824fd7cbd09a8c2ada195.png" src="_images/eb401606ebc716c15615adcd28cb3913bc07c594a71824fd7cbd09a8c2ada195.png" />
 </div>
 </div>
 <p>Not surprisingly, conservatives are more likely than liberals to choose conservative responses, and moderates are somewhere in the middle.
@@ -944,7 +905,7 @@ The differences between the groups range from 11 to 27 percentage points.</p>
 Rather, they show the issues that have distinguished conservatives from liberals over the last 50 years.</p>
 </section>
 <section id="item-response-theory">
-<h2>Item Response Theory<a class="headerlink" href="#item-response-theory" title="Permalink to this headline">#</a></h2>
+<h2>Item Response Theory<a class="headerlink" href="#item-response-theory" title="Permalink to this heading">#</a></h2>
 <p>Now that we’ve chosen questions that distinguish liberals and conservatives, the next step is to estimate the conservatism of each respondent.
 If all respondents answered all of the questions, this would be relatively easy, but they didn’t.</p>
 <p>Some were surveyed before a particular question was added to the survey or after it was removed.
@@ -952,6 +913,11 @@ Also, in some years respondents were randomly assigned a “ballot” with subse
 Finally, a small percentage of respondents refuse to answer some questions, or say “I don’t know”.</p>
 <p>The following figure shows the distribution of the number of questions answered.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
 
@@ -962,8 +928,9 @@ Finally, a small percentage of respondents refuse to answer some questions, or s
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_36_0.png" src="_images/overton_irt_36_0.png" />
+<img alt="_images/322773b6bc4d3ab10332077938528a868f0d63cb8d43945bc7f96dbc513dd13c.png" src="_images/322773b6bc4d3ab10332077938528a868f0d63cb8d43945bc7f96dbc513dd13c.png" />
 </div>
 </div>
 <p>Most respondents answered at least 5 questions, which is enough to get a sense of how conservative they are.
@@ -996,33 +963,25 @@ This heuristic leads to the assignment:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">logit</span>
 
-<span class="n">ds</span> <span class="o">=</span> <span class="o">-</span><span class="n">logit</span><span class="p">(</span><span class="n">questions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="o">-</span><span class="n">logit</span><span class="p">(</span><span class="n">questions</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">ds</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>homosex    -0.911862
-cappun     -0.871556
-grass      -0.800715
-abany      -0.355753
-prayer     -0.380993
-premarsx   -0.181004
-divlaw      0.036247
-natfare     0.108724
-natenvir    0.480901
-pornlaw     0.544074
-racopen     0.486603
-letdie1     0.770009
-fepol       0.905584
-gunlaw      1.110278
-sexeduc     1.964978
-dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.82635786, -0.84985535, -0.74091316, -0.33876177, -0.36033642,
+       -0.13601089,  0.03624691,  0.13082767,  0.49101244,  0.55948995,
+        0.50827941,  0.77718599,  0.93359959,  1.0984166 ,  1.96117197])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
 
@@ -1032,8 +991,9 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_41_0.png" src="_images/overton_irt_41_0.png" />
+<img alt="_images/c92401ec10fb3793347cb1e32797207b47b3a158a16a03bb569701ade24dea62.png" src="_images/c92401ec10fb3793347cb1e32797207b47b3a158a16a03bb569701ade24dea62.png" />
 </div>
 </div>
 <p>Where <span class="math notranslate nohighlight">\(p_j\)</span> is low, <span class="math notranslate nohighlight">\(d_j\)</span> is high.
@@ -1041,6 +1001,11 @@ The range of these values, by itself, doesn’t mean very much; what matters is 
 <p>Given the assigned difficulties, we can identify a useful range of values for efficacy.
 The following figure shows the range I used, from -6 to 6.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">expit</span>
 
@@ -1054,8 +1019,9 @@ The following figure shows the range I used, from -6 to 6.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_43_0.png" src="_images/overton_irt_43_0.png" />
+<img alt="_images/966caadf1106810878f21217def8f56d10a3ba6e848e47cb52554d00f9a61713.png" src="_images/966caadf1106810878f21217def8f56d10a3ba6e848e47cb52554d00f9a61713.png" />
 </div>
 </div>
 <p>Someone with efficacy -6 is very liberal; their probability of choosing a conservative response is nearly 0, even for the easiest question (<span class="math notranslate nohighlight">\(d = -1\)</span>).
@@ -1073,15 +1039,15 @@ Someone with efficacy 6 is very conservative; their probability of choosing a co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_45_0.png" src="_images/overton_irt_45_0.png" />
+<img alt="_images/7dbbe889bcdd2e27caa26b14beef8f9fb4c2debbb16c3768d1c72f92ee3d112c.png" src="_images/7dbbe889bcdd2e27caa26b14beef8f9fb4c2debbb16c3768d1c72f92ee3d112c.png" />
 </div>
 </div>
-<p>Someone with efficacy 0 is expected to give about 7 conservative responses our of 15 questions.</p>
+<p>Someone with efficacy 0 is expected to give about 7 conservative responses out of 15 questions.</p>
 </section>
 <section id="estimating-conservatism">
-<h2>Estimating Conservatism<a class="headerlink" href="#estimating-conservatism" title="Permalink to this headline">#</a></h2>
+<h2>Estimating Conservatism<a class="headerlink" href="#estimating-conservatism" title="Permalink to this heading">#</a></h2>
 <p>Now let’s see how we can estimate <span class="math notranslate nohighlight">\(e_i\)</span> for a respondent based on their answers.
-I’ll start with a weakly informative prior that suggest people are more likely to be in the middle and less likely to be at the extremes.</p>
+I’ll start with a (very) weakly informative prior that suggests people are more likely to be in the middle and less likely to be at the extremes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
@@ -1096,7 +1062,7 @@ I’ll start with a weakly informative prior that suggest people are more likely
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_48_0.png" src="_images/overton_irt_48_0.png" />
+<img alt="_images/b880307b1779944930adc4fee05a09759a43de8965ec16fdce2d61f6501de147.png" src="_images/b880307b1779944930adc4fee05a09759a43de8965ec16fdce2d61f6501de147.png" />
 </div>
 </div>
 <p>To demonstrate the estimation process, I’ll use the responses from an arbitrarily-chosen respondent.</p>
@@ -1108,22 +1074,22 @@ I’ll start with a weakly informative prior that suggest people are more likely
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>homosex       NaN
-cappun       True
-grass       False
-abany         NaN
-prayer      False
-premarsx     True
-divlaw       True
-natfare     False
-natenvir     True
-pornlaw     False
-racopen      True
-letdie1       NaN
-fepol       False
-gunlaw       True
-sexeduc     False
-Name: 5034, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>homosex     NaN
+cappun      1.0
+grass       0.0
+abany       NaN
+prayer      0.0
+premarsx    1.0
+divlaw      1.0
+natfare     0.0
+natenvir    1.0
+pornlaw     0.0
+racopen     1.0
+letdie1     NaN
+fepol       0.0
+gunlaw      1.0
+sexeduc     0.0
+Name: 5034, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1163,7 +1129,7 @@ Each element of <code class="docutils literal notranslate"><span class="pre">P</
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">like</span></code> is contains the likelihood of the data for each value of <span class="math notranslate nohighlight">\(e\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">like</span></code> contains the likelihood of the data for each value of <span class="math notranslate nohighlight">\(e\)</span>.</p>
 <p>To do the Bayesian update, we multiply the prior by the likelihood and normalize.
 I’m using <code class="docutils literal notranslate"><span class="pre">ns</span></code> as the index of the posterior PMF, so the results are expressed in terms of the number of conservative responses, which is easier to interpret than efficacy.</p>
 <div class="cell docutils container">
@@ -1175,26 +1141,37 @@ I’m using <code class="docutils literal notranslate"><span class="pre">ns</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7.75659253228837, 1.9350476056781392)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7.746546988198355, 1.9404648754849896)
 </pre></div>
 </div>
 </div>
 </div>
 <p>Here’s what the posterior distribution looks like.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">posterior</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of conservative responses&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;PMF&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_58_0.png" src="_images/overton_irt_58_0.png" />
+<img alt="_images/a796f002fe9ad45aec27cee9eea34a95e397129522a979a14f8b24e512241fe3.png" src="_images/a796f002fe9ad45aec27cee9eea34a95e397129522a979a14f8b24e512241fe3.png" />
 </div>
 </div>
 <p>The posterior mean is about 7.8 questions, but the spread of the distribution is wide, indicating that we are still uncertain about how conservative this respondent is.</p>
 <p>Here’s the same code in a function.</p>
 <div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">estimate_conservatism</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the posterior distribution of conservatism.</span>
@@ -1218,6 +1195,7 @@ I’m using <code class="docutils literal notranslate"><span class="pre">ns</spa
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>So we can apply it to the whole dataset row-wise.</p>
 <div class="cell docutils container">
@@ -1228,8 +1206,8 @@ I’m using <code class="docutils literal notranslate"><span class="pre">ns</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 26.6 s, sys: 247 ms, total: 26.8 s
-Wall time: 26.6 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 27.1 s, sys: 293 ms, total: 27.4 s
+Wall time: 27.1 s
 </pre></div>
 </div>
 </div>
@@ -1237,8 +1215,8 @@ Wall time: 26.6 s
 <p>Doing the calculation one row at a time takes longer than I’d like. So before we look at the results, let’s speed it up.</p>
 </section>
 <section id="array-operations-for-speed">
-<h2>Array Operations For Speed<a class="headerlink" href="#array-operations-for-speed" title="Permalink to this headline">#</a></h2>
-<p>To eliminate the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we can compute the results for all respondents
+<h2>Array Operations For Speed<a class="headerlink" href="#array-operations-for-speed" title="Permalink to this heading">#</a></h2>
+<p>To eliminate the <code class="docutils literal notranslate"><span class="pre">apply</span></code> function, we can compute the results for all respondents
 with a single 3-D array: one row for each respondent, one column for each question,
 one page for each hypothetical value of <span class="math notranslate nohighlight">\(e\)</span>.</p>
 <div class="cell docutils container">
@@ -1251,12 +1229,12 @@ one page for each hypothetical value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(68277, 15, 21)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(71618, 15, 21)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now we can fill the array with the likelihoods of conservative and non-conservative responses; where there’s a <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, we fill in a sequence of <code class="docutils literal notranslate"><span class="pre">1</span></code>s.</p>
+<p>Now we can fill the array with the likelihoods of conservative and non-conservative responses; where there’s a <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, we fill in <code class="docutils literal notranslate"><span class="pre">1</span></code> (the identity of multiplication).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">questions</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
@@ -1279,7 +1257,7 @@ one page for each hypothetical value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(68277, 21)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(71618, 21)
 </pre></div>
 </div>
 </div>
@@ -1293,7 +1271,7 @@ one page for each hypothetical value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(68277, 21)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(71618, 21)
 </pre></div>
 </div>
 </div>
@@ -1307,12 +1285,12 @@ one page for each hypothetical value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(68277,)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(71618,)
 </pre></div>
 </div>
 </div>
 </div>
-<p>We’ll also compute the standard deviation of the posterior distribution, which I’ll use to remove respondents who did not answer enough questions.</p>
+<p>We’ll also compute the standard deviation of the posterior distribution, which quantifies the precision of the estimates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deviations</span> <span class="o">=</span> <span class="n">ns</span> <span class="o">-</span> <span class="n">con</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
@@ -1323,7 +1301,7 @@ one page for each hypothetical value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(68277,)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(71618,)
 </pre></div>
 </div>
 </div>
@@ -1339,16 +1317,22 @@ one page for each hypothetical value of <span class="math notranslate nohighligh
 </div>
 <p>Here’s what the distribution of estimates looks like among the respondents.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
 
 <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">con</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of questions answered&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;CDF&quot;</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Estimated number of conservative responses&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;CDF&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_79_0.png" src="_images/overton_irt_79_0.png" />
+<img alt="_images/2bd6fd49922541955e9a246662911dfbcb40d049653d914543932929581c9b86.png" src="_images/2bd6fd49922541955e9a246662911dfbcb40d049653d914543932929581c9b86.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1358,7 +1342,7 @@ one page for each hypothetical value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.938065425921614
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.855868381255202
 </pre></div>
 </div>
 </div>
@@ -1366,6 +1350,11 @@ one page for each hypothetical value of <span class="math notranslate nohighligh
 <p>The distribution is roughly Gaussian, with a mean near 7 questions.
 Here’s the distribution of standard deviations.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">std_con</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 
@@ -1373,28 +1362,56 @@ Here’s the distribution of standard deviations.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_82_0.png" src="_images/overton_irt_82_0.png" />
+<img alt="_images/16ad33c177f10820e4528eb734db69590f6ab5fc34f1cedbb0ceda31beb11c2a.png" src="_images/16ad33c177f10820e4528eb734db69590f6ab5fc34f1cedbb0ceda31beb11c2a.png" />
 </div>
 </div>
 <p>For most respondents (about 63,000 out of 68,000) we have enough data to estimate the number of conservative responses with standard deviation less than 3.</p>
+<p>In one version of this analysis, I excluded people based on this estimate of precision, but I think that introduces a bias because the estimates are more “precise” at the extremes.</p>
+<p>In the current version, I exclude people based on the number of questions they answered.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answered</span> <span class="o">=</span> <span class="n">questions</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">answered</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 5., 12.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">answered</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.904283839258287
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;conservatism&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">con</span><span class="p">,</span> <span class="n">gss</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">gss</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">std_con</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;conservatism&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">answered</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;conservatism&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;conservatism&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    63471.000000
-mean         6.904193
-std          3.252135
-min          0.500109
-25%          4.555523
-50%          6.932699
-75%          9.296654
-max         14.477386
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    64763.000000
+mean         6.833093
+std          3.217315
+min          0.494033
+25%          4.524838
+50%          6.838483
+75%          9.302133
+max         14.475336
 Name: conservatism, dtype: float64
 </pre></div>
 </div>
@@ -1402,7 +1419,7 @@ Name: conservatism, dtype: float64
 </div>
 </section>
 <section id="conservatism-over-time">
-<h2>Conservatism Over Time<a class="headerlink" href="#conservatism-over-time" title="Permalink to this headline">#</a></h2>
+<h2>Conservatism Over Time<a class="headerlink" href="#conservatism-over-time" title="Permalink to this heading">#</a></h2>
 <p>The following figure shows the average of these estimates for each years of the survey.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1412,14 +1429,20 @@ Name: conservatism, dtype: float64
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Year of survey&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Number of conservative responses&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_87_0.png" src="_images/overton_irt_87_0.png" />
+<img alt="_images/e8c418d06a3a909b19a62ee711466aa473f7660336d1e0677469d0090f57d039.png" src="_images/e8c418d06a3a909b19a62ee711466aa473f7660336d1e0677469d0090f57d039.png" />
 </div>
 </div>
 <p>The prevalence of conservative responses has decreased over the last 50 years.
@@ -1429,7 +1452,7 @@ In 2012 and 2014, it might have been above the long-term trend; in 2016 and 2018
 And the most recent data, from 2021, is exactly on pace.</p>
 </section>
 <section id="are-we-polarized">
-<h2>Are We Polarized?<a class="headerlink" href="#are-we-polarized" title="Permalink to this headline">#</a></h2>
+<h2>Are We Polarized?<a class="headerlink" href="#are-we-polarized" title="Permalink to this heading">#</a></h2>
 <p>In current commentary, it is often taken for granted that politics in the U.S. have become more polarized.
 If we take that to mean that conservatives are becoming more conservative, and liberals more liberal, that turns out not to be true.</p>
 <p>The following figure shows conservatism over time, grouped by political label.</p>
@@ -1441,6 +1464,11 @@ If we take that to mean that conservatives are becoming more conservative, and l
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Conservative&quot;</span><span class="p">,</span> <span class="s2">&quot;Moderate&quot;</span><span class="p">,</span> <span class="s2">&quot;Liberal&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
@@ -1451,13 +1479,14 @@ If we take that to mean that conservatives are becoming more conservative, and l
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/overton_irt_91_0.png" src="_images/overton_irt_91_0.png" />
+<img alt="_images/08259367555b249a94f3a5599da8bd071fb029b8da3f8ec248cb71ab2c68e311.png" src="_images/08259367555b249a94f3a5599da8bd071fb029b8da3f8ec248cb71ab2c68e311.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">series</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">smooth</span> <span class="o">=</span> <span class="n">make_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">smooth</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">smooth</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
@@ -1465,9 +1494,9 @@ If we take that to mean that conservatives are becoming more conservative, and l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Conservative -1.9038138116921868
-Liberal -3.370428379501444
-Moderate -3.144387071263454
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Conservative -1.9108828518012313
+Liberal -3.5982851948518184
+Moderate -3.2553493539659044
 </pre></div>
 </div>
 </div>
@@ -1481,7 +1510,7 @@ Based on their responses to the fifteen questions, they would be indistinguishab
 <p>And if you bring them to 2021, their quaint 1970s liberalism would be almost as conservative as the average conservative.</p>
 </section>
 <section id="appendix-the-fifteen-questions">
-<h2>Appendix: The Fifteen Questions<a class="headerlink" href="#appendix-the-fifteen-questions" title="Permalink to this headline">#</a></h2>
+<h2>Appendix: The Fifteen Questions<a class="headerlink" href="#appendix-the-fifteen-questions" title="Permalink to this heading">#</a></h2>
 <p>This appendix provides the wording of the fifteen questions from the General Social Survey that most distinguish liberals and conservatives, identified by topic and the GSS variable name.</p>
 <ul class="simple">
 <li><p>Homosexuality (homosex): What about sexual relations between two adults of the same sex–do you think it is always wrong, almost always wrong, wrong only sometimes, or not wrong at all?</p></li>
@@ -1492,20 +1521,20 @@ Based on their responses to the fifteen questions, they would be indistinguishab
 <li><p>Premarital sex (premarsx): There’s been a lot of discussion about the way morals and attitudes about sex are changing in this country. If a man and woman have sex relations before marriage, do you think it is always wrong, almost always wrong, wrong only sometimes, or not wrong at all?</p></li>
 <li><p>Divorce (divlaw): Should divorce in this country be easier or more difficult to obtain than it is now?</p></li>
 <li><p>Spending on welfare (natfare) and the environment (natenvir): We are faced with many problems in this country, none of which can be solved easily or inexpensively. I’m going to name some of these problems, and for each one I’d like you to tell me whether you think we’re spending too much money on it, too little money, or about the right amount.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Welfare</p></li>
 <li><p>Improving and protecting the environment</p></li>
 </ol>
 </li>
 <li><p>Pornography (pornlaw): Which of these statements comes closest to your feelings about pornography laws?</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>There should be laws against the distribution of pornography whatever the age.</p></li>
 <li><p>There should be laws against the distribution of pornography to persons under 18.</p></li>
 <li><p>There should be no laws forbidding the distribution of pornography.</p></li>
 </ol>
 </li>
 <li><p>Open housing law (racopen): Suppose there is a community-wide vote on the general housing issue. There are two possible laws to vote on; which law would you vote for?</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>One law says that a homeowner can decide for himself whom to sell his house to, even if he prefers not to sell to [people of a particular race].</p></li>
 <li><p>The second law says that a homeowner cannot refuse to sell to someone because of their race or color.</p></li>
 </ol>
@@ -1538,43 +1567,95 @@ Based on their responses to the fifteen questions, they would be indistinguishab
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="longtail.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Long Tail of Disaster</p>
-        </div>
-    </a>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports-and-function-definitions">Imports and Function Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-data">Read the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-political-beliefs">Quantifying Political Beliefs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#item-response-theory">Item Response Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-conservatism">Estimating Conservatism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-operations-for-speed">Array Operations For Speed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conservatism-over-time">Conservatism Over Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-we-polarized">Are We Polarized?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-the-fifteen-questions">Appendix: The Fifteen Questions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

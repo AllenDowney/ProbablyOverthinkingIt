@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>The Long Tail of Disaster &#8212; Probably Overthinking It</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,56 +63,87 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'longtail';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Measuring the Overton Window" href="overton_irt.html" />
+    <link rel="next" title="The Principal Components of Anthropometry" href="ansur_pca.html" />
     <link rel="prev" title="Causation, Collision, and Confusion" href="birthweight.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Probably Overthinking It</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -110,351 +152,220 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="gaussian.html">
-   Are You Normal? Hint: No.
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="inspection.html">
-   Relay Races and Revolving Doors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="preston.html">
-   Defy Tradition, Save the World
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lognormal.html">
-   Extremes, Outliers, and GOATs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="nbue.html">
-   Better Than New
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="berkson.html">
-   Jumping to Conclusions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="birthweight.html">
-   Causation, Collision, and Confusion
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   The Long Tail of Disaster
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="overton_irt.html">
-   Measuring the Overton Window
-  </a>
- </li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Long Tail of Disaster</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/AllenDowney/ProbablyOverthinkingIt/master?urlpath=tree/longtail.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-</div>
+  
+  <div id="rtd-footer-container"></div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
 
 </a>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/longtail.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/longtail.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</li>
+      
+      
+      
       
       <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
   </span>
 
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-distribution-of-disaster">
-   The Distribution of Disaster
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#earthquakes">
-   Earthquakes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solar-flares">
-   Solar Flares
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lunar-craters">
-   Lunar Craters
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#asteroids">
-   Asteroids
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#origins-of-long-tailed-distributions">
-   Origins of Long-Tailed Distributions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stock-market-crashes">
-   Stock Market Crashes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#black-and-gray-swans">
-   Black and Gray Swans
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#in-a-long-tailed-world">
-   In a Long-Tailed World
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The Long Tail of Disaster</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-distribution-of-disaster">
-   The Distribution of Disaster
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#earthquakes">
-   Earthquakes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solar-flares">
-   Solar Flares
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lunar-craters">
-   Lunar Craters
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#asteroids">
-   Asteroids
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#origins-of-long-tailed-distributions">
-   Origins of Long-Tailed Distributions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#stock-market-crashes">
-   Stock Market Crashes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#black-and-gray-swans">
-   Black and Gray Swans
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#in-a-long-tailed-world">
-   In a Long-Tailed World
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Long Tail of Disaster</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-distribution-of-disaster">The Distribution of Disaster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthquakes">Earthquakes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solar-flares">Solar Flares</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lunar-craters">Lunar Craters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asteroids">Asteroids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-long-tailed-distributions">Origins of Long-Tailed Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stock-market-crashes">Stock Market Crashes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-and-gray-swans">Black and Gray Swans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-long-tailed-world">In a Long-Tailed World</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="the-long-tail-of-disaster">
-<h1>The Long Tail of Disaster<a class="headerlink" href="#the-long-tail-of-disaster" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="the-long-tail-of-disaster">
+<h1>The Long Tail of Disaster<a class="headerlink" href="#the-long-tail-of-disaster" title="Permalink to this heading">#</a></h1>
 <p>This is one of the Jupyter notebooks I used in my preparation of <em>Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions</em>.</p>
 <p>The book is scheduled to be published by University of Chicago Press in 2023.
-If you would like to get infrequent email announcements about the book, please
-<a class="reference external" href="http://eepurl.com/h0nfbX">sign up for my mailing list</a>.</p>
+You can <a class="reference external" href="https://amzn.to/3Kp629E">order the book from Amazon</a> or the bookseller of your choice.</p>
 <p>Before you read these notebooks, please keep in mind:</p>
 <ul class="simple">
 <li><p>There is some explanatory text in the notebooks, but some of the examples will not make sense until you have read the corresponding chapter in the book.</p></li>
@@ -497,7 +408,9 @@ If you would like to get infrequent email announcements about the book, please
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span><span class="p">,</span> <span class="n">set_pyplot_params</span>
+
+<span class="n">set_pyplot_params</span><span class="p">()</span>
 
 <span class="c1"># Set the random seed so we get the same results every time</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
@@ -555,7 +468,7 @@ Because they are rare, it is hard to get the data we need to estimate precisely 
 And because they are large, they challenge our ability to imagine quantities that are orders of magnitude bigger than what we experience in ordinary life.</p>
 <p>My goal in this chapter is to present the tools we need to comprehend the small probabilities of large events so that, maybe, we will be better prepared next time.</p>
 <section id="the-distribution-of-disaster">
-<h2>The Distribution of Disaster<a class="headerlink" href="#the-distribution-of-disaster" title="Permalink to this headline">#</a></h2>
+<h2>The Distribution of Disaster<a class="headerlink" href="#the-distribution-of-disaster" title="Permalink to this heading">#</a></h2>
 <p>Natural and human-caused disasters are highly variable.
 The worst disasters, in terms of both lives lost and property destroyed, are thousands of times bigger than smaller, more common disasters.</p>
 <p>That fact might not be surprising, but there is a pattern to these costs that is less obvious.
@@ -834,12 +747,12 @@ Name: (Type, Type), dtype: int64
 <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="n">xticks</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">yticks</span><span class="p">,</span> <span class="n">yticks</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_22_0.png" src="_images/longtail_22_0.png" />
+<img alt="_images/0724b311c18d8c43e0d43de85372224e00fcaa0c3384c5acc8fde8d47d34fc34.png" src="_images/0724b311c18d8c43e0d43de85372224e00fcaa0c3384c5acc8fde8d47d34fc34.png" />
 </div>
 </div>
 <p>With both axes on a log scale, the rank-size plot is a nearly straight line, at least for the top 100 disasters.
@@ -891,6 +804,120 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">surv</span><span class="o">=</span><span class="n">surv</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;magnitude&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>magnitude</th>
+      <th>surv</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.221849</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.154902</td>
+      <td>0.992</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.096910</td>
+      <td>0.984</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.000000</td>
+      <td>0.976</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.079181</td>
+      <td>0.960</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>2.223755</td>
+      <td>0.040</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>2.254548</td>
+      <td>0.032</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>2.537441</td>
+      <td>0.024</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>2.627058</td>
+      <td>0.016</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>2.889246</td>
+      <td>0.008</td>
+    </tr>
+  </tbody>
+</table>
+<p>108 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;disaster_magnitude.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="o">!</span>head<span class="w"> </span>disaster_magnitude.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>magnitude,surv
+-0.22184874961635637,1.0
+-0.1549019599857432,0.9920000000000007
+-0.09691001300805639,0.9840000000000007
+0.0,0.9760000000000006
+0.07918124604762482,0.9600000000000006
+0.11394335230683678,0.9520000000000006
+0.146128035678238,0.9440000000000006
+0.20411998265592482,0.9360000000000006
+0.2787536009528289,0.9280000000000006
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">truncated_normal_sf</span>
 
 <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">mags</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.99</span>
@@ -930,6 +957,40 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_linear</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">surv_linear</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">yticks</span><span class="p">,</span> <span class="n">ylabels</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of disaster costs&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail1a.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5e18556d0ab1112b10748b4710579d1308ce602c81440f1f39570207233c82ea.png" src="_images/5e18556d0ab1112b10748b4710579d1308ce602c81440f1f39570207233c82ea.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xticks</span><span class="p">,</span> <span class="n">xlabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">yticks</span><span class="p">,</span> <span class="n">ylabels</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of disaster costs, log scale&quot;</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail1b.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d535f946c7fa69f99763670174c91109889a008821859b0c3bc2e2ca59e11baf.png" src="_images/d535f946c7fa69f99763670174c91109889a008821859b0c3bc2e2ca59e11baf.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lognormal model&quot;</span><span class="p">)</span>
 <span class="n">plot_error_bounds</span><span class="p">(</span><span class="n">surv_model</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 <span class="n">surv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
@@ -939,11 +1000,12 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 <span class="n">decorate</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of disaster costs, log scale&quot;</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail2.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_30_0.png" src="_images/longtail_30_0.png" />
+<img alt="_images/0a6caf2070fbbcceef59b89f635085ddceb264f1321d90242f3b2a75218d647e.png" src="_images/0a6caf2070fbbcceef59b89f635085ddceb264f1321d90242f3b2a75218d647e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1010,12 +1072,12 @@ To see this part of the distribution more clearly, we can plot the y-axis on a l
 <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">]</span>
 <span class="n">ylabels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="s2">&quot;10%&quot;</span><span class="p">,</span> <span class="s2">&quot;1%&quot;</span><span class="p">,</span> <span class="s2">&quot;0.1%&quot;</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">yticks</span><span class="p">,</span> <span class="n">ylabels</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail3.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_35_0.png" src="_images/longtail_35_0.png" />
+<img alt="_images/4baf3287ff215c536a978245878cb4a4f44f07ea550f0be9a5ba9d97a6adcff3.png" src="_images/4baf3287ff215c536a978245878cb4a4f44f07ea550f0be9a5ba9d97a6adcff3.png" />
 </div>
 </div>
 <p>Again, the shaded area shows how much variation we expect in a sample of this size from a lognormal model.</p>
@@ -1026,6 +1088,59 @@ According to the model, only 1 out of 1000 disasters should exceed this cost, bu
 In the literature of long-tailed distributions, there are several to choose from; the one I found that best matches the data is Student’s <span class="math notranslate nohighlight">\(t\)</span>-distribution.</p>
 <p>The shape of the <span class="math notranslate nohighlight">\(t\)</span>-distribution is a bell curve similar to a Gaussian, but the tails extend farther to the right and left.
 It has two parameters that determine the center point and width of the curve, like the Gaussian distribution, plus a third parameter that controls the thickness of the tails, that is, what fraction of the values extend far from the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">t</span> <span class="k">as</span> <span class="n">t_dist</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+<span class="n">ys1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Standard normal&#39;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ys2</span> <span class="o">=</span> <span class="n">t_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Student t with df=10&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail3a.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8d638ed2bfb6c40f6a216607f386e4527e888772c4224f4c76b924b16ab0407b.png" src="_images/8d638ed2bfb6c40f6a216607f386e4527e888772c4224f4c76b924b16ab0407b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">t</span> <span class="k">as</span> <span class="n">t_dist</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ys1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Standard normal&#39;</span><span class="p">)</span>
+
+<span class="n">ys2</span> <span class="o">=</span> <span class="n">t_dist</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Student t with df=10&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Prob magnitude $&gt;$ x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail3b.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/49017debb58cb1b047d3e003768994ce992b13e052935530ce6c151c9bd2f312.png" src="_images/49017debb58cb1b047d3e003768994ce992b13e052935530ce6c151c9bd2f312.png" />
+</div>
+</div>
 <p>Since I am using a <span class="math notranslate nohighlight">\(t\)</span>-distribution to fit the logarithms of the values, I’ll call the result a log-<span class="math notranslate nohighlight">\(t\)</span> model.
 The following figures shows the distribution of costs again, along with a log-<span class="math notranslate nohighlight">\(t\)</span> model I chose to fit the data.
 In the top figure, the y-axis shows the fraction of disasters on a linear scale;
@@ -1049,7 +1164,7 @@ in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3.52818322]), 1.0165309888563427, 0.48874836748542283)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3.52818338]), 1.0165309898167136, 0.4887483704783907)
 </pre></div>
 </div>
 </div>
@@ -1078,11 +1193,12 @@ in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
     <span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of disaster costs with log-$t$ model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail4.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_41_0.png" src="_images/longtail_41_0.png" />
+<img alt="_images/2c8f8205102047f55bcec070201275c1ee3c7fee7b746a1055b7c1cdc44a08bf.png" src="_images/2c8f8205102047f55bcec070201275c1ee3c7fee7b746a1055b7c1cdc44a08bf.png" />
 </div>
 </div>
 <p>In the top figure, we see that the data fall within the shaded area over the entire range of the distribution.
@@ -1103,7 +1219,7 @@ Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.600800709214161, 0.1717081889593589)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.600800692345613, 0.1717081792987018)
 </pre></div>
 </div>
 </div>
@@ -1135,16 +1251,17 @@ Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</sp
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of distaster costs with lognormal mixture&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mf">5e-3</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail5.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_47_0.png" src="_images/longtail_47_0.png" />
+<img alt="_images/2703f72636b7086ff3f9d31cbe3f20e004c1aa186d1e1186021f2421e384ee96.png" src="_images/2703f72636b7086ff3f9d31cbe3f20e004c1aa186d1e1186021f2421e384ee96.png" />
 </div>
 </div>
 </section>
 <section id="earthquakes">
-<h2>Earthquakes<a class="headerlink" href="#earthquakes" title="Permalink to this headline">#</a></h2>
+<h2>Earthquakes<a class="headerlink" href="#earthquakes" title="Permalink to this heading">#</a></h2>
 <p>To describe the magnitudes of earthquakes, I downloaded data from the Southern California Earthquake Data Center.
 Their archive goes all the way back to 1932, but the sensors they use and their coverage have changed over that time.
 For consistency, I selected data from January 1981 to April 2022, which includes records of 791,329 earthquakes.</p>
@@ -1552,7 +1669,7 @@ Name: MAG, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Magnitude (log energy)&quot;</span>
-<span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with magnitude ≥ $x$&quot;</span>
+<span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with mag ≥ $x$&quot;</span>
 <span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">xlabels</span> <span class="o">=</span> <span class="n">xticks</span>
 <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-7</span><span class="p">]</span>
@@ -1569,16 +1686,17 @@ Name: MAG, dtype: float64
     <span class="n">surv</span><span class="p">,</span>
     <span class="n">surv_model</span><span class="p">[</span><span class="n">cutoff</span><span class="p">],</span>
     <span class="n">n</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of earthquake magnitudes with lognormal model&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Earthquake magnitudes with lognormal model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail6.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_65_0.png" src="_images/longtail_65_0.png" />
+<img alt="_images/ce73844f2334479870bc2f6045b6685f38099b67961e8365014675ca7dc3badd.png" src="_images/ce73844f2334479870bc2f6045b6685f38099b67961e8365014675ca7dc3badd.png" />
 </div>
 </div>
 <p>If you only look at the top figure, you might think the lognormal model is good enough.
@@ -1699,17 +1817,18 @@ If your job is to predict large earthquakes, and you underestimate their frequen
     <span class="n">surv_model2</span><span class="p">,</span>
     <span class="n">n</span><span class="p">,</span>
     <span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of earthquake magnitudes with log-$t$ model&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Earthquake magnitudes with log-$t$ model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">y8</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">y522</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="c1">#plt.plot(8, y8, &quot;s&quot;, color=&quot;C0&quot;, alpha=0.6)</span>
+<span class="c1">#plt.plot(8, y522, &quot;o&quot;, color=&quot;C1&quot;, alpha=0.6)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail7.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_75_0.png" src="_images/longtail_75_0.png" />
+<img alt="_images/60ed3aebc7ceeb080cb116a13781520388bc7c0887112c12fd94769efe8a5ce7.png" src="_images/60ed3aebc7ceeb080cb116a13781520388bc7c0887112c12fd94769efe8a5ce7.png" />
 </div>
 </div>
 <p>The top figure shows that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the distribution well for magnitudes less than 3.
@@ -1790,7 +1909,7 @@ The following figure shows their predictions, mine, and the actual number of ear
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([8.41547487]), 1.4816444227124799, 0.602683958103169)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([8.41547488]), 1.481644422691595, 0.6026839579408774)
 </pre></div>
 </div>
 </div>
@@ -1890,12 +2009,14 @@ dtype: float64
 <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>
 <span class="n">ylabels</span> <span class="o">=</span> <span class="n">yticks</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">yticks</span><span class="p">,</span> <span class="n">yticks</span><span class="p">)</span>
-<span class="kc">None</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail8.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_88_0.png" src="_images/longtail_88_0.png" />
+<img alt="_images/485bdbb7a4d6bf3c897183a8db8aaa52c513cdbe24aac580846850c7318bdea2.png" src="_images/485bdbb7a4d6bf3c897183a8db8aaa52c513cdbe24aac580846850c7318bdea2.png" />
 </div>
 </div>
 <p>Starting on the left, the UCERF model predicted that there would be 30 earthquakes in this interval with magnitude 5.0 or more.
@@ -1943,8 +2064,8 @@ dtype: float64
 6.0     2.146510
 6.7     6.357705
 7.0     9.768712
-7.5    19.170102
-8.0    35.909362
+7.5    19.170103
+8.0    35.909363
 dtype: float64
 </pre></div>
 </div>
@@ -1955,7 +2076,7 @@ The UCERF model estimates 87 years between earthquakes that exceed 7.5; the log-
 The UCERF model estimates 522 years between earthquakes that exceed 8.0; the log-<span class="math notranslate nohighlight">\(t\)</span> model estimates only 36.</p>
 </section>
 <section id="solar-flares">
-<h2>Solar Flares<a class="headerlink" href="#solar-flares" title="Permalink to this headline">#</a></h2>
+<h2>Solar Flares<a class="headerlink" href="#solar-flares" title="Permalink to this heading">#</a></h2>
 <p>The Space Weather Prediction Center (SWPC) monitors and predicts solar activity and its effects on Earth.
 Since 1974 it has operated the Geostationary Operational Environmental Satellite system (GOES).
 Several of the satellites in this system carry sensors that measure solar flares.
@@ -2117,11 +2238,14 @@ Name: 0, dtype: float64
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of solar flare flux with lognormal model&quot;</span>
 <span class="p">)</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail9.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_107_0.png" src="_images/longtail_107_0.png" />
+<img alt="_images/ad66e9f90b7bfe5bd7401fb85008143299aba2042bac1dfb700e2402933c497c.png" src="_images/ad66e9f90b7bfe5bd7401fb85008143299aba2042bac1dfb700e2402933c497c.png" />
 </div>
 </div>
 <p>The x-axis shows integrated flux on a log scale; the largest flare observed during this period measured 2.6 Joules per square meter on September 7, 2005.
@@ -2176,11 +2300,50 @@ The following figures show the distribution of fluxes again, along with a log-<s
     <span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of solar flare flux with log-$t$ model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail10.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_113_0.png" src="_images/longtail_113_0.png" />
+<img alt="_images/02280efa512ccfa116f94e7804e33141f700cadb7b6b89b4fb92ac19ec895dc7.png" src="_images/02280efa512ccfa116f94e7804e33141f700cadb7b6b89b4fb92ac19ec895dc7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">surv_model2</span> <span class="o">=</span> <span class="n">truncated_t_sf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">cutoff2</span> <span class="o">=</span> <span class="n">surv_model2</span><span class="o">.</span><span class="n">qs</span> <span class="o">&lt;=</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">high</span>
+
+<span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">xlabels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;$10^{-5}$&quot;</span><span class="p">,</span> <span class="s2">&quot;$10^{-4}$&quot;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;$10^</span><span class="si">{5}</span><span class="s2">$&quot;</span><span class="p">]</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-7</span><span class="p">]</span>
+<span class="n">ylabels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s2">&quot;$10^{-4}$&quot;</span><span class="p">,</span> <span class="s2">&quot;$10^{-5}$&quot;</span><span class="p">,</span> <span class="s2">&quot;$10^{-6}$&quot;</span><span class="p">,</span> <span class="s2">&quot;$10^{-7}$&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
+    <span class="n">surv</span><span class="p">,</span>
+    <span class="n">surv_model2</span><span class="p">[</span><span class="n">cutoff2</span><span class="p">],</span>
+    <span class="n">n</span><span class="p">,</span>
+    <span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of solar flare flux with log-$t$ model&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail10a.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/701de13faa7a84bfc02e7c1dcd97d861316fb6ca0abf1acfb44682a4ed1c5035.png" src="_images/701de13faa7a84bfc02e7c1dcd97d861316fb6ca0abf1acfb44682a4ed1c5035.png" />
 </div>
 </div>
 <p>The top figure shows that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the data well over the range of the distribution, except for some discrepancy among the smallest flares.
@@ -2229,7 +2392,7 @@ Above 1 Joule per meter squared, the actual curve drops off faster than the mode
 But in that time, we might see a solar flare 10 or 100 times bigger than the biggest we have seen so far.</p>
 </section>
 <section id="lunar-craters">
-<h2>Lunar Craters<a class="headerlink" href="#lunar-craters" title="Permalink to this headline">#</a></h2>
+<h2>Lunar Craters<a class="headerlink" href="#lunar-craters" title="Permalink to this heading">#</a></h2>
 <p>The largest crater on the near side of the moon, named Bailly, is 303 kilometers in diameter; the largest on the far side, the South Pole-Aitken basin, is roughly 2500 kilometers in diameter.</p>
 <p>In addition to large, visible craters like these, there are innumerable smaller craters.
 The Lunar Crater Database catalogs nearly all of the ones larger than one kilometer, about 1.3 million in total.
@@ -2547,18 +2710,18 @@ Name: DIAM_CIRC_IMG, dtype: float64
 [-0.25451518  0.46113863]
 [-0.25451519  0.46113863]
 [-0.25451518  0.46113864]
-[-0.34244267  0.45723477]
-[-0.34244269  0.45723477]
-[-0.34244267  0.45723478]
-[-0.29365242  0.44014649]
-[-0.29365243  0.44014649]
-[-0.29365242  0.4401465 ]
-[-0.29545209  0.44042455]
-[-0.2954521   0.44042455]
-[-0.29545209  0.44042457]
-[-0.29531533  0.44037614]
-[-0.29531534  0.44037614]
-[-0.29531533  0.44037615]
+[-0.34244203  0.45723454]
+[-0.34244204  0.45723454]
+[-0.34244203  0.45723456]
+[-0.2936528   0.44014661]
+[-0.29365282  0.44014661]
+[-0.2936528   0.44014663]
+[-0.29545206  0.44042454]
+[-0.29545207  0.44042454]
+[-0.29545206  0.44042456]
+[-0.29531529  0.44037612]
+[-0.2953153   0.44037612]
+[-0.29531529  0.44037614]
 </pre></div>
 </div>
 </div>
@@ -2596,7 +2759,7 @@ The left figure shows the tail distribution on a linear scale; the right figure 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242.90636307851742, 0.3789807837968745)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242.90636307851742, 0.3789805982356653)
 </pre></div>
 </div>
 </div>
@@ -2607,15 +2770,16 @@ The left figure shows the tail distribution on a linear scale; the right figure 
 <span class="n">cutoff</span> <span class="o">=</span> <span class="n">surv_model</span> <span class="o">&gt;</span> <span class="mf">1e-7</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
     <span class="n">surv</span><span class="p">,</span> <span class="n">surv_model</span><span class="p">[</span><span class="n">cutoff</span><span class="p">],</span> <span class="n">n</span><span class="p">,</span> 
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of moon crater diameter with lognormal model&quot;</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Moon crater diameters with lognormal model&quot;</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail11.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_139_0.png" src="_images/longtail_139_0.png" />
+<img alt="_images/2ebfb7609b82ed29ca3262526cc43e177d1868cd1bce4676beb4d1a2eab9e5de.png" src="_images/2ebfb7609b82ed29ca3262526cc43e177d1868cd1bce4676beb4d1a2eab9e5de.png" />
 </div>
 </div>
 <p>Looking at the figure on the left, we can see a discrepancy between the data and the model between 3 and 10 kilometers.
@@ -2635,7 +2799,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242.90636307851742, 0.3789807837968745)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242.90636307851742, 0.3789805982356653)
 </pre></div>
 </div>
 </div>
@@ -2648,7 +2812,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array(3.08452525e-06), array(1.46579818e-13))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array(3.08452525e-06), array(1.46579642e-13))
 </pre></div>
 </div>
 </div>
@@ -2662,7 +2826,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.38591367634179
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.38584199114627
 </pre></div>
 </div>
 </div>
@@ -2682,7 +2846,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([11.13386528]), -0.2019475541951973, 0.3746967604844768)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([11.13359438]), -0.20194316180415292, 0.3746947764950444)
 </pre></div>
 </div>
 </div>
@@ -2705,13 +2869,16 @@ But for questions related to the biggest craters, it is way off.</p>
     <span class="n">surv_model2</span><span class="p">[</span><span class="n">cutoff2</span><span class="p">],</span>
     <span class="n">n</span><span class="p">,</span>
     <span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of moon crater diameters with log-t model&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Moon crater diameters with log-t model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail12.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_148_0.png" src="_images/longtail_148_0.png" />
+<img alt="_images/7f871194e880eabb6a712e4a77c2ccb2b244ce2396a5157d02acf49cfe6f43a0.png" src="_images/7f871194e880eabb6a712e4a77c2ccb2b244ce2396a5157d02acf49cfe6f43a0.png" />
 </div>
 </div>
 <p>Since the dataset does not include craters smaller than one kilometer, I cut off the model at the same threshold.
@@ -2720,7 +2887,7 @@ We can assume that there are many smaller craters, but with this dataset we can�
 As usual, the world is under no obligation to follow simple rules, but this model does pretty well.</p>
 </section>
 <section id="asteroids">
-<h2>Asteroids<a class="headerlink" href="#asteroids" title="Permalink to this headline">#</a></h2>
+<h2>Asteroids<a class="headerlink" href="#asteroids" title="Permalink to this heading">#</a></h2>
 <p>The Jet Propulsion Laboratory (JPL) and NASA provide data related to asteroids, comets and other small bodies in our solar system.
 From their Small-Body Database, I selected asteroids in the “main asteroid belt” between the orbits of Mars and Jupiter.</p>
 <p>There are more than one million asteroids in this dataset, about 136,000 with known diameter.
@@ -2885,6 +3052,26 @@ The smallest are less than one kilometer.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asteroids</span><span class="p">[</span><span class="s2">&quot;diameter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    135915.000000
+mean          5.265815
+std           8.495350
+min           0.347000
+25%           2.783000
+50%           3.940000
+75%           5.651000
+max         939.400000
+Name: diameter, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">asteroids</span><span class="p">[</span><span class="s2">&quot;diameter&quot;</span><span class="p">])</span>
 <span class="n">mags</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -3002,11 +3189,13 @@ Name: diameter, dtype: float64
     <span class="n">n</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of asteroid diameters with lognormal model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail13.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_165_0.png" src="_images/longtail_165_0.png" />
+<img alt="_images/d574654cb1869ac4f5d78a3df929b34bdfa43482eb08d4a436aa21f9feeaeaa1.png" src="_images/d574654cb1869ac4f5d78a3df929b34bdfa43482eb08d4a436aa21f9feeaeaa1.png" />
 </div>
 </div>
 <p>The following figure shows the distribution of asteroid sizes compared to a log-<span class="math notranslate nohighlight">\(t\)</span> model.</p>
@@ -3051,11 +3240,13 @@ Name: diameter, dtype: float64
     <span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of asteroid diameters with log-t model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail14.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_170_0.png" src="_images/longtail_170_0.png" />
+<img alt="_images/d1d4f2cdab3bef0292f94505b3aa882d1fba6624a66e35735af990079636b451.png" src="_images/d1d4f2cdab3bef0292f94505b3aa882d1fba6624a66e35735af990079636b451.png" />
 </div>
 </div>
 <p>In the top figure, we see that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the data well in the middle of the range, except possibly near 1 kilometer.
@@ -3064,7 +3255,7 @@ So the distribution of asteroid sizes does not strictly follow a log-<span class
 Nevertheless, we can use it to explain the distribution of crater sizes, as I’ll show in the next section.</p>
 </section>
 <section id="origins-of-long-tailed-distributions">
-<h2>Origins of Long-Tailed Distributions<a class="headerlink" href="#origins-of-long-tailed-distributions" title="Permalink to this headline">#</a></h2>
+<h2>Origins of Long-Tailed Distributions<a class="headerlink" href="#origins-of-long-tailed-distributions" title="Permalink to this heading">#</a></h2>
 <p>Empirically – that is, based on data rather than a physical model – the diameter of an impact crater depends on the diameter of the projectile that created it, raised to the power 0.78, and on the impact velocity raised to the power 0.44.
 It also depends on the density of the asteroid and the angle of impact.</p>
 <p>Source: Melosh, <em>Planetary Surface Processes</em>.</p>
@@ -3151,11 +3342,11 @@ The following figure shows the results from this simulation along with the actua
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-3.194, 0.883)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.16249439e-04, -2.73415007e-05,  1.20415497e-04,  2.96512650e-04,
-        4.48439739e-04,  6.12564529e-04,  4.29226980e-04,  2.16708737e-04,
-        1.21459936e-04,  6.07299681e-05,  3.32894198e-05,  2.09586479e-05,
-        8.46778641e-06,  8.78063634e-06,  7.08561326e-06,  1.45431455e-07,
-        1.04829884e-05,  1.38803636e-05,  1.38803636e-05,  4.62678787e-06])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-5.16589498e-03, -3.34125696e-03, -1.32297140e-03, -1.78230880e-04,
+        3.84032557e-05,  2.71660551e-04,  3.93404733e-04,  6.21075141e-04,
+        5.63584756e-04,  4.60909325e-04,  2.75460148e-04,  1.62773519e-04,
+        9.75695236e-05,  6.21194703e-05,  3.39077907e-05,  1.69502308e-05,
+        1.09412698e-05,  1.04829884e-05,  5.70344010e-06,  9.25357574e-06])
 </pre></div>
 </div>
 </div>
@@ -3242,20 +3433,23 @@ The following figure shows the results from this simulation along with the actua
     <span class="n">surv_pred</span><span class="p">,</span>
     <span class="n">n</span><span class="p">,</span>
     <span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of moon crater diameters with simulation results&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Moon crater diameters with simulation results&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail15.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_180_0.png" src="_images/longtail_180_0.png" />
+<img alt="_images/982ac3ca73cec2c25da5092799b22cac7c1e65ff8dd87a944661a32ee10e925b.png" src="_images/982ac3ca73cec2c25da5092799b22cac7c1e65ff8dd87a944661a32ee10e925b.png" />
 </div>
 </div>
 <p>The simulation results are a good match for the data.
 This example suggests that the distribution of crater sizes can be explained by the relationship between the distributions of asteroid sizes and other factors like velocity and density.</p>
 </section>
 <section id="stock-market-crashes">
-<h2>Stock Market Crashes<a class="headerlink" href="#stock-market-crashes" title="Permalink to this headline">#</a></h2>
+<h2>Stock Market Crashes<a class="headerlink" href="#stock-market-crashes" title="Permalink to this heading">#</a></h2>
 <p>Like natural disasters, the distribution of magnitudes of stock market crashes is long-tailed.
 To demonstrate, I’ll use data from the MeasuringWorth Foundation which has compiled the value of the Dow Jones Industrial Average at the end of each day from February 16, 1885 to the present, with adjustments at several points to make the values consistent.
 The series I collected ends on May 6, 2022, so it includes 37,512 days.</p>
@@ -3764,9 +3958,9 @@ Name: DJIA, dtype: float64
 [-0.01125975  0.00718395]
 [-0.01125977  0.00718395]
 [-0.01125975  0.00718397]
-[-0.01332919  0.00747084]
+[-0.01332918  0.00747084]
 [-0.0133292   0.00747084]
-[-0.01332919  0.00747086]
+[-0.01332918  0.00747086]
 [-0.01298827  0.00737537]
 [-0.01298828  0.00737537]
 [-0.01298827  0.00737539]
@@ -3778,7 +3972,7 @@ Name: DJIA, dtype: float64
 [-0.01293473  0.00736344]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.01293473237820722, 0.00736342960496129)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.01293473182014612, 0.007363429483211379)
 </pre></div>
 </div>
 </div>
@@ -3840,11 +4034,14 @@ Name: DJIA, dtype: float64
     <span class="n">n</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of negative changes with lognormal model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail16.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_214_0.png" src="_images/longtail_214_0.png" />
+<img alt="_images/1387d8e2a5c5a86e3b8c08b1f0d1c1579c386d275d688e1fc76a4c9427cf6443.png" src="_images/1387d8e2a5c5a86e3b8c08b1f0d1c1579c386d275d688e1fc76a4c9427cf6443.png" />
 </div>
 </div>
 <p>On the left, the lognormal model seems to fit the distribution well, but again there are big differences hiding in the tail.
@@ -3865,7 +4062,7 @@ On the right, we can see that the lognormal model does not fit the tail of the d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3.89459284]), -0.002607418644655211, 0.0034267134529862176)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3.89459345]), -0.002607419439196774, 0.003426713677082388)
 </pre></div>
 </div>
 </div>
@@ -3891,12 +4088,14 @@ On the right, we can see that the lognormal model does not fit the tail of the d
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Tail distribution of stock market changes with log-$t$ model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">surv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
-<span class="kc">None</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;longtail17.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_220_0.png" src="_images/longtail_220_0.png" />
+<img alt="_images/44aedcfa40f98fb566d508b2b9e94ef62a30aaaabe562fff6bedf2498f58e86f.png" src="_images/44aedcfa40f98fb566d508b2b9e94ef62a30aaaabe562fff6bedf2498f58e86f.png" />
 </div>
 </div>
 <p>The top figure shows that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the left side of the distribution well.
@@ -3912,7 +4111,7 @@ According to the model, there is only a 5% chance that we would see a crash as b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(17680, array(5.6561086e-05), array(1.2891636e-05), 4.387425004195537)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(17680, array(5.6561086e-05), array(1.28916225e-05), 4.387429594651381)
 </pre></div>
 </div>
 </div>
@@ -3924,14 +4123,14 @@ According to the model, there is only a 5% chance that we would see a crash as b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.05423513])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.05423507])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="black-and-gray-swans">
-<h2>Black and Gray Swans<a class="headerlink" href="#black-and-gray-swans" title="Permalink to this headline">#</a></h2>
+<h2>Black and Gray Swans<a class="headerlink" href="#black-and-gray-swans" title="Permalink to this heading">#</a></h2>
 <p>If you have read <em>The Black Swan</em>, by Nassim Taleb, the examples in this chapter provide context for understanding black swans and their relatives, gray swans.</p>
 <p>In Taleb’s vocabulary, a black swan is a large, impactful event that was considered extremely unlikely before it happened, based on a model of prior events.
 If the distribution of event sizes is actually long-tailed and the model is Gaussian, black swans will happen with some regularity.</p>
@@ -3950,7 +4149,7 @@ When a magnitude 7 earthquake occurs, it would be a black swan if your predictio
 </div>
 </section>
 <section id="in-a-long-tailed-world">
-<h2>In a Long-Tailed World<a class="headerlink" href="#in-a-long-tailed-world" title="Permalink to this headline">#</a></h2>
+<h2>In a Long-Tailed World<a class="headerlink" href="#in-a-long-tailed-world" title="Permalink to this heading">#</a></h2>
 <p>Imagine a world where the distribution of human height is not Gaussian or even lognormal; instead, it follows a long-tailed distribution like the various disasters in this chapter.
 Specifically, suppose it follows a log-<span class="math notranslate nohighlight">\(t\)</span> distribution with the same tail thickness as the distribution of disaster costs, but with the same mean as the distribution of human height.</p>
 <div class="cell docutils container">
@@ -4014,7 +4213,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([999956.88032959])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([999980.16412415])
 </pre></div>
 </div>
 </div>
@@ -4054,7 +4253,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_234_0.png" src="_images/longtail_234_0.png" />
+<img alt="_images/c2223f5ba5853ddeee88807aa664a504051b190b71ddf6aa5ca590fa303c1f7a.png" src="_images/c2223f5ba5853ddeee88807aa664a504051b190b71ddf6aa5ca590fa303c1f7a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4066,7 +4265,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_235_0.png" src="_images/longtail_235_0.png" />
+<img alt="_images/1827db23e323cea450f59de7955a0454bcfca823e32ca65550ff85b1350efa9f.png" src="_images/1827db23e323cea450f59de7955a0454bcfca823e32ca65550ff85b1350efa9f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4078,13 +4277,13 @@ Name: HTM4, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">330e6</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">7e9</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">330e6</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">7e9</span><span class="p">]</span>
 <span class="n">ps</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.99, 0.999, 0.9999, 0.999999, 0.999999996969697, 0.9999999998571428]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.9, 0.99, 0.999, 0.9999, 0.999999, 0.999999996969697, 0.9999999998571428]
 </pre></div>
 </div>
 </div>
@@ -4119,7 +4318,8 @@ In a country the size of the United States, the tallest person would be 160,000 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.157502e+00    0.990000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.862428e+00    0.900000
+2.157502e+00    0.990000
 2.770812e+00    0.999000
 4.417009e+00    0.999900
 5.889090e+01    0.999999
@@ -4176,7 +4376,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/longtail_243_0.png" src="_images/longtail_243_0.png" />
+<img alt="_images/dd0616f7f1acbd58beeb08aea1c62325e99389269a28247ba097372b67c01919.png" src="_images/dd0616f7f1acbd58beeb08aea1c62325e99389269a28247ba097372b67c01919.png" />
 </div>
 </div>
 <p>Probably Overthinking It</p>
@@ -4205,50 +4405,113 @@ dtype: float64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="birthweight.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Causation, Collision, and Confusion</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="overton_irt.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Measuring the Overton Window</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Allen B. Downey<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
 
-
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="birthweight.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Causation, Collision, and Confusion</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="ansur_pca.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Principal Components of Anthropometry</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-distribution-of-disaster">The Distribution of Disaster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthquakes">Earthquakes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solar-flares">Solar Flares</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lunar-craters">Lunar Craters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asteroids">Asteroids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-long-tailed-distributions">Origins of Long-Tailed Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stock-market-crashes">Stock Market Crashes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#black-and-gray-swans">Black and Gray Swans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-long-tailed-world">In a Long-Tailed World</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

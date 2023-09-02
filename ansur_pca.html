@@ -1,0 +1,1550 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>The Principal Components of Anthropometry &#8212; Probably Overthinking It</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ansur_pca';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="The Long Tail of Disaster" href="longtail.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Principal Components of Anthropometry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ansur_pca.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Principal Components of Anthropometry</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis">Principle Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loadings">Loadings</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-principal-components-of-anthropometry">
+<h1>The Principal Components of Anthropometry<a class="headerlink" href="#the-principal-components-of-anthropometry" title="Permalink to this heading">#</a></h1>
+<p>In a previous post I explored the correlations between measurements in the ANSUR-II dataset, which includes 93 measurements from a sample of U.S. military personnel.
+I found that measurements of the head were weakly correlated with measurements from other parts of the body – and in particular the protrusion of the ears is almost entirely uncorrelated with anything else.</p>
+<p>A friend of mine, and co-developer of the <a class="reference external" href="https://greenteapress.com/wp/modsimpy/">Modeling and Simulation</a> class I taught at Olin, asked whether I had tried running principal component analysis (PCA).
+I had not, but now I have. Let’s look at the results.</p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ansur_pca.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+        
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="the-data">
+<h2>The data<a class="headerlink" href="#the-data" title="Permalink to this heading">#</a></h2>
+<p>Here’s the ANSUR data, originally downloaded from <a class="reference external" href="https://www.openlab.psu.edu/ansur2/">The OPEN Design Lab</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/ANSURIIFEMALEPublic.csv&quot;</span><span class="p">)</span>
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/ANSURIIMALEPublic.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since heights are in mm, I converted to cm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ansur_male</span><span class="p">[</span><span class="n">measurements</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>abdominalextensiondepthsitting</th>
+      <th>acromialheight</th>
+      <th>acromionradialelength</th>
+      <th>anklecircumference</th>
+      <th>axillaheight</th>
+      <th>balloffootcircumference</th>
+      <th>balloffootlength</th>
+      <th>biacromialbreadth</th>
+      <th>bicepscircumferenceflexed</th>
+      <th>bicristalbreadth</th>
+      <th>...</th>
+      <th>verticaltrunkcircumferenceusa</th>
+      <th>waistbacklength</th>
+      <th>waistbreadth</th>
+      <th>waistcircumference</th>
+      <th>waistdepth</th>
+      <th>waistfrontlengthsitting</th>
+      <th>waistheightomphalion</th>
+      <th>weightkg</th>
+      <th>wristcircumference</th>
+      <th>wristheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>266</td>
+      <td>1467</td>
+      <td>337</td>
+      <td>222</td>
+      <td>1347</td>
+      <td>253</td>
+      <td>202</td>
+      <td>401</td>
+      <td>369</td>
+      <td>274</td>
+      <td>...</td>
+      <td>1700</td>
+      <td>501</td>
+      <td>329</td>
+      <td>933</td>
+      <td>240</td>
+      <td>440</td>
+      <td>1054</td>
+      <td>815</td>
+      <td>175</td>
+      <td>853</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>233</td>
+      <td>1395</td>
+      <td>326</td>
+      <td>220</td>
+      <td>1293</td>
+      <td>245</td>
+      <td>193</td>
+      <td>394</td>
+      <td>338</td>
+      <td>257</td>
+      <td>...</td>
+      <td>1627</td>
+      <td>432</td>
+      <td>316</td>
+      <td>870</td>
+      <td>225</td>
+      <td>371</td>
+      <td>1054</td>
+      <td>726</td>
+      <td>167</td>
+      <td>815</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>287</td>
+      <td>1430</td>
+      <td>341</td>
+      <td>230</td>
+      <td>1327</td>
+      <td>256</td>
+      <td>196</td>
+      <td>427</td>
+      <td>408</td>
+      <td>261</td>
+      <td>...</td>
+      <td>1678</td>
+      <td>472</td>
+      <td>329</td>
+      <td>964</td>
+      <td>255</td>
+      <td>411</td>
+      <td>1041</td>
+      <td>929</td>
+      <td>180</td>
+      <td>831</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>234</td>
+      <td>1347</td>
+      <td>310</td>
+      <td>230</td>
+      <td>1239</td>
+      <td>262</td>
+      <td>199</td>
+      <td>401</td>
+      <td>359</td>
+      <td>262</td>
+      <td>...</td>
+      <td>1625</td>
+      <td>461</td>
+      <td>315</td>
+      <td>857</td>
+      <td>205</td>
+      <td>399</td>
+      <td>968</td>
+      <td>794</td>
+      <td>176</td>
+      <td>793</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>250</td>
+      <td>1585</td>
+      <td>372</td>
+      <td>247</td>
+      <td>1478</td>
+      <td>267</td>
+      <td>224</td>
+      <td>435</td>
+      <td>356</td>
+      <td>263</td>
+      <td>...</td>
+      <td>1679</td>
+      <td>467</td>
+      <td>303</td>
+      <td>868</td>
+      <td>214</td>
+      <td>379</td>
+      <td>1245</td>
+      <td>946</td>
+      <td>188</td>
+      <td>954</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>4077</th>
+      <td>235</td>
+      <td>1353</td>
+      <td>312</td>
+      <td>216</td>
+      <td>1263</td>
+      <td>228</td>
+      <td>193</td>
+      <td>384</td>
+      <td>318</td>
+      <td>241</td>
+      <td>...</td>
+      <td>1557</td>
+      <td>442</td>
+      <td>279</td>
+      <td>816</td>
+      <td>210</td>
+      <td>347</td>
+      <td>1016</td>
+      <td>675</td>
+      <td>163</td>
+      <td>778</td>
+    </tr>
+    <tr>
+      <th>4078</th>
+      <td>247</td>
+      <td>1473</td>
+      <td>336</td>
+      <td>234</td>
+      <td>1346</td>
+      <td>253</td>
+      <td>196</td>
+      <td>428</td>
+      <td>374</td>
+      <td>284</td>
+      <td>...</td>
+      <td>1715</td>
+      <td>475</td>
+      <td>351</td>
+      <td>978</td>
+      <td>235</td>
+      <td>385</td>
+      <td>1082</td>
+      <td>896</td>
+      <td>178</td>
+      <td>873</td>
+    </tr>
+    <tr>
+      <th>4079</th>
+      <td>264</td>
+      <td>1394</td>
+      <td>313</td>
+      <td>227</td>
+      <td>1280</td>
+      <td>245</td>
+      <td>193</td>
+      <td>407</td>
+      <td>367</td>
+      <td>271</td>
+      <td>...</td>
+      <td>1682</td>
+      <td>483</td>
+      <td>333</td>
+      <td>991</td>
+      <td>258</td>
+      <td>353</td>
+      <td>1011</td>
+      <td>832</td>
+      <td>178</td>
+      <td>822</td>
+    </tr>
+    <tr>
+      <th>4080</th>
+      <td>203</td>
+      <td>1417</td>
+      <td>327</td>
+      <td>223</td>
+      <td>1314</td>
+      <td>250</td>
+      <td>196</td>
+      <td>419</td>
+      <td>365</td>
+      <td>271</td>
+      <td>...</td>
+      <td>1589</td>
+      <td>430</td>
+      <td>293</td>
+      <td>783</td>
+      <td>192</td>
+      <td>350</td>
+      <td>1062</td>
+      <td>731</td>
+      <td>172</td>
+      <td>837</td>
+    </tr>
+    <tr>
+      <th>4081</th>
+      <td>327</td>
+      <td>1523</td>
+      <td>358</td>
+      <td>226</td>
+      <td>1408</td>
+      <td>269</td>
+      <td>225</td>
+      <td>442</td>
+      <td>379</td>
+      <td>275</td>
+      <td>...</td>
+      <td>1764</td>
+      <td>511</td>
+      <td>354</td>
+      <td>1080</td>
+      <td>294</td>
+      <td>389</td>
+      <td>1119</td>
+      <td>985</td>
+      <td>182</td>
+      <td>894</td>
+    </tr>
+  </tbody>
+</table>
+<p>4082 rows × 93 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">ansur_male</span><span class="p">[</span><span class="n">measurements</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="principle-component-analysis">
+<h2>Principle Component Analysis<a class="headerlink" href="#principle-component-analysis" title="Permalink to this heading">#</a></h2>
+<p>As you might guess from the comments below, I used ChatGPT to generate a lot of the code.
+It took some revision to get it working, but the head start definitely saved me some time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+
+<span class="c1"># In this example, we will first standardize the data and then perform PCA.</span>
+
+<span class="c1"># Step 3.1: Create a StandardScaler step</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="c1"># Step 3.2: Create a PCA step</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
+
+<span class="c1"># Step 4: Create the pipeline</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">scaler</span><span class="p">),</span>  <span class="c1"># Standardize the data</span>
+    <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">pca</span><span class="p">)</span>        <span class="c1"># Perform PCA</span>
+<span class="p">]</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+
+<span class="c1"># Fit the pipeline to your data</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Now, you can access the transformed data and principal components if needed.</span>
+<span class="n">transformed_data</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># Transformed data after PCA</span>
+<span class="n">principal_components</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span>    <span class="c1"># Principal components (eigenvectors)</span>
+
+<span class="c1"># You can also access the explained variance ratio to see how much variance is explained by each component.</span>
+<span class="n">explained_variance_ratio</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="n">explained_variance_ratio</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.1749688 , 0.04206542, 0.0324817 , 0.02284627,
+       0.02117396, 0.01887123, 0.01486761, 0.01422606, 0.01333555])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s a visualization of explained variance versus number of components.
+I lifted this from <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">The Python Data Science Handbook</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">ys</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.61731386, 0.65937928, 0.69186098, 0.71470725,
+       0.73588121, 0.75475244, 0.76962004, 0.7838461 , 0.79718165])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of components&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;cumulative explained variance&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/92b0c322f84939959e09422de76b65d92fa48ee6dfbe445a0db3db322e911fb2.png" src="_images/92b0c322f84939959e09422de76b65d92fa48ee6dfbe445a0db3db322e911fb2.png" />
+</div>
+</div>
+<p>With one component, we can capture 44% of the variation in the measurements.
+With two components, we’re up to 62%.
+After that, the gains are smaller (as we expect), but with 10 measurements, we get up to 78%.</p>
+</section>
+<section id="loadings">
+<h2>Loadings<a class="headerlink" href="#loadings" title="Permalink to this heading">#</a></h2>
+<p>Looking at the loadings, we can see which measurements contribute the most to each of the components, so we can get a sense of which characteristics each component captures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loadings</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span>  <span class="c1"># Get the loadings (eigenvectors)</span>
+
+<span class="c1"># Create a DataFrame to store the loadings with feature names as columns</span>
+<span class="n">loadings_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">loadings</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">measurements</span><span class="p">)</span>
+<span class="n">loadings_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>abdominalextensiondepthsitting</th>
+      <th>acromialheight</th>
+      <th>acromionradialelength</th>
+      <th>anklecircumference</th>
+      <th>axillaheight</th>
+      <th>balloffootcircumference</th>
+      <th>balloffootlength</th>
+      <th>biacromialbreadth</th>
+      <th>bicepscircumferenceflexed</th>
+      <th>bicristalbreadth</th>
+      <th>...</th>
+      <th>verticaltrunkcircumferenceusa</th>
+      <th>waistbacklength</th>
+      <th>waistbreadth</th>
+      <th>waistcircumference</th>
+      <th>waistdepth</th>
+      <th>waistfrontlengthsitting</th>
+      <th>waistheightomphalion</th>
+      <th>weightkg</th>
+      <th>wristcircumference</th>
+      <th>wristheight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.085451</td>
+      <td>-0.134108</td>
+      <td>-0.116021</td>
+      <td>-0.100365</td>
+      <td>-0.127055</td>
+      <td>-0.105897</td>
+      <td>-0.112045</td>
+      <td>-0.108305</td>
+      <td>-0.092030</td>
+      <td>-0.103360</td>
+      <td>...</td>
+      <td>-0.124746</td>
+      <td>-0.094822</td>
+      <td>-0.097267</td>
+      <td>-0.095846</td>
+      <td>-0.087184</td>
+      <td>-0.082944</td>
+      <td>-0.114016</td>
+      <td>-0.131211</td>
+      <td>-0.115607</td>
+      <td>-0.120198</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.162882</td>
+      <td>0.099494</td>
+      <td>0.106095</td>
+      <td>-0.092119</td>
+      <td>0.123047</td>
+      <td>-0.037801</td>
+      <td>0.064844</td>
+      <td>-0.017398</td>
+      <td>-0.141551</td>
+      <td>-0.055853</td>
+      <td>...</td>
+      <td>-0.096331</td>
+      <td>-0.038278</td>
+      <td>-0.157748</td>
+      <td>-0.165992</td>
+      <td>-0.161084</td>
+      <td>-0.061621</td>
+      <td>0.150431</td>
+      <td>-0.126668</td>
+      <td>-0.062109</td>
+      <td>0.048192</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.014395</td>
+      <td>-0.122851</td>
+      <td>0.012478</td>
+      <td>0.022587</td>
+      <td>-0.112582</td>
+      <td>0.073207</td>
+      <td>0.118888</td>
+      <td>0.059968</td>
+      <td>0.103338</td>
+      <td>-0.135285</td>
+      <td>...</td>
+      <td>-0.167957</td>
+      <td>-0.179743</td>
+      <td>-0.081042</td>
+      <td>-0.045141</td>
+      <td>-0.021002</td>
+      <td>-0.228053</td>
+      <td>-0.030050</td>
+      <td>-0.003647</td>
+      <td>0.042601</td>
+      <td>-0.216043</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.173882</td>
+      <td>0.015049</td>
+      <td>0.085706</td>
+      <td>-0.166726</td>
+      <td>0.009381</td>
+      <td>-0.247001</td>
+      <td>-0.099352</td>
+      <td>-0.044522</td>
+      <td>0.032557</td>
+      <td>0.021559</td>
+      <td>...</td>
+      <td>-0.000876</td>
+      <td>0.023758</td>
+      <td>0.131973</td>
+      <td>0.161462</td>
+      <td>0.181395</td>
+      <td>-0.043258</td>
+      <td>0.010538</td>
+      <td>0.055891</td>
+      <td>-0.153309</td>
+      <td>-0.019576</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.067034</td>
+      <td>0.015734</td>
+      <td>-0.053763</td>
+      <td>0.179718</td>
+      <td>0.008833</td>
+      <td>0.149046</td>
+      <td>0.103003</td>
+      <td>-0.290356</td>
+      <td>0.026294</td>
+      <td>0.021543</td>
+      <td>...</td>
+      <td>0.014603</td>
+      <td>0.005616</td>
+      <td>0.053208</td>
+      <td>0.058053</td>
+      <td>0.067614</td>
+      <td>-0.047541</td>
+      <td>-0.011571</td>
+      <td>0.044127</td>
+      <td>0.064097</td>
+      <td>0.057868</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.068184</td>
+      <td>0.045087</td>
+      <td>0.008759</td>
+      <td>-0.079452</td>
+      <td>0.034680</td>
+      <td>-0.068601</td>
+      <td>-0.007459</td>
+      <td>-0.210109</td>
+      <td>-0.059683</td>
+      <td>0.028774</td>
+      <td>...</td>
+      <td>0.014681</td>
+      <td>0.083141</td>
+      <td>0.029015</td>
+      <td>0.049920</td>
+      <td>0.071052</td>
+      <td>0.007433</td>
+      <td>-0.017599</td>
+      <td>0.003753</td>
+      <td>-0.105905</td>
+      <td>0.075342</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.093122</td>
+      <td>0.012056</td>
+      <td>0.030914</td>
+      <td>-0.107566</td>
+      <td>-0.004872</td>
+      <td>0.023620</td>
+      <td>0.039973</td>
+      <td>-0.040000</td>
+      <td>-0.043709</td>
+      <td>0.025147</td>
+      <td>...</td>
+      <td>0.018115</td>
+      <td>0.284302</td>
+      <td>0.026684</td>
+      <td>0.069259</td>
+      <td>0.116411</td>
+      <td>0.204153</td>
+      <td>-0.124093</td>
+      <td>-0.022496</td>
+      <td>0.094696</td>
+      <td>0.009281</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-0.051230</td>
+      <td>0.061714</td>
+      <td>-0.114750</td>
+      <td>-0.010113</td>
+      <td>0.048551</td>
+      <td>-0.001259</td>
+      <td>0.086907</td>
+      <td>-0.009047</td>
+      <td>0.094866</td>
+      <td>0.022084</td>
+      <td>...</td>
+      <td>-0.008328</td>
+      <td>0.045395</td>
+      <td>-0.065001</td>
+      <td>-0.051299</td>
+      <td>-0.027950</td>
+      <td>-0.142685</td>
+      <td>0.057582</td>
+      <td>0.006966</td>
+      <td>0.017728</td>
+      <td>0.200716</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>-0.003839</td>
+      <td>-0.041583</td>
+      <td>0.017699</td>
+      <td>0.128766</td>
+      <td>-0.038918</td>
+      <td>0.076594</td>
+      <td>0.140068</td>
+      <td>0.105295</td>
+      <td>-0.135544</td>
+      <td>0.259300</td>
+      <td>...</td>
+      <td>-0.065624</td>
+      <td>0.187700</td>
+      <td>0.110872</td>
+      <td>0.053250</td>
+      <td>0.018341</td>
+      <td>-0.065255</td>
+      <td>-0.050228</td>
+      <td>0.005607</td>
+      <td>-0.100881</td>
+      <td>-0.054472</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.083429</td>
+      <td>-0.014501</td>
+      <td>0.065331</td>
+      <td>-0.043632</td>
+      <td>-0.003462</td>
+      <td>-0.107394</td>
+      <td>0.031256</td>
+      <td>0.003598</td>
+      <td>-0.003754</td>
+      <td>-0.081815</td>
+      <td>...</td>
+      <td>0.054063</td>
+      <td>0.225034</td>
+      <td>0.018257</td>
+      <td>0.069098</td>
+      <td>0.093145</td>
+      <td>0.271480</td>
+      <td>-0.128586</td>
+      <td>0.028110</td>
+      <td>-0.013300</td>
+      <td>-0.086483</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 93 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loadings_transposed</span> <span class="o">=</span> <span class="n">loadings_df</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">loadings_transposed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>abdominalextensiondepthsitting</th>
+      <td>-0.085451</td>
+      <td>-0.162882</td>
+      <td>-0.014395</td>
+      <td>0.173882</td>
+      <td>0.067034</td>
+      <td>0.068184</td>
+      <td>0.093122</td>
+      <td>-0.051230</td>
+      <td>-0.003839</td>
+      <td>0.083429</td>
+    </tr>
+    <tr>
+      <th>acromialheight</th>
+      <td>-0.134108</td>
+      <td>0.099494</td>
+      <td>-0.122851</td>
+      <td>0.015049</td>
+      <td>0.015734</td>
+      <td>0.045087</td>
+      <td>0.012056</td>
+      <td>0.061714</td>
+      <td>-0.041583</td>
+      <td>-0.014501</td>
+    </tr>
+    <tr>
+      <th>acromionradialelength</th>
+      <td>-0.116021</td>
+      <td>0.106095</td>
+      <td>0.012478</td>
+      <td>0.085706</td>
+      <td>-0.053763</td>
+      <td>0.008759</td>
+      <td>0.030914</td>
+      <td>-0.114750</td>
+      <td>0.017699</td>
+      <td>0.065331</td>
+    </tr>
+    <tr>
+      <th>anklecircumference</th>
+      <td>-0.100365</td>
+      <td>-0.092119</td>
+      <td>0.022587</td>
+      <td>-0.166726</td>
+      <td>0.179718</td>
+      <td>-0.079452</td>
+      <td>-0.107566</td>
+      <td>-0.010113</td>
+      <td>0.128766</td>
+      <td>-0.043632</td>
+    </tr>
+    <tr>
+      <th>axillaheight</th>
+      <td>-0.127055</td>
+      <td>0.123047</td>
+      <td>-0.112582</td>
+      <td>0.009381</td>
+      <td>0.008833</td>
+      <td>0.034680</td>
+      <td>-0.004872</td>
+      <td>0.048551</td>
+      <td>-0.038918</td>
+      <td>-0.003462</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>waistfrontlengthsitting</th>
+      <td>-0.082944</td>
+      <td>-0.061621</td>
+      <td>-0.228053</td>
+      <td>-0.043258</td>
+      <td>-0.047541</td>
+      <td>0.007433</td>
+      <td>0.204153</td>
+      <td>-0.142685</td>
+      <td>-0.065255</td>
+      <td>0.271480</td>
+    </tr>
+    <tr>
+      <th>waistheightomphalion</th>
+      <td>-0.114016</td>
+      <td>0.150431</td>
+      <td>-0.030050</td>
+      <td>0.010538</td>
+      <td>-0.011571</td>
+      <td>-0.017599</td>
+      <td>-0.124093</td>
+      <td>0.057582</td>
+      <td>-0.050228</td>
+      <td>-0.128586</td>
+    </tr>
+    <tr>
+      <th>weightkg</th>
+      <td>-0.131211</td>
+      <td>-0.126668</td>
+      <td>-0.003647</td>
+      <td>0.055891</td>
+      <td>0.044127</td>
+      <td>0.003753</td>
+      <td>-0.022496</td>
+      <td>0.006966</td>
+      <td>0.005607</td>
+      <td>0.028110</td>
+    </tr>
+    <tr>
+      <th>wristcircumference</th>
+      <td>-0.115607</td>
+      <td>-0.062109</td>
+      <td>0.042601</td>
+      <td>-0.153309</td>
+      <td>0.064097</td>
+      <td>-0.105905</td>
+      <td>0.094696</td>
+      <td>0.017728</td>
+      <td>-0.100881</td>
+      <td>-0.013300</td>
+    </tr>
+    <tr>
+      <th>wristheight</th>
+      <td>-0.120198</td>
+      <td>0.048192</td>
+      <td>-0.216043</td>
+      <td>-0.019576</td>
+      <td>0.057868</td>
+      <td>0.075342</td>
+      <td>0.009281</td>
+      <td>0.200716</td>
+      <td>-0.054472</td>
+      <td>-0.086483</td>
+    </tr>
+  </tbody>
+</table>
+<p>93 rows × 10 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_top_features</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Iterate through each principal component</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">loadings_transposed</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Principal Component </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Sort the features by absolute loading values for the current principal component</span>
+    <span class="n">sorted_features</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># Select the top N features with the highest absolute loadings</span>
+    <span class="n">top_features</span> <span class="o">=</span> <span class="n">sorted_features</span><span class="p">[:</span><span class="n">num_top_features</span><span class="p">]</span>
+    
+    <span class="c1"># Print the top correlated factors for the current principal component</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">top_features</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Principal Component 1:
+suprasternaleheight    0.135148
+cervicaleheight        0.134192
+buttockkneelength      0.134150
+acromialheight         0.134108
+kneeheightsitting      0.133213
+Name: 0, dtype: float64
+
+Principal Component 2:
+waistcircumference                0.165992
+poplitealheight                   0.163478
+abdominalextensiondepthsitting    0.162882
+waistdepth                        0.161084
+buttockdepth                      0.158967
+Name: 1, dtype: float64
+
+Principal Component 3:
+elbowrestheight            0.337941
+eyeheightsitting           0.309933
+sittingheight              0.306948
+waistfrontlengthsitting    0.228053
+heelbreadth                0.225397
+Name: 2, dtype: float64
+
+Principal Component 4:
+balloffootcircumference    0.247001
+bimalleolarbreadth         0.231806
+footbreadthhorizontal      0.220106
+handbreadth                0.217946
+sittingheight              0.212332
+Name: 3, dtype: float64
+
+Principal Component 5:
+interscyeii              0.320346
+biacromialbreadth        0.290356
+interscyei               0.273961
+shoulderlength           0.273366
+shouldercircumference    0.183123
+Name: 4, dtype: float64
+
+Principal Component 6:
+headcircumference        0.339951
+headbreadth              0.320443
+shoulderlength           0.316143
+tragiontopofhead         0.277993
+interpupillarybreadth    0.262072
+Name: 5, dtype: float64
+
+Principal Component 7:
+crotchlengthposterioromphalion    0.374726
+earbreadth                        0.325342
+earlength                         0.297202
+waistbacklength                   0.284302
+crotchlengthomphalion             0.254329
+Name: 6, dtype: float64
+
+Principal Component 8:
+earprotrusion                     0.470622
+earlength                         0.349991
+crotchlengthposterioromphalion    0.219970
+wristheight                       0.200716
+overheadfingertipreachsitting     0.196673
+Name: 7, dtype: float64
+
+Principal Component 9:
+tragiontopofhead                  0.310626
+crotchlengthposterioromphalion    0.292080
+bicristalbreadth                  0.259300
+shoulderlength                    0.215664
+bitragionchinarc                  0.197467
+Name: 8, dtype: float64
+
+Principal Component 10:
+earbreadth                 0.395757
+earprotrusion              0.360464
+waistfrontlengthsitting    0.271480
+earlength                  0.234247
+waistbacklength            0.225034
+Name: 9, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>I won’t explain all of the measurements, but if there are any you are curious about, you can look them up in <a class="reference external" href="http://tools.openlab.psu.edu/publicData/ANSURII-TR11-017.pdf"><em>The Measurer’s Handbook</em></a> which includes details on “sampling strategy and measuring techniques” as well as descriptions and diagrams of the landmarks and measurements between them.</p>
+<ul class="simple">
+<li><p>Not surprisingly, the first component is loaded with measurements of height. If you want to predict someone’s measurements, and can only use one number, choose height.</p></li>
+<li><p>The second component is loaded with measurements of girth. Again, no surprises so far.</p></li>
+<li><p>The third component seems to capture torso length. And that makes sense, too. One you know how tall someone is, it helps to know how that height is split between torso and legs.</p></li>
+<li><p>The fourth component seems to capture hand and foot size (with sitting height thrown in just to remind us that PCA is not obligated to find components that align perfectly with the axes we expect).</p></li>
+<li><p>Component 5 is all about the shoulders.</p></li>
+<li><p>Component 6 is all about the head.</p></li>
+</ul>
+<p>After that, things are not so neat. But two things are worth noting:</p>
+<ul class="simple">
+<li><p>Component 7 is mostly related to the dimensions of the pelvis, but…</p></li>
+<li><p>Components 7, 8, and 10 are surprisingly loaded up with ear measurements.</p></li>
+</ul>
+<p>As we saw in the previous article, there seems to be something special about ears.
+Once you have exhausted the information carried by the most obvious measurements, the dimensions of the ear seem to be strangely salient.</p>
+<p>Copyright 2023 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="longtail.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Long Tail of Disaster</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis">Principle Component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loadings">Loadings</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
