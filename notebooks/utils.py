@@ -491,7 +491,9 @@ def fit_truncated_normal(surv):
         error = surv(qs) - pmf_model.make_surv()(qs)
         return error
 
-    params = surv.mean(), surv.std()
+    pmf = surv.make_pmf()
+    pmf.normalize()
+    params = pmf.mean(), pmf.std()
     res = least_squares(error_func, x0=params, xtol=1e-3)
     assert res.success
     return res.x
@@ -574,7 +576,9 @@ def fit_truncated_t(df, surv):
         error = surv(qs) - surv_model(qs)
         return error
 
-    params = surv.mean(), surv.std()
+    pmf = surv.make_pmf()
+    pmf.normalize()
+    params = pmf.mean(), pmf.std()
     res = least_squares(error_func_t, x0=params, args=(df, surv), xtol=1e-3)
     assert res.success
     return res.x
