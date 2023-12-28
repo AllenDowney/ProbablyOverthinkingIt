@@ -327,6 +327,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis">Principle Component Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loadings">Loadings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-pca-module">Using the pca module</a></li>
 </ul>
             </nav>
         </div>
@@ -414,6 +415,14 @@ I had not, but now I have. Let’s look at the results.</p>
 </div>
 </div>
 <p>Since heights are in mm, I converted to cm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_earratio</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earprotrusion&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earbreadth&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ansur_male</span><span class="p">[</span><span class="n">measurements</span><span class="p">]</span>
@@ -781,8 +790,8 @@ It took some revision to get it working, but the head start definitely saved me 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.1749688 , 0.04206542, 0.0324817 , 0.02284627,
-       0.02117396, 0.01887123, 0.01486761, 0.01422606, 0.01333555])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.1749688 , 0.04206542, 0.03248163, 0.0228476 ,
+       0.02117352, 0.01887385, 0.01486304, 0.01423664, 0.01332959])
 </pre></div>
 </div>
 </div>
@@ -798,8 +807,8 @@ I lifted this from <a class="reference external" href="https://jakevdp.github.io
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.61731386, 0.65937928, 0.69186098, 0.71470725,
-       0.73588121, 0.75475244, 0.76962004, 0.7838461 , 0.79718165])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.61731386, 0.65937928, 0.69186091, 0.71470851,
+       0.73588203, 0.75475588, 0.76961892, 0.78385556, 0.79718515])
 </pre></div>
 </div>
 </div>
@@ -808,7 +817,9 @@ I lifted this from <a class="reference external" href="https://jakevdp.github.io
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of components&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;cumulative explained variance&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;cumulative explained variance&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ansur_pca1.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -926,195 +937,195 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
     </tr>
     <tr>
       <th>2</th>
-      <td>-0.014395</td>
-      <td>-0.122851</td>
-      <td>0.012478</td>
-      <td>0.022587</td>
-      <td>-0.112582</td>
-      <td>0.073207</td>
-      <td>0.118888</td>
-      <td>0.059968</td>
-      <td>0.103338</td>
-      <td>-0.135285</td>
+      <td>-0.014402</td>
+      <td>-0.122855</td>
+      <td>0.012458</td>
+      <td>0.022607</td>
+      <td>-0.112586</td>
+      <td>0.073197</td>
+      <td>0.118906</td>
+      <td>0.059999</td>
+      <td>0.103362</td>
+      <td>-0.135291</td>
       <td>...</td>
-      <td>-0.167957</td>
-      <td>-0.179743</td>
-      <td>-0.081042</td>
-      <td>-0.045141</td>
-      <td>-0.021002</td>
-      <td>-0.228053</td>
-      <td>-0.030050</td>
-      <td>-0.003647</td>
-      <td>0.042601</td>
-      <td>-0.216043</td>
+      <td>-0.167968</td>
+      <td>-0.179771</td>
+      <td>-0.081043</td>
+      <td>-0.045145</td>
+      <td>-0.021008</td>
+      <td>-0.228018</td>
+      <td>-0.030051</td>
+      <td>-0.003646</td>
+      <td>0.042591</td>
+      <td>-0.216040</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.173882</td>
-      <td>0.015049</td>
-      <td>0.085706</td>
-      <td>-0.166726</td>
-      <td>0.009381</td>
-      <td>-0.247001</td>
-      <td>-0.099352</td>
-      <td>-0.044522</td>
-      <td>0.032557</td>
-      <td>0.021559</td>
+      <td>0.173902</td>
+      <td>0.015067</td>
+      <td>0.085738</td>
+      <td>-0.166805</td>
+      <td>0.009402</td>
+      <td>-0.247006</td>
+      <td>-0.099514</td>
+      <td>-0.044511</td>
+      <td>0.032614</td>
+      <td>0.021519</td>
       <td>...</td>
-      <td>-0.000876</td>
-      <td>0.023758</td>
-      <td>0.131973</td>
-      <td>0.161462</td>
-      <td>0.181395</td>
-      <td>-0.043258</td>
-      <td>0.010538</td>
-      <td>0.055891</td>
-      <td>-0.153309</td>
-      <td>-0.019576</td>
+      <td>-0.000912</td>
+      <td>0.023724</td>
+      <td>0.131986</td>
+      <td>0.161486</td>
+      <td>0.181409</td>
+      <td>-0.043193</td>
+      <td>0.010563</td>
+      <td>0.055897</td>
+      <td>-0.153280</td>
+      <td>-0.019526</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.067034</td>
-      <td>0.015734</td>
-      <td>-0.053763</td>
-      <td>0.179718</td>
-      <td>0.008833</td>
-      <td>0.149046</td>
-      <td>0.103003</td>
-      <td>-0.290356</td>
-      <td>0.026294</td>
-      <td>0.021543</td>
+      <td>0.067083</td>
+      <td>0.015880</td>
+      <td>-0.052733</td>
+      <td>0.179441</td>
+      <td>0.008818</td>
+      <td>0.148798</td>
+      <td>0.102851</td>
+      <td>-0.291578</td>
+      <td>0.025634</td>
+      <td>0.022352</td>
       <td>...</td>
-      <td>0.014603</td>
-      <td>0.005616</td>
-      <td>0.053208</td>
-      <td>0.058053</td>
-      <td>0.067614</td>
-      <td>-0.047541</td>
-      <td>-0.011571</td>
-      <td>0.044127</td>
-      <td>0.064097</td>
-      <td>0.057868</td>
+      <td>0.014742</td>
+      <td>0.006071</td>
+      <td>0.053438</td>
+      <td>0.058207</td>
+      <td>0.067641</td>
+      <td>-0.048584</td>
+      <td>-0.011554</td>
+      <td>0.043999</td>
+      <td>0.064798</td>
+      <td>0.057537</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.068184</td>
-      <td>0.045087</td>
-      <td>0.008759</td>
-      <td>-0.079452</td>
-      <td>0.034680</td>
-      <td>-0.068601</td>
-      <td>-0.007459</td>
-      <td>-0.210109</td>
-      <td>-0.059683</td>
-      <td>0.028774</td>
+      <td>0.068603</td>
+      <td>0.045339</td>
+      <td>0.009396</td>
+      <td>-0.080556</td>
+      <td>0.034854</td>
+      <td>-0.067952</td>
+      <td>-0.008425</td>
+      <td>-0.210178</td>
+      <td>-0.060257</td>
+      <td>0.028790</td>
       <td>...</td>
-      <td>0.014681</td>
-      <td>0.083141</td>
-      <td>0.029015</td>
-      <td>0.049920</td>
-      <td>0.071052</td>
-      <td>0.007433</td>
-      <td>-0.017599</td>
-      <td>0.003753</td>
-      <td>-0.105905</td>
-      <td>0.075342</td>
+      <td>0.014812</td>
+      <td>0.083023</td>
+      <td>0.029290</td>
+      <td>0.050304</td>
+      <td>0.071416</td>
+      <td>0.007212</td>
+      <td>-0.017477</td>
+      <td>0.003683</td>
+      <td>-0.105896</td>
+      <td>0.075637</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.093122</td>
-      <td>0.012056</td>
-      <td>0.030914</td>
-      <td>-0.107566</td>
-      <td>-0.004872</td>
-      <td>0.023620</td>
-      <td>0.039973</td>
-      <td>-0.040000</td>
-      <td>-0.043709</td>
-      <td>0.025147</td>
+      <td>0.093660</td>
+      <td>0.012428</td>
+      <td>0.032023</td>
+      <td>-0.109354</td>
+      <td>-0.004740</td>
+      <td>0.024016</td>
+      <td>0.038469</td>
+      <td>-0.041117</td>
+      <td>-0.045251</td>
+      <td>0.026545</td>
       <td>...</td>
-      <td>0.018115</td>
-      <td>0.284302</td>
-      <td>0.026684</td>
-      <td>0.069259</td>
-      <td>0.116411</td>
-      <td>0.204153</td>
-      <td>-0.124093</td>
-      <td>-0.022496</td>
-      <td>0.094696</td>
-      <td>0.009281</td>
+      <td>0.018426</td>
+      <td>0.284304</td>
+      <td>0.027542</td>
+      <td>0.069994</td>
+      <td>0.116852</td>
+      <td>0.202127</td>
+      <td>-0.123815</td>
+      <td>-0.022750</td>
+      <td>0.095576</td>
+      <td>0.009357</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>-0.051230</td>
-      <td>0.061714</td>
-      <td>-0.114750</td>
-      <td>-0.010113</td>
-      <td>0.048551</td>
-      <td>-0.001259</td>
-      <td>0.086907</td>
-      <td>-0.009047</td>
-      <td>0.094866</td>
-      <td>0.022084</td>
+      <td>-0.050239</td>
+      <td>0.062544</td>
+      <td>-0.112495</td>
+      <td>-0.012928</td>
+      <td>0.049113</td>
+      <td>-0.001771</td>
+      <td>0.077509</td>
+      <td>-0.010888</td>
+      <td>0.096296</td>
+      <td>0.019468</td>
       <td>...</td>
-      <td>-0.008328</td>
-      <td>0.045395</td>
-      <td>-0.065001</td>
-      <td>-0.051299</td>
-      <td>-0.027950</td>
-      <td>-0.142685</td>
-      <td>0.057582</td>
-      <td>0.006966</td>
-      <td>0.017728</td>
-      <td>0.200716</td>
+      <td>-0.008819</td>
+      <td>0.041587</td>
+      <td>-0.065475</td>
+      <td>-0.050950</td>
+      <td>-0.027480</td>
+      <td>-0.143207</td>
+      <td>0.059189</td>
+      <td>0.006680</td>
+      <td>0.022722</td>
+      <td>0.201584</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>-0.003839</td>
-      <td>-0.041583</td>
-      <td>0.017699</td>
-      <td>0.128766</td>
-      <td>-0.038918</td>
-      <td>0.076594</td>
-      <td>0.140068</td>
-      <td>0.105295</td>
-      <td>-0.135544</td>
-      <td>0.259300</td>
+      <td>-0.003643</td>
+      <td>-0.040762</td>
+      <td>0.010628</td>
+      <td>0.126513</td>
+      <td>-0.037450</td>
+      <td>0.077418</td>
+      <td>0.139245</td>
+      <td>0.112175</td>
+      <td>-0.130013</td>
+      <td>0.253391</td>
       <td>...</td>
-      <td>-0.065624</td>
-      <td>0.187700</td>
-      <td>0.110872</td>
-      <td>0.053250</td>
-      <td>0.018341</td>
-      <td>-0.065255</td>
-      <td>-0.050228</td>
-      <td>0.005607</td>
-      <td>-0.100881</td>
-      <td>-0.054472</td>
+      <td>-0.067305</td>
+      <td>0.181409</td>
+      <td>0.108766</td>
+      <td>0.052406</td>
+      <td>0.018824</td>
+      <td>-0.061912</td>
+      <td>-0.047037</td>
+      <td>0.006009</td>
+      <td>-0.103649</td>
+      <td>-0.046352</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.083429</td>
-      <td>-0.014501</td>
-      <td>0.065331</td>
-      <td>-0.043632</td>
-      <td>-0.003462</td>
-      <td>-0.107394</td>
-      <td>0.031256</td>
-      <td>0.003598</td>
-      <td>-0.003754</td>
-      <td>-0.081815</td>
+      <td>0.087035</td>
+      <td>-0.013592</td>
+      <td>0.074065</td>
+      <td>-0.045918</td>
+      <td>-0.003512</td>
+      <td>-0.102444</td>
+      <td>0.027862</td>
+      <td>0.003437</td>
+      <td>-0.009817</td>
+      <td>-0.076497</td>
       <td>...</td>
-      <td>0.054063</td>
-      <td>0.225034</td>
-      <td>0.018257</td>
-      <td>0.069098</td>
-      <td>0.093145</td>
-      <td>0.271480</td>
-      <td>-0.128586</td>
-      <td>0.028110</td>
-      <td>-0.013300</td>
-      <td>-0.086483</td>
+      <td>0.053154</td>
+      <td>0.227852</td>
+      <td>0.021863</td>
+      <td>0.073011</td>
+      <td>0.097022</td>
+      <td>0.269341</td>
+      <td>-0.128553</td>
+      <td>0.027776</td>
+      <td>-0.010761</td>
+      <td>-0.086203</td>
     </tr>
   </tbody>
 </table>
@@ -1164,66 +1175,66 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
       <th>abdominalextensiondepthsitting</th>
       <td>-0.085451</td>
       <td>-0.162882</td>
-      <td>-0.014395</td>
-      <td>0.173882</td>
-      <td>0.067034</td>
-      <td>0.068184</td>
-      <td>0.093122</td>
-      <td>-0.051230</td>
-      <td>-0.003839</td>
-      <td>0.083429</td>
+      <td>-0.014402</td>
+      <td>0.173902</td>
+      <td>0.067083</td>
+      <td>0.068603</td>
+      <td>0.093660</td>
+      <td>-0.050239</td>
+      <td>-0.003643</td>
+      <td>0.087035</td>
     </tr>
     <tr>
       <th>acromialheight</th>
       <td>-0.134108</td>
       <td>0.099494</td>
-      <td>-0.122851</td>
-      <td>0.015049</td>
-      <td>0.015734</td>
-      <td>0.045087</td>
-      <td>0.012056</td>
-      <td>0.061714</td>
-      <td>-0.041583</td>
-      <td>-0.014501</td>
+      <td>-0.122855</td>
+      <td>0.015067</td>
+      <td>0.015880</td>
+      <td>0.045339</td>
+      <td>0.012428</td>
+      <td>0.062544</td>
+      <td>-0.040762</td>
+      <td>-0.013592</td>
     </tr>
     <tr>
       <th>acromionradialelength</th>
       <td>-0.116021</td>
       <td>0.106095</td>
-      <td>0.012478</td>
-      <td>0.085706</td>
-      <td>-0.053763</td>
-      <td>0.008759</td>
-      <td>0.030914</td>
-      <td>-0.114750</td>
-      <td>0.017699</td>
-      <td>0.065331</td>
+      <td>0.012458</td>
+      <td>0.085738</td>
+      <td>-0.052733</td>
+      <td>0.009396</td>
+      <td>0.032023</td>
+      <td>-0.112495</td>
+      <td>0.010628</td>
+      <td>0.074065</td>
     </tr>
     <tr>
       <th>anklecircumference</th>
       <td>-0.100365</td>
       <td>-0.092119</td>
-      <td>0.022587</td>
-      <td>-0.166726</td>
-      <td>0.179718</td>
-      <td>-0.079452</td>
-      <td>-0.107566</td>
-      <td>-0.010113</td>
-      <td>0.128766</td>
-      <td>-0.043632</td>
+      <td>0.022607</td>
+      <td>-0.166805</td>
+      <td>0.179441</td>
+      <td>-0.080556</td>
+      <td>-0.109354</td>
+      <td>-0.012928</td>
+      <td>0.126513</td>
+      <td>-0.045918</td>
     </tr>
     <tr>
       <th>axillaheight</th>
       <td>-0.127055</td>
       <td>0.123047</td>
-      <td>-0.112582</td>
-      <td>0.009381</td>
-      <td>0.008833</td>
-      <td>0.034680</td>
-      <td>-0.004872</td>
-      <td>0.048551</td>
-      <td>-0.038918</td>
-      <td>-0.003462</td>
+      <td>-0.112586</td>
+      <td>0.009402</td>
+      <td>0.008818</td>
+      <td>0.034854</td>
+      <td>-0.004740</td>
+      <td>0.049113</td>
+      <td>-0.037450</td>
+      <td>-0.003512</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1242,66 +1253,66 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
       <th>waistfrontlengthsitting</th>
       <td>-0.082944</td>
       <td>-0.061621</td>
-      <td>-0.228053</td>
-      <td>-0.043258</td>
-      <td>-0.047541</td>
-      <td>0.007433</td>
-      <td>0.204153</td>
-      <td>-0.142685</td>
-      <td>-0.065255</td>
-      <td>0.271480</td>
+      <td>-0.228018</td>
+      <td>-0.043193</td>
+      <td>-0.048584</td>
+      <td>0.007212</td>
+      <td>0.202127</td>
+      <td>-0.143207</td>
+      <td>-0.061912</td>
+      <td>0.269341</td>
     </tr>
     <tr>
       <th>waistheightomphalion</th>
       <td>-0.114016</td>
       <td>0.150431</td>
-      <td>-0.030050</td>
-      <td>0.010538</td>
-      <td>-0.011571</td>
-      <td>-0.017599</td>
-      <td>-0.124093</td>
-      <td>0.057582</td>
-      <td>-0.050228</td>
-      <td>-0.128586</td>
+      <td>-0.030051</td>
+      <td>0.010563</td>
+      <td>-0.011554</td>
+      <td>-0.017477</td>
+      <td>-0.123815</td>
+      <td>0.059189</td>
+      <td>-0.047037</td>
+      <td>-0.128553</td>
     </tr>
     <tr>
       <th>weightkg</th>
       <td>-0.131211</td>
       <td>-0.126668</td>
-      <td>-0.003647</td>
-      <td>0.055891</td>
-      <td>0.044127</td>
-      <td>0.003753</td>
-      <td>-0.022496</td>
-      <td>0.006966</td>
-      <td>0.005607</td>
-      <td>0.028110</td>
+      <td>-0.003646</td>
+      <td>0.055897</td>
+      <td>0.043999</td>
+      <td>0.003683</td>
+      <td>-0.022750</td>
+      <td>0.006680</td>
+      <td>0.006009</td>
+      <td>0.027776</td>
     </tr>
     <tr>
       <th>wristcircumference</th>
       <td>-0.115607</td>
       <td>-0.062109</td>
-      <td>0.042601</td>
-      <td>-0.153309</td>
-      <td>0.064097</td>
-      <td>-0.105905</td>
-      <td>0.094696</td>
-      <td>0.017728</td>
-      <td>-0.100881</td>
-      <td>-0.013300</td>
+      <td>0.042591</td>
+      <td>-0.153280</td>
+      <td>0.064798</td>
+      <td>-0.105896</td>
+      <td>0.095576</td>
+      <td>0.022722</td>
+      <td>-0.103649</td>
+      <td>-0.010761</td>
     </tr>
     <tr>
       <th>wristheight</th>
       <td>-0.120198</td>
       <td>0.048192</td>
-      <td>-0.216043</td>
-      <td>-0.019576</td>
-      <td>0.057868</td>
-      <td>0.075342</td>
-      <td>0.009281</td>
-      <td>0.200716</td>
-      <td>-0.054472</td>
-      <td>-0.086483</td>
+      <td>-0.216040</td>
+      <td>-0.019526</td>
+      <td>0.057537</td>
+      <td>0.075637</td>
+      <td>0.009357</td>
+      <td>0.201584</td>
+      <td>-0.046352</td>
+      <td>-0.086203</td>
     </tr>
   </tbody>
 </table>
@@ -1317,97 +1328,88 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Principal Component </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
     
     <span class="c1"># Sort the features by absolute loading values for the current principal component</span>
-    <span class="n">sorted_features</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">sorted_features</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     
     <span class="c1"># Select the top N features with the highest absolute loadings</span>
-    <span class="n">top_features</span> <span class="o">=</span> <span class="n">sorted_features</span><span class="p">[:</span><span class="n">num_top_features</span><span class="p">]</span>
+    <span class="n">top_features</span> <span class="o">=</span> <span class="n">sorted_features</span><span class="p">[:</span><span class="n">num_top_features</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
     
     <span class="c1"># Print the top correlated factors for the current principal component</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">top_features</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">top_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">val</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Principal Component 1:
-suprasternaleheight    0.135148
-cervicaleheight        0.134192
-buttockkneelength      0.134150
-acromialheight         0.134108
-kneeheightsitting      0.133213
-Name: 0, dtype: float64
+0.135 	 suprasternaleheight
+0.134 	 cervicaleheight
+0.134 	 buttockkneelength
+0.134 	 acromialheight
+0.133 	 kneeheightsitting
 
 Principal Component 2:
-waistcircumference                0.165992
-poplitealheight                   0.163478
-abdominalextensiondepthsitting    0.162882
-waistdepth                        0.161084
-buttockdepth                      0.158967
-Name: 1, dtype: float64
+0.166 	 waistcircumference
+-0.163 	 poplitealheight
+0.163 	 abdominalextensiondepthsitting
+0.161 	 waistdepth
+0.159 	 buttockdepth
 
 Principal Component 3:
-elbowrestheight            0.337941
-eyeheightsitting           0.309933
-sittingheight              0.306948
-waistfrontlengthsitting    0.228053
-heelbreadth                0.225397
-Name: 2, dtype: float64
+0.338 	 elbowrestheight
+0.31 	 eyeheightsitting
+0.307 	 sittingheight
+0.228 	 waistfrontlengthsitting
+-0.225 	 heelbreadth
 
 Principal Component 4:
-balloffootcircumference    0.247001
-bimalleolarbreadth         0.231806
-footbreadthhorizontal      0.220106
-handbreadth                0.217946
-sittingheight              0.212332
-Name: 3, dtype: float64
+0.247 	 balloffootcircumference
+0.232 	 bimalleolarbreadth
+0.22 	 footbreadthhorizontal
+0.218 	 handbreadth
+0.212 	 sittingheight
 
 Principal Component 5:
-interscyeii              0.320346
-biacromialbreadth        0.290356
-interscyei               0.273961
-shoulderlength           0.273366
-shouldercircumference    0.183123
-Name: 4, dtype: float64
+0.319 	 interscyeii
+0.292 	 biacromialbreadth
+0.275 	 shoulderlength
+0.273 	 interscyei
+0.184 	 shouldercircumference
 
 Principal Component 6:
-headcircumference        0.339951
-headbreadth              0.320443
-shoulderlength           0.316143
-tragiontopofhead         0.277993
-interpupillarybreadth    0.262072
-Name: 5, dtype: float64
+-0.34 	 headcircumference
+-0.321 	 headbreadth
+0.316 	 shoulderlength
+-0.277 	 tragiontopofhead
+-0.262 	 interpupillarybreadth
 
 Principal Component 7:
-crotchlengthposterioromphalion    0.374726
-earbreadth                        0.325342
-earlength                         0.297202
-waistbacklength                   0.284302
-crotchlengthomphalion             0.254329
-Name: 6, dtype: float64
+0.374 	 crotchlengthposterioromphalion
+-0.321 	 earbreadth
+-0.298 	 earlength
+-0.284 	 waistbacklength
+0.253 	 crotchlengthomphalion
 
 Principal Component 8:
-earprotrusion                     0.470622
-earlength                         0.349991
-crotchlengthposterioromphalion    0.219970
-wristheight                       0.200716
-overheadfingertipreachsitting     0.196673
-Name: 7, dtype: float64
+0.472 	 earprotrusion
+0.346 	 earlength
+0.215 	 crotchlengthposterioromphalion
+-0.202 	 wristheight
+0.195 	 overheadfingertipreachsitting
 
 Principal Component 9:
-tragiontopofhead                  0.310626
-crotchlengthposterioromphalion    0.292080
-bicristalbreadth                  0.259300
-shoulderlength                    0.215664
-bitragionchinarc                  0.197467
-Name: 8, dtype: float64
+-0.299 	 tragiontopofhead
+0.294 	 crotchlengthposterioromphalion
+-0.253 	 bicristalbreadth
+-0.228 	 shoulderlength
+0.189 	 neckcircumferencebase
 
 Principal Component 10:
-earbreadth                 0.395757
-earprotrusion              0.360464
-waistfrontlengthsitting    0.271480
-earlength                  0.234247
-waistbacklength            0.225034
-Name: 9, dtype: float64
+0.406 	 earbreadth
+0.356 	 earprotrusion
+-0.269 	 waistfrontlengthsitting
+0.239 	 earlength
+-0.228 	 waistbacklength
 </pre></div>
 </div>
 </div>
@@ -1428,6 +1430,71 @@ Name: 9, dtype: float64
 </ul>
 <p>As we saw in the previous article, there seems to be something special about ears.
 Once you have exhausted the information carried by the most obvious measurements, the dimensions of the ear seem to be strangely salient.</p>
+</section>
+<section id="using-the-pca-module">
+<h2>Using the pca module<a class="headerlink" href="#using-the-pca-module" title="Permalink to this heading">#</a></h2>
+<p>I found <a class="reference external" href="https://erdogant.github.io/pca/pages/html/index.html">this module</a> and decided to experiment with it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pca</span> <span class="kn">import</span> <span class="n">pca</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pca
+    <span class="kn">from</span> <span class="nn">pca</span> <span class="kn">import</span> <span class="n">pca</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">pca</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[pca] &gt;Extracting column labels from dataframe.
+[pca] &gt;Extracting row labels from dataframe.
+[pca] &gt;Normalizing input data per feature (zero mean and unit variance)..
+[pca] &gt;The PCA reduction is performed on the [93] columns of the input dataframe.
+[pca] &gt;Fit using PCA.
+[pca] &gt;Compute loadings and PCs.
+[pca] &gt;Compute explained variance.
+[pca] &gt;Outlier detection using Hotelling T2 test with alpha=[0.05] and n_components=[10]
+[pca] &gt;Multiple test correction applied for Hotelling T2 test: [fdr_bh]
+[pca] &gt;Outlier detection using SPE/DmodX with n_std=[3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1c173e78d0ef97e85b0ffb17beea92dd1d9837bb3c6068b8c085edb01eb1fc17.png" src="_images/1c173e78d0ef97e85b0ffb17beea92dd1d9837bb3c6068b8c085edb01eb1fc17.png" />
+</div>
+</div>
+<p>Unfortunately, the most interesting plots don’t seem to work well with the number of dimensions in this dataset.
+I’d be curious to know if they can be tuned to work better.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">biplot3d</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[scatterd] &gt;INFO&gt; Create scatterplot
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[pca] &gt;Plot PC1 vs PC2 vs PC3 with loadings.
+</pre></div>
+</div>
+<img alt="_images/12848dd5de4015fe7e096351008fcc214bb7ca354bac14f99509eb1d7ea39866.png" src="_images/12848dd5de4015fe7e096351008fcc214bb7ca354bac14f99509eb1d7ea39866.png" />
+</div>
+</div>
 <p>Copyright 2023 Allen Downey</p>
 <p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
 </section>
@@ -1494,6 +1561,7 @@ Once you have exhausted the information carried by the most obvious measurements
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis">Principle Component Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loadings">Loadings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-pca-module">Using the pca module</a></li>
 </ul>
   </nav></div>
 

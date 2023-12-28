@@ -1,10 +1,9 @@
 # Probably Overthinking It
 
-This site contains the Jupyter notebooks I used in my preparation of *Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions*.
+This site contains the Jupyter notebooks I used in my preparation of *[Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions](https://greenteapress.com/wp/probably-overthinking-it/)*.
 
-The book is scheduled to be published by University of Chicago Press in 2023.
-If you would like to get infrequent email announcements about the book, please
-[sign up for my mailing list](http://eepurl.com/h0nfbX).
+If you've read the book and you want to know how the analysis works, this is the place.
+And if you read these notebooks, and you want to get the book, [start here to see your options](https://greenteapress.com/wp/probably-overthinking-it/).
 
 Before you read these notebooks, please keep in mind:
 
@@ -12,7 +11,7 @@ Before you read these notebooks, please keep in mind:
 
 * While preparing these notebooks, I made some changes to improve the readability of the code. There might be small differences between what appears in the book and what you get when you run the code.
 
-**Chapter 1**
+**Chapter 1: Are You Normal? Hint: No.**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/gaussian.ipynb)
 
@@ -21,17 +20,17 @@ Before you read these notebooks, please keep in mind:
 [Run the code that prepares the Big Five data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_big_five.ipynb)
 
 
-**Chapter 2**
+**Chapter 2: Relay Races and Revolving Doors**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/inspection.ipynb)
 
 
-**Chapter 3**
+**Chapter 3: Defy Tradition, Save the World**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/preston.ipynb)
 
 
-**Chapter 4**
+**Chapter 4: Extremes, Outliers, and GOATs**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/lognormal.ipynb)
 
@@ -40,27 +39,29 @@ Before you read these notebooks, please keep in mind:
 [Run the code that prepares the NSFG data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nsfg_clean.ipynb)
 
 
-**Chapter 5**
+**Chapter 5: Bettter Than New**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nbue.ipynb)
 
 
-**Chapter 6**
+**Chapter 6: Jumping to Conclusions**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/berkson.ipynb)
 
 
-**Chapter 7**
+**Chapter 7: Causation, Collision, and Confusion**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/birthweight.ipynb)
 
 [Run the code that prepares the NCHS data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_nchs.ipynb)
 
 
-**Chapter 8**
+**Chapter 8: The Long Tail of Disaster**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/longtail.ipynb)
 
 [Run the code that prepares the earthquake data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_quake.ipynb)
 
 [Run the code that prepares the solar flare data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_flare.ipynb)
+
+**More Chapters Coming Soon**

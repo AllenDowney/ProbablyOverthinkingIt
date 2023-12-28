@@ -471,7 +471,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gaussian</span> <span class="kn">import</span> <span class="n">make_cdf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">make_cdf</span>
 
 
 <span class="k">def</span> <span class="nf">make_plot</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">model_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
@@ -626,6 +626,47 @@ Among the data are the self-reported weights of the respondents, recorded in kil
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;HTM4&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>
+<span class="n">height</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    375271.000000
+mean        170.163368
+std          10.969334
+min          88.584550
+25%         162.565570
+50%         169.693036
+75%         178.381441
+max         236.549924
+Name: HTM4, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.axvline(182.88, ls=&#39;:&#39;, color=&#39;gray&#39;, alpha=0.4)</span>
+
+<span class="n">make_plot</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">female</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Female respondents&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">height</span><span class="p">[</span><span class="n">male</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Male respondents&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Height (cm)&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of adult height, BRFSS&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal1.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fbe6254e8cdc240531b7b0dd279143ff7e0637a6969a8dbb5214b808a1f9247c.png" src="_images/fbe6254e8cdc240531b7b0dd279143ff7e0637a6969a8dbb5214b808a1f9247c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;WTKG3&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">brfss</span><span class="p">))</span>
 <span class="n">weight</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -633,13 +674,13 @@ Among the data are the self-reported weights of the respondents, recorded in kil
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    365435.000000
-mean         82.025558
-std          21.153435
-min          21.061554
-25%          67.199892
-50%          79.483232
-75%          92.775075
-max         289.686997
+mean         82.025593
+std          21.154837
+min          21.665500
+25%          67.200620
+50%          79.499946
+75%          92.766653
+max         290.230331
 Name: WTKG3, dtype: float64
 </pre></div>
 </div>
@@ -650,19 +691,20 @@ The lighter lines show Gaussian models that best fit the data;
 the crosses at the top show the locations of the largest weights we expect to find in samples this size from a Gaussian distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Female participants&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-<span class="n">make_plot</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Male participants&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Female respondents&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">make_plot</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Male respondents&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
 
 <span class="n">decorate</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Weight (kg)&quot;</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of weight, BRFSS&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of adult weight, BRFSS&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b508c5c4e2f7311e4dc59dc3a5fc6be07756bb4ae3f6a879d402cbe0bd6b73e8.png" src="_images/b508c5c4e2f7311e4dc59dc3a5fc6be07756bb4ae3f6a879d402cbe0bd6b73e8.png" />
+<img alt="_images/a493f4877e00a1a8093b970f137d7b83cafdb531dd82d99d2d0bd52eb5678827.png" src="_images/a493f4877e00a1a8093b970f137d7b83cafdb531dd82d99d2d0bd52eb5678827.png" />
 </div>
 </div>
 <p>If these distributions were Gaussian, the heaviest woman in the sample would be about 150 kg, and the heaviest man would be 167 kg.
@@ -694,7 +736,7 @@ In fact, the heaviest woman is 286 kg and the heaviest man is 290 kg.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(149.94520956032576, 167.30677493324202)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(149.95522846670767, 167.20127128670438)
 </pre></div>
 </div>
 </div>
@@ -706,7 +748,7 @@ In fact, the heaviest woman is 286 kg and the heaviest man is 290 kg.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(286.4292088274667, 289.68699690382215)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(285.4587918400815, 290.2303311885769)
 </pre></div>
 </div>
 </div>
@@ -760,7 +802,7 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
     <span class="n">make_plot</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="n">qs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
     <span class="n">h1</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of weight, log scale&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of adult weight, log scale&quot;</span><span class="p">)</span>
     <span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 
     <span class="c1"># plot the second distribution</span>
@@ -779,9 +821,9 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.figure(figsize=(6, 3.3))</span>
+<span class="c1">#for x in np.log10([50, 100, 150]):</span>
+<span class="c1">#    plt.axvline(x, color=&quot;gray&quot;, ls=&quot;:&quot;)</span>
 
 <span class="n">log_weight_male</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">])</span>
 <span class="n">log_weight_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">])</span>
@@ -789,16 +831,17 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
 <span class="n">two_scale</span><span class="p">(</span>
     <span class="n">log_weight_female</span><span class="p">,</span>
     <span class="n">log_weight_male</span><span class="p">,</span>
-    <span class="s2">&quot;Female participants&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Male participants&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Female respondents&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Male respondents&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Weight (kg)&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Weight (log base 10 kg)&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal3.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/780eade2e7fe774e8b6f88b911c0b3e2deafe5b91f5f68ba71550d1c283dfd88.png" src="_images/780eade2e7fe774e8b6f88b911c0b3e2deafe5b91f5f68ba71550d1c283dfd88.png" />
+<img alt="_images/d8098aee7887650d7c86dcd835f87113c35dc5a496a8fff62625a68a9215bad2.png" src="_images/d8098aee7887650d7c86dcd835f87113c35dc5a496a8fff62625a68a9215bad2.png" />
 </div>
 </div>
 </section>
@@ -976,11 +1019,12 @@ dtype: float64
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of birth weight, NSFG&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal4.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01a037ddca7a22b8cbc5c7ce93a315d488374e0accdabe736845cc853b6b1d1f.png" src="_images/01a037ddca7a22b8cbc5c7ce93a315d488374e0accdabe736845cc853b6b1d1f.png" />
+<img alt="_images/2df9d5974953446e25984524e3973ad3ac53f1261d3bccc7a4ac5510955fb56e.png" src="_images/2df9d5974953446e25984524e3973ad3ac53f1261d3bccc7a4ac5510955fb56e.png" />
 </div>
 </div>
 <p>The Gaussian model fits the distribution of birth weights well.
@@ -1001,7 +1045,7 @@ The data deviate from the model, especially toward the low end.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a46778ce08afd18d7664096b3313462ee8dac7d48dad9f8cdb4d5519feae5140.png" src="_images/a46778ce08afd18d7664096b3313462ee8dac7d48dad9f8cdb4d5519feae5140.png" />
+<img alt="_images/fc83fde2e84174e86333d16cd8fc589cea3fa20b39c724b784516059cbca2731.png" src="_images/fc83fde2e84174e86333d16cd8fc589cea3fa20b39c724b784516059cbca2731.png" />
 </div>
 </div>
 </section>
@@ -1082,11 +1126,12 @@ dtype: float64
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of weight compared to simulation&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal5.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/57d0fa98abb3b765ca51e44bbbdd68142b08516ad96770eb13e63a84999d8caf.png" src="_images/57d0fa98abb3b765ca51e44bbbdd68142b08516ad96770eb13e63a84999d8caf.png" />
+<img alt="_images/a46ef57538478cbdfd2f029828dbee8c15da1c00227e97225325e4f008a2cc1d.png" src="_images/a46ef57538478cbdfd2f029828dbee8c15da1c00227e97225325e4f008a2cc1d.png" />
 </div>
 </div>
 <p>The Gaussian model fits the logarithms of the simulated weights, which means that the distribution is lognormal.
@@ -1150,7 +1195,7 @@ The following figure shows the actual distributions from the BRFSS along with th
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.1, 0.03)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-2.773388608450743, 0.0522087828881688)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-2.773398875220521, 0.052202712871066245)
 </pre></div>
 </div>
 </div>
@@ -1167,18 +1212,18 @@ The following figure shows the actual distributions from the BRFSS along with th
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.1  0.03]
 [1.10000002 0.03      ]
 [1.1        0.03000001]
-[1.27449077 0.02147319]
-[1.27449079 0.02147319]
-[1.27449077 0.0214732 ]
-[1.28922056 0.01840052]
-[1.28922058 0.01840052]
-[1.28922056 0.01840053]
-[1.28931344 0.01823682]
-[1.28931346 0.01823682]
-[1.28931344 0.01823684]
+[1.27449155 0.02147475]
+[1.27449157 0.02147475]
+[1.27449155 0.02147477]
+[1.28922143 0.01840272]
+[1.28922144 0.01840272]
+[1.28922143 0.01840274]
+[1.2893143  0.01823911]
+[1.28931432 0.01823911]
+[1.2893143  0.01823912]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.28931344, 0.01823682])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.2893143 , 0.01823911])
 </pre></div>
 </div>
 </div>
@@ -1205,15 +1250,15 @@ The following figure shows the actual distributions from the BRFSS along with th
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.1  0.03]
 [1.10000002 0.03      ]
 [1.1        0.03000001]
-[1.27059272 0.02364102]
-[1.27059274 0.02364102]
-[1.27059272 0.02364103]
-[1.28460523 0.0215002 ]
-[1.28460525 0.0215002 ]
-[1.28460523 0.02150021]
-[1.28468727 0.02142869]
-[1.28468729 0.02142869]
-[1.28468727 0.02142871]
+[1.27059185 0.02364117]
+[1.27059187 0.02364117]
+[1.27059185 0.02364118]
+[1.28460421 0.02150041]
+[1.28460423 0.02150041]
+[1.28460421 0.02150043]
+[1.28468625 0.02142891]
+[1.28468627 0.02142891]
+[1.28468625 0.02142893]
 </pre></div>
 </div>
 </div>
@@ -1248,11 +1293,12 @@ The following figure shows the actual distributions from the BRFSS along with th
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Adult weight (kg)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distributions of weight compared to simulation&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal6.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b3489c5d832855773405cf05c6d46de633903c51c8b0625d853500fb74784b44.png" src="_images/b3489c5d832855773405cf05c6d46de633903c51c8b0625d853500fb74784b44.png" />
+<img alt="_images/a808f59cd94698a7f99947326ff51fe200603a48ec067d60936991bf629254ab.png" src="_images/a808f59cd94698a7f99947326ff51fe200603a48ec067d60936991bf629254ab.png" />
 </div>
 </div>
 <p>The results from the simulation are a good match for the actual distributions.</p>
@@ -1280,6 +1326,20 @@ That’s pretty close to symmetric, too.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;HTM4&quot;</span><span class="p">]</span>
+<span class="n">height</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    375271.000000
+mean        170.162448
+std          10.921335
+min          91.000000
+25%         163.000000
+50%         170.000000
+75%         178.000000
+max         234.000000
+Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1323,9 +1383,9 @@ So the Gaussian model of weight is not just a bad fit for the data, it produces 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean 82.02555804201864
-percentiles [ 46.16635988 145.67363337]
-diffs [-35.85919816  63.64807533]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean 82.02559264202706
+percentiles [ 46.21059501 145.67141413]
+diffs [-35.81499763  63.64582149]
 </pre></div>
 </div>
 </div>
@@ -1355,9 +1415,9 @@ I’m not sure how reliable that measurement is, but it is at least close to the
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean 1.9004295903025548
-percentiles [1.66432563 2.16338095]
-diffs [-0.23610396  0.26295136]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean 1.9004278151719123
+percentiles [1.66474156 2.16337434]
+diffs [-0.23568625  0.26294652]
 </pre></div>
 </div>
 </div>
@@ -1370,7 +1430,7 @@ diffs [-0.23610396  0.26295136]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9004295903025548
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9004278151719123
 </pre></div>
 </div>
 </div>
@@ -1382,7 +1442,7 @@ diffs [-0.23610396  0.26295136]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9023441349894208
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9023459101200633
 </pre></div>
 </div>
 </div>
@@ -1395,7 +1455,7 @@ diffs [-0.23610396  0.26295136]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.998085455313134, 9.956013006853965)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.998081905051849, 9.955931618983454)
 </pre></div>
 </div>
 </div>
@@ -1407,7 +1467,7 @@ diffs [-0.23610396  0.26295136]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.5782102955686355
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.578208520437993
 </pre></div>
 </div>
 </div>
@@ -1554,7 +1614,7 @@ The following figure shows the distribution of these speeds on a logarithmic sca
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/17fa71e2720b7217a6a1853fa709537327a5bbef9d061d63f766cffdbba851a9.png" src="_images/17fa71e2720b7217a6a1853fa709537327a5bbef9d061d63f766cffdbba851a9.png" />
+<img alt="_images/021250230eab6287d7a58f8a2096bc5f521bd1bf53e0ca6665d62c17063ce143.png" src="_images/021250230eab6287d7a58f8a2096bc5f521bd1bf53e0ca6665d62c17063ce143.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1565,7 +1625,7 @@ The following figure shows the distribution of these speeds on a logarithmic sca
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a53d3bd8ef8664cb45f1d5b9e9785ff51ff5fe3ca6fda59ef9b783f8bd582d3d.png" src="_images/a53d3bd8ef8664cb45f1d5b9e9785ff51ff5fe3ca6fda59ef9b783f8bd582d3d.png" />
+<img alt="_images/5fc3409e0212e446cbd02967c69cd27d4e79d8e7241b425b3af4011a4fd8f4f2.png" src="_images/5fc3409e0212e446cbd02967c69cd27d4e79d8e7241b425b3af4011a4fd8f4f2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1585,7 +1645,7 @@ The following figure shows the distribution of these speeds on a logarithmic sca
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
-    <span class="n">qs</span><span class="p">,</span> <span class="n">low</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gaussian model&quot;</span>
+    <span class="n">qs</span><span class="p">,</span> <span class="n">low</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;lognormal model&quot;</span>
 <span class="p">)</span>
 <span class="n">h2</span><span class="p">,</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">h1</span> <span class="o">+</span> <span class="n">h2</span><span class="p">,</span> <span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
@@ -1596,12 +1656,12 @@ The following figure shows the distribution of these speeds on a logarithmic sca
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
 <span class="c1">#plt.xlabel(&quot;Running speed (log base 10 kph)&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of running speed, log scale&quot;</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;running1.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/859c35dcb0a6474e6a85a254fb2cd5fe3152b4688822567ef393cf444a8d049c.png" src="_images/859c35dcb0a6474e6a85a254fb2cd5fe3152b4688822567ef393cf444a8d049c.png" />
+<img alt="_images/7e882ec88846d0c1fb18b1c02e108115e08baaa80845f22a472dd5c8c126b7b7.png" src="_images/7e882ec88846d0c1fb18b1c02e108115e08baaa80845f22a472dd5c8c126b7b7.png" />
 </div>
 </div>
 <p>I generated five random factors from a Gaussian distribution and multiplied them together.
@@ -1643,7 +1703,7 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b34a0679506184570093e4a9b42e0aa71093216e143cf6a9d5d4df74d5f65fdb.png" src="_images/b34a0679506184570093e4a9b42e0aa71093216e143cf6a9d5d4df74d5f65fdb.png" />
+<img alt="_images/37c97c25f01fb96af10c14f71ab3d41e897feea16ad06f01531c4194ef238cbc.png" src="_images/37c97c25f01fb96af10c14f71ab3d41e897feea16ad06f01531c4194ef238cbc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1676,7 +1736,7 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.8328797969155864, -0.018541752148148835)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.8328797969155824, -0.018541752148148696)
 </pre></div>
 </div>
 </div>
@@ -1691,7 +1751,7 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.61636344, 0.11794022])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.61636345, 0.11794023])
 </pre></div>
 </div>
 </div>
@@ -1710,11 +1770,12 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Running speed (log10 kph)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>
          <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of running speed compared to simulation&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;running2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5fecd1daa20b00f49e270aff0ca057ddfd68e6c2c203274a1ed350aa7c5b3e12.png" src="_images/5fecd1daa20b00f49e270aff0ca057ddfd68e6c2c203274a1ed350aa7c5b3e12.png" />
+<img alt="_images/de97a01c621797f9e9b143ebe54baf3ee07f4e781f269907208ca4ab3d4e5020.png" src="_images/de97a01c621797f9e9b143ebe54baf3ee07f4e781f269907208ca4ab3d4e5020.png" />
 </div>
 </div>
 <p>If there are at least five factors affect running speed, and each person’s limit depends on their worst factor, that would explain why the distribution of running speed is lognormal.</p>
@@ -1956,7 +2017,7 @@ The following figure shows the distribution of these scores on a log scale, alon
 3000     0.000317
 3100     0.000050
 3200     0.000000
-Name: , dtype: float64
+dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2019,7 +2080,7 @@ Name: , dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3447ec3406f838d5a804b4f05026013ce25d5902642e25f240d291d74a0ee4a9.png" src="_images/3447ec3406f838d5a804b4f05026013ce25d5902642e25f240d291d74a0ee4a9.png" />
+<img alt="_images/4e2c741daaba05f07ec0c0a171ebef1956917c3870b7e96996a037fb0ba210d0.png" src="_images/4e2c741daaba05f07ec0c0a171ebef1956917c3870b7e96996a037fb0ba210d0.png" />
 </div>
 </div>
 <p>The lognormal model does not fit the data particularly well.
@@ -2078,11 +2139,13 @@ The following figure shows the distribution of these shifted scores on a log sca
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of shifted chess scores&quot;</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">]</span>
 <span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal7.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3135d59c4b4efe3895c165a14dc6e9dccb652f0a3925c3abec34c2de9fafa3ff.png" src="_images/3135d59c4b4efe3895c165a14dc6e9dccb652f0a3925c3abec34c2de9fafa3ff.png" />
+<img alt="_images/797ec3ea9c96caf7db9af873e2de3e02faebbd2701400ed7b8436dd479add4c2.png" src="_images/797ec3ea9c96caf7db9af873e2de3e02faebbd2701400ed7b8436dd479add4c2.png" />
 </div>
 </div>
 <p>With this adjustment, the lognormal model fits the data well.</p>
@@ -2190,11 +2253,12 @@ The following figure shows the results.</p>
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of random scores from Gaussian and lognormal models&quot;</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal8.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c6e2c84a3aaae5ae1611560019b66036765d94985f264b8cd69025ae50bbdf4c.png" src="_images/c6e2c84a3aaae5ae1611560019b66036765d94985f264b8cd69025ae50bbdf4c.png" />
+<img alt="_images/2b042060d8ceec8d5a1773808b35b538b70fe20805dcf0e9af140b5f3f6858f1.png" src="_images/2b042060d8ceec8d5a1773808b35b538b70fe20805dcf0e9af140b5f3f6858f1.png" />
 </div>
 </div>
 <p>The crosses indicate the top three scorers in each sample.

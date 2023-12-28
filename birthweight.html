@@ -502,9 +502,10 @@ Then I’ll repeat the analysis with data from 2018, and we’ll see what has ch
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    4079973
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mort
+False    4079973
 True       35520
-Name: mort, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -518,9 +519,10 @@ Name: mort, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0    2471563
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tobacco
+2.0    2471563
 1.0     533202
-Name: tobacco, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -553,6 +555,10 @@ Name: tobacco, dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>probs</th>
+    </tr>
+    <tr>
+      <th>tobacco</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -626,10 +632,10 @@ Name: tobacco, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;birthweight&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/16dccdc7d6d00819446aad8864ee677656c042284198b6512b987e77a50cb6f7.png" src="_images/16dccdc7d6d00819446aad8864ee677656c042284198b6512b987e77a50cb6f7.png" />
+<img alt="_images/cf5f1c317f960b5f63e6d4f9ca9a2e5dd4be05bb174cb21c9c35c862d57f8ba3.png" src="_images/cf5f1c317f960b5f63e6d4f9ca9a2e5dd4be05bb174cb21c9c35c862d57f8ba3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -685,7 +691,8 @@ Name: birthweight, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 1250]     12374
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bin
+(1000, 1250]     12374
 (1250, 1500]     14661
 (1500, 1750]     21393
 (1750, 2000]     34816
@@ -700,7 +707,7 @@ Name: birthweight, dtype: float64
 (4000, 4250]    240867
 (4250, 4500]    122762
 (4500, 4750]     46395
-Name: bin, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -713,7 +720,8 @@ Name: bin, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2222222222222222222222    3556241
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>congenit
+2222222222222222222222    3556241
 9999999999999999999999     498038
 2222222222222222222221      23448
 2222222222222222221222       5843
@@ -724,7 +732,7 @@ Name: bin, dtype: int64
 2212122222221221222222          1
 2222222122222211222222          1
 2222122222122222122222          1
-Name: congenit, Length: 1008, dtype: int64
+Name: count, Length: 1008, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -738,9 +746,10 @@ Name: congenit, Length: 1008, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    3556241
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anomaly
+False    3556241
 True      559252
-Name: anomaly, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -906,7 +915,7 @@ Babies of smokers were lighter on average than babies of nonsmokers by about 7%,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01bb3f2de38c755d760b5c123519d73a97c63885fb1e218210dec82c09fe0e2e.png" src="_images/01bb3f2de38c755d760b5c123519d73a97c63885fb1e218210dec82c09fe0e2e.png" />
+<img alt="_images/4e66c00a1104ef2b0947b880cc16905940e4bbdbaa15762e08869cb9c772f51e.png" src="_images/4e66c00a1104ef2b0947b880cc16905940e4bbdbaa15762e08869cb9c772f51e.png" />
 </div>
 </div>
 <p>The shapes of the distributions are similar, but for smokers it is shifted to the left.
@@ -1173,7 +1182,7 @@ The following figure shows the results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cb4b317e9b4464a85bcc85cf676ca4bc7c61d715dcfaade44ba9a9c5663ecf95.png" src="_images/cb4b317e9b4464a85bcc85cf676ca4bc7c61d715dcfaade44ba9a9c5663ecf95.png" />
+<img alt="_images/ca125860057c3ecf586532de5505d774c6561a461fa8a6139e77674f9a28dc6a.png" src="_images/ca125860057c3ecf586532de5505d774c6561a461fa8a6139e77674f9a28dc6a.png" />
 </div>
 </div>
 <p>This figure provides a more detailed view of the Low Birthweight Paradox.
@@ -1392,7 +1401,7 @@ Name: mort, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/af4c4ec5a085d012db535a84e3bc4452700b9c579bfc2a10347ea0d65e587f9c.png" src="_images/af4c4ec5a085d012db535a84e3bc4452700b9c579bfc2a10347ea0d65e587f9c.png" />
+<img alt="_images/afb8b7c4f596fd7c9db763d45363d8b7e91bce74fb6cd1c59e8b94ff911a4cf8.png" src="_images/afb8b7c4f596fd7c9db763d45363d8b7e91bce74fb6cd1c59e8b94ff911a4cf8.png" />
 </div>
 </div>
 </section>
@@ -1425,10 +1434,11 @@ Name: mort, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaN       3780154
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yod
+NaN       3780154
 2018.0      18735
 2019.0       2644
-Name: yod, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1441,9 +1451,10 @@ Name: yod, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    3780154
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mort
+False    3780154
 True       21379
-Name: mort, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1455,10 +1466,11 @@ Name: mort, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N    3539051
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tobacco
+N    3539051
 Y     245360
 U      17122
-Name: tobacco, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1471,10 +1483,11 @@ Name: tobacco, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N      3539051
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tobacco
+N      3539051
 Y       245360
 NaN      17122
-Name: tobacco, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1508,6 +1521,10 @@ Name: tobacco, dtype: int64
       <th></th>
       <th>probs</th>
     </tr>
+    <tr>
+      <th>tobacco</th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
@@ -1530,7 +1547,8 @@ Name: tobacco, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>227      157
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>birthweight
+227      157
 228        5
 229        7
 230       34
@@ -1541,7 +1559,7 @@ Name: tobacco, dtype: int64
 8161       1
 8165      12
 9999    2100
-Name: birthweight, Length: 5357, dtype: int64
+Name: count, Length: 5357, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1554,10 +1572,10 @@ Name: birthweight, Length: 5357, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;birthweight&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/0fd216911af725358ce70d6ebce1d5ae424f83038d8c9339be6df07147159ca5.png" src="_images/0fd216911af725358ce70d6ebce1d5ae424f83038d8c9339be6df07147159ca5.png" />
+<img alt="_images/01db0ed6953760ff73bc9bd3cfc6a2fbe9ca5554fd84f97e953eefdf229d5f44.png" src="_images/01db0ed6953760ff73bc9bd3cfc6a2fbe9ca5554fd84f97e953eefdf229d5f44.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1611,7 +1629,8 @@ Name: birthweight, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1000, 1250]     12263
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bin
+(1000, 1250]     12263
 (1250, 1500]     15841
 (1500, 1750]     23552
 (1750, 2000]     38581
@@ -1626,7 +1645,7 @@ Name: birthweight, dtype: float64
 (4000, 4250]    176360
 (4250, 4500]     75196
 (4500, 4750]     26293
-Name: bin, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1693,7 +1712,7 @@ Name: birthweight, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/da830997830c35364f17e42ac58cddbdc4554f183b261e523de4a5c2addd47d3.png" src="_images/da830997830c35364f17e42ac58cddbdc4554f183b261e523de4a5c2addd47d3.png" />
+<img alt="_images/e8596afa9249eda484c96e400401d24aefbb3a7d386c960c8e204e7c81a17cd6.png" src="_images/e8596afa9249eda484c96e400401d24aefbb3a7d386c960c8e204e7c81a17cd6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1938,7 +1957,7 @@ The following figure shows the results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/316cf062189ff8f7b05d2d1fcd6200351b98d2382428b6d146ac564898c0c584.png" src="_images/316cf062189ff8f7b05d2d1fcd6200351b98d2382428b6d146ac564898c0c584.png" />
+<img alt="_images/9915affc04652a3d989f113c34549ec9d395c1595194b38f87f56b3925ec340b.png" src="_images/9915affc04652a3d989f113c34549ec9d395c1595194b38f87f56b3925ec340b.png" />
 </div>
 </div>
 <p>At every birthweight, mortality is higher for children of smokers.</p>
@@ -1992,7 +2011,7 @@ For example, here is a causal diagram that represents an explanation for the Low
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ed961c5db9d7d05fb9a17083699ca016363d71a05b3cbc7f0c97274c3067b7d3.png" src="_images/ed961c5db9d7d05fb9a17083699ca016363d71a05b3cbc7f0c97274c3067b7d3.png" />
+<img alt="_images/e52726fdb81208dfaf3255cc6b5d22497c51693bbb4fdfffdc2c2096617c66b6.png" src="_images/e52726fdb81208dfaf3255cc6b5d22497c51693bbb4fdfffdc2c2096617c66b6.png" />
 </div>
 </div>
 <p>The following causal diagram represents the explanation of the Obesity Paradox proposed in the 2013 paper:</p>
@@ -2017,7 +2036,7 @@ For example, here is a causal diagram that represents an explanation for the Low
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/64edbd7923f1bda386c28783dd93b9e3f0bd7458e0d69e988bb93f49b9ce864e.png" src="_images/64edbd7923f1bda386c28783dd93b9e3f0bd7458e0d69e988bb93f49b9ce864e.png" />
+<img alt="_images/9407a12b83aa9fb44c991bc0a12b8b8e9796ef437d0c0a7e7e2a4746f9e3974f.png" src="_images/9407a12b83aa9fb44c991bc0a12b8b8e9796ef437d0c0a7e7e2a4746f9e3974f.png" />
 </div>
 </div>
 <p>Probably Overthinking It</p>

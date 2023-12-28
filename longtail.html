@@ -354,12 +354,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The autoreload extension is already loaded. To reload it, use:
-  %reload_ext autoreload
-</pre></div>
-</div>
-</div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="the-long-tail-of-disaster">
 <h1>The Long Tail of Disaster<a class="headerlink" href="#the-long-tail-of-disaster" title="Permalink to this heading">#</a></h1>
@@ -615,7 +609,8 @@ To demonstrate, I’ll use the estimated costs from a list of 125 disasters on W
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tropical cyclone                                    49
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Type, Type)
+Tropical cyclone                                    49
 Earthquake                                          16
 Wildfire                                             8
 Flood                                                8
@@ -640,7 +635,7 @@ Earthquake, Tsunami, Contamination (Radioactive)     1
 Earthquake, Tsunami                                  1
 Winter storm, power outage                           1
 Fire                                                 1
-Name: (Type, Type), dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -752,7 +747,7 @@ Name: (Type, Type), dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0724b311c18d8c43e0d43de85372224e00fcaa0c3384c5acc8fde8d47d34fc34.png" src="_images/0724b311c18d8c43e0d43de85372224e00fcaa0c3384c5acc8fde8d47d34fc34.png" />
+<img alt="_images/c29991320b86a655b1cee80ca20dbca2a2016eb48625a7d19289b4d712de8e97.png" src="_images/c29991320b86a655b1cee80ca20dbca2a2016eb48625a7d19289b4d712de8e97.png" />
 </div>
 </div>
 <p>With both axes on a log scale, the rank-size plot is a nearly straight line, at least for the top 100 disasters.
@@ -786,18 +781,18 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.06953525 0.57443729]
-[1.06953526 0.57443729]
-[1.06953525 0.57443731]
-[1.04184348 0.54751447]
-[1.0418435  0.54751447]
-[1.04184348 0.54751448]
-[1.04292832 0.54530397]
-[1.04292833 0.54530397]
-[1.04292832 0.54530398]
-[1.04292544 0.5451708 ]
-[1.04292546 0.5451708 ]
-[1.04292544 0.54517081]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.07816053 0.57668442]
+[1.07816055 0.57668442]
+[1.07816053 0.57668444]
+[1.04133203 0.54825645]
+[1.04133204 0.54825645]
+[1.04133203 0.54825647]
+[1.04293263 0.54534355]
+[1.04293265 0.54534355]
+[1.04293263 0.54534356]
+[1.04292536 0.54517372]
+[1.04292537 0.54517372]
+[1.04292536 0.54517373]
 </pre></div>
 </div>
 </div>
@@ -969,7 +964,7 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5e18556d0ab1112b10748b4710579d1308ce602c81440f1f39570207233c82ea.png" src="_images/5e18556d0ab1112b10748b4710579d1308ce602c81440f1f39570207233c82ea.png" />
+<img alt="_images/f5bfdb36bc9a5f556c9cde9c5f4c9ba25a24d318bfadde682158eb6a6502919f.png" src="_images/f5bfdb36bc9a5f556c9cde9c5f4c9ba25a24d318bfadde682158eb6a6502919f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -986,7 +981,7 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d535f946c7fa69f99763670174c91109889a008821859b0c3bc2e2ca59e11baf.png" src="_images/d535f946c7fa69f99763670174c91109889a008821859b0c3bc2e2ca59e11baf.png" />
+<img alt="_images/8b0984596e5fedd293862854bf791a58969b83f688787593506f296a7d7ffe8a.png" src="_images/8b0984596e5fedd293862854bf791a58969b83f688787593506f296a7d7ffe8a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1005,7 +1000,7 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0a6caf2070fbbcceef59b89f635085ddceb264f1321d90242f3b2a75218d647e.png" src="_images/0a6caf2070fbbcceef59b89f635085ddceb264f1321d90242f3b2a75218d647e.png" />
+<img alt="_images/888c3619ce3184eedd4738e94c9af635a2b15bc7ca9f9bc7b365767e3f359f75.png" src="_images/888c3619ce3184eedd4738e94c9af635a2b15bc7ca9f9bc7b365767e3f359f75.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1036,7 +1031,7 @@ To see this part of the distribution more clearly, we can plot the y-axis on a l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(15.999999999999897, 1.2081250052975532, 13.243662642392872)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(15.999999999999897, 1.2081898734673209, 13.24295158515303)
 </pre></div>
 </div>
 </div>
@@ -1077,7 +1072,7 @@ To see this part of the distribution more clearly, we can plot the y-axis on a l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4baf3287ff215c536a978245878cb4a4f44f07ea550f0be9a5ba9d97a6adcff3.png" src="_images/4baf3287ff215c536a978245878cb4a4f44f07ea550f0be9a5ba9d97a6adcff3.png" />
+<img alt="_images/d28819a69c97092023e77b1e1f449951d96443b98e29cf3d8f34586f0539f345.png" src="_images/d28819a69c97092023e77b1e1f449951d96443b98e29cf3d8f34586f0539f345.png" />
 </div>
 </div>
 <p>Again, the shaded area shows how much variation we expect in a sample of this size from a lognormal model.</p>
@@ -1111,7 +1106,7 @@ It has two parameters that determine the center point and width of the curve, li
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8d638ed2bfb6c40f6a216607f386e4527e888772c4224f4c76b924b16ab0407b.png" src="_images/8d638ed2bfb6c40f6a216607f386e4527e888772c4224f4c76b924b16ab0407b.png" />
+<img alt="_images/5ad0a0aef464e4037d25c4425177719ad0d552b121b10595fc94589da5e86109.png" src="_images/5ad0a0aef464e4037d25c4425177719ad0d552b121b10595fc94589da5e86109.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1138,7 +1133,7 @@ It has two parameters that determine the center point and width of the curve, li
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/49017debb58cb1b047d3e003768994ce992b13e052935530ce6c151c9bd2f312.png" src="_images/49017debb58cb1b047d3e003768994ce992b13e052935530ce6c151c9bd2f312.png" />
+<img alt="_images/af4549c01be85a514c8495d345232e2298b9daeb0554d96434f5ae295353259b.png" src="_images/af4549c01be85a514c8495d345232e2298b9daeb0554d96434f5ae295353259b.png" />
 </div>
 </div>
 <p>Since I am using a <span class="math notranslate nohighlight">\(t\)</span>-distribution to fit the logarithms of the values, I’ll call the result a log-<span class="math notranslate nohighlight">\(t\)</span> model.
@@ -1164,7 +1159,7 @@ in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3.52818338]), 1.0165309898167136, 0.4887483704783907)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3.52824501]), 1.0165307353889603, 0.488752041667769)
 </pre></div>
 </div>
 </div>
@@ -1198,7 +1193,7 @@ in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2c8f8205102047f55bcec070201275c1ee3c7fee7b746a1055b7c1cdc44a08bf.png" src="_images/2c8f8205102047f55bcec070201275c1ee3c7fee7b746a1055b7c1cdc44a08bf.png" />
+<img alt="_images/4ec11813b1f2cf8478ff70022a86b147b7a417d4ff93aa1c0a5bf61acfb8d079.png" src="_images/4ec11813b1f2cf8478ff70022a86b147b7a417d4ff93aa1c0a5bf61acfb8d079.png" />
 </div>
 </div>
 <p>In the top figure, we see that the data fall within the shaded area over the entire range of the distribution.
@@ -1219,7 +1214,7 @@ Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.600800692345613, 0.1717081792987018)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.6007941329583358, 0.1717044227431617)
 </pre></div>
 </div>
 </div>
@@ -1256,7 +1251,7 @@ Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2703f72636b7086ff3f9d31cbe3f20e004c1aa186d1e1186021f2421e384ee96.png" src="_images/2703f72636b7086ff3f9d31cbe3f20e004c1aa186d1e1186021f2421e384ee96.png" />
+<img alt="_images/92c884c20d2dbc4ee2b065aa00301f2c034f0c5805e11685028c3a3f66035e7e.png" src="_images/92c884c20d2dbc4ee2b065aa00301f2c034f0c5805e11685028c3a3f66035e7e.png" />
 </div>
 </div>
 </section>
@@ -1631,17 +1626,17 @@ Name: MAG, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.4886069  0.65822187]
-[1.48860692 0.65822187]
-[1.4886069  0.65822189]
-[1.37983943 0.66707183]
-[1.37983946 0.66707183]
-[1.37983943 0.66707185]
-[1.38099765 0.65403304]
-[1.38099767 0.65403304]
-[1.38099765 0.65403306]
-[1.38080268 0.6540289 ]
-[1.3808027 0.6540289]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.48860875 0.65822228]
+[1.48860877 0.65822228]
+[1.48860875 0.6582223 ]
+[1.37983937 0.66707222]
+[1.37983939 0.66707222]
+[1.37983937 0.66707224]
+[1.38099766 0.65403304]
+[1.38099768 0.65403304]
+[1.38099766 0.65403305]
+[1.38080268 0.65402889]
+[1.3808027  0.65402889]
 [1.38080268 0.65402891]
 </pre></div>
 </div>
@@ -1696,7 +1691,7 @@ Name: MAG, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ce73844f2334479870bc2f6045b6685f38099b67961e8365014675ca7dc3badd.png" src="_images/ce73844f2334479870bc2f6045b6685f38099b67961e8365014675ca7dc3badd.png" />
+<img alt="_images/b4d5ca7ab533542c3676fe05e3701cfed824d9fc9c4c52a24d694ee910ad8ca2.png" src="_images/b4d5ca7ab533542c3676fe05e3701cfed824d9fc9c4c52a24d694ee910ad8ca2.png" />
 </div>
 </div>
 <p>If you only look at the top figure, you might think the lognormal model is good enough.
@@ -1716,7 +1711,7 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1784.8008154824963, 31.89727060082917, 55.95465636599328)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1784.8008154824963, 31.897268299459753, 55.9546604030893)
 </pre></div>
 </div>
 </div>
@@ -1729,7 +1724,7 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(168.02518137406247, 0.15958926162570078)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(168.02518137406247, 0.15958924021795134)
 </pre></div>
 </div>
 </div>
@@ -1744,7 +1739,7 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.223154865724416, 4.406281526550607)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.223154865724416, 4.406280129716829)
 </pre></div>
 </div>
 </div>
@@ -1758,7 +1753,7 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([9.07638595]), 1.3634555604788354, 0.6375531962765731)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([9.07638598]), 1.3634555603669711, 0.6375531964799466)
 </pre></div>
 </div>
 </div>
@@ -1828,7 +1823,7 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60ed3aebc7ceeb080cb116a13781520388bc7c0887112c12fd94769efe8a5ce7.png" src="_images/60ed3aebc7ceeb080cb116a13781520388bc7c0887112c12fd94769efe8a5ce7.png" />
+<img alt="_images/9821dc3e86a10e72212efe8cda691447d026647f464c8a1658d3ab5b49cd54d2.png" src="_images/9821dc3e86a10e72212efe8cda691447d026647f464c8a1658d3ab5b49cd54d2.png" />
 </div>
 </div>
 <p>The top figure shows that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the distribution well for magnitudes less than 3.
@@ -1842,7 +1837,7 @@ For example, the square marker shows the predicted probability of an earthquake 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.197711991166678
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.197711963360669
 </pre></div>
 </div>
 </div>
@@ -1854,7 +1849,7 @@ For example, the square marker shows the predicted probability of an earthquake 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>43.64530142254315
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>43.645302435809846
 </pre></div>
 </div>
 </div>
@@ -1909,7 +1904,7 @@ The following figure shows their predictions, mine, and the actual number of ear
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([8.41547488]), 1.481644422691595, 0.6026839579408774)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([8.41547484]), 1.4816444224709593, 0.6026839581707539)
 </pre></div>
 </div>
 </div>
@@ -2016,7 +2011,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/485bdbb7a4d6bf3c897183a8db8aaa52c513cdbe24aac580846850c7318bdea2.png" src="_images/485bdbb7a4d6bf3c897183a8db8aaa52c513cdbe24aac580846850c7318bdea2.png" />
+<img alt="_images/7ed046ebc531df1cff4d5a4410b48bd5cef50cceaaa002423b08d9d52bc32dd3.png" src="_images/7ed046ebc531df1cff4d5a4410b48bd5cef50cceaaa002423b08d9d52bc32dd3.png" />
 </div>
 </div>
 <p>Starting on the left, the UCERF model predicted that there would be 30 earthquakes in this interval with magnitude 5.0 or more.
@@ -2064,8 +2059,8 @@ dtype: float64
 6.0     2.146510
 6.7     6.357705
 7.0     9.768712
-7.5    19.170103
-8.0    35.909363
+7.5    19.170102
+8.0    35.909361
 dtype: float64
 </pre></div>
 </div>
@@ -2162,15 +2157,15 @@ Name: 0, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3.04210098  0.69157612]
-[-3.04210102  0.69157612]
-[-3.04210098  0.69157613]
-[-3.07381192  0.68338837]
-[-3.07381197  0.68338837]
-[-3.07381192  0.68338839]
-[-3.07353795  0.68244261]
-[-3.073538    0.68244261]
-[-3.07353795  0.68244262]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3.04218419  0.69158557]
+[-3.04218423  0.69158557]
+[-3.04218419  0.69158559]
+[-3.0738114   0.68338351]
+[-3.07381145  0.68338351]
+[-3.0738114   0.68338353]
+[-3.07353797  0.68244264]
+[-3.07353802  0.68244264]
+[-3.07353797  0.68244265]
 </pre></div>
 </div>
 </div>
@@ -2225,7 +2220,7 @@ Name: 0, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(218.81838074390188, 3.399179292255981, 64.37388614434505)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(218.81838074390188, 3.3991818848706328, 64.37383704527177)
 </pre></div>
 </div>
 </div>
@@ -2245,7 +2240,7 @@ Name: 0, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad66e9f90b7bfe5bd7401fb85008143299aba2042bac1dfb700e2402933c497c.png" src="_images/ad66e9f90b7bfe5bd7401fb85008143299aba2042bac1dfb700e2402933c497c.png" />
+<img alt="_images/76cd3d3f2632a360a8e47248753c0652dbe9c382750fba1d74a24811e0659d5d.png" src="_images/76cd3d3f2632a360a8e47248753c0652dbe9c382750fba1d74a24811e0659d5d.png" />
 </div>
 </div>
 <p>The x-axis shows integrated flux on a log scale; the largest flare observed during this period measured 2.6 Joules per square meter on September 7, 2005.
@@ -2275,7 +2270,7 @@ The following figures show the distribution of fluxes again, along with a log-<s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([12.38824292]), -3.080378444876695, 0.6632850659262898)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([12.38820488]), -3.0803784847994766, 0.6632850329593064)
 </pre></div>
 </div>
 </div>
@@ -2307,7 +2302,7 @@ The following figures show the distribution of fluxes again, along with a log-<s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02280efa512ccfa116f94e7804e33141f700cadb7b6b89b4fb92ac19ec895dc7.png" src="_images/02280efa512ccfa116f94e7804e33141f700cadb7b6b89b4fb92ac19ec895dc7.png" />
+<img alt="_images/f916bfabb94ef51ac7242cedd013e7ee0368c9b45ea7e2ae3ac7f9a4ad315a46.png" src="_images/f916bfabb94ef51ac7242cedd013e7ee0368c9b45ea7e2ae3ac7f9a4ad315a46.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2343,7 +2338,7 @@ The following figures show the distribution of fluxes again, along with a log-<s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/701de13faa7a84bfc02e7c1dcd97d861316fb6ca0abf1acfb44682a4ed1c5035.png" src="_images/701de13faa7a84bfc02e7c1dcd97d861316fb6ca0abf1acfb44682a4ed1c5035.png" />
+<img alt="_images/9431a9be5036218d009304e418228d4864ec87877577bafc3d27e971e8c2e27e.png" src="_images/9431a9be5036218d009304e418228d4864ec87877577bafc3d27e971e8c2e27e.png" />
 </div>
 </div>
 <p>The top figure shows that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the data well over the range of the distribution, except for some discrepancy among the smallest flares.
@@ -2371,7 +2366,7 @@ Above 1 Joule per meter squared, the actual curve drops off faster than the mode
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([21.46996038,  2.41158254,  0.35573316]), 547.0459518599563)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([21.47023593,  2.41162628,  0.35574138]), 547.0459518599563)
 </pre></div>
 </div>
 </div>
@@ -2383,7 +2378,7 @@ Above 1 Joule per meter squared, the actual curve drops off faster than the mode
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([14.61612287]), 27777.777777777777)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([14.61658962]), 27777.777777777777)
 </pre></div>
 </div>
 </div>
@@ -2451,7 +2446,7 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-rw-r-- 1 downey downey 228M Mar  2 20:30 lunar_crater_database_robbins_2018.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-rw-r-- 1 downey downey 228M Mar  2  2023 lunar_crater_database_robbins_2018.csv
 </pre></div>
 </div>
 </div>
@@ -2701,27 +2696,27 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.27308844 0.24837712]
-[0.27308846 0.24837712]
-[0.27308844 0.24837714]
-[0.05295438 0.37367782]
-[0.0529544  0.37367782]
-[0.05295438 0.37367784]
-[-0.25451518  0.46113863]
-[-0.25451519  0.46113863]
-[-0.25451518  0.46113864]
-[-0.34244203  0.45723454]
-[-0.34244204  0.45723454]
-[-0.34244203  0.45723456]
-[-0.2936528   0.44014661]
-[-0.29365282  0.44014661]
-[-0.2936528   0.44014663]
-[-0.29545206  0.44042454]
-[-0.29545207  0.44042454]
-[-0.29545206  0.44042456]
-[-0.29531529  0.44037612]
-[-0.2953153   0.44037612]
-[-0.29531529  0.44037614]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.27308865 0.24837722]
+[0.27308867 0.24837722]
+[0.27308865 0.24837723]
+[0.05295431 0.37367805]
+[0.05295432 0.37367805]
+[0.05295431 0.37367806]
+[-0.25451594  0.46113896]
+[-0.25451595  0.46113896]
+[-0.25451594  0.46113898]
+[-0.34244255  0.4572347 ]
+[-0.34244256  0.4572347 ]
+[-0.34244255  0.45723471]
+[-0.2936525   0.44014652]
+[-0.29365252  0.44014652]
+[-0.2936525   0.44014653]
+[-0.29545249  0.44042469]
+[-0.2954525   0.44042469]
+[-0.29545249  0.44042471]
+[-0.29531495  0.44037601]
+[-0.29531496  0.44037601]
+[-0.29531495  0.44037602]
 </pre></div>
 </div>
 </div>
@@ -2759,7 +2754,7 @@ The left figure shows the tail distribution on a linear scale; the right figure 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242.90636307851742, 0.3789805982356653)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242.90636307851742, 0.37897902114510834)
 </pre></div>
 </div>
 </div>
@@ -2779,7 +2774,7 @@ The left figure shows the tail distribution on a linear scale; the right figure 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2ebfb7609b82ed29ca3262526cc43e177d1868cd1bce4676beb4d1a2eab9e5de.png" src="_images/2ebfb7609b82ed29ca3262526cc43e177d1868cd1bce4676beb4d1a2eab9e5de.png" />
+<img alt="_images/ec8e4e78c814bf1e576cdaeb9eb291d62dae3629983c5430f9f0197be35a752b.png" src="_images/ec8e4e78c814bf1e576cdaeb9eb291d62dae3629983c5430f9f0197be35a752b.png" />
 </div>
 </div>
 <p>Looking at the figure on the left, we can see a discrepancy between the data and the model between 3 and 10 kilometers.
@@ -2799,7 +2794,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242.90636307851742, 0.3789805982356653)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(242.90636307851742, 0.37897902114510834)
 </pre></div>
 </div>
 </div>
@@ -2812,7 +2807,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array(3.08452525e-06), array(1.46579642e-13))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array(3.08452525e-06), array(1.46578142e-13))
 </pre></div>
 </div>
 </div>
@@ -2826,7 +2821,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.38584199114627
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.38523077882056
 </pre></div>
 </div>
 </div>
@@ -2846,7 +2841,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([11.13359438]), -0.20194316180415292, 0.3746947764950444)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([11.13359356]), -0.2019431517012043, 0.37469477145698354)
 </pre></div>
 </div>
 </div>
@@ -2878,7 +2873,7 @@ But for questions related to the biggest craters, it is way off.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7f871194e880eabb6a712e4a77c2ccb2b244ce2396a5157d02acf49cfe6f43a0.png" src="_images/7f871194e880eabb6a712e4a77c2ccb2b244ce2396a5157d02acf49cfe6f43a0.png" />
+<img alt="_images/490d4c0710c62133ebb6fd9b1ad8bdda64368a485d11643f7765da14e03d5bfd.png" src="_images/490d4c0710c62133ebb6fd9b1ad8bdda64368a485d11643f7765da14e03d5bfd.png" />
 </div>
 </div>
 <p>Since the dataset does not include craters smaller than one kilometer, I cut off the model at the same threshold.
@@ -3118,15 +3113,15 @@ Name: diameter, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.61406161 0.25739986]
-[0.61406162 0.25739986]
-[0.61406161 0.25739987]
-[0.59649407 0.22729071]
-[0.59649408 0.22729071]
-[0.59649407 0.22729073]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.61406612 0.2574008 ]
+[0.61406614 0.2574008 ]
+[0.61406612 0.25740082]
+[0.59649365 0.22729091]
+[0.59649367 0.22729091]
+[0.59649365 0.22729093]
 [0.59765045 0.22862602]
 [0.59765047 0.22862602]
-[0.59765045 0.22862604]
+[0.59765045 0.22862603]
 [0.59766666 0.22865271]
 [0.59766668 0.22865271]
 [0.59766666 0.22865273]
@@ -3166,7 +3161,7 @@ Name: diameter, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8188.941617943904, 39.344587501433104)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8188.941617943904, 39.34458611676295)
 </pre></div>
 </div>
 </div>
@@ -3195,7 +3190,7 @@ Name: diameter, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d574654cb1869ac4f5d78a3df929b34bdfa43482eb08d4a436aa21f9feeaeaa1.png" src="_images/d574654cb1869ac4f5d78a3df929b34bdfa43482eb08d4a436aa21f9feeaeaa1.png" />
+<img alt="_images/9e9e6f9f5a60ed0a04c23c21bae7ccab5a248af76c8c2c8a94015ff87183e46a.png" src="_images/9e9e6f9f5a60ed0a04c23c21bae7ccab5a248af76c8c2c8a94015ff87183e46a.png" />
 </div>
 </div>
 <p>The following figure shows the distribution of asteroid sizes compared to a log-<span class="math notranslate nohighlight">\(t\)</span> model.</p>
@@ -3215,7 +3210,7 @@ Name: diameter, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.5, 0.5953882516875685, 0.21501805647910857)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.5, 0.5953882516804466, 0.2150180564203059)
 </pre></div>
 </div>
 </div>
@@ -3246,7 +3241,7 @@ Name: diameter, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d1d4f2cdab3bef0292f94505b3aa882d1fba6624a66e35735af990079636b451.png" src="_images/d1d4f2cdab3bef0292f94505b3aa882d1fba6624a66e35735af990079636b451.png" />
+<img alt="_images/8ccd293fa9210c7e273cb9c564601b646b439698647da04c1da28db5782a68b3.png" src="_images/8ccd293fa9210c7e273cb9c564601b646b439698647da04c1da28db5782a68b3.png" />
 </div>
 </div>
 <p>In the top figure, we see that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the data well in the middle of the range, except possibly near 1 kilometer.
@@ -3342,11 +3337,11 @@ The following figure shows the results from this simulation along with the actua
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-3.194, 0.883)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-5.16589498e-03, -3.34125696e-03, -1.32297140e-03, -1.78230880e-04,
-        3.84032557e-05,  2.71660551e-04,  3.93404733e-04,  6.21075141e-04,
-        5.63584756e-04,  4.60909325e-04,  2.75460148e-04,  1.62773519e-04,
-        9.75695236e-05,  6.21194703e-05,  3.39077907e-05,  1.69502308e-05,
-        1.09412698e-05,  1.04829884e-05,  5.70344010e-06,  9.25357574e-06])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-3.16249439e-04, -2.73415007e-05,  1.20415497e-04,  2.96512650e-04,
+        4.48439739e-04,  6.12564529e-04,  4.29226980e-04,  2.16708737e-04,
+        1.21459936e-04,  6.07299681e-05,  3.32894198e-05,  2.09586479e-05,
+        8.46778641e-06,  8.78063634e-06,  7.08561326e-06,  1.45431455e-07,
+        1.04829884e-05,  1.38803636e-05,  1.38803636e-05,  4.62678787e-06])
 </pre></div>
 </div>
 </div>
@@ -3399,6 +3394,10 @@ The following figure shows the results from this simulation along with the actua
       <th></th>
       <th>probs</th>
     </tr>
+    <tr>
+      <th>diameter</th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
@@ -3442,7 +3441,7 @@ The following figure shows the results from this simulation along with the actua
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/982ac3ca73cec2c25da5092799b22cac7c1e65ff8dd87a944661a32ee10e925b.png" src="_images/982ac3ca73cec2c25da5092799b22cac7c1e65ff8dd87a944661a32ee10e925b.png" />
+<img alt="_images/220bc590b8037e015775f9e854e105ec32a2f82fca6dc143d384d723132f25f5.png" src="_images/220bc590b8037e015775f9e854e105ec32a2f82fca6dc143d384d723132f25f5.png" />
 </div>
 </div>
 <p>The simulation results are a good match for the data.
@@ -3946,24 +3945,24 @@ Name: DJIA, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.00319687 0.00370402]
-[0.00319688 0.00370402]
-[0.00319687 0.00370403]
-[-0.00135066  0.00550947]
-[-0.00135068  0.00550947]
-[-0.00135066  0.00550949]
-[-0.00621367  0.00604876]
-[-0.00621368  0.00604876]
-[-0.00621367  0.00604878]
-[-0.01125975  0.00718395]
-[-0.01125977  0.00718395]
-[-0.01125975  0.00718397]
-[-0.01332918  0.00747084]
-[-0.0133292   0.00747084]
-[-0.01332918  0.00747086]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.00319705 0.00370412]
+[0.00319706 0.00370412]
+[0.00319705 0.00370414]
+[-0.0013507   0.00550956]
+[-0.00135072  0.00550956]
+[-0.0013507   0.00550957]
+[-0.00621391  0.00604884]
+[-0.00621392  0.00604884]
+[-0.00621391  0.00604886]
+[-0.01126   0.007184]
+[-0.01126002  0.007184  ]
+[-0.01126     0.00718402]
+[-0.01332923  0.00747085]
+[-0.01332924  0.00747085]
+[-0.01332923  0.00747086]
+[-0.01298826  0.00737537]
 [-0.01298827  0.00737537]
-[-0.01298828  0.00737537]
-[-0.01298827  0.00737539]
+[-0.01298826  0.00737538]
 [-0.01293662  0.00736386]
 [-0.01293664  0.00736386]
 [-0.01293662  0.00736387]
@@ -3972,7 +3971,7 @@ Name: DJIA, dtype: float64
 [-0.01293473  0.00736344]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.01293473182014612, 0.007363429483211379)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.012934732189136055, 0.007363429563516698)
 </pre></div>
 </div>
 </div>
@@ -4041,7 +4040,7 @@ Name: DJIA, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1387d8e2a5c5a86e3b8c08b1f0d1c1579c386d275d688e1fc76a4c9427cf6443.png" src="_images/1387d8e2a5c5a86e3b8c08b1f0d1c1579c386d275d688e1fc76a4c9427cf6443.png" />
+<img alt="_images/25a121b4f28ed2d4687935a4115c38b895f1751a5104896952833f213d859b19.png" src="_images/25a121b4f28ed2d4687935a4115c38b895f1751a5104896952833f213d859b19.png" />
 </div>
 </div>
 <p>On the left, the lognormal model seems to fit the distribution well, but again there are big differences hiding in the tail.
@@ -4062,7 +4061,7 @@ On the right, we can see that the lognormal model does not fit the tail of the d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3.89459345]), -0.002607419439196774, 0.003426713677082388)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3.8945931]), -0.002607418984953457, 0.003426713548607919)
 </pre></div>
 </div>
 </div>
@@ -4095,7 +4094,7 @@ On the right, we can see that the lognormal model does not fit the tail of the d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/44aedcfa40f98fb566d508b2b9e94ef62a30aaaabe562fff6bedf2498f58e86f.png" src="_images/44aedcfa40f98fb566d508b2b9e94ef62a30aaaabe562fff6bedf2498f58e86f.png" />
+<img alt="_images/a5efb65b1e07abf7f4b7c8a6eef5f966cc09b1006c04ca072444d1a7acca77b3.png" src="_images/a5efb65b1e07abf7f4b7c8a6eef5f966cc09b1006c04ca072444d1a7acca77b3.png" />
 </div>
 </div>
 <p>The top figure shows that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the left side of the distribution well.
@@ -4111,7 +4110,7 @@ According to the model, there is only a 5% chance that we would see a crash as b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(17680, array(5.6561086e-05), array(1.28916225e-05), 4.387429594651381)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(17680, array(5.6561086e-05), array(1.28916302e-05), 4.387426949065176)
 </pre></div>
 </div>
 </div>
@@ -4123,7 +4122,7 @@ According to the model, there is only a 5% chance that we would see a crash as b
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.05423507])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.0542351])
 </pre></div>
 </div>
 </div>
@@ -4213,7 +4212,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([999980.16412415])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([999859.46341698])
 </pre></div>
 </div>
 </div>
@@ -4227,7 +4226,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.53, 2.2293002087495855, 0.025915290179531335)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.53, 2.2293001672048596, 0.025915097488203958)
 </pre></div>
 </div>
 </div>
@@ -4253,7 +4252,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c2223f5ba5853ddeee88807aa664a504051b190b71ddf6aa5ca590fa303c1f7a.png" src="_images/c2223f5ba5853ddeee88807aa664a504051b190b71ddf6aa5ca590fa303c1f7a.png" />
+<img alt="_images/f8a590abf3448c805d8ed6813476f6aa7728460e63665bebd080199ed3a12157.png" src="_images/f8a590abf3448c805d8ed6813476f6aa7728460e63665bebd080199ed3a12157.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4265,7 +4264,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1827db23e323cea450f59de7955a0454bcfca823e32ca65550ff85b1350efa9f.png" src="_images/1827db23e323cea450f59de7955a0454bcfca823e32ca65550ff85b1350efa9f.png" />
+<img alt="_images/5ce304cc56035defdfe3fb32e93ff62f1ddf959a5ee3c50a6066f699d24bd98f.png" src="_images/5ce304cc56035defdfe3fb32e93ff62f1ddf959a5ee3c50a6066f699d24bd98f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -4318,13 +4317,13 @@ In a country the size of the United States, the tallest person would be 160,000 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.862428e+00    0.900000
-2.157502e+00    0.990000
-2.770812e+00    0.999000
-4.417009e+00    0.999900
-5.889090e+01    0.999999
-1.575952e+08    1.000000
-1.446048e+19    1.000000
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.862427e+00    0.900000
+2.157498e+00    0.990000
+2.770801e+00    0.999000
+4.416977e+00    0.999900
+5.888934e+01    0.999999
+1.575737e+08    1.000000
+1.445579e+19    1.000000
 dtype: float64
 </pre></div>
 </div>
@@ -4339,7 +4338,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1528.4737629339206
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1527.9783031704246
 </pre></div>
 </div>
 </div>
@@ -4354,12 +4353,13 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.333951     1.000000e-02
-2.442607     1.000000e-03
-2.645128     1.000000e-04
-3.770048     1.000000e-06
-10.197543    3.030303e-09
-21.160183    1.428572e-10
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.270079     1.000000e-01
+2.333950     1.000000e-02
+2.442605     1.000000e-03
+2.645125     1.000000e-04
+3.770037     1.000000e-06
+10.197484    3.030303e-09
+21.160042    1.428572e-10
 dtype: float64
 </pre></div>
 </div>
@@ -4376,7 +4376,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dd0616f7f1acbd58beeb08aea1c62325e99389269a28247ba097372b67c01919.png" src="_images/dd0616f7f1acbd58beeb08aea1c62325e99389269a28247ba097372b67c01919.png" />
+<img alt="_images/3225beedbf48d4918f05d456e03e6a44941029b9fbfa7477e30cb0a8c537269b.png" src="_images/3225beedbf48d4918f05d456e03e6a44941029b9fbfa7477e30cb0a8c537269b.png" />
 </div>
 </div>
 <p>Probably Overthinking It</p>
