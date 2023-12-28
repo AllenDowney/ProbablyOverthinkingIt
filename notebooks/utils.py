@@ -420,7 +420,10 @@ def remaining_lifetimes_pmf(pmf, qs=None):
     for q in qs:
         conditional = Pmf(pmf[pmf.qs >= q])
         conditional.normalize()
-        series[q] = conditional.mean() - q
+        if conditional.sum() == 0:
+            series[q] = np.nan
+        else:
+            series[q] = conditional.mean() - q
 
     return series
 
