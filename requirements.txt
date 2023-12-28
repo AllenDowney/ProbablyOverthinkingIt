@@ -1,11 +1,12 @@
-# these versions match Colab as of 2022-12-29
 empiricaldist
 jupyter
-numpy==1.22
+lxml
+numpy
 matplotlib
 openpyxl
+networkx
 pandas
 seaborn
-scipy==1.7
-statsmodels==0.12
+scipy
+statsmodels
 tables
