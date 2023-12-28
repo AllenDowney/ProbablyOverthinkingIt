@@ -61,7 +61,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'inspection';</script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -329,7 +329,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-size">Class Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiasing-the-data">Unbiasing the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-s-my-train">Where’s My Train?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wheres-my-train">Where’s My Train?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-you-popular-hint-no">Are you popular? Hint: no.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-superspreaders">Finding Superspreaders</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#road-rage">Road Rage</a></li>
@@ -346,7 +346,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="relay-races-and-revolving-doors">
+  <section id="relay-races-and-revolving-doors">
 <h1>Relay Races and Revolving Doors<a class="headerlink" href="#relay-races-and-revolving-doors" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/inspection.ipynb">Click here to run this notebook on Colab</a>.</p>
 <p>I gave a talk related to this chapter at PyData NYC 2019. You can <a class="reference external" href="https://www.youtube.com/watch?v=cXWTHfvycyM">watch the video here</a>.</p>
@@ -623,8 +623,8 @@ that some items are given more weight than others, that is, more
 probability of being sampled. And it’s called “resampling” because we’re
 drawing a random sample from something that is itself a random sample.</p>
 </section>
-<section id="where-s-my-train">
-<h2>Where’s My Train?<a class="headerlink" href="#where-s-my-train" title="Permalink to this heading">#</a></h2>
+<section id="wheres-my-train">
+<h2>Where’s My Train?<a class="headerlink" href="#wheres-my-train" title="Permalink to this heading">#</a></h2>
 <p>I collected the following data from the Red Line, which is a
 subway line in Boston, Massachusetts. The MBTA, which operates the Red
 Line, provides a real-time data service, which I used to record the
@@ -1684,7 +1684,7 @@ That’s substantially lower than the recidivism rate in the event-based sample,
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-size">Class Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiasing-the-data">Unbiasing the Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-s-my-train">Where’s My Train?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wheres-my-train">Where’s My Train?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#are-you-popular-hint-no">Are you popular? Hint: no.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-superspreaders">Finding Superspreaders</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#road-rage">Road Rage</a></li>
