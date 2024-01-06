@@ -1,5 +1,5 @@
 PROJECT_NAME = ProbablyOverthinkingIt
-PYTHON_VERSION = 3.8
+PYTHON_VERSION = 3.10
 PYTHON_INTERPRETER = python
 
 
@@ -22,4 +22,11 @@ clean:
 
 
 tests:
+	cd notebooks; pytest --nbmake gaussian.ipynb
+	cd notebooks; pytest --nbmake inspection.ipynb
+	cd notebooks; pytest --nbmake preston.ipynb
+	cd notebooks; pytest --nbmake lognormal.ipynb
+	cd notebooks; pytest --nbmake nbue.ipynb
 	cd notebooks; pytest --nbmake berkson.ipynb
+	cd notebooks; pytest --nbmake longtail.ipynb
+	cd notebooks; pytest --nbmake overton.ipynb
