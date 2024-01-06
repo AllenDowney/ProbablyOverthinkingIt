@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overton.html">Chasing the Overton Window</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -357,12 +359,10 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
 
-<span class="c1"># On Colab, we might need to update matplotlib to get plt.stairs (added in 3.6.2)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>matplotlib
 </pre></div>
 </div>
 </div>
@@ -447,7 +447,7 @@ In fact, when we consider the many ways people are different, we find that</p>
 </div>
 </div>
 <p>The following function plots a Gaussian curve with the same mean and std as the data.</p>
-<p>The scale parameter is arbitrary – I chose it to be roughly the same height as the histogram, which is also arbitrary. Avoiding this arbitrariness is one reason I prefer to use CDF to compare the distribution of data with a model.</p>
+<p>The scale parameter is arbitrary – I chose it to be roughly the same height as the histogram, which is also arbitrary. Avoiding this arbitrariness is one reason I prefer to use CDFs to compare the distribution of data with a model.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/9316a5d32b611b2d8be1b88443287b93b6a250fb5db9572450c43f938291be88.png" src="_images/9316a5d32b611b2d8be1b88443287b93b6a250fb5db9572450c43f938291be88.png" />
@@ -821,7 +821,6 @@ The following figure shows the distribution of weirdness scores for the male par
 </div>
 <p>With these measurements, all participants fall in a relatively narrow range of weirdness.
 The most “normal” participant deviates from average in 2446 ways; the weirdest in 4038 ways.</p>
-<p>Probably Overthinking It</p>
 <p>Copyright 2022 Allen Downey</p>
 <p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
 </section>
