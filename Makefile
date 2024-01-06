@@ -29,4 +29,5 @@ tests:
 	cd notebooks; pytest --nbmake nbue.ipynb
 	cd notebooks; pytest --nbmake berkson.ipynb
 	cd notebooks; pytest --nbmake longtail.ipynb
+	cd notebooks; pytest --nbmake base_rate.ipynb
 	cd notebooks; pytest --nbmake overton.ipynb
