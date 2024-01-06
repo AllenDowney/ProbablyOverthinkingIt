@@ -1,0 +1,2250 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Fairness and Fallacy &#8212; Probably Overthinking It</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'base_rate';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chasing the Overton Window" href="overton.html" />
+    <link rel="prev" title="The Long Tail of Disaster" href="longtail.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fairness and Fallacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overton.html">Chasing the Overton Window</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/base_rate.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fairness and Fallacy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medical-tests">Medical Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-prevalence">More prevalence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-specificity">More specificity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bad-medicine">Bad medicine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driving-under-the-influence">Driving Under the Influence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccine-effectiveness">Vaccine Effectiveness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-crime">Predicting Crime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-groups">Comparing Groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-is-hard-to-define">Fairness is Hard to Define</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="fairness-and-fallacy">
+<h1>Fairness and Fallacy<a class="headerlink" href="#fairness-and-fallacy" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/base_rate.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+        
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+
+<span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>In the criminal justice system, we use algorithms to guide decisions about who should be released on bail or kept in jail, and who should be kept in prison or released on parole.</p>
+<p>Of course, we want those algorithms to be fair.
+For example, suppose we use an algorithm to predict whether a candidate for parole is likely to commit another crime, if released.
+If the algorithm is fair:</p>
+<ul class="simple">
+<li><p>Its predictions should mean the same thing for different groups of people. For example, if the algorithm predicts that a group of women and a group of men are equally likely to reoffend, we expect the numbers of women and men who actually reoffend to be the same, on average.</p></li>
+<li><p>Also, since the algorithm will make mistakes –
+some people who reoffend will be assigned low probabilities, and some people who do not reoffend will be assigned high probabilities – it should make these mistakes at the same rate in different groups of people.</p></li>
+</ul>
+<p>It is hard to argue with either of these requirements.
+Suppose the algorithm assigns a probability of 30% to 100 women and 100 men; if 20 of the women commit another crime, and 40 of the men do, it seems like the algorithm is unfair.</p>
+<p>Or suppose black candidates are more likely to be wrongly assigned a high probability, and white candidates are more likely to be wrongly assigned a low probability.
+That seems unfair, too.</p>
+<p>But here’s the problem: it is not possible for an algorithm – or a human – to satisfy both requirements.
+Unless two groups commit crimes at precisely the same rate, any classification that is equally predictive for both groups will necessarily make different kinds of errors between the groups.
+And if we calibrate it to make the same kind of errors, the meaning of the predictions will be different.
+To understand why, we have to understand the <em>base rate fallacy</em>.</p>
+<p>In this chapter, I’ll demonstrate the base rate fallacy using three examples:</p>
+<ul class="simple">
+<li><p>Suppose you take a medical test and the result is positive, which indicates that you have a particular disease. If the test is 99% accurate, you might think there is a 99% chance that you have the disease. But the actual probability could be much less.</p></li>
+<li><p>Suppose a driver is arrested because a testing device found that their blood alcohol was above the legal limit. If the device is 99% accurate, you might think there’s a 99% chance they are guilty. In fact, the probability depends strongly on the reason the driver was stopped.</p></li>
+<li><p>Suppose you hear that 70% of people who die from a disease had been vaccinated against it. You might think that the vaccine was not effective. In fact, such a vaccine might prevent 80% of deaths or more, and save a large number of lives.</p></li>
+</ul>
+<p>These examples might be surprising if you have not seen them before, but once you understand what’s going on, I think they will make sense.
+At the end of the chapter, we’ll return to the problem of algorithms and criminal justice.</p>
+<section id="medical-tests">
+<h2>Medical Tests<a class="headerlink" href="#medical-tests" title="Permalink to this heading">#</a></h2>
+<p>During the COVID-19 pandemic, we all got a crash course in the science and statistics of infectious disease.
+One of the things we learned about is the accuracy of medical testing and possibility of errors, both false positives and false negatives.</p>
+<p>As an example, suppose a friend tells you they have tested positive for COVID, and they want to know whether they are really infected, or whether the result might be a false positive. What information would you need to answer their question?</p>
+<p>One thing you clearly need to know is the accuracy of the test, but that turns out to be a little tricky. In the context of medical testing, we have to consider two kinds of accuracy: sensitivity and specificity.</p>
+<p>Let’s consider a case where the base rate is relatively low, like 1%. And let’s imagine a group of 1000 people who all take the test. In a group this size, we expect 10 people to be infected, because 10 out of 1000 is 1%.</p>
+<p>Of the 10 who are actually infected, we expect 9 to get a positive test result, because the sensitivity of the test is 87%.</p>
+<p>Of the other 990, we expect 970 to get a negative test result, because the specificity is 98%. But that means we expect 20 people to get a false positive.</p>
+<p>Before we go on, let’s put the numbers we have so far in a table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Infected&quot;</span><span class="p">,</span> <span class="s2">&quot;Not infected&quot;</span><span class="p">])</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">990</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&quot;Prob positive&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.87</span><span class="p">,</span> <span class="mf">0.02</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Prob positive&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>Prob positive</th>
+      <th># positive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Infected</th>
+      <td>10</td>
+      <td>0.87</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Not infected</th>
+      <td>990</td>
+      <td>0.02</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now we are ready to answer your friend’s question: Given a positive test result, what is the probability that they are actually infected?
+In this example, the answer is 9 out of 29, or 31%.</p>
+<p>Here’s the table again, with a fourth column showing the probability of actual infection and the complementary probability that the test result is a false positive.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">table</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f positive tests&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>Prob positive</th>
+      <th># positive</th>
+      <th>% of positive tests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Infected</th>
+      <td>10</td>
+      <td>0.87</td>
+      <td>9</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>Not infected</th>
+      <td>990</td>
+      <td>0.02</td>
+      <td>20</td>
+      <td>69.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Although the sensitivity and specificity of the test are high, after a positive result, the probability that your friend is infected is only 31%.
+The reason it’s so low is that the base rate in this example is only 1%.</p>
+</section>
+<section id="more-prevalence">
+<h2>More prevalence<a class="headerlink" href="#more-prevalence" title="Permalink to this heading">#</a></h2>
+<p>To see why it matters, let’s change the scenario. Suppose your friend has mild flu-like symptoms; in that case it seems more likely that they are infected, compared to someone with no symptoms.
+Let’s say it is ten times more likely, so the probability that your friend is infected is 10% before we get the test results.
+In that case, out of 1000 people with the same symptoms, we would expect 100 to be infected.
+If we modify the first column of the table accordingly, here are the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Infected&quot;</span><span class="p">,</span> <span class="s2">&quot;Not infected&quot;</span><span class="p">])</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prior</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Prob positive&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">likelihood</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Prob positive&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">as_int</span><span class="p">:</span>
+        <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f positive tests&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.87</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mf">0.98</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">900</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>Prob positive</th>
+      <th># positive</th>
+      <th>% of positive tests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Infected</th>
+      <td>100</td>
+      <td>0.87</td>
+      <td>87</td>
+      <td>82.9</td>
+    </tr>
+    <tr>
+      <th>Not infected</th>
+      <td>900</td>
+      <td>0.02</td>
+      <td>18</td>
+      <td>17.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now the probability is about 83% that your friend is actually infected, and about 17% that the result is a false positive.
+This example demonstrates two things:</p>
+<ol class="arabic simple">
+<li><p>The base rate makes a big difference, and</p></li>
+<li><p>Even with an accurate test and a 10% base rate, the probability of a false positive is still surprisingly high.</p></li>
+</ol>
+<p>If the test is more sensitive, that helps, but maybe not as much as you expect.
+For example, another brand of rapid antigen tests claims 95% sensitivity, substantially better than the first brand, which was 87%.
+With this test, assuming the same specificity, 98%, and the same base rate, 10%, here’s what we get.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mf">0.98</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">900</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>Prob positive</th>
+      <th># positive</th>
+      <th>% of positive tests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Infected</th>
+      <td>100</td>
+      <td>0.95</td>
+      <td>95</td>
+      <td>84.1</td>
+    </tr>
+    <tr>
+      <th>Not infected</th>
+      <td>900</td>
+      <td>0.02</td>
+      <td>18</td>
+      <td>15.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Increasing the sensitivity from 87% to 95% has only a small effect: the probability that the test result is a false positive goes from 17% to 16%.</p>
+</section>
+<section id="more-specificity">
+<h2>More specificity<a class="headerlink" href="#more-specificity" title="Permalink to this heading">#</a></h2>
+<p>Increasing specificity has a bigger effect.
+For example, lab tests that use PCR (polymerase chain reaction) are highly specific, about as close to 100% as can be.
+However, in practice it is always possible that a specimen is contaminated, a device malfunctions, or a result is reported incorrectly.</p>
+<p>For example, in a retirement community near my house in Massachusetts, 18 employees and one resident tested positive for COVID in August 2020.
+But all 19 turned out to be false positives, produced by a lab in Boston that was suspended by the Department of Public Health after they reported at least 383 false positive results.</p>
+<p>It’s hard to say how often something like that goes wrong, but if it happens one time in 1000, the specificity of the test would be 99.9%.
+Let’s see what effect that has on the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mf">0.999</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">900</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>Prob positive</th>
+      <th># positive</th>
+      <th>% of positive tests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Infected</th>
+      <td>100</td>
+      <td>0.950</td>
+      <td>95.0</td>
+      <td>99.1</td>
+    </tr>
+    <tr>
+      <th>Not infected</th>
+      <td>900</td>
+      <td>0.001</td>
+      <td>0.9</td>
+      <td>0.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>With 95% sensitivity, 99.9% specificity, and 10% base rate, the probability is about 99% that your friend is actually infected, given a positive PCR test result.</p>
+<p>However, the base rate still matters. Suppose you tell me that your friend lives in New Zealand where (at least at the time I am writing) the rate of COVID infection is very low. In that case the base rate for someone with mild flu-like symptoms might be 1 in 1000.</p>
+<p>Here’s the table with 95% sensitivity, 99.9% specificity, and base rate 1 in 1000.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mf">0.999</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">999</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>Prob positive</th>
+      <th># positive</th>
+      <th>% of positive tests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Infected</th>
+      <td>1</td>
+      <td>0.950</td>
+      <td>0.950</td>
+      <td>48.7</td>
+    </tr>
+    <tr>
+      <th>Not infected</th>
+      <td>999</td>
+      <td>0.001</td>
+      <td>0.999</td>
+      <td>51.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In this example, the numbers in the third column aren’t integers, but that’s okay.
+The calculation works the same way. Out of 1000 tests, we expect 0.95 true positives, on average, and 0.999 false positives.
+So the probability is about 49% that a positive test is correct.
+That’s lower than most people think, including most doctors.</p>
+</section>
+<section id="bad-medicine">
+<h2>Bad medicine<a class="headerlink" href="#bad-medicine" title="Permalink to this heading">#</a></h2>
+<p>A 2014 paper in <em>The Journal of the American Medical Association</em> reports the result of a sneaky experiment.
+The researchers asked a “convenience sample” of doctors (probably their friends and colleagues) the following question:</p>
+<blockquote>
+<div><p>“If a test to detect a disease whose prevalence is 1/1000 has a false positive rate of 5%, what is the chance that a person found to have a positive result actually has the disease, assuming you know nothing about the person’s symptoms or signs?”</p>
+</div></blockquote>
+<p>What they call “prevalence” is what I’ve been calling “base rate”. And what they call the “false positive rate” is the complement of specificity, so a false positive rate of 5% corresponds to a sensitivity of 95%.</p>
+<p>Before I tell you the results of the experiment, let’s work out the answer to the question.  We are not given the sensitivity of the test, so I’ll make the optimistic assumption that it is 99%. The following table shows the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.99</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">999</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>Prob positive</th>
+      <th># positive</th>
+      <th>% of positive tests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Infected</th>
+      <td>1</td>
+      <td>0.99</td>
+      <td>0.99</td>
+      <td>1.9</td>
+    </tr>
+    <tr>
+      <th>Not infected</th>
+      <td>999</td>
+      <td>0.05</td>
+      <td>49.95</td>
+      <td>98.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The correct answer is about 2%.</p>
+<p>Now, here are the results of the experiment:</p>
+<blockquote>
+<div><p>“Approximately three-quarters of respondents answered the question incorrectly. In our study, 14 of 61 respondents (23%) gave a correct response. […] the most common answer was 95%, given by 27 of 61 respondents.”</p>
+</div></blockquote>
+<p>If the correct answer is 2% and the most common response is 95%, that is an alarming level of misunderstanding.</p>
+</section>
+<section id="driving-under-the-influence">
+<h2>Driving Under the Influence<a class="headerlink" href="#driving-under-the-influence" title="Permalink to this heading">#</a></h2>
+<p>The challenges of the base rate fallacy have become more salient as some states have cracked down on “drugged driving”.</p>
+<p>In September 2017 the American Civil Liberties Union (ACLU) filed suit against Cobb County, Georgia on behalf of four drivers who were arrested for driving under the influence of cannabis.
+All four were evaluated by Officer Tracy Carroll, who had been trained as a “Drug Recognition Expert” (DRE) as part of a program developed by the Los Angeles Police Department in the 1970s.</p>
+<p>At the time of their arrest, all four insisted that they had not smoked or ingested any cannabis products, and when their blood was tested, all four results were negative; that is, the blood tests found no evidence of recent cannabis use.</p>
+<p>In each case, prosecutors dismissed the charges related to impaired driving.
+Nevertheless, the arrests were disruptive and costly, and the plaintiffs were left with a permanent and public arrest record.</p>
+<p>At issue in the case is the assertion by the ACLU that, “Much of the DRE protocol has never been rigorously and independently validated.”</p>
+<p>So I investigated that claim.
+What I found was a collection of studies that are, across the board, deeply flawed.
+Every one of them features at least one methodological error so blatant it would be embarrassing at a middle school science fair.</p>
+<p>As an example, the lab study most often cited to show that the DRE protocol is valid was conducted at Johns Hopkins University School of Medicine in 1985.
+It concludes, “Overall, in 98.7% of instances of judged intoxication the subject had received some active drug”.
+In other words, in the cases where one of the Drug Recognition Experts believed that a subject was under the influence, they were right 98.7% of the time.</p>
+<p>That sounds impressive, but there are several problems with this study.
+The biggest is that the subjects were all “normal, healthy” male volunteers between 18 and 35 years old, who were screened and “trained on the psychomotor tasks and subjective effect questionnaires used in the study”.</p>
+<p>By design, the study excluded women, anyone older than 35, and anyone in poor health.
+Then the screening excluded anyone who had any difficulty passing a sobriety test while they were sober – for example, anyone with shaky hands, poor coordination, or poor balance.</p>
+<p>But those are exactly the people most likely to be falsely accused.
+How can you estimate the number of false positives if you exclude from the study everyone likely to yield a false positive?
+You can’t.</p>
+<p>Another frequently-cited study reports that “When DREs claimed drugs other than alcohol were present, they [the drugs] were almost always detected in the blood (94% of the time)”.
+Again, that sounds impressive until you look at the methodology.</p>
+<p>Subjects in this study had already been arrested because they were suspected of driving while impaired, most often because they had failed a field sobriety test.</p>
+<p>Then, while they were in custody, they were evaluated by a DRE, that is, a different officer trained in the drug evaluation procedure.
+If the DRE thought that the suspect was under the influence of a drug, the suspect was asked to consent to a blood test; otherwise they were released.</p>
+<p>Of 219 suspects, 18 were released after a DRE performed a “cursory examination” and concluded that there was no evidence of drug impairment.</p>
+<p>The remaining 201 suspects were asked for a blood sample.
+Of those, 22 refused and 6 provided a urine sample only.</p>
+<p>Of the 173 blood samples, 162 were found to contain a drug other than alcohol.
+That’s about 94%, which is the statistic they reported.</p>
+<p>But the base rate in this study is extraordinarily high, because it includes only cases that were suspected by the arresting officer and then confirmed by the DRE.
+With a few generous assumptions, I estimate that the base rate is 86%; in reality, it was probably higher.</p>
+<p>To estimate the base rate, let’s assume:</p>
+<ul class="simple">
+<li><p>All 18 of the suspects who were released were, in fact, not under the influence of a drug, and</p></li>
+<li><p>The 28 suspects who refused a blood test were impaired at the same rate as the 173 who agreed, 94%.</p></li>
+</ul>
+<p>Both of these assumptions are generous; that is, they probably overestimate the accuracy of the DREs.
+Even so, they imply that 188 out of 219 blood tests would have been positive, if they had been tested.
+That’s a base rate of 86%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">y</span> <span class="o">/</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_drug</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">drug</span> <span class="o">=</span> <span class="mi">173</span> <span class="o">-</span> <span class="mi">11</span>
+<span class="n">drug</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>162
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate</span> <span class="o">=</span> <span class="n">percent</span><span class="p">(</span><span class="n">drug</span><span class="p">,</span> <span class="n">no_drug</span><span class="p">)</span>
+<span class="n">rate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>93.64161849710983
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refused</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">total_pos</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">refused</span> <span class="o">+</span> <span class="n">drug</span>
+<span class="n">total_pos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>188.21965317919074
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_pos</span> <span class="o">/</span> <span class="mi">219</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8594504711378573
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because the suspects who were released were not tested, there is no way to estimate the sensitivity of the test, but let’s assume it’s 99%, so if a suspect is under the influence of a drug, there is a 99% chance a DRE would detect it. In reality, it is probably lower.</p>
+<p>With these generous assumptions, we can use the following table to estimate the sensitivity of the DRE protocol.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="s2">&quot;Suspects&quot;</span>
+<span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Prob Positive&quot;</span>
+<span class="n">col3</span> <span class="o">=</span> <span class="s2">&quot;Cases&quot;</span>
+<span class="n">col4</span> <span class="o">=</span> <span class="s2">&quot;Percent&quot;</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Impaired&quot;</span><span class="p">,</span> <span class="s2">&quot;Not impaired&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">,</span> <span class="n">col4</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">14</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.4</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Suspects</th>
+      <th>Prob Positive</th>
+      <th>Cases</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Impaired</th>
+      <td>86</td>
+      <td>0.99</td>
+      <td>85.14</td>
+      <td>93.8</td>
+    </tr>
+    <tr>
+      <th>Not impaired</th>
+      <td>14</td>
+      <td>0.40</td>
+      <td>5.60</td>
+      <td>6.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>With 86% base rate, we expect 86 impaired suspects out of 100, and 14 unimpaired.
+With 99% sensitivity, we expect the DRE to detect about 85 true positives.
+And with 60% specificity, we expect the DRE to wrongly accuse 5.6 suspects.
+Out of 91 positive tests, 85 would be correct; that’s about 94%, as reported in the study.</p>
+<p>But this accuracy is only possible because the base rate in the study is so high.
+Remember that most of the subjects had been arrested because they had failed a field sobriety test.
+Then they were tested by a DRE, who was effectively offering a second opinion.</p>
+<p>But that’s not what happened when Officer Tracy Carroll arrested Katelyn Ebner, Princess Mbamara, Ayokunle Oriyomi, and Brittany Penwell.
+In each of those cases, the driver was stopped for driving erratically, which is evidence of possible impairment.
+But when Officer Carroll began his evaluation, that was the only evidence of impairment.</p>
+<p>So the relevant base rate is not 86%, as in the study; it is the fraction of erratic drivers who are under the influence of drugs.
+And there are many other reasons for erratic driving, including distraction, sleepiness, and the influence of alcohol.
+It’s hard to say which explanation is most common.
+I’m sure it depends on time and location.
+But as an example, let’s suppose it is 50%; the following table shows the results with this base rate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Impaired&quot;</span><span class="p">,</span> <span class="s2">&quot;Not impaired&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">,</span> <span class="n">col4</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.4</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Suspects</th>
+      <th>Prob Positive</th>
+      <th>Cases</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Impaired</th>
+      <td>50</td>
+      <td>0.99</td>
+      <td>49.5</td>
+      <td>71.2</td>
+    </tr>
+    <tr>
+      <th>Not impaired</th>
+      <td>50</td>
+      <td>0.40</td>
+      <td>20.0</td>
+      <td>28.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>With 50% base rate, 99% sensitivity, and 60% specificity, the predictive value of the test is only 71%; under these assumptions, almost 30% of the accused would be innocent.
+In fact, the base rate, sensitivity, and specificity are probably lower, which means that the value of the test is even worse.</p>
+<p>The suit filed by the ACLU was not successful.
+The court decided that the arrests were valid because the results of the field sobriety tests constituted “probable cause” for an arrest.
+As a result, the court did not consider the evidence for, or  against, the validity of the DRE protocol.
+The ACLU has appealed the decision.</p>
+</section>
+<section id="vaccine-effectiveness">
+<h2>Vaccine Effectiveness<a class="headerlink" href="#vaccine-effectiveness" title="Permalink to this heading">#</a></h2>
+<p>Now that we understand the base rate fallacy, we’re ready to untangle a particularly confusing example of COVID disinformation.
+In October 2021, a journalist appeared on a well-known podcast with a surprising claim. He said, “In the [United Kingdom] 70-plus percent of the people who die now from COVID are fully vaccinated.”</p>
+<p>The incredulous host asked, “Seventy percent?” and the journalist repeated, “Seven in ten of the people [who died] – I want to keep saying because nobody believes it but the numbers are there in the government documents – the vast majority of people in Britain who died in September were fully vaccinated.”</p>
+<p>Then, to his credit, he showed a table from a report published by Public Health England in September 2021.
+From the table, he read off the number of deaths in each age group:
+“1270 out of 1500 in the over 80 category […] 607 of 800 of the 70 year-olds […] They were almost all fully vaccinated. Most people who die of this now are fully vaccinated in the UK. Those are the numbers.”</p>
+<p>It’s true; those are the numbers.
+But the implication that the vaccine is useless, or actually harmful, is wrong.
+In fact, we can use these numbers, along with additional information from the same table, to compute the effectiveness of the vaccine and estimate the number of lives it saved.</p>
+<p>Berenson: The vaccine still appears to have some protective effect … that would still imply that the vaccine was doing <em>some</em> good.</p>
+<p>Rogan: So when you say that most of the people who are dying are vaccinated is that because the [] rate of vaccination is very high?”</p>
+<p>Berenson “Yes, <em>but</em>… there’s another complexity here – and this is the part that the vaccine [advocates?] never admit – when you get to a place like Britain or Israel where almost everybody in that age range is vaccinated, who’s not being vaccinated? Do you think there’s a lot of people in the old age home who are saying, ‘You know what, I’m insisting on my personal rights; you can’t vaccinate me.’  Some 88 year old, no. The only people who aren’t being vaccinated in that age group? Are probably too sick or too close to the end of their lives …”</p>
+<p>Rogan: Isn’t that speculative, though?</p>
+<p>Berenson: You caught me, because you’re right, it is speculative. That is my speculation that there is this difference in these two groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">death_vax</span> <span class="o">=</span> <span class="mi">1272</span>
+<span class="n">death_unvax</span> <span class="o">=</span> <span class="mi">1521</span> <span class="o">-</span> <span class="n">death_vax</span>
+<span class="n">death_vax</span> <span class="o">+</span> <span class="n">death_unvax</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1521
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">death_vax</span> <span class="o">/</span> <span class="p">(</span><span class="n">death_vax</span> <span class="o">+</span> <span class="n">death_unvax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8362919132149902
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate_vax</span> <span class="o">=</span> <span class="mi">495</span>
+<span class="n">rate_unvax</span> <span class="o">=</span> <span class="mi">1560</span>
+
+<span class="n">effectiveness</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">rate_vax</span> <span class="o">/</span> <span class="n">rate_unvax</span><span class="p">)</span>
+<span class="n">effectiveness</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6826923076923077
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s start with the oldest age group, people who were 80 or more years old.
+In this group, there were 1521 deaths attributed to COVID during the four week period from August 23 to September 19, 2021.
+Of the people who died, 1272 had been fully vaccinated.
+The others were either unvaccinated or partially vaccinated; for simplicity I’ll consider them all not fully vaccinated.
+So, in this age group, 84% of the people who died had been fully vaccinated.
+On the face of it, that sounds like the vaccine was not effective.</p>
+<p>However, the same table also reports death rates among the vaccinated and unvaccinated, that is, the number of deaths as a fraction of the population in each age group.
+During the same four week period, the death rates due to COVID were 1,560 per million people among the unvaccinated and 495 per million among the vaccinated.
+So, the death rate was substantially lower among the vaccinated.</p>
+<p>The following table shows these death rates in the second column, and the number of deaths in the third column.
+Given these numbers, we can work forward to compute the fourth column, which shows again that 84% of the people who died had been vaccinated.</p>
+<p>We can also work backward to compute the first column, which shows that there were about 2.57 million people in this age group who had been vaccinated, and only 0.16 million who had not.
+So, more than 94% of this age group had been vaccinated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="s2">&quot;Population&quot;</span>
+<span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Death rate&quot;</span>
+<span class="n">col3</span> <span class="o">=</span> <span class="s2">&quot;Deaths&quot;</span>
+<span class="n">col4</span> <span class="o">=</span> <span class="s2">&quot;Percent&quot;</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Vaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;Not vaccinated&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">,</span> <span class="n">col4</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">=</span> <span class="n">death_vax</span><span class="p">,</span> <span class="n">death_unvax</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span> <span class="o">=</span> <span class="n">rate_vax</span><span class="p">,</span> <span class="n">rate_unvax</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">table</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Population</th>
+      <th>Death rate</th>
+      <th>Deaths</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Vaccinated</th>
+      <td>2.57</td>
+      <td>495</td>
+      <td>1272</td>
+      <td>83.6</td>
+    </tr>
+    <tr>
+      <th>Not vaccinated</th>
+      <td>0.16</td>
+      <td>1560</td>
+      <td>249</td>
+      <td>16.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_vaccinated</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">percent_vaccinated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vaccinated        0.941518
+Not vaccinated    0.058482
+Name: Population, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this table, we can also compute the effectiveness of the vaccine, which is the fraction of deaths the vaccine prevented.
+The difference in the death rate from 1560 per million to 495 is a decrease of 68%.
+By definition, this decrease is the “effectiveness” of the vaccine in this age group.</p>
+<p>Finally, we can estimate the number of lives saved by answering a counterfactual question: if the death rate among the vaccinated had been the same as the death rate among the unvaccinated, how many deaths would there have been?
+The answer is that there would have been 4,009 deaths.
+In reality, there were 1,272, so we can estimate that the vaccine saved about 2,737 lives in this age group, in just four weeks.</p>
+<p>In the United Kingdom right now, there are a lot of people visiting parents and grandparents at their homes, rather than a cemetery, because of the COVID vaccine.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counterfact</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Vaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;Population&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Not vaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;Death rate&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">counterfact</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4008.727272727273
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># actual number, not rate, in one month</span>
+<span class="n">lives_saved</span> <span class="o">=</span> <span class="n">counterfact</span> <span class="o">-</span> <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Vaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;Deaths&quot;</span><span class="p">]</span>
+<span class="n">death_vax</span><span class="p">,</span> <span class="n">lives_saved</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1272, 2736.727272727273)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, this analysis is based on some assumptions, most notably that the vaccinated and unvaccinated were similar except for their vaccination status.
+That might not be true: people with high risk or poor general heath might have been more likely to seek out the vaccine.
+If so, our estimate would be too low, and the vaccine might have saved more lives.
+If not, and people in poor health were <em>less</em> likely to be vaccinated, our estimate would be too high.
+I’ll leave it to you to judge which is more likely.</p>
+<p>We can repeat this analysis with the other age groups.
+The following table shows the number of deaths in each age group and the percentage of the people who died who were vaccinated.</p>
+<p>I’ve omitted the “Under 18” age group because there were only 6 deaths in this group, 4 among among the unvaccinated and 2 with unknown status.
+With such small numbers, we can’t make useful estimates for the death rate or effectiveness of the vaccine.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">#    &quot;Under 18&quot;,</span>
+    <span class="s2">&quot;18 to 29&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;30 to 39&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;40 to 49&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;50 to 59&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;60 to 69&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;70 to 79&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;80+&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cases per 28 days, August 23 to September 19</span>
+
+<span class="n">deaths_vax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">258</span><span class="p">,</span> <span class="mi">607</span><span class="p">,</span> <span class="mi">1272</span><span class="p">])</span>
+<span class="n">deaths_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">17</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">104</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">411</span><span class="p">,</span> <span class="mi">801</span><span class="p">,</span> <span class="mi">1521</span><span class="p">])</span>
+<span class="n">deaths_unvax</span> <span class="o">=</span> <span class="n">deaths_total</span> <span class="o">-</span> <span class="n">deaths_vax</span>
+
+<span class="n">deaths_vax</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">deaths_total</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">deaths_vax</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">deaths_total</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2284, 3152, 0.7246192893401016)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">table2</span><span class="p">[</span><span class="s2">&quot;Deaths vax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_vax</span>
+<span class="n">table2</span><span class="p">[</span><span class="s2">&quot;Deaths total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_total</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">deaths_vax</span> <span class="o">/</span> <span class="n">deaths_total</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">table2</span><span class="p">[</span><span class="s2">&quot;Percent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">percent</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">table2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Deaths vax</th>
+      <th>Deaths total</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>18 to 29</th>
+      <td>5</td>
+      <td>17</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>30 to 39</th>
+      <td>10</td>
+      <td>48</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>40 to 49</th>
+      <td>30</td>
+      <td>104</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>50 to 59</th>
+      <td>102</td>
+      <td>250</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>60 to 69</th>
+      <td>258</td>
+      <td>411</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>70 to 79</th>
+      <td>607</td>
+      <td>801</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>80+</th>
+      <td>1272</td>
+      <td>1521</td>
+      <td>84</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Adding up the columns, there were a total of 2,284 deaths, 3,152 of them among the vaccinated.
+So 72% of the people who died had been vaccinated, as the unnamed journalist reported.
+Among people over 80, it was even higher, as we’ve already seen.</p>
+<p>However, in the younger age groups, the percentage of deaths among the vaccinated is substantially lower, which is a hint that this number might reflect something about the groups, not about the vaccine.</p>
+<p>To compute something about the vaccine, we can use death rates rather than number of deaths.
+The following table shows death rates per million people, reported by Public Health England for each age group, and the implied effectiveness of the vaccine, which is the percent reduction in death rate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rates_vax</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">131</span><span class="p">,</span> <span class="mi">495</span><span class="p">]</span>
+<span class="n">rates_unvax</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">124</span><span class="p">,</span> <span class="mi">231</span><span class="p">,</span> <span class="mi">664</span><span class="p">,</span> <span class="mi">1560</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">table3</span><span class="p">[</span><span class="s2">&quot;Death rate vax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rates_vax</span>
+<span class="n">table3</span><span class="p">[</span><span class="s2">&quot;Death rate unvax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rates_unvax</span>
+<span class="n">effectiveness</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rates_vax</span><span class="p">)</span> <span class="o">/</span> <span class="n">rates_unvax</span><span class="p">)</span>
+<span class="n">table3</span><span class="p">[</span><span class="s2">&quot;Effectiveness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">effectiveness</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">table3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Death rate vax</th>
+      <th>Death rate unvax</th>
+      <th>Effectiveness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>18 to 29</th>
+      <td>1</td>
+      <td>3</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>30 to 39</th>
+      <td>2</td>
+      <td>12</td>
+      <td>83</td>
+    </tr>
+    <tr>
+      <th>40 to 49</th>
+      <td>5</td>
+      <td>38</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>50 to 59</th>
+      <td>14</td>
+      <td>124</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>60 to 69</th>
+      <td>45</td>
+      <td>231</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>70 to 79</th>
+      <td>131</td>
+      <td>664</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>80+</th>
+      <td>495</td>
+      <td>1560</td>
+      <td>68</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The effectiveness of the vaccine is more than 80% in most age groups.
+In the youngest group it is 67%, but that might be inaccurate because the number of deaths is low and the estimated death rates are not precise.
+In the oldest group it is 68%, which suggests that the vaccine is less effective for older people, possibly because their immune systems are weaker.
+However, a treatment that reduces the probability of dying by 68% is still very good.</p>
+<p>Effectiveness is nearly the same most age groups because it reflects primarily something about the vaccines and only secondarily something about the groups.</p>
+<p>Now, given the number of deaths and death rates, we can infer the number of people in each age group who were vaccinated or not, and the percentage who had been vaccinated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# vax (millions)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_vax</span> <span class="o">/</span> <span class="n">rates_vax</span>
+<span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# unvax (millions)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_unvax</span> <span class="o">/</span> <span class="n">rates_unvax</span>
+<span class="n">pop_total</span> <span class="o">=</span> <span class="n">table4</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# vax (millions)&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">table4</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">table4</span><span class="p">[</span><span class="s2">&quot;Percent vax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">percent</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">table4</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># vax (millions)</th>
+      <th># unvax (millions)</th>
+      <th>Percent vax</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>18 to 29</th>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>30 to 39</th>
+      <td>5.0</td>
+      <td>3.2</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>40 to 49</th>
+      <td>6.0</td>
+      <td>1.9</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>50 to 59</th>
+      <td>7.3</td>
+      <td>1.2</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>60 to 69</th>
+      <td>5.7</td>
+      <td>0.7</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>70 to 79</th>
+      <td>4.6</td>
+      <td>0.3</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>80+</th>
+      <td>2.6</td>
+      <td>0.2</td>
+      <td>94</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>By August 2021, nearly everyone in the England over 60 years old had been vaccinated.
+In the younger groups, the percentages were lower, but even in the youngest group it was more than half.</p>
+<p>With this, it becomes clear why most deaths were among the vaccinated:</p>
+<ul class="simple">
+<li><p>Most deaths were in the oldest age groups, and</p></li>
+<li><p>In those age groups, almost everyone was vaccinated.</p></li>
+</ul>
+<p>Taking this logic to the extreme, if everyone is vaccinated, we expect all deaths to be among the vaccinated.</p>
+<p>In the vocabulary of this chapter, the percentage of deaths among the vaccinated depends on the effectiveness of the vaccine <em>and</em> the base rate of vaccination in the population.
+If the base rate is low, as in the younger groups, the percentage of deaths among the vaccinated is low.
+If the base rate is high, as in the older groups, the percentage of deaths is high.
+Because this percentage depends so strongly on the properties of the group, it doesn’t tell us much about the properties of the vaccine.</p>
+<p>Finally, we can estimate the number of lives saved in each age group.
+First we compute the hypothetical number of the vaccinated who would have died if their death rate had been the same as among the unvaccinated, then we subtract off the actual number of deaths.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Hypothetical deaths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# vax (millions)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table3</span><span class="p">[</span><span class="s2">&quot;Death rate unvax&quot;</span><span class="p">]</span>
+<span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Actual deaths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_vax</span>
+<span class="n">percent</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# vax (millions)&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">table4</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Lives saved&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Hypothetical deaths&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Actual deaths&quot;</span><span class="p">]</span>
+<span class="n">table5</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hypothetical deaths</th>
+      <th>Actual deaths</th>
+      <th>Lives saved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>18 to 29</th>
+      <td>15</td>
+      <td>5</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>30 to 39</th>
+      <td>60</td>
+      <td>10</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>40 to 49</th>
+      <td>228</td>
+      <td>30</td>
+      <td>198</td>
+    </tr>
+    <tr>
+      <th>50 to 59</th>
+      <td>903</td>
+      <td>102</td>
+      <td>801</td>
+    </tr>
+    <tr>
+      <th>60 to 69</th>
+      <td>1324</td>
+      <td>258</td>
+      <td>1066</td>
+    </tr>
+    <tr>
+      <th>70 to 79</th>
+      <td>3077</td>
+      <td>607</td>
+      <td>2470</td>
+    </tr>
+    <tr>
+      <th>80+</th>
+      <td>4009</td>
+      <td>1272</td>
+      <td>2737</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lives_saved</span> <span class="o">=</span> <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Lives saved&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">lives_saved</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7332.25813423218
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop_total</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>47.64403757147204
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop_total</span> <span class="o">/</span> <span class="n">lives_saved</span> <span class="o">*</span> <span class="mf">1e6</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6497.866918928548
+</pre></div>
+</div>
+</div>
+</div>
+<p>In total, the COVID vaccine saved more than 7000 lives in a four-week period, in a relevant population of about 48 million.</p>
+<p>If you created a vaccine that saved 7000 lives in less than a month, in just one country, you would feel pretty good about yourself.
+And if you used misleading statistics to persuade a large, international audience that they should not get that vaccine, you should feel very bad.</p>
+</section>
+<section id="predicting-crime">
+<h2>Predicting Crime<a class="headerlink" href="#predicting-crime" title="Permalink to this heading">#</a></h2>
+<p>If we understand the base rate fallacy, we can correctly interpret medical and impaired driving tests, and we can avoid being misled by headlines about COVID vaccines.
+We can also shed light on an ongoing debate about the use of data and algorithms in the criminal justice system.</p>
+<p>In 2016 a team of journalists at ProPublica published a now-famous article about COMPAS, which is a statistical tool used in some states to inform decisions about which defendants should be released on bail before trial, how long convicted defendants should be imprisoned, and whether prisoners should be released on probation.</p>
+<p>COMPAS uses information about defendants to generate a “risk score” which is supposed to quantify the probability that the defendant will commit another crime if released.</p>
+<p>The authors of the ProPublica article used public data to assess the accuracy of COMPAS risk scores.
+They explain:</p>
+<blockquote>
+<div><p>We obtained the risk scores assigned to more than 7,000 people arrested in Broward County, Florida, in 2013 and 2014 and checked to see how many were charged with new crimes over the next two years, the same benchmark used by the creators of the algorithm.</p>
+</div></blockquote>
+<p>They published the data they obtained, so we can use it to replicate their analysis and do our own.</p>
+<p>NOTE: The statistics reported in the rest of this chapter are from the <a class="reference external" href="https://allendowney.github.io/RecidivismCaseStudy/">Recidivism Case Study</a>, to be published as part of <a class="reference external" href="https://allendowney.github.io/ElementsOfDataScience">Elements of Data Science</a>.</p>
+<p>If we think of COMPAS as a diagnostic test, a high risk score is like a positive test result and a low risk score is like a negative result.
+Under those definitions, we can use the data to compute the sensitivity and specificity of the test.
+As it turns out, they are not very good:</p>
+<ul class="simple">
+<li><p><em>Sensitivity</em>: Of the people who were charged with another crime during the period of observation, only 63% were given high risk scores.</p></li>
+<li><p><em>Specificity</em>: Of the people who were <em>not</em> charged with another crime, only 68% were given low risk scores.</p></li>
+</ul>
+<p>Now suppose you are a judge considering a bail request from a defendant who has been assigned a high risk score. Among other things, you would like to know the probability that they will commit a crime if released. Let’s see if we can figure that out.</p>
+<p>As you might guess by now, we need another piece of information: the base rate. In the sample from Broward County, it is 45%; that is, 45% of the defendants released from jail were charged with a crime within two years.</p>
+<p>The following table shows the results with this base rate, sensitivity, and specificity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Charged again&quot;</span><span class="p">,</span> <span class="s2">&quot;Not charged&quot;</span><span class="p">])</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;P(high risk)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">likelihood</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# high risk&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;P(high risk)&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">as_int</span><span class="p">:</span>
+        <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# high risk&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# high risk&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# high risk&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Percent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;# high risk&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.63</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mf">0.68</span>
+<span class="n">prev</span> <span class="o">=</span> <span class="mf">0.45</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">prev</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prev</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>P(high risk)</th>
+      <th># high risk</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Charged again</th>
+      <td>450</td>
+      <td>0.63</td>
+      <td>283</td>
+      <td>61.8</td>
+    </tr>
+    <tr>
+      <th>Not charged</th>
+      <td>550</td>
+      <td>0.32</td>
+      <td>175</td>
+      <td>38.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Out of 1000 people in this dataset, 450 will be charged with a crime, on average; the other 550 will not.</p>
+<p>Based on the sensitivity and specificity of the test, we expect 283 of the offenders to be assigned a high risk score, along with 175 of the non-offenders. So, of all people with high risk scores, about 62% will be charged with another crime.</p>
+<p>This result is called the “positive predictive value”, or PPV, because it quantifies the accuracy of a positive test result. In this case, 62% of the positive tests turn out to be correct.</p>
+<p>We can do the same analysis with low risk scores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.63</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.68</span>
+<span class="n">prev</span> <span class="o">=</span> <span class="mf">0.45</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">prev</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prev</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+<span class="n">table</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;# of people&#39;</span><span class="p">,</span> <span class="s1">&#39;P(low risk)&#39;</span><span class="p">,</span> <span class="s1">&#39;# low risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Percent&#39;</span><span class="p">]</span>
+<span class="n">table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>P(low risk)</th>
+      <th># low risk</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Charged again</th>
+      <td>450</td>
+      <td>0.37</td>
+      <td>166</td>
+      <td>30.7</td>
+    </tr>
+    <tr>
+      <th>Not charged</th>
+      <td>550</td>
+      <td>0.68</td>
+      <td>374</td>
+      <td>69.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Out of 450 offenders, we expect 166 to get an incorrect low score. Out of 550 non-offenders, we expect 374 to get a correct low score.
+So, of all people with low risk scores, 69% were not charged with another crime.</p>
+<p>This result is called the “negative predictive value” of the test, or NPV, because it indicates what fraction of negative tests are correct.</p>
+<p>On one hand, these results show that risk scores provide useful information.
+If someone gets a high risk score, the probability is 62% that they will be charged with a crime.
+If they get a low risk score, it is only 31%.
+So, people with high risk scores are about twice as likely to re-offend.</p>
+<p>On the other hand, these results are not as accurate as we would like when we make decisions that affect people’s lives so seriously.
+And they might not be fair.</p>
+</section>
+<section id="comparing-groups">
+<h2>Comparing Groups<a class="headerlink" href="#comparing-groups" title="Permalink to this heading">#</a></h2>
+<p>The authors of the ProPublica article considered whether COMPAS has the same accuracy for different groups. With respect to racial groups, they find:</p>
+<blockquote>
+<div><p>… In forecasting who would re-offend, the algorithm made mistakes with black and white defendants at roughly the same rate but in very different ways.</p>
+<ul class="simple">
+<li><p>The formula was particularly likely to falsely flag black defendants as future criminals, wrongly labeling them this way at almost twice the rate as white defendants.</p></li>
+<li><p>White defendants were mislabeled as low risk more often than black defendants.</p></li>
+</ul>
+</div></blockquote>
+<p>This discrepancy suggests that the use of COMPAS in the criminal justice system is racially biased.</p>
+<p>I will use the data they obtained to replicate their analysis, and we will see that their numbers are correct.
+But interpreting these results turns out to be complicated; I think it will be clearer if we start by considering sex, and then race.</p>
+<p>In the data from Broward County, 81% of defendants are male and 19% are female. The sensitivity and specificity of the risk scores is almost the same in both groups:</p>
+<ul class="simple">
+<li><p>Sensitivity is 63% for male defendants and 61% for female defendants.</p></li>
+<li><p>Specificity is close to 68% for both groups.</p></li>
+</ul>
+<p>But the base rate is different: about 47% of male defendants were charged with another crime, compared to 36% of female defendants.</p>
+<p>In a group of 1000 male defendants, the following table shows the number we expect to get a high risk score and the fraction of them that will re-offend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.63</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mf">0.68</span>
+<span class="n">prev</span> <span class="o">=</span> <span class="mf">0.47</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">prev</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prev</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>P(high risk)</th>
+      <th># high risk</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Charged again</th>
+      <td>470</td>
+      <td>0.63</td>
+      <td>296</td>
+      <td>63.7</td>
+    </tr>
+    <tr>
+      <th>Not charged</th>
+      <td>530</td>
+      <td>0.32</td>
+      <td>169</td>
+      <td>36.3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Of the high risk male defendants, about 64% were charged with another crime.</p>
+<p>Here is the corresponding table for 1000 female defendants.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.61</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="mf">0.68</span>
+<span class="n">prev</span> <span class="o">=</span> <span class="mf">0.36</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">prev</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prev</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th># of people</th>
+      <th>P(high risk)</th>
+      <th># high risk</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Charged again</th>
+      <td>360</td>
+      <td>0.61</td>
+      <td>219</td>
+      <td>51.8</td>
+    </tr>
+    <tr>
+      <th>Not charged</th>
+      <td>640</td>
+      <td>0.32</td>
+      <td>204</td>
+      <td>48.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Of the high risk female defendants, only 52% were charged with another crime.</p>
+<p>And that’s what we should expect: if the test has the same sensitivity and specificity, but the groups have different base rates, the test will have different predictive values in the two groups.</p>
+<p>Now let’s consider racial groups. As the ProPublica article reports, the sensitivity and specificity of COMPAS are substantially different for white and black defendants:</p>
+<ul class="simple">
+<li><p>Sensitivity for white defendants is 52%; for black defendants it is 72%.</p></li>
+<li><p>Specificity for white defendants is 77%; for black defendants it is 55%.</p></li>
+</ul>
+<p>The complement of sensitivity is the “false negative rate”, or FNR, which in this context is the fraction of offenders who were wrongly classified as low risk. The false negative rate for white defendants is 48% (the complement of 52%); for black defendants it is 28%</p>
+<p>And the complement of specificity is the “false positive rate”, or FPR, which is the fraction of non-offenders who were wrongly classified as high risk. The false positive rate for white defendants is 23% (the complement of 77%); for black defendants it is 45%.</p>
+<p>In other words, black non-offenders were almost twice as likely to bear the cost of an incorrect high score. And black offenders were substantially less likely to get the benefit of an incorrect low score.</p>
+<p>That seems patently unfair. As U.S. Attorney General Eric Holder wrote in 2014 (as quoted in the ProPublica article), “Although these measures were crafted with the best of intentions, I am concerned that they inadvertently undermine our efforts to ensure individualized and equal justice [and] they may exacerbate unwarranted and unjust disparities that are already far too common in our criminal justice system and in our society.”</p>
+<p>But that’s not the end of the story.</p>
+</section>
+<section id="fairness-is-hard-to-define">
+<h2>Fairness is Hard to Define<a class="headerlink" href="#fairness-is-hard-to-define" title="Permalink to this heading">#</a></h2>
+<p>A few months after the ProPublica article, the Washington Post published a response with the expositive title: “A computer program used for bail and sentencing decisions was labeled biased against blacks. It’s actually not that clear.”</p>
+<p>It acknowledges that the results of the ProPublica article are correct: the false positive rate for black defendants is higher and the false negative rate is lower.
+But it points out that the PPV and NPV are the nearly the same for both groups:</p>
+<ul class="simple">
+<li><p><em>Positive predictive value</em>: Of people with high risk scores, 59% of white defendants and 63% of black defendants were charged with another crime.</p></li>
+<li><p><em>Negative predictive value</em>: Of people with low risk scores, 71% of white defendants and 65% of black defendants were <em>not</em> charged again.</p></li>
+</ul>
+<p>So in this sense the test is fair: a high risk score in either group means the same thing; that is, it corresponds to roughly the same probability of recidivism.
+And a low risk score corresponds to roughly the same probability of non-recidivism.</p>
+<p>Strangely, COMPAS achieves one kind of fairness based on sex, and another kind of fairness based on race.</p>
+<ul class="simple">
+<li><p>For male and female defendants, the error rates (false positive and false negative) are roughly the same, but the predictive values are different.</p></li>
+<li><p>For black and white defendants, the error rates are substantially different, but the predictive values (PPV and NPV) are about the same.</p></li>
+</ul>
+<p>The COMPAS algorithm is a trade secret, so there is no way to know why it is designed this way, or even whether the discrepancy is deliberate.
+But the discrepancy is not inevitable.
+COMPAS could be calibrated to have equal error rates in all four groups, or equal predictive values.</p>
+<p>However, it cannot have the same error rates <em>and</em> the same predictive values.
+We have already seen why: if the error rates are the same and the base rates are different, we get different predictive values.
+And, going the other way, if the predictive values are the same and the base rates are different, we get different error rates.</p>
+<p>Probably Overthinking It</p>
+<p>Copyright 2022 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="longtail.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Long Tail of Disaster</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="overton.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chasing the Overton Window</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medical-tests">Medical Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-prevalence">More prevalence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-specificity">More specificity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bad-medicine">Bad medicine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driving-under-the-influence">Driving Under the Influence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaccine-effectiveness">Vaccine Effectiveness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-crime">Predicting Crime</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-groups">Comparing Groups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-is-hard-to-define">Fairness is Hard to Define</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

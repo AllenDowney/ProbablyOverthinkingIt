@@ -162,6 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_rate.html">Fairness and Fallacy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overton.html">Chasing the Overton Window</a></li>
 
 </ul>
@@ -394,7 +395,12 @@ document.write(`
 </div>
 </details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -405,6 +411,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>When you run 209 miles, you have a lot of time to think. In 2010, I was
 a member of a 12-person team that ran a 209-mile relay race in New Hampshire.</p>
@@ -1197,33 +1204,31 @@ So that explains my oxygen-deprived confusion.</p>
 <section id="just-visiting">
 <h2>Just Visiting<a class="headerlink" href="#just-visiting" title="Permalink to this heading">#</a></h2>
 <p>I downloaded data from the <a class="reference external" href="https://www.bop.gov/about/statistics/statistics_inmate_sentences.jsp">U.S. Federal Bureau of Prisons</a> (BOP) in June 2019.
-I archived the page so you can download it:</p>
+I archived the page so you can <a class="reference external" href="https://raw.githubusercontent.com/AllenDowney/InspectionParadox/master/BOP%20Statistics_%20Sentences%20Imposed.html">download it here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;../data/BOP Statistics_ Sentences Imposed.html&quot;</span><span class="p">):</span>
-    <span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/AllenDowney/InspectionParadox/master/BOP%20Statistics_%20Sentences%20Imposed.html
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2024-01-06 08:48:59--  https://raw.githubusercontent.com/AllenDowney/InspectionParadox/master/BOP%20Statistics_%20Sentences%20Imposed.html
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 24902 (24K) [text/plain]
-Saving to: ‘BOP Statistics_ Sentences Imposed.html.5’
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here&#39;s how I read the file, but this doesn&#39;t work on windows</span>
 
-BOP Statistics_ Sen 100%[===================&gt;]  24.32K  --.-KB/s    in 0.01s   
-
-2024-01-06 08:48:59 (2.40 MB/s) - ‘BOP Statistics_ Sentences Imposed.html.5’ saved [24902/24902]
+<span class="c1">#tables = pd.read_html(&quot;BOP Statistics_ Sentences Imposed.html&quot;)</span>
+<span class="c1">#df = tables[0]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s2">&quot;BOP Statistics_ Sentences Imposed.html&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># so here&#39;s the CSV version I saved</span>
+
+<span class="n">download</span><span class="p">(</span>
+    <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/BOP_Statistics_Sentences_Imposed.csv&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;BOP_Statistics_Sentences_Imposed.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>

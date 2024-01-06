@@ -64,7 +64,12 @@ Before you read these notebooks, please keep in mind:
 
 [Run the code that prepares the solar flare data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_flare.ipynb)
 
-**Chapters 9-11 Coming Soon**
+**Chapter 9: Fairness and Fallacy**
+
+[Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/base_rate.ipynb)
+
+
+**Chapters 10 and 11 Coming Soon**
 
 
 **Chapter 12: Chasing the Overton Window**

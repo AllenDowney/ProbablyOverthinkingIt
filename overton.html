@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The Principal Components of Anthropometry" href="ansur_pca.html" />
-    <link rel="prev" title="The Long Tail of Disaster" href="longtail.html" />
+    <link rel="prev" title="Fairness and Fallacy" href="base_rate.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,6 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_rate.html">Fairness and Fallacy</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Chasing the Overton Window</a></li>
 
 </ul>
@@ -356,14 +357,13 @@ document.write(`
                   
   <section id="chasing-the-overton-window">
 <h1>Chasing the Overton Window<a class="headerlink" href="#chasing-the-overton-window" title="Permalink to this heading">#</a></h1>
-<p>This is one of the Jupyter notebooks I used in my preparation of <em><a class="reference external" href="https://greenteapress.com/wp/probably-overthinking-it">Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions</a></em>, University of Chicago Press, 2023.</p>
-<p>Before you read these notebooks, please keep in mind:</p>
-<ul class="simple">
-<li><p>There is some explanatory text here, but some of the examples will not make sense until you have read the corresponding chapter in the book.</p></li>
-<li><p>While preparing these notebooks, I made some changes to improve the readability of the code. There might be small differences between what appears in the book and what you get when you run the code.</p></li>
-</ul>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/overton.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
 
@@ -374,8 +374,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
 
@@ -392,8 +398,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -405,11 +417,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">set_pyplot_params</span><span class="p">,</span>
     <span class="n">underride</span><span class="p">,</span>
     <span class="n">decorate</span><span class="p">,</span>
     <span class="n">decorate_table</span><span class="p">,</span>
@@ -423,11 +440,10 @@ document.write(`
     <span class="n">make_lowess</span><span class="p">,</span>
     <span class="n">plot_series_lowess</span><span class="p">,</span>
 <span class="p">)</span>
-
-<span class="c1"># set_pyplot_params()</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="id1">
@@ -2797,12 +2813,12 @@ As a result, I have fewer sources to cite and less related reading to recommend.
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="longtail.html"
+       href="base_rate.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The Long Tail of Disaster</p>
+        <p class="prev-next-title">Fairness and Fallacy</p>
       </div>
     </a>
     <a class="right-next"
