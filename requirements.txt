@@ -1,5 +1,6 @@
 empiricaldist
 jupyter
+lifelines
 lxml
 numpy
 matplotlib
