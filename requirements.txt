@@ -1,4 +1,5 @@
 empiricaldist
+html5lib
 jupyter
 lifelines
 lxml
