@@ -31,4 +31,5 @@ tests:
 	cd notebooks; pytest --nbmake longtail.ipynb
 	cd notebooks; pytest --nbmake base_rate.ipynb
 	cd notebooks; pytest --nbmake simpson.ipynb
+	cd notebooks; pytest --nbmake progress.ipynb
 	cd notebooks; pytest --nbmake overton.ipynb
