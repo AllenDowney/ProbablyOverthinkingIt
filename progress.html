@@ -1,0 +1,1806 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Changing Hearts and Minds &#8212; Probably Overthinking It</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'progress';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chasing the Overton Window" href="overton.html" />
+    <link rel="prev" title="Penguins, Pessimists, and Paradoxes" href="simpson.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_rate.html">Fairness and Fallacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simpson.html">Penguins, Pessimists, and Paradoxes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Changing Hearts and Minds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overton.html">Chasing the Overton Window</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/progress.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Changing Hearts and Minds</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#old-racists">Old Racists?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#young-feminists">Young Feminists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-remarkable-decline-of-homophobia">The Remarkable Decline of Homophobia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happened-in-1990">What happened in 1990?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cohort-or-period-effect">Cohort or period effect?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-overton-window">The Overton Window</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="changing-hearts-and-minds">
+<h1>Changing Hearts and Minds<a class="headerlink" href="#changing-hearts-and-minds" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/progress.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+        
+<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">set_pyplot_params</span><span class="p">,</span>
+    <span class="n">underride</span><span class="p">,</span>
+    <span class="n">decorate</span><span class="p">,</span>
+    <span class="n">decorate_table</span><span class="p">,</span>
+    <span class="n">prepare_yvar</span><span class="p">,</span>
+    <span class="n">run_subgroups</span><span class="p">,</span>
+    <span class="n">chunk_series</span><span class="p">,</span>
+    <span class="n">make_table</span><span class="p">,</span>
+    <span class="n">visualize_table</span><span class="p">,</span>
+    <span class="n">label_table</span><span class="p">,</span>
+    <span class="n">label_table_left</span><span class="p">,</span>
+    <span class="n">make_lowess</span><span class="p">,</span>
+    <span class="n">plot_series_lowess</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>In 1950, the physicist Max Planck made a bleak assessment of progress in science.
+He wrote, “A new scientific truth does not triumph by convincing its opponents and making them see the light, but rather because its opponents eventually die, and a new generation grows up that is familiar with it.”
+Scientists often quote a pithier version attributed to economist Paul A. Samuelson: “Science progresses, one funeral at a time.”
+According to this view, science progresses by generational replacement alone, not changed minds.</p>
+<p>I am not sure that Planck and Samuelson are right about science, but I don’t have the data to check.
+However, thanks to the General Social Survey (GSS), we have the data to assess a different kind of progress, the expansion of the “moral circle”.</p>
+<p>The idea of the moral circle was introduced by historian William Lecky in <em>A History of European Morals from Augustus to Charlemagne</em>, published in 1867. He wrote:</p>
+<blockquote>
+<div><p>At one time the benevolent affections embrace merely the family, soon the circle expanding includes first a class, then a nation, then a coalition of nations, then all humanity, and finally, its influence is felt in the dealings of man with the animal world.</p>
+</div></blockquote>
+<p>In this chapter we’ll use data from the GSS to explore the moral circle, focusing on questions related to race, sex, and sexual orientation.
+We’ll find more examples of Simpson’s paradox, which we saw in the previous chapter.
+For example, older people are more likely to hold racist views, but that doesn’t mean people become more racist as they get older.
+To interpret this result and others like it, I’ll introduce a tool called age-period-cohort analysis and a concept called the Overton window.</p>
+<p>Let’s start with race.</p>
+<section id="old-racists">
+<h2>Old Racists?<a class="headerlink" href="#old-racists" title="Permalink to this heading">#</a></h2>
+<p>Stereotypes suggest that older people are more racist than young people.
+To see whether that’s true, I’ll use responses to three questions in the General Social Survey related to race and public policy:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Do you think there should be laws against marriages between
+(Negroes/Blacks/African-Americans) and whites?</p></li>
+<li><p>If your party nominated a (Negro/Black/African-American) for President,
+would you vote for him if he were qualified for the job?</p></li>
+<li><p>Suppose there is a community-wide vote on the general housing issue. There are two possible laws to vote on. Which law would you vote for?</p>
+<ul class="simple">
+<li><p>One law says that a homeowner can decide for himself whom to sell his house to, even if he prefers not to sell to [people of a particular race].</p></li>
+<li><p>The second law says that a homeowner cannot refuse to sell to someone because of their race or color.</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+<p>I chose these questions because they were added to the survey in the early 1970s and they have been asked almost every year since.
+The words in parentheses indicate that the wording of these questions has changed over time to use contemporary terms for racial categories.</p>
+<p>The following figure shows the responses to these questions as a function of the respondents’ ages.
+To make it easy to compare answers to different questions, the <span class="math notranslate nohighlight">\(y\)</span> axis shows the percentage who chose what I characterize as the racist responses: that interracial marriage should be illegal; that the respondent would not vote for a black presidential candidate; and that it should be legal to refuse to sell a house to someone based on their race.</p>
+<p>The results vary from year to year, so I’ve plotted a smooth curve to fit the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/&quot;</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;gss_eds.3.hdf&quot;</span>
+<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;gss0&quot;</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(68846, 205)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1889</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cohort10
+1890.0      455
+1900.0     1717
+1910.0     3663
+1920.0     5959
+1930.0     6992
+1940.0    10777
+1950.0    13981
+1960.0    10724
+1970.0     7286
+1980.0     4499
+1990.0     2022
+2000.0      202
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Start with an empty DataFrame and add columns for the 10 questions used in this chapter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ten_questions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racmar&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;r1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_racmar</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racpres&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># would not vote</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;r2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_racpres</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racopen&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># would vote for the wrong law</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;r3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_racopen</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_racopen</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Housing law&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_racmar</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Marriage&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span>
+    <span class="n">series_racpres</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Black candidate&quot;</span>
+<span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Racist responses vs age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6c1b283781f071f21a5cc10e1b5b7bcccc55bfb316906703a7eee3b84cb65a86.png" src="_images/6c1b283781f071f21a5cc10e1b5b7bcccc55bfb316906703a7eee3b84cb65a86.png" />
+</div>
+</div>
+<p>For all three questions, old people are substantially more likely to choose the racist response, so there is some truth to the stereotype.</p>
+<p>But that raises a question: do people <em>become</em> more racist as they age, or do they persist in the beliefs they were raised with?
+We can answer that with another view of the data.</p>
+<p>The following figure shows responses to the first question, about interracial marriage, grouped by decade of birth and plotted by age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racmar&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">table</span><span class="p">[</span><span class="mi">1980</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age
+19.868421    1.315789
+Name: 1980, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_table</span><span class="p">(</span><span class="n">series_racmar</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">nudge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;1970s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;1960s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">2</span><span class="p">}</span>
+<span class="n">label_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">nudge</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Interracial marriage: racist responses vs age&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ff546dd79c8955093f7016b9f1f36e8e9c822c909e19f9ebdd38843823c87217.png" src="_images/ff546dd79c8955093f7016b9f1f36e8e9c822c909e19f9ebdd38843823c87217.png" />
+</div>
+</div>
+<p>The dotted line shows the trend for all respondents; as we saw in the previous figure, older respondents are more likely to favor a law against interracial marriage.
+But that doesn’t mean that people are more likely to adopt this view as they age.
+In fact, it’s the opposite: in almost every birth cohort, people age out of racism.</p>
+<p>So this is another example of Simpson’s paradox: within the groups, the trend is downward as a function of age, but overall, the trend is upward.
+The reason is that, because of the design of the GSS, we observe different cohorts at different ages.
+At the left side of the figure, the overall average is low because the youngest people surveyed are mostly from the most recent generations; at the right side, the overall average is high because the older people are mostly from the earliest generations.</p>
+<p>You might notice that we have only one observation for people born in the 1980s and no data for people born in the 1990s.
+That’s because this question was dropped from the GSS after 2002.
+At that point, the percentage of people in favor of the law, and willing to say so, had dropped below 10%.
+Among people born in the 1980s, it was barely 1%.</p>
+<p>At that point, the GSS had several reasons to retire the question.
+First, as a matter of public policy, the matter was resolved in 1967 by the U.S. Supreme Court decision in <em>Loving v. Virginia</em>; by the 1990s it was no longer part of mainstream political discussion.
+Second, because the responses were so one-sided, there was little to learn by asking.
+And finally, estimating small proportions from survey data is unreliable due to a phenomenon known as “lizard people”.</p>
+<p>The term comes from a notorious poll conducted in 2013 by Public Policy Polling, which included questions about a variety of conspiracy theories.
+One asked:</p>
+<blockquote>
+<div><p>Do you believe that shape-shifting reptilian people control our world by taking on human form and gaining political power to manipulate our societies, or not?</p>
+</div></blockquote>
+<p>Of 1247 registered voters who responded, 4% said yes.
+If that is an accurate estimate of the prevalence of this belief, it implies that there are more than 12 million people in the U.S. who believe in lizard people.</p>
+<p>But it is probably not an accurate estimate, because of a problem well known to survey designers.
+In any group of respondents, there will be some percentage who misunderstand a question, accidentally choose a response they did not intend, or maliciously choose a response they do not believe.
+And in this example, there were probably a few open-minded people who had never heard of lizard people in positions of power, but once the survey raised the possibility, they were willing to entertain it.</p>
+<p>Errors like this are tolerable when the actual prevalence is high.
+In that case, the number of errors is small compared to the number of legitimate positive responses.
+But when the actual prevalence is low, there might be more false positive responses than true ones.
+If 4% of respondents endorsed the lizard-people theory in error, the actual prevalence might be zero.</p>
+<p>The point of this diversion is that it is hard to measure small percentages with survey data, which is one reason the GSS stops asking about rare beliefs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racpres&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+
+<span class="n">visualize_table</span><span class="p">(</span><span class="n">series_racpres</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Black presidential candidate: racist responses vs age&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a17169127df90450dcf82840a023993faaf0738e287e0c9034d9a2d762b50f1c.png" src="_images/a17169127df90450dcf82840a023993faaf0738e287e0c9034d9a2d762b50f1c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racopen&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># would vote for the wrong law</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+
+<span class="n">visualize_table</span><span class="p">(</span><span class="n">series_racopen</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Open housing law: racist responses vs age&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/270c481f944c86091b2036caacc47c59dd454a4b47bca31f3c5b09106f977fb4.png" src="_images/270c481f944c86091b2036caacc47c59dd454a4b47bca31f3c5b09106f977fb4.png" />
+</div>
+</div>
+<p>The responses to the other two questions follow the same pattern.</p>
+<ul class="simple">
+<li><p>Asked whether they would vote for a qualified Black presidential candidate nominated by their own party, older people were more likely to say no. But within every birth cohort, people were more likely to say yes as they got older.</p></li>
+<li><p>Asked whether they would support an open housing law, older people were more likely to say no. But within every birth cohort, people were more likely to say yes as they got older.</p></li>
+</ul>
+<p>So, even if you observe that older people are more likely to hold racist beliefs, that doesn’t mean people become more racist with age.
+In fact, the opposite is true: in every generation, going back to 1900, people grew less racist over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racopen&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># would vote for the wrong law</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;age &gt;= 70&quot;</span><span class="p">)[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">gss</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;age &lt;= 30&quot;</span><span class="p">)[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5165211970074813, 0.3089821763602251)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racpres&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># would not vote for a black candidate</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;age &gt;= 70&quot;</span><span class="p">)[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">gss</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;age &lt;= 30&quot;</span><span class="p">)[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.24651372019793072, 0.10303030303030303)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="young-feminists">
+<h2>Young Feminists<a class="headerlink" href="#young-feminists" title="Permalink to this heading">#</a></h2>
+<p>Similarly, older people are more likely to hold sexist beliefs, but that doesn’t mean people become more sexist as they age.
+The GSS includes three questions related to sexism:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Please tell me whether you strongly agree, agree, disagree, or strongly disagree […]: It is much better for everyone involved if the man is the achiever outside the home and the woman takes care of the home and family.</p></li>
+<li><p>Tell me if you agree or disagree with this statement:  Most men are better suited emotionally for politics than are most women.</p></li>
+<li><p>If your party nominated a woman for President, would you vote for her if she were qualified for the job?</p></li>
+</ol>
+</div></blockquote>
+<p>The following figure shows the results as a function of the respondents’ ages.
+Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows the percentage of respondents who chose what I characterize as a sexist response: that it is much better for everyone if women stay home, that men are more suited emotionally for politics, and that the respondent would not vote for a female presidential candidate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># [1977-2021]</span>
+<span class="c1"># [1974-2021]</span>
+<span class="c1"># [1972-2010]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fefam&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># strongly agree or agree</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;f1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_fefam</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fepol&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># agree</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;f2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_fepol</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fepres&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># would not vote</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;f3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_fepres</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_fefam</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;At work or home&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_fepol</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;In politics&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span>
+    <span class="n">series_fepres</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Female candidate&quot;</span>
+<span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sexist responses vs age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c76abe246826c1b04495176ca66aa00e9a335124575981b763d41ed44b1bac4a.png" src="_images/c76abe246826c1b04495176ca66aa00e9a335124575981b763d41ed44b1bac4a.png" />
+</div>
+</div>
+<p>For all three questions, older people are more likely to choose the sexist response.
+The difference is most dramatic for the first question, related to women working outside the home.
+The difference is smaller for the other questions, although that is in part because the third question, related to voting for a female presidential candidate, was retired after 2010 as the prevalence dropped into lizard people territory.</p>
+<p>The following figure shows responses to the second question grouped by decade of birth and plotted by age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fepol&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+
+<span class="n">visualize_table</span><span class="p">(</span><span class="n">series_fepol</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nudge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;1990s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;1970s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;1940s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;1920s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;1910s&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">label_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">nudge</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Suited for politics: sexist responses vs age&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/909dd497af4f76994f4391df665acdbb737c6a2e6bcba05ea20c24728ef331e4.png" src="_images/909dd497af4f76994f4391df665acdbb737c6a2e6bcba05ea20c24728ef331e4.png" />
+</div>
+</div>
+<p>Overall, older people are more likely to be sexist, but within almost every cohort, people become less sexist as they get older.
+The results from the other two questions show the same pattern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fefam&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># strongly agree or agree</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+
+<span class="n">visualize_table</span><span class="p">(</span><span class="n">series_fefam</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Women at work or home: sexist responses vs age&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3822a4e2c1e19f25714a078d566febc5ca63ed30e3456fc74244e48ba46bef65.png" src="_images/3822a4e2c1e19f25714a078d566febc5ca63ed30e3456fc74244e48ba46bef65.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fepres&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># would not vote</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+
+<span class="n">visualize_table</span><span class="p">(</span><span class="n">series_fepres</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Female presidential candidate: sexist responses vs age&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c503c759a150857cfe85880dd8854c8e74064614c24ce76a35015103810ef230.png" src="_images/c503c759a150857cfe85880dd8854c8e74064614c24ce76a35015103810ef230.png" />
+</div>
+</div>
+<p>As in the previous examples, the reason is that the younger respondents are more likely to belong to recent birth cohorts, which are less sexist, and the older respondents are more likely to belong to earlier birth cohorts, which are more sexist.</p>
+<p>This example demonstrates the difference between an “age effect” and a “cohort effect”; in general, there are three ways populations change over time:</p>
+<ul class="simple">
+<li><p>An “age effect” is something that affects most people at a particular age or life stage. Age effects can be biological, like the loss of deciduous teeth, or social, like the loss of youthful innocence.</p></li>
+<li><p>A “period effect” is something that affects most people at a particular point in time. Period effects include notable events, like the September 11 attacks, or intervals like the Cold War.</p></li>
+<li><p>A “cohort effect” is something that affects people born at a particular time, usually due to the unique environment they grew up in. When people make generalizations about the characteristics of baby boomers and millennials, for example, they are appealing to cohort effects (often without much evidence).</p></li>
+</ul>
+<p>It can be hard to distinguish between these effects.
+In particular, when we see a cohort effect, it is easy to mistake it for an age effect.
+When we see that older people hold particular beliefs, we might assume (or fear) that young people will adopt those beliefs as they age.
+But age effects like that are rare.</p>
+<p>Most people develop social beliefs based on the environment they are raised in, so that’s primarily a cohort effect.
+If those beliefs change over their lifetimes, it is most often because of something happening in the world, which is a period effect.
+But it is unusual to adopt or change a belief when you reach a particular age.
+Other than registering to vote when you are 18, most political acts don’t depend on the number of candles on the cake.</p>
+<p>The previous figure shows one way to distinguish cohort and age effects: grouping people by cohort and plotting their responses as a function of age.
+Similarly, to distinguish cohort and period effects, we can group people by birth cohort, again, and plot their responses over time.
+For example, the following figure shows responses to the first of the three questions, about whether everyone would be better off if women stayed home, plotted over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fefam&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">table</span><span class="p">[</span><span class="mi">1900</span><span class="p">]</span>
+<span class="k">del</span> <span class="n">table</span><span class="p">[</span><span class="mi">1910</span><span class="p">]</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">visualize_table</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+
+<span class="n">nudge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;1970s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;1980s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">}</span>
+<span class="n">label_table_left</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">nudge</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Year of survey&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sexist responses vs year of survey&quot;</span><span class="p">,</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">1972</span><span class="p">,</span> <span class="mi">2021</span><span class="p">],</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0bddd6a04e3b45fd6dbe1d52b7b56889beb646250911eb4ac93c62e68706dbb0.png" src="_images/0bddd6a04e3b45fd6dbe1d52b7b56889beb646250911eb4ac93c62e68706dbb0.png" />
+</div>
+</div>
+<p>In this figure, there is evidence of a cohort effect: comparing people born in the 1920s through the 1950s, each cohort is less likely to choose a sexist response than the previous one.</p>
+<p>There is also some evidence for a weak period effect.
+Among the cohorts born in the 1950s through the 1990s, the percentage of sexist responses declined in parallel between 2010 and 2020, which suggests that there was something happening during this time that caused people in these groups to change their minds.</p>
+<p>In the next section, we will see evidence for a stronger period effect in attitudes about homosexuality.</p>
+</section>
+<section id="the-remarkable-decline-of-homophobia">
+<h2>The Remarkable Decline of Homophobia<a class="headerlink" href="#the-remarkable-decline-of-homophobia" title="Permalink to this heading">#</a></h2>
+<p>The GSS includes four questions related to sexual orientation.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>What about sexual relations between two adults of the same sex – do you think it is always wrong, almost always wrong, wrong only sometimes, or not wrong at all?</p></li>
+<li><p>And what about a man who admits that he is a homosexual? Should such a person be allowed to teach in a college or university, or not?</p></li>
+<li><p>If some people in your community suggested that a book he wrote in favor of homosexuality should be taken out of your public library, would you favor removing this book, or not?</p></li>
+<li><p>Suppose this admitted homosexual wanted to make a speech in your community. Should he be allowed to speak, or not?</p></li>
+</ol>
+</div></blockquote>
+<p>If the wording of these questions seems dated, remember that they were written around 1970, when one might “admit” to homosexuality, and a large majority thought it was wrong, wrong, or wrong.
+In general, the GSS avoids changing the wording of questions, because subtle word choices can influence the results.
+But the price of this consistency is that a phrasing that might have been neutral in 1970 seems loaded today.</p>
+<p>Nevertheless, let’s look at the results.
+The following figure shows the percentage of people who chose a homophobic response to these questions as a function of age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;homosex&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># always, almost always, or sometimes wrong</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;h1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_homosex</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;colhomo&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># not allowed</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;h2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_colhomo</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;libhomo&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># remove</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;h3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_libhomo</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;spkhomo&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># not allowed</span>
+
+<span class="n">prepare_yvar</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">ten_questions</span><span class="p">[</span><span class="s2">&quot;h4&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<span class="n">series_spkhomo</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#figwidth = 3.835</span>
+<span class="c1">#plt.figure(figsize=(figwidth, 0.7*figwidth))</span>
+
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_homosex</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Homosexuality wrong?&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_libhomo</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Remove from library?&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_colhomo</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Allow to teach?&quot;</span><span class="p">)</span>
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_spkhomo</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C4&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Allow to speak?&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span> 
+         <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span> 
+         <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Homophobic responses vs age&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1158fd50778f2d8f74cb1c9e6038b9867be0b9aec92ff45ae70f2df3e3eb51d9.png" src="_images/1158fd50778f2d8f74cb1c9e6038b9867be0b9aec92ff45ae70f2df3e3eb51d9.png" />
+</div>
+</div>
+<p>It comes as no surprise that older people are more likely to hold homophobic beliefs.
+But that doesn’t mean people adopt these attitudes as they age.
+In fact, within every birth cohort, they become less homophobic with age.</p>
+<p>The following figure show the results from the first question, showing the percentage of respondents who said homosexuality was wrong (with or without an adverb).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;homosex&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># always, almost always, or sometimes wrong</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">table</span><span class="p">[</span><span class="mi">1900</span><span class="p">]</span>
+
+<span class="n">visualize_table</span><span class="p">(</span><span class="n">series_homosex</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nudge</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">label_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">nudge</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Homosexual sex: homophobic responses vs age&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c95844111c35999d4428edd7fe5001cb7d8b60b0dd114d445a51abbd64c3646d.png" src="_images/c95844111c35999d4428edd7fe5001cb7d8b60b0dd114d445a51abbd64c3646d.png" />
+</div>
+</div>
+<p>There is clearly a cohort effect: each generation is substantially less homophobic than the one before.
+And in almost every cohort, homophobia declines with age.
+But that doesn’t mean there is an age effect; if there were, we would expect to see a change in all cohorts at about the same age. And there’s no sign of that.</p>
+<p>So let’s see if it might be a period effect. The following figure shows the same results plotted over time rather than age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;homosex&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># always, almost always, or sometimes wrong</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="c1">#del table[1900]</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">visualize_table</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">nudge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;1960s&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s2">&quot;1950s&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">}</span>
+<span class="n">label_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">nudge</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Year of survey&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Homosexual sex: homophobic responses vs year of survey&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/597a4cda62a936b632b719c774d9bc7965640578bc060564bc5e8e7c077e0378.png" src="_images/597a4cda62a936b632b719c774d9bc7965640578bc060564bc5e8e7c077e0378.png" />
+</div>
+</div>
+<p>If there is a period effect, we expect to see an inflection point in all cohorts at the same point in time.
+And there is some evidence of that.
+Reading from top to bottom:</p>
+<ul class="simple">
+<li><p>More than 90% of people born in the nineteen-oughts and the teens thought homosexuality was wrong, and they went to their graves without changing their minds.</p></li>
+<li><p>People born in the 1920s and 1930s might have softened their views, slightly, starting around 1990.</p></li>
+<li><p>Among people born in the 1940s and 1950s, there is a notable inflection point: before 1990, they were almost unchanged; after 1990, they became more tolerant over time.</p></li>
+<li><p>In the last four cohorts, there is a clear trend over time, but we did not observe these groups sufficiently before 1990 to identify an inflection point.</p></li>
+</ul>
+<p>On the whole, this looks like a period effect.
+Also, looking at the overall trend, it declined slowly before 1990 and much more quickly thereafter. So we might wonder what happened in 1990.</p>
+</section>
+<section id="what-happened-in-1990">
+<h2>What happened in 1990?<a class="headerlink" href="#what-happened-in-1990" title="Permalink to this heading">#</a></h2>
+<p>In general, questions like this are hard to answer.
+Societal changes are the result of interactions between many causes and effects.
+But in this case, I think there is an explanation that is at least plausible: advocacy for acceptance of homosexuality has been successful at changing people’s minds.</p>
+<p>And as surveys by the Pew Research Center have shown repeatedly, “familiarity is closely linked to tolerance”.
+People who have a gay friend or family member – and know it – are substantially more likely to hold positive attitudes about homosexuality and to support gay rights.</p>
+<p>All of this adds up to a large period effect that has changed hearts and minds, especially among the most recent birth cohorts.</p>
+</section>
+<section id="cohort-or-period-effect">
+<h2>Cohort or period effect?<a class="headerlink" href="#cohort-or-period-effect" title="Permalink to this heading">#</a></h2>
+<p>Since 1990, attitudes about homosexuality have changed due to</p>
+<ul class="simple">
+<li><p>A cohort effect: As old homophobes die, they are replaced by a more tolerant generation.</p></li>
+<li><p>A period effect: Within most cohorts, people became more tolerant over time.</p></li>
+</ul>
+<p>These effects are additive, so the overall trend is steeper than the trend within the cohorts – like Simpson’s paradox in reverse.
+But that raises a question: how much of the overall trend is due to the cohort effect, and how much to the period effect?</p>
+<p>To answer that, I used a model that estimates the contributions of the two effects separately (a logistic regression model, if you want the details).
+Then I used the model to generate predictions for two counterfactual scenarios: what if there had been no cohort effect, and what if there had been no period effect?
+The following figure shows the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">run_subgroups</span>
+
+<span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span>
+<span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;homosex&quot;</span>
+<span class="n">gvarname</span> <span class="o">=</span> <span class="s2">&quot;cohort10&quot;</span>
+<span class="n">yvalue</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="n">run_subgroups</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">yvarname</span><span class="p">,</span> <span class="n">gvarname</span><span class="p">,</span> <span class="n">yvalue</span><span class="p">)</span>
+<span class="n">params</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>param</th>
+      <th>pvalue</th>
+      <th>stderr</th>
+      <th>conf_inf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>all</th>
+      <td>-0.053473</td>
+      <td>0.000000e+00</td>
+      <td>0.000849</td>
+      <td>[-0.055136580785341956, -0.05180871766455423]</td>
+    </tr>
+    <tr>
+      <th>1890</th>
+      <td>-0.077745</td>
+      <td>2.273927e-01</td>
+      <td>0.064406</td>
+      <td>[-0.20397916605784486, 0.04848906588701343]</td>
+    </tr>
+    <tr>
+      <th>1900</th>
+      <td>0.014409</td>
+      <td>4.968642e-01</td>
+      <td>0.021207</td>
+      <td>[-0.027156331546442668, 0.05597385504432175]</td>
+    </tr>
+    <tr>
+      <th>1910</th>
+      <td>0.012017</td>
+      <td>2.122643e-01</td>
+      <td>0.009634</td>
+      <td>[-0.006865391357516012, 0.030900275244131446]</td>
+    </tr>
+    <tr>
+      <th>1920</th>
+      <td>-0.003934</td>
+      <td>4.294238e-01</td>
+      <td>0.004979</td>
+      <td>[-0.013692910302871744, 0.005824344795135367]</td>
+    </tr>
+    <tr>
+      <th>1930</th>
+      <td>-0.019788</td>
+      <td>1.624148e-08</td>
+      <td>0.003504</td>
+      <td>[-0.026655061392608558, -0.012921134168900021]</td>
+    </tr>
+    <tr>
+      <th>1940</th>
+      <td>-0.022016</td>
+      <td>1.562398e-24</td>
+      <td>0.002154</td>
+      <td>[-0.026237215405072574, -0.01779534249912327]</td>
+    </tr>
+    <tr>
+      <th>1950</th>
+      <td>-0.036704</td>
+      <td>3.419912e-88</td>
+      <td>0.001844</td>
+      <td>[-0.04031711600258545, -0.03309033249908674]</td>
+    </tr>
+    <tr>
+      <th>1960</th>
+      <td>-0.048013</td>
+      <td>2.788866e-86</td>
+      <td>0.002439</td>
+      <td>[-0.05279249900744741, -0.043232586055901925]</td>
+    </tr>
+    <tr>
+      <th>1970</th>
+      <td>-0.037391</td>
+      <td>5.531580e-26</td>
+      <td>0.003547</td>
+      <td>[-0.04434277455112416, -0.030439309388739844]</td>
+    </tr>
+    <tr>
+      <th>1980</th>
+      <td>-0.064251</td>
+      <td>4.821664e-21</td>
+      <td>0.006826</td>
+      <td>[-0.07762978968221651, -0.05087307624832244]</td>
+    </tr>
+    <tr>
+      <th>1990</th>
+      <td>-0.157187</td>
+      <td>1.064965e-15</td>
+      <td>0.019602</td>
+      <td>[-0.1956057809990414, -0.11876909142236097]</td>
+    </tr>
+    <tr>
+      <th>2000</th>
+      <td>0.088595</td>
+      <td>6.536982e-01</td>
+      <td>0.197479</td>
+      <td>[-0.29845704117443117, 0.47564748822815506]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actual</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+        <span class="n">age</span><span class="o">=</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">],</span>
+        <span class="n">cohort</span><span class="o">=</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort&quot;</span><span class="p">],</span>
+        <span class="n">year</span><span class="o">=</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year&gt;=1987&quot;</span><span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y</th>
+      <th>age</th>
+      <th>cohort</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>68841</th>
+      <td>1.0</td>
+      <td>28.0</td>
+      <td>1993.0</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>68842</th>
+      <td>NaN</td>
+      <td>23.0</td>
+      <td>1998.0</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>68843</th>
+      <td>NaN</td>
+      <td>25.0</td>
+      <td>1996.0</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>68844</th>
+      <td>0.0</td>
+      <td>41.0</td>
+      <td>1980.0</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>68845</th>
+      <td>0.0</td>
+      <td>20.0</td>
+      <td>2001.0</td>
+      <td>2021</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+
+<span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;y ~ year + cohort&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">logit</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.570330
+         Iterations 6
+</pre></div>
+</div>
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>y</td>        <th>  No. Observations:  </th>  <td> 28302</td> 
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td> 28299</td> 
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     2</td> 
+</tr>
+<tr>
+  <th>Date:</th>            <td>Mon, 08 Jan 2024</td> <th>  Pseudo R-squ.:     </th>  <td>0.1139</td> 
+</tr>
+<tr>
+  <th>Time:</th>                <td>16:46:17</td>     <th>  Log-Likelihood:    </th> <td> -16141.</td>
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -18216.</td>
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th>  <td> 0.000</td> 
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>  144.1172</td> <td>    2.634</td> <td>   54.712</td> <td> 0.000</td> <td>  138.954</td> <td>  149.280</td>
+</tr>
+<tr>
+  <th>year</th>      <td>   -0.0458</td> <td>    0.001</td> <td>  -32.377</td> <td> 0.000</td> <td>   -0.049</td> <td>   -0.043</td>
+</tr>
+<tr>
+  <th>cohort</th>    <td>   -0.0264</td> <td>    0.001</td> <td>  -31.728</td> <td> 0.000</td> <td>   -0.028</td> <td>   -0.025</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;predict&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)[</span><span class="s2">&quot;predict&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">1987</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year==1987&quot;</span><span class="p">)[</span><span class="s2">&quot;cohort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">make_counterfact</span>
+
+<span class="n">inter</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">y</span>
+<span class="n">cohort_only</span> <span class="o">=</span> <span class="n">make_counterfact</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">inter</span><span class="p">):</span>
+    <span class="n">period_only</span> <span class="o">=</span> <span class="n">make_counterfact</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s2">&quot;cohort&quot;</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">period_only</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">-</span> <span class="n">pred</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g0</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c</span>
+<span class="n">error_func</span><span class="p">(</span><span class="n">g0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00844600702268361
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
+<span class="n">inter</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">error_func</span><span class="p">,</span> <span class="n">g0</span><span class="p">)</span>
+<span class="n">period_only</span> <span class="o">=</span> <span class="n">make_counterfact</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s2">&quot;cohort&quot;</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actual</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+<span class="n">cohort_only</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cohort only&quot;</span><span class="p">)</span>
+<span class="n">period_only</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Period only&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">pred</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Both&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Year of survey&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Homosexual sex: homophobic responses vs year of survey&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/af9103b0e318493b428d117858a5c567aed2560b6d03fda814d7041b57573090.png" src="_images/af9103b0e318493b428d117858a5c567aed2560b6d03fda814d7041b57573090.png" />
+</div>
+</div>
+<p>The circles show the actual data.
+The solid line shows the results from the model from 1987 to 2018, including both effects.
+The model plots a smooth course through the data, which confirms that it captures the overall trend during this interval.
+The total change is about 46 percentage points.</p>
+<p>The dotted line shows what would have happened, according to the model, if there had been no period effect; the total change due to the cohort effect alone would have been about 12 percentage points.</p>
+<p>The dashed line shows what would have happened if there had been no cohort effect; the total change due to the period effect alone would have been about 29 percentage points.</p>
+<p>You might notice that the sum of 12 and 29 is only 41, not 46.
+That’s not an error; in a model like this, we don’t expect percentage points to add up (because it’s linear on a logistic scale, not a percentage scale).</p>
+<p>Nevertheless, we can conclude that the magnitude of the period effect is about twice the magnitude of the cohort effect.
+In other words, most of the change we’ve seen since 1987 has been due to changed minds, with the smaller part due to generational replacement.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pred</span><span class="p">[</span><span class="mi">2021</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cohort_only</span><span class="p">[</span><span class="mi">2021</span><span class="p">],</span> <span class="n">period_only</span><span class="p">[</span><span class="mi">2021</span><span class="p">]])</span>
+<span class="n">preds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([39.34462992, 74.02379242, 57.15543899])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="mi">1987</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">preds</span>
+<span class="n">diffs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([46.99455201, 12.31538951, 29.18374294])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs</span> <span class="o">/</span> <span class="n">diffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.        , 0.26205994, 0.62100268])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">logit</span>
+
+<span class="n">logits</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">1987</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-</span> <span class="n">logit</span><span class="p">(</span><span class="n">preds</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">logits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-4.31053677, -5.79059099, -5.0315813 ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">logits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">logits</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.5116355129041334
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-overton-window">
+<h2>The Overton Window<a class="headerlink" href="#the-overton-window" title="Permalink to this heading">#</a></h2>
+<p>In this chapter, we have considered three questions related to racism, three related to feminism, and four related to homosexuality.
+For each question I characterized one or more responses as racist, sexist, or homophobic.
+I realize that these terms are loaded with value judgments, but I think they are accurate.
+The view that interracial marriage should be illegal is racist.
+The view that women are less suited to politics than men is sexist.
+And the view that an “admitted” homosexual should not be allowed to teach at a university is homophobic.
+Now, so we can put the results on the same <span class="math notranslate nohighlight">\(y\)</span> axis, I will combine these responses into a group I will characterize as “bigoted”.</p>
+<p>The following figure shows how the the percentage of people choosing bigoted responses, for each of the ten questions we’ve looked at, has changed over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">over_time</span> <span class="o">=</span> <span class="n">ten_questions</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="n">over_time</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">muted</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;muted&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">color_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">muted</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+    <span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">over_time</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Year of survey&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percent&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bigoted responses, all questions&quot;</span><span class="p">,</span>
+    <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3e07e5214805cb9ef029acd97d2f048a5a80e6a4579aadbf4ebdeae2f37e3d11.png" src="_images/3e07e5214805cb9ef029acd97d2f048a5a80e6a4579aadbf4ebdeae2f37e3d11.png" />
+</div>
+</div>
+<p>I didn’t label the lines because it doesn’t matter for now which is which; the point is that they are all headed in the direction of decreasing bigotry.</p>
+<p>I have smoothed the data, so we don’t see short-term variation from year to year.
+But the long-term trends are consistent; some speed up or slow down, but there are no long-term reversals.</p>
+<p>When these questions were first asked in the 1970s, most of the percentages were between 20% and 60%.
+That’s not a coincidence; the topics and the wording of the questions were chosen to avoid very high and very low percentages, which are hard to measure accurately and less informative if you do.
+There is not much point in asking whether murder is bad.</p>
+<p>However, many of the views that were mainstream in the 1970s had become unpopular, or on the fringe, by the 2010s.
+Three of the 10 questions were removed from the survey as they approached the territory of the lizard people, and several more are on their way out.</p>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Planck’s autobiography is called <em>Scientific autobiography and other papers</em> \cite{planck2014scientific}.</p></li>
+<li><p>William Lecky described the expanding moral circle in “History of European morals, from Augustus to Charlemagne” \cite{lecky1897history}. The philosopher Peter Singer wrote about it in <em>The expanding circle</em> \cite{singer1981}, as did Steven Pinker in <em>The better angels of our nature: Why violence has declined</em> \cite{pinker2012}. More recently, Sigal Samuel wrote an article on the topic for Vox \cite{samuel2019}.</p></li>
+<li><p>The General Social Survey (GSS) is a project of the independent research organization NORC at the University of Chicago, with principal funding from the National Science Foundation. The data is available from the GSS website \cite{gss2022}.</p></li>
+<li><p>Vox published an article about lizard people \cite{abadsantos2015}. Results from the lizard people poll are reported on the website of Public Policy Polling \cite{ppp2013}.</p></li>
+<li><p>The Pew Research study showing that familiarity breeds acceptance is “Four-in-Ten Americans Have Close Friends or Relatives Who are Gay” \cite{rosentiel2007}.</p></li>
+<li><p>You can see a performance of “A Message From the Gay Community” on YouTube \cite{sfgmc2021}.</p></li>
+<li><p><em>Politico Magazine</em> wrote about the origins of the Overton Window, and its use in popular culture \cite{robertson2018}. The example of alcohol prohibition is from the video, “The Overton Window of Political Possibility Explained” \cite{mackinac2020}.</p></li>
+</ul>
+<p>Probably Overthinking It</p>
+<p>Copyright 2022 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="simpson.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Penguins, Pessimists, and Paradoxes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="overton.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chasing the Overton Window</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#old-racists">Old Racists?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#young-feminists">Young Feminists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-remarkable-decline-of-homophobia">The Remarkable Decline of Homophobia</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happened-in-1990">What happened in 1990?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cohort-or-period-effect">Cohort or period effect?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-overton-window">The Overton Window</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
