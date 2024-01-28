@@ -171,6 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 </ul>
 
     </div>
@@ -468,6 +469,16 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;dpi&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">500</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Suppose you work in a hospital, and one day you have lunch with three of your colleagues.
 One is a facilities engineer working on a new lighting system, one is an obstetrician who works in the maternity ward, and one is an oncologist who works with cancer patients.
 While you all enjoy the hospital food, each of them poses a statistical puzzle.</p>
@@ -706,12 +717,14 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 <span class="sd">    </span>
 <span class="sd">    returns: Series</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">seq</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span> <span class="k">if</span> <span class="n">qs</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">qs</span>        
+    <span class="k">if</span> <span class="n">qs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">seq</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span>        
 
     <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">qs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qs</span><span class="p">:</span>
-        <span class="n">conditional</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">seq</span> <span class="o">&gt;=</span> <span class="n">q</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditional</span><span class="p">):</span>
+        <span class="n">conditional</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="n">seq</span> <span class="o">&gt;=</span> <span class="n">q</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">conditional</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">conditional</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
             <span class="n">series</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">conditional</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">q</span>
 
     <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -850,7 +863,7 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8047cb9cd29df7010990fa6bca1c6298474877fb02b033cdec50daa904760e8e.png" src="_images/8047cb9cd29df7010990fa6bca1c6298474877fb02b033cdec50daa904760e8e.png" />
+<img alt="_images/54d7654a562b261ef8dbbec22569e2e4fa9f9f917d8e71e11e064280349585bc.png" src="_images/54d7654a562b261ef8dbbec22569e2e4fa9f9f917d8e71e11e064280349585bc.png" />
 </div>
 </div>
 <p>The x-axis shows elapsed times since the installation of a hypothetical light bulb.
@@ -1124,7 +1137,7 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d79069a72a6ef5c2b92d8e2cdb534343b804e593b4aef477f25f06d7a03bc504.png" src="_images/d79069a72a6ef5c2b92d8e2cdb534343b804e593b4aef477f25f06d7a03bc504.png" />
+<img alt="_images/a921a4eb11adde129518429369ea16a993b12c62955eb7bba3049c624f5e48fd.png" src="_images/a921a4eb11adde129518429369ea16a993b12c62955eb7bba3049c624f5e48fd.png" />
 </div>
 </div>
 <p>Between weeks 36 and 39, the curve behaves as we expect: as time goes on, we get closer to the finish line.
@@ -1175,51 +1188,51 @@ Another week has passed and the finish line is only 7 hours closer!</p>
   <tbody>
     <tr>
       <th>36</th>
-      <td>3.142822</td>
-      <td>3.153736</td>
-      <td>3.165931</td>
+      <td>31349.379205</td>
+      <td>31440.431951</td>
+      <td>31561.836354</td>
     </tr>
     <tr>
       <th>37</th>
-      <td>2.292390</td>
-      <td>2.303369</td>
-      <td>2.316928</td>
+      <td>31410.381249</td>
+      <td>31500.958700</td>
+      <td>31636.198944</td>
     </tr>
     <tr>
       <th>38</th>
-      <td>1.465161</td>
-      <td>1.474933</td>
-      <td>1.488573</td>
+      <td>31537.977678</td>
+      <td>31655.467169</td>
+      <td>31784.629083</td>
     </tr>
     <tr>
       <th>39</th>
-      <td>0.669659</td>
-      <td>0.679651</td>
-      <td>0.692118</td>
+      <td>31912.059916</td>
+      <td>32074.263082</td>
+      <td>32220.913013</td>
     </tr>
     <tr>
       <th>40</th>
-      <td>0.612146</td>
-      <td>0.629809</td>
-      <td>0.647226</td>
+      <td>29569.237459</td>
+      <td>29798.573792</td>
+      <td>30092.495565</td>
     </tr>
     <tr>
       <th>41</th>
-      <td>0.560671</td>
-      <td>0.586682</td>
-      <td>0.611351</td>
+      <td>32308.731428</td>
+      <td>32782.769671</td>
+      <td>33208.208426</td>
     </tr>
     <tr>
       <th>42</th>
-      <td>0.320918</td>
-      <td>0.352373</td>
-      <td>0.382273</td>
+      <td>33339.347591</td>
+      <td>33932.588517</td>
+      <td>34814.740429</td>
     </tr>
     <tr>
       <th>43</th>
-      <td>0.220000</td>
-      <td>0.271242</td>
-      <td>0.340611</td>
+      <td>36512.748744</td>
+      <td>37712.794214</td>
+      <td>38880.626529</td>
     </tr>
   </tbody>
 </table>
@@ -1232,8 +1245,8 @@ Another week has passed and the finish line is only 7 hours closer!</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40   -8.373551
-41   -7.245228
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40   -382315.800700
+41    501344.907612
 Name: 50.0, dtype: float64
 </pre></div>
 </div>
@@ -1571,7 +1584,7 @@ The following figure shows the result.</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time since diagnosis (weeks)&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time since diagnosis (months)&quot;</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Average remaining lifetime&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average remaining lifetime for patients with glioblastoma&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1579,7 +1592,7 @@ The following figure shows the result.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f052170b3014051e310828e08eecb735d43b8f9431027826052469789a8cf359.png" src="_images/f052170b3014051e310828e08eecb735d43b8f9431027826052469789a8cf359.png" />
+<img alt="_images/15d3cab094cfa72d7096275bbdfe462fe0f3edeea98d69a58e7d7872c8f159d5.png" src="_images/15d3cab094cfa72d7096275bbdfe462fe0f3edeea98d69a58e7d7872c8f159d5.png" />
 </div>
 </div>
 <p>At the time of diagnosis, the average survival time is about 14 months.
@@ -1620,7 +1633,7 @@ But that would be a very misleading picture.</p>
 <span class="n">pmf_km</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
 <span class="n">pmf_normal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;model&#39;</span><span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time since diagnosis (weeks)&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time since diagnosis (months)&quot;</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;PMF&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;The normal model does not fit the data&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1628,7 +1641,7 @@ But that would be a very misleading picture.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f420e551e5aa96348306ca3c25d3a45ea4db1bf94110a1268deb58d5267d7cf3.png" src="_images/f420e551e5aa96348306ca3c25d3a45ea4db1bf94110a1268deb58d5267d7cf3.png" />
+<img alt="_images/dc08dff28932feb06966d71ee0a4a2cd6235b790e2cc7e1fb7aaa6dc24214f3c.png" src="_images/dc08dff28932feb06966d71ee0a4a2cd6235b790e2cc7e1fb7aaa6dc24214f3c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1657,7 +1670,7 @@ dtype: float64
 
 <span class="n">gray_box</span><span class="p">(</span><span class="mi">125</span><span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time since diagnosis (weeks)&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time since diagnosis (months)&quot;</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Average remaining time&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average remaining time compared to Gaussian model&quot;</span><span class="p">,</span>
     <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span>
@@ -1666,7 +1679,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e1705bcb2df0a15acddee7e27ab5903e5de6b72b2b9917a2a01d7fa01ff5db21.png" src="_images/e1705bcb2df0a15acddee7e27ab5903e5de6b72b2b9917a2a01d7fa01ff5db21.png" />
+<img alt="_images/18c863e96bacc5b66acdfe2a8b14f61250ed20b0296f7070af9ff03222ba5f74.png" src="_images/18c863e96bacc5b66acdfe2a8b14f61250ed20b0296f7070af9ff03222ba5f74.png" />
 </div>
 </div>
 <p>With the Gaussian model, the average remaining survival time starts around 20 months,
@@ -1734,7 +1747,7 @@ To demonstrate, I chose a lognormal distribution that fits the actual distributi
 <span class="n">gray_box</span><span class="p">(</span><span class="mi">125</span><span class="p">)</span>
 
 <span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time since diagnosis (weeks)&quot;</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time since diagnosis (months)&quot;</span><span class="p">,</span>
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Average remaining time&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average remaining time compared to lognormal model&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1744,7 +1757,7 @@ To demonstrate, I chose a lognormal distribution that fits the actual distributi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/be2136fe0ce33383c9d4e353d5d74e8e65983c1de85e06d851631ccb28fdf3ca.png" src="_images/be2136fe0ce33383c9d4e353d5d74e8e65983c1de85e06d851631ccb28fdf3ca.png" />
+<img alt="_images/6f90abd11bd6f55f9c5d54181b8b8fc31c967a8c80e0ea3e51e067c840aab247.png" src="_images/6f90abd11bd6f55f9c5d54181b8b8fc31c967a8c80e0ea3e51e067c840aab247.png" />
 </div>
 </div>
 <p>During the first 24 months, the model is a little too optimistic, and after 120 months it is much too optimistic.
@@ -2252,7 +2265,7 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 
     <span class="n">rate</span> <span class="o">=</span> <span class="n">nmx</span><span class="p">[</span><span class="s2">&quot;Both sexes&quot;</span><span class="p">]</span>
     <span class="n">rate</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">age_series</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">hazard</span> <span class="o">=</span> <span class="n">rate</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">111</span><span class="p">))</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;ffill&quot;</span><span class="p">)</span>
+    <span class="n">hazard</span> <span class="o">=</span> <span class="n">rate</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">111</span><span class="p">))</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">Hazard</span><span class="p">(</span><span class="n">hazard</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2350,9 +2363,9 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem_swe</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf_swe</span><span class="p">)</span>
 <span class="n">rem_nga</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf_nga</span><span class="p">)</span>
 
-<span class="n">rem_swe</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sweden 2019&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">rem_swe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sweden 2019&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
 <span class="n">series1905</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sweden 1905&quot;</span><span class="p">)</span>
-<span class="n">rem_nga</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nigeria 2019&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">)</span>
+<span class="n">rem_nga</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nigeria 2019&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">)</span>
 
 <span class="n">decorate</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">,</span>
@@ -2905,10 +2918,10 @@ At the same time, for the reasons I just mentioned, the mortality rate in every 
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>1.581e+04</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Sat, 06 Jan 2024</td> <th>  Prob (F-statistic):</th> <td>3.78e-61</td> 
+  <th>Date:</th>             <td>Sat, 27 Jan 2024</td> <th>  Prob (F-statistic):</th> <td>3.78e-61</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>08:54:20</td>     <th>  Log-Likelihood:    </th> <td>  109.74</td> 
+  <th>Time:</th>                 <td>13:11:18</td>     <th>  Log-Likelihood:    </th> <td>  109.74</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    45</td>      <th>  AIC:               </th> <td>  -213.5</td> 
@@ -3192,7 +3205,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">hazard</span><span class="p">):</span>
-    <span class="n">pmf</span> <span class="o">=</span> <span class="n">hazard_no_progress</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">()</span>
+    <span class="n">pmf</span> <span class="o">=</span> <span class="n">hazard</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">()</span>
     <span class="n">pmf</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">pmf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -3206,7 +3219,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(81.88119575997098, 81.88119575997098, 81.88119575997098)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(81.88119575997098, 90.01328388938188, 102.72010650635067)
 </pre></div>
 </div>
 </div>
@@ -3218,7 +3231,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(81.88119575997098, 81.88119575997098)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(125.65619219578866, 185.38884205632206)
 </pre></div>
 </div>
 </div>
