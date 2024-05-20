@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ideology_gap';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="The Principal Components of Anthropometry" href="ansur_pca.html" />
+    <link rel="prev" title="Bertrand’s Boxes" href="bertrand.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,6 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Is the Ideology Gap Growing?</a></li>
 </ul>
 
@@ -336,6 +337,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-sampling-weights">With Sampling Weights</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-and-smoothing">Resampling and smoothing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-and-smoothing-without-2022">Resampling and smoothing without 2022</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting">Adjusting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-wrong-with-2022">What’s wrong with 2022?</a></li>
 </ul>
             </nav>
@@ -356,8 +358,8 @@ document.write(`
 <blockquote>
 <div><p>In the US, Gallup data shows that after decades where the sexes were each spread roughly equally across liberal and conservative world views, women aged 18 to 30 are now 30 percentage points more liberal than their male contemporaries. That gap took just six years to open up.</p>
 </div></blockquote>
-<p>The figure says it is based on General Social Survey data and the text says it’s based on Gallup data, so I’m not sure which it is.</p>
-<p>And I don’t know what it means that “All figures are adjusted for time trend in the overall population”.</p>
+<p>The figure says it is based on General Social Survey data and the text says it’s based on Gallup data, so I’m not sure which it is. UPDATE: In <a class="reference external" href="https://twitter.com/jburnmurdoch/status/1751656332380262418">this tweet</a> Burn-Murdoch explains that the figure shows Gallup data, backfilled with GSS data from before the Gallup series began.</p>
+<p>And I don’t know what it means that “All figures are adjusted for time trend in the overall population”. UPDATE: See the section below that explains the adjustment.</p>
 <p>Anyway, since I used GSS data in the last three chapters of <a class="reference external" href="https://greenteapress.com/wp/probably-overthinking-it/"><em>Probably Overthinking It</em></a>, this analysis did not sound right to me.</p>
 <p>This notebook is my attempt to replicate the analysis with GSS data. I conclude:</p>
 <ul class="simple">
@@ -807,10 +809,6 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-</section>
-<section id="make-the-plot-with-all-respondents">
-<h2>Make the plot with all respondents<a class="headerlink" href="#make-the-plot-with-all-respondents" title="Permalink to this heading">#</a></h2>
-<p>The following functions generate a figure like the one in the FT.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_diff</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -829,6 +827,32 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_mean</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute % liberal minus % conservative.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;polviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">series</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate_plot</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+    <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span>
+             <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">% li</span><span class="s1">beral - </span><span class="si">% c</span><span class="s1">onservative&#39;</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-the-plot-with-all-respondents">
+<h2>Make the plot with all respondents<a class="headerlink" href="#make-the-plot-with-all-respondents" title="Permalink to this heading">#</a></h2>
+<p>The following functions generate a figure like the one in the FT.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot % liberal - % conservative for male and female respondents.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -845,20 +869,21 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
+<p>Generate the plot for all respondents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate_plot</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
-    <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span>
-             <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">% li</span><span class="s1">beral - </span><span class="si">% c</span><span class="s1">onservative&#39;</span><span class="p">,</span>
-             <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;dpi&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Generate the plot for all respondents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="s1">&#39;All respondents&#39;</span><span class="p">)</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ideology_gap1.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -889,6 +914,7 @@ Name: count, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="s1">&#39;Age &lt; 30&#39;</span><span class="p">)</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ideology_gap2.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1166,11 +1192,12 @@ I didn’t expect them to make much difference, and they don’t except for men 
 <span class="n">diff_female</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Female&#39;</span><span class="p">)</span>
 
 <span class="n">decorate_plot</span><span class="p">(</span><span class="s1">&#39;Age &lt; 30 with sampling weights&#39;</span><span class="p">)</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ideology_gap3.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/69391ea6ce88072987e89a860decf128ce4e3f1fd76c7b1f959a91bcd50e0a7b.png" src="_images/69391ea6ce88072987e89a860decf128ce4e3f1fd76c7b1f959a91bcd50e0a7b.png" />
+<img alt="_images/e5fac031cc7e5557751490690c894c7e9a903f4257b3eb7446fd8cf9d9194820.png" src="_images/e5fac031cc7e5557751490690c894c7e9a903f4257b3eb7446fd8cf9d9194820.png" />
 </div>
 </div>
 <p>In most cases, the unweighted data falls in the CI of the weighted data, but for male respondents in 2022, the weighting moves the needle by almost 30 percentage points.</p>
@@ -1206,12 +1233,13 @@ I didn’t expect them to make much difference, and they don’t except for men 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_male</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Male&#39;</span><span class="p">)</span>
 <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_female</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Female&#39;</span><span class="p">)</span>
 
-<span class="n">decorate_plot</span><span class="p">(</span><span class="s1">&#39;Age &lt; 30 with sampling weights&#39;</span><span class="p">)</span>
+<span class="n">decorate_plot</span><span class="p">(</span><span class="s1">&#39;Age &lt; 30 with sampling weights, smoothed&#39;</span><span class="p">)</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ideology_gap4.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a6a82db57debf8341c79fefd29be17ce375791a3eba5f37db305818bf92019e4.png" src="_images/a6a82db57debf8341c79fefd29be17ce375791a3eba5f37db305818bf92019e4.png" />
+<img alt="_images/baf2755acfbd444ac55a4e3282c65a30bcff0ee307d45ee56aea317e3492e253.png" src="_images/baf2755acfbd444ac55a4e3282c65a30bcff0ee307d45ee56aea317e3492e253.png" />
 </div>
 </div>
 <p>You could make the argument that this figure shows evidence for an increasing gap, but the error bounds are very wide, and as we’ll see in the next figure, the entire effect is due to the likely error in the 2022 data.</p>
@@ -1239,17 +1267,79 @@ I didn’t expect them to make much difference, and they don’t except for men 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_male</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Male&#39;</span><span class="p">)</span>
 <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_female</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Female&#39;</span><span class="p">)</span>
 
-<span class="n">decorate_plot</span><span class="p">(</span><span class="s1">&#39;Age &lt; 30 with sampling weights, no 2022&#39;</span><span class="p">)</span>
+<span class="n">decorate_plot</span><span class="p">(</span><span class="s1">&#39;Age &lt; 30 with sampling weights, smoothed, no 2022&#39;</span><span class="p">)</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ideology_gap5.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a17ad0a364193bb520fa13256ef7e6fdf28a190187003ed75e5302cba36e0633.png" src="_images/a17ad0a364193bb520fa13256ef7e6fdf28a190187003ed75e5302cba36e0633.png" />
+<img alt="_images/21e3230f146cefcc1f430020661d16e914b0f713b2b09f39aaaea54c30afcb7d.png" src="_images/21e3230f146cefcc1f430020661d16e914b0f713b2b09f39aaaea54c30afcb7d.png" />
 </div>
 </div>
 <p>Since the 1990s, both men and women have become more likely to identify as liberal.</p>
 <p>Men are more likely to identify as conservative by 5-10 percentage points.</p>
 <p>But this figure shows no evidence that the ideology gap is growing.</p>
+</section>
+<section id="adjusting">
+<h2>Adjusting<a class="headerlink" href="#adjusting" title="Permalink to this heading">#</a></h2>
+<p>In <a class="reference external" href="https://twitter.com/jburnmurdoch/status/1751569229516550403">this tweet</a>, Burn-Murdoch explains that the adjustment mentioned in the figure is to subtract off the overall trend.</p>
+<p>Here’s the overall trend, not including the 2022 data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_overall</span> <span class="o">=</span> <span class="n">make_diff</span><span class="p">(</span><span class="n">pre2022</span><span class="p">)</span>
+
+<span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">diff_overall</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Overall&#39;</span><span class="p">)</span>
+<span class="n">decorate_plot</span><span class="p">(</span><span class="s1">&#39;Overall&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/271676c236f954004d04fd6cd7d1c62c2e344514eefee04b37b9de4a91815d2f.png" src="_images/271676c236f954004d04fd6cd7d1c62c2e344514eefee04b37b9de4a91815d2f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resample_diffs_smooth_adjusted</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">iters</span><span class="o">=</span><span class="mi">101</span><span class="p">):</span>
+    <span class="n">diff_overall</span> <span class="o">=</span> <span class="n">make_diff</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">diff_overall_smooth</span> <span class="o">=</span> <span class="n">make_lowess</span><span class="p">(</span><span class="n">diff_overall</span><span class="p">)</span>
+
+    <span class="n">diffs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iters</span><span class="p">):</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">resample_by_year</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;wtssps&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">make_diff</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+        <span class="n">smooth</span> <span class="o">=</span> <span class="n">make_lowess</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">-</span> <span class="n">diff_overall_smooth</span>
+        <span class="n">diffs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">smooth</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">diffs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs_male</span> <span class="o">=</span> <span class="n">resample_diffs_smooth_adjusted</span><span class="p">(</span><span class="n">pre2022</span><span class="p">,</span> <span class="s1">&#39;sex==1&#39;</span><span class="p">)</span>
+<span class="n">diffs_female</span> <span class="o">=</span> <span class="n">resample_diffs_smooth_adjusted</span><span class="p">(</span><span class="n">pre2022</span><span class="p">,</span> <span class="s1">&#39;sex==2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s what the adjusted data looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_male</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Male&#39;</span><span class="p">)</span>
+<span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_female</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Female&#39;</span><span class="p">)</span>
+
+<span class="n">decorate_plot</span><span class="p">(</span><span class="s1">&#39;Age &lt; 30 with sampling weights, smoothed, no 2022, adjusted&#39;</span><span class="p">)</span>
+<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ideology_gap6.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/322455b233fb27300e45dd1fb881fe2566066e524269925649c636db76160193.png" src="_images/322455b233fb27300e45dd1fb881fe2566066e524269925649c636db76160193.png" />
+</div>
+</div>
+<p>This figure gives a stronger visual sense that the gap is growing, but even then, it is probably not more than 10 percentage points, and smaller than it was in the 1980s.</p>
+<p>This way of showing the data makes it seem as if men are increasingly likely to say they are conservative, which is misleading.
+They are increasingly likely to say they are liberal, but not increasing as fast as the overall average.</p>
 </section>
 <section id="whats-wrong-with-2022">
 <h2>What’s wrong with 2022?<a class="headerlink" href="#whats-wrong-with-2022" title="Permalink to this heading">#</a></h2>
@@ -1407,12 +1497,12 @@ I didn’t expect them to make much difference, and they don’t except for men 
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ansur_pca.html"
+       href="bertrand.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">The Principal Components of Anthropometry</p>
+        <p class="prev-next-title">Bertrand’s Boxes</p>
       </div>
     </a>
 </div></div>
@@ -1439,6 +1529,7 @@ I didn’t expect them to make much difference, and they don’t except for men 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-sampling-weights">With Sampling Weights</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-and-smoothing">Resampling and smoothing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling-and-smoothing-without-2022">Resampling and smoothing without 2022</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting">Adjusting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-wrong-with-2022">What’s wrong with 2022?</a></li>
 </ul>
   </nav></div>

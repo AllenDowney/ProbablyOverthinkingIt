@@ -171,6 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 </ul>
 
@@ -353,15 +354,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
-</pre></div>
-</div>
-</div>
-</div>
-<section id="the-long-tail-of-disaster">
+  <section id="the-long-tail-of-disaster">
 <h1>The Long Tail of Disaster<a class="headerlink" href="#the-long-tail-of-disaster" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/longtail.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
@@ -571,8 +564,8 @@ To demonstrate, I’ll use the estimated costs from a list of 125 disasters on W
   <tbody>
     <tr>
       <th>0</th>
-      <td>[2]</td>
-      <td>NaN</td>
+      <td>$700[2]</td>
+      <td>$774.9 (2021)</td>
       <td>4000 - 200000[6]</td>
       <td>Chernobyl disaster [1]</td>
       <td>Contamination (Radioactive)</td>
@@ -593,7 +586,7 @@ To demonstrate, I’ll use the estimated costs from a list of 125 disasters on W
       <th>2</th>
       <td>$197[9]</td>
       <td>$344.7 (2021)</td>
-      <td>NaN</td>
+      <td>5502 – 6434</td>
       <td>Great Hanshin earthquake</td>
       <td>Earthquake</td>
       <td>1995</td>
@@ -613,7 +606,7 @@ To demonstrate, I’ll use the estimated costs from a list of 125 disasters on W
       <th>4</th>
       <td>$125[11]</td>
       <td>$167.4 (2021)</td>
-      <td>NaN</td>
+      <td>1245 – 1836</td>
       <td>Hurricane Katrina</td>
       <td>Tropical cyclone</td>
       <td>2005</td>
@@ -2033,6 +2026,18 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_418621/1845424094.py:1: FutureWarning: The behavior of obj[i:j] with a float-dtype index is deprecated. In a future version, this will be treated as positional instead of label-based. For label-based slicing, use obj.loc[i:j] instead
+  x = actual[:7].index
+/tmp/ipykernel_418621/1845424094.py:2: FutureWarning: The behavior of obj[i:j] with a float-dtype index is deprecated. In a future version, this will be treated as positional instead of label-based. For label-based slicing, use obj.loc[i:j] instead
+  y = actual[:7].values
+/tmp/ipykernel_418621/1845424094.py:4: FutureWarning: The behavior of obj[i:j] with a float-dtype index is deprecated. In a future version, this will be treated as positional instead of label-based. For label-based slicing, use obj.loc[i:j] instead
+  logt[:7].plot(style=&quot;s:&quot;, alpha=0.6, label=&quot;log-$t$&quot;)
+/tmp/ipykernel_418621/1845424094.py:5: FutureWarning: The behavior of obj[i:j] with a float-dtype index is deprecated. In a future version, this will be treated as positional instead of label-based. For label-based slicing, use obj.loc[i:j] instead
+  ucerf[:7].plot(style=&quot;o--&quot;, alpha=0.6, label=&quot;UCERF3&quot;)
+/tmp/ipykernel_418621/1845424094.py:8: FutureWarning: The behavior of obj[i:j] with a float-dtype index is deprecated. In a future version, this will be treated as positional instead of label-based. For label-based slicing, use obj.loc[i:j] instead
+  plt.xticks(actual[:7].index)
+</pre></div>
+</div>
 <img alt="_images/7ed046ebc531df1cff4d5a4410b48bd5cef50cceaaa002423b08d9d52bc32dd3.png" src="_images/7ed046ebc531df1cff4d5a4410b48bd5cef50cceaaa002423b08d9d52bc32dd3.png" />
 </div>
 </div>
@@ -2456,7 +2461,15 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 <p>Download the data from <a class="reference external" href="https://astrogeology.usgs.gov/search/map/Moon/Research/Craters/lunar_crater_database_robbins_2018">https://astrogeology.usgs.gov/search/map/Moon/Research/Craters/lunar_crater_database_robbins_2018</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://pdsimage2.wr.usgs.gov/Individual_Investigations/moon_lro.kaguya_multi_craterdatabase_robbins_2018/data/lunar_crater_database_robbins_2018.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Looks like the old URL doesn&#39;t work</span>
+<span class="c1"># download(&quot;https://pdsimage2.wr.usgs.gov/Individual_Investigations/moon_lro.kaguya_multi_craterdatabase_robbins_2018/data/lunar_crater_database_robbins_2018.csv&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;https://dwjtvz5c9xobz.cloudfront.net/moon_lro.kaguya_multi_craterdatabase_robbins_2018/data/lunar_crater_database_robbins_2018.csv&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

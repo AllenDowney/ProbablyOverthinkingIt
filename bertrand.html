@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Bertrand’s Boxes &#8212; Probably Overthinking It</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'bertrand';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Is the Ideology Gap Growing?" href="ideology_gap.html" />
+    <link rel="prev" title="The Principal Components of Anthropometry" href="ansur_pca.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_rate.html">Fairness and Fallacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simpson.html">Penguins, Pessimists, and Paradoxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progress.html">Changing Hearts and Minds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overton.html">Chasing the Overton Window</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bertrand’s Boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/bertrand.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bertrand’s Boxes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#right-for-the-wrong-reason">Right for the wrong reason</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="bertrands-boxes">
+<h1>Bertrand’s Boxes<a class="headerlink" href="#bertrands-boxes" title="Permalink to this heading">#</a></h1>
+<p>In 1889 Joseph Bertrand posed and solved one of the oldest paradoxes in probability.
+But his solution is not quite correct – it is right for the wrong reason.</p>
+<p>The original statement of the problem is in his <em>Calcul des probabilités</em>, Gauthier-Villars, 1889.
+As a testament to the availability of information in the 21st century, I found a <a class="reference external" href="https://books.google.fr/books?id=IDo7AQAAIAAJ">scanned copy of the book online</a> and pasted a screenshot into an online OCR server (optical character recognition).
+Here is the result.</p>
+<blockquote>
+<div><p>Trois coffrets sont d’apparence identique. Chacun a deux tiroirs, chaque tiroir renferme une médaille. Les médailles du premier coffret sont en or; celles da deuxième coffret, en argent; le troisième coffret contient une médaille d’or et une médaille d’argent. On choisit un coffret; quelle est la probabilité pour trouver, dans ses tiroirs, une pièce d’or et une pièce d’argent? Trois cas sont possibles et le sont également puisque les trois coffres sont d’apparence identique. Un cas seulement est favorable. La probabilité est 1/3.</p>
+<p>Le coffret est choisi. On ouvre un tiroir. Quelle que soit la médaille qu’on y trouve, deux cas seulement restent possibles. Le tiroir qui reste fermé pourra contenir une médaille dont le métal diffère ou non de celui de la première. Sur ces deux cas, un seul est favorable au coffret dont les pièces sont différentes. La proba-bilité d’avoir mis /a main sur ce coffret est donc 1/2.</p>
+<p>Comment croire, cependant, qu’il suffira d’ouvrir un tiroir pour changer la probabilité et de 1/3 l’élever àr 1/2.</p>
+<p>Le raisonnement ne peut être juste. Il ne l’est pas en effet.</p>
+<p>Après l’ouverture du premier tiroir deux cas restent possibles. Sur ces deux cas, un seul est favorable, cela est vrai, mais les deux cas n’ont pas même vraisemblance.</p>
+<p>Si la pièce qu’on a vue est en or, l’autre peut être en argent, mais on aurait avantage à parier pour qu’elle soit en or.</p>
+<p>Supposons, pour en faire paraître l’évidence, qu’au lieu de trois coffrets on en ait trois cents. Cent contiennent deux médailles d’or, cent deux médailles d’argent et cent une médaille d’or et une médaille d’argent. Dans chaque coffret on ouvre un tiroir, on voit par conséquent trois cents médailles. Cent d’entre elles sont en or et cent en argent, cela est certain ; les cent autres sont dou-teuses, elles appartiennent aux coffrets dont les pièces ne sont pas pareilles : le hasard en réglera le nombre.</p>
+<p>On doit s’attendre, en ouvrant les trois cents draies, à y voir moins de deux cents pièces d’or la probabilité pour que la pre-mière qui se présente appartienne à l’un des cent coffrets dont l’autre pièce est en or est donc plus grande que 1/2.</p>
+</div></blockquote>
+<p>Then I pasted the French text into an online translation service.
+Here is the result, which I edited lightly for clarity:</p>
+<blockquote>
+<div><p>Three boxes are identical in appearance. Each has two drawers, each drawer contains a medal. The medals in the first box are gold; those in the second box, silver; the third box contains a gold medal and a silver medal.</p>
+<p>We choose a box; what is the probability of finding, in its drawers, a gold coin and a silver coin?</p>
+<p>Three cases are possible and they are equally likely because the three chests are identical in appearance. Only one case is favorable. The probability is 1/3.</p>
+<p>Having chosen a box, we open a drawer. Whatever medal one finds there, only two cases are possible. The drawer that remains closed may contain a medal whose metal may or may not differ from that of the first. Of these two cases, only one is in favor of the box whose parts are different. The probability of having got hold of this set is therefore 1/2.</p>
+<p>How can it be, however, that it will be enough to open a drawer to change the probability and raise it from 1/3 to 1/2? The reasoning cannot be correct. Indeed, it is not.</p>
+<p>After opening the first drawer, two cases remain possible. Of these two cases, only one is favorable, this is true, but the two cases do not have the same likelihood.</p>
+<p>If the coin we saw is gold, the other may be silver, but we would be better off betting that it is gold.</p>
+<p>Suppose, to show the obvious, that instead of three boxes we have three hundred. One hundred contain two gold medals, one hundred and two silver medals and one hundred one gold and one silver. In each box we open a drawer, we see therefore three hundred medals. A hundred of them are in gold and a hundred in silver, that is certain; the hundred others are doubtful, they belong to boxes whose parts are not alike: chance will regulate the number.</p>
+<p>We must expect, when opening the three hundred drawers, to see less than two hundred gold coins the probability that the first that appears belongs to one of the hundred boxes of which the other coin is in gold is therefore greater than 1/2.</p>
+</div></blockquote>
+<p>Now let me translate the paradox one more time to make the apparent contradiction clearer, and then we will resolve it.</p>
+<p>Suppose we choose a random box, open a random drawer, and find a gold medal. What is the probability that the other drawer contains a silver medal?</p>
+<p>Bertrand offers two answers, and an argument for each:</p>
+<ul class="simple">
+<li><p>Only one of the three boxes is mixed, so the probability that we chose it is 1/3.</p></li>
+<li><p>When we see the gold coin, we can rule out the two-silver box. There are only two boxes left, and one of them is mixed, so the probability we chose it is 1/2.</p></li>
+</ul>
+<p>As with so many questions in probability, we can use Bayes theorem to resolve the confusion.
+Initially the boxes are equally likely, so the prior probability for the mixed box is 1/3.</p>
+<p>When we open the drawer and see a gold medal, we get some information about which box we chose. So let’s think about the likelihood of this outcome in each case:</p>
+<ul class="simple">
+<li><p>If we chose the box with two gold medals, the likelihood of finding a gold medal is 100%.</p></li>
+<li><p>If we chose the box with two silver medals, the likelihood is 0%.</p></li>
+<li><p>And if we chose the box with one of each, the likelihood is 50%.</p></li>
+</ul>
+<p>Putting these numbers into a Bayes table, here is the result:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">make_table</span><span class="p">(</span><span class="n">hypos</span><span class="p">,</span> <span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">):</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">hypos</span><span class="p">)</span>
+    <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Prior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prior</span>
+    <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Likelihood&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">likelihood</span>
+    <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Product&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s1">&#39;Prior&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Likelihood&#39;</span><span class="p">])</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Product&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Posterior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;Product&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span>
+    <span class="k">return</span> <span class="n">table</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+
+<span class="n">hypos</span> <span class="o">=</span> <span class="s2">&quot;Two gold&quot;</span><span class="p">,</span> <span class="s2">&quot;Two silver&quot;</span><span class="p">,</span> <span class="s2">&quot;Mixed&quot;</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">hypos</span><span class="p">,</span> <span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prior</th>
+      <th>Likelihood</th>
+      <th>Product</th>
+      <th>Posterior</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Two gold</th>
+      <td>1/3</td>
+      <td>1</td>
+      <td>1/3</td>
+      <td>2/3</td>
+    </tr>
+    <tr>
+      <th>Two silver</th>
+      <td>1/3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>1/3</td>
+      <td>1/2</td>
+      <td>1/6</td>
+      <td>1/3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The posterior probability of the mixed box is 1/3.
+So the first argument is correct.
+Initially, the probability of choosing the mixed box is 1/3 –
+opening a drawer and seeing a gold coin does not change it.</p>
+<p>And the Bayesian update tells us why: if there are two gold coins, rather than one, we are twice as likely to see a gold coin.</p>
+<p>The second argument is wrong because it fails to take into account this difference in likelihood.
+It’s true that there are only two boxes left, but it is not true that they are equally likely.</p>
+<p>This error is analogous to the base rate fallacy, which is the error we make if we only consider the likelihoods and ignore the prior probabilities.
+Here, the second argument is wrong because it commits the a “likelihood fallacy” – considering only the prior probabilities and ignoring the likelihoods.</p>
+<section id="right-for-the-wrong-reason">
+<h2>Right for the wrong reason<a class="headerlink" href="#right-for-the-wrong-reason" title="Permalink to this heading">#</a></h2>
+<p>Bertrand’s resolution of the paradox is correct in the sense that he gets the right answer in this case. But his argument is not valid in general. He asks, “How can it be, however, that it will be enough to open a drawer to change the probability…”, which implies that it is impossible in principle.</p>
+<p>But opening the drawer <em>does</em> change the probabilities of the other two boxes.
+Having seen a gold coin, we rule out the two-silver box and increase the probability of the two-gold box.
+So I don’t think we can dismiss the possibility that opening the drawer <em>could</em> change the probability of the mixed box.
+It just happens, in this case, that it does not.</p>
+<p>Let’s consider a variation of the problem where there are three drawers in each box: the first box contains three gold medals, the second contains three silver, and the third contains two gold and one silver.</p>
+<p>In that case the likelihood of seeing a gold coin is each case is 1, 0, and 2/3, respectively.
+And here’s what the update looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hypos</span> <span class="o">=</span> <span class="s2">&quot;Three gold&quot;</span><span class="p">,</span> <span class="s2">&quot;Three silver&quot;</span><span class="p">,</span> <span class="s2">&quot;Two gold, one silver&quot;</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">make_table</span><span class="p">(</span><span class="n">hypos</span><span class="p">,</span> <span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prior</th>
+      <th>Likelihood</th>
+      <th>Product</th>
+      <th>Posterior</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Three gold</th>
+      <td>1/3</td>
+      <td>1</td>
+      <td>1/3</td>
+      <td>3/5</td>
+    </tr>
+    <tr>
+      <th>Three silver</th>
+      <td>1/3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Two gold, one silver</th>
+      <td>1/3</td>
+      <td>2/3</td>
+      <td>2/9</td>
+      <td>2/5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now the posterior probability of the mixed box is 2/5, which is higher than the prior probability, which was 1/3.
+In this example, opening the drawer provides evidence that changes the probabilities of all three boxes.</p>
+<p>I think there are two lessons we can learn from this example. The first is, don’t be two quick to assume that all cases are equally likely. The second is that new information can change probabilities in ways that are not obvious. The key is to think about the likelihoods.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ansur_pca.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Principal Components of Anthropometry</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ideology_gap.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Is the Ideology Gap Growing?</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#right-for-the-wrong-reason">Right for the wrong reason</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

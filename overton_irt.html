@@ -169,6 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 </ul>
 
@@ -353,9 +354,8 @@ document.write(`
                   
   <section id="measuring-the-overton-window">
 <h1>Measuring the Overton Window<a class="headerlink" href="#measuring-the-overton-window" title="Permalink to this heading">#</a></h1>
-<p>One of the chapters in <em>Probably Overthinking It</em> is about the <a class="reference external" href="https://en.wikipedia.org/wiki/Overton_window">Overton window</a>.
-While working on that chapter, I used a bit of Bayesian inference that is too technical to explain in the book. So I’ll explain it here.</p>
-<p>If you would like to get occasional email announcements about the book, please <a class="reference external" href="http://eepurl.com/h0nfbX">sign up for my mailing list</a>.</p>
+<p>Chapter 12 of <a class="reference external" href="https://greenteapress.com/wp/probably-overthinking-it"><em>Probably Overthinking It</em></a> is about changes in conservative beliefs over time and between cohorts.</p>
+<p>While working on that chapter, I used a bit of Bayesian inference that is too technical to explain in the book. So I’ll explain it here.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/overton_irt.ipynb">Click here to run this notebook on Colab</a></p>
 <section id="imports-and-function-definitions">
 <h2>Imports and Function Definitions<a class="headerlink" href="#imports-and-function-definitions" title="Permalink to this heading">#</a></h2>
@@ -611,7 +611,7 @@ Name: count, dtype: int64
 Most of the questions are binary, but some allow a range of responses.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">convervative_values</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conservative_values</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;abany&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
     <span class="s2">&quot;homosex&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
     <span class="s2">&quot;premarsx&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -667,7 +667,7 @@ Most of the questions are binary, but some allow a range of responses.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">questions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">order</span><span class="p">:</span>
-    <span class="n">questions</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">convervative_values</span><span class="p">[</span><span class="n">varname</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">questions</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">conservative_values</span><span class="p">[</span><span class="n">varname</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">null</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
     <span class="n">questions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">null</span><span class="p">,</span> <span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 </pre></div>
