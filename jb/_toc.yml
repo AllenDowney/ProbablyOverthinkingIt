@@ -1,12 +1,22 @@
 format: jb-book
 root: intro
-chapters:
-- file: gaussian
-- file: inspection
-- file: preston
-- file: lognormal
-- file: nbue
-- file: berkson
-- file: birthweight
-- file: longtail
-- file: overton_irt.ipynb
+parts:
+- caption: Chapters
+  chapters:
+  - file: gaussian
+  - file: inspection
+  - file: preston
+  - file: lognormal
+  - file: nbue
+  - file: berkson
+  - file: birthweight
+  - file: longtail
+  - file: base_rate
+  - file: simpson
+  - file: progress
+  - file: overton
+- caption: Examples
+  chapters:
+  - file: ansur_pca
+  - file: bertrand
+  - file: ideology_gap
