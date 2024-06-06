@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Population Growth and Migration &#8212; Probably Overthinking It</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'migration';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Is the Ideology Gap Growing?" href="ideology_gap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_rate.html">Fairness and Fallacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simpson.html">Penguins, Pessimists, and Paradoxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progress.html">Changing Hearts and Minds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overton.html">Chasing the Overton Window</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Population Growth and Migration</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/migration.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Population Growth and Migration</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-countries">All Countries</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="population-growth-and-migration">
+<h1>Population Growth and Migration<a class="headerlink" href="#population-growth-and-migration" title="Permalink to this heading">#</a></h1>
+<p>On a recent run I was talking with a friend from Spain about immigration in Europe.
+We speculated about whether the population of Spain would be growing or shrinking if there were no international migration.
+I thought it might be shrinking, but we were not sure.
+Fortunately, Our World in Data has just the information we need!</p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/migration.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
+
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+
+        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
+
+
+<span class="n">download</span><span class="p">(</span>
+    <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>The following dataset is from OWID’s interactive graph, <a class="reference external" href="https://ourworldindata.org/grapher/population-growth-rate-with-and-without-migration">“Population growth rate with and without migration”</a>, ultimately from <a class="reference external" href="https://population.un.org/wpp/Download/">UN, World Population Prospects (2022)</a> and processed by Our World in Data.</p>
+<p>This dataset includes “The annual change in population with migration included versus the change if there was zero migration (neither emigration nor immigration). The latter, therefore, represents the population change based only on domestic births and deaths.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;population-growth-rate-with-and-without-migration.csv&#39;</span>
+<span class="n">download</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Entity&#39;, &#39;Code&#39;, &#39;Year&#39;,
+       &#39;Growth rate - Sex: all - Age: all - Variant: estimates&#39;,
+       &#39;Natural growth rate - Sex: all - Age: all - Variant: estimates&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ll look at data going back to 1990.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recent</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Year &gt;= 1990&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">growth_with</span> <span class="o">=</span> <span class="s1">&#39;Growth rate - Sex: all - Age: all - Variant: estimates&#39;</span>
+<span class="n">growth_without</span> <span class="o">=</span> <span class="s1">&#39;Natural growth rate - Sex: all - Age: all - Variant: estimates&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are the results for Spain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country</span> <span class="o">=</span> <span class="s1">&#39;Spain&#39;</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">recent</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Entity == &quot;</span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+<span class="n">group</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2022</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">group</span><span class="p">[</span><span class="n">growth_with</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;With migration&#39;</span><span class="p">)</span>
+<span class="n">group</span><span class="p">[</span><span class="n">growth_without</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Without migration&#39;</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">country</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Percent growth&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/601bad17a92233a340c074287d463c3ea6fccbc1a8dce007f8ee3364a6b3faa6.png" src="_images/601bad17a92233a340c074287d463c3ea6fccbc1a8dce007f8ee3364a6b3faa6.png" />
+</div>
+</div>
+<p>In this graph, we can see:</p>
+<ul class="simple">
+<li><p>Without migration, population growth would have been close to zero – and negative since 2015.</p></li>
+<li><p>With migration, population growth has been substantially higher except for a few years from 2012 to 2014, during a period of high unemployment and austerity measures following the global financial crisis.</p></li>
+</ul>
+<p>I’m not sure what caused the increased migration around 2001.
+At first I thought it might be when several Eastern European and Baltic countries joined the EU, but that was not until 2004.
+If anyone knows the reason, let me know.</p>
+<p>From the annual growth rates, we can compute the cumulative growth over the 32-year period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cumulative_growth</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">32</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">total</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">func_with</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">cumulative_growth</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">growth_with</span><span class="p">)</span>
+<span class="n">func_without</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">cumulative_growth</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">growth_without</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">func_with</span><span class="p">(</span><span class="n">group</span><span class="p">),</span> <span class="n">func_without</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(22.220158999304985, 2.640377586994469)
+</pre></div>
+</div>
+</div>
+</div>
+<p>With migration, Spain grew by 22% over 32 years, which is very slow.
+Without migration, it would have grown by only 2.6%.</p>
+<p>So the answer to our question is that the population of Spain would have grown very slowly without migration – but it is so close to zero, we were probably right to be unsure if it was negative.</p>
+</section>
+<section id="all-countries">
+<h2>All Countries<a class="headerlink" href="#all-countries" title="Permalink to this heading">#</a></h2>
+<p>Looking across all countries and regions, we can see more general patterns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">recent</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Entity&#39;</span><span class="p">)</span>
+<span class="n">series_with</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">func_with</span><span class="p">)</span>
+<span class="n">series_without</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">func_without</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">growth_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;With migration&#39;</span><span class="p">:</span> <span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">func_with</span><span class="p">),</span>
+                          <span class="s1">&#39;Without migration&#39;</span><span class="p">:</span> <span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">func_without</span><span class="p">)})</span>
+<span class="n">growth_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>With migration</th>
+      <th>Without migration</th>
+    </tr>
+    <tr>
+      <th>Entity</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Afghanistan</th>
+      <td>257.396455</td>
+      <td>192.150139</td>
+    </tr>
+    <tr>
+      <th>Africa (UN)</th>
+      <td>121.667821</td>
+      <td>126.761340</td>
+    </tr>
+    <tr>
+      <th>Albania</th>
+      <td>-13.493972</td>
+      <td>30.935609</td>
+    </tr>
+    <tr>
+      <th>Algeria</th>
+      <td>75.778622</td>
+      <td>80.857438</td>
+    </tr>
+    <tr>
+      <th>American Samoa</th>
+      <td>-6.238915</td>
+      <td>94.587084</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Western Sahara</th>
+      <td>217.523019</td>
+      <td>71.365464</td>
+    </tr>
+    <tr>
+      <th>World</th>
+      <td>50.282098</td>
+      <td>50.296939</td>
+    </tr>
+    <tr>
+      <th>Yemen</th>
+      <td>150.624385</td>
+      <td>169.191726</td>
+    </tr>
+    <tr>
+      <th>Zambia</th>
+      <td>156.554019</td>
+      <td>159.861461</td>
+    </tr>
+    <tr>
+      <th>Zimbabwe</th>
+      <td>61.126891</td>
+      <td>99.346088</td>
+    </tr>
+  </tbody>
+</table>
+<p>255 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">growth_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Europe (UN)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>With migration       3.320313
+Without migration   -2.129723
+Name: Europe (UN), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">growth_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Northern America (UN)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>With migration       36.990776
+Without migration    17.732397
+Name: Northern America (UN), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Many high-income countries have low fertility rates; without migration, their populations would grow slowly or even shrink.
+For example, the population of Europe grew by only 3.3% in 32 years from 1990 to 2022, slower than any other region.
+But without migration – that is, with population change based only on domestic births and deaths – it would have shrunk by 2.1%.</p>
+<p>During the same period, the population of Northern America grew by 37%, much more quickly than Europe.
+But more than half of that growth was due to international migration; without it, growth would have been only 18%.</p>
+<p>As fertility has decreased, the populations of high-income countries have aged, with fewer employed workers to support more retirees.
+These aging populations depend on the labor of immigrants, who tend to be younger, willing to work at jobs some native-born workers would not, and providing skills in areas where there are shortages, including child care and health care.</p>
+<p>However, in some countries, the immigration levels needed to stabilize the population face political barriers, and even the perception of increased immigration can elicit anti-immigration sentiments.
+Particularly in Europe and Northern America, concerns about immigration – real and imagined – have contributed to the <a class="reference external" href="https://www.economist.com/special-report/2019/11/14/why-the-arguments-against-immigration-are-so-popular">growth of right wing populism</a>.</p>
+<p>The following figure shows actual growth rates with migration on the x-axis, and hypothetical rates without migration on the y-axis.
+Countries in the lower-right quadrant are growing only because of migration; without it, they would be shrinking.
+They include several European countries and Japan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install plotly kaleido</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">plotly.io</span> <span class="k">as</span> <span class="nn">pio</span>
+
+<span class="k">def</span> <span class="nf">label_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">growth_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">entity</span><span class="p">]</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_annotation</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+        <span class="n">text</span><span class="o">=</span><span class="n">entity</span><span class="p">,</span>
+        <span class="n">showarrow</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">arrowhead</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">)</span>
+    
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">growth_df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;With migration&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Without migration&#39;</span><span class="p">,</span>
+    <span class="n">hover_name</span><span class="o">=</span><span class="n">growth_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Population growth, 1990-2022, with and without international migration&#39;</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">add_shape</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span>
+    <span class="n">x0</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">y0</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">y1</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.4</span>
+<span class="p">)</span>
+
+
+<span class="n">entities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;United States&#39;</span><span class="p">,</span> <span class="s1">&#39;Germany&#39;</span><span class="p">,</span> <span class="s1">&#39;Japan&#39;</span><span class="p">,</span> <span class="s1">&#39;Russia&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;Switzerland&#39;</span><span class="p">,</span> <span class="s1">&#39;Spain&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Dominica&#39;</span><span class="p">,</span> <span class="s1">&#39;Puerto Rico&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">entities</span><span class="p">:</span>
+    <span class="n">label_entity</span><span class="p">(</span><span class="n">entity</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s1">&#39;migration1.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>                            <div id="7d181ecd-8ac8-4bc9-8c98-9ada6fc9437e" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("7d181ecd-8ac8-4bc9-8c98-9ada6fc9437e")) {                    Plotly.newPlot(                        "7d181ecd-8ac8-4bc9-8c98-9ada6fc9437e",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003eWith migration=%{x}\u003cbr\u003eWithout migration=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Afghanistan","Africa (UN)","Albania","Algeria","American Samoa","Andorra","Angola","Anguilla","Antigua and Barbuda","Argentina","Armenia","Aruba","Asia (UN)","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bonaire Sint Eustatius and Saba","Bosnia and Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Cook Islands","Costa Rica","Cote d'Ivoire","Croatia","Cuba","Curacao","Cyprus","Czechia","Democratic Republic of Congo","Denmark","Djibouti","Dominica","Dominican Republic","East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Europe (UN)","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Guiana","French Polynesia","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guadeloupe","Guam","Guatemala","Guernsey","Guinea","Guinea-Bissau","Guyana","Haiti","High-income countries","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Land-locked developing countries (LLDC)","Laos","Latin America and the Caribbean (UN)","Latvia","Least developed countries","Lebanon","Lesotho","Less developed regions","Less developed regions, excluding China","Less developed regions, excluding least developed countries","Liberia","Libya","Liechtenstein","Lithuania","Low-income countries","Lower-middle-income countries","Luxembourg","Macao","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Martinique","Mauritania","Mauritius","Mayotte","Mexico","Micronesia (country)","Moldova","Monaco","Mongolia","Montenegro","Montserrat","More developed regions","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Niue","North Korea","North Macedonia","Northern America (UN)","Northern Mariana Islands","Norway","Oceania (UN)","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Barthelemy","Saint Helena","Saint Kitts and Nevis","Saint Lucia","Saint Martin (French part)","Saint Pierre and Miquelon","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Sint Maarten (Dutch part)","Slovakia","Slovenia","Small island developing states (SIDS)","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tokelau","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Turks and Caicos Islands","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","United States Virgin Islands","Upper-middle-income countries","Uruguay","Uzbekistan","Vanuatu","Vatican","Venezuela","Vietnam","Wallis and Futuna","Western Sahara","World","Yemen","Zambia","Zimbabwe"],"legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":[257.39645455644745,121.66782081229042,-13.493972214267458,75.7786221188812,-6.238915447557359,49.8911569492247,195.72517387861365,92.30255321214659,46.886705951344496,39.80330757362927,-21.261379638940713,63.26307360234213,47.68198377612136,53.40148659503106,16.726843513498224,39.84561628722783,51.95014080631526,180.83842165031285,60.03289347863661,8.727650511842144,-8.318361376123528,17.008095421341274,120.55402376343505,156.9130507263277,12.080664738108936,40.22915885404959,72.20067660419343,112.61708580244161,-28.567110369920123,95.86975703460877,43.4718137622917,101.32315203295197,72.51407484098871,-22.327124944499378,145.25555016382663,128.44380736161241,89.3478118679281,141.76104651506338,39.1455405897581,62.999099321661966,165.12363551660175,97.22961129952677,196.92091420652847,47.65318506504135,24.55898119955029,59.95595065482977,93.63148936193176,147.49108535931802,-0.8582304906185279,64.9723057007478,135.21853891663577,-17.184555454233397,6.048301788410337,21.080585049331233,58.6237418146893,1.8615869819712527,170.91246155791038,14.124461415581614,100.63677673052283,4.043646412464708,57.89726614346535,76.83584826023522,72.53615454743507,93.59017447914772,18.81349109311181,253.00113024463803,68.19308968728745,-15.57908024332917,42.58554062283135,155.5019654464471,3.3203128175048446,61.5632549775103,10.693770779803113,19.20410570576676,11.303669806119299,14.655487653781796,165.43576368697123,45.59252812227894,140.86392686873185,158.3846791067189,-31.084371811124846,5.3798569107825545,115.42918108403283,18.404616600677425,1.4569354584935246,1.4433211879694374,26.15778346981592,1.63871786089953,24.7371761177291,96.32603227854648,10.103301231784423,118.09429236126756,113.63930289463036,7.335841155617628,67.31680549281339,21.695828625129067,106.09380958548252,29.068348431998146,-6.647975660993055,45.880239330627035,63.35987095497606,51.62778492204918,61.42583410689153,144.6677172195624,43.482736793888144,23.47141066328391,88.30700745952429,4.18559868683237,18.663397480940127,0.612446408123013,33.30670551968966,220.99063337264067,14.550939530109929,132.29936016825957,74.12463768925328,-16.00608578534478,0.8851018571976343,50.29421731430026,109.83483318647131,74.8837578411575,49.68635371677719,-31.070117118256956,116.93604151440265,53.350695336393784,28.44964834978134,60.718875518908845,75.01310480836338,52.81628691465021,89.37167594331794,59.70297238423294,37.0135070367682,-26.901092807009842,140.23235786533314,70.5744742940612,69.192729309524,99.30443833947476,146.7123500169977,112.50270496285779,94.05249075720678,134.24213774455663,147.87308381441986,45.933048038774984,-9.604922474070342,-1.1719258280786682,133.66872045253442,19.792251601359688,247.923011260073,56.47616194635261,16.11554340359447,-32.04939593973839,20.78769646121139,56.918992968304934,1.251593777922122,-61.97308240096733,12.094664339870631,52.58514795219897,143.48791879142954,35.39871209005345,88.24642737453546,32.98167112518924,56.123932869160065,17.688557440670415,63.93465771996802,53.846634620757364,64.45103143301539,205.97847332027263,127.37903332261946,-24.56740781354496,25.92811744557475,2.6938600027648807,36.99077608374755,-0.06198066759179888,27.752240311329658,68.27048139009358,151.59145418852967,103.88586677831046,18.864485074894244,145.92328173223694,79.68611228246503,159.94592817872015,67.63978964991502,54.59870539929565,87.41369820791682,0.595532065119464,2.623719030230043,-8.017904656758724,467.6193448022561,48.28750472961869,-15.661341600106294,-2.01111986394249,62.87072154586615,113.9646073649912,-18.60482955248246,16.563563419409853,27.03802933428754,13.803316405848687,-6.954310169659827,-7.432905939581058,31.14786698625562,46.124668348730765,88.13727943527729,127.75557568422143,127.70680390314601,-9.0586545565989,50.69395861625061,99.78275781149213,98.18763452984471,62.25499051527839,3.515522307782759,6.871200432970226,50.824571372590285,121.95196594688191,141.88468758595084,51.27477442533679,18.09946622191174,126.29431945199552,22.220158999304985,27.35900543659948,119.08830807015897,49.30307008969594,23.254105890011378,30.375684424894732,73.49061038886468,16.456798268396945,83.07226223628767,146.2216622687396,30.61856562485772,126.0485029540674,8.693912739374854,7.905331445222696,21.089688966205223,47.0269521639072,57.580474341233966,73.11494353589896,286.46624431560286,23.672254737664634,165.2395977583415,-15.99123757025762,374.17726286401034,17.892741341355322,36.77122576311294,-0.8699001024084718,30.2659209671857,10.118577067984425,68.10163899192912,114.72674380217116,-27.98835495577887,43.01773662992581,47.46241615037938,-13.459251169075003,217.5230188424807,50.28209817552618,150.62438544306534,156.55401883832775,61.12689095379695],"xaxis":"x","y":[192.15013862410842,126.76133974244372,30.935609361982518,80.8574375136584,94.5870837063282,15.317332284346573,169.35282836393745,26.812518395171114,35.80234399314588,40.95460907736588,20.050753384154763,21.4119811397715,49.5315273863002,23.797437571505455,1.1963861371218742,42.56687706572604,40.97955045607069,68.738377903304,76.12786977556087,12.789014778845175,-9.010522189492065,4.077740127216489,96.35196545299758,154.07715233511584,16.40028241123548,61.77505011598407,81.820262058824,20.581102910303795,-0.7464559701329976,80.13177497909582,43.47021540787721,21.797263961313384,61.32366876370903,-17.887711264941863,157.27651209291923,154.70069435650663,86.66693911943997,145.98649629772126,13.882289303640283,86.68261947957996,30.8202050160997,143.50383146896658,181.47547945109724,36.884782444389465,25.800889521729566,57.92424145768331,120.23253164482509,132.9519262893222,60.17375122642894,54.12976212430427,147.41198823946488,-6.828520533995186,12.34794728993933,22.321624404071795,20.71794317528237,-1.766731892454787,169.9310296556741,4.01593518314165,86.58366106693111,24.178360713657376,74.76990123447962,111.25909550523278,77.28583053810038,93.91400583246497,69.07834869853573,134.54535075043003,127.09513700982771,-6.84701960223546,79.33262632137965,146.00172551637104,-2.129722792492139,9.650739703737244,15.604190363900416,70.24758462201459,4.397928813872687,11.016971292862054,114.78211209689766,64.7699779408546,111.80612841932809,162.21264180244853,7.353254710779811,-5.2332424731464595,118.05233126769554,19.241612902894346,-1.9270919262423303,31.69431909538496,46.20615409633872,31.08285481818498,69.32190372142888,117.78582327410759,5.300421188343174,134.21561368747666,127.48505842143535,67.8750239272852,84.71468643169185,10.629265443222602,114.70431042651748,13.04202034862465,-11.061476498034805,29.422078735549604,64.44286269213346,52.57424297475919,54.46030399786832,143.39246833274805,25.55019318538052,-1.3346913241505831,65.0612126981843,-3.3575660213789105,43.88934688146611,-2.07048578528487,10.39948357799576,123.30412482303394,39.55542810579045,138.84289117459332,111.09909838973681,49.81693749318592,75.38416387679294,80.48620584745598,121.45147308342685,96.14276521936813,55.96792693462789,-14.499098328291993,126.3856911883943,60.325380898737976,56.75068140485961,63.690006140426306,78.6430304348743,54.97151712418891,128.31105177482368,76.97609213710163,15.561982807329722,-8.143095387957533,146.10793623569526,75.19923852647605,11.940581120850835,25.910305603903527,146.64039894505038,137.95415612439075,64.33970448609297,79.21608227011711,174.15740262418794,10.692614155674175,118.59386722089758,24.3992871682968,147.32284971723297,27.06397036855346,201.725402363058,67.5212040120254,100.0113752786588,1.5950485951385263,-12.07588814924927,67.67324681192994,14.046678490341513,-5.115738435038675,3.3822070090513634,66.72778143373208,143.69780280235304,45.02563421869355,95.0457977040784,106.64528848216581,83.88686569626933,9.586769342121482,54.66170485582003,26.4804151025529,95.10193047315015,208.94919515059854,126.62642971302196,20.47145518205813,26.34185944838281,11.236690834312824,17.732396927618698,74.37859068833082,11.129105269429385,43.312243291184636,94.80887224975825,125.25158125835611,18.372160320246,177.99678707646098,73.23089437785887,116.70163182743471,87.94496053047716,67.44701250906556,96.37325790728983,1.6190581776194701,-1.4439464829058002,16.50849874105498,54.869561565325206,52.47483480275024,-5.7574050665666014,-9.478170454086799,104.42607974010217,19.23967399564166,0.8071340780018144,24.809158674494046,36.20632421775376,81.01670691088275,5.69930689918603,40.5583032239945,119.70236165929026,3.308311690520682,146.01082594176708,96.83616957150292,149.74417771896373,-9.521303419593663,42.01014579543736,117.31889643561111,23.86550638564553,35.14851449735876,3.4010232868956436,1.1749544225493125,55.73933517708467,146.6487368121301,174.71518753444232,50.62138685743216,18.63080250977147,115.55089517837125,2.640377586994469,40.09479551756139,141.36045715111817,62.845485674347536,5.183696960714768,7.242099305468219,109.05513955786242,16.86161395083847,118.88029279420222,157.6020588289413,25.5671915832961,130.5675335905157,54.95279200576633,94.05827738600412,29.725614911374443,54.02462166949085,57.449933131980416,81.05065164557139,53.91385641479629,62.405301802739245,185.2874593186745,-14.673282484659156,55.918762865217886,7.358713149198204,18.17810696995259,20.288340458682175,31.288154731571936,19.068607876139442,76.1521550812024,136.72815028038013,-28.009540364217656,69.74336208109966,49.489939610276366,45.16593910053908,71.36546376065458,50.296939386090614,169.1917260801766,159.8614607047826,99.34608750500165],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"With migration"},"range":[-10,40]},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Without migration"},"range":[-10,40]},"legend":{"tracegroupgap":0},"title":{"text":"Population growth, 1990-2022, with and without international migration"},"shapes":[{"line":{"color":"gray","width":1},"opacity":0.4,"type":"line","x0":-10,"x1":200,"y0":-10,"y1":200}],"annotations":[{"arrowhead":0,"showarrow":true,"text":"United States","x":36.77122576311294,"y":18.17810696995259},{"arrowhead":0,"showarrow":true,"text":"Germany","x":5.3798569107825545,"y":-5.2332424731464595},{"arrowhead":0,"showarrow":true,"text":"Japan","x":0.612446408123013,"y":-2.07048578528487},{"arrowhead":0,"showarrow":true,"text":"Russia","x":-2.01111986394249,"y":-9.478170454086799},{"arrowhead":0,"showarrow":true,"text":"Canada","x":39.1455405897581,"y":13.882289303640283},{"arrowhead":0,"showarrow":true,"text":"Switzerland","x":30.375684424894732,"y":7.242099305468219},{"arrowhead":0,"showarrow":true,"text":"Spain","x":22.220158999304985,"y":2.640377586994469},{"arrowhead":0,"showarrow":true,"text":"Dominica","x":4.043646412464708,"y":24.178360713657376},{"arrowhead":0,"showarrow":true,"text":"Puerto Rico","x":-8.017904656758724,"y":16.50849874105498}]},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('7d181ecd-8ac8-4bc9-8c98-9ada6fc9437e');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div></div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[18], line 40
+     37 fig.update_yaxes(range=[-10, 40])
+     39 fig.show()
+---&gt; 40 fig.write_image(&quot;migration1.png&quot;)
+
+File ~/miniconda3/envs/ProbablyOverthinkingIt/lib/python3.10/site-packages/plotly/basedatatypes.py:3841, in BaseFigure.write_image(self, *args, **kwargs)
+   3781 &quot;&quot;&quot;
+   3782 Convert a figure to a static image and write it to a file or writeable
+   3783 object
+   (...)
+   3837 None
+   3838 &quot;&quot;&quot;
+   3839 import plotly.io as pio
+-&gt; 3841 return pio.write_image(self, *args, **kwargs)
+
+File ~/miniconda3/envs/ProbablyOverthinkingIt/lib/python3.10/site-packages/plotly/io/_kaleido.py:266, in write_image(fig, file, format, scale, width, height, validate, engine)
+    250             raise ValueError(
+    251                 &quot;&quot;&quot;
+    252 Cannot infer image type from output path &#39;{file}&#39;.
+   (...)
+    260                 )
+    261             )
+    263     # Request image
+    264     # -------------
+    265     # Do this first so we don&#39;t create a file if image conversion fails
+--&gt; 266     img_data = to_image(
+    267         fig,
+    268         format=format,
+    269         scale=scale,
+    270         width=width,
+    271         height=height,
+    272         validate=validate,
+    273         engine=engine,
+    274     )
+    276     # Open file
+    277     # ---------
+    278     if path is None:
+    279         # We previously failed to make sense of `file` as a pathlib object.
+    280         # Attempt to write to `file` as an open file descriptor.
+
+File ~/miniconda3/envs/ProbablyOverthinkingIt/lib/python3.10/site-packages/plotly/io/_kaleido.py:132, in to_image(fig, format, width, height, scale, validate, engine)
+    130     # Raise informative error message if Kaleido is not installed
+    131     if scope is None:
+--&gt; 132         raise ValueError(
+    133             &quot;&quot;&quot;
+    134 Image export using the &quot;kaleido&quot; engine requires the kaleido package,
+    135 which can be installed using pip:
+    136     $ pip install -U kaleido
+    137 &quot;&quot;&quot;
+    138         )
+    140     # Validate figure
+    141     # ---------------
+    142     fig_dict = validate_coerce_fig_to_dict(fig, validate)
+
+ValueError: 
+Image export using the &quot;kaleido&quot; engine requires the kaleido package,
+which can be installed using pip:
+    $ pip install -U kaleido
+</pre></div>
+</div>
+</div>
+</div>
+<p>Quick check that my way of computing cumulative growth is consistent with population data from
+<a class="reference external" href="https://www.macrotrends.net/global-metrics/countries/eur/europe/population">https://www.macrotrends.net/global-metrics/countries/eur/europe/population</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">europe_2022</span> <span class="o">=</span> <span class="mf">743.6</span>
+<span class="n">europe_1990</span> <span class="o">=</span> <span class="mf">721.5</span>
+
+<span class="p">(</span><span class="n">europe_2022</span> <span class="o">-</span> <span class="n">europe_1990</span><span class="p">)</span> <span class="o">/</span> <span class="n">europe_1990</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Probably Overthinking It</p>
+<p>Copyright 2024 Allen Downey</p>
+<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ideology_gap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Is the Ideology Gap Growing?</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-countries">All Countries</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
