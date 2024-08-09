@@ -1,10 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
-from utils import decorate
-from utils import underride
-from utils import get_colors
+import seaborn as sns
 
 from scipy.stats import norm
 from scipy.stats import binom
@@ -43,6 +40,51 @@ plt.rcParams["legend.edgecolor"] = "0.8"
 
 plt.rcParams["lines.markersize"] = 5
 plt.rcParams["lines.markeredgewidth"] = 0
+
+
+def get_colors(n, palette="Purples"):
+    """Get a gradient palette of colors with the given size.
+
+    n: number of colors
+    palette: string name of palette
+    """
+    palette = sns.color_palette(palette, n + 1)
+    return palette[1:]
+
+
+def underride(d, **options):
+    """Add key-value pairs to d only if key is not in d.
+
+    d: dictionary
+    options: keyword args to add to d
+    """
+    for key, val in options.items():
+        d.setdefault(key, val)
+
+    return d
+
+
+def decorate(**options):
+    """Decorate the current axes.
+
+    Call decorate with keyword arguments like
+    decorate(title='Title',
+             xlabel='x',
+             ylabel='y')
+
+    The keyword arguments can be any of the axis properties
+    https://matplotlib.org/api/axes_api.html
+    """
+    legend = options.pop("legend", True)
+    loc = options.pop("loc", "best")
+    ax = plt.gca()
+    ax.set(**options)
+
+    handles, labels = ax.get_legend_handles_labels()
+    if handles and legend:
+        ax.legend(handles, labels, loc=loc)
+
+    plt.tight_layout()
 
 
 def make_prior(std=0.1):
