@@ -172,6 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Population Growth and Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="olympics.html">So Many Bronze</a></li>
 </ul>
 
     </div>
@@ -849,7 +850,24 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d8098aee7887650d7c86dcd835f87113c35dc5a496a8fff62625a68a9215bad2.png" src="_images/d8098aee7887650d7c86dcd835f87113c35dc5a496a8fff62625a68a9215bad2.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># plt.figure(figsize=(6, 3.3))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#for x in np.log10([50, 100, 150]):</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#    plt.axvline(x, color=&quot;gray&quot;, ls=&quot;:&quot;)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">log_weight_male</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">log_weight_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">two_scale</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">log_weight_female</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">log_weight_male</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="s2">&quot;Weight (log base 10 kg)&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;weight&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -2072,6 +2090,7 @@ dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_chess</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
     <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
     <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
     <span class="n">ps</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">Cdf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
@@ -2088,6 +2107,9 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0 3.505149978319906
+</pre></div>
+</div>
 <img alt="_images/4e2c741daaba05f07ec0c0a171ebef1956917c3870b7e96996a037fb0ba210d0.png" src="_images/4e2c741daaba05f07ec0c0a171ebef1956917c3870b7e96996a037fb0ba210d0.png" />
 </div>
 </div>
@@ -2105,7 +2127,7 @@ The following figure shows the distribution of these shifted scores on a log sca
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_log_chess2</span> <span class="o">=</span> <span class="n">pmf_chess2</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_log_chess2</span> <span class="o">=</span> <span class="n">pmf_chess2</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
 <span class="n">cdf_log_chess2</span> <span class="o">=</span> <span class="n">pmf_log_chess2</span><span class="o">.</span><span class="n">make_cdf</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2119,7 +2141,7 @@ The following figure shows the distribution of these shifted scores on a log sca
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.0789722328987064, 0.1422676157538474)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7.089595565215153, 0.3275832912506139)
 </pre></div>
 </div>
 </div>
@@ -2131,12 +2153,12 @@ The following figure shows the distribution of these shifted scores on a log sca
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.07897223 0.14226762]
-[3.07897228 0.14226762]
-[3.07897223 0.14226763]
-[3.06208626 0.15169365]
-[3.06208631 0.15169365]
-[3.06208626 0.15169366]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7.08959557 0.32758329]
+[7.08959567 0.32758329]
+[7.08959557 0.32758331]
+[7.05071419 0.34928753]
+[7.05071429 0.34928753]
+[7.05071419 0.34928755]
 </pre></div>
 </div>
 </div>
@@ -2153,6 +2175,9 @@ The following figure shows the distribution of these shifted scores on a log sca
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.7403626894942437 3.5622928644564746
+</pre></div>
+</div>
 <img alt="_images/797ec3ea9c96caf7db9af873e2de3e02faebbd2701400ed7b8436dd479add4c2.png" src="_images/797ec3ea9c96caf7db9af873e2de3e02faebbd2701400ed7b8436dd479add4c2.png" />
 </div>
 </div>
