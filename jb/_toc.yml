@@ -20,3 +20,7 @@ parts:
   - file: ansur_pca
   - file: bertrand
   - file: ideology_gap
+  - file: migration
+  - file: olympics
+  - file: ctokens
+  - file: proteins
