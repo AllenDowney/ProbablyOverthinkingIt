@@ -3,7 +3,7 @@
 This site contains the Jupyter notebooks I used in my preparation of *[Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions](https://greenteapress.com/wp/probably-overthinking-it/)*.
 
 If you've read the book and you want to know how the analysis works, this is the place.
-And if you read these notebooks, and you want to get the book, [start here to see your options](https://greenteapress.com/wp/probably-overthinking-it/).
+And if you read these notebooks, and you want to get the book, you can order from [Bookshop.org](https://bookshop.org/a/98697/9780226822587) and [Amazon](https://amzn.to/3Kp629E) (affiliate links).
 
 Before you read these notebooks, please keep in mind:
 
