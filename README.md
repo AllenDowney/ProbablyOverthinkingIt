@@ -3,7 +3,7 @@
 This site contains the Jupyter notebooks I used in my preparation of *[Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions](https://greenteapress.com/wp/probably-overthinking-it/)*.
 
 If you've read the book and you want to know how the analysis works, this is the place.
-And if you read these notebooks, and you want to get the book, [start here to see your options](https://greenteapress.com/wp/probably-overthinking-it/).
+And if you read these notebooks, and you want to get the book, you can order from [Bookshop.org](https://bookshop.org/a/98697/9780226822587) and [Amazon](https://amzn.to/3Kp629E) (affiliate links).
 
 Before you read these notebooks, please keep in mind:
 
@@ -84,3 +84,68 @@ Before you read these notebooks, please keep in mind:
 **Chapter 12: Chasing the Overton Window**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/overton.ipynb)
+
+## Getting Started
+
+### Downloading the Repository
+
+To download this repository and run the notebooks locally:
+
+```bash
+git clone https://github.com/AllenDowney/ProbablyOverthinkingIt.git
+cd ProbablyOverthinkingIt
+```
+
+### Setting Up the Environment
+
+If you have conda installed, you can create the environment using the Makefile:
+
+```bash
+make create_environment
+conda activate ProbablyOverthinkingIt
+make requirements
+```
+
+The Makefile installs both the main requirements and development dependencies.
+
+### Running the Notebooks
+
+Once you have the environment set up, you can start Jupyter:
+
+```bash
+jupyter notebook
+```
+
+Or if you prefer JupyterLab:
+
+```bash
+jupyter lab
+```
+
+Then navigate to the `notebooks/` directory to find and run the notebooks for each chapter.
+
+### Data Files
+
+The notebooks use data files stored in the `data/` directory. These files are included in the repository and should be available when you run the notebooks locally.
+
+### Alternative: Using Google Colab
+
+If you prefer not to set up a local environment, you can run the notebooks directly in Google Colab using the links provided above for each chapter.
+
+## Repository Sitemap
+
+### Main Directories
+
+- **`notebooks/`** - Main Jupyter notebooks for each chapter of the book
+- **`data/`** - Data files used by the notebooks (CSV, HDF5, Excel files)
+- **`examples/`** - Additional examples and supplementary notebooks
+- **`jb/`** - Jupyter Book configuration and built documentation
+
+### Configuration Files
+
+- **`environment.yml`** - Conda environment specification
+- **`requirements.txt`** - Python package requirements
+- **`requirements-dev.txt`** - Development dependencies
+- **`Makefile`** - Build automation and environment setup
+- **`LICENSE`** - Project license
+
