@@ -430,6 +430,22 @@ But I’m pretty sure that line is a mistake.</p>
 </div>
 </div>
 </div>
+<p>UPDATE: After I published the first draft of this article, I noticed that there are an unknown number of data points at (0, 0) in the original figure.
+They are probably states with missing data, but if they were included in the analysis – which they absolutely should not be – that would explain the flat line.</p>
+<p>If we assume there are two states with missing data, that strengthens the effect in the subgroups, and weakens the effect in the combined groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set this to True if you want to simulate the effect of treating missing data as zero</span>
+<span class="n">include_missing</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">include_missing</span><span class="p">:</span>
+    <span class="n">male_ms</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">male_als</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">female_ms</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">female_als</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Here’s a linear regression for the male data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
