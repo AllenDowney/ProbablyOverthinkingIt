@@ -28,16 +28,16 @@ from statsmodels.nonparametric.smoothers_lowess import lowess
 from empiricaldist import Pmf, Cdf, Surv
 
 
-def values(series):
+def value_counts(seq, dropna=False):
     """Make a series of values and the number of times they appear.
 
     Returns a DataFrame because they get rendered better in Jupyter.
 
-    series: Pandas Series
+    seq: sequence
 
     returns: Pandas DataFrame
     """
-    series = series.value_counts(dropna=False).sort_index()
+    series = pd.Series(seq).value_counts(dropna=dropna).sort_index()
     series.index.name = "values"
     series.name = "counts"
     return pd.DataFrame(series)
@@ -503,7 +503,15 @@ def fit_truncated_normal(surv):
 
 
 def empirical_error_bounds(surv, n, qs, con_level=0.95):
-    """Find the bounds on a normal CDF analytically."""
+    """Find the bounds on an empirical CDF analytically.
+    
+    surv: Surv object
+    n: sample size
+    qs: quantities
+    con_level: confidence level
+
+    returns: tuple of arrays (low, high)
+    """
     # find the correct probabilities
     ps = surv.make_cdf()(qs)
 
@@ -524,7 +532,7 @@ def normal_error_bounds(dist, n, qs, con_level=0.95):
     dist: scipy.stats.norm object
     n: sample size
     qs: quantities
-    alpha: fraction excluded from the CI
+    con_level: confidence level
 
     returns: tuple of arrays (low, high)
     """
@@ -543,6 +551,12 @@ def normal_error_bounds(dist, n, qs, con_level=0.95):
 
 
 def plot_error_bounds(surv, n, **options):
+    """Plot the error bounds on a survival function.
+
+    surv: Surv object
+    n: sample size
+    options: passed to plt.fill_between
+    """
     underride(options, linewidth=0, alpha=0.1, capstyle="round")
     qs = np.linspace(surv.qs.min(), surv.qs.max(), 100)
     low, high = empirical_error_bounds(surv, n, qs)
@@ -992,7 +1006,7 @@ def set_pyplot_params():
     # plt.rcParams["axes.titlesize"] = 8.4
     # plt.rcParams["font.sans-serif"] = ["Source Sans Pro"]
 
-    plt.rcParams["figure.figsize"] = 6, 4
+    plt.rcParams["figure.figsize"] = 6, 3.5
     plt.rcParams["figure.dpi"] = 75
 
     plt.rcParams["axes.titlesize"] = "medium"
@@ -1020,4 +1034,3 @@ def set_pyplot_params():
 
     plt.rcParams["lines.markersize"] = 4
     plt.rcParams["lines.markeredgewidth"] = 0
-    
