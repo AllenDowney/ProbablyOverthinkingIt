@@ -346,6 +346,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-the-average-man">The Myth of the “Average Man”</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-five">The Big Five</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-are-all-equally-weird">We Are All Equally Weird</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#but-some-are-more-equal-than-others">But Some Are More Equal Than Others</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
             </nav>
         </div>
@@ -360,48 +362,6 @@ document.write(`
   <section id="are-you-normal-hint-no">
 <h1>Are You Normal? Hint: No.<a class="headerlink" href="#are-you-normal-hint-no" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/gaussian.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
 <p>What does it mean to be normal? And what does it mean to be weird?
 I think there are two factors that underlie our intuition for these ideas:</p>
 <ul class="simple">
@@ -418,7 +378,22 @@ Here is the <a class="reference external" href="https://colab.research.google.co
 <p>I generated a sample from the dataset, which we can download like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/brfss_sample.hdf&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s2">&quot;brfss_sample.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;brfss&quot;</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;HTM4&quot;</span><span class="p">]</span>
+<span class="n">height</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    375271.000000
+mean        170.162448
+std          10.921335
+min          91.000000
+25%         163.000000
+50%         170.000000
+75%         178.000000
+max         234.000000
+Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -431,17 +406,18 @@ In fact, when we consider the many ways people are different, we find that</p>
 <li><p>Everyone is roughly the same distance from average.</p></li>
 </ul>
 <p>At least in a mathematical sense, no one is normal, everyone is weird, and everyone is the same amount of weird.</p>
+<p>To show why this is true, we’ll start with a single measurement and work our way up to hundreds, and then thousands.
+I’ll introduce the Gaussian curve, and we’ll see that it fits many of these measurements remarkably well.</p>
+<p>In addition to physical measurements from a survey of military personnel, we’ll also consider psychological measurements, using survey results that quantify the Big Five personality traits.</p>
 <section id="present-arms">
 <h2>Present… Arms<a class="headerlink" href="#present-arms" title="Permalink to this heading">#</a></h2>
+<p>How tall are you? How long are your arms? How far it is from the radiale landmark on your right elbow to the stylion landmark on your right wrist?</p>
+<p>You might not know that last one, but the U.S. Army does. Or rather, they know the answer for the 6068 members of the armed forces they measured at the Natick Soldier Center (just a few miles from my house) as part of the Anthropometric Surveys of 2010-2011, which is abbreviated army-style as ANSUR-II.</p>
+<p>In addition to the radiale-stylion length of each participant, the ANSUR dataset includes 93 other measurements “chosen as the most useful ones for meeting current and anticipated Army and [Marine Corps] needs.”
+The results were declassified in 2017 and are available to download.</p>
+<p>We will explore all of the measurements in this dataset, starting with height.
+The following figure shows the distribution of heights for the male and female participants in the survey.</p>
 <p>Here’s the ANSUR data, originally downloaded from <a class="reference external" href="https://www.openlab.psu.edu/ansur2/">The OPEN Design Lab</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/ANSURIIFEMALEPublic.csv&quot;</span><span class="p">)</span>
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/ANSURIIMALEPublic.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Since heights are in mm, I converted to cm.</p>
 <p>The following function plots histograms using <code class="docutils literal notranslate"><span class="pre">plt.stairs</span></code>.</p>
 <p>Here are the histograms of male and female heights.</p>
@@ -450,12 +426,30 @@ In fact, when we consider the many ways people are different, we find that</p>
 <img alt="_images/eb8c305b8cf7484a225522cc538a95a6df266397a4f781a80ba270370483a55f.png" src="_images/eb8c305b8cf7484a225522cc538a95a6df266397a4f781a80ba270370483a55f.png" />
 </div>
 </div>
-<p>The following cell shows a way to calculate a Gaussian curve – for clarity I used base 10 (instead of <span class="math notranslate nohighlight">\(e\)</span>) and no parameters.</p>
+<p>The vertical axis shows the percentage of participants whose height falls in each one-centimeter interval.
+Both distributions have the characteristic shape of the “bell curve”.</p>
+<p>One of the earliest discoveries in the history of statistics is that there is a simple model that matches the shape of these curves with remarkable accuracy.
+Written as a mathematical formula it might not seem simple, depending on how you feel about the Greek alphabet.
+So instead I will describe it as a game.</p>
+<p>Please think of a number (but keep it small) and let’s call it <span class="math notranslate nohighlight">\(x\)</span>.
+Then follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Square your number. For example, if you chose 2, the result is 4.</p></li>
+<li><p>Take the result from the previous step and raise 10 to that power. If you chose 2, the result is <span class="math notranslate nohighlight">\(10^{4}\)</span>, which is 10,000.</p></li>
+<li><p>Take that result and invert it. If you chose 2, the result is <span class="math notranslate nohighlight">\(1 / 10,000\)</span>.</p></li>
+</ol>
+<p>Now I’ll do the same calculation for a range of values from -2 to 2 and plot the results.
+Here’s what it looks like:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/a26d0d6365af3ede9b94d2996efe71f32b5492286b35ed77571d32e1d1071cb3.png" src="_images/a26d0d6365af3ede9b94d2996efe71f32b5492286b35ed77571d32e1d1071cb3.png" />
+<img alt="_images/04e4a1879fdc9c2b4ff6c4edf74fd3389137566562e62c5b0bdc8cd20fb18080.png" src="_images/04e4a1879fdc9c2b4ff6c4edf74fd3389137566562e62c5b0bdc8cd20fb18080.png" />
 </div>
 </div>
+<p>This result is known as the Gaussian curve, after the mathematician Carl Friedrich Gauss.
+Actually, it’s just one of many Gaussian curves.
+By changing the rules of the game we just played, we can shift the curve to the right or left, and make it wider or narrower.
+And by shifting and stretching, we can often find a Gaussian curve that’s a good match for real data.</p>
+<p>In the following figure, the shaded areas show the distributions of height again; the lines show Gaussian curves I chose to match the data.</p>
 <p>The following function plots a Gaussian curve with the same mean and std as the data.</p>
 <p>The scale parameter is arbitrary – I chose it to be roughly the same height as the histogram, which is also arbitrary. Avoiding this arbitrariness is one reason I prefer to use CDFs to compare the distribution of data with a model.</p>
 <div class="cell tag_remove-input docutils container">
@@ -463,9 +457,41 @@ In fact, when we consider the many ways people are different, we find that</p>
 <img alt="_images/9316a5d32b611b2d8be1b88443287b93b6a250fb5db9572450c43f938291be88.png" src="_images/9316a5d32b611b2d8be1b88443287b93b6a250fb5db9572450c43f938291be88.png" />
 </div>
 </div>
+<p>And they fit the data pretty well.
+If you have seen results like this before, they might not surprise you; but maybe they should.</p>
+<p>Mathematically, the Gaussian curve is simple. The operations we used to compute it – squaring, raising to a power, and inverting numbers – are familiar to people with a basic math education.</p>
+<p>In contrast, people are complicated. Nearly everything about us is affected by hundreds or thousands of interacting causes and effects, including our genes and everything about our environment from conception to adulthood.</p>
+<p>So if we measure a few thousand people and plot the results, and find that they fit a simple model so well, we should be surprised.</p>
+<p>Furthermore, it’s not just people and it’s not just height.
+If you choose individuals from almost any species and measure almost any part of them, the distribution of measurements will be approximately Gaussian.
+In many cases, the approximation is remarkably close.
+Naturally, you might wonder why.</p>
 </section>
 <section id="why">
 <h2>Why?<a class="headerlink" href="#why" title="Permalink to this heading">#</a></h2>
+<p>The answer comes in three parts:</p>
+<ul class="simple">
+<li><p>Physical characteristics like height depend on many factors, both genetic and environmental.</p></li>
+<li><p>The contribution of these factors tends to be additive; that is, the measurement is the sum of many contributions.</p></li>
+<li><p>In a randomly-chosen individual, the set of factors they have inherited or experienced is effectively random.</p></li>
+</ul>
+<p>When we add up the contributions of these random factors, the resulting distribution tends to follow a Gaussian curve.</p>
+<p>To show that that’s true, I will use a model to simulate random factors, generate a set of random heights, and compare them to the measured heights of the participants in the ANSUR dataset.</p>
+<p>In my model, there are 20 factors that influence height.
+That’s an arbitrary choice; it would also work with more or fewer.</p>
+<p>For each factor, there are two possibilities, which you can think of as different genes or different environmental conditions.
+To model an individual, I generate a random sequence of 0s and 1s that indicate the absence or presence of each factor.
+For example:</p>
+<ul class="simple">
+<li><p>If there are two forms of a gene (known as alleles), 0 might indicate one of the alternatives, and 1 the other.</p></li>
+<li><p>If a particular nutrient contributes to height at some point in development, 0 and 1 might indicate the deficiency or sufficiency of the nutrient.</p></li>
+<li><p>If a particular infection can detract from height, 0 and 1 might indicate the absence or presence of the infectious agent.</p></li>
+</ul>
+<p>In the model, the contribution of each factor is a random value between -3 cm and 3 cm; that is, each factor causes a person to be taller or shorter by a few centimeters.</p>
+<p>To simulate a population, I generate random factors (0s and 1s) for each individual, look up the contribution of each factor and add them up.
+The result is a sample of simulated heights, which we can compare to the actual heights in the dataset.</p>
+<p>The following figure shows the results.
+The shaded areas show the distributions of the actual heights again; the lines show the distributions of the simulated heights.</p>
 <p>The following function generates simulated values that are the sum of a number of random factors, shifted and scaled so they have the same mean and std as the given data.</p>
 <p>The result shows that values generated this way can resemble the actual data.</p>
 <div class="cell tag_remove-input docutils container">
@@ -476,17 +502,41 @@ In fact, when we consider the many ways people are different, we find that</p>
 </section>
 <section id="comparing-distributions">
 <h2>Comparing Distributions<a class="headerlink" href="#comparing-distributions" title="Permalink to this heading">#</a></h2>
-<p>Here are the examples in the book.</p>
-<p>And here’s a figure that shows the CDFs and the highlighted examples.</p>
+<p>If we compute the percentile rank for each participant the same way, and plot these percentile ranks on the vertical axis, the results look like this:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/e499c1167fe30ddbe449480df596bf14daae40c528995ac5553ddc694e4363dc.png" src="_images/e499c1167fe30ddbe449480df596bf14daae40c528995ac5553ddc694e4363dc.png" />
 </div>
 </div>
-<p>The following figure shows the CDFs of the data compared to the CDF of a Gaussian model chosen to fit the data.</p>
+<p>This way of representing a distribution is called a cumulative distribution function (CDF).
+In this example, the solid curve shows the CDF of height for female participants; the dashed curve is the CDF for male participants.</p>
+<p>The dotted lines indicate the height and percentile rank for two examples: in the CDF for female participants, height 160 cm corresponds to percentile rank 34; in the CDF for male participants, height 180 cm corresponds to percentile rank 75.</p>
+<p>It might not be obvious yet why this way of plotting distributions is useful.
+The primary reason, in my opinion, is that it provides a good way to compare distributions.</p>
+<p>For example, in the following figure, the lines show the CDFs of height again.
+The shaded areas show the CDFs of Gaussian distributions I chose to fit the data.</p>
+<p>The width of the shaded areas shows how much variation we expect if we use the Gaussian model to generate simulated heights.
+Where a line falls inside the shaded area, the data are consistent with the Gaussian model.
+If it falls outside the shaded area, that indicates a deviation bigger than we would expect to see due to random variation.
+In these examples, both curves fall within the bounds of variation we expect.</p>
+<p>Before we go on, I want to say something about the word “deviation” in this context, which is used to mean a difference between the data and the model.
+There are two ways to think about “deviation”.
+One, which is widespread in the history of statistics and natural philosophy, is that the model represents some kind of ideal, and if the world fails to meet this ideal, the fault lies in the world, not the model.</p>
+<p>In my opinion, this is nonsense.
+The world is complicated.
+Sometimes we can describe it with simple models, and it is often useful when we can.
+And sometimes we can find a reason the model fits the data, which can help explain why the world is as it is.
+But when the world deviates from the model, that’s a problem for the model, not a deficiency of the world.</p>
+<p>Having said all that, let’s see how big those deviations are.</p>
 </section>
 <section id="how-gaussian-is-it">
 <h2>How Gaussian Is It?<a class="headerlink" href="#how-gaussian-is-it" title="Permalink to this heading">#</a></h2>
+<p>Out of 94 measurements in the ANSUR dataset, 93 are well modeled by a Gaussian distribution; one is not.
+In this chapter we’ll explore the well behaved measurements.
+In Chapter~\ref{extremes-outliers-and-goats} I’ll reveal the exception.</p>
+<p>For each measurement, I chose the Gaussian distribution that best fits the data and computed the maximum vertical distance between the CDF of the data and the CDF of the model.
+Using the size of this deviation, I identified the measurements that are the most and the least Gaussian.</p>
+<p>For many of the measurements, the distributions are substantially different for men and women, so I considered measurements from male and female participants separately.</p>
 <p>Here are the names of the measurements.</p>
 <p>To find the measurements that fit a Gaussian model the best and the worst, I use the following function, which computes the maximum vertical distance between the CDF of the data and the model.</p>
 <p>The following function computes this distance for all of the measurements.</p>
@@ -494,29 +544,62 @@ In fact, when we consider the many ways people are different, we find that</p>
 <p>Here are the measurements where the distance between the data and the model is smallest.</p>
 <p>And here are the measurements where it’s the biggest.</p>
 <p>Most of the best-fitting measurements are male, most of the worst-fitting are female. That’s because the sample size is smaller for the female participants, which means there is more deviation from the model due to chance.</p>
-<p>Here’s the measurement that fits the Gaussian model the best.</p>
+<p>Of all measurements, the one that is the closest match to the Gaussian distribution is the popliteal height of the male participants, which is the “vertical distance from a footrest to the back of the right knee.”
+The following figure shows the distribution of these measurements as a dashed line and the Gaussian model as a shaded area.</p>
+<p>To quantify how well the model fits the data, I computed the maximum vertical distance between them; in this example, it is 0.8 percentile ranks, at the location indicated by the vertical dotted line.
+The deviation is not easily discernible.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/689ad3623118fb0be30099475924de5af052add932d7d15b61e03aea01b75f22.png" src="_images/689ad3623118fb0be30099475924de5af052add932d7d15b61e03aea01b75f22.png" />
 </div>
 </div>
-<p>The measurement with the highest distance is <code class="docutils literal notranslate"><span class="pre">interpupillarybreadth</span></code>. But based on the figure below, that appears to be an artifact due to a single measurement. In retrospect, I could have computed distances in a way that would not be thrown off by this anomaly.</p>
+<p>The measurement that is the worst match to the Gaussian model is the forearm length of the female participants, which is the distance I mentioned earlier between the  radiale landmark on the right elbow and the stylion landmark on the right wrist.</p>
+<p>The following figure shows the distribution of these measurements and a Gaussian model.
+The maximum vertical distance between them is 4.2 percentile ranks, at the location indicated by the vertical dotted line; it looks like there are more measurements between 24 and 25 cm than we would expect in a Gaussian distribution.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/253f961b75507639f88b91ed9345cf8ce5caf65c49acc136c2f07820a84045de.png" src="_images/253f961b75507639f88b91ed9345cf8ce5caf65c49acc136c2f07820a84045de.png" />
 </div>
 </div>
+<p>Out of almost 200 measurements, this is the one that is the <em>least</em> well modeled by the Gaussian distribution; even so, the deviation is small, and for many purposes, the Gaussian model would be good enough.</p>
 <p>What I reported in the book is <code class="docutils literal notranslate"><span class="pre">radialestylionlength</span></code>, which is second and the list and seems to be legitimately the measurement that is the worst fit for the model.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/2e7ff726d41cdfdf956f783a9d92e48f745c3b6e5f0c7f32991efbd4fbbd71fb.png" src="_images/2e7ff726d41cdfdf956f783a9d92e48f745c3b6e5f0c7f32991efbd4fbbd71fb.png" />
+<img alt="_images/b208efedd15de75f53bf9823b58926f8df127cab49d9e2f59c11144b74f1572d.png" src="_images/b208efedd15de75f53bf9823b58926f8df127cab49d9e2f59c11144b74f1572d.png" />
 </div>
 </div>
 </section>
 <section id="the-myth-of-the-average-man">
 <h2>The Myth of the “Average Man”<a class="headerlink" href="#the-myth-of-the-average-man" title="Permalink to this heading">#</a></h2>
+<p>We’ve seen that variation in physical characteristics is often well modeled by a Gaussian distribution.
+A characteristic of these distributions is that most people are close to the mean, with fewer and fewer people far from the mean in either direction.
+But as I said in the introduction of this chapter: what is true when we consider a single characteristic turns out to be counter-intuitively false when we consider a few characteristics at once, and spectacularly false when we consider more than a few.
+In particular, when we consider the many ways each individual differs from the average, we find that people close to average in every way are rare or non-existent.</p>
+<p>This observation was made most famously by Gilbert Daniels in a Technical Report he wrote for the U.S. Air Force in 1952, with the title “The ‘Average Man?’”.
+In the introduction he explains:</p>
+<blockquote>
+<div><p>The tendency to think in terms of the “average man” is a pitfall into which many persons blunder when attempting to apply human body size data to design problems. Actually, it is virtually impossible to find an “average man” in the Air Force population.</p>
+</div></blockquote>
+<p>As evidence, he used data from the Air Force Anthropometric Survey of 1950, a precursor of the ANSUR dataset we’ve used in this chapter.
+This dataset includes 131 measurements from 4063 Air Force “flying personnel”, all male.
+From these, Daniels selected 10 measurements “useful in clothing design”.
+Coyly, he mentions that we would get similar results if we chose measurements useful in airplane cockpit design, which was the actual but unstated purpose of the report.</p>
+<p>Daniels finds that of the 4063 men, 1055 were of “approximately average” height, which he defines to be within the “middle 30% of the total population”.
+Of those, 302 were of approximately average chest circumference.
+Of those, 143 were of approximately average sleeve length.</p>
+<p>He continues, filtering out anyone who falls outside the middle 30% of the population by any of the other measurements.
+In the end, he finds 3 who make it past the first eight measurements, 2 who make it past the first nine, and 0 who were approximately average on all ten.
+If a uniform – or cockpit – was designed to fit the average man on all 10 measurements, it would fit no one.</p>
+<p>Daniels suggests that “conclusions similar to those reported here would have been reached if the same type of analysis had been applied to body size data based on almost any group of people”.
+To see if he’s right, we’ll replicate his analysis using data from the participants in the ANSUR survey.</p>
+<p>Many of the measurements in the ANSUR survey are the same as in the Air Force survey, but not all.
+Of the ten Daniels chose, I found eight identical measurements in the ANSUR dataset and two replacements that are similar.</p>
 <p>Here are the measurements from ANSUR that are the closest to the measurements in Daniels’s report.</p>
 <p>The following table shows the names of these measurements, the mean and standard deviations of the values, the low and high ends of the range considered “approximately average”, and the percentage of survey participants who fall in the range.</p>
+<p>You might notice that these percentages are lower than the 30% Daniels claims.
+In an appendix, he explains that he used “a range of plus or minus three-tenths of a standard deviation” from the mean.
+He chose this range because it seemed “reasonable” to him and because it is the “equivalent of a full clothing size”.
+To reproduce his analysis, I followed the specification in the appendix.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
@@ -632,18 +715,47 @@ In fact, when we consider the many ways people are different, we find that</p>
 <p>Here are the measurements where there are the biggest differences between the Daniels dataset and the ANSUR dataset (you can ignore the two very large differences, which are the result of using measurements that are defined differently).</p>
 <p>The other differences suggest that members of the Army and Marines now are bigger than members of the Air Force in 1950.</p>
 <p>The following cells replicate the analysis in Daniels, computing the number of people who are close to the average in each measurement, considered in succession.</p>
-<p>The following table shows the number of people who make it past each of the “hurdles”.</p>
+<p>Now we can replicate Daniels’s analysis using the measurements as “hurdles in a step-by-step elimination”, starting from the top of the table and working down.</p>
+<p>Of 4086 male participants, 949 are approximately average in height.
+Of those, 244 are approximately average in chest circumference.
+Of those, 87 are approximately average in sleeve length.</p>
+<p>Approaching the finish line, we find 3 participants that make it past eight “hurdles”, 2 that make it past nine, and 0 that make it past all ten.
+Remarkably, the results from the last three hurdles are identical to the results from Daniels’s report.
+In the ANSUR dataset, if you design for the “average man”, you design for no one.</p>
 <p>The same is true if you design for the average woman.
 The ANSUR dataset includes fewer women than men: 1986 compared to 4086.
 So we can use a more generous definition of “approximately average”, including anyone within 0.4 standard deviations of the mean.</p>
 <p>Even so, we find only 2 women who make it past the first eight hurdles, 1 who makes it past nine, and none that make it past all ten.</p>
+<p>So we can confirm Daniels’s conclusion (with a small update):</p>
+<blockquote>
+<div><p>The “average [person]” is a misleading and illusory concept as a basis for design criteria, and is particularly so when more than one dimension is being considered.</p>
+</div></blockquote>
+<p>And this is not only true for physical measurements, as we’ll see in the next section.</p>
 </section>
 <section id="the-big-five">
 <h2>The Big Five<a class="headerlink" href="#the-big-five" title="Permalink to this heading">#</a></h2>
+<p>Measuring physical characteristics is relatively easy; measuring psychological characteristics is more difficult.
+However, starting in the 1980s, psychologists developed a taxonomy based on five personality traits and surveys that measure them.
+These traits, known as the “Big Five”, are: extroversion, emotional stability, agreeableness, conscientiousness, and openness to Experience.</p>
+<p>Emotional stability is sometimes reported on a reversed scale as “neuroticism”, so high emotional stability corresponds to low neuroticism.
+In psychological literature, “extroversion” is often written as “extraversion”, but I will use the common spelling.</p>
+<p>These traits were initially proposed, and gradually refined, with the goal of satisfying these requirements:</p>
+<ul class="simple">
+<li><p>They should be interpretable in the sense that they align with characteristics people recognize in themselves and others. For example, many people know what extroversion is and have a sense of how they compare to others on this scale.</p></li>
+<li><p>They should be stable in the sense that they are mostly unchanged over a person’s adult life, and consistent in the sense that measurements based on different surveys yield similar results.</p></li>
+<li><p>The traits should be mostly uncorrelated with each other, which indicates that they actually measure five different things, not different combinations of a smaller number of things.</p></li>
+<li><p>They do not have to be complete; that is, there can be (and certainly are) other traits that are not measured by surveys of the Big Five.</p></li>
+</ul>
+<p>At this point, the Big Five personality traits have been studied extensively and found to have these properties, at least to the degree we can reasonably hope for.</p>
+<p>You can take a version of the Big Five Personality Test, called the International Personality Item Pool (IPIP) online.
+This test is run by the Open-Source Psychometrics Project, which “exists for the promotion of open source assessments and open data”.
+In 2018 they published anonymous responses from more than one million people who took the test and agreed to make their data available for research.</p>
+<p>Some people who took the survey did not answer all of the questions; if we drop them, we have data from 873,173 who completed the survey. It is possible that dropping incomplete tests will disproportionately exclude people with low Conscientiousness, but let’s keep it simple.</p>
 <p>The Big Five data is originally from the <a class="reference external" href="https://openpsychometrics.org/_rawdata/">Open-Source Psychometrics Project</a>.</p>
 <p>Here is the <a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_big_five.ipynb">notebook I used to download and clean the data</a>.</p>
 <p>I did some preliminary cleaning and put the result in an HDF file.</p>
 <p>The survey consists of 50 questions, with 10 questions intended to measure each of the five personality traits.
+For example, one of the prompts related to extroversion is “I feel comfortable around people;” one of the prompts related to emotional stability is “I am relaxed most of the time.”
 People respond on a five-point scale from “Strongly Disagree” to “Strongly Agree”.
 I scored the responses like this:</p>
 <ul class="simple">
@@ -658,13 +770,26 @@ I scored the responses like this:</p>
 For each of the five traits, the following figure shows the distributions of total scores for more than 800,000 respondents.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/430064c1b3cb89b5673dfce8129df3b2c7dacd6fde6c224b987a6c8788ef2658.png" src="_images/430064c1b3cb89b5673dfce8129df3b2c7dacd6fde6c224b987a6c8788ef2658.png" />
+<img alt="_images/43efcd6494d7472234a6355f264993e49bacc5ad20e4419f41aa70df3db4425c.png" src="_images/43efcd6494d7472234a6355f264993e49bacc5ad20e4419f41aa70df3db4425c.png" />
 </div>
 </div>
 <p>The figures on the left show histograms; the figures on the right show CDFs.
 In both figures, the shaded line is a Gaussian distribution I chose to fit the data.
 The Gaussian model fits the first three distributions well (extroversion, emotional stability, and conscientiousness) except in the extreme tails.</p>
-<p>Let’s see what happens if we apply Daniels’s analysis to the Big Five data.
+<p>The other two distributions are skewed to the left; that is, their tails extend farther left than right.
+It’s possible that these deviations from the Gaussian model are the result of measurement error.
+In particular, agreeableness and openness might be subject to social desirability bias, which is the tendency of survey respondents to shade their answers to questions like these in the direction they know is more socially acceptable.</p>
+<p>For example, two of the prompts related to agreeableness are
+“I am not interested in other people’s problems,” and
+“I insult people.”
+It’s possible that even callous, abrasive people are sensitive enough to avoid admitting these faults.</p>
+<p>Similarly, two of the prompts related to openness are
+“I use difficult words,” and
+“I have excellent ideas.”
+It’s possible that some people with a limited vocabulary are mistaken about the quality of their ideas.</p>
+<p>On the other hand, it seems like at least some unconscientious people are willing to admit that “I leave my belongings around,” and “I shirk my duties.”
+So it may be that these measurements reflect actual distributions of these attributes in the population, and it just happens that those distributions are not very Gaussian.</p>
+<p>Regardless, let’s see what happens if we apply Daniels’s analysis to the Big Five data.
 The following table shows the mean and standard deviation of the five scores, the range of values we’ll consider “approximately average”, and the percentage of the sample that falls in that range.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -798,10 +923,16 @@ Now if we treat each trait as a hurdle and select people who are close to averag
 <p>Of the 873,173 people we started with, about 204,000 are close to the average in extroversion.
 Of those, about 47,000 are close to the average in emotional stability.
 And so on, until we find 926 who are close to average on all five traits, which is barely one person in a thousand.</p>
+<p>As Daniels showed with physical measurements, we have shown with psychological measurements: when we consider more than a few dimensions, people who are close to the average are rare or nonexistent.
+In fact, nearly everyone is far from average by some measure.</p>
+<p>But that’s not all.
+If we consider a large number of measurements, it’s not just that everyone is far from average; it turns out that everyone is approximately the same distance from average.
+We’ll see why in the next section.</p>
 </section>
 <section id="we-are-all-equally-weird">
 <h2>We Are All Equally Weird<a class="headerlink" href="#we-are-all-equally-weird" title="Permalink to this heading">#</a></h2>
-<p>Using the Big Five data again, I counted the number of traits where each respondent falls outside the range we defined as “approximately average”.
+<p>How weird are you? One way to quantify that is to count the number of measurements where you are far from average.</p>
+<p>For example, using the Big Five data again, I counted the number of traits where each respondent falls outside the range we defined as “approximately average”.
 We can think of the result as a kind of “weirdness score”, where 5 means they are far from average on all five traits, and 0 means they are far from average on none.</p>
 <p>The following figure shows the distribution of these scores for the roughly 800,000 people who completed the Big Five survey.</p>
 <div class="cell tag_remove-input docutils container">
@@ -821,8 +952,11 @@ The following figure shows the distribution of these counts for the male ANSUR p
 </div>
 <p>Nearly everyone in this dataset is “weird” in at least 40 ways, and 90% of them are weird in at least 57 ways.
 With enough measurements, being weird is normal.</p>
-<p>Now I’ll use the ANSUR measurements to compute all possible ratios of two measurements.
-With 93 measurements and 4278 ratios, there are a total of 4317 ways to be weird.
+<p>In fact, as the number of measurements increases, the width of this distribution gets narrower; that is, the difference between the most normal person and the weirdest gets smaller.</p>
+<p>To demonstrate, I’ll use the ANSUR measurements to compute all possible ratios of two measurements.
+Some of these ratios are more meaningful than others, but at least some of them are features that affect clothing design (like the ratio of waist circumference to chest circumference),
+cockpit design (like the ratio of arm length to leg length), or perceived attractiveness (like the ratio of face width to face height).</p>
+<p>With 93 measurements and 4278 ratios, there are a total of 4317 ways to be weird.
 The following figure shows the distribution of weirdness scores for the male participants.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -831,8 +965,54 @@ The following figure shows the distribution of weirdness scores for the male par
 </div>
 <p>With these measurements, all participants fall in a relatively narrow range of weirdness.
 The most “normal” participant deviates from average in 2446 ways; the weirdest in 4038 ways.</p>
+<p>Now, you might notice that the distribution of this weirdness score has the characteristic shape of a Gaussian curve, and that is not a coincidence.
+Mathematically, as the number of measurements increases, the distribution of weirdness converges to a Gaussian distribution and the width of the distribution gets narrower.
+In the limit, if we consider the nearly infinite ways people vary, we find that we are all equally weird.</p>
+</section>
+<section id="but-some-are-more-equal-than-others">
+<h2>But Some Are More Equal Than Others<a class="headerlink" href="#but-some-are-more-equal-than-others" title="Permalink to this heading">#</a></h2>
+<p>In some ways, this chapter is a feel good story.
+If at times in your life you have felt different, you are not alone; everyone is different in many ways.
+And if you think you’re normal and other people aren’t, you are wrong on both counts.</p>
+<p>But the real world is not like the mathematical world, and I want to be careful not to push this point too far.
+The idea that we are all equally weird is only true if the different ways of being different are treated the same.
+And that’s not the case.</p>
+<p>Considering the measurements in this chapter, some are more visible than others.
+If your menton-sellion length is in the 90th percentile, people will notice your long face, and if you are a famous actress, Seth MacFarlane will make fun of it.
+But if your lateral malleolus height is in the 90th percentile, you were probably not teased as a child because your ankle bone is unusually far from the ground.</p>
+<p>Among personality traits, some kinds of variation are met more favorably than others.
+For the most part, we accept introversion and extroversion as equally valid ways to be, but some of the other traits are more laden with value judgments.
+In general, we consider it better to be conscientious than unreliable, and better to be agreeable than obnoxious.</p>
+<p>Also, the world is designed to handle some kinds of variation better than others.
+For example, while introversion might not be considered a moral failing, many introverts find that school and work environments reward extroversion more than might be merited.</p>
+<p>The world handles some kinds of physical variation better than others, too.
+In <em>Invisible Women</em>, Caroline Criado Perez writes about many ways our built environment, designed primarily with men in mind, does not always fit women.
+Safety features in cars, tested on crash dummies with male proportions, protect women less effectively.
+Many smartphones are difficult to use one-handed if your hands are smaller than average.
+And, as more than half of the population discovered during the COVID-19 pandemic, a lot of personal protective equipment (PPE) is “based on the sizes and characteristics of male populations from certain countries in Europe and the United States. As a result, most women, and also many men, experience problems finding suitable and comfortable PPE,” according to the Trades Union Congress in the United Kingdom.</p>
+<p>Furthermore, the way I defined a “weirdness score” is too blunt.
+To be consistent with Daniels’s analysis, I consider only two categories: approximately average or not.
+In reality, our ability to handle variation has many levels.
+If you are a little taller or shorter than average, you have to adjust your car seat, but you might not even notice the inconvenience.
+But if you are too short to stand behind a “standard” lectern, or too tall to walk through a door without ducking, you will notice that the world is not designed for you.
+And at greater extremes, when the mismatch between you and the world makes common tasks difficult or impossible, we call it a disability – and implicitly put the blame on the person, not the built environment.</p>
+<p>So, when I say we are all equally weird, my intent is to point out the ways variability defies our intuitive concepts of “normal” and “weird”.
+I don’t mean to say that the world treats us as equally weird; it doesn’t.</p>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The ANSUR-II dataset is available from the Open Design Lab at Penn State \cite{ansur2012}. The measurements are described in the <em>Measurer’s Handbook: US Army and Marine Corps Anthropometric Surveys, 2010-2011</em> \cite{hotzman2011measurer}, which is more interesting than you might expect, especially if you need to know the proper term of address for a Marine Master Gunnery Sergeant.</p></li>
+<li><p>My example from a pediatric growth chart is from the Centers for Disease Control and Prevention (CDC) \cite{cdc2022}.</p></li>
+<li><p>You can take a version of the Big Five Personality Test, called the International Personality Item Pool (IPIP) online \cite{ospp2019}.</p></li>
+<li><p>Daniels’s paper is available from the Defense Technical Information Center \cite{daniels1952average}.</p></li>
+<li><p>Todd Rose wrote about the myth of the average person in <em>The end of average: How to succeed in a world that values sameness</em> \cite{rose2016end}.</p></li>
+<li><p>Caroline Criado Perez described some of the ways the world is ill-designed for women in an article \cite{perez2019deadly} based on her book, <em>Invisible Women</em> \cite{perez2019invisible}.</p></li>
+<li><p>The report on PPE and women is available from the Trades Union Congress \cite{tuc2017}.</p></li>
+<li><p>Sara Hendren wrote about the ways the world is ill-designed for people who are far from average in <em>What Can a Body Do?: How We Meet the Built World</em> \cite{hendren2020can}.</p></li>
+</ul>
+<p>Probably Overthinking It</p>
 <p>Copyright 2022 Allen Downey</p>
-<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
 </section>
 </section>
 
@@ -910,6 +1090,8 @@ The most “normal” participant deviates from average in 2446 ways; the weirde
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-myth-of-the-average-man">The Myth of the “Average Man”</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-five">The Big Five</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-are-all-equally-weird">We Are All Equally Weird</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#but-some-are-more-equal-than-others">But Some Are More Equal Than Others</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
   </nav></div>
 
