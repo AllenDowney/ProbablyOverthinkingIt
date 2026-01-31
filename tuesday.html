@@ -345,6 +345,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-versions">Other versions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-independence">What about independence?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-general">In general</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objections">Objections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-have-to-model-the-message-not-just-the-event">You have to model the message, not just the event</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#without-a-specified-selection-rule-symmetry-forces-the-answer-to-1-2">Without a specified selection rule, symmetry forces the answer to 1/2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-is-ambiguous-and-therefore-has-no-answer">The problem is ambiguous and therefore has no answer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-changing-the-sampling-procedure">You are changing the sampling procedure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-day-of-the-week-seems-irrelevant">The day of the week seems irrelevant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-result-depends-on-unrealistic-independence-assumptions">The result depends on unrealistic independence assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-is-artificial-or-pathological">The problem is artificial or pathological</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -370,6 +380,7 @@ document.write(`
 <li><p>An implication of this problem for teaching and learning probability.</p></li>
 </ol>
 <p>Let’s get started.</p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/tuesday.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -787,8 +798,63 @@ Girl Girl (p - 2)/(p - 4)
 </div>
 <p>If the property is rare – like the name Florida – the conditional probability is close to <code class="docutils literal notranslate"><span class="pre">1/2</span></code>.
 If the property is common – like having a name – the conditional probability is close to <code class="docutils literal notranslate"><span class="pre">1/3</span></code>.</p>
+</section>
+<section id="objections">
+<h2>Objections<a class="headerlink" href="#objections" title="Permalink to this heading">#</a></h2>
+<p>Here are some objections to the “girl born on Tuesday” problem along with my responses.</p>
+<section id="you-have-to-model-the-message-not-just-the-event">
+<h3>You have to model the message, not just the event<a class="headerlink" href="#you-have-to-model-the-message-not-just-the-event" title="Permalink to this heading">#</a></h3>
+<p><strong>Objection.</strong><br />
+The statement “at least one child is a girl born on Tuesday” should not be treated as a bare event in a probability space. It should be treated as the outcome of a random process that generates <em>messages</em> or <em>facts we learn</em>. Therefore, the probability space must include not only family composition, but also the mechanism by which that information is produced. Any solution that conditions only on the family outcomes is incomplete.</p>
+<p><strong>Response.</strong><br />
+I agree that if the problem is interpreted as conditioning on a <em>message</em> (something that is said, reported, or chosen from among several true statements), then the reporting mechanism matters and must be modeled explicitly. However, I don’t think such a mechanism is required in all cases. It is standard and meaningful to interpret a question as conditioning on an <em>event</em> – an extensional property of outcomes – without introducing an additional random variable for how the information was obtained. That is the interpretation I adopt here.</p>
+</section>
+<section id="without-a-specified-selection-rule-symmetry-forces-the-answer-to-1-2">
+<h3>Without a specified selection rule, symmetry forces the answer to 1/2<a class="headerlink" href="#without-a-specified-selection-rule-symmetry-forces-the-answer-to-1-2" title="Permalink to this heading">#</a></h3>
+<p><strong>Objection.</strong><br />
+If the problem does not specify how the information was obtained, then we must assume a symmetric rule for selecting which true statement is revealed. Under that assumption, conditioning on “at least one boy” or “at least one girl” must give the same answer, and applying the law of total probability forces the posterior probability to equal the prior. Therefore, the correct answer must be 1/2.</p>
+<p><strong>Response.</strong><br />
+This conclusion follows only if we assume that the conditioning is on a <em>message</em> chosen from a symmetric set of alternatives. Under that interpretation, the result does depend on the selection rule, and <code class="docutils literal notranslate"><span class="pre">1/2</span></code> is a valid answer for one particular choice of rule. But if the conditioning is on an <em>event</em> rather than a message, there is no requirement that different events form a symmetric partition or that the law of total probability be applied across them in this way. Under the event-based interpretation, the argument forcing <code class="docutils literal notranslate"><span class="pre">1/2</span></code> does not apply.</p>
+</section>
+<section id="the-problem-is-ambiguous-and-therefore-has-no-answer">
+<h3>The problem is ambiguous and therefore has no answer<a class="headerlink" href="#the-problem-is-ambiguous-and-therefore-has-no-answer" title="Permalink to this heading">#</a></h3>
+<p><strong>Objection.</strong><br />
+Because the problem does not specify how we learn that there is a girl born on Tuesday, it is fundamentally ambiguous. Since different interpretations lead to different answers, the question has no single correct solution.</p>
+<p><strong>Response.</strong><br />
+It’s true that the problem is ambiguous as stated in natural language. One option is to declare it unanswerable. Another is to resolve the ambiguity by adopting a conventional default interpretation. I choose the latter: I interpret the question as a conditional probability defined on an explicit probability model and make that interpretation clear by enumerating the sample space. Under that interpretation, the answer is unambiguous and, in my view, interesting and instructive – even if other interpretations lead to different answers.</p>
+</section>
+<section id="you-are-changing-the-sampling-procedure">
+<h3>You are changing the sampling procedure<a class="headerlink" href="#you-are-changing-the-sampling-procedure" title="Permalink to this heading">#</a></h3>
+<p><strong>Objection.</strong><br />
+Some people object that the <code class="docutils literal notranslate"><span class="pre">13/27</span></code> result comes from changing how families are selected. Conditioning on “at least one child is a girl born on Tuesday” oversamples families with more girls, so the conditional distribution no longer represents the original population of two-child families. From this perspective, the result feels like an artifact of biased sampling rather than a genuine probability update.</p>
+<p><strong>Response.</strong><br />
+That description is accurate, but it is not a flaw. Conditioning <em>is</em> biased sampling: evidence changes the distribution of outcomes. Families with more girls really are more likely to satisfy the condition, and the conditional probability reflects that fact.</p>
+</section>
+<section id="the-day-of-the-week-seems-irrelevant">
+<h3>The day of the week seems irrelevant<a class="headerlink" href="#the-day-of-the-week-seems-irrelevant" title="Permalink to this heading">#</a></h3>
+<p><strong>Objection.</strong><br />
+Tuesday has nothing to do with gender, so it feels wrong that adding this detail should change the probability. Since the day of the week does not <em>cause</em> a child to be a girl, it seems irrelevant to the question.</p>
+<p><strong>Response.</strong><br />
+This objection reflects a common confusion between causal independence and evidential relevance. While the day of the week does not cause the other child’s gender, it provides evidence about the number of girls in the family. Evidence can change probabilities even when there is no causal connection.</p>
+</section>
+<section id="the-result-depends-on-unrealistic-independence-assumptions">
+<h3>The result depends on unrealistic independence assumptions<a class="headerlink" href="#the-result-depends-on-unrealistic-independence-assumptions" title="Permalink to this heading">#</a></h3>
+<p><strong>Objection.</strong><br />
+The solution assumes that genders and days of the week are independent and uniformly distributed, which is not true in the real world. If those assumptions are relaxed, the answer changes.</p>
+<p><strong>Response.</strong><br />
+That is correct, but those assumptions are not the source of the puzzle. Relaxing them changes the numerical value of the answer, but not the underlying logic. The same kind of reasoning applies under more realistic models.</p>
+</section>
+<section id="the-problem-is-artificial-or-pathological">
+<h3>The problem is artificial or pathological<a class="headerlink" href="#the-problem-is-artificial-or-pathological" title="Permalink to this heading">#</a></h3>
+<p><strong>Objection.</strong><br />
+Some readers reject the problem not because the calculation is wrong, but because the setup feels artificial or unlike how information is learned in real life. From this view, the problem is a trick rather than a meaningful probability question.</p>
+<p><strong>Response.</strong><br />
+Whether this is a flaw or a feature depends on the goal. The problem is artificial, but it is intended to expose how unreliable our intuitions about conditional probability and independence can be. In that sense, its artificiality is what makes it pedagogically useful.
+The underlying issue – determining how evidence bears on hypotheses – comes up in real-world problems all the time.
+And getting it wrong has real-world consequences.</p>
 <p>Copyright 2025 Allen B. Downey</p>
 <p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a></p>
+</section>
 </section>
 </section>
 
@@ -856,6 +922,16 @@ If the property is common – like having a name – the conditional probability
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-versions">Other versions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-independence">What about independence?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-general">In general</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objections">Objections</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-have-to-model-the-message-not-just-the-event">You have to model the message, not just the event</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#without-a-specified-selection-rule-symmetry-forces-the-answer-to-1-2">Without a specified selection rule, symmetry forces the answer to 1/2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-is-ambiguous-and-therefore-has-no-answer">The problem is ambiguous and therefore has no answer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-changing-the-sampling-procedure">You are changing the sampling procedure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-day-of-the-week-seems-irrelevant">The day of the week seems irrelevant</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-result-depends-on-unrealistic-independence-assumptions">The result depends on unrealistic independence assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem-is-artificial-or-pathological">The problem is artificial or pathological</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
