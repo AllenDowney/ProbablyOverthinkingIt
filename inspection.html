@@ -348,6 +348,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#road-rage">Road Rage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#just-visiting">Just Visiting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recidivism">Recidivism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-everywhere">It’s Everywhere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
             </nav>
         </div>
@@ -361,6 +363,7 @@ document.write(`
                   
   <section id="relay-races-and-revolving-doors">
 <h1>Relay Races and Revolving Doors<a class="headerlink" href="#relay-races-and-revolving-doors" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/inspection.ipynb">Click here to run this notebook on Colab</a>.</p>
 <p>I gave a talk related to this chapter at PyData NYC 2019. You can <a class="reference external" href="https://www.youtube.com/watch?v=cXWTHfvycyM">watch the video here</a>.</p>
 <div class="cell tag_hide-cell docutils container">
@@ -376,48 +379,6 @@ document.write(`
     <span class="kn">import</span> <span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># Set the random seed so we get the same results every time</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -458,12 +419,30 @@ identify superspreaders.</p>
 <p>But let’s start with class sizes.</p>
 <section id="class-size">
 <h2>Class Size<a class="headerlink" href="#class-size" title="Permalink to this heading">#</a></h2>
+<p>Suppose you ask college students how big their classes are and average
+the responses. The result might be 90. But if you ask the college for
+the average class size, they might say 35. It sounds like someone is
+lying, but they could both be right.</p>
+<p>When you survey students, you oversample large classes; that is, large
+classes are more likely to appear in your sample than small classes. For
+example, if there are 10 students in a class, you have 10 chances to
+sample that class; if there are 100 students, you have 100 chances. In
+general, if the class size is <span class="math notranslate nohighlight">\(x\)</span>, it will be overrepresented in the
+sample by a factor of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>That’s not necessarily a mistake. If you want to quantify student
+experience, the average across students might be a more meaningful
+statistic than the average across classes. But you have to be clear
+about what you are measuring and how you report it.</p>
+<p>The numbers in this example are real. They come from data reported by
+Purdue University for undergraduate class sizes in the 2013–14 academic
+year. From their report I estimated the actual distribution of class
+sizes. In the following figure, the solid line shows the result as it
+would be reported by the Dean. Most classes are smaller than 50, fewer
+are between 50 and 100, and only a few are bigger than 100.</p>
 <p>The class sizes in this section come from data reported by
 Purdue University for undergraduate class sizes in the 2013–14 academic
-year.</p>
-<p><a class="reference external" href="https://www.purdue.edu/datadigest/2013-14/InstrStuLIfe/DistUGClasses.html">The data was originally posted here</a></p>
-<p><a class="reference external" href="https://web.archive.org/web/20160415011613/https://www.purdue.edu/datadigest/2013-14/InstrStuLIfe/DistUGClasses.html">Now archived here</a></p>
-<p>I typed in the number of classes in the row labeled “Total all classes”.</p>
+year. From their report I estimated the actual distribution of class
+sizes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">39</span><span class="p">),</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">49</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">)]</span>
@@ -476,17 +455,20 @@ year.</p>
 <p>Since the class sizes are specified in ranges, I used the following function to generate uniform random samples within each range.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_sample</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a sample from a distribution.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample_int_from_bins</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a sample from binned data by sampling integers uniformly within each bin.</span>
 
-<span class="sd">    sizes: sequence of (low, high) pairs</span>
-<span class="sd">    counts: sequence of integers</span>
+<span class="sd">    Takes histogram-style binned data (ranges and counts) and generates</span>
+<span class="sd">    a sample by drawing uniform random integer values within each bin range.</span>
+<span class="sd">    This &quot;expands&quot; the binned data back into a discrete sample.</span>
 
-<span class="sd">    returns: NumPy array</span>
+<span class="sd">    sizes: sequence of (low, high) pairs representing bin boundaries</span>
+<span class="sd">    counts: sequence of integers representing counts in each bin</span>
+
+<span class="sd">    returns: NumPy array of sampled integer values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">),</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
         <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
         <span class="n">t</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -496,19 +478,7 @@ year.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="n">generate_sample</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1 138
-2 9 635
-10 19 1788
-20 29 1979
-30 39 796
-40 49 354
-50 99 487
-100 300 333
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="n">sample_int_from_bins</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -538,67 +508,76 @@ year.</p>
 </div>
 </div>
 </div>
-<p>Here’s the distribution of class sizes as given in the report.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span><span class="p">,</span> <span class="n">kdeplot</span>
-
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by the Dean&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-
-<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Class size&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of class sizes&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/650e12c4546f7975340b569492f891abc6347c4f1c8be66b2070166a2cdf21cd.png" src="_images/650e12c4546f7975340b569492f891abc6347c4f1c8be66b2070166a2cdf21cd.png" />
+<img alt="_images/09f1c94d62e5aaedf3d0708524405624ae175759b623f8115b20f32151cab955.png" src="_images/09f1c94d62e5aaedf3d0708524405624ae175759b623f8115b20f32151cab955.png" />
 </div>
 </div>
 <p>The upper bound in this figure, 300, is just my guess. The original data
 indicates how many classes are bigger than 100, but it doesn’t say how
 much bigger. For this example, though, we don’t have to be too precise.</p>
-<p>Now here’s what the distribution would look like if we sampled students.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by the Dean&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by students&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-
-<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Class size&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of class sizes&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<p>Now suppose we sample students and ask how big their classes are. We can
+simulate this process by drawing a random sample from the actual
+distribution where the probability of sampling each class is
+proportional to its size.
+In the following figure, the dashed line shows the distribution of this simulated sample; the solid line shows the original distribution again.</p>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/3112e48c9303b5f811552c5cc853ce721a81b71fd04dfb40b767b04c9e19abaa.png" src="_images/3112e48c9303b5f811552c5cc853ce721a81b71fd04dfb40b767b04c9e19abaa.png" />
+<img alt="_images/6235d84d93417cc84ae7dd70b3ac6e4f2fec95c7803c0e1bacbadfec8d79353f.png" src="_images/6235d84d93417cc84ae7dd70b3ac6e4f2fec95c7803c0e1bacbadfec8d79353f.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.611827956989245
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>92.59815668202765
-</pre></div>
-</div>
-</div>
-</div>
+<p>The student sample is less likely to contain classes smaller than 40 and
+more likely to contain larger classes. And the means of the
+distributions are substantially different. The mean of the
+distribution reported by the Dean is about 35. The mean of the
+distribution seen by students is about 90.</p>
+<p>A discrepancy like this is called an “inspection paradox” because the
+data you get depends on how you do the inspection, that is, how you
+select the sample. If you visit a college and choose a classroom at
+random (without regard for its size) the class you find inside will have
+35 students, on average. But if you choose a student at random and follow
+them to one of their classes, it will have 90 students, on average.</p>
+<p>The apparent contradiction is paradoxical in the sense that it is
+unexpected. It’s not a true paradox in the sense used by philosophers,
+like a self-contradictory statement. But it can certainly be confusing
+and, if you are not familiar with the phenomenon, hard to explain.</p>
 </section>
 <section id="unbiasing-the-data">
 <h2>Unbiasing the Data<a class="headerlink" href="#unbiasing-the-data" title="Permalink to this heading">#</a></h2>
+<p>The inspection paradox can be a source of error if you think you
+measured one thing and accidentally measured another. But in the right
+hands, it can also be a tool.</p>
+<p>For example, suppose you are a student at a large university and all
+your classes have more than 100 students. The university web page says
+the average class size is 35, but you suspect that’s not accurate. You
+ask the university for more data, but they won’t give it to you. So you
+decide to collect your own data.</p>
+<p>Now, let’s assume that you find a good quality random sample of
+undergraduates at your university, with equal representation of all
+departments and grade levels. And let’s assume that the students in your
+sample report the sizes of their classes accurately.</p>
+<p>Because you have read this chapter, you know that the sample you
+collected is biased; that is, it is more likely to include large classes
+and less likely to include small classes. So you can’t just compute the
+mean of the biased data. That would be the answer to a different
+question.</p>
+<p>However, we don’t just know that the sample you collected is biased; we
+know precisely <em>how</em> it is biased, and that means we can reverse the
+process and estimate the unbiased distribution.</p>
+<p>In the previous section, I started with the unbiased distribution, as
+reported by the university, and simulated what would happen if I asked
+students about their classes. Now I will go the other way, starting with
+the biased distribution as reported by students and simulating what
+happens if we sample classes instead.</p>
+<p>Specifically, I will draw a random sample from the student-reported
+classes where the probability of choosing each class is <em>inversely</em>
+proportional to its size. The size of the sample I generated is 500, which seems
+like an amount of data it would be feasible to collect.</p>
+<p>The following figure shows the result. Again, the solid line shows the
+distribution as reported by the Dean, and the dashed line shows
+the biased distribution reported by students.
+The new, dotted line shows my estimate of the actual distribution,
+constructed by drawing a sample from the biased distribution.</p>
 <p>Now suppose we collect a biased sample of 500 class sizes and apply the inverse weights to estimate the unbiased distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -614,19 +593,9 @@ much bigger. For this example, though, we don’t have to be too precise.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by the Dean&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reported by students&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">reweighted</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Reweighted student sample&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-
-<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Class size&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of class sizes&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/1406f22111b6571e72a0589b3230bbd864049471b0ad87d6ef8d6bafc721fc6d.png" src="_images/1406f22111b6571e72a0589b3230bbd864049471b0ad87d6ef8d6bafc721fc6d.png" />
+<img alt="_images/dd9259ec522f38cebd873c2c18517394441a23729863edc37ab48d971e46395a.png" src="_images/dd9259ec522f38cebd873c2c18517394441a23729863edc37ab48d971e46395a.png" />
 </div>
 </div>
 <p>If the estimate were perfect, the solid and dotted lines would be
@@ -644,11 +613,28 @@ drawing a random sample from something that is itself a random sample.</p>
 </section>
 <section id="wheres-my-train">
 <h2>Where’s My Train?<a class="headerlink" href="#wheres-my-train" title="Permalink to this heading">#</a></h2>
-<p>I collected the following data from the Red Line, which is a
+<p>Another version of the inspection paradox happens when you are waiting
+for public transportation. Buses and trains are supposed to arrive at
+regular intervals, but in practice some intervals are longer than
+others.</p>
+<p>You might think, with your luck, that you are more likely to arrive
+during a long interval. And you’re right: a random arrival is more
+likely to fall in a long interval because, well, it’s longer.</p>
+<p>To quantify this effect, I collected data from the Red Line, which is a
 subway line in Boston, Massachusetts. The MBTA, which operates the Red
 Line, provides a real-time data service, which I used to record the
-arrival times for 70 trains between 4pm and 5pm over several days.
-I don’t remember when, but I think it was in 2010.</p>
+arrival times for 70 trains between 4pm and 5pm over several days.</p>
+<p>The shortest gap between trains was less than 3 minutes; the longest was
+more than 15. In the following figure, the solid line shows the
+distribution of the intervals I recorded. This is the actual
+distribution in the sense that it is what you would see if you stood on
+the platform all day and watched the trains go by. It resembles a bell curve,
+but it is a little
+pointier near 8 minutes; that is, values near the middle are more likely
+than we would expect from a Gaussian distribution, and values at the
+extremes a little less likely. There is actually a term for
+“pointier than a Gaussian distribution”, and it is one of my favorite
+words: “leptokurtotic”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="p">[</span>
@@ -741,188 +727,74 @@ I don’t remember when, but I think it was in 2010.</p>
 </div>
 </div>
 </div>
-<p>Here’s the unbiased distribution.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">16.5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by MBTA&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-
-<span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time between trains (min)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of time between trains&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/599e459e47a000a2b6ae2612bc4acb9b37ba710daeff2e95fbcea35e61934570.png" src="_images/599e459e47a000a2b6ae2612bc4acb9b37ba710daeff2e95fbcea35e61934570.png" />
+<img alt="_images/609a5a6ce2d9c325abbcef6687dfd5d5a2983ca5f14882b855604601c5cb8e7c.png" src="_images/609a5a6ce2d9c325abbcef6687dfd5d5a2983ca5f14882b855604601c5cb8e7c.png" />
 </div>
 </div>
-<p>And here’s the biased distribution as seen by passengers.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">16.5</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by MBTA&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Seen by passengers&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-
-<span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time between trains (min)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of time between trains&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<p>However, and more to my point, this is not the distribution you would
+see as a passenger. Assuming that you arrive at a random time, without
+any knowledge about when the next train will arrive, you are more likely
+to arrive during a long interval; specifically, if an interval is <span class="math notranslate nohighlight">\(x\)</span>
+minutes long, you will oversample it by a factor of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>As in the previous example with class sizes, I simulated this process,
+drawing a random sample from the observed intervals with the probability
+of choosing each interval proportional to its duration. In the following figure,
+the dashed line shows the result. In this biased distribution, long
+intervals are relatively more likely and short intervals are relatively
+less likely; the effect is that the biased distribution is shifted to
+the right.</p>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/a56cf7a29ddc6362dbdd2cdd30ccb09a54c10821d36742c440be2030ab138d03.png" src="_images/a56cf7a29ddc6362dbdd2cdd30ccb09a54c10821d36742c440be2030ab138d03.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8.570714285714285, 7.7680952380952375)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.332250352479615
-</pre></div>
-</div>
+<img alt="_images/139b403401b592202f0045a44749a75c12cdc5cd100e96f61001e3eaa55b4298.png" src="_images/139b403401b592202f0045a44749a75c12cdc5cd100e96f61001e3eaa55b4298.png" />
 </div>
 </div>
 <p>In the actual distribution, the average time between trains is 7.8
 minutes; in the biased distribution, as seen by a random passenger, it
-is 9.2 minutes, about 20% longer.</p>
+is 9.2 minutes, about 20% longer.
+In this example, the discrepancy is not very big; if you ride the train
+once or twice a day, you might not notice it.</p>
+<p>The size of the
+discrepancy depends on how much variation there is in the distribution.
+If the intervals between trains were all the same size, there would be
+no discrepancy at all. But as we’ll see in the next example, when the
+distribution is highly variable, bias in the sampling process can make a
+big difference.</p>
 </section>
 <section id="are-you-popular-hint-no">
 <h2>Are you popular? Hint: no.<a class="headerlink" href="#are-you-popular-hint-no" title="Permalink to this heading">#</a></h2>
-<p>To demonstrate the friendship paradox, I used data from a sample of about 4000
-Facebook users from the <a class="reference external" href="http://snap.stanford.edu/">Stanford Network Analysis Project (SNAP)</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://snap.stanford.edu/data/facebook_combined.txt.gz&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The following function reads the Facebook data and builds a NetworkX graph.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-
-
-<span class="k">def</span> <span class="nf">read_graph</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read a graph from a file.</span>
-
-<span class="sd">    filename: string</span>
-
-<span class="sd">    return: Graph</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-    <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">G</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fb</span> <span class="o">=</span> <span class="n">read_graph</span><span class="p">(</span><span class="s2">&quot;facebook_combined.txt.gz&quot;</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fb</span><span class="p">)</span>
-<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fb</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
-<span class="n">n</span><span class="p">,</span> <span class="n">m</span>
-</pre></div>
-</div>
-</div>
+<p>In 1991, the sociologist Scott Feld published a seminal paper on the “friendship
+paradox”, which is the observation that most people have fewer friends
+than their friends have. He studied real-life social networks, but the
+same effect appears in online networks. For example, if you choose a
+random Facebook user and then choose one of their friends at random, the
+chance is about 80% that the friend has more friends.</p>
+<p>The friendship paradox is a form of the inspection paradox. When you
+choose a random user, every user is equally likely. But when you choose
+one of their friends, you are more likely to choose someone with a lot
+of friends.</p>
+<p>To see why, suppose we visit every person in a social network and ask
+them to list their friends. If we put all of the lists together, someone
+with one friend will appear only once, someone with 10 friends will
+appear 10 times, and in general someone with <span class="math notranslate nohighlight">\(x\)</span> friends will appear <span class="math notranslate nohighlight">\(x\)</span>
+times.</p>
+<p>To demonstrate the effect, I used data from a sample of about 4000
+Facebook users. First I computed the number of friends each user has; in
+the following figure, the solid line shows this distribution. Most of
+the users in this sample have fewer than 50 friends, but a few of them
+have more than 200.</p>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4039, 88234)
-</pre></div>
+<img alt="_images/f3f87f12c726861ea052423bc3215813b05fef4b3f93faeaf7cdb2e048f5ab5c.png" src="_images/f3f87f12c726861ea052423bc3215813b05fef4b3f93faeaf7cdb2e048f5ab5c.png" />
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="p">[</span><span class="n">fb</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">fb</span><span class="p">]</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4039
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1045
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">resample_weighted</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">unbiased</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">high</span> <span class="o">=</span> <span class="mi">250</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here’s the unbiased distribution.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Random sample of people&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-
-<span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of friends&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of number of friends&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/e94b675d6b737b03c83452e3066857412633b02c7cce4beb3327a9f894bdf76b.png" src="_images/e94b675d6b737b03c83452e3066857412633b02c7cce4beb3327a9f894bdf76b.png" />
-</div>
-</div>
-<p>And here’s the biased distribution.
-Compared to the unbiased distribution, people with more than 50 friends are
+<p>Then I drew a sample from the list of friends, and counted how many
+friends <em>they</em> have. In the following figure, the dashed line shows this distribution. Compared
+to the unbiased distribution, people with more than 50 friends are
 overrepresented; people with fewer friends are underrepresented.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">unbiased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Random sample of people&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-<span class="n">kdeplot</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="s2">&quot;Random sample of friends&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-
-<span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Number of friends&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of number of friends&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/4fff45e97f69885ebb22542574a230bff3cf89d70764a781a10660659950425b.png" src="_images/4fff45e97f69885ebb22542574a230bff3cf89d70764a781a10660659950425b.png" />
+<img alt="_images/fae61546e257df0153baa24a893a60322a23e42056c743537573423d9f595020.png" src="_images/fae61546e257df0153baa24a893a60322a23e42056c743537573423d9f595020.png" />
 </div>
 </div>
 <p>The difference between the distributions is substantial: in the unbiased
@@ -930,21 +802,11 @@ sample, the average user has 44 friends; in the biased sample, the
 average friend has 104, more than twice as many. And if you are a random
 person in this sample, the probability that your friend is more popular
 than you is about 76%.</p>
-<p>If you are a bottlenose dolphin in Doubtful Sound, New Zealand, you interact regularly with between 1 and 12 other dolphins, according to the researchers who mapped your social network.
+<p>But don’t feel too bad; even the most charismatic megafauna have the same problem. If you are a bottlenose dolphin in Doubtful Sound, New Zealand, you interact regularly with between 1 and 12 other dolphins, according to the researchers who mapped your social network.
 If I choose one of your “friends” at random and compare them to you, the probability is about 65% that your friend has more friends than you.</p>
-<p>The dolphin data is from <a class="reference external" href="https://networkrepository.com/soc_dolphins.php">The Network Data Repository</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;http://nrvis.com/download/data/soc/soc-dolphins.zip&quot;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="s1">&#39;soc-dolphins.mtx&#39;</span><span class="p">):</span>
-    <span class="o">!</span>unzip<span class="w"> </span>soc-dolphins.zip
-</pre></div>
-</div>
-</div>
-</div>
+<p>You might have noticed that the length in “length-biased sampling” is not always an extent in space.
+In the class size example, the “length” of a class is the number of students; in the Red Line example, it’s the duration of the interval between trains; in the friendship paradox, it’s the number of friends.
+In the next example, it’s the number of people infected by a superspreader.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">mmread</span>
@@ -994,7 +856,7 @@ If I choose one of your “friends” at random and compare them to you, the pro
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/198942ded051684c9490376e59246aebe40c280fabc5f97f66e3d802b99b7ffd.png" src="_images/198942ded051684c9490376e59246aebe40c280fabc5f97f66e3d802b99b7ffd.png" />
+<img alt="_images/11a9cedd7183faec2294e4e21c36cae53fd41479e5a6ad14be32d67fa2c1bd93.png" src="_images/11a9cedd7183faec2294e4e21c36cae53fd41479e5a6ad14be32d67fa2c1bd93.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1019,7 +881,7 @@ If I choose one of your “friends” at random and compare them to you, the pro
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c7a1f231603b91fa2b549c0d8ea53f4c8bd5a7043ed219f19681cb032be85f5.png" src="_images/8c7a1f231603b91fa2b549c0d8ea53f4c8bd5a7043ed219f19681cb032be85f5.png" />
+<img alt="_images/49f1a5694dd92d9fd7df56f20d3859b32033c4e1adadde91468bd527a350e1ea.png" src="_images/49f1a5694dd92d9fd7df56f20d3859b32033c4e1adadde91468bd527a350e1ea.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1029,7 +891,7 @@ If I choose one of your “friends” at random and compare them to you, the pro
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.854838709677419, 5.129032258064516)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6.67741935483871, 5.129032258064516)
 </pre></div>
 </div>
 </div>
@@ -1041,7 +903,7 @@ If I choose one of your “friends” at random and compare them to you, the pro
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6290322580645161
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6129032258064516
 </pre></div>
 </div>
 </div>
@@ -1096,36 +958,53 @@ infect 2.4 other people.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.29
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.14
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">biased</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">unbiased</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.2875
-</pre></div>
-</div>
-</div>
-</div>
+<p>By simulating this sampling process, we can compute the distribution we
+would see by backward tracing. The average of this biased distribution
+is 10.1, more than four times the average of the unbiased distribution.
+This result suggests that backward tracing can discover four times more
+cases than forward tracing, given the same resources.</p>
+<p>This example is not just theoretical; Japan adopted this strategy in
+February 2020. As Michael Lewis describes in <em>The Premonition</em>:</p>
+<blockquote>
+<div><p>“When the Japanese health authorities found a new case, they did not
+waste their energy asking the infected person for a list of contacts
+over the previous few days, to determine whom the person might have
+infected in turn. […] Instead, they asked for a list of people with
+whom the infected person had interacted further back in time. Find
+the person who had infected the newly infected person and you might have
+found a superspreader. Find a superspreader and you could track down the
+next superspreader before [they] really got going.”</p>
+</div></blockquote>
+<p>So the inspection paradox is not always a nuisance; sometimes we can use
+it to our advantage.</p>
 </section>
 <section id="road-rage">
 <h2>Road Rage<a class="headerlink" href="#road-rage" title="Permalink to this heading">#</a></h2>
-<p>In the following figure, the solid line shows the actual distribution of
-speeds from the James Joyce Ramble, a 10K race in Massachusetts.</p>
-<p>The original web page is not available, but we can get it from the Internet Archive</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://web.archive.org/web/20100429073703/http://coolrunning.com/results/10/ma/Apr25_27thAn_set1.shtml&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Now let’s get back to the example at the beginning of the chapter, based
+on my experience running a 209-mile relay race. To recap, I noticed
+something unusual when I joined the race: when I overtook slower
+runners, they were usually much slower; and when faster runners passed
+me, they were usually much faster. At first I thought the distribution
+of runners had two modes, with many slow runners, many fast runners, and
+few runners like me in the middle. Then I realized I was being fooled by
+the inspection paradox.</p>
+<p>In long relay races, runners at different speeds end up spread out over the course with no relationship between their speed and location.
+So if you jump into the middle of the race, the people near you are something like a random sample of the runners in the race.</p>
+<p>Considering first the runners behind you, someone running much faster than you is more likely to overtake you during your time on the course than someone just a little bit faster.
+And, considering the runners in front of you, someone running much slower than you is more likely to be overtaken than someone just a little bit slower.
+Finally, if someone is running at the same speed as you, you might see them if they happen to be nearby when you join the race, but otherwise there is no chance that you will pass them or them you.</p>
+<p>So the sample of runners you see depends on your speed.
+Specifically, your chance of seeing another runner is proportional to the difference between your speed and theirs.</p>
+<p>We can simulate this effect using data from a conventional road race.
+In the following figure, the solid line shows the actual distribution of
+speeds from the James Joyce Ramble, a 10K race in Massachusetts.
+This is the distribution a spectator would see if they watched all of the runners go by.
+The dashed line shows the biased distribution that would be seen by a runner going 11 kilometers per hour (kph).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
@@ -1181,7 +1060,7 @@ The dashed line shows the biased distribution that would be seen by a runner goi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ae2d688efcf8022243745f860f32b5c27a86028321540a8f1970044030456ea5.png" src="_images/ae2d688efcf8022243745f860f32b5c27a86028321540a8f1970044030456ea5.png" />
+<img alt="_images/d7cbfdf1f3cfbc89350b789773786c5762817869d63cf7590c45d2e57c11e618.png" src="_images/d7cbfdf1f3cfbc89350b789773786c5762817869d63cf7590c45d2e57c11e618.png" />
 </div>
 </div>
 <p>And here’s the biased view seen be someone running 11 kph.</p>
@@ -1203,35 +1082,45 @@ The dashed line shows the biased distribution that would be seen by a runner goi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/48e344617160f785fc0298a30b6f86b280613ff1455f0d3a52242754f7e5a56b.png" src="_images/48e344617160f785fc0298a30b6f86b280613ff1455f0d3a52242754f7e5a56b.png" />
+<img alt="_images/f793a615d6a06d52faf714840870a1a637e14d49591733521368247d32ac39f2.png" src="_images/f793a615d6a06d52faf714840870a1a637e14d49591733521368247d32ac39f2.png" />
 </div>
 </div>
 <p>In the actual distribution, there are a lot of runners near 11 kph, but if you run at that speed, you are unlikely to see them.
 As a result, the biased distribution has few runners near 11 kph and more at the extremes.
 And it has two modes, one near 9 kph and one near 13 kph.
 So that explains my oxygen-deprived confusion.</p>
+<p>If you are not a runner, you might have noticed the same effect on the highway.
+You are more likely to see drivers who go too fast or too slow, and less likely to see safe, reasonable drivers like yourself.
+George Carlin summed it up:</p>
+<blockquote>
+<div><p>Have you ever noticed when you’re driving that anyone driving slower than you is an idiot and anyone driving faster than you is a maniac?
+[…] Because there’s certainly no one driving at my speed.</p>
+</div></blockquote>
 </section>
 <section id="just-visiting">
 <h2>Just Visiting<a class="headerlink" href="#just-visiting" title="Permalink to this heading">#</a></h2>
-<p>I downloaded data from the <a class="reference external" href="https://www.bop.gov/about/statistics/statistics_inmate_sentences.jsp">U.S. Federal Bureau of Prisons</a> (BOP) in June 2019.
-I archived the page so you can <a class="reference external" href="https://raw.githubusercontent.com/AllenDowney/InspectionParadox/master/BOP%20Statistics_%20Sentences%20Imposed.html">download it here</a>.</p>
+<p>Another example of the inspection paradox occurred to me when I read
+<em>Orange is the New Black</em>, a memoir by Piper Kerman, who spent 13 months
+in a federal prison. Kerman expresses surprise at the length of the
+sentences her fellow prisoners are serving. She is right to be
+surprised, but it turns out that she is not just the victim of an
+inhumane prison system; she has also been misled by the inspection
+paradox.</p>
+<p>If you visit a prison at a random time and choose a random prisoner, you
+are more likely to find a prisoner with a long sentence.
+By now, you probably see the pattern: a prisoner with sentence <span class="math notranslate nohighlight">\(x\)</span> is overrepresented by a factor of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>To see what difference it makes, I downloaded data from the U.S. Federal Bureau of Prisons (BOP).
+Each month, they report the distribution of sentences for current inmates in federal prisons.
+So the result is a biased sample.
+However, we can use the reported data to estimate the unbiased distribution, as we did with students and class sizes.</p>
+<p>In the following figure, the dashed line shows the distribution of sentences as reported by the BOP.
+The solid line shows the unbiased distribution I estimated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here&#39;s how I read the file, but this doesn&#39;t work on windows</span>
 
 <span class="c1">#tables = pd.read_html(&quot;BOP Statistics_ Sentences Imposed.html&quot;)</span>
 <span class="c1">#df = tables[0]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># so here&#39;s the CSV version I saved</span>
-
-<span class="n">download</span><span class="p">(</span>
-    <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/BOP_Statistics_Sentences_Imposed.csv&quot;</span>
-<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1340,17 +1229,20 @@ and that a life sentence is between 40 and 60 years.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_sample_continuous</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a sample from a distribution.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample_from_bins</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a sample from binned data by sampling uniformly within each bin.</span>
 
-<span class="sd">    sizes: sequence of (low, high) pairs</span>
-<span class="sd">    counts: sequence of integers</span>
+<span class="sd">    Takes histogram-style binned data (ranges and counts) and generates</span>
+<span class="sd">    a sample by drawing uniform random values within each bin range.</span>
+<span class="sd">    This &quot;expands&quot; the binned data back into a continuous sample.</span>
 
-<span class="sd">    returns: NumPy array</span>
+<span class="sd">    sizes: sequence of (low, high) pairs representing bin boundaries</span>
+<span class="sd">    counts: sequence of integers representing counts in each bin</span>
+
+<span class="sd">    returns: NumPy array of sampled values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">),</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
         <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
         <span class="n">t</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -1360,19 +1252,7 @@ and that a life sentence is between 40 and 60 years.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">generate_sample_continuous</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5155 0.02 1
-18619 1 3
-17897 3 5
-41887 5 10
-34995 10 15
-18674 15 20
-22738 20 40
-4600 40 60
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">sample_from_bins</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1406,12 +1286,15 @@ The solid line shows the unbiased distribution I estimated.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/214fc8f91bb6e9fde485f89d83f515108d9203ba68dc852ba779e185b90bb3f2.png" src="_images/214fc8f91bb6e9fde485f89d83f515108d9203ba68dc852ba779e185b90bb3f2.png" />
+<img alt="_images/37fc968658cd38feb589dcba04112d7c08e0efb5bf0ddba0a1dabf6dd9c382bd.png" src="_images/37fc968658cd38feb589dcba04112d7c08e0efb5bf0ddba0a1dabf6dd9c382bd.png" />
 </div>
 </div>
 <p>In the BOP sample, sentences less than three years are underrepresented and longer sentences are overrepresented.</p>
-<p>If the length of your stay is <span class="math notranslate nohighlight">\(y\)</span>, the chance of overlapping with a prisoner whose sentence is <span class="math notranslate nohighlight">\(x\)</span> is proportional to <span class="math notranslate nohighlight">\(x + y\)</span>.
-In the following figure, the dotted line shows what the resulting sample looks like when <span class="math notranslate nohighlight">\(y\)</span> is 13 months.</p>
+<p>If you work at a prison, and your job is to check in prisoners on their first day, you would see an unbiased sample.
+If you visit a prison and choose a prisoner at random, you see a biased sample.
+But what happens if you observe a prison over an interval like 13 months?
+If the length of your stay is <span class="math notranslate nohighlight">\(y\)</span>, the chance of overlapping with a prisoner whose sentence is <span class="math notranslate nohighlight">\(x\)</span> is proportional to <span class="math notranslate nohighlight">\(x + y\)</span>.</p>
+<p>In the following figure, the dotted line shows what the resulting sample looks like when <span class="math notranslate nohighlight">\(y\)</span> is 13 months.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">unbiased</span>
@@ -1442,13 +1325,17 @@ In the following figure, the dotted line shows what the resulting sample looks l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/077051387d57397e3e6094348cca60363f28ae44dbacf3e05e26de3406ecef4e.png" src="_images/077051387d57397e3e6094348cca60363f28ae44dbacf3e05e26de3406ecef4e.png" />
+<img alt="_images/30361f1e2347a2c184f3ce605bdeed7f6a0955ff8652ebabd6186b3821f7c195.png" src="_images/30361f1e2347a2c184f3ce605bdeed7f6a0955ff8652ebabd6186b3821f7c195.png" />
 </div>
 </div>
+<p>Someone like Kerman, who served a relatively short sentence, is more likely to see other short-timers, compared to a one-time visitor, and a little less likely to oversample people with long sentences – but not by much.
+The distribution she observed is substantially different from the actual distribution.
+We can summarize the differences like this:</p>
 <ul class="simple">
 <li><p>The mean of the actual distribution is 3.6 years; the mean of the biased distribution is almost 13 years, more than three times longer! To a 13-month observer, the mean is about 10 years, still much greater than the actual mean.</p></li>
 <li><p>In the actual distribution, about 45% of prisoners have sentences less than a year. If you visit a prison once, fewer than 5% of the prisoners you see are short-timers. If you stay for 13 months, your estimate is better but still not accurate: about 15% of the prisoners you meet are short-timers.</p></li>
 </ul>
+<p>But that’s not the only way the inspection paradox distorts our perception of the criminal justice system.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In the unbiased distribution, almost half of prisoners serve less than one year.</span>
@@ -1458,7 +1345,7 @@ In the following figure, the dotted line shows what the resulting sample looks l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4573633518670434
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.44923890256129795
 </pre></div>
 </div>
 </div>
@@ -1482,7 +1369,7 @@ In the following figure, the dotted line shows what the resulting sample looks l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.14339014978883724
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1415185489016498
 </pre></div>
 </div>
 </div>
@@ -1494,7 +1381,7 @@ In the following figure, the dotted line shows what the resulting sample looks l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5116851817207166
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5733885575130913
 </pre></div>
 </div>
 </div>
@@ -1506,7 +1393,7 @@ In the following figure, the dotted line shows what the resulting sample looks l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.770277541686598
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.77324871632595
 </pre></div>
 </div>
 </div>
@@ -1518,7 +1405,7 @@ In the following figure, the dotted line shows what the resulting sample looks l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.196918727005256
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.246041891086158
 </pre></div>
 </div>
 </div>
@@ -1526,10 +1413,14 @@ In the following figure, the dotted line shows what the resulting sample looks l
 </section>
 <section id="recidivism">
 <h2>Recidivism<a class="headerlink" href="#recidivism" title="Permalink to this heading">#</a></h2>
-<p>Rhodes, William, Gerald Gaes, Jeremy Luallen, Ryan Kling, Tom Rich, and Michael Shively. “Following incarceration, most released offenders never return to prison.” Crime &amp; Delinquency 62, no. 8 (2016): 1003-1025.</p>
-<p>This 2016 paper in the journal <em>Crime &amp; Delinquency</em>
-showed how the inspection paradox affects our estimates of recidivism, that is, the number of people released from prison who later return to prison.
-Based on data from 17 states, collected between 2000 and 2012, the authors compute the number of admissions to prison in an event-based sample, on page 1015.</p>
+<p>A 2016 paper in the journal <em>Crime &amp; Delinquency</em> showed how the inspection paradox affects our estimates of recidivism, that is, the number of people released from prison who later return to prison.
+By that definition, prior reports estimated that 45% to 50% of people released from state prisons returned to prison within three years.</p>
+<p>But those reports use “event-based” samples, that is, prisoners selected based on an event like their release from prison.
+That sampling process is biased because someone imprisoned more than once is more likely to appear in the sample.
+The alternative is an individual-based sample, where every prisoner is equally likely to appear, regardless of how many sentences they serve.</p>
+<p>In an event-based sample, recidivists are oversampled, so the recidivism rate is higher.
+Using data from the paper, we can find out how much higher.
+Based on data from 17 states, collected between 2000 and 2012, the authors compute the number of admissions to prison in an event-based sample, shown in the following figure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
@@ -1560,7 +1451,7 @@ Based on data from 17 states, collected between 2000 and 2012, the authors compu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/69f924f86c08c7648b78ad1b453d7811ddacfc784f856596232ea7b8281e9896.png" src="_images/69f924f86c08c7648b78ad1b453d7811ddacfc784f856596232ea7b8281e9896.png" />
+<img alt="_images/05f2eaf010f4d172d8d2d42eb122b47312e07a1a6e268ed2b8fb826277998188.png" src="_images/05f2eaf010f4d172d8d2d42eb122b47312e07a1a6e268ed2b8fb826277998188.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1577,7 +1468,8 @@ Based on data from 17 states, collected between 2000 and 2012, the authors compu
 </div>
 </div>
 </div>
-<p>In this sample, 51% of the prisoners served only one sentence; the other 49% were recidivists. We can use this data to simulate an individual-based sample.
+<p>In this sample, 51% of the prisoners served only one sentence; the other 49% were recidivists. So that’s consistent with results from previous reports.</p>
+<p>We can use this data to simulate an individual-based sample.
 In the following figure, the dashed line shows the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1609,7 +1501,7 @@ In the following figure, the dashed line shows the result.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a94d69e328cfa52cb127ed1fdd241dbec63fd68c8e90a9f5401d9423a781dd36.png" src="_images/a94d69e328cfa52cb127ed1fdd241dbec63fd68c8e90a9f5401d9423a781dd36.png" />
+<img alt="_images/a88eab69b4085b8c7b4275ea8ab44a910a6ef53a63aaa15a35ba521a8bb1e63b.png" src="_images/a88eab69b4085b8c7b4275ea8ab44a910a6ef53a63aaa15a35ba521a8bb1e63b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1625,10 +1517,42 @@ In the following figure, the dashed line shows the result.</p>
 </div>
 </div>
 <p>In the individual-based sample, most prisoners serve one sentence; only 28% are recidivists.
-That’s substantially lower than the recidivism rate in the event-based sample, which is 49%.</p>
-<p>Probably Overthinking It</p>
-<p>Copyright 2022 Allen Downey</p>
-<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+That’s substantially lower than the recidivism rate in the event-based sample, which is 49%.
+Neither of these statistics is wrong, but they answer different questions.</p>
+<p>The individual-based sample tells us what fraction of the people who ever serve time are recidivists.
+If we want to know whether prison is effective at deterring crime, or evaluate a new program intended to reduce recidivism, this might be a useful statistic to consider.
+By this standard, the outcome is relatively good; as the authors of the paper observe, “most offenders who enter and exit prison do not return.”</p>
+<p>The event-based sample tells us what fraction of the people released from prison during a short interval are recidivists.
+This statistic pertains to the risk of recidivism, but might not be the most useful because it does not distinguish people who have already served multiple sentences from those who will.
+And, due to the inspection paradox, the event-based sample “exaggerates the failure rate of offenders”, which “may fuel a pessimistic view that nothing works, or at least that nothing works very well.”</p>
+<p>A related phenomenon might affect the perception of a police officer who arrests the same person more than once.
+They might feel like the exercise is futile, but their sample is biased.
+On any given day, they are more likely to interact with a career criminal, less likely to
+encounter a one-timer, and even less likely to interact with a law-abiding citizen.
+If they are not aware of this bias, it might make their perception of criminal justice bleaker than the reality.</p>
+</section>
+<section id="its-everywhere">
+<h2>It’s Everywhere<a class="headerlink" href="#its-everywhere" title="Permalink to this heading">#</a></h2>
+<p>Once you become aware of the inspection paradox, you see it everywhere.</p>
+<p>When I teach my Data Science class, I ask students how big their families are and compute the average. Every semester, the result is higher than the natural average. Do my students come from unusually big families? No, my sampling process is biased. If a family has many children, it is more likely that one of them will be in my class. In general, families with <span class="math notranslate nohighlight">\(x\)</span> children are overrepresented by a factor of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>When you call customer service, why is the call center <em>always</em> experiencing “higher than normal call volume”? Because when they are busy, many people hear this message; when they are less busy, there are fewer customers to enjoy it.</p>
+<p>Airlines complain that too many flights are nearly empty; at the same time, passengers complain that too many planes are full. Both could be true. When a flight is nearly empty, only a few passengers enjoy the extra space. But when a flight is full, many passengers feel the crunch.</p>
+<p>In summary, the inspection paradox appears in many domains, sometimes in subtle ways. If you are not aware of it, it can cause statistical errors and lead to invalid conclusions. But in many cases it can be avoided, or even used deliberately as part of an experimental design.</p>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The class size data from Purdue University is no longer on their web page, but it is available from the Internet Archive (<a class="reference external" href="https://web.archive.org/web/20160415011613/https://www.purdue.edu/datadigest/2013-14/InstrStuLIfe/DistUGClasses.html">Purdue University, 2016</a>).</p></li>
+<li><p>Information about the Red Line data is available from the MBTA (<a class="reference external" href="https://www.mbta.com/developers">Massachusetts Bay Transportation Authority, 2021</a>).</p></li>
+<li><p>Feld’s original paper about the friendship paradox is “Why Your Friends Have More Friends Than You Do” (<a class="reference external" href="http://www.jstor.org/stable/2781907">Feld, 1991</a>). In 2011, a group of researchers published a study of 721 million Facebook users that quantified the friendship paradox (<a class="reference external" href="https://arxiv.org/abs/1111.4503">Ugander et al., 2011</a>). I don’t have access to their data, so I worked with a much smaller subset from a 2012 paper (<a class="reference external" href="http://papers.nips.cc/paper/4532-learning-to-discover-social-circles-in-ego-networks">McAuley &amp; Leskovec, 2012</a>), which is available from the Network Data Repository (<a class="reference external" href="http://networkrepository.com">Rossi &amp; Ahmed, 2015</a>).</p></li>
+<li><p>John Allen Paulos presented the friendship paradox in <em>Scientific American</em> (<a class="reference external" href="https://www.scientificamerican.com/article/why-youre-probably-less-popular-than-your-friends/">Paulos, 2011</a>). Steven Strogatz wrote about it, as well as the class size paradox, in <em>The New York Times</em> (<a class="reference external" href="https://opinionator.blogs.nytimes.com/2012/09/17/friends-you-can-count-on">Strogatz, 2012</a>).</p></li>
+<li><p>The dolphin data is originally from a paper in <em>Behavioral Ecology and Sociobiology</em> (<a class="reference external" href="https://link.springer.com/article/10.1007/s00265-003-0651-y">Lusseau et al., 2003</a>); I downloaded it from the Network Data Repository (<a class="reference external" href="http://networkrepository.com">Rossi &amp; Ahmed, 2015</a>).</p></li>
+<li><p>Michael Lewis wrote about contact tracing in <em>The Premonition</em> (Penguin UK, 2021), based in part on an article in <em>Nature</em> (<a class="reference external" href="https://www.nature.com/articles/d41586-020-03518-4">Lewis, 2020</a>).</p></li>
+<li><p>Zeynep Tufekci wrote about superspreaders in <em>The Atlantic</em> (<a class="reference external" href="https://www.theatlantic.com/health/archive/2020/09/k-overlooked-variable-driving-pandemic/616548/">Tufekci, 2020</a>).</p></li>
+<li><p>The running speed data is originally from Cool Running, now available from the Internet Archive (<a class="reference external" href="https://web.archive.org/web/20100429073703/http://coolrunning.com/results/10/ma/Apr25_27thAn_set1.shtml">Cool Running, 2010</a>).</p></li>
+<li><p>I got data on the duration of prison sentences from the website of the Federal Bureau of Prisons (<a class="reference external" href="https://www.bop.gov/about/statistics/statistics_inmate_sentences.jsp">Federal Bureau of Prisons, 2019</a>).</p></li>
+<li><p>The paper on recidivism is Rhodes et al., “Following incarceration, most released offenders never return to prison” (<a class="reference external" href="https://journals.sagepub.com/doi/abs/10.1177/0011128715613404">Rhodes et al., 2016</a>).</p></li>
+</ul>
 </section>
 </section>
 
@@ -1707,6 +1631,8 @@ That’s substantially lower than the recidivism rate in the event-based sample,
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#road-rage">Road Rage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#just-visiting">Just Visiting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recidivism">Recidivism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#its-everywhere">It’s Everywhere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
   </nav></div>
 
