@@ -341,6 +341,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#family-size">Family Size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Family Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-depression-and-the-baby-boom">The Depression and the Baby Boom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-recently">More Recently</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prestons-paradox">Preston’s Paradox</a></li>
@@ -349,6 +350,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-reality">In Reality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-present">In the Present</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-note-the-poisson-distribution">Technical Note: The Poisson distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
             </nav>
         </div>
@@ -362,6 +364,7 @@ document.write(`
                   
   <section id="defy-tradition-save-the-world">
 <h1>Defy Tradition, Save the World<a class="headerlink" href="#defy-tradition-save-the-world" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/preston.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -376,48 +379,6 @@ document.write(`
     <span class="kn">import</span> <span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># Set the random seed so we get the same results every time</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -440,25 +401,28 @@ As a benevolent despot, you are reluctant to restrict your subjects’ reproduct
 <p>Actually, that’s not true.</p>
 <p>In 1976, Samuel Preston, a demographer at the University of Washington, published a paper that presents three surprising phenomena.</p>
 <p>The first is the relationship between two measurements of family size: what we get if we ask women how many children they have, and what we get if we ask people how many children their mother had.
-In general, the average family size is smaller if ask women about their children, and larger if we ask children about their mothers.</p>
+In general, the average family size is smaller if we ask women about their children, and larger if we ask children about their mothers.
+In this chapter, we’ll see why and by how much.</p>
 <p>The second phenomenon is related to changes in American family sizes during the 20th century.
 Suppose you compare family sizes during the Great Depression (roughly the 1930s) and the Baby Boom (1946-64).
 If you survey women who bore children during these periods, the average family was bigger during the Baby Boom.
-But if you ask their children how big their families were, the average was bigger during the Depression.</p>
+But if you ask their children how big their families were, the average was bigger during the Depression.
+In this chapter, we’ll see how that happened.</p>
 <p>The third phenomenon is what we learned in your imaginary kingdom, which I will call Preston’s Paradox: Even if every woman has fewer children than her mother, family sizes can get bigger, on average.</p>
 <p>To see how that’s possible, we’ll start with the two measurements of family size.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the Census data</span>
-<span class="c1"># Originally from https://www2.census.gov/programs-surveys/demo/tables/fertility/time-series/his-cps/h2.xlsx</span>
-
-<span class="n">download</span><span class="p">(</span>
-    <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/h2.xlsx&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<section id="family-size">
+<h2>Family Size<a class="headerlink" href="#family-size" title="Permalink to this heading">#</a></h2>
+<p>Families are complicated. A woman might not raise her biological children, and she might raise children she did not bear. Children might not be raised with their biological siblings, and they might be raised with children they are not related to.
+So the definition of “family size” depends on who’s asked and what they’re asked.</p>
+<p>In the context of population growth, we are often interested in lifetime fertility, so Preston defines “family size” to mean “the total number of children ever born to a woman who has completed childbearing.”
+He suggests that this measure “might more appropriately be termed ‘brood size’,” but I will stick with the less zoological term.</p>
+<p>In the context of sociology, we are often interested in the size of the “family of orientation”, which is the family a person grows up in.
+If we can’t measure families of orientation directly, we can estimate their sizes, at least approximately, if we make the simplifying assumption that most women raise the children they bear.
+To show how that works, I’ll use data from the U.S. Census Bureau.</p>
+<p>Every other year, as part of the Current Population Survey (CPS), the Census Bureau surveys a representative sample of women in the United States and asks, among other things, how many children they have ever born.
+To measure completed family sizes, they select women aged 40-44 (of course, some women bear children in their forties, so these estimates might be a little low).</p>
+<p>I used their data from 2018 to estimate the current distribution of family sizes.
+The following figure shows the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rename_dict</span> <span class="o">=</span> <span class="p">{</span>
@@ -1170,11 +1134,12 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">least_sq
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aa09f6801ce4218a5037333e2011bebcb928eb41022fa77beb239a5dcbe26c91.png" src="_images/aa09f6801ce4218a5037333e2011bebcb928eb41022fa77beb239a5dcbe26c91.png" />
+<img alt="_images/1a99074a7fd688a0c98682ea7840959a852e1a9c2f8daaccb6102fdc04dcac75.png" src="_images/1a99074a7fd688a0c98682ea7840959a852e1a9c2f8daaccb6102fdc04dcac75.png" />
 </div>
 </div>
-<section id="family-size">
-<h2>Family Size<a class="headerlink" href="#family-size" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id1">
+<h2>Family Size<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Every other year, as part of the Current Population Survey (CPS), the Census Bureau surveys a representative sample women in the United States and asks, among other things, how many children they have ever born.
 To measure completed family sizes, they select women aged 40-44 (of course, some women bear children in their forties, so these estimates might be a little low).</p>
 <p>I used their data from 2018 to estimate the current distribution of family sizes.
@@ -1250,7 +1215,7 @@ The following figure shows the result.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dba7fa146d73c0b333edec60b5aee7b171e2fb90012d836098a529481ee79c05.png" src="_images/dba7fa146d73c0b333edec60b5aee7b171e2fb90012d836098a529481ee79c05.png" />
+<img alt="_images/036af6d236e27424b26a542a343678cbf0727b823c754a314ccce6255326843e.png" src="_images/036af6d236e27424b26a542a343678cbf0727b823c754a314ccce6255326843e.png" />
 </div>
 </div>
 <p>The circles show the percentage of women who bore each number of children.
@@ -1274,15 +1239,6 @@ According to their children, families got smaller during the same interval, by a
 <p>Preston’s paper presents the distributions in a figure, so I used a graph digitizing tool to extract them numerically.
 Because this process introduces small errors, I adjusted the results to match the average family sizes Preston computed.
 The following figure shows these distributions.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span>
-    <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/preston_data.csv&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># When I made this dataset, I didn&#39;t change the default labels for the columns.</span>
@@ -1465,7 +1421,7 @@ The following figure shows these distributions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ae6681781130ffdc69a640cb409cfe662f63f3cfad31402fcaa6464956f5c67f.png" src="_images/ae6681781130ffdc69a640cb409cfe662f63f3cfad31402fcaa6464956f5c67f.png" />
+<img alt="_images/16fa8bd47594500ca0f82a46370c727da684911a6263cd969c9c9911670d05e7.png" src="_images/16fa8bd47594500ca0f82a46370c727da684911a6263cd969c9c9911670d05e7.png" />
 </div>
 </div>
 <p>The data past x=6 are not very accurate, and the PMFs are not normalized.</p>
@@ -1520,7 +1476,7 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/d180a7d31127115f73f0bb54551a03004c6e43735811a878d34a53a2b8630ce8.png" src="_images/d180a7d31127115f73f0bb54551a03004c6e43735811a878d34a53a2b8630ce8.png" />
+<img alt="_images/cd32c75060d9e33777be080de6454325b151b2dd87810e7231df41c7a0e02a0e.png" src="_images/cd32c75060d9e33777be080de6454325b151b2dd87810e7231df41c7a0e02a0e.png" />
 </div>
 </div>
 <p>But we can use <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> to improve it. Here’s the error function.</p>
@@ -1592,7 +1548,7 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 </div>
-<p>The means of C and X and just about right.</p>
+<p>The means of C and X are just about right.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biased</span> <span class="o">=</span> <span class="n">bias_pmf</span><span class="p">(</span><span class="n">model1950</span><span class="p">)</span>
@@ -1616,7 +1572,7 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/50d1b1cc54cfd62315a9c0d1385f78da32bd3353efb4e491615d5965dbac9b8d.png" src="_images/50d1b1cc54cfd62315a9c0d1385f78da32bd3353efb4e491615d5965dbac9b8d.png" />
+<img alt="_images/24132d78c2205a43c9a2bf417c1414efa18b3878737ef1f6b99d688dc268b6d6.png" src="_images/24132d78c2205a43c9a2bf417c1414efa18b3878737ef1f6b99d688dc268b6d6.png" />
 </div>
 </div>
 <p>Here’s the model for the 1970 data.</p>
@@ -1655,7 +1611,7 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/829235bf431c2c0c64e0b4c45aed5df39c83d43484cbc74db184b2ae1fab5859.png" src="_images/829235bf431c2c0c64e0b4c45aed5df39c83d43484cbc74db184b2ae1fab5859.png" />
+<img alt="_images/48e550fd81022f346f92715a5e5138c3a901c16e8fb502dae4e8899b16a44516.png" src="_images/48e550fd81022f346f92715a5e5138c3a901c16e8fb502dae4e8899b16a44516.png" />
 </div>
 </div>
 <p>Here are the two models.</p>
@@ -1673,7 +1629,7 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7c250650916d3f6bbd7adbd051806422634661cbdea97b5dd84b2348b81e539e.png" src="_images/7c250650916d3f6bbd7adbd051806422634661cbdea97b5dd84b2348b81e539e.png" />
+<img alt="_images/79468441c25bef5ac86ff723101c218beba88da7f1b93c06b7c6176ef1fb9ade.png" src="_images/79468441c25bef5ac86ff723101c218beba88da7f1b93c06b7c6176ef1fb9ade.png" />
 </div>
 </div>
 <p>Family size was more variable in the 1950 cohort.
@@ -1774,7 +1730,7 @@ The first cohort was interviewed in 1976, the last in 2018.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12240e54dc1e59ff3ec34af984a7fd86b1c381f866fbf4d2db4c679b5b7722b1.png" src="_images/12240e54dc1e59ff3ec34af984a7fd86b1c381f866fbf4d2db4c679b5b7722b1.png" />
+<img alt="_images/eae8141a7e36b26119e6e5c45f7b1d5925125245052068252c64699bdae7f3d7.png" src="_images/eae8141a7e36b26119e6e5c45f7b1d5925125245052068252c64699bdae7f3d7.png" />
 </div>
 </div>
 <p>Between 1976 and 1990, average family size fell from more than 3 to less than 2.
@@ -1797,7 +1753,7 @@ The following figure shows the percentage of women with 0, 1, or 2 children, plo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6c7128375c47ba1aea33001b55a6ae3b6be3086b3d6bfebfef7aabf47be2a8f6.png" src="_images/6c7128375c47ba1aea33001b55a6ae3b6be3086b3d6bfebfef7aabf47be2a8f6.png" />
+<img alt="_images/c5436bc2ba51756d3ddb6d44d45d2bda7ccc858778e694fc3b4731ff8ad5ab2c.png" src="_images/c5436bc2ba51756d3ddb6d44d45d2bda7ccc858778e694fc3b4731ff8ad5ab2c.png" />
 </div>
 </div>
 <p>The fraction of small families has increased; most notably, between 1976 and 1990, the percentage of women with two children increased from 22% to 35%.
@@ -1819,7 +1775,7 @@ The percentage of women with one child or zero also increased.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5dd863779921d5c175231fefd144da389643bb4324b63793e50bcf7979ec2a22.png" src="_images/5dd863779921d5c175231fefd144da389643bb4324b63793e50bcf7979ec2a22.png" />
+<img alt="_images/7cd124afbf4af0cd46fed83725cd8a4469a822450ff76bbbec9cfad0ea7c09e4.png" src="_images/7cd124afbf4af0cd46fed83725cd8a4469a822450ff76bbbec9cfad0ea7c09e4.png" />
 </div>
 </div>
 <p>The proportion of large families declined substantially, especially the percentage of families with 5-6 children, which was 14% in 1976 and 4% in 2018.
@@ -1876,7 +1832,7 @@ Over the same period, the percentage of families with seven or more children dec
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9857c195f7069d2e996995ad30249875a8867a227153cb60742a8126c01a021c.png" src="_images/9857c195f7069d2e996995ad30249875a8867a227153cb60742a8126c01a021c.png" />
+<img alt="_images/8b2c191ee5f9619328c740e374409a16aec3d27a058e600190ad0ed967347a64.png" src="_images/8b2c191ee5f9619328c740e374409a16aec3d27a058e600190ad0ed967347a64.png" />
 </div>
 </div>
 <p>Between 1976 and 1990, the average family size reported by women, <span class="math notranslate nohighlight">\(X\)</span>, decreased from 3.1 to 2.0.
@@ -1973,7 +1929,7 @@ As a small example, suppose there are only two families, one with two children a
 <p>If each of these women has the same number of children as her mother, one would have two children and the other two would have four.
 So the average family size would be 3.33.</p>
 <p>In the next generation, there would be one woman with two children, again, but there would be four with four. So the average family size would be 3.6.</p>
-<p>In successive generations, the number of four-child families would increase exponentially, and the average family size would quickly approach to 4.</p>
+<p>In successive generations, the number of four-child families would increase exponentially, and the average family size would quickly approach 4.</p>
 <p>We can do the same calculation with a more realistic distribution.
 The following figure shows the actual distribution of family sizes from 1979 (solid line) and the result of this calculation, which simulates the “same as mother” scenario (dashed line).</p>
 <div class="cell docutils container">
@@ -1990,7 +1946,7 @@ The following figure shows the actual distribution of family sizes from 1979 (so
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/27c7f8fcedbe76e1470c8b4dc210ed97822d749d922b05a5e98a27ed1a7b797a.png" src="_images/27c7f8fcedbe76e1470c8b4dc210ed97822d749d922b05a5e98a27ed1a7b797a.png" />
+<img alt="_images/e028e2919c58dc560a35a66b019e9624f7891cc06f492f54b09f237d3ac01b06.png" src="_images/e028e2919c58dc560a35a66b019e9624f7891cc06f492f54b09f237d3ac01b06.png" />
 </div>
 </div>
 <p>The mean of the original distribution is 3; the mean of the simulated distribution is 4.3.</p>
@@ -2077,7 +2033,7 @@ Eventually, nearly all women would have 13 children, which is the maximum in thi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4a18629ad9a739666fe04b7563bb4def0d5604cfb4e1a902eccfd4b5cbea0688.png" src="_images/4a18629ad9a739666fe04b7563bb4def0d5604cfb4e1a902eccfd4b5cbea0688.png" />
+<img alt="_images/0781e7818cd4ed5f65fccf81ca69a97bb2331fed1848c585fe7124e1588732b3.png" src="_images/0781e7818cd4ed5f65fccf81ca69a97bb2331fed1848c585fe7124e1588732b3.png" />
 </div>
 </div>
 </section>
@@ -2156,7 +2112,7 @@ We can simulate this behavior by computing the biased distribution, as in the pr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e5d16c1c7c34351e2ee7c054da388b454d2625353b8ce0beefeb451fe68d4477.png" src="_images/e5d16c1c7c34351e2ee7c054da388b454d2625353b8ce0beefeb451fe68d4477.png" />
+<img alt="_images/ab6c9a3e695134f40dc3769d66f53a3faf52049851f840d1d755c6729c566097.png" src="_images/ab6c9a3e695134f40dc3769d66f53a3faf52049851f840d1d755c6729c566097.png" />
 </div>
 </div>
 <p>The simulated distribution has been length-biased, which increases the average, and then shifted to the left, which decreases the average.
@@ -2211,7 +2167,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/24c17ed8feeec10aff65db0a182a800db3fd45049da88122bfee329bae4a0e5d.png" src="_images/24c17ed8feeec10aff65db0a182a800db3fd45049da88122bfee329bae4a0e5d.png" />
+<img alt="_images/0005413a813fa10b0549f1d4ec8d4644fbbe5c98ab88a8744654b355b3baca35.png" src="_images/0005413a813fa10b0549f1d4ec8d4644fbbe5c98ab88a8744654b355b3baca35.png" />
 </div>
 </div>
 <p>Family size would increase for four generations, peaking at 3.9.
@@ -2476,7 +2432,7 @@ The following distribution shows the actual distribution in 2018, compared to th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8433461f131cdb8c9ebcace26bde228b36eea6202df786c804353c5e50e92b2f.png" src="_images/8433461f131cdb8c9ebcace26bde228b36eea6202df786c804353c5e50e92b2f.png" />
+<img alt="_images/63f31de166be5a3a106c459d2796cd77c1cd97f7eb6feac74b3d6338140a0c67.png" src="_images/63f31de166be5a3a106c459d2796cd77c1cd97f7eb6feac74b3d6338140a0c67.png" />
 </div>
 </div>
 <p>The means of the two distributions are almost the same, but the shapes are different.
@@ -2532,7 +2488,7 @@ Across the population, what would the distribution of family size look like?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cd6686c802a9b34a256c42ab5d23cc8225a38ca74546db1e8c5a026c097bd982.png" src="_images/cd6686c802a9b34a256c42ab5d23cc8225a38ca74546db1e8c5a026c097bd982.png" />
+<img alt="_images/7f14fe82ef555df7591d35075cb4d9fd6e5648dada0f0b962fe18ef602567b81.png" src="_images/7f14fe82ef555df7591d35075cb4d9fd6e5648dada0f0b962fe18ef602567b81.png" />
 </div>
 </div>
 <p>The bars show the actual distributions for selected years from 1990 to 2018, with the shaded areas representing variation from year to year.
@@ -2596,14 +2552,19 @@ The following figure shows three distributions:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5f641dbac793ba66905acc94640fceba83962b81c615ca91a97ec26d2dc91dcf.png" src="_images/5f641dbac793ba66905acc94640fceba83962b81c615ca91a97ec26d2dc91dcf.png" />
+<img alt="_images/e6ba055f7b673f3a1f3c9ea34abd51bbdce760a90e1d34fa72096c37085e38d3.png" src="_images/e6ba055f7b673f3a1f3c9ea34abd51bbdce760a90e1d34fa72096c37085e38d3.png" />
 </div>
 </div>
 <p>The biased distribution is identical to the original distribution, but shifted to the right by one.
 When we apply the “one child fewer” policy, it shifts the distribution to the left by one, right back where it started.</p>
-<p>Probably Overthinking It</p>
-<p>Copyright 2022 Allen Downey</p>
-<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Preston’s paper is “Family sizes of children and family sizes of women” (Preston, 1976), published in <em>Demography</em>.</p></li>
+<li><p>Documentation of the CPS Supplemental surveys is available on the <a class="reference external" href="https://www.census.gov/programs-surveys/cps/about/supplemental-surveys.html">website of the Census Bureau</a> (United States Census Bureau, 2022). The data I used is “Distribution of Women Age 40-50 by Number of Children Ever Born and Marital Status: CPS, Selected Years, 1976-2018” (United States Census Bureau, 2018), available <a class="reference external" href="https://www.census.gov/data/tables/time-series/demo/fertility/his-cps.html">here</a>.</p></li>
+<li><p>In September 2022, <em>The Economist</em> wrote about <a class="reference external" href="https://www.economist.com/china/2022/09/29/china-is-trying-to-get-people-to-have-more-babies">China’s one-child policy and recent efforts to increase family sizes</a> (The Economist, 2022).</p></li>
+</ul>
 </section>
 </section>
 
@@ -2675,6 +2636,7 @@ When we apply the “one child fewer” policy, it shifts the distribution to th
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#family-size">Family Size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Family Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-depression-and-the-baby-boom">The Depression and the Baby Boom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-recently">More Recently</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prestons-paradox">Preston’s Paradox</a></li>
@@ -2683,6 +2645,7 @@ When we apply the “one child fewer” policy, it shifts the distribution to th
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-reality">In Reality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-present">In the Present</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-note-the-poisson-distribution">Technical Note: The Poisson distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
   </nav></div>
 
