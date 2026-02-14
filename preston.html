@@ -341,10 +341,12 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#family-size">Family Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Family Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-depression-and-the-baby-boom">The Depression and the Baby Boom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-recently">More Recently</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prestons-paradox">Preston’s Paradox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prestons-paradox">Preston’s Paradox</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-note">Technical Note</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-child-fewer">One Child Fewer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-long-run">In The Long Run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-reality">In Reality</a></li>
@@ -364,7 +366,7 @@ document.write(`
                   
   <section id="defy-tradition-save-the-world">
 <h1>Defy Tradition, Save the World<a class="headerlink" href="#defy-tradition-save-the-world" title="Permalink to this heading">#</a></h1>
-<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587"><strong>Bookshop.org</strong></a> and <a class="reference external" href="https://amzn.to/3Kp629E"><strong>Amazon</strong></a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/preston.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -419,7 +421,7 @@ He suggests that this measure “might more appropriately be termed ‘brood siz
 <p>In the context of sociology, we are often interested in the size of the “family of orientation”, which is the family a person grows up in.
 If we can’t measure families of orientation directly, we can estimate their sizes, at least approximately, if we make the simplifying assumption that most women raise the children they bear.
 To show how that works, I’ll use data from the U.S. Census Bureau.</p>
-<p>Every other year, as part of the Current Population Survey (CPS), the Census Bureau surveys a representative sample of women in the United States and asks, among other things, how many children they have ever born.
+<p>Every other year, as part of the Current Population Survey (CPS), the Census Bureau surveys a representative sample of women in the United States and asks, among other things, how many children they have ever borne.
 To measure completed family sizes, they select women aged 40-44 (of course, some women bear children in their forties, so these estimates might be a little low).</p>
 <p>I used their data from 2018 to estimate the current distribution of family sizes.
 The following figure shows the result.</p>
@@ -1137,13 +1139,6 @@ I’ll use <code class="docutils literal notranslate"><span class="pre">least_sq
 <img alt="_images/1a99074a7fd688a0c98682ea7840959a852e1a9c2f8daaccb6102fdc04dcac75.png" src="_images/1a99074a7fd688a0c98682ea7840959a852e1a9c2f8daaccb6102fdc04dcac75.png" />
 </div>
 </div>
-</section>
-<section id="id1">
-<h2>Family Size<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Every other year, as part of the Current Population Survey (CPS), the Census Bureau surveys a representative sample women in the United States and asks, among other things, how many children they have ever born.
-To measure completed family sizes, they select women aged 40-44 (of course, some women bear children in their forties, so these estimates might be a little low).</p>
-<p>I used their data from 2018 to estimate the current distribution of family sizes.
-The following figure shows the result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bias_pmf</span><span class="p">(</span><span class="n">pmf</span><span class="p">):</span>
@@ -1215,16 +1210,21 @@ The following figure shows the result.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/036af6d236e27424b26a542a343678cbf0727b823c754a314ccce6255326843e.png" src="_images/036af6d236e27424b26a542a343678cbf0727b823c754a314ccce6255326843e.png" />
+<img alt="_images/65636cbf46ae9c5f66b67ef5f157530e3f3ae978d5504927d809cfe2ba56b64f.png" src="_images/65636cbf46ae9c5f66b67ef5f157530e3f3ae978d5504927d809cfe2ba56b64f.png" />
 </div>
 </div>
 <p>The circles show the percentage of women who bore each number of children.
 For example, about 15% of the women in the sample had no children; almost 35% of them had two.</p>
-<p>If we take the distribution of family size from a sample of women, multiply each bar by the corresponding value of <span class="math notranslate nohighlight">\(k\)</span>, and then divide through by the total, the result is the distribution of family size from a sample of children.
+<p>Now, what would we see if we surveyed these children and asked them how many children their mothers had?
+Large families would be oversampled, small families would be undersampled, and families with no children would not appear at all.
+In general, a family with <span class="math notranslate nohighlight">\(k\)</span> children would appear in the sample <span class="math notranslate nohighlight">\(k\)</span> times.</p>
+<p>So, if we take the distribution of family size from a sample of women, multiply each bar by the corresponding value of <span class="math notranslate nohighlight">\(k\)</span>, and then divide through by the total, the result is the distribution of family size from a sample of children.
 In the previous figure, the square markers show this distribution.</p>
 <p>As expected, children would report more large families (three or more children), fewer families with one child, and no families with zero children.</p>
 <p>In general, the average family size is smaller if we survey women than if we survey their children.
 In this example, the average reported by women is close to 2; the average reported by their children would be close to 3.</p>
+<p>So you might expect that, if family sizes reported by women get bigger, family sizes reported by children would get bigger, too.
+But that is not always the case, as we’ll see in the next section.</p>
 </section>
 <section id="the-depression-and-the-baby-boom">
 <h2>The Depression and the Baby Boom<a class="headerlink" href="#the-depression-and-the-baby-boom" title="Permalink to this heading">#</a></h2>
@@ -1421,7 +1421,7 @@ The following figure shows these distributions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16fa8bd47594500ca0f82a46370c727da684911a6263cd969c9c9911670d05e7.png" src="_images/16fa8bd47594500ca0f82a46370c727da684911a6263cd969c9c9911670d05e7.png" />
+<img alt="_images/5ab81cd33cc935d7dcc72baace5d069df88d863c7bf81c02c0087022e85b5c37.png" src="_images/5ab81cd33cc935d7dcc72baace5d069df88d863c7bf81c02c0087022e85b5c37.png" />
 </div>
 </div>
 <p>The data past x=6 are not very accurate, and the PMFs are not normalized.</p>
@@ -1514,7 +1514,7 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 </div>
-<p>The following function find the best fit and returns a <code class="docutils literal notranslate"><span class="pre">Pmf</span></code>.</p>
+<p>The following function finds the best fit and returns a <code class="docutils literal notranslate"><span class="pre">Pmf</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_pmf2</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
@@ -1629,10 +1629,13 @@ As a starting place, <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/79468441c25bef5ac86ff723101c218beba88da7f1b93c06b7c6176ef1fb9ade.png" src="_images/79468441c25bef5ac86ff723101c218beba88da7f1b93c06b7c6176ef1fb9ade.png" />
+<img alt="_images/7c97d8746562248fbd101a14fb66642ed361fed9c444196555ac33496790cf16.png" src="_images/7c97d8746562248fbd101a14fb66642ed361fed9c444196555ac33496790cf16.png" />
 </div>
 </div>
-<p>Family size was more variable in the 1950 cohort.
+<p>The biggest differences are in the left part of the curve.
+The women surveyed in 1950 were substantially more likely to have zero children or one, compared to women surveyed in 1970.
+They were less likely to have 2–5 children, and slightly more likely to have 9 or more.</p>
+<p>Looking at it another way, family size was more variable in the 1950 cohort.
 The standard deviation of the distribution was about 2.4; in the 1970 cohort it was about 2.2.
 This variability is the reason for the difference between the two ways of measuring family size.</p>
 <p>As Preston derived, there is a mathematical relationship between the average family size as reported by women, which he calls <span class="math notranslate nohighlight">\(X\)</span>, and the average family size as reported by their children, which he calls <span class="math notranslate nohighlight">\(C\)</span>.</p>
@@ -1730,7 +1733,7 @@ The first cohort was interviewed in 1976, the last in 2018.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/eae8141a7e36b26119e6e5c45f7b1d5925125245052068252c64699bdae7f3d7.png" src="_images/eae8141a7e36b26119e6e5c45f7b1d5925125245052068252c64699bdae7f3d7.png" />
+<img alt="_images/46c029599cf25d56ea3dff6819c964a7f6e8288a2eeeab4a4f31c5da06fe0882.png" src="_images/46c029599cf25d56ea3dff6819c964a7f6e8288a2eeeab4a4f31c5da06fe0882.png" />
 </div>
 </div>
 <p>Between 1976 and 1990, average family size fell from more than 3 to less than 2.
@@ -1753,7 +1756,7 @@ The following figure shows the percentage of women with 0, 1, or 2 children, plo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c5436bc2ba51756d3ddb6d44d45d2bda7ccc858778e694fc3b4731ff8ad5ab2c.png" src="_images/c5436bc2ba51756d3ddb6d44d45d2bda7ccc858778e694fc3b4731ff8ad5ab2c.png" />
+<img alt="_images/0604149c51a8bf33f355e3dc89e9c2d63839d9303bffb7db9f833f6706b4f6d4.png" src="_images/0604149c51a8bf33f355e3dc89e9c2d63839d9303bffb7db9f833f6706b4f6d4.png" />
 </div>
 </div>
 <p>The fraction of small families has increased; most notably, between 1976 and 1990, the percentage of women with two children increased from 22% to 35%.
@@ -1775,7 +1778,7 @@ The percentage of women with one child or zero also increased.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7cd124afbf4af0cd46fed83725cd8a4469a822450ff76bbbec9cfad0ea7c09e4.png" src="_images/7cd124afbf4af0cd46fed83725cd8a4469a822450ff76bbbec9cfad0ea7c09e4.png" />
+<img alt="_images/4d9a56c9a14ea08940727722b3ccc5fddcbdcd2ea287cef69183120d44c4356f.png" src="_images/4d9a56c9a14ea08940727722b3ccc5fddcbdcd2ea287cef69183120d44c4356f.png" />
 </div>
 </div>
 <p>The proportion of large families declined substantially, especially the percentage of families with 5-6 children, which was 14% in 1976 and 4% in 2018.
@@ -1832,7 +1835,7 @@ Over the same period, the percentage of families with seven or more children dec
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8b2c191ee5f9619328c740e374409a16aec3d27a058e600190ad0ed967347a64.png" src="_images/8b2c191ee5f9619328c740e374409a16aec3d27a058e600190ad0ed967347a64.png" />
+<img alt="_images/b33e0118810a3c4452de16352b0514306d9f5c9e694972b66ff4c142be10f3ea.png" src="_images/b33e0118810a3c4452de16352b0514306d9f5c9e694972b66ff4c142be10f3ea.png" />
 </div>
 </div>
 <p>Between 1976 and 1990, the average family size reported by women, <span class="math notranslate nohighlight">\(X\)</span>, decreased from 3.1 to 2.0.
@@ -1841,11 +1844,21 @@ Since 1990, <span class="math notranslate nohighlight">\(X\)</span> has been clo
 </section>
 <section id="prestons-paradox">
 <h2>Preston’s Paradox<a class="headerlink" href="#prestons-paradox" title="Permalink to this heading">#</a></h2>
-<p>Now we are ready to explain the surprising result from the imaginary kingdom at the beginning of the chapter.</p>
-<p>But using the actual distribution from 1970 as a starting place, we can simulate what would have happened in different scenarios.</p>
+<p>Now we are ready to explain the surprising result from the imaginary kingdom at the beginning of the chapter.
+In the scenario, the average family size was 3.
+Then we enacted a new law requiring every woman to have fewer children than her mother.
+In perfect compliance with the law, every woman had fewer children than her mother.
+Nevertheless, 25 years later the average family size was 3.3.</p>
+<p>How is that possible?</p>
+<p>As it happens, the numbers in the scenario are not contrived; they are based on the actual distribution of family size in the United States in 1979.
+Among the women who were interviewed that year, the average family size was close to 3.</p>
+<p>Of course, nothing like the “fewer than mother” law was implemented in the U.S., and 25 years later the average family size was 1.9, not 3.3.
+But using the actual distribution as a starting place, we can simulate what would have happened in different scenarios.</p>
 <p>First, let’s suppose that every woman has the same number of children as her mother.
-As a small example, suppose there are only two families, one with two children and the other with four, so the average family size is three.</p>
-<p>Assuming that half of the children are girls, in the next generation there would be one woman from a two-child family and two children from a four-child family.</p>
+At first, you might think that the distribution of family size would not change, but that’s not right.
+In fact, family sizes would increase quickly.</p>
+<p>As a small example, suppose there are only two families, one with two children and the other with four, so the average family size is three.</p>
+<p>Assuming that half of the children are girls, in the next generation there would be one woman from a two-child family and two from a four-child family.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf</span> <span class="o">=</span> <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
@@ -1931,7 +1944,9 @@ So the average family size would be 3.33.</p>
 <p>In the next generation, there would be one woman with two children, again, but there would be four with four. So the average family size would be 3.6.</p>
 <p>In successive generations, the number of four-child families would increase exponentially, and the average family size would quickly approach 4.</p>
 <p>We can do the same calculation with a more realistic distribution.
-The following figure shows the actual distribution of family sizes from 1979 (solid line) and the result of this calculation, which simulates the “same as mother” scenario (dashed line).</p>
+In fact, it is the same calculation we used to compute the distribution of family size as reported by children.
+In the same way large families are overrepresented when we survey children, large families are overrepresented in the next generation if every woman has the same number of children as her mother.</p>
+<p>The following figure shows the actual distribution of family sizes from 1979 (solid line) and the result of this calculation, which simulates the “same as mother” scenario (dashed line).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual 1979&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
@@ -1946,10 +1961,11 @@ The following figure shows the actual distribution of family sizes from 1979 (so
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e028e2919c58dc560a35a66b019e9624f7891cc06f492f54b09f237d3ac01b06.png" src="_images/e028e2919c58dc560a35a66b019e9624f7891cc06f492f54b09f237d3ac01b06.png" />
+<img alt="_images/0c44765a9241f84e39095fe15a3041ea44e156701ac95d73060a5917668938bf.png" src="_images/0c44765a9241f84e39095fe15a3041ea44e156701ac95d73060a5917668938bf.png" />
 </div>
 </div>
-<p>The mean of the original distribution is 3; the mean of the simulated distribution is 4.3.</p>
+<p>In the next generation, there are fewer small families and more big families, so the distribution is shifted to the right.
+The mean of the original distribution is 3; the mean of the simulated distribution is 4.3.</p>
 <p>If we repeat the process, the average family size would be 5.2 in the next generation, 6.1 in the next, and 6.9 in the next.
 Eventually, nearly all women would have 13 children, which is the maximum in this dataset.</p>
 <div class="cell docutils container">
@@ -1969,6 +1985,13 @@ Eventually, nearly all women would have 13 children, which is the maximum in thi
 </div>
 </div>
 </div>
+<p>Observing this pattern, Preston explains:</p>
+<blockquote>
+<div><p>The implications for population growth are obvious. Members of each generation must, on average, bear substantially fewer children than were born into their own family of orientation merely to keep population fertility rates constant.</p>
+</div></blockquote>
+<p>So let’s see what happens if we follow Preston’s advice.</p>
+<section id="technical-note">
+<h3>Technical Note<a class="headerlink" href="#technical-note" title="Permalink to this heading">#</a></h3>
 <p>The following simulations are intended to confirm that the results we just computed are correct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2036,6 +2059,7 @@ Eventually, nearly all women would have 13 children, which is the maximum in thi
 <img alt="_images/0781e7818cd4ed5f65fccf81ca69a97bb2331fed1848c585fe7124e1588732b3.png" src="_images/0781e7818cd4ed5f65fccf81ca69a97bb2331fed1848c585fe7124e1588732b3.png" />
 </div>
 </div>
+</section>
 </section>
 <section id="one-child-fewer">
 <h2>One Child Fewer<a class="headerlink" href="#one-child-fewer" title="Permalink to this heading">#</a></h2>
@@ -2112,7 +2136,7 @@ We can simulate this behavior by computing the biased distribution, as in the pr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ab6c9a3e695134f40dc3769d66f53a3faf52049851f840d1d755c6729c566097.png" src="_images/ab6c9a3e695134f40dc3769d66f53a3faf52049851f840d1d755c6729c566097.png" />
+<img alt="_images/6a3b9d2f3daeb3909f977f5530075627ceddbc875958859839e85d85886fe0ae.png" src="_images/6a3b9d2f3daeb3909f977f5530075627ceddbc875958859839e85d85886fe0ae.png" />
 </div>
 </div>
 <p>The simulated distribution has been length-biased, which increases the average, and then shifted to the left, which decreases the average.
@@ -2167,15 +2191,22 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0005413a813fa10b0549f1d4ec8d4644fbbe5c98ab88a8744654b355b3baca35.png" src="_images/0005413a813fa10b0549f1d4ec8d4644fbbe5c98ab88a8744654b355b3baca35.png" />
+<img alt="_images/e16281c623bcc1266831954ffbb1181f6418ad58a19ceef98d0a8e6a418bae6b.png" src="_images/e16281c623bcc1266831954ffbb1181f6418ad58a19ceef98d0a8e6a418bae6b.png" />
 </div>
 </div>
 <p>Family size would increase for four generations, peaking at 3.9.
-Then it would take another five generations to fall below the starting value.</p>
+Then it would take another five generations to fall below the starting value.
+At 25 years per generation, that means it would take more than 200 years for the new law to have the desired effect.</p>
 </section>
 <section id="in-reality">
 <h2>In Reality<a class="headerlink" href="#in-reality" title="Permalink to this heading">#</a></h2>
-<p>The average family size, as seen by the children of the women surveyed in 1979, was 4.3.
+<p>Of course, no such law was in effect in the United States between 1979 and 1990.
+Nevertheless, the average family size fell from close to 3 to close to 2.
+That’s an enormous change in less than one generation.
+How is that even possible?
+We’ve seen that it is not enough if every woman has one child fewer than her mother; the actual difference must have been larger.</p>
+<p>In fact, the difference was about 2.3.
+To see why, remember that the average family size, as seen by the children of the women surveyed in 1979, was 4.3.
 But when those children grew up and the women among them were surveyed in 1990, they reported an average family size close to 2.
 So on average, they had 2.3 fewer children than their mothers.</p>
 <p>The following function simulates a generation where each woman has 2-3 children fewer than her mother.</p>
@@ -2336,7 +2367,10 @@ If that pattern had continued for another generation, the average family size in
 </div>
 </div>
 </div>
-<p>In fact, the average family size in 2018 was very close to 2; this is close to what we would expect if every woman had one child fewer than her mother.
+<p>But it wasn’t.
+In fact, the average family size in 2018 was very close to 2, just as in 1990.
+So how did that happen?</p>
+<p>As it turns out, this is close to what we would expect if every woman had one child fewer than her mother.
 The following distribution shows the actual distribution in 2018, compared to the result if we start with the 1990 distribution and simulate the “one child fewer” scenario.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2432,11 +2466,20 @@ The following distribution shows the actual distribution in 2018, compared to th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/63f31de166be5a3a106c459d2796cd77c1cd97f7eb6feac74b3d6338140a0c67.png" src="_images/63f31de166be5a3a106c459d2796cd77c1cd97f7eb6feac74b3d6338140a0c67.png" />
+<img alt="_images/b5427551849e241a5f5104fc6f6c9aa38fc5289237736bd8678da7189c3cd82e.png" src="_images/b5427551849e241a5f5104fc6f6c9aa38fc5289237736bd8678da7189c3cd82e.png" />
 </div>
 </div>
 <p>The means of the two distributions are almost the same, but the shapes are different.
+In reality, there were more zero- and two-child families in 2018 than the simulation predicts, and fewer one-child families.
 But at least on average, it seems like women in the U.S. have been following the “one child fewer” policy for the last 30 years.</p>
+<p>The scenario at the beginning of this chapter is meant to be light-hearted, but in reality governments in many places and times have enacted policies meant to control family sizes and population growth.
+Most famously, China implemented a one-child policy in 1980 that imposed severe penalties on families with more than one child.
+Of course, this policy is objectionable to anyone who considers reproductive freedom a fundamental human right.
+But even as a practical matter, the unintended consequences were profound.</p>
+<p>Rather than catalog them, I will mention one that is particularly ironic: while this policy was in effect, economic and social forces reduced the average <em>desired</em> family size so much that, when the policy was relaxed in 2015 and again in 2021, average lifetime fertility increased to only 1.3, far below the level needed to keep the population constant, near 2.1.
+Since then, China has implemented new policies intended to <em>increase</em> family sizes, but it is not clear whether they will have much effect.
+Demographers predict that by the time you read this, the population of China will probably be shrinking.
+The consequences of the one-child policy are widespread and will affect China and the rest of the world for a long time.</p>
 </section>
 <section id="technical-note-the-poisson-distribution">
 <h2>Technical Note: The Poisson distribution<a class="headerlink" href="#technical-note-the-poisson-distribution" title="Permalink to this heading">#</a></h2>
@@ -2488,7 +2531,7 @@ Across the population, what would the distribution of family size look like?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7f14fe82ef555df7591d35075cb4d9fd6e5648dada0f0b962fe18ef602567b81.png" src="_images/7f14fe82ef555df7591d35075cb4d9fd6e5648dada0f0b962fe18ef602567b81.png" />
+<img alt="_images/910c9e19d8fd7ffdb20a50664998d65459b4c1290dc9fd7264eb9f3ad82a4851.png" src="_images/910c9e19d8fd7ffdb20a50664998d65459b4c1290dc9fd7264eb9f3ad82a4851.png" />
 </div>
 </div>
 <p>The bars show the actual distributions for selected years from 1990 to 2018, with the shaded areas representing variation from year to year.
@@ -2552,7 +2595,7 @@ The following figure shows three distributions:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e6ba055f7b673f3a1f3c9ea34abd51bbdce760a90e1d34fa72096c37085e38d3.png" src="_images/e6ba055f7b673f3a1f3c9ea34abd51bbdce760a90e1d34fa72096c37085e38d3.png" />
+<img alt="_images/fd00cbf164d1f8b6f48fe9fef4cf06f1d22ed9d036794e4ae3644c260d6bc505.png" src="_images/fd00cbf164d1f8b6f48fe9fef4cf06f1d22ed9d036794e4ae3644c260d6bc505.png" />
 </div>
 </div>
 <p>The biased distribution is identical to the original distribution, but shifted to the right by one.
@@ -2636,10 +2679,12 @@ When we apply the “one child fewer” policy, it shifts the distribution to th
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#family-size">Family Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Family Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-depression-and-the-baby-boom">The Depression and the Baby Boom</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-recently">More Recently</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prestons-paradox">Preston’s Paradox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prestons-paradox">Preston’s Paradox</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-note">Technical Note</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-child-fewer">One Child Fewer</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-long-run">In The Long Run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-reality">In Reality</a></li>

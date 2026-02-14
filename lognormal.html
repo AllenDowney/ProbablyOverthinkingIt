@@ -61,6 +61,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lognormal';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -344,6 +346,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-speeds">Running Speeds</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chess-rankings">Chess Rankings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-greatest-of-all-time">The Greatest of All Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-should-you-do">What Should You Do?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
             </nav>
@@ -358,6 +361,7 @@ document.write(`
                   
   <section id="extremes-outliers-and-goats">
 <h1>Extremes, Outliers, and GOATs<a class="headerlink" href="#extremes-outliers-and-goats" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/lognormal.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -377,182 +381,24 @@ document.write(`
 </div>
 </details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
-
-<span class="c1"># Set the random seed so we get the same results every time</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<p>Technical note: The following function is an example of a computational method I often use to fit a distribution to data.</p>
-<p>Conventional methods are generally based on moment-matching or computing maximum-likelihood estimators for the parameters.</p>
-<p>But often the question we care about is whether there is a distribution in a particular family that is a good match for a given empirical distribution. The best way to answer that question is to plot the CDFs of the data and the model and compare them visually to see where they agree or disagree.</p>
-<p>If that’s the evaluation metric, then the right thing to optimize is the distance between the distributions, averaged in some way over the range of the quantities.</p>
-<p>There are several ways you could do that. The option I use here is to write an error function that takes hypothetical set of parameters and</p>
-<ol class="arabic simple">
-<li><p>Makes an object that represents a distribution with those parameters.</p></li>
-<li><p>Chooses a range of percentiles and finds the corresponding quantiles in the data.</p></li>
-<li><p>Evaluates the model distribution at those quantiles, and</p></li>
-<li><p>Computes the vertical distance between the resulting percentiles and the target percentiles.</p></li>
-</ol>
-<p>Then I use <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> to find the parameters that minimize the sum of the squares of these distances.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-
-
-<span class="k">def</span> <span class="nf">fit_normal</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the model that minimizes the errors in percentiles.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">series</span><span class="p">):</span>
-        <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">params</span>
-        <span class="n">cdf</span> <span class="o">=</span> <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
-        <span class="n">qs</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">])</span>
-        <span class="n">error</span> <span class="o">=</span> <span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">error</span>
-
-    <span class="n">params</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">series</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">series</span><span class="p">,),</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e3</span><span class="p">)</span>
-    <span class="k">assert</span> <span class="n">res</span><span class="o">.</span><span class="n">success</span>
-    <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">x</span>
-    <span class="k">return</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
-
-
-<span class="k">def</span> <span class="nf">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the bounds on a normal CDF analytically.&quot;&quot;&quot;</span>
-    <span class="c1"># find the correct probabilities</span>
-    <span class="n">ps</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
-
-    <span class="c1"># find the upper and lower percentiles of</span>
-    <span class="c1"># a binomial distribution</span>
-    <span class="n">p_low</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="n">p_high</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_low</span>
-
-    <span class="n">low</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p_low</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
-    <span class="n">low</span><span class="p">[</span><span class="n">ps</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">high</span> <span class="o">=</span> <span class="n">binom</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p_high</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
-    <span class="k">return</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">make_cdf</span>
-
-
-<span class="k">def</span> <span class="nf">make_plot</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">model_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a CDF with a Gaussian model.</span>
-<span class="sd">    </span>
-<span class="sd">    series: data</span>
-<span class="sd">    model_label: string label for the model</span>
-<span class="sd">    plot_bounds: boolean, whether to plot the expected upper bound</span>
-<span class="sd">    qs: values where the error bounds should be evaluated (optional)</span>
-<span class="sd">    options: passed to plt.plot</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cdf</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
-    <span class="n">dist</span> <span class="o">=</span> <span class="n">fit_normal</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">))</span>
-    <span class="n">upper</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">plot_bounds</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">qs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">q_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">upper</span><span class="p">)</span>
-        <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">q_max</span><span class="p">)</span>
-
-    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
-        <span class="n">qs</span><span class="p">,</span> <span class="n">low</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">model_label</span>
-    <span class="p">)</span>
-
-    <span class="n">cdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>In Chapter 1 we saw that many measurements in the natural world follow a Gaussian distribution, and I posited an explanation: if we add up many random factors, the distribution of the sum tends to be Gaussian.</p>
-<p>The average height in the United States is about 170 cm.
+<p>Gaussian distributions are so common that most people have an intuition for how they behave.
+Thinking about the distribution of height, for example, we expect to find about the same number of people above and below the mean, and we expect the distribution to extend the same distance in both directions.
+Also, we don’t expect the distribution to extend very far.
+For example, the average height in the United States is about 170 cm.
 The tallest person ever was 272 cm, which is certainly tall, but it is only 60% greater than the mean.
 And in all likelihood, no one will ever be substantially taller.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://en.wikipedia.org/wiki/List_of_tallest_people</span>
-
-<span class="mi">272</span> <span class="o">/</span> <span class="mi">170</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>160.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>The heaviest person ever reliably measured was almost eight times the current average in the United States.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://en.wikipedia.org/wiki/List_of_heaviest_people</span>
-
-<span class="mi">653</span> <span class="o">/</span> <span class="mi">82</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.963414634146342
-</pre></div>
-</div>
-</div>
-</div>
-<p>Suppose we start with an absolute beginner at chess, named A.
+<p>But not all distributions are Gaussian, and many of them defy this intuition.
+In this chapter, we will see that adult weights do not follow a Gaussian distribution, but their logarithms do, which means that the distribution is “lognormal”.
+As a result, the heaviest people are much heavier than we would expect in a Gaussian distribution.
+Unlike in the distribution of height, we find people in the distribution of weight who are twice the mean or more.
+The heaviest person ever reliably measured was almost eight times the current average in the United States.</p>
+<p>Many other measurements from natural and engineered systems also follow lognormal distributions.
+I’ll present some of them, including running speeds and chess ratings.
+And I’ll posit an explanation: if we multiply many random factors together, the distribution of the product tends to be lognormal.</p>
+<p>These distributions have implications for the way we think about extreme values and outliers.
+In a lognormal distribution, the heaviest people are heavier, the fastest runners are faster, and the best chess players are much better than they would be in a Gaussian distribution.</p>
+<p>As an example, suppose we start with an absolute beginner at chess, named A.
 You could easily find a more experienced player – call them B – who would beat A 90% of the time.
 And it would not be hard to find a player C who could beat B 90% of the time; in fact, C would be pretty close to average.</p>
 <p>Then you could find a player D who could beat C 90% of the time and a player E who could beat D about as often.</p>
@@ -560,6 +406,7 @@ And it would not be hard to find a player C who could beat B 90% of the time; in
 But the distribution of chess skill is lognormal and it extends farther to the right than a Gaussian.
 In fact, we can find a player F who beats E, a player G who beats F, and a player H who beats G, at each step more than 90% of the time.
 And the world champion in this distribution would still beat H almost 90% of the time.</p>
+<p>Later in the chapter we’ll see where these numbers come from, and we’ll get some insight into outliers and what it takes to be one. But let’s start with the distribution of weight.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">3400</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
@@ -604,18 +451,14 @@ dtype: int64
 </div>
 <section id="the-exception">
 <h2>The Exception<a class="headerlink" href="#the-exception" title="Permalink to this heading">#</a></h2>
-<p>I’ll use data from the Behavioral Risk Factor Surveillance System
+<p>In Chapter 1, I presented bodily measurements from the Anthropometric Survey of US Army Personnel (ANSUR) and showed that a Gaussian model fits almost all of them.
+In fact, if you take almost any measurement from almost any species, the distribution tends to be Gaussian.</p>
+<p>But there is one exception: weight.
+To demonstrate the point, I’ll use data from the Behavioral Risk Factor Surveillance System
 (BRFSS), which is an annual survey run by the U.S. Centers for Disease Control and Prevention (CDC).</p>
 <p>The 2020 dataset includes information about demographics, health, and health risks
 from a large, representative sample of adults in the United States: a total of 195,055 men and 205,903 women.
 Among the data are the self-reported weights of the respondents, recorded in kilograms.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/brfss_sample.hdf&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s2">&quot;brfss_sample.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;brfss&quot;</span><span class="p">)</span>
@@ -675,7 +518,7 @@ Name: HTM4, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fbe6254e8cdc240531b7b0dd279143ff7e0637a6969a8dbb5214b808a1f9247c.png" src="_images/fbe6254e8cdc240531b7b0dd279143ff7e0637a6969a8dbb5214b808a1f9247c.png" />
+<img alt="_images/d0416b7f1cccf20371ee05abbea3bfb07c74acdf91cae9ac587adaca7cdf74cb.png" src="_images/d0416b7f1cccf20371ee05abbea3bfb07c74acdf91cae9ac587adaca7cdf74cb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -717,11 +560,13 @@ the crosses at the top show the locations of the largest weights we expect to fi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a493f4877e00a1a8093b970f137d7b83cafdb531dd82d99d2d0bd52eb5678827.png" src="_images/a493f4877e00a1a8093b970f137d7b83cafdb531dd82d99d2d0bd52eb5678827.png" />
+<img alt="_images/3126dfbe38a1d36542e889b1ce504558757cb452ca7a2db27f506a937e42fcba.png" src="_images/3126dfbe38a1d36542e889b1ce504558757cb452ca7a2db27f506a937e42fcba.png" />
 </div>
 </div>
-<p>If these distributions were Gaussian, the heaviest woman in the sample would be about 150 kg, and the heaviest man would be 167 kg.
-In fact, the heaviest woman is 286 kg and the heaviest man is 290 kg.</p>
+<p>The Gaussian models don’t fit these measurements particularly well, and the extremes are more extreme.
+If these distributions were Gaussian, the heaviest woman in the sample would be about 150 kg, and the heaviest man would be 167 kg.
+In fact, the heaviest woman is 286 kg and the heaviest man is 290 kg.
+These discrepancies suggest that the distributions of weight are not Gaussian.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">upper_bound</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
@@ -749,7 +594,7 @@ In fact, the heaviest woman is 286 kg and the heaviest man is 290 kg.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(149.95522846670767, 167.20127128670438)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(147.91155018373783, 166.70579853541966)
 </pre></div>
 </div>
 </div>
@@ -768,20 +613,31 @@ In fact, the heaviest woman is 286 kg and the heaviest man is 290 kg.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Place labels on the x-axis on a log scale.</span>
 <span class="sd">    </span>
 <span class="sd">    labels: sequence of numbers</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-
-
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can get a hint about what’s going on from Philip Gingerich, a now-retired professor of Ecology and Evolutionary Biology at the University of Michigan.
+In 2000, he wrote about two kinds of variation we see in measurements from biological systems.</p>
+<p>On one hand, we find measurements like the ones in Chapter 1 that follow a Gaussian curve, which is symmetric; that is, the tail extends about the same distance to the left and to the right.
+On the other hand, we find measurements like weight that are skewed; that is, the tail extends farther to the right than to the left.</p>
+<p>This observation goes back to the earliest history of statistics, and so does a remarkably simple remedy: if we compute the logarithms of the values and plot their distribution, the result is well modeled by – you guessed it – a Gaussian curve.</p>
+<p>Depending on your academic and professional background, logarithms might be second nature to you or they might be something you remember vaguely from high school.
+For the second group, here’s a reminder.</p>
+<p>If you raise 10 to some power, <span class="math notranslate nohighlight">\(x\)</span>, and the result is <span class="math notranslate nohighlight">\(y\)</span>, that means that <span class="math notranslate nohighlight">\(x\)</span> is the logarithm, base 10, of <span class="math notranslate nohighlight">\(y\)</span>.
+For example 10 to the power of 2 is 100, so 2 is the logarithm, base 10, of 100 (I’ll drop the “base 10” from here on, and call a logarithm by its nickname, log).
+Similarly, 10 to the power of 3 is 1000, so 3 is the log of 1000, and 4 is the log of 10,000.
+You might notice a pattern: for numbers that are powers of 10, the log is the number of zeros.</p>
+<p>For numbers that are not powers of 10, we can still compute logs, but the results are not integers.
+For example, the logarithm of 50 is 1.7, which is between the logs of 10 and 100, but not equidistant between them.
+And the log of 150 is about 2.2, between the logs of 100 and 1000.</p>
 <p>The following figure shows the distributions of the logarithms of weight along with Gaussian models that best fit them.</p>
 <p>At the top of the figure, the labels indicate the logarithms.
 At the bottom, the labels indicate the weights themselves.
@@ -801,22 +657,23 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">two_scale</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="n">sample2</span><span class="p">,</span> <span class="n">label1</span><span class="p">,</span> <span class="n">label2</span><span class="p">,</span> <span class="n">xlabel1</span><span class="p">,</span> <span class="n">xlabel2</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">two_scale</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="n">sample2</span><span class="p">,</span> <span class="n">label1</span><span class="p">,</span> <span class="n">label2</span><span class="p">,</span> <span class="n">xlabel1</span><span class="p">,</span> <span class="n">xlabel2</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot two distributions and label the top and bottom.</span>
 <span class="sd">    </span>
 <span class="sd">    The sequence of operations is a little tricky.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># find the range of qs to use for both distributions</span>
-    <span class="n">low</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">sample2</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-    <span class="n">high</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">sample2</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">q_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">sample1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">sample2</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    <span class="n">q_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample1</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">sample2</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
     <span class="c1"># plot the first distribution</span>
     <span class="n">make_plot</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="n">qs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
     <span class="n">h1</span><span class="p">,</span> <span class="n">l1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of adult weight, log scale&quot;</span><span class="p">)</span>
-    <span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <span class="n">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 
     <span class="c1"># plot the second distribution</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
@@ -827,6 +684,7 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
     <span class="c1"># label the axes</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -834,12 +692,12 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.figure(figsize=(6, 3.3))</span>
-<span class="c1">#for x in np.log10([50, 100, 150]):</span>
-<span class="c1">#    plt.axvline(x, color=&quot;gray&quot;, ls=&quot;:&quot;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
 
 <span class="n">log_weight_male</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">])</span>
 <span class="n">log_weight_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">])</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">]</span>
 
 <span class="n">two_scale</span><span class="p">(</span>
     <span class="n">log_weight_female</span><span class="p">,</span>
@@ -848,32 +706,24 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
     <span class="s2">&quot;Male respondents&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Weight (kg)&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Weight (log base 10 kg)&quot;</span><span class="p">,</span>
+    <span class="n">labels</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal3.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># plt.figure(figsize=(6, 3.3))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#for x in np.log10([50, 100, 150]):</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#    plt.axvline(x, color=&quot;gray&quot;, ls=&quot;:&quot;)</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">log_weight_male</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">male</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">log_weight_female</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">female</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">two_scale</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">log_weight_female</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">log_weight_male</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="s2">&quot;Weight (log base 10 kg)&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;weight&#39; is not defined
-</pre></div>
+<img alt="_images/5311664987b7f5ef2001c6250d397ddbd103967dac50250365f26f71803d3237.png" src="_images/5311664987b7f5ef2001c6250d397ddbd103967dac50250365f26f71803d3237.png" />
 </div>
 </div>
-</div>
+<p>The Gaussian models fit the distributions so well that the lines representing them are barely visible.
+Values like this, whose logs follow a Gaussian model, are called “lognormal”.</p>
+<p>Again, the crosses at the top show the largest values we expect from distributions with these sample sizes.
+They are a better match for the data than the crosses in the previous figure, although it looks like the heaviest people in this dataset are still heavier than we would expect from the lognormal model.</p>
+<p>So, why is the distribution of weight lognormal?
+There are two possibilities: maybe we’re born this way, or maybe we grow into it.
+In the next section we’ll see that the distribution of birth weights follows a Gaussian model, which suggests that we’re born Gaussian and grow up to be lognormal.
+In the following sections I’ll try to explain why.</p>
 </section>
 <section id="birth-weights-are-gaussian">
 <h2>Birth Weights are Gaussian<a class="headerlink" href="#birth-weights-are-gaussian" title="Permalink to this heading">#</a></h2>
@@ -882,13 +732,6 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
 Among other information, the survey records the birth weights of their children.
 Excluding babies who were born pre-term, I selected weights for 3430 male and 3379 female babies.
 The following figure shows the distributions of these birth weights along with Gaussian curves that best fit them.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/nsfg_sample.hdf5&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s1">&#39;nsfg_sample.hdf5&#39;</span><span class="p">,</span> <span class="s1">&#39;nsfg&#39;</span><span class="p">)</span>
@@ -1054,39 +897,32 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2df9d5974953446e25984524e3973ad3ac53f1261d3bccc7a4ac5510955fb56e.png" src="_images/2df9d5974953446e25984524e3973ad3ac53f1261d3bccc7a4ac5510955fb56e.png" />
+<img alt="_images/c75b6f1a9cc6d40ab8df6adc5fd4cfdd4ae98712c1c6b97f88d3b69355e7f552.png" src="_images/c75b6f1a9cc6d40ab8df6adc5fd4cfdd4ae98712c1c6b97f88d3b69355e7f552.png" />
 </div>
 </div>
 <p>The Gaussian model fits the distribution of birth weights well.
 The heaviest babies are a little heavier than we would expect from a Gaussian distribution with this sample size, but the distributions are roughly symmetric, not skewed to the right like the distribution of adult weight.</p>
-<p>The following figure shows the logarithms of birth weights compared to a Gaussian distribution.
-The data deviate from the model, especially toward the low end.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">birth_weight_male</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Male babies&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
-<span class="n">make_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">birth_weight_female</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Female babies&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
-
-<span class="n">decorate</span><span class="p">(</span>
-    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Birth weight (log 10 kg)&quot;</span><span class="p">,</span>
-    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of birth weight, NSFG&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/fc83fde2e84174e86333d16cd8fc589cea3fa20b39c724b784516059cbca2731.png" src="_images/fc83fde2e84174e86333d16cd8fc589cea3fa20b39c724b784516059cbca2731.png" />
-</div>
-</div>
+<p>So, if we are not born lognormal, that means we grow into it.
+In the next section, I’ll propose a model that might explain how.</p>
 </section>
 <section id="simulating-weight-gain">
 <h2>Simulating Weight Gain<a class="headerlink" href="#simulating-weight-gain" title="Permalink to this heading">#</a></h2>
+<p>As a simple model of human growth, suppose people gain several pounds per year from birth until they turn 40.
+And let’s suppose their annual weight gain is a random quantity; that is, some years they gain a lot, some years less.
+If we add up these random gains, we expect the total to follow a Gaussian distribution because, according to the Central Limit Theorem, when you add up a large number of random values, the sum tends to be Gaussian.
+So, if the distribution of adult weight were Gaussian, that would explain it.</p>
+<p>But we’ve seen that it is not, so let’s try something else: what if annual weight gain is proportional to weight?
+In other words, instead of gaining a few pounds, what if you gained a few percent of your current weight?
+For example, if someone who weighs 50 kg gains 1 kg in a year; someone who weighs 100 kg might gain 2 kg.
+Let’s see what effect these proportional gains have on the results.</p>
 <p>I wrote a simulation that starts with the birth weights we saw in the previous section and generates 40 random growth rates, one for each year from birth to age 40.
 The growth rates vary from about 20-40%; in other words, each simulated person gains 20-40% of their current weight each year.
+This is not a realistic model, but let’s see what we get.
 The following figure shows the results and a Gaussian model, both on a log scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
 
 
 <span class="k">def</span> <span class="nf">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.03</span><span class="p">):</span>
@@ -1155,13 +991,13 @@ dtype: float64
     <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of weight compared to simulation&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal5.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a46ef57538478cbdfd2f029828dbee8c15da1c00227e97225325e4f008a2cc1d.png" src="_images/a46ef57538478cbdfd2f029828dbee8c15da1c00227e97225325e4f008a2cc1d.png" />
+<img alt="_images/bd4b9fbdc6aa0c64f1bcaa1b69fb32b2e293aa43e02603e52e1b98b76525cbce.png" src="_images/bd4b9fbdc6aa0c64f1bcaa1b69fb32b2e293aa43e02603e52e1b98b76525cbce.png" />
 </div>
 </div>
 <p>The Gaussian model fits the logarithms of the simulated weights, which means that the distribution is lognormal.
@@ -1169,7 +1005,7 @@ This outcome is explained by a corollary of the Central Limit Theorem: if you mu
 <p>It might not be obvious that the simulation multiplies random quantities, but that’s what happens when we apply successive growth rates.
 For example, suppose someone weighs 50 kg at the beginning of a simulated year.
 If they gain 20%, their weight at the end of the year would be 50 kg times 120%, which is 60 kg.
-If they gain 30% during the next year, their weight at the end would by 60 kg times 130%, which is 78 kg.</p>
+If they gain 30% during the next year, their weight at the end would be 60 kg times 130%, which is 78 kg.</p>
 <p>In two years, they gained a total of 28 kg, which is 56% of their starting weight.
 Where did 56% come from? It’s not the sum of 20% and 30%; rather, it comes from the product of 120% and 130%, which is 156%.</p>
 <p>So their weight at the end of the simulation is the product of their starting weight and 40 random growth rates.
@@ -1260,17 +1096,21 @@ The following figure shows the actual distributions from the BRFSS along with th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_weight_male</span> <span class="o">=</span> <span class="n">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">make_cdf</span>
+
+<span class="n">sim_weight_male</span> <span class="o">=</span> <span class="n">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <span class="n">log_sim_weight_male</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_weight_male</span><span class="p">)</span>
 <span class="n">cdf_log_sim_weight_male</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">log_sim_weight_male</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Search for the parameters that yield simulated weights that best fit the adult female weights.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">birth_weight_female</span> <span class="o">/</span> <span class="mi">1000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search for the parameters that yield simulated weights that </span>
+<span class="c1"># best fit the adult female weights.</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">birth_weight_female</span> <span class="o">/</span> <span class="mi">1000</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">start</span><span class="p">,</span> <span class="n">log_weight_female</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func_sim_weight</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
 </pre></div>
@@ -1322,17 +1162,23 @@ The following figure shows the actual distributions from the BRFSS along with th
 
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Adult weight (kg)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distributions of weight compared to simulation&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal6.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a808f59cd94698a7f99947326ff51fe200603a48ec067d60936991bf629254ab.png" src="_images/a808f59cd94698a7f99947326ff51fe200603a48ec067d60936991bf629254ab.png" />
+<img alt="_images/fb1f38d3005f36700ba34158dc861f917c95e61bc31d4c22eead8d9ccdab6905.png" src="_images/fb1f38d3005f36700ba34158dc861f917c95e61bc31d4c22eead8d9ccdab6905.png" />
 </div>
 </div>
 <p>The results from the simulation are a good match for the actual distributions.</p>
-<p>Qualitatively, the biggest difference is that the Gaussian distribution is symmetric, so the tallest people and the shortest are about the same distance from the mean.
+<p>Of course, the simulation is not a realistic model of how people grow from birth to adulthood.
+We could make the model more realistic by generating higher growth rates for the first 15 years and then lower growth rates thereafter.
+But these details don’t change the shape of the distribution; it’s lognormal either way.</p>
+<p>These simulations demonstrate one of the mechanisms that can produce lognormal distributions: proportional growth.
+If each person’s annual weight gain is proportional to their current weight, the distribution of their weights will tend toward lognormal.</p>
+<p>Now, if height is Gaussian and weight is lognormal, what difference does it make?
+Qualitatively, the biggest difference is that the Gaussian distribution is symmetric, so the tallest people and the shortest are about the same distance from the mean.
 In the BRFSS dataset, the average height is 170 cm. The 99th percentile is about 23 cm above the mean and the 1st percentile is about 20 cm below, so that’s roughly symmetric.</p>
 <p>Taking it to the extremes, the tallest person ever reliably measured was Robert Wadlow, who was 272 cm, which is 102 cm from the mean.
 And the shortest adult was Chandra Bahadur Dangi, who was 55 cm, which is 115 cm from the mean.
@@ -1403,7 +1249,7 @@ diffs [-20.16244794  22.83755206]
 <p>On the other hand, the distribution of weights is not symmetric: the heaviest people are substantially farther from the mean than the lightest.
 In the United States, the average weight is about 82 kg.
 The heaviest person in the BRFSS dataset is 64 kg above average, but the lightest is only 36 kg below.</p>
-<p>Taking it to the extremes, the heaviest person person ever reliably measured was, regrettably, 553 kg heavier than the average.
+<p>Taking it to the extremes, the heaviest person ever reliably measured was, regrettably, 553 kg heavier than the average.
 In order to be the same distance below the mean, the weight of the lightest person would be 471 kg lighter than zero, which is impossible.
 So the Gaussian model of weight is not just a bad fit for the data, it produces absurdities.</p>
 <div class="cell docutils container">
@@ -1505,15 +1351,30 @@ diffs [-0.23568625  0.26294652]
 </section>
 <section id="running-speeds">
 <h2>Running Speeds<a class="headerlink" href="#running-speeds" title="Permalink to this heading">#</a></h2>
-<p>When I was 42 years old, I could run 200 meters in about 30 seconds (with wind assistance).
-But a good high school runner is faster than me.
+<p>If you are a fan of the Atlanta Braves, a Major League Baseball team, or if you watch enough videos on the internet, you have probably seen one of the most popular forms of between-inning entertainment: a foot race between one of the fans and a spandex-suit-wearing mascot called the Freeze.</p>
+<p>The route of the race is the dirt track that runs across the outfield, a distance of about 160 meters, which the Freeze runs in less than 20 seconds.
+To keep things interesting, the fan gets a head start of about 5 seconds.
+That might not seem like a lot, but if you watch one of these races, this lead seems insurmountable.
+However, when the Freeze starts running, you immediately see the difference between a pretty good runner and a very good runner.
+With few exceptions, the Freeze runs down the fan, overtakes them, and coasts to the finish line with seconds to spare.</p>
+<p>But as fast as he is, the Freeze is not even a professional runner; he is a member of the Braves’ ground crew named Nigel Talton.
+In college, he ran 200 meters in 21.66 seconds, which is very good.
+But the 200 meter collegiate record is 20.1 seconds, set by Wallace Spearmon in 2005, and the current world record is 19.19 seconds, set by Usain Bolt in 2009.</p>
+<p>To put all that in perspective, let’s start with me.
+For a middle-aged man, I am a decent runner.
+When I was 42 years old, I ran my best-ever 10 kilometer race in 42:44, which was faster than 94% of the other runners who showed up for a local 10K.
+Around that time, I could run 200 meters in about 30 seconds (with wind assistance).</p>
+<p>But a good high school runner is faster than me.
 At a recent meet, the fastest girl at a nearby high school ran 200 meters in about 27 seconds, and the fastest boy ran under 24 seconds.</p>
 <p>So, in terms of speed, a fast high school girl is 11% faster than me, a fast high school boy is 12% faster than her;
 Nigel Talton, in his prime, was 11% faster than him, Wallace Spearmon was about 8% faster than Talton, and Usain Bolt is about 5% faster than Spearmon.</p>
+<p>Unless you are Usain Bolt, there is always someone faster than you, and not just a little bit faster; they are much faster.
+The reason, as you might suspect by now, is that the distribution of running speed is not Gaussian.
+It is more like lognormal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;Me&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Downey&quot;</span><span class="p">,</span>
     <span class="s2">&quot;High School Girl&quot;</span><span class="p">,</span>
     <span class="s2">&quot;High School Boy&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Talton&quot;</span><span class="p">,</span>
@@ -1554,7 +1415,7 @@ Nigel Talton, in his prime, was 11% faster than him, Wallace Spearmon was about 
   </thead>
   <tbody>
     <tr>
-      <th>Me</th>
+      <th>Downey</th>
       <td>30.00</td>
       <td>6.666667</td>
       <td>NaN</td>
@@ -1598,13 +1459,6 @@ I downloaded the times for the 1,592 finishers and converted them to speeds in k
 The following figure shows the distribution of these speeds on a logarithmic scale, along with a Gaussian model I fit to the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://web.archive.org/web/20100429073703/http://coolrunning.com/results/10/ma/Apr25_27thAn_set1.shtml&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
 <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Apr25_27thAn_set1.shtml&quot;</span><span class="p">),</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
@@ -1644,7 +1498,7 @@ The following figure shows the distribution of these speeds on a logarithmic sca
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/021250230eab6287d7a58f8a2096bc5f521bd1bf53e0ca6665d62c17063ce143.png" src="_images/021250230eab6287d7a58f8a2096bc5f521bd1bf53e0ca6665d62c17063ce143.png" />
+<img alt="_images/10535f212083d58f76951177e670bed4594da7ddcf98c05c1cd0ea126aecab18.png" src="_images/10535f212083d58f76951177e670bed4594da7ddcf98c05c1cd0ea126aecab18.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1655,7 +1509,7 @@ The following figure shows the distribution of these speeds on a logarithmic sca
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5fc3409e0212e446cbd02967c69cd27d4e79d8e7241b425b3af4011a4fd8f4f2.png" src="_images/5fc3409e0212e446cbd02967c69cd27d4e79d8e7241b425b3af4011a4fd8f4f2.png" />
+<img alt="_images/3c4494317eff9c5a53056d624779f96515187ebd22d8dabdd36a43d51425f187.png" src="_images/3c4494317eff9c5a53056d624779f96515187ebd22d8dabdd36a43d51425f187.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1667,7 +1521,7 @@ The following figure shows the distribution of these speeds on a logarithmic sca
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Running speed (kph)&quot;</span><span class="p">)</span>
 
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
-<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
 
 <span class="n">dist</span> <span class="o">=</span> <span class="n">fit_normal</span><span class="p">(</span><span class="n">log_speeds</span><span class="p">)</span>
@@ -1684,17 +1538,38 @@ The following figure shows the distribution of these speeds on a logarithmic sca
 
 <span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
-<span class="c1">#plt.xlabel(&quot;Running speed (log base 10 kph)&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of running speed, log scale&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;running1.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7e882ec88846d0c1fb18b1c02e108115e08baaa80845f22a472dd5c8c126b7b7.png" src="_images/7e882ec88846d0c1fb18b1c02e108115e08baaa80845f22a472dd5c8c126b7b7.png" />
+<img alt="_images/538fa9f91b10816696a533c0a93460dbdca0ad035a1b79811d4c703c787300fe.png" src="_images/538fa9f91b10816696a533c0a93460dbdca0ad035a1b79811d4c703c787300fe.png" />
 </div>
 </div>
-<p>I generated five random factors from a Gaussian distribution and multiplied them together.
+<p>The logarithms follow a Gaussian distribution, which means the speeds themselves are lognormal.
+You might wonder why. Well, I have a theory, based on the following assumptions:</p>
+<ul class="simple">
+<li><p>First, everyone has a maximum speed they are capable of running, assuming that they train effectively.</p></li>
+<li><p>Second, these speed limits can depend on many factors, including height and weight, fast- and slow-twitch muscle mass, cardiovascular conditioning, flexibility and elasticity, and probably more.</p></li>
+<li><p>Finally, the way these factors interact tends to be multiplicative; that is, each person’s speed limit depends on the product of multiple factors.</p></li>
+</ul>
+<p>Here’s why I think speed depends on a product rather than a sum of factors.
+If all of your factors are good, you are fast; if any of them are bad, you are slow.
+Mathematically, the operation that has this property is multiplication.</p>
+<p>For example, suppose there are only two factors, measured on a scale from 0 to 1, and each person’s speed limit is determined by their product.
+Let’s consider three hypothetical people:</p>
+<ul class="simple">
+<li><p>The first person scores high on both factors, let’s say 0.9. The product of these factors is 0.81, so they would be fast.</p></li>
+<li><p>The second person scores relatively low on both factors, let’s say 0.3. The product is 0.09, so they would be quite slow.</p></li>
+</ul>
+<p>So far, this is not surprising: if you are good in every way, you are fast; if you are bad in every way, you are slow. But what if you are good in some ways and bad in others?</p>
+<ul class="simple">
+<li><p>The third person scores 0.9 on one factor and 0.3 on the other. The product is 0.27, so they are a little bit faster than someone who scores low on both factors, but much slower than someone who scores high on both.</p></li>
+</ul>
+<p>That’s a property of multiplication: the product depends most strongly on the smallest factor.
+And as the number of factors increases, the effect becomes more dramatic.</p>
+<p>To simulate this mechanism, I generated five random factors from a Gaussian distribution and multiplied them together.
 I adjusted the mean and standard deviation of the Gaussians so that the resulting distribution fit the data; the following figure shows the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1721,19 +1596,6 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
     <span class="k">return</span> <span class="n">performance</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_speeds</span> <span class="o">=</span> <span class="n">simulate_speeds</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">)</span>
-
-<span class="n">make_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_speeds</span><span class="p">))</span>
-<span class="n">make_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">speeds</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/37c97c25f01fb96af10c14f71ab3d41e897feea16ad06f01531c4194ef238cbc.png" src="_images/37c97c25f01fb96af10c14f71ab3d41e897feea16ad06f01531c4194ef238cbc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1788,7 +1650,9 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim_speeds</span> <span class="o">=</span> <span class="n">simulate_speeds</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
+
+<span class="n">sim_speeds</span> <span class="o">=</span> <span class="n">simulate_speeds</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_speeds</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
     <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulated running speeds&quot;</span>
@@ -1796,7 +1660,7 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">speeds</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual running speeds&quot;</span><span class="p">)</span>
 
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
-<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Running speed (log10 kph)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile Rank&quot;</span><span class="p">,</span>
          <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distribution of running speed compared to simulation&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1805,23 +1669,30 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/de97a01c621797f9e9b143ebe54baf3ee07f4e781f269907208ca4ab3d4e5020.png" src="_images/de97a01c621797f9e9b143ebe54baf3ee07f4e781f269907208ca4ab3d4e5020.png" />
+<img alt="_images/548ceeaaec01e81ada26fa1b8408e74d12843be0161fa2f77e1d5747782d6b18.png" src="_images/548ceeaaec01e81ada26fa1b8408e74d12843be0161fa2f77e1d5747782d6b18.png" />
 </div>
 </div>
-<p>If there are at least five factors affect running speed, and each person’s limit depends on their worst factor, that would explain why the distribution of running speed is lognormal.</p>
+<p>The simulation results fit the data well.
+So this example demonstrates a second mechanism that can produce lognormal distributions: the limiting power of the weakest link.
+If at least five factors affect running speed, and each person’s limit depends on their worst factor, that would explain why the distribution of running speed is lognormal.</p>
+<p>I suspect that distributions of many other skills are also lognormal, for similar reasons.
+Unfortunately, most abilities are not as easy to measure as running speed, but some are.
+For example, chess-playing skill can be quantified using the Elo rating system, which we’ll explore in the next section.</p>
 </section>
 <section id="chess-rankings">
 <h2>Chess Rankings<a class="headerlink" href="#chess-rankings" title="Permalink to this heading">#</a></h2>
-<p>I <a class="reference external" href="https://www.chess.com/leaderboard/live">collected data from Chess.com</a>, which is a popular internet chess server that hosts individual games and tournaments for players from all over the world.
+<p>In the Elo chess rating system, every player is assigned a score that reflects their ability.
+These scores are updated after every game.
+If you win, your score goes up; if you lose, it goes down.
+The size of the increase or decrease depends on your opponent’s score.
+If you beat a player with a higher score, your score might go up a lot; if you beat a player with a lower score, it might barely change.
+Most scores are in the range from 100 to about 3000, although in theory there is no lower or upper bound.</p>
+<p>By themselves, the scores don’t mean very much; what matters is the difference in scores between two players, which can be used to compute the probability that one beats the other.
+For example, if the difference in scores is 400, we expect the higher-rated player to win about 90% of the time.</p>
+<p>If the distribution of chess skill is lognormal, and if Elo scores quantify this skill, we expect the distribution of Elo scores to be lognormal.
+To find out, I <a class="reference external" href="https://www.chess.com/leaderboard/live">collected data from Chess.com</a>, which is a popular internet chess server that hosts individual games and tournaments for players from all over the world.
 Their leader board shows the distribution of Elo ratings for almost six million players who have used their service.
 The following figure shows the distribution of these scores on a log scale, along with a lognormal model.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/chess_elo_ratings.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chess</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;chess_elo_ratings.csv&quot;</span><span class="p">)</span>
@@ -1951,10 +1822,7 @@ The following figure shows the distribution of these scores on a log scale, alon
         <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">params</span>
         <span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">)</span>
         <span class="n">qs</span> <span class="o">=</span> <span class="n">cdf</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
-        <span class="c1"># print(qs)</span>
         <span class="n">error</span> <span class="o">=</span> <span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
-        <span class="c1"># print(cdf(qs))</span>
-        <span class="c1"># print(norm.cdf(qs, mu, sigma))</span>
         <span class="k">return</span> <span class="n">error</span>
 
     <span class="n">res</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">error_func</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e3</span><span class="p">)</span>
@@ -1966,14 +1834,14 @@ The following figure shows the distribution of these scores on a log scale, alon
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_normal_model</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_normal_model</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the error bounds based on a Gaussian model.</span>
 <span class="sd">    </span>
 <span class="sd">    dist: norm object</span>
 <span class="sd">    n: sample size</span>
-<span class="sd">    low, high: range of quantities to plot over</span>
+<span class="sd">    q_min, q_max: range of quantities to plot over</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span><span class="p">)</span>
     <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">low</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 </pre></div>
@@ -1982,7 +1850,7 @@ The following figure shows the distribution of these scores on a log scale, alon
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span><span class="p">,</span> <span class="n">Cdf</span>
 
 <span class="n">pmf_chess</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">chess</span><span class="p">[</span><span class="s2">&quot;# PLAYERS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">chess</span><span class="p">[</span><span class="s2">&quot;ELO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">pmf_chess</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
@@ -2004,50 +1872,6 @@ The following figure shows the distribution of these scores on a log scale, alon
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(814.9840227739351, array(800.))
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_chess</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100     98.224051
-200     94.550425
-300     88.599205
-400     80.455996
-500     70.934241
-600     60.640078
-700     50.479467
-800     40.905774
-900     32.580314
-1000    25.410620
-1100    19.575601
-1200    14.800302
-1300    11.037880
-1400     8.119510
-1500     5.890381
-1600     4.208121
-1700     2.955578
-1800     2.031965
-1900     1.373220
-2000     0.880860
-2100     0.554017
-2200     0.338733
-2300     0.201690
-2400     0.117170
-2500     0.063511
-2600     0.032900
-2700     0.014513
-2800     0.005778
-2900     0.001754
-3000     0.000317
-3100     0.000050
-3200     0.000000
-dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2093,28 +1917,28 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_chess</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
-    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
-    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+    <span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span><span class="p">)</span>
     <span class="n">ps</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="n">Cdf</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
     <span class="p">(</span><span class="n">pmf</span><span class="o">.</span><span class="n">make_cdf</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
 
     <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Elo rating&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Percentile rank&quot;</span><span class="p">)</span>
-
-
-<span class="n">plot_chess</span><span class="p">(</span><span class="n">pmf_log_chess</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_chess</span><span class="p">(</span><span class="n">pmf_log_chess</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of chess scores&quot;</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">]</span>
-<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0 3.505149978319906
-</pre></div>
-</div>
-<img alt="_images/4e2c741daaba05f07ec0c0a171ebef1956917c3870b7e96996a037fb0ba210d0.png" src="_images/4e2c741daaba05f07ec0c0a171ebef1956917c3870b7e96996a037fb0ba210d0.png" />
+<img alt="_images/9a4c0e917747136cc9c381941af7d03dcc945a2657e73e46266b70c1d59d1fb1.png" src="_images/9a4c0e917747136cc9c381941af7d03dcc945a2657e73e46266b70c1d59d1fb1.png" />
 </div>
 </div>
 <p>The lognormal model does not fit the data particularly well.
@@ -2131,7 +1955,7 @@ The following figure shows the distribution of these shifted scores on a log sca
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_log_chess2</span> <span class="o">=</span> <span class="n">pmf_chess2</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_log_chess2</span> <span class="o">=</span> <span class="n">pmf_chess2</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">)</span>
 <span class="n">cdf_log_chess2</span> <span class="o">=</span> <span class="n">pmf_log_chess2</span><span class="o">.</span><span class="n">make_cdf</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2145,7 +1969,7 @@ The following figure shows the distribution of these shifted scores on a log sca
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7.089595565215153, 0.3275832912506139)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.0789722328987064, 0.1422676157538474)
 </pre></div>
 </div>
 </div>
@@ -2157,12 +1981,12 @@ The following figure shows the distribution of these shifted scores on a log sca
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7.08959557 0.32758329]
-[7.08959567 0.32758329]
-[7.08959557 0.32758331]
-[7.05071419 0.34928753]
-[7.05071429 0.34928753]
-[7.05071419 0.34928755]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.07897223 0.14226762]
+[3.07897228 0.14226762]
+[3.07897223 0.14226763]
+[3.06208626 0.15169365]
+[3.06208631 0.15169365]
+[3.06208626 0.15169366]
 </pre></div>
 </div>
 </div>
@@ -2172,25 +1996,71 @@ The following figure shows the distribution of these shifted scores on a log sca
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_chess</span><span class="p">(</span><span class="n">pmf_log_chess2</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of shifted chess scores&quot;</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">]</span>
-<span class="n">xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognormal7.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.7403626894942437 3.5622928644564746
-</pre></div>
-</div>
-<img alt="_images/797ec3ea9c96caf7db9af873e2de3e02faebbd2701400ed7b8436dd479add4c2.png" src="_images/797ec3ea9c96caf7db9af873e2de3e02faebbd2701400ed7b8436dd479add4c2.png" />
+<img alt="_images/fb18967d3524afd72b7d8a670d670fb1d192d0b6984597f18ffb022d7797e966.png" src="_images/fb18967d3524afd72b7d8a670d670fb1d192d0b6984597f18ffb022d7797e966.png" />
 </div>
 </div>
 <p>With this adjustment, the lognormal model fits the data well.</p>
+<p>Now, we’ve seen two explanations for lognormal distributions: proportional growth and weakest links.
+Which one determines the distribution of abilities like chess?
+I think both mechanisms are plausible.</p>
+<p>As you get better at chess, you have opportunities to play against better opponents and learn from the experience.
+You also gain the ability to learn from others; books and articles that are inscrutable to beginners become invaluable to experts.
+As you understand more, you are able to learn faster, so the growth rate of your skill might be proportional to your current level.</p>
+<p>At the same time, lifetime achievement in chess can be limited by many factors.
+Success requires some combination of natural abilities, opportunity, passion, and discipline.
+If you are good at all of them, you might become a world-class player.
+If you lack any of them, you will not.
+The way these factors interact is like multiplication, where the outcome is most strongly affected by the weakest link.</p>
+<p>These mechanisms shape the distribution of ability in other fields, even the ones that are harder to measure, like musical ability.
+As you gain musical experience, you play with better musicians and work with better teachers.
+As in chess, you can benefit from more advanced resources.
+And, as in almost any endeavor, you learn how to learn.</p>
+<p>At the same time, there are many factors that can limit musical achievement.
+One person might have a bad ear or poor dexterity.
+Another might find that they don’t love music enough, or they love something else more.
+One might not have the resources and opportunity to pursue music; another might lack the discipline and tenacity to stick with it.
+If you have the necessary aptitude, opportunity, and personal attributes, you could be a world-class musician; if you lack any of them, you probably can’t.</p>
+<p>If you have read Malcolm Gladwell’s book, <em>Outliers</em>, this conclusion might be disappointing.
+Based on examples and research on expert performance, Gladwell suggests that it takes 10,000 hours of effective practice to achieve world-class mastery in almost any field.</p>
+<p>Referring to a study of violinists led by the psychologist K. Anders Ericsson, Gladwell writes:</p>
+<blockquote>
+<div><p>The striking thing […] is that he and his colleagues couldn’t find any ‘naturals,’ musicians who floated effortlessly to the top while practicing a fraction of the time their peers did. Nor could they find any ‘grinds,’ people who worked harder than everyone else, yet just didn’t have what it takes to break the top ranks.”</p>
+</div></blockquote>
+<p>The key to success, Gladwell concludes, is many hours of practice.
+The source of the number 10,000 seems to be neurologist Daniel Levitin, quoted by Gladwell:</p>
+<blockquote>
+<div><p>“In study after study, of composers, basketball players, fiction writers, ice skaters, concert pianists, chess players, master criminals, and what have you, this number comes up again and again. […] No one has yet found a case in which true world-class expertise was accomplished in less time.”</p>
+</div></blockquote>
+<p>The core claim of the rule is that 10,000 hours of practice is <em>necessary</em> to achieve expertise.
+Of course, as Ericsson wrote in a commentary, “There is nothing magical about exactly 10,000 hours”.
+But it is probably true that no world-class musician has practiced substantially less.</p>
+<p>However, some people have taken the rule to mean that 10,000 hours is <em>sufficient</em> to achieve expertise.
+In this interpretation, anyone can master any field; all they have to do is practice!
+Well, in running and many other athletic areas, that is obviously not true.
+And I doubt it is true in chess, music, or many other fields.</p>
+<p>Natural talent is not enough to achieve world-level performance without practice, but that doesn’t mean it is irrelevant.
+For most people in most fields, natural attributes and circumstances impose an upper limit on performance.</p>
+<p>In his commentary, Ericsson summarizes research showing the importance of “motivation and the original enjoyment of the activities in the domain and, even more important, […] inevitable differences in the capacity to engage in hard work (deliberate practice).”
+In other words, the thing that distinguishes a world-class violinist from everyone else is not 10,000 hours of practice, but the passion, opportunity, and discipline it takes to spend 10,000 hours doing anything.</p>
 </section>
 <section id="the-greatest-of-all-time">
 <h2>The Greatest of All Time<a class="headerlink" href="#the-greatest-of-all-time" title="Permalink to this heading">#</a></h2>
+<p>Lognormal distributions of ability might explain an otherwise surprising phenomenon: in many fields of endeavor, there is one person widely regarded as the Greatest of All Time or the G.O.A.T.</p>
+<p>For example, in hockey, Wayne Gretzky is the G.O.A.T. and it would be hard to find someone who knows hockey and disagrees.
+In basketball, it’s Michael Jordan; in women’s tennis, Serena Williams, and so on for most sports.
+Some cases are more controversial than others, but even when there are a few contenders for the title, there are only a few.</p>
 <p>And more often than not, these top performers are not just a little better than the rest, they are a <em>lot</em> better.
-To demonstrate this point, I generated a random sample of 100,000 people from a lognormal distribution loosely based on chess ratings.
+For example, in his career in the National Hockey League, Wayne Gretzky scored 2,857 points (the total of goals and assists).
+The player in second place scored 1,921.
+The magnitude of this difference is surprising, in part, because it is not what we would get from a Gaussian distribution.</p>
+<p>To demonstrate this point, I generated a random sample of 100,000 people from a lognormal distribution loosely based on chess ratings.
 Then I generated a sample from a Gaussian distribution with the same mean and variance.
 The following figure shows the results.</p>
 <div class="cell docutils container">
@@ -2280,10 +2150,10 @@ The following figure shows the results.</p>
 <span class="n">cdf_normal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gaussian&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lognormal</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">100.3</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plot_cross</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">100.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">normal</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">100.3</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plot_cross</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">100.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
 
 <span class="n">decorate</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Skill level&quot;</span><span class="p">,</span>
@@ -2295,12 +2165,13 @@ The following figure shows the results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2b042060d8ceec8d5a1773808b35b538b70fe20805dcf0e9af140b5f3f6858f1.png" src="_images/2b042060d8ceec8d5a1773808b35b538b70fe20805dcf0e9af140b5f3f6858f1.png" />
+<img alt="_images/9b61998a8daf7b7ea52b189e302631e499b0625360ac245d43fa773dd9c5a528.png" src="_images/9b61998a8daf7b7ea52b189e302631e499b0625360ac245d43fa773dd9c5a528.png" />
 </div>
 </div>
+<p>The mean and variance of these distributions is about the same, but the shapes are different: the Gaussian distribution extends a little farther to the left,  and the lognormal distribution extends much farther to the right.</p>
 <p>The crosses indicate the top three scorers in each sample.
 In the Gaussian distribution, the top three scores are 1123, 1146, and 1161.
-They are barely distinguishable in the figure, and and if we think of them as Elo scores, there is not much difference between them. According to the Elo formula, we expect the top player to beat the #3 player about 55% of the time.</p>
+They are barely distinguishable in the figure, and if we think of them as Elo scores, there is not much difference between them. According to the Elo formula, we expect the top player to beat the #3 player about 55% of the time.</p>
 <p>In the lognormal distribution, the top three scores are 2913, 3066, and 3155.
 They are clearly distinct in the figure and substantially different in practice.
 In this example, we expect the top player to beat #3 about 80% of the time.</p>
@@ -2330,27 +2201,53 @@ In this example, we expect the top player to beat #3 about 80% of the time.</p>
 </div>
 </div>
 </div>
-<p>In reality, the top-rated chess players in the world are more tightly clustered than my simulated players.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elo_prob</span><span class="p">(</span><span class="mi">2864</span> <span class="o">-</span> <span class="mi">2799</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5924662305843318
-</pre></div>
-</div>
-</div>
-</div>
+<p>In reality, the top-rated chess players in the world are more tightly clustered than my simulated players, so this example is not entirely realistic.
+Even so, Garry Kasparov is widely considered to be the greatest chess player of all time.
+The current world champion, Magnus Carlsen, might overtake him in another decade, but even he acknowledges that he is not there yet.</p>
+<p>Less well known, but more dominant, is Marion Tinsley, who was the checkers (aka draughts) world champion from 1955 to 1958, withdrew from competition for almost 20 years – partly for lack of competition – and then reigned uninterrupted from 1975 to 1991.
+Between 1950 and his death in 1995, he lost only seven games, two of them to a computer.
+The man who programmed the computer thought Tinsley was “an aberration of nature”.</p>
+<p>Marion Tinsley might have been the greatest G.O.A.T. of all time, but I’m not sure that makes him an aberration.
+Rather, he is an example of the natural behavior of lognormal distributions:</p>
+<ul class="simple">
+<li><p>In a lognormal distribution, the outliers are farther from average than in a Gaussian distribution, which is why ordinary runners can’t beat the Freeze, even with a head start.</p></li>
+<li><p>And the margin between the top performer and the runner-up is wider than it would be in a Gaussian distribution, which is why the greatest of all time is, in many fields, an outlier among outliers.</p></li>
+</ul>
+</section>
+<section id="what-should-you-do">
+<h2>What Should You Do?<a class="headerlink" href="#what-should-you-do" title="Permalink to this heading">#</a></h2>
+<p>If you are not sure what to do with your life, the lognormal distribution can help.
+Suppose you have the good fortune to be offered three jobs and you are trying to decide which one to take.
+One of the companies is working a problem you think is important, but you are not sure whether they will have much impact on it.
+The second is also working on an important problem, and you think they will have impact, but you are not sure how long that impact will last.
+The third company is likely to have long-lasting impact, in your estimation, but they are working on a problem you think is less important.
+If your goal is to maximize the positive impact of your work, which job should you take?</p>
+<p>What I have just outlined is called the significance-persistence-contingency framework, or SPC for short.
+In this framework, the total future impact of the effort you allocate to a problem is the product of these three factors: significance is the positive effect during each unit of time where the problem is solved, persistence is length of time the solution is applicable, and contingency is how much the outcome depends on the effort we allocate to it.</p>
+<p>If a project scores high on all three of these factors, it can have a large effect on the future; if it scores low on any of them, its impact will be limited.</p>
+<p>In an extension of this framework, we can decompose contingency into two additional factors, tractability and neglectedness.
+If a problem is not tractable, it is not contingent because it will not get solved regardless of effort.
+And if it is tractable and not neglected, it is not contingent because it will get solved whether you work on it or not.</p>
+<p>So there are at least five factors that might limit a project’s impact in the world; there are probably five more that affect your ability to impact the project, including your skills, personal attributes, and circumstances.</p>
+<p>In general, the way these factors interact is like multiplication: if any of them are low, the product is low; the only way for the product to be high is if all of the factors are high.</p>
+<p>As a result, we have reason to think that the distribution of impact, across a population of all the projects you might work on, is lognormal.
+Most projects have modest potential for impact, but a few can change the world.</p>
+<p>So what does that mean for your job search?
+It implies that – if you want to maximize your impact – you should not take the first job you find, but spend time looking.
+And it suggests that you should not stay in one job for your entire career; you should continue to look for opportunities and change jobs when you find something better.</p>
+<p>These are some of the principles that underlie the 80,000 Hours project, which is a collection of online resources intended to help people think about how to best spend the approximately 80,000 hours of their working lives.</p>
 </section>
 <section id="sources-and-related-reading">
 <h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The ANSUR-II dataset is available from the Open Design Lab at Penn State \cite{ansur2012}.</p></li>
-<li><p>Data from the Behavioral Risk Factor Surveillance System (BRFSS) data is available from the Centers for Disease Control and Prevention (CDC) \cite{brfss2020}.</p></li>
-<li><p>The running speed data is originally from Cool Running, now available from the Internet Archive \cite{cool2010}.</p></li>
-<li><p>The chess data is from the <a class="reference external" href="http://Chess.com">Chess.com</a> leaderboard \cite{chess2022}.</p></li>
+<li><p>The ANSUR-II dataset is available from the <a class="reference external" href="https://www.openlab.psu.edu/ansur2/">Open Design Lab at Penn State</a> (U.S. Army Natick Soldier Research, Development and Engineering Center, 2012).</p></li>
+<li><p>Data from the Behavioral Risk Factor Surveillance System (BRFSS) is available from the <a class="reference external" href="https://www.cdc.gov/brfss">Centers for Disease Control and Prevention (CDC)</a> (2020).</p></li>
+<li><p>Gingerich’s paper comparing Gaussian and lognormal models for anthropometric measurements is “Arithmetic or geometric normality of biological variation: an empirical test of theory” (Gingerich, 2000, <em>Journal of Theoretical Biology</em>).</p></li>
+<li><p>The running speed data is originally from Cool Running, now available from the <a class="reference external" href="https://web.archive.org/web/20100429073703/http://coolrunning.com/results/10/ma/Apr25_27thAn_set1.shtml">Internet Archive</a> (2010).</p></li>
+<li><p>The chess data is from the <a class="reference external" href="https://www.chess.com/leaderboard/live">Chess.com leaderboard</a> (2022).</p></li>
+<li><p>The origin of the 10,000 hour claim is Daniel Levitin’s book <em>This is your brain on music: The science of a human obsession</em> (2006, Penguin), quoted by Gladwell in <em>Outliers: The Story of Success</em> (2008, Little, Brown). Ericsson’s commentary on the topic is “Training history, deliberate practice and elite sports performance” (2013, <em>British Journal of Sports Medicine</em>).</p></li>
+<li><p>Oliver Roeder wrote about Marion Tinsley in <em>Seven Games: A Human History</em> (2022, W. W. Norton &amp; Company). Dr. Jonathan Schaeffer, who wrote the program that won two games against Tinsley, wrote a <a class="reference external" href="https://web.archive.org/web/20220407101006/http://www.wylliedraughts.com/Tinsley.htm">memorial for him</a> (2004).</p></li>
+<li><p>The SPC and ITN frameworks are described in a technical report from the Global Priorities Institute (MacAskill, Thomas, and Vallinder, 2022) and the <a class="reference external" href="https://80000hours.org/">80,000 Hours website</a> (Todd, 2022).</p></li>
 </ul>
 <p>Probably Overthinking It</p>
 <p>Copyright 2022 Allen Downey</p>
@@ -2431,6 +2328,7 @@ In this example, we expect the top player to beat #3 about 80% of the time.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-speeds">Running Speeds</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chess-rankings">Chess Rankings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-greatest-of-all-time">The Greatest of All Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-should-you-do">What Should You Do?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
   </nav></div>
