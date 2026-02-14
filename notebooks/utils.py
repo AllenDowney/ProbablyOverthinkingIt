@@ -2,6 +2,34 @@
 
 https://probablyoverthinking.it
 
+Technical note: This module includes several functions that fit for fitting
+distributions to data (like `fit_normal` and `fit_lognormal`).
+
+Conventional methods are generally based on moment-matching or computing
+maximum-likelihood estimators for the parameters.
+
+But often the question we care about is whether there is a distribution in a
+particular family that is a good match for a given empirical distribution. The best
+way to answer that question is to plot the CDFs of the data and the model and
+compare them visually to see where they agree or disagree.
+
+If that's the evaluation metric, then the right thing to optimize is the distance
+between the distributions, averaged in some way over the range of the quantities.
+
+There are several ways you could do that. The option used here is to write an
+error function that takes a hypothetical set of parameters and:
+
+1. Makes an object that represents a distribution with those parameters.
+
+2. Chooses a range of percentiles and finds the corresponding quantiles in the data.
+
+3. Evaluates the model distribution at those quantiles, and
+
+4. Computes the vertical distance between the resulting percentiles and the
+   target percentiles.
+
+Then `least_squares` is used to find the parameters that minimize the sum of the
+squares of these distances.
 
 """
 
@@ -26,6 +54,12 @@ import statsmodels.formula.api as smf
 from statsmodels.nonparametric.smoothers_lowess import lowess
 
 from empiricaldist import Pmf, Cdf, Surv
+
+
+# ============================================================================
+# GENERAL UTILITIES
+# ============================================================================
+# Functions used across multiple chapters
 
 
 def value_counts(seq, dropna=False):
@@ -114,6 +148,19 @@ def anchor_legend(x, y):
     plt.tight_layout()
 
 
+def plot_cross(x, y, **options):
+    """Plot a cross marker that is visible even when markeredgewidth=0.
+    
+    This function explicitly sets markeredgewidth=1 to ensure crosses
+    are visible, overriding the global matplotlib setting.
+    
+    x, y: coordinates
+    options: passed to plt.plot (color, ms, etc.)
+    """
+    underride(options, marker="+", markeredgewidth=1, color="black", ms=12)
+    plt.plot(x, y, **options)
+
+
 def savefig(root, **options):
     """Save the current figure.
 
@@ -131,9 +178,6 @@ def savefig(root, **options):
         plt.savefig(fname, **options)
 
 
-# GAUSSIAN
-
-
 def make_cdf(seq):
     """Make a CDF from a sequence.
 
@@ -144,6 +188,50 @@ def make_cdf(seq):
     cdf = Cdf.from_seq(seq)
     cdf *= 100
     return cdf
+
+
+def make_lowess(series, frac=0.5):
+    """Use LOWESS to compute a smooth line.
+
+    series: pd.Series
+
+    returns: pd.Series
+    """
+    endog = series.values
+    exog = series.index.values
+
+    smooth = lowess(endog, exog, frac)
+    index, data = np.transpose(smooth)
+
+    return pd.Series(data, index=index)
+
+
+def plot_series_lowess(series, plot_series=False, frac=0.7, **options):
+    """Plots a series of data points and a smooth line.
+
+    series: pd.Series
+    color: string or tuple
+    """
+    color = options.pop("color", "C0")
+    if "label" not in options:
+        options["label"] = series.name
+
+    x = series.index
+    y = series.values
+    if plot_series:
+        plt.plot(x, y, "o", color=color, alpha=0.3, label="_")
+
+    if not plot_series and len(series) == 1:
+        plt.plot(x, y, ".", color=color, alpha=0.6, label=options["label"])
+
+    if len(series) > 1:
+        smooth = make_lowess(series, frac=frac)
+        smooth.plot(color=color, **options)
+
+
+# ============================================================================
+# CHAPTER 1: Are You Normal? (Gaussian)
+# ============================================================================
 
 
 def make_normal_pmf(qs, mu, sigma):
@@ -308,7 +396,16 @@ def make_uniform(qs, name=None, **options):
     return pmf
 
 
-# INSPECTION
+def compress_table(table):
+    """Make the header just one line."""
+    table.columns.name = table.index.name
+    table.index.name = None
+    return table
+
+
+# ============================================================================
+# CHAPTER 2: Relay Races and Revolving Doors (Inspection)
+# ============================================================================
 
 
 def kdeplot(sample, xs, label=None, **options):
@@ -324,46 +421,96 @@ def kdeplot(sample, xs, label=None, **options):
     decorate(ylabel="Likelihood")
 
 
-def make_lowess(series, frac=0.5):
-    """Use LOWESS to compute a smooth line.
+# ============================================================================
+# CHAPTER 3: Defy Tradition, Save the World (Preston)
+# ============================================================================
 
-    series: pd.Series
 
-    returns: pd.Series
+# ============================================================================
+# CHAPTER 4: Extremes, Outliers, and GOATs (Lognormal)
+# ============================================================================
+
+
+def fit_normal(series):
+    """Find the model that minimizes the errors in percentiles.
+
+    series: Series of quantities
+
+    returns: scipy.stats.norm object
     """
-    endog = series.values
-    exog = series.index.values
 
-    smooth = lowess(endog, exog, frac)
-    index, data = np.transpose(smooth)
+    def error_func(params, series):
+        mu, sigma = params
+        cdf = Cdf.from_seq(series)
+        ps = np.linspace(0.01, 0.99)
+        qs = series.quantile(ps)
+        error = cdf(qs) - norm.cdf(qs, mu, sigma)
+        return error
 
-    return pd.Series(data, index=index)
+    params = series.mean(), series.std()
+    res = least_squares(error_func, x0=params, args=(series,), ftol=1e3)
+    assert res.success
+    mu, sigma = res.x
+    return norm(mu, sigma)
 
 
-def plot_series_lowess(series, plot_series=False, frac=0.7, **options):
-    """Plots a series of data points and a smooth line.
+def normal_error_bounds(dist, n, qs, con_level=0.95):
+    """Find the bounds on a normal CDF analytically.
 
-    series: pd.Series
-    color: string or tuple
+    dist: scipy.stats.norm object
+    n: sample size
+    qs: quantities
+    con_level: confidence level
+
+    returns: tuple of arrays (low, high)
     """
-    color = options.pop("color", "C0")
-    if "label" not in options:
-        options["label"] = series.name
+    # find the correct probabilities
+    ps = dist.cdf(qs)
 
-    x = series.index
-    y = series.values
-    if plot_series:
-        plt.plot(x, y, "o", color=color, alpha=0.3, label="_")
+    # find the upper and lower percentiles of
+    # a binomial distribution
+    p_low = (1 - con_level) / 2
+    p_high = 1 - p_low
 
-    if not plot_series and len(series) == 1:
-        plt.plot(x, y, ".", color=color, alpha=0.6, label=options["label"])
-
-    if len(series) > 1:
-        smooth = make_lowess(series, frac=frac)
-        smooth.plot(color=color, **options)
+    low = binom.ppf(p_low, n, ps) / n
+    low[ps == 1] = 1
+    high = binom.ppf(p_high, n, ps) / n
+    return low, high
 
 
-# NBUE
+def make_plot(series, model_label=None, plot_bounds=True, qs=None, **options):
+    """Plot a CDF with a Gaussian model.
+    
+    series: data
+    model_label: string label for the model
+    plot_bounds: boolean, whether to plot the expected upper bound
+    qs: values where the error bounds should be evaluated (optional)
+    options: passed to plt.plot
+    """
+    cdf = make_cdf(series)
+    dist = fit_normal(series)
+    p = 1 - (1 / len(series))
+    upper = dist.ppf(p)
+
+    if plot_bounds:
+        plot_cross(upper, p * 100)
+
+    n = len(series)
+    if qs is None:
+        q_max = max(cdf.qs.max(), upper)
+        qs = np.linspace(cdf.qs.min(), q_max)
+
+    low, high = normal_error_bounds(dist, n, qs, con_level=0.95)
+    plt.fill_between(
+        qs, low * 100, high * 100, lw=1, color="gray", alpha=0.3, label=model_label
+    )
+
+    cdf.plot(**options)
+
+
+# ============================================================================
+# CHAPTER 5: Better Than New (NBUE)
+# ============================================================================
 
 
 def percentile_rows(series_seq, ps):
@@ -401,9 +548,6 @@ def plot_percentiles(series_seq, ps=None, label=None, **options):
     low, med, high = rows
     plt.plot(xs, med, alpha=0.5, label=label, **options)
     plt.fill_between(xs, low, high, linewidth=0, alpha=0.2, **options)
-
-
-# NBUE
 
 
 def remaining_lifetimes_pmf(pmf, qs=None):
@@ -453,7 +597,19 @@ def plot_remaining_lifetimes(
     decorate(xlabel="Current survival time", ylabel="Average remaining survival time")
 
 
-# LONGTAIL
+# ============================================================================
+# CHAPTER 6: Jumping to Conclusions (Berkson)
+# ============================================================================
+
+
+# ============================================================================
+# CHAPTER 7: Causation, Collision, and Confusion (Birthweight)
+# ============================================================================
+
+
+# ============================================================================
+# CHAPTER 8: The Long Tail of Disaster (Longtail)
+# ============================================================================
 
 
 def make_surv(seq):
@@ -524,30 +680,6 @@ def empirical_error_bounds(surv, n, qs, con_level=0.95):
     low[ps == 1] = 1
     high = binom.ppf(p_high, n, ps) / n
     return 1 - low, 1 - high
-
-
-def normal_error_bounds(dist, n, qs, con_level=0.95):
-    """Find the bounds on a normal CDF analytically.
-
-    dist: scipy.stats.norm object
-    n: sample size
-    qs: quantities
-    con_level: confidence level
-
-    returns: tuple of arrays (low, high)
-    """
-    # find the correct probabilities
-    ps = dist.cdf(qs)
-
-    # find the upper and lower percentiles of
-    # a binomial distribution
-    p_low = (1 - con_level) / 2
-    p_high = 1 - p_low
-
-    low = binom.ppf(p_low, n, ps) / n
-    low[ps == 1] = 1
-    high = binom.ppf(p_high, n, ps) / n
-    return low, high
 
 
 def plot_error_bounds(surv, n, **options):
@@ -627,7 +759,24 @@ def minimize_df(df0, surv, bounds=[(1, 1e6)], ps=None):
     return res.x
 
 
-# SIMPSON
+# ============================================================================
+# CHAPTER 9: Fairness and Fallacy (Base Rate)
+# ============================================================================
+
+
+# ============================================================================
+# CHAPTER 10: Penguins, Pessimists, and Paradoxes (Simpson)
+# ============================================================================
+
+
+# ============================================================================
+# CHAPTER 11: Changing Hearts and Minds (Progress)
+# ============================================================================
+
+
+# ============================================================================
+# CHAPTER 12: Chasing the Overton Window (Overton)
+# ============================================================================
 
 
 def get_regression_result(results, varname="x"):
@@ -912,13 +1061,6 @@ def decorate_table(**options):
     anchor_legend(1.02, 1.02)
 
 
-def compress_table(table):
-    """Make the header just one line."""
-    table.columns.name = table.index.name
-    table.index.name = None
-    return table
-
-
 Gray20 = (0.162, 0.162, 0.162, 0.7)
 Gray30 = (0.262, 0.262, 0.262, 0.7)
 Gray40 = (0.355, 0.355, 0.355, 0.7)
@@ -992,6 +1134,11 @@ def convert_color_list():
         print(f"'{s}', ", end="")
 
 
+# ============================================================================
+# PLOTTING CONFIGURATION
+# ============================================================================
+
+
 def set_pyplot_params():
     # create a figure and then close it so the jupyter inline backend doesn't clobber
     # the figure size and resolution
@@ -1032,5 +1179,4 @@ def set_pyplot_params():
     plt.rcParams["legend.facecolor"] = "none"
     plt.rcParams["legend.edgecolor"] = "0.8"
 
-    plt.rcParams["lines.markersize"] = 4
-    plt.rcParams["lines.markeredgewidth"] = 0
+    plt.rcParams["lines.markersize"] = 6
