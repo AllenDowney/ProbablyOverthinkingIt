@@ -340,6 +340,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-note">Technical note</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#present-arms">Present… Arms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why">Why?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-distributions">Comparing Distributions</a></li>
@@ -375,6 +376,9 @@ I think there are two factors that underlie our intuition for these ideas:</p>
 For example, the average height of adults in the United States is about 170 cm.
 Most people are close to this average: about 64% of adults are within 10 cm plus or minus; 93% are within 20 cm.
 And few people are far from average: only 1% of the population is shorter than 145 cm or taller than 195 cm.</p>
+<p>missing</p>
+<section id="technical-note">
+<h2>Technical note<a class="headerlink" href="#technical-note" title="Permalink to this heading">#</a></h2>
 <p>The numbers in the previous paragraph come from the <a class="reference external" href="https://www.cdc.gov/brfss/index.html">Behavioral Risk Factor Surveillance System</a> (BRFSS).
 Here is the <a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/clean_brfss.ipynb">notebook I used to download and clean the data</a>.</p>
 <p>I generated a sample from the dataset, which we can download like this:</p>
@@ -411,6 +415,7 @@ In fact, when we consider the many ways people are different, we find that</p>
 <p>To show why this is true, we’ll start with a single measurement and work our way up to hundreds, and then thousands.
 I’ll introduce the Gaussian curve, and we’ll see that it fits many of these measurements remarkably well.</p>
 <p>In addition to physical measurements from a survey of military personnel, we’ll also consider psychological measurements, using survey results that quantify the Big Five personality traits.</p>
+</section>
 <section id="present-arms">
 <h2>Present… Arms<a class="headerlink" href="#present-arms" title="Permalink to this heading">#</a></h2>
 <p>How tall are you? How long are your arms? How far is it from the radiale landmark on your right elbow to the stylion landmark on your right wrist?</p>
@@ -501,9 +506,33 @@ The shaded areas show the distributions of the actual heights again; the lines s
 <img alt="_images/e8640724d0dd89215d9bd127bcef64aa462b40de97285254b22334e6cdaf3b1e.png" src="_images/e8640724d0dd89215d9bd127bcef64aa462b40de97285254b22334e6cdaf3b1e.png" />
 </div>
 </div>
+<p>The results from the simulation are a good fit for the data.
+Before I ran this simulation, I had a pretty good idea what the results would look like because of the Central Limit Theorem, which states that the sum of a large number of random values follows a Gaussian distribution.
+Mathematically, the theorem is only true if the random values come from the same distribution and they are not correlated with each other.</p>
+<p>Of course, genetic and environmental factors are more complicated than that.
+In reality, some contributions are bigger than others, so they don’t all come from the same distribution.
+Also, they are likely to be correlated with each other.
+And their effects are not purely additive; they can interact with each other in more complicated ways.</p>
+<p>However, even when the requirements of the Central Limit Theorem are not met exactly, the combined effect of many factors will be approximately Gaussian as long as:</p>
+<ul class="simple">
+<li><p>None of the contributions are much bigger than the others,</p></li>
+<li><p>The correlations between them are not too strong,</p></li>
+<li><p>The total effect is not too far from the sum of the parts.</p></li>
+</ul>
+<p>Many natural systems satisfy these requirements, which is why so many distributions in the world are approximately Gaussian.</p>
 </section>
 <section id="comparing-distributions">
 <h2>Comparing Distributions<a class="headerlink" href="#comparing-distributions" title="Permalink to this heading">#</a></h2>
+<p>So far, I have represented distributions using histograms, which show a range of possible values on the horizontal axis and percentages on the vertical axis.
+Before we go on, I want to present another way to visualize distributions that is particularly good for making comparisons.
+This visualization is based on <strong>percentile ranks</strong>.</p>
+<p>If you have taken a standardized test, you are probably familiar with percentile ranks.<br />
+For example, if your percentile rank is 75, that means that you did as well as or better than 75% of the people who took the test.</p>
+<p>Or if you have a child, you might be familiar with percentile ranks from a pediatric growth chart.
+For example, a 2-year-old boy who weighs 11 kg has percentile rank 10, which means he weighs as much or more than 10% of children his age.</p>
+<p>Computing percentile ranks is not hard.
+For example, if a female participant in the ANSUR survey is 160 cm tall, she is as tall or taller than 34% of the female participants, so her percentile rank is 34.
+If a male participant is 180 cm, he is as tall or taller than 75% of the male participants, so his percentile rank is 75.</p>
 <p>If we compute the percentile rank for each participant the same way, and plot these percentile ranks on the vertical axis, the results look like this:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -1085,6 +1114,7 @@ I don’t mean to say that the world treats us as equally weird; it doesn’t.</
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-note">Technical note</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#present-arms">Present… Arms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why">Why?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-distributions">Comparing Distributions</a></li>

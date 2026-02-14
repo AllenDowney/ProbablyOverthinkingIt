@@ -439,10 +439,6 @@ year. From their report I estimated the actual distribution of class
 sizes. In the following figure, the solid line shows the result as it
 would be reported by the Dean. Most classes are smaller than 50, fewer
 are between 50 and 100, and only a few are bigger than 100.</p>
-<p>The class sizes in this section come from data reported by
-Purdue University for undergraduate class sizes in the 2013–14 academic
-year. From their report I estimated the actual distribution of class
-sizes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">19</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">29</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">39</span><span class="p">),</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">49</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">99</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">)]</span>
@@ -578,7 +574,6 @@ distribution as reported by the Dean, and the dashed line shows
 the biased distribution reported by students.
 The new, dotted line shows my estimate of the actual distribution,
 constructed by drawing a sample from the biased distribution.</p>
-<p>Now suppose we collect a biased sample of 500 class sizes and apply the inverse weights to estimate the unbiased distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">biased</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
@@ -911,10 +906,49 @@ In the next example, it’s the number of people infected by a superspreader.</p
 </section>
 <section id="finding-superspreaders">
 <h2>Finding Superspreaders<a class="headerlink" href="#finding-superspreaders" title="Permalink to this heading">#</a></h2>
+<p>Fortunately, the inspection paradox can do more than make us feel bad.
+It can help us find people who feel bad; more specifically, it can help
+us find people spreading a disease.</p>
+<p>During the COVID-19 pandemic, you probably heard about the
+effective reproduction number, <span class="math notranslate nohighlight">\(R\)</span>, which is the average number of
+people infected by each infected person. <span class="math notranslate nohighlight">\(R\)</span> is important because it
+determines the large-scale course of the epidemic. As long as <span class="math notranslate nohighlight">\(R\)</span> is
+greater than 1, the number of cases grows exponentially; if it drops below 1, the number of cases dwindles toward zero.</p>
+<p>However, <span class="math notranslate nohighlight">\(R\)</span> is an average, and the average is not the whole story. With
+COVID-19, like many other epidemics, there is a lot of variation around
+the average.
+According to a news feature in <em>Nature</em>, “One study in Hong Kong found
+that 19% of cases of COVID-19 were responsible for 80% of transmission,
+and 69% of cases didn’t transmit the virus to anyone.” In other words,
+most infections are caused by a small number of superspreaders.</p>
+<p>This observation suggests a strategy for contact tracing. When an
+infected patient is discovered, it is common practice to identify people
+they have been in contact with who might also be infected. “Forward
+tracing” is intended to find people the patient might have infected;
+“backward tracing” is intended to find the person who infected the
+patient.</p>
+<p>Now suppose you are a public health officer trying to slow or stop the
+spread of a communicable disease. Assuming that you have limited
+resources to trace contacts and test for the disease – and that’s a
+pretty good assumption – which do you think would be more effective,
+forward or backward tracing?</p>
+<p>The inspection paradox suggests that backward tracing is more likely to
+discover a superspreader and the people they have infected.</p>
+<p>According to the Nature article, “Backward tracing is extremely
+effective for the coronavirus because of its propensity to be passed on
+in superspreading events […] Any new case is more likely to have
+emerged from a cluster of infections than from one individual, so
+there’s value in going backwards to find out who else was linked to that
+cluster.”</p>
 <p>To quantify this effect, let’s suppose that 70% of infected people don’t infect anyone else, as in the Hong Kong study, and the other 30% infect between 1 and 15 other people, uniformly distributed. The average of this distribution is 2.4, which is a plausible value of <span class="math notranslate nohighlight">\(R\)</span>.</p>
 <p>Now suppose we discover an infected patient, trace forward, and find
 someone the patient infected. On average, we expect this person to
 infect 2.4 other people.</p>
+<p>But if we trace backward and find the person who infected the patient,
+we are more likely to find someone who has infected a lot of people, and
+less likely to find someone who has infected only a few. In fact, the
+probability that we find any particular spreader is proportional to the
+number of people they have infected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1041,8 +1075,6 @@ The dashed line shows the biased distribution that would be seen by a runner goi
 </div>
 </div>
 </div>
-<p>The following is the distribution a spectator would see if they watched all of the runners go by.
-The dashed line shows the biased distribution that would be seen by a runner going 11 kilometers per hour (kph).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased</span> <span class="o">=</span> <span class="n">speeds</span><span class="o">.</span><span class="n">values</span>
@@ -1063,7 +1095,7 @@ The dashed line shows the biased distribution that would be seen by a runner goi
 <img alt="_images/d7cbfdf1f3cfbc89350b789773786c5762817869d63cf7590c45d2e57c11e618.png" src="_images/d7cbfdf1f3cfbc89350b789773786c5762817869d63cf7590c45d2e57c11e618.png" />
 </div>
 </div>
-<p>And here’s the biased view seen be someone running 11 kph.</p>
+<p>And here’s the biased view seen by someone running 11 kph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">unbiased</span> <span class="o">-</span> <span class="mi">11</span><span class="p">)</span>
