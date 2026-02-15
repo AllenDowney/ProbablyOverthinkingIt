@@ -161,21 +161,16 @@ def plot_cross(x, y, **options):
     plt.plot(x, y, **options)
 
 
-def savefig(root, **options):
+def savefig(filename, **options):
     """Save the current figure.
 
-    root: string filename root
+    filename: string filename (should include extension, e.g., 'figure.png')
     options: passed to plt.savefig
+    
+    Saves directly to the specified filename with dpi=300 by default.
     """
-    fmat = options.pop("format", None)
-    if fmat:
-        formats = [fmat]
-    else:
-        formats = ["pdf", "png"]
-
-    for f in formats:
-        fname = f"figs/{root}.{f}"
-        plt.savefig(fname, **options)
+    underride(options, dpi=300)
+    plt.savefig(filename, **options)
 
 
 def make_cdf(seq):
@@ -513,15 +508,20 @@ def make_plot(series, model_label=None, plot_bounds=True, qs=None, **options):
 # ============================================================================
 
 
-def percentile_rows(series_seq, ps):
+def percentile_rows(series_seq, ps, fillna=False):
     """Computes percentiles from aligned series.
 
     series_seq: list of sequences
     ps: cumulative probabilities
+    fillna: if True, fill NaNs with 0; if False, drop rows with NaNs
 
     returns: Series of x-values, NumPy array with selected rows
     """
-    df = pd.concat(series_seq, axis=1).dropna()
+    df = pd.concat(series_seq, axis=1)
+    if fillna:
+        df = df.fillna(0)
+    else:
+        df = df.dropna()
     xs = df.index
     array = df.values.transpose()
     array = np.sort(array, axis=0)
@@ -533,18 +533,19 @@ def percentile_rows(series_seq, ps):
     return xs, rows
 
 
-def plot_percentiles(series_seq, ps=None, label=None, **options):
+def plot_percentiles(series_seq, ps=None, label=None, fillna=False, **options):
     """Plot the low, median, and high percentiles.
 
     series_seq: sequence of Series
     ps: percentiles to use for low, medium and high
     label: string label for the median line
+    fillna: if True, fill NaNs with 0 in percentile_rows; if False, drop NaNs
     options: options passed plt.plot and plt.fill_between
     """
     ps = ps if ps is not None else [0.05, 0.5, 0.95]
     assert len(ps) == 3
 
-    xs, rows = percentile_rows(series_seq, ps)
+    xs, rows = percentile_rows(series_seq, ps, fillna=fillna)
     low, med, high = rows
     plt.plot(xs, med, alpha=0.5, label=label, **options)
     plt.fill_between(xs, low, high, linewidth=0, alpha=0.2, **options)
