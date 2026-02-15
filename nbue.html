@@ -346,6 +346,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#life-expectancy-at-birth">Life Expectancy At Birth</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#child-mortality">Child mortality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-immortal-swede">The Immortal Swede</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
             </nav>
         </div>
@@ -359,6 +360,7 @@ document.write(`
                   
   <section id="better-than-new">
 <h1>Better Than New<a class="headerlink" href="#better-than-new" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nbue.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -378,124 +380,13 @@ document.write(`
 </div>
 </details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-
-
-<span class="n">download</span><span class="p">(</span>
-    <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/&quot;</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">)})</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
-
-<span class="c1"># Set the random seed so we get the same results every time</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span>
-
-<span class="k">def</span> <span class="nf">decorate</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="n">utils</span><span class="o">.</span><span class="n">decorate</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">fit_normal</span>
 <span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">make_cdf</span>
 <span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">normal_error_bounds</span>
-
-
-<span class="k">def</span> <span class="nf">make_plot</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">model_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the data and a normal model.</span>
-<span class="sd">    </span>
-<span class="sd">    series: Series</span>
-<span class="sd">    model_label: string</span>
-<span class="sd">    plot_bounds: boolean, whether to plot the expected upper bound</span>
-<span class="sd">    qs: sequence of quantities where the model should be evaluated</span>
-<span class="sd">    options: passed to plt.plot</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">cdf</span> <span class="o">=</span> <span class="n">make_cdf</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
-    <span class="n">dist</span> <span class="o">=</span> <span class="n">fit_normal</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">))</span>
-    <span class="n">upper</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">plot_bounds</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">qs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">q_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">upper</span><span class="p">)</span>
-        <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">cdf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">q_max</span><span class="p">)</span>
-    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">normal_error_bounds</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">low</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">high</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-
-    <span class="n">cdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="k">if</span> <span class="s1">&#39;dpi&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
-        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">savefig</span>
 </pre></div>
 </div>
 </div>
@@ -535,6 +426,10 @@ So, it turns out, a patient who survives one year after diagnosis is then <em>mo
 <p>In this chapter I’ll demonstrate and explain each of these effects, starting with light bulbs.</p>
 <section id="light-bulbs">
 <h2>Light Bulbs<a class="headerlink" href="#light-bulbs" title="Permalink to this heading">#</a></h2>
+<p>As your engineer friend asked at lunch, would you rather have a new light bulb or one that has been used for 1000 hours?</p>
+<p>To answer this question, I’ll use data from an experiment run in 2007 by researchers at Banaras Hindu University in India.
+They installed 50 new incandescent light bulbs in a large rectangular area, turned them on, and left them burning continuously until the last bulb expired 2,568 hours later.
+During this period, which is more than three months, they checked the bulbs every 12 hours and recorded the number that had expired.</p>
 <p>The data are available in a gist:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -693,7 +588,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12222e93b86bb61567b5ef1a0c658a53bfe0af783e120e4d877bc4acfec43c93.png" src="_images/12222e93b86bb61567b5ef1a0c658a53bfe0af783e120e4d877bc4acfec43c93.png" />
+<img alt="_images/f2e4f45ae5d018a0126548255050111a34ba7a77300d52e6d695a7bf8d6cfb02.png" src="_images/f2e4f45ae5d018a0126548255050111a34ba7a77300d52e6d695a7bf8d6cfb02.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -760,7 +655,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1c07c29848f9b75d2c62d2f5abd7e9ada347935a1aaa142c738d6d197743ea09.png" src="_images/1c07c29848f9b75d2c62d2f5abd7e9ada347935a1aaa142c738d6d197743ea09.png" />
+<img alt="_images/b7b389525747977c3a7ca91642436e58f8c4734fe6840ecd38dd83168a641825.png" src="_images/b7b389525747977c3a7ca91642436e58f8c4734fe6840ecd38dd83168a641825.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -788,7 +683,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c28b61f5686c36f6d2f01a8542cf657529d214d748e64dba5d539aa0e9ea0101.png" src="_images/c28b61f5686c36f6d2f01a8542cf657529d214d748e64dba5d539aa0e9ea0101.png" />
+<img alt="_images/7bf5c030fd96921368395e92d01a7f1b340cd3e74724203864581262cd05a782.png" src="_images/7bf5c030fd96921368395e92d01a7f1b340cd3e74724203864581262cd05a782.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -801,7 +696,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/42fc1eb7f43f940590d8f3e9f6e2811ef4b8de435f0699595e9d44c7ea0df7a6.png" src="_images/42fc1eb7f43f940590d8f3e9f6e2811ef4b8de435f0699595e9d44c7ea0df7a6.png" />
+<img alt="_images/ebb570f1bcf0ffd47cf8c8cc2e95a937d93caeb8c167792830d7f7ccb59e8ae3.png" src="_images/ebb570f1bcf0ffd47cf8c8cc2e95a937d93caeb8c167792830d7f7ccb59e8ae3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -813,7 +708,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/35fe467fcd3877ec031335770219481bb657f221302993ed3544e057150ff718.png" src="_images/35fe467fcd3877ec031335770219481bb657f221302993ed3544e057150ff718.png" />
+<img alt="_images/03e9d02da6f05dcd9f8d75e02f0faac0b701ac0162c80c18253dc5653033dfab.png" src="_images/03e9d02da6f05dcd9f8d75e02f0faac0b701ac0162c80c18253dc5653033dfab.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -826,11 +721,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a415fb9c4ca59d895d08f618929cee976aa7502cecc9d5551338022a69d274b6.png" src="_images/a415fb9c4ca59d895d08f618929cee976aa7502cecc9d5551338022a69d274b6.png" />
+<img alt="_images/8ada8e86c38f234bf476231d8496b20afd0bd896342ee7862111875b1058bf64.png" src="_images/8ada8e86c38f234bf476231d8496b20afd0bd896342ee7862111875b1058bf64.png" />
 </div>
 </div>
 <p>The shaded area shows how much variation we expect from the Gaussian model.
 Except for one unusually long-lasting bulb, the lifetimes fall within the bounds, which shows that the data are consistent with the model.</p>
+<p>The researchers who collected this data explain why we might expect the distribution to be Gaussian.
+While a light bulb with a tungsten filament burns, “the evaporation of tungsten atoms proceeds and the hot filament gets thinner,” until it breaks and the lamp fails.
+Based on a statistical model of this evaporation, they show that the resulting distribution of lifetimes is Gaussian.</p>
 <p>In this dataset, the average lifetime for a new light bulb is about 1414 hours.
 For a bulb that has been used for 1000 hours, the average lifetime is higher, about 1495 hours; however, since it has already burned 1000 hours, its average remaining lifetime is only 495 hours.
 So we would rather have the new bulb.</p>
@@ -927,7 +825,6 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
 
 <span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">lifetimes</span><span class="p">)</span>
 
@@ -958,53 +855,11 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 <p>The following two functions compile the results and compute error bounds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percentile_rows</span><span class="p">(</span><span class="n">series_seq</span><span class="p">,</span> <span class="n">ps</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes percentiles from aligned series.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">plot_percentiles</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">percentile_rows</span>
 
-<span class="sd">    series_seq: list of sequences</span>
-<span class="sd">    ps: cumulative probabilities</span>
-
-<span class="sd">    returns: Series of x-values, NumPy array with selected rows</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># NOTE: This is a specialized version of this function that</span>
-    <span class="c1"># fills NaNs with 0</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">series_seq</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">xs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
-    <span class="n">array</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-    <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">shape</span>
-
-    <span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
-    <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">ps</span> <span class="o">*</span> <span class="n">nrows</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    <span class="n">rows</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">xs</span><span class="p">,</span> <span class="n">rows</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_percentiles</span><span class="p">(</span><span class="n">series_seq</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the low, median, and high percentiles.</span>
-<span class="sd">    </span>
-<span class="sd">    series_seq: sequence of Series</span>
-<span class="sd">    ps: percentiles to use for low, medium and high</span>
-<span class="sd">    label: string label for the median line</span>
-<span class="sd">    options: options passed plt.plot and plt.fill_between</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">]</span>
-    <span class="n">xs</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">percentile_rows</span><span class="p">(</span><span class="n">series_seq</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span>
-    <span class="n">low</span><span class="p">,</span> <span class="n">med</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">rows</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">med</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>
-<span class="n">xs</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">percentile_rows</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">]</span>
+<span class="n">xs</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">percentile_rows</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">fillna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="p">(</span><span class="n">med</span><span class="p">,)</span> <span class="o">=</span> <span class="n">rows</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -1017,7 +872,7 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plot_percentiles</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">)</span>
+<span class="n">plot_percentiles</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">fillna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">decorate</span><span class="p">(</span>
     <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Elapsed time in hours&quot;</span><span class="p">,</span>
@@ -1029,13 +884,21 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0de1a884cba696e71de3de43b80ec79169187cba911082a596eacb647626a855.png" src="_images/0de1a884cba696e71de3de43b80ec79169187cba911082a596eacb647626a855.png" />
+<img alt="_images/3a831089db5e8533d8de8a6cc263dbbb48df06ccbbf01f779acee8aa2ae4a7f1.png" src="_images/3a831089db5e8533d8de8a6cc263dbbb48df06ccbbf01f779acee8aa2ae4a7f1.png" />
 </div>
 </div>
 <p>The x-axis shows elapsed times since the installation of a hypothetical light bulb.
 The y-axis shows the average remaining lifetime.
 In this example, a bulb that has been burning for 1000 hours is expected to last about 495 hours more, as indicated by the dotted lines.</p>
-<p>So a new bulb generally lasts longer than a used bulb.</p>
+<p>Between 0 and 1700 hours, this curve is consistent with intuition: the longer the bulb has been burning, the sooner we expect it to expire.
+Then, between 1700 and 2000 hours, it gets better!</p>
+<p>If we understand that the filament of a light bulb gets thinner as it burns, does this curve mean that sometimes the evaporation process goes in reverse, and the filament gets thicker?
+That seems unlikely.</p>
+<p>The reason for this reversal is the presence of one bulb that lasted 2568 hours, almost twice the average.
+So one way to think about what’s going on is that there are two kinds of bulbs: ordinary bulbs and Super Bulbs.
+The longer a bulb lasts, the more likely it is to be a Super Bulb.
+And the more likely it is to be a Super Bulb, the longer we expect it to last.</p>
+<p>Nevertheless, a new bulb generally lasts longer than a used bulb.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1450</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">(</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1710</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">(</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1800</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1054,7 +917,7 @@ In this example, a bulb that has been burning for 1000 hours is expected to last
 <p>Now let’s consider the question posed by the imaginary obstetrician at lunch.
 Suppose you visit a maternity ward and meet women who are starting their 39th, 40th, and 41st week of pregnancy.
 Which one do you think will deliver first?</p>
-<p>To answer this question, we need to know the distribution of gestation times, which we can get from the National Survey of Family Growth (NSFG), which was the source of the birth weights in Chapter~\ref{extremes-outliers-and-goats}.
+<p>To answer this question, we need to know the distribution of gestation times, which we can get from the National Survey of Family Growth (NSFG), which was the source of the birth weights in Chapter 4.
 I gathered data collected between 2002 and 2017, which includes information about 43,939 live births.</p>
 <p>I’ve made a subset of the data available in an HDF file.</p>
 <div class="cell docutils container">
@@ -1223,10 +1086,15 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5b9cb0937d63f680273a9c5521bfc95e0693e124afccc50f8c05ca2002b3b9a.png" src="_images/b5b9cb0937d63f680273a9c5521bfc95e0693e124afccc50f8c05ca2002b3b9a.png" />
+<img alt="_images/6e0012ee204e16cb75af6e728a18898ff2ec53b2430cefa1f735be3ac86dfc42.png" src="_images/6e0012ee204e16cb75af6e728a18898ff2ec53b2430cefa1f735be3ac86dfc42.png" />
 </div>
 </div>
 <p>About 41% of these births were during the 39th week of pregnancy, and another 18% during the 40th week.</p>
+<p>By now you probably expect me to say that this distribution follows a Gaussian or lognormal model, but it doesn’t.
+It is not symmetric like a Gaussian distribution, or skewed to the right like most lognormal distributions.
+And the most common value is more common than we would expect from either model.
+As we’ve seen several times now, nature is under no obligation to follow simple rules; this distribution is what it is.
+Nevertheless, we can use it to compute the average remaining time as a function of elapsed time, as shown in the following figure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lengths</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">pmf_length_gt</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">pmf_length_gt</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span>
@@ -1243,16 +1111,7 @@ I gathered data collected between 2002 and 2017, which includes information abou
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;cycle&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6 13593
-7 20492
-8 9543
-9 9358
-10 9553
+    <span class="k">pass</span>  <span class="c1"># Check cycle groups</span>
 </pre></div>
 </div>
 </div>
@@ -1301,11 +1160,7 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the previous version of plot_percentiles was specialized;</span>
-<span class="c1"># for this analysis we want the general one (not that it matters)</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">plot_percentiles</span>
-
-<span class="n">plot_percentiles</span><span class="p">(</span><span class="n">mrt_seq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">mrt_seq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
 
 <span class="c1">#decorate_pregnancy(title=&quot;Average remaining duration of pregancy&quot;)</span>
 <span class="n">decorate_pregnancy</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -1314,7 +1169,7 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3f61f1688486550fe3b65b32be6f3aa777e621905f8faaece7b462ade9de924f.png" src="_images/3f61f1688486550fe3b65b32be6f3aa777e621905f8faaece7b462ade9de924f.png" />
+<img alt="_images/0c735e7384638a23b48c7da3a91836a3c4fcb7b089e83d9ee76d5621b5ca856b.png" src="_images/0c735e7384638a23b48c7da3a91836a3c4fcb7b089e83d9ee76d5621b5ca856b.png" />
 </div>
 </div>
 <p>Between weeks 36 and 39, the curve behaves as we expect: as time goes on, we get closer to the finish line.
@@ -1327,6 +1182,9 @@ But if we get to the beginning of week 40, and the baby has not been born, the a
 A week has passed and the finish line is only 8 hours closer.</p>
 <p>And if we get to the beginning of week 41, and the baby has not been born, the average remaining time is 0.59 weeks.
 Another week has passed and the finish line is only 7 hours closer!</p>
+<p>These differences are so small, they are only measurable because we have a large sample; for practical purposes, the expected remaining time is essentially unchanged for more than two weeks.</p>
+<p>This is why, if you ask a doctor how long it will be until a baby is born, they generally say something noncommittal like “Any day now.”
+As infuriating as this answer might be, it sums up the situation pretty well, and it is probably kinder than the truth.</p>
 <p>Here’s the computation for the average remaining time at the end of each week.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1441,7 +1299,6 @@ Name: 50.0, dtype: float64
 
 <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">:</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">interp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
     <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">mrt_seq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">36</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -1453,30 +1310,22 @@ Name: 50.0, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39 4.757559429477013
-39.679651347068145 4.520430465974382
-40.32542712792163 4.310420075240543
-40.941201424384566 4.124527367596406
-41.530419619755484 3.2367992226202267
-41.99281950870123 2.4783853029123057
-</pre></div>
-</div>
-<img alt="_images/3325ceeb475d289eec541fd593a14008a4595d3ce521d0cebceba4d46e566c21.png" src="_images/3325ceeb475d289eec541fd593a14008a4595d3ce521d0cebceba4d46e566c21.png" />
-<img alt="_images/2f0a39c7f6128f381ef38490676e82bf9ef293d3e300f8a96ae428387b947248.png" src="_images/2f0a39c7f6128f381ef38490676e82bf9ef293d3e300f8a96ae428387b947248.png" />
-<img alt="_images/c123f4e8c2a8691230c8755d7cb9aa8e56a92c85b5429793040189db634d52d3.png" src="_images/c123f4e8c2a8691230c8755d7cb9aa8e56a92c85b5429793040189db634d52d3.png" />
-<img alt="_images/968ec3bdd62277f0fc49151efd353eef6515c0f09ab96b6370876add678eb79c.png" src="_images/968ec3bdd62277f0fc49151efd353eef6515c0f09ab96b6370876add678eb79c.png" />
-<img alt="_images/c2c4014bb33d717fa6c6330ba5bd572b5820c18405eb6dfe70607251e7858e1e.png" src="_images/c2c4014bb33d717fa6c6330ba5bd572b5820c18405eb6dfe70607251e7858e1e.png" />
-<img alt="_images/c849804d22dac9033ba82dcc07448e8ea3542f73c08767775fccbfeedd6a3eb1.png" src="_images/c849804d22dac9033ba82dcc07448e8ea3542f73c08767775fccbfeedd6a3eb1.png" />
+<img alt="_images/2735cf42a4220bbb47b6608bd401846a940fd6451e957b2677a3185001fccf20.png" src="_images/2735cf42a4220bbb47b6608bd401846a940fd6451e957b2677a3185001fccf20.png" />
+<img alt="_images/c32b91d9680605ac7a3cf8cf53db012493f101cce882796b888bdd9cff1d848d.png" src="_images/c32b91d9680605ac7a3cf8cf53db012493f101cce882796b888bdd9cff1d848d.png" />
+<img alt="_images/ce18886dec8d9c89b7d666e380f5a5782642694283b1e995cc693be6ef82058c.png" src="_images/ce18886dec8d9c89b7d666e380f5a5782642694283b1e995cc693be6ef82058c.png" />
+<img alt="_images/603cdaa68c497063139acfe71f50f4feae7baf50041b6190814cc227450e71d5.png" src="_images/603cdaa68c497063139acfe71f50f4feae7baf50041b6190814cc227450e71d5.png" />
+<img alt="_images/925f84aba080a0cc303aa5ffb2dfc7d2787ccab625ecdf2c6b9829edfb50e3e9.png" src="_images/925f84aba080a0cc303aa5ffb2dfc7d2787ccab625ecdf2c6b9829edfb50e3e9.png" />
+<img alt="_images/82c82874c09476705b4eb88dfbf819f7268dc7d47e5669c2bc9f1559367f2544.png" src="_images/82c82874c09476705b4eb88dfbf819f7268dc7d47e5669c2bc9f1559367f2544.png" />
 </div>
 </div>
 </section>
 <section id="cancer-survival-times">
 <h2>Cancer survival times<a class="headerlink" href="#cancer-survival-times" title="Permalink to this heading">#</a></h2>
 <p>Finally, let’s consider the surprising result reported by the imaginary oncologist at lunch: for many cancers, a patient who has survived a year after diagnosis is expected to live longer than someone who has just been diagnosed.</p>
-<p>To demonstrate and explain this result, I’ll use data from the the Surveillance, Epidemiology, and End Results (SEER) program, which is run by the U.S. National Institutes of Health (NIH).
+<p>To demonstrate and explain this result, I’ll use data from the Surveillance, Epidemiology, and End Results (SEER) program, which is run by the U.S. National Institutes of Health (NIH).
 Starting in 1973, SEER has collected data on cancer cases from registries in several locations in the United States.
 In the most recent datasets, these registries cover about one third of the U.S. population.</p>
-<p>NOTE: I am definitely not allowed to redistribute SEER data, so the data in this example in synthetic; that is, I have generated random data that is statistically similar to the actual data I reported in the book. The results below will differ from what’s in the book, but the conclusions are qualitatively similar.</p>
+<p>NOTE: I am definitely not allowed to redistribute SEER data, so the data in this example is synthetic; that is, I have generated random data that is statistically similar to the actual data I reported in the book. The results below will differ from what’s in the book, but the conclusions are qualitatively similar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;brain.hdf&quot;</span>
@@ -1620,7 +1469,7 @@ Name: duration, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6b0f83e5c87dc9c17a10b4617c81ba6ce9548856c9e603bcffdfe5967cb6a974.png" src="_images/6b0f83e5c87dc9c17a10b4617c81ba6ce9548856c9e603bcffdfe5967cb6a974.png" />
+<img alt="_images/33875b8be7cb42b82709d615543fdaf71cf1cc476a19465268892eee71d8d04c.png" src="_images/33875b8be7cb42b82709d615543fdaf71cf1cc476a19465268892eee71d8d04c.png" />
 </div>
 </div>
 <p>With Kaplan-Meier estimation, we can use all cases to estimate the survival function.</p>
@@ -1746,7 +1595,7 @@ Name: duration, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8bf23a1369a6c5b32106685863bc947c62a346d07047e96664cba3b4aec35a37.png" src="_images/8bf23a1369a6c5b32106685863bc947c62a346d07047e96664cba3b4aec35a37.png" />
+<img alt="_images/8a3062904dc775319ae7f5933aae4bb9a3cd25e3173b0252e6ab518547169064.png" src="_images/8a3062904dc775319ae7f5933aae4bb9a3cd25e3173b0252e6ab518547169064.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1766,7 +1615,7 @@ Name: duration, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c0bcf207772bc314583205ad134382814553823cfb7cc5f9d140dbda3c96ebe4.png" src="_images/c0bcf207772bc314583205ad134382814553823cfb7cc5f9d140dbda3c96ebe4.png" />
+<img alt="_images/65fcc930b4b05179124b043348fbb452a3c8fa018307528ee3643d71753ad804.png" src="_images/65fcc930b4b05179124b043348fbb452a3c8fa018307528ee3643d71753ad804.png" />
 </div>
 </div>
 <p>The survival curve shows the probability of survival past a given time on a scale from 0 to 1.
@@ -1843,7 +1692,7 @@ The following figure shows the result.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3ebef59ca22c885aac9c7ca6d5e75aea5cff56684de26a9c2be7fe6dc0602a32.png" src="_images/3ebef59ca22c885aac9c7ca6d5e75aea5cff56684de26a9c2be7fe6dc0602a32.png" />
+<img alt="_images/0de4e2967124995b96fd2fac9c6205e03cf64aa5e26aa8c877adb9f6e0d04c33.png" src="_images/0de4e2967124995b96fd2fac9c6205e03cf64aa5e26aa8c877adb9f6e0d04c33.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1881,7 +1730,6 @@ dtype: float64
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">med</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">)</span>
     <span class="n">gray_box</span><span class="p">(</span><span class="mi">125</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">milestones</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
     <span class="n">decorate</span><span class="p">(</span>
@@ -1893,22 +1741,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13.773989705091937
-13.773989705091937
-30.843413403818417
-13.773989705091937
-30.843413403818417
-55.578532081470954
-13.773989705091937
-30.843413403818417
-55.578532081470954
-83.41756386272576
-</pre></div>
-</div>
-<img alt="_images/9153ea24047b9ca4ee8696e43c0d12f26771b5ce3fcfba2a2be53f5b37c30acf.png" src="_images/9153ea24047b9ca4ee8696e43c0d12f26771b5ce3fcfba2a2be53f5b37c30acf.png" />
-<img alt="_images/8a43dcb912b41212a0c47e407285749ac1912456b1a53e49c5fb8d49a956ba78.png" src="_images/8a43dcb912b41212a0c47e407285749ac1912456b1a53e49c5fb8d49a956ba78.png" />
-<img alt="_images/bb45c316723b184ce2ce9f606ec570612a205d2d5f312ba082e47d41b27ceb5a.png" src="_images/bb45c316723b184ce2ce9f606ec570612a205d2d5f312ba082e47d41b27ceb5a.png" />
-<img alt="_images/2a58667589f577994919f297b9d5ffb4480397db6f119ba06c331c86c1219b0b.png" src="_images/2a58667589f577994919f297b9d5ffb4480397db6f119ba06c331c86c1219b0b.png" />
+<img alt="_images/71c0452d17cd4a89d5394596faee7edb855b592ed1f64de5184f5b526d5c0c31.png" src="_images/71c0452d17cd4a89d5394596faee7edb855b592ed1f64de5184f5b526d5c0c31.png" />
+<img alt="_images/0e95ba61921a2ad905968dd3528491527b7061f67067c712b66b83d0b87b8ad7.png" src="_images/0e95ba61921a2ad905968dd3528491527b7061f67067c712b66b83d0b87b8ad7.png" />
+<img alt="_images/de2ac5952ef91f0228306fcd36402cdff50f6696b7c940234f39a161da9c601b.png" src="_images/de2ac5952ef91f0228306fcd36402cdff50f6696b7c940234f39a161da9c601b.png" />
+<img alt="_images/4c33ce97da2645471b10713042c6beb7a3a85ff2c3233fe3e6e34d872f0ae8ac.png" src="_images/4c33ce97da2645471b10713042c6beb7a3a85ff2c3233fe3e6e34d872f0ae8ac.png" />
 </div>
 </div>
 <p>At the time of diagnosis, the average survival time is about 14 months.
@@ -1918,7 +1754,21 @@ If they survive those 18 months, for a total of 32, we expect them to survive an
 And if they survive those 28 months, for a total of 60 months (five years), we expect them to survive another 35 months (almost three years).
 The vertical lines indicate these milestones.
 It’s like running a race where the finish line keeps moving, and the farther you go, the faster it retreats.</p>
-<p>If you hear that the average survival time after diagnosis is 14 months, you might imagine a Gaussian distribution where 14 months is the most common value and an equal number of patients live more or less than 14 months.
+<p>After 60 months, the curve levels off, which means that the expected remaining survival time is constant.
+Finally, after 120 months (10 years), it starts to decline.
+However, we should not take this part of the curve too seriously, which is why I grayed it out.
+Statistically, it is based on a small number of cases.
+Also, most people diagnosed with glioblastoma are over 60 (the median in this dataset is 64).
+Ten years after diagnosis, they are even older, so some of the decline in this part of the curve is the result of deaths from other causes.</p>
+<p>This example shows how cancer patients are different from light bulbs.
+In general, we expect a new light bulb to last longer than an old one;
+this property is called “new better than used in expectation”, abbreviated NBUE.
+The term “in expectation” is another way of saying “on average”.</p>
+<p>But for some cancers, we expect a patient who has survived some time after diagnosis to live longer.
+This property is called “new worse than used in expectation”, abbreviated NWUE.</p>
+<p>The idea that something new is worse than something used is contrary to our experience of things in the world that wear out over time.
+It is also contrary to the behavior of a Gaussian distribution.</p>
+<p>For example, if you hear that the average survival time after diagnosis is 14 months, you might imagine a Gaussian distribution where 14 months is the most common value and an equal number of patients live more or less than 14 months.
 But that would be a very misleading picture.</p>
 <p>To show how bad it would be, I chose a Gaussian distribution that matches the distribution of survival times as well as possible – which is not very well – and used it to compute average remaining survival times.</p>
 <div class="cell docutils container">
@@ -1939,7 +1789,7 @@ But that would be a very misleading picture.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bbd14011adea96b830de2feead3b8180a821a098cdfeb55c089b11049d5b11c0.png" src="_images/bbd14011adea96b830de2feead3b8180a821a098cdfeb55c089b11049d5b11c0.png" />
+<img alt="_images/bda7d6e85bb3ef3972ff82155e78f66539a9eda851e2703384f39e0a09ea4308.png" src="_images/bda7d6e85bb3ef3972ff82155e78f66539a9eda851e2703384f39e0a09ea4308.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1977,7 +1827,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16e98206aa29ce37968b4c3e5fd15535b256ccc060e219843df09534334249ba.png" src="_images/16e98206aa29ce37968b4c3e5fd15535b256ccc060e219843df09534334249ba.png" />
+<img alt="_images/223ceaee27a85ec07b9b69b12bedc5d85ac61f1c0573069f31922412883f5954.png" src="_images/223ceaee27a85ec07b9b69b12bedc5d85ac61f1c0573069f31922412883f5954.png" />
 </div>
 </div>
 <p>With the Gaussian model, the average remaining survival time starts around 20 months,
@@ -2055,11 +1905,15 @@ To demonstrate, I chose a lognormal distribution that fits the actual distributi
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b1e53c8f4543517b82cd621207b60128438c3de30e1ec8bd799ab3c4c7e46daf.png" src="_images/b1e53c8f4543517b82cd621207b60128438c3de30e1ec8bd799ab3c4c7e46daf.png" />
+<img alt="_images/3408bb3b2ad042fec76f8e0a7dd97f3ddec2accf891bd94f081c6965e6095653.png" src="_images/3408bb3b2ad042fec76f8e0a7dd97f3ddec2accf891bd94f081c6965e6095653.png" />
 </div>
 </div>
 <p>During the first 24 months, the model is a little too optimistic, and after 120 months it is much too optimistic.
-But the lognormal model gets the shape of the curve right: if your mental model of the distribution is lognormal, you would have a reasonably accurate understanding of the situation.</p>
+But the lognormal model gets the shape of the curve right: if your mental model of the distribution is lognormal, you would have a reasonably accurate understanding of the situation.
+And you would understand why a patient who has survived three years is likely to live longer than a patient who has just been diagnosed.</p>
+<p>At this point in the imaginary lunch, a demographer at a nearby table joins the conversation.
+“Actually, it’s not just cancer patients,” they say.
+“Until recently, every person born was better used than new.”</p>
 </section>
 <section id="life-expectancy-at-birth">
 <h2>Life Expectancy At Birth<a class="headerlink" href="#life-expectancy-at-birth" title="Permalink to this heading">#</a></h2>
@@ -2220,11 +2074,7 @@ dtype: float64
 <p>The following function interpolates the data from the figure and puts it in a Hazard function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
-<span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Hazard</span>
-
-
-<span class="k">def</span> <span class="nf">make_hazard</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_hazard</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a Hazard function by interpolating a Series.</span>
 <span class="sd">    </span>
 <span class="sd">    series: Series</span>
@@ -2261,10 +2111,16 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3732e4da66ac3d3ea34fa526fad8b28816c097f28b21fd3d3512db2651cc5d22.png" src="_images/3732e4da66ac3d3ea34fa526fad8b28816c097f28b21fd3d3512db2651cc5d22.png" />
+<img alt="_images/c9454fbeb2e58f2a48702f7c379b6abc523055fd73b1361ee44f7f36be787939.png" src="_images/c9454fbeb2e58f2a48702f7c379b6abc523055fd73b1361ee44f7f36be787939.png" />
 </div>
 </div>
-<p>The notable feature is that mortality rates were lower for the later cohort at every age.</p>
+<p>The most notable feature of these curves is their shape; they are called “bathtub curves” because they drop off steeply on one side and increase gradually on the other, like the cross-section of a bathtub.</p>
+<p>The other notable feature is that mortality rates were lower for the later cohort at every age. For example,</p>
+<ul class="simple">
+<li><p>On the left side, mortality rates are highest during the first year. In the earlier cohort (1800-1810), about 23% died before their first birthday; in the later cohort (1905-1915), it was about 7%.</p></li>
+<li><p>Both curves drop quickly to a minimum in young adulthood. In the earlier cohort, the mortality rate at age 14 is about 5 per 1000. In the later cohort, it is about 2 per 1000.</p></li>
+<li><p>On the right side, mortality rates increase with age. For example, of people in the earlier cohort who made it to age 80, about 13% died at age 80. In the later cohort, the same mortality rate was about 6%.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz1800</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">haz1905</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -2301,6 +2157,17 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>We can use these curves to compute “life expectancy at birth”.
+For people born around 1800, the average lifespan was about 36 years; for people born around 1900, it was 66 years.
+So that’s a substantial change.</p>
+<p>However, life expectancy at birth can be misleading.
+When people hear that the average lifespan was 36 years, they might imagine a Gaussian distribution where many people die near age 36 and few people live much longer than that.
+But that’s not accurate.</p>
+<p>For someone born in 1800, if they made it to age 36, they would expect to live another 29 years, for a total of 65.
+And if they made it to 65, they would expect to live another 11 years, for a total of 76, which is more than twice the average.</p>
+<p>The reason for this counterintuitive behavior is child mortality.
+If child mortality is high, life expectancy at birth is low.
+But if someone survives the first few years, their life expectancy goes up.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1800</span> <span class="o">=</span> <span class="n">haz1800</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">()</span>
@@ -2357,7 +2224,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c48209c115cda78a6716161ae2abf9093933ff5265a1dc22cff22f305b95258.png" src="_images/8c48209c115cda78a6716161ae2abf9093933ff5265a1dc22cff22f305b95258.png" />
+<img alt="_images/ade26cedb029294cb44661ce8711cf2fb5843be970df666cc3be083b6bc17249.png" src="_images/ade26cedb029294cb44661ce8711cf2fb5843be970df666cc3be083b6bc17249.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2389,10 +2256,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c7a018f88467823657db8e6fa0b8ff307ebc016c8fe520a61fb2729cfa59ecac.png" src="_images/c7a018f88467823657db8e6fa0b8ff307ebc016c8fe520a61fb2729cfa59ecac.png" />
+<img alt="_images/60c0bd8eb05fe1f4e38cd3e4d1fb1c7776ffb8442ec617459d1726565fe3d75f.png" src="_images/60c0bd8eb05fe1f4e38cd3e4d1fb1c7776ffb8442ec617459d1726565fe3d75f.png" />
 </div>
 </div>
-<p>In both cohorts, used was better than new, at least for the first few years of life.</p>
+<p>In both cohorts, used was better than new, at least for the first few years of life.
+For someone born around 1800, life expectancy at birth was only 36.
+But if they survived the first 5 years, they would expect to live another 50 years, for a total of 55.</p>
+<p>Similarly, for someone born in 1905, life expectancy at birth was 66 years.
+But if they survived the first 2 years, they would expect to live another 70, for a total of 72.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series1800</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">series1800</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="n">series1800</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -2456,7 +2327,8 @@ dtype: float64
 </section>
 <section id="child-mortality">
 <h2>Child mortality<a class="headerlink" href="#child-mortality" title="Permalink to this heading">#</a></h2>
-<p>The following figure shows the percentage of children who die before age 5 for four geographical regions, from 1900 to 2019.
+<p>Fortunately, child mortality has decreased since 1900.
+The following figure shows the percentage of children who die before age 5 for four geographical regions, from 1900 to 2019.
 These data were combined from several sources by Gapminder, a foundation based in Sweden that “promotes sustainable global development […] by increased use and understanding of statistics.”</p>
 <p>Documentation of the data is at <a class="reference external" href="https://www.gapminder.org/data/documentation/gd005">https://www.gapminder.org/data/documentation/gd005</a></p>
 <p>The data is in <a class="reference external" href="https://docs.google.com/spreadsheets/d/1Av7eps_zEK73-AdbFYEmtTrwFKlfruBYXdrnXAOFVpM/edit#gid=501532268">this online spreadsheet</a>, which I downloaded in August 2022.</p>
@@ -2562,12 +2434,17 @@ These data were combined from several sources by Gapminder, a foundation based i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1e6745df0790d08aa5010eaba965b2b778fdcdd289d64ba50504f7b39ec68974.png" src="_images/1e6745df0790d08aa5010eaba965b2b778fdcdd289d64ba50504f7b39ec68974.png" />
+<img alt="_images/1926cb7afc61db97acb2122a936f3f2be7bcaffdf60597025d936517f34e4170.png" src="_images/1926cb7afc61db97acb2122a936f3f2be7bcaffdf60597025d936517f34e4170.png" />
 </div>
 </div>
-<p>In every region, child mortality has decreased consistently and substantially.</p>
-<p>I collected recent mortality data from the <a class="reference external" href="https://apps.who.int/gho/data/node.main.LIFECOUNTRY?lang=en">Global Health Observatory</a> of the World Health Organization (WHO).
+<p>In every region, child mortality has decreased consistently and substantially.
+The only exceptions are indicated by the vertical lines: the 1918 influenza pandemic, which visibly affected Asia, the Americas, and Europe; World War II in Europe (1939-1945); and the Great Leap Forward in China (1958-1962).
+In every case, these exceptions did not affect the long-term trend.</p>
+<p>Although there is more work to do, especially in Africa, child mortality is substantially lower now, in every region of the world, than in 1900.
+As a result, most people now are better new than used.</p>
+<p>To demonstrate this change, I collected recent mortality data from the <a class="reference external" href="https://apps.who.int/gho/data/node.main.LIFECOUNTRY?lang=en">Global Health Observatory</a> of the World Health Organization (WHO).
 For people born in 2019, we don’t know what their future lifetimes will be, but we can estimate it if we assume that the mortality rate in each age group will not change over their lifetimes.</p>
+<p>Based on that simplification, the following figure shows average remaining lifetime as a function of age for Sweden and Nigeria in 2019, compared to Sweden in 1905.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_hazard</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -2681,7 +2558,6 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </div>
 </div>
 </div>
-<p>Based on that simplification, the following figure shows average remaining lifetime as a function of age for Sweden and Nigeria in 2019, compared to Sweden in 1905.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem_swe</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf_swe</span><span class="p">)</span>
@@ -2711,7 +2587,7 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1dff0920a360a8345361b10fd442826c34aaac7d6d33df19d6b60c32afb8db47.png" src="_images/1dff0920a360a8345361b10fd442826c34aaac7d6d33df19d6b60c32afb8db47.png" />
+<img alt="_images/0d42550cf107c195ba2b5e0403bd4019ca8cea8d62a5cc699cf69fe3c5a87a54.png" src="_images/0d42550cf107c195ba2b5e0403bd4019ca8cea8d62a5cc699cf69fe3c5a87a54.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2730,7 +2606,7 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16397d5e9e73bcee272b3b9d7f0ccc44637e06b9b50982b18cf0e687433f5b16.png" src="_images/16397d5e9e73bcee272b3b9d7f0ccc44637e06b9b50982b18cf0e687433f5b16.png" />
+<img alt="_images/c3607253b78c78d728bd318f21da0195bddf066a899660f410085b28ffc5abdf.png" src="_images/c3607253b78c78d728bd318f21da0195bddf066a899660f410085b28ffc5abdf.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2750,10 +2626,20 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>Since 1905, Sweden has continued to make progress; life expectancy at every age is higher in 2019 than in 1905.
+And Swedes now have the new-better-than-used property.
+Their life expectancy at birth is about 82 years, and it declines consistently over their lives, just like a light bulb.</p>
+<p>Unfortunately, Nigeria has one of the highest rates of child mortality in the world: in 2019, almost 8% of babies died in their first year of life.
+After that, they are briefly better used than new:
+life expectancy at birth is about 62 years; however, a baby who survives the first year will live another 65 years, on average.</p>
+<p>Going forward, I hope we continue to reduce child mortality in every region; if we do, soon every person born will be better new than used.
+Or maybe we can do even better than that.</p>
 </section>
 <section id="the-immortal-swede">
 <h2>The Immortal Swede<a class="headerlink" href="#the-immortal-swede" title="Permalink to this heading">#</a></h2>
-<p>Going back to the data from Sweden, the following figure shows the mortality rate for each age group, updated every ten years from 2000 to 2019.</p>
+<p>In the previous section, I showed that child mortality declined quickly in the last century, and we saw the effect of these changes on life expectancy.
+In this section we’ll look more closely at adult mortality.
+Going back to the data from Sweden, the following figure shows the mortality rate for each age group, updated every ten years from 2000 to 2019.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s2">&quot;life_table_sweden.csv&quot;</span><span class="p">)</span>
@@ -3113,9 +2999,17 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60170c391c9f7b6471352b4972f4147298e6f963857a2dc168895747738e22b2.png" src="_images/60170c391c9f7b6471352b4972f4147298e6f963857a2dc168895747738e22b2.png" />
+<img alt="_images/9ca57f4c9e6613dbb0921190e8025ebec9336f0c06ffe2e415a14b275d4ae736.png" src="_images/9ca57f4c9e6613dbb0921190e8025ebec9336f0c06ffe2e415a14b275d4ae736.png" />
 </div>
 </div>
+<p>Notice that the y-axis is on a log scale, so the differences between age groups are orders of magnitude. In 2019, the mortality rate for people over 85 was about 1 in 10. For people between 65 and 69 it was 1 in 100; between 40 and 45 it was 1 in 1000, and for people between 10 and 14 it was less than 1 in 10,000.</p>
+<p>This figure shows that there are four phases of mortality:</p>
+<ul class="simple">
+<li><p>In the first year of life, mortality is still quite high. Infants have about the same mortality rate as 50-year-olds.</p></li>
+<li><p>Among children between 1 and 19, mortality is at its lowest.</p></li>
+<li><p>Among adults from 20 to 35, it is low and almost constant.</p></li>
+<li><p>After age 35, it increases at a constant rate.</p></li>
+</ul>
 <p>The straight-line increase after age 35 was described by Benjamin Gompertz in 1825, so this phenomenon is called the Gompertz Law.
 It is an empirical law, which is to say that it names a pattern we see in nature, but at this point we don’t have an explanation of why it’s true, or whether it is certain to be true in the future.
 Nevertheless, the data in this example fall in a remarkably straight line.</p>
@@ -3171,7 +3065,7 @@ If we zoom in on the age range from 40 to 80, we can see the changes in adult mo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/17d939d3b988c341b78ce0fc9437c7fc12cfa8ffb7b3548b4478ecf94499ecd2.png" src="_images/17d939d3b988c341b78ce0fc9437c7fc12cfa8ffb7b3548b4478ecf94499ecd2.png" />
+<img alt="_images/45e493e45e6faaf789298019c70a818c693ab02eff4e3d5ed9cbe60df9034b0d.png" src="_images/45e493e45e6faaf789298019c70a818c693ab02eff4e3d5ed9cbe60df9034b0d.png" />
 </div>
 </div>
 <p>In these age groups, the decreases in mortality have been remarkably consistent.
@@ -3276,10 +3170,10 @@ At the same time, for the reasons I just mentioned, the mortality rate in every 
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>1.581e+04</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Sun, 18 Feb 2024</td> <th>  Prob (F-statistic):</th> <td>3.78e-61</td> 
+  <th>Date:</th>             <td>Sun, 15 Feb 2026</td> <th>  Prob (F-statistic):</th> <td>3.78e-61</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>17:29:03</td>     <th>  Log-Likelihood:    </th> <td>  109.74</td> 
+  <th>Time:</th>                 <td>15:08:04</td>     <th>  Log-Likelihood:    </th> <td>  109.74</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    45</td>      <th>  AIC:               </th> <td>  -213.5</td> 
@@ -3420,7 +3314,7 @@ So let’s see what happens if we include the second effect as well, that is, if
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fd0c4a9894e29c297153dc2ce08e8f1fd2f4f5024eebb1c4e3262b4531b93d48.png" src="_images/fd0c4a9894e29c297153dc2ce08e8f1fd2f4f5024eebb1c4e3262b4531b93d48.png" />
+<img alt="_images/330c82db99a07c3e92d8108efd4bc37d53aad957797287289c7b4d2d3a453c4e.png" src="_images/330c82db99a07c3e92d8108efd4bc37d53aad957797287289c7b4d2d3a453c4e.png" />
 </div>
 </div>
 <p>The line labeled “With current progress” indicates the mortality rates we expect for a hypothetical Swede who was 40 in 2020.
@@ -3441,7 +3335,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f0189a491896fb5c4c7480e5e0e5fe8d00642b3867c08aad90f53211f692046b.png" src="_images/f0189a491896fb5c4c7480e5e0e5fe8d00642b3867c08aad90f53211f692046b.png" />
+<img alt="_images/044038b78293fa0a7271b1f0f2c38483cd14c01a0eb389eb90f3737983acc958.png" src="_images/044038b78293fa0a7271b1f0f2c38483cd14c01a0eb389eb90f3737983acc958.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3459,7 +3353,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1d637ecd39e35e43b567bde3f3c76d0bfa28d057c431fc7ea85da394abbd245a.png" src="_images/1d637ecd39e35e43b567bde3f3c76d0bfa28d057c431fc7ea85da394abbd245a.png" />
+<img alt="_images/ad6eea8faab557c6f78d8d59891a67185ca283809d2275163493eeae23f8a43e.png" src="_images/ad6eea8faab557c6f78d8d59891a67185ca283809d2275163493eeae23f8a43e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3557,7 +3451,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/56e8b40796dd308475b3ed657b70db30a44a8412bb672e46e1ad81dccc0c0709.png" src="_images/56e8b40796dd308475b3ed657b70db30a44a8412bb672e46e1ad81dccc0c0709.png" />
+<img alt="_images/d2ad6477d51fe224dc45f39d118b6ae32595885be5f07ce077c04707f1147b29.png" src="_images/d2ad6477d51fe224dc45f39d118b6ae32595885be5f07ce077c04707f1147b29.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3576,7 +3470,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b21869feff2244a0d7e0b6f25a79594a01c615e2f52012314ae58b8fcb923c4b.png" src="_images/b21869feff2244a0d7e0b6f25a79594a01c615e2f52012314ae58b8fcb923c4b.png" />
+<img alt="_images/4850e33abe57e91f780955e162e2ddb3fa40d6f7aa6357d7a7bd53561ad9762f.png" src="_images/4850e33abe57e91f780955e162e2ddb3fa40d6f7aa6357d7a7bd53561ad9762f.png" />
 </div>
 </div>
 <p>The dashed line on the left shows the survival curve we expect if there is no further decrease in mortality rates; in that scenario, life expectancy at age 40 is 82 years and the probability of living to 100 is only 1.4%.</p>
@@ -3653,6 +3547,19 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </div>
 <p>Finally, the dotted line on the right shows the survival curve if mortality decreases at twice the current rate.
 Life expectancy at age 40 would be 102 and the probability of living to 100 would be 60%.</p>
+<p>Of course, we don’t expect the pace of progress to double overnight, but we could get there eventually.
+In a recent survey, demographers in Denmark and the United States listed possible sources of accelerating progress, including:</p>
+<ul class="simple">
+<li><p>Prevention and treatment of infectious disease and prevention of future pandemics,</p></li>
+<li><p>Reduction in lifestyle risk factors like obesity and drug abuse (and I would add improvement in suicide prevention),</p></li>
+<li><p>Prevention and treatment of cancer, possibly including immune therapies and nanotechnology,</p></li>
+<li><p>Precision medicine that uses individual genetic information to choose effective treatment, and CRISPR treatment for genetic conditions,</p></li>
+<li><p>Technology for reconstructing and regenerating tissues and organs,</p></li>
+<li><p>And possibly ways to slow the rate of biological aging.</p></li>
+</ul>
+<p>To me it seems plausible that the rate of progress could double in the near future.
+But even then, everyone would die eventually.
+Maybe we can do better.</p>
 <p>The following figure shows the survival curve under the assumption that mortality rates, starting in 2019, decrease at four times the current rate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3667,7 +3574,7 @@ Life expectancy at age 40 would be 102 and the probability of living to 100 woul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/09e29efa5d170048fcfe9469353fb0bd7fe84fa03a670c022d69c54daa25fe10.png" src="_images/09e29efa5d170048fcfe9469353fb0bd7fe84fa03a670c022d69c54daa25fe10.png" />
+<img alt="_images/4940450a26066864bc1dea4fe2abd655b77c9375736a306a091216eb74f19c2c.png" src="_images/4940450a26066864bc1dea4fe2abd655b77c9375736a306a091216eb74f19c2c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3687,7 +3594,7 @@ Life expectancy at age 40 would be 102 and the probability of living to 100 woul
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4301166e53e433663d11bf7cb6fb354a3d170e79c201c333b474c46d5ccdfa2d.png" src="_images/4301166e53e433663d11bf7cb6fb354a3d170e79c201c333b474c46d5ccdfa2d.png" />
+<img alt="_images/8611f2189c9cc601eb3eac310259a44904d9721da4028d51ccfa2de1d531ccb8.png" src="_images/8611f2189c9cc601eb3eac310259a44904d9721da4028d51ccfa2de1d531ccb8.png" />
 </div>
 </div>
 <p>In this scenario, some people live to be 300 years old!
@@ -3731,7 +3638,7 @@ And, as shown in the following figure, average remaining lifetimes decrease with
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02df8ec36775f1e078fe05d90da78ff435e6bb403cf7fc45584c0b8920f67dda.png" src="_images/02df8ec36775f1e078fe05d90da78ff435e6bb403cf7fc45584c0b8920f67dda.png" />
+<img alt="_images/65311236272f751059002a9d2aae42fa1e7438570fc94ee960b394df360d202e.png" src="_images/65311236272f751059002a9d2aae42fa1e7438570fc94ee960b394df360d202e.png" />
 </div>
 </div>
 <p>With faster progress, people live longer, but they still have the new-better-than-used property: as each year passes, they get closer to the grave, on average.</p>
@@ -3762,11 +3669,20 @@ The result is a survival curve that looks like this.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d36d7a6cbf552f52b6328efec366105e8b4e4e77312839e2e624a731fb34ed38.png" src="_images/d36d7a6cbf552f52b6328efec366105e8b4e4e77312839e2e624a731fb34ed38.png" />
+<img alt="_images/b5ba2750e1bf76ab0591c31c554a15727236e0d549ea9adb62cadb90d0d5565a.png" src="_images/b5ba2750e1bf76ab0591c31c554a15727236e0d549ea9adb62cadb90d0d5565a.png" />
 </div>
 </div>
 <p>The difference between 4 and 4.9 is qualitative.
 At a factor of 4, the survival curve plummets toward an inevitable end; at a factor of 4.9, it extends out to ages that are beyond biblical.</p>
+<p>With progress at this rate, half the population lives to be 879, about 20% live to be 2000, and 4% live to be 4000.
+Out of 7 billion people, we expect the oldest to be 29,000 years old.</p>
+<p>But the strangest part is the average <em>remaining</em> lifetime.
+In the 4.9 scenario, life expectancy at birth is 1268 years.
+But if you survive 1268 years, your average remaining lifetime is still 1268 years.
+And if you survive those years, your expected remaining lifetime is <em>still</em> 1268 years, and so on, forever.</p>
+<p>Every year, your risk of dying goes up because you are older, but it goes down by just as much due to progress.
+People in this scenario are not immortal; each year about 8 out of 10,000 die.
+But as each year passes, you take one step toward the grave, and the grave takes one step away from you.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span> <span class="o">=</span> <span class="n">hazard_no_progress</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span>
@@ -3833,6 +3749,19 @@ At a factor of 4, the survival curve plummets toward an inevitable end; at a fac
 </div>
 <p>In the near future, if child mortality continues to decrease, everyone will be better new than used.
 But eventually, if adult mortality decreases fast enough, everyone will have the same remaining time, on average: new, used, or in between.</p>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The paper about light bulbs is “Renewal rate of filament lamps: theory and experiment” by Menon and Agrawal (2007).</p></li>
+<li><p>The data on pregnancy durations is from the National Survey of Family Growth, available from the <a class="reference external" href="https://www.cdc.gov/nchs/nsfg">CDC website</a>.</p></li>
+<li><p>The data on cancer survival times is from the Surveillance, Epidemiology, and End Results (SEER) Program of the National Cancer Institute, available at <a class="reference external" href="https://seer.cancer.gov/data/">seer.cancer.gov</a>.</p></li>
+<li><p>The data on childhood mortality is from Gapminder, a foundation based in Sweden that promotes sustainable global development through increased use and understanding of statistics. The data is available at <a class="reference external" href="https://www.gapminder.org/data/documentation/gd005/">gapminder.org</a>.</p></li>
+<li><p>Historical mortality data in Sweden is from “Early cohort mortality predicts the rate of aging in the cohort: A historical analysis” by Beltran-Sanchez, Crimmins, and Finch (2012), published in the Journal of Development Origins of Health and Disease.</p></li>
+<li><p>More recent mortality data is from the <a class="reference external" href="https://apps.who.int/gho/data/node.main.LIFECOUNTRY?lang=en">WHO Global Health Observatory</a>.</p></li>
+<li><p>The paper on potential future reductions in mortality rates is “Demographic perspectives on the rise of longevity” by Vaupel, Villavicencio, and Bergeron-Boucher (2021), published in the Proceedings of the National Academy of Sciences.</p></li>
+<li><p>A recent book on future developments in longevity is Steven Johnson’s <em>Extra life: A short history of living longer</em> (Riverhead Books, 2022).</p></li>
+</ul>
 <p>Probably Overthinking It</p>
 <p>Copyright 2022 Allen Downey</p>
 <p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
@@ -3912,6 +3841,7 @@ But eventually, if adult mortality decreases fast enough, everyone will have the
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#life-expectancy-at-birth">Life Expectancy At Birth</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#child-mortality">Child mortality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-immortal-swede">The Immortal Swede</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
   </nav></div>
 
