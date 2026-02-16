@@ -442,8 +442,8 @@ During this period, which is more than three months, they checked the bulbs ever
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;lamps.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bulb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;lamps.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">bulb</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -517,7 +517,7 @@ During this period, which is more than three months, they checked the bulbs ever
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
 
-<span class="n">pmf_lifetimes</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">])</span>
+<span class="n">pmf_lifetimes</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">bulb</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">bulb</span><span class="p">[</span><span class="s2">&quot;h&quot;</span><span class="p">])</span>
 <span class="n">pmf_lifetimes</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;t&quot;</span>
 </pre></div>
 </div>
@@ -2342,8 +2342,8 @@ These data were combined from several sources by Gapminder, a foundation based i
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;data-for-regions-by-year&quot;</span><span class="p">)</span>
-<span class="n">gm</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;data-for-regions-by-year&quot;</span><span class="p">)</span>
+<span class="n">gap</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2414,7 +2414,7 @@ These data were combined from several sources by Gapminder, a foundation based i
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">gm</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">gap</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
 <span class="n">line_styles</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;africa&quot;</span><span class="p">:</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;asia&quot;</span><span class="p">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;americas&quot;</span><span class="p">:</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="s2">&quot;europe&quot;</span><span class="p">:</span> <span class="s2">&quot;-.&quot;</span><span class="p">}</span>
 
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1918</span><span class="p">,</span> <span class="mi">1942</span><span class="p">,</span> <span class="mi">1960</span><span class="p">]:</span>
@@ -2650,9 +2650,9 @@ Going back to the data from Sweden, the following figure shows the mortality rat
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Indicator&quot;</span><span class="p">,</span> <span class="s2">&quot;Age Group&quot;</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;life_table_sweden.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">sweden</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;life_table_sweden.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">sweden</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+<span class="n">sweden</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2741,7 +2741,7 @@ Going back to the data from Sweden, the following figure shows the mortality rat
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Age Group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">sweden</span><span class="p">[</span><span class="s2">&quot;Age Group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">ages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">age_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
 <span class="n">age_series</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -2776,9 +2776,9 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Indicator&quot;</span><span class="p">,</span> <span class="s2">&quot;Age Group&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">age_series</span><span class="o">.</span><span class="n">values</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweden</span> <span class="o">=</span> <span class="n">sweden</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Indicator&quot;</span><span class="p">,</span> <span class="s2">&quot;Age Group&quot;</span><span class="p">])</span>
+<span class="n">sweden</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">age_series</span><span class="o">.</span><span class="n">values</span>
+<span class="n">sweden</span>
 </pre></div>
 </div>
 </div>
@@ -2988,7 +2988,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_mortality</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_mortality</span><span class="p">(</span><span class="n">sweden</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1/10&quot;</span><span class="p">,</span> <span class="s2">&quot;1/100&quot;</span><span class="p">,</span> <span class="s2">&quot;1/1000&quot;</span><span class="p">,</span> <span class="s2">&quot;1/10000&quot;</span><span class="p">]</span>
 <span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e-1</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
@@ -3015,7 +3015,7 @@ It is an empirical law, which is to say that it names a pattern we see in nature
 Nevertheless, the data in this example fall in a remarkably straight line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="mi">2019</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweden</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="mi">2019</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
@@ -3029,7 +3029,7 @@ Name: 2019, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span> <span class="mi">2019</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweden</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span> <span class="mi">2019</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
@@ -3047,7 +3047,7 @@ Name: 2019, dtype: float64
 If we zoom in on the age range from 40 to 80, we can see the changes in adult mortality more clearly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">sweden</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span>
 <span class="n">plot_mortality</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
 
 
@@ -3173,7 +3173,7 @@ At the same time, for the reasons I just mentioned, the mortality rate in every 
   <th>Date:</th>             <td>Sun, 15 Feb 2026</td> <th>  Prob (F-statistic):</th> <td>3.78e-61</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>15:08:04</td>     <th>  Log-Likelihood:    </th> <td>  109.74</td> 
+  <th>Time:</th>                 <td>20:18:23</td>     <th>  Log-Likelihood:    </th> <td>  109.74</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    45</td>      <th>  AIC:               </th> <td>  -213.5</td> 

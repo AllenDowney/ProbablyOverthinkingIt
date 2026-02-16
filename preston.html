@@ -433,10 +433,10 @@ The following figure shows the result.</p>
     <span class="s2">&quot;Unnamed: 11&quot;</span><span class="p">:</span> <span class="s2">&quot;Rate per 1000&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;h2.xlsx&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="k">del</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Unnamed: 7&quot;</span><span class="p">]</span>
-<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">rename_dict</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">h2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;h2.xlsx&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">h2</span><span class="p">[</span><span class="s2">&quot;Unnamed: 7&quot;</span><span class="p">]</span>
+<span class="n">h2</span> <span class="o">=</span> <span class="n">h2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">rename_dict</span><span class="p">)</span>
+<span class="n">h2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -551,7 +551,7 @@ The following figure shows the result.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select women ages 40-44, and drop a row of missing data</span>
 
-<span class="n">rows</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">35</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">h2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">35</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
 <span class="n">rows</span>
 </pre></div>
 </div>
@@ -1243,8 +1243,8 @@ The following figure shows these distributions.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># When I made this dataset, I didn&#39;t change the default labels for the columns.</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;preston_data.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span>
+<span class="n">family</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;preston_data.csv&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">family</span>
 </pre></div>
 </div>
 </div>
@@ -1380,7 +1380,7 @@ The following figure shows these distributions.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Y contains the PMF values from 1950</span>
 
-<span class="n">pmf1950</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">pmf1950</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">family</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">pmf1950</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1395,7 +1395,7 @@ The following figure shows these distributions.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Y.1 contains the PMF values from 1970</span>
 
-<span class="n">pmf1970</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Y.1&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">pmf1970</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">family</span><span class="p">[</span><span class="s2">&quot;Y.1&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">pmf1970</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>

@@ -343,6 +343,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#less-elite-more-correlated">Less Elite, More Correlated</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secondtier-college">Secondtier College</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berksons-paradox-in-hospital-data">Berkson’s Paradox in Hospital Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berkson-and-covid-19">Berkson and COVID-19</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berkson-and-psychology">Berkson and Psychology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berkson-and-you">Berkson and You</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
             </nav>
         </div>
@@ -356,6 +360,7 @@ document.write(`
                   
   <section id="jumping-to-conclusions">
 <h1>Jumping to Conclusions<a class="headerlink" href="#jumping-to-conclusions" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/berkson.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -370,50 +375,6 @@ document.write(`
     <span class="kn">import</span> <span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
-
-<span class="c1"># Set the random seed so we get the same results every time</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -442,20 +403,11 @@ I’ll present his findings later, but first let’s look at another example fro
 In other words, if someone is above average at one of these skills, would you expect them to be above average on the other, or below average, or do you think they are unrelated?</p>
 <p>To answer this question, I will use data from the National Longitudinal Survey of Youth 1997 (NLSY97), which “follows the lives of a sample of 8,984 American youth born between 1980-84”.
 The public data set includes the participants’ scores on several standardized tests, including the tests most often used in college admissions, the SAT and ACT.</p>
-<p>I used the <a class="reference external" href="https://www.nlsinfo.org/investigator/pages/login">NLS Investigator</a> to create excerpt that contains the variables I’ll use for this analysis. With their permission, I can redistribute this except. The following cell downloads the data.</p>
+<p>I used the <a class="reference external" href="https://www.nlsinfo.org/investigator/pages/login">NLS Investigator</a> to create an excerpt that contains the variables I’ll use for this analysis. With their permission, I can redistribute this excerpt. The following cell downloads the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/&quot;</span>
-
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s2">&quot;stand_test_corr.csv.gz&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;stand_test_corr.csv.gz&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;stand_test_corr.csv.gz&quot;</span><span class="p">)</span>
+<span class="n">nlsy</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -467,7 +419,7 @@ The public data set includes the participants’ scores on several standardized 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -654,7 +606,7 @@ The public data set includes the participants’ scores on several standardized 
     <span class="c1"># &#39;B0004600&#39;: &#39;college_gpa&#39;,</span>
 <span class="p">}</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">nlsy</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -665,8 +617,8 @@ The public data set includes the participants’ scores on several standardized 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">varnames</span><span class="p">:</span>
-    <span class="n">invalid</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">200</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">invalid</span><span class="p">,</span> <span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">invalid</span> <span class="o">=</span> <span class="n">nlsy</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">200</span>
+    <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">invalid</span><span class="p">,</span> <span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 </pre></div>
 </div>
 </div>
@@ -676,7 +628,7 @@ Their average scores were 502 on the verbal section and 503 on the math section,
 <p>The standard deviation of their scores was 108 on the verbal section and 110 on the math section, both a little higher than the overall standard deviation, which is calibrated to be 100.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -696,7 +648,7 @@ Name: sat_verbal, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -716,7 +668,7 @@ Name: sat_math, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -761,22 +713,22 @@ Name: sat_math, dtype: float64
 <p>To show how the scores are related, here’s a scatter plot showing a data point for each participant, with verbal scores on the horizontal axis and math scores on the vertical.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;SAT Verbal&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;SAT Math&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;SAT scores, NLSY97&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/13dcc345c193df72c965d8fc23ee2649cf163e657170964de7a58cde7539b798.png" src="_images/13dcc345c193df72c965d8fc23ee2649cf163e657170964de7a58cde7539b798.png" />
+<img alt="_images/382eed4e2f2a1cb32816c4c150bee17f0476e5145008f9c0ba5f5d0c92b00c1c.png" src="_images/382eed4e2f2a1cb32816c4c150bee17f0476e5145008f9c0ba5f5d0c92b00c1c.png" />
 </div>
 </div>
 <p>People who do well on one section tend to do well on the other.
 The correlation between scores is 0.73, so someone who is one standard deviation above the mean on the verbal test is expected to be 0.73 standard deviations above the mean on the math test. For example, if you select people whose verbal score is near 600, which is 100 points above the mean, the average of their math scores is 570, about 70 points above the mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">near600</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">550</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">650</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near600</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">near600</span> <span class="o">=</span> <span class="p">(</span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">550</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">650</span><span class="p">)</span>
+<span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near600</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -786,14 +738,17 @@ The correlation between scores is 0.73, so someone who is one standard deviation
 </div>
 </div>
 </div>
+<p>This is what we would see in a random sample of people who took the SAT: a strong correlation between verbal and mathematical ability.
+But colleges don’t select their students at random, so the ones we find on any particular campus are not a representative sample.
+To see what effect the selection process has, let’s think about a few kinds of colleges.</p>
 </section>
 <section id="elite-university">
 <h2>Elite University<a class="headerlink" href="#elite-university" title="Permalink to this heading">#</a></h2>
-<p>Consider an imaginary institution of higher learning called Elite University.
+<p>First, consider an imaginary institution of higher learning called Elite University.
 To be admitted to E.U., let’s suppose, your total SAT score (sum of the verbal and math scores) has to be 1320 or higher.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sat_total</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sat_total</span> <span class="o">=</span> <span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">]</span>
 <span class="n">sat_total</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -814,8 +769,8 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">admitted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1320</span><span class="p">]</span>
-<span class="n">rejected</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1320</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">admitted</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1320</span><span class="p">]</span>
+<span class="n">rejected</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1320</span><span class="p">]</span>
 <span class="n">admitted</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -940,9 +895,7 @@ The following figure shows how this happens.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
-
-<span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">])</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">xs</span>
 </pre></div>
@@ -965,13 +918,22 @@ The following figure shows how this happens.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/115fa0d424c4f7f14ecce0c7107287de189eb18399430debd4064be60acd5568.png" src="_images/115fa0d424c4f7f14ecce0c7107287de189eb18399430debd4064be60acd5568.png" />
+<img alt="_images/47ef1e7c0adc4fa2b11ec76e28faf28dc4c5a3722d8a60c38f5d98c7dc3cda12.png" src="_images/47ef1e7c0adc4fa2b11ec76e28faf28dc4c5a3722d8a60c38f5d98c7dc3cda12.png" />
 </div>
 </div>
 <p>The circles in the upper right show students who meet the requirement for admission to Elite University.
 The dashed line shows the average math score for students at each level of verbal score.
 If you meet someone at E.U. with a relatively low verbal score, you expect them to have a high math score. Why? Because otherwise, they would not be at Elite University.
 And conversely, if you meet someone with a relatively low math score, they must have a high verbal score.</p>
+<p>I suspect that this effect colors the perception of students at actual elite universities.
+Among the students they meet, they are likely to encounter some who are unusually good at math, some whose verbal skills are exceptional, and only a few who excel at both.</p>
+<p>These interactions might partly explain a phenomenon described by C.P. Snow in his famous lecture, <em>The Two Cultures</em>:</p>
+<blockquote>
+<div><p>A good many times I have been present at gatherings of people who, by the standards of the traditional culture, are thought highly educated and who have with considerable gusto been expressing their incredulity at the illiteracy of scientists. Once or twice I have been provoked and have asked the company how many of them could describe the Second Law of Thermodynamics. The response was cold: it was also negative. Yet I was asking something which is about the scientific equivalent of “Have you read a work of Shakespeare’s?”</p>
+<p>I now believe that if I had asked an even simpler question – such as, What do you mean by mass, or acceleration, which is the scientific equivalent of saying, “Can you read?” – not more than one in ten of the highly educated would have felt that I was speaking the same language.</p>
+</div></blockquote>
+<p>In the general population, math and verbal abilities are highly correlated, but as people become “highly educated”, they are also highly selected.
+And as we’ll see in the next section, the more stringently they are selected, the more these abilities will seem to be anti-correlated.</p>
 </section>
 <section id="less-elite-more-correlated">
 <h2>Less Elite, More Correlated<a class="headerlink" href="#less-elite-more-correlated" title="Permalink to this heading">#</a></h2>
@@ -987,14 +949,14 @@ As in the previous example, I’ll use a model of the selection process that wil
 On the vertical axis, it shows the correlation between math and verbal scores among the students whose scores exceed the threshold, based on the NLSY data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">thresh</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">1450</span><span class="p">,</span> <span class="mi">50</span><span class="p">):</span>
-    <span class="n">admitted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="n">thresh</span><span class="p">]</span>
-    <span class="n">mean</span> <span class="o">=</span> <span class="n">admitted</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">1450</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">thresh</span> <span class="ow">in</span> <span class="n">totals</span><span class="p">:</span>
+    <span class="n">admitted</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="n">thresh</span><span class="p">]</span>
     <span class="n">corr</span> <span class="o">=</span> <span class="n">admitted</span><span class="p">[[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-    <span class="n">corr_series</span><span class="p">[</span><span class="n">thresh</span><span class="p">]</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">thresh</span><span class="p">]</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
+<span class="n">corr_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">corr_series</span>
 </pre></div>
 </div>
@@ -1035,11 +997,13 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/44344c681261ef1b6e35d9cda24b5bf62a90c8af631e46abeaeceecd3bd0e816.png" src="_images/44344c681261ef1b6e35d9cda24b5bf62a90c8af631e46abeaeceecd3bd0e816.png" />
+<img alt="_images/be7e9fc121c5757a49aa1d86fbd1629b86e0ce103917e8a277db33c0871e17e7.png" src="_images/be7e9fc121c5757a49aa1d86fbd1629b86e0ce103917e8a277db33c0871e17e7.png" />
 </div>
 </div>
 <p>At a college that requires a total score of 700, math and verbal scores are positively correlated.
 At a selective college where the threshold is around 1200, the correlation is close to 0.  And at an elite school where the threshold is over 1300, the correlation is negative.</p>
+<p>The examples so far are based on an unrealistic model of the college admission process.
+We can make it slightly more realistic by adding one more factor.</p>
 </section>
 <section id="secondtier-college">
 <h2>Secondtier College<a class="headerlink" href="#secondtier-college" title="Permalink to this heading">#</a></h2>
@@ -1047,7 +1011,7 @@ At a selective college where the threshold is around 1200, the correlation is cl
 <p>Using data from the NLSY again, the following figure shows the verbal and math score for applicants in three groups: rejected, enrolled, and the ones who were accepted but went somewhere else.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rejected</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rejected</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">]</span>
 <span class="n">rejected</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -1060,7 +1024,7 @@ At a selective college where the threshold is around 1200, the correlation is cl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elsewhere</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1300</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elsewhere</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1300</span><span class="p">]</span>
 <span class="n">elsewhere</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -1073,7 +1037,7 @@ At a selective college where the threshold is around 1200, the correlation is cl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enrolled</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1200</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1300</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enrolled</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1200</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1300</span><span class="p">)]</span>
 <span class="n">enrolled</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -1086,9 +1050,7 @@ At a selective college where the threshold is around 1200, the correlation is cl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
-
-<span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">])</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">730</span><span class="p">)</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">intercept</span> <span class="o">+</span> <span class="n">res</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">xs</span>
 </pre></div>
@@ -1132,7 +1094,7 @@ At a selective college where the threshold is around 1200, the correlation is cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9428b61ee44a9b75e8c342a2cca2a6909dc5afb864f1dc686ed86bf0c8e94927.png" src="_images/9428b61ee44a9b75e8c342a2cca2a6909dc5afb864f1dc686ed86bf0c8e94927.png" />
+<img alt="_images/b59cd1a07e21df8e5196a75e2e0966f7f97c58d85501ab56335a599a90f1dbb9.png" src="_images/b59cd1a07e21df8e5196a75e2e0966f7f97c58d85501ab56335a599a90f1dbb9.png" />
 </div>
 </div>
 <p>Among the students who enrolled, the correlation between math and verbal scores is strongly negative, about -0.84.</p>
@@ -1256,8 +1218,8 @@ At a selective college where the threshold is around 1200, the correlation is cl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">near650</span> <span class="o">=</span> <span class="p">(</span><span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">630</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">680</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near650</span><span class="p">,</span> <span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">near650</span> <span class="o">=</span> <span class="p">(</span><span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">630</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">680</span><span class="p">)</span>
+<span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near650</span><span class="p">,</span> <span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1269,7 +1231,7 @@ At a selective college where the threshold is around 1200, the correlation is cl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near650</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near650</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1279,11 +1241,15 @@ At a selective college where the threshold is around 1200, the correlation is cl
 </div>
 </div>
 </div>
-<p>At Secondtier, if you meet a student who got 650 on the verbal section, about 50 points above the mean, you should expect them to get 590 on the verbal section, about 40 points below the mean.</p>
+<p>At Secondtier, if you meet a student who got 650 on the verbal section, about 50 points above the mean, you should expect them to get 590 on the math section, about 40 points below the mean.</p>
 <p>So we have the answer to the question I posed: depending on how colleges select students, math and verbal scores might be correlated, unrelated, or anti-correlated.</p>
 </section>
 <section id="berksons-paradox-in-hospital-data">
 <h2>Berkson’s Paradox in Hospital Data<a class="headerlink" href="#berksons-paradox-in-hospital-data" title="Permalink to this heading">#</a></h2>
+<p>The examples we’ve seen so far are interesting, I hope, but they might not be important.
+If you are wrong about the relationship between height and jumping ability, or between math and verbal skills, the consequences of your mistake are limited.
+But Berkson’s paradox is not limited to sports and standardized tests.
+It appears in many domains where the consequences of being wrong are more serious, including the field where it was first widely recognized: medicine.</p>
 <p>Berkson’s paradox is named for Joseph Berkson, who led the Division of Biometry and Medical Statistics at the Mayo Clinic in Rochester, Minnesota.
 In 1946, he wrote a paper pointing out the danger of using patients in a clinic or hospital as a sample.</p>
 <p>As an example, he uses the relationship between cholecystic disease (inflammation of the gall bladder) and diabetes.
@@ -1318,7 +1284,7 @@ We’ll assume that someone with either condition has a 5% chance of appearing i
 <p>Now here are the fraction of people in each quadrant of the “four-fold table”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="n">p_c</span> <span class="o">*</span> <span class="n">p_d</span><span class="p">,</span> <span class="n">p_c</span> <span class="o">*</span> <span class="n">q_d</span><span class="p">],</span> <span class="p">[</span><span class="n">q_c</span> <span class="o">*</span> <span class="n">p_d</span><span class="p">,</span> <span class="n">q_c</span> <span class="o">*</span> <span class="n">q_d</span><span class="p">]],</span>
         <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;No C&quot;</span><span class="p">],</span>
@@ -1327,8 +1293,8 @@ We’ll assume that someone with either condition has a 5% chance of appearing i
     <span class="o">*</span> <span class="mi">1_000_000</span>
 <span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
-<span class="n">df</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">table</span>
 </pre></div>
 </div>
 </div>
@@ -1372,7 +1338,7 @@ We’ll assume that someone with either condition has a 5% chance of appearing i
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1395,7 +1361,7 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1426,7 +1392,7 @@ dtype: float64
 <p>Now we can compute the number of people from each quadrant we expect to see in the hospital sample.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">stack</span><span class="p">(),</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="n">stack</span><span class="p">(),</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">))</span>
 <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;expected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">]</span>
 <span class="n">enum</span>
 </pre></div>
@@ -1616,10 +1582,83 @@ But we know that there is no such relationship in the simulated population, beca
 <li><p>If you find someone at the hospital who has cholecystitis, that’s likely to be the reason they are in the hospital.</p></li>
 <li><p>If they <em>don’t</em> have cholecystitis, they are probably there for another reason, so they are more likely to have diabetes.</p></li>
 </ul>
-<p>That’s the end of the computational part of this chapter; the other examples are narrative.</p>
-<p>Probably Overthinking It</p>
-<p>Copyright 2022 Allen Downey</p>
-<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+<p>Berkson showed that it can also work the other way; under different assumptions, a hospital sample can show a <em>positive</em> correlation between conditions, even if we know there is no such relationship in the general population.</p>
+<p>He concludes that “there does not appear to be any ready way of correcting the spurious correlation existing in the hospital population”, which is “the result merely of the ordinary compounding of independent probabilities”.
+In other words, even if you know that an observed correlation might be caused by Berkson’s paradox, the only way to correct it, in general, is to collect a better sample.</p>
+</section>
+<section id="berkson-and-covid-19">
+<h2>Berkson and COVID-19<a class="headerlink" href="#berkson-and-covid-19" title="Permalink to this heading">#</a></h2>
+<p>This problem has not gone away. A 2020 paper argues, right in the title, that Berkson’s paradox “undermines our understanding of COVID-19 disease risk and severity”.
+The authors, who include researchers from the University of Bristol in the United Kingdom and the Norwegian University of Science and Technology, point out the problem with using samples from hospital patients, as Berkson did, and also “people tested for active infection, or people who volunteered”. Patterns we observe in these groups are not always consistent with patterns in the general population.</p>
+<p>As an example, they consider the hypothesis that health care workers might be at higher risk for severe COVID disease.
+That could be the case if COVID exposures in hospitals and clinics involve higher viral loads, compared to exposures in other environments.</p>
+<p>To test this hypothesis, we might start with a sample of people who have tested positive for COVID and compare the frequency of severe disease among health care workers and others.</p>
+<p>But there’s a problem with this approach: not everyone was equally likely to get tested. In many places, health care workers were tested regularly whether they had symptoms or not, while people in lower risk groups were tested only if they had symptoms.</p>
+<p>As a result, the sample of people who test positive includes health care workers in the entire range from severe disease to mild symptoms to no symptoms at all; but for other people it includes only cases that were severe enough to warrant testing.
+In the sample, COVID disease might seem milder for health care workers than others, even if, in the general population, it is more severe on average.</p>
+<p>This scenario is hypothetical, but the authors go on to explore data from the UK BioBank, which is “a large-scale biomedical database and research resource, containing in-depth genetic and health information from half a million UK participants.”</p>
+<p>To see how pervasive Berkson’s paradox might be, the authors selected 486,967 BioBank participants from April 2020.
+For each participant, the dataset reports 2556 traits, including demographic information like age, sex, and socioeconomic status; medical history and risk factors; physical and psychological measurements; and behavior and nutrition.</p>
+<p>Of these traits, they found 811 that were statistically associated with the probability of being tested for COVID, and many of these associations were strong enough to induce Berkson’s paradox.
+The traits they identified included occupation (like the example of the health care workers), ethnicity and race, general health, and place of residence, as well as less obvious factors like internet access and scientific interest.</p>
+<p>As a result, it might be impossible to estimate accurately the effect of any of these traits on disease severity, using only a sample of people who tested positive for COVID.</p>
+<p>The authors conclude, “It is difficult to know the extent of sample selection, and even if that were known it cannot be proven that it has been fully accounted for by any method. … Results from samples that are likely not representative of the target population should be treated with caution by scientists and policy makers.”</p>
+</section>
+<section id="berkson-and-psychology">
+<h2>Berkson and Psychology<a class="headerlink" href="#berkson-and-psychology" title="Permalink to this heading">#</a></h2>
+<p>Berkson’s paradox also affects the diagnosis of some psychological conditions.
+For example, the Hamilton Rating Scale for Depression (HRSD) is a survey used to diagnose depression and characterize its severity.
+It includes 17 questions, some on a 3-point scale and some on a 5-point scale.
+The interpretation of the results depends on the sum of the points from each question.
+On one version of the questionnaire, a total between 14 and 18 indicates a diagnosis of mild depression; a total above 18 indicates severe depression.</p>
+<p>Although rating scales like this are useful for diagnosis and evaluation of treatment, they are vulnerable to Berkson’s paradox.
+In a 2019 paper, researchers from The University of Amsterdam and Leiden University in the Netherlands explain why.
+As an example, they consider the first two questions on the HRSD, which ask about feelings of sadness and feelings of guilt.
+In the general population, responses to these questions might be positively correlated, negatively correlated, or not correlated at all.</p>
+<p>But if we select people whose total score indicates depression, the scores on these items are likely to be negatively correlated, especially at the intermediate levels of severity.
+For example, someone with mild depression who reports high levels of sadness is likely to have low levels of guilt, because if they had low levels of both, they would probably not be depressed, and if they had high levels of both, it would probably not be mild.</p>
+<p>This example considers two of the 17 questions, but the same problem affects the correlation between any two items.
+The authors conclude that “Berkson’s bias is a considerable and under-appreciated problem” in clinical psychology.</p>
+</section>
+<section id="berkson-and-you">
+<h2>Berkson and You<a class="headerlink" href="#berkson-and-you" title="Permalink to this heading">#</a></h2>
+<p>Now that you know about Berkson’s paradox, you might start to notice it in your everyday life.</p>
+<p>Does it seem like restaurants in bad locations have really good food? Well, maybe they do, compared to restaurants in good locations, because they have to. When a restaurant opens, the quality of the food might be unrelated to the location. But if a bad restaurant opens in a bad location, it probably doesn’t last very long.
+If it survives long enough for you to try it, it’s likely to be good.</p>
+<p>When you get there, you should order the least appetizing thing on the menu, according to Tyler Cowen, a professor of economics at George Mason University.
+Why?
+If it sounds good, people will order it, so it doesn’t have to be good.
+If it sounds bad, and it is bad, it wouldn’t be on the menu.
+So if it sounds bad, it has to be good.</p>
+<p>Or here’s an example from Jordan Ellenberg’s book, <em>How Not To Be Wrong</em>:
+Among people you have dated, does it seem like the attractive ones were meaner, and the nice ones were less attractive?
+That might not be true in the general population, but the people you’ve dated are not a random sample of the general population, we assume.
+If someone is unattractive and mean, you would not choose to date them.
+And if someone is attractive and nice, they are less likely to be available.
+So, among what’s left, you are more likely to get one or the other, and it’s not easy to find both.</p>
+<p>Does it seem like when a movie is based on a book, the movie is not as good?
+In reality, there might be a positive correlation between the quality of a movie and the quality of the book it is based on.
+But if someone makes a bad movie from a bad book, you’ve probably never heard of it.
+And if someone makes a bad movie from a book you love, it’s the first example that comes to mind.
+So in the population of movies you are aware of, it might seem like there’s a negative correlation between the qualities of the book and the movie.</p>
+<p>In summary, for a perfect date, find someone unattractive, take them to a restaurant in a strip mall, order something that sounds awful, and go to a movie based on a bad book.</p>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Spud Webb’s performance in the 1986 NBA Slam Dunk Contest is documented by <a class="reference external" href="https://en.wikipedia.org/wiki/Spud_Webb">Wikipedia</a> and viewable on internet video sites.</p></li>
+<li><p>The paper on factors that predict jumping ability is “Physical characteristics that predict vertical jump performance in recreational male athletes” by Davis et al. (2003).</p></li>
+<li><p>Data from the National Longitudinal Survey of Youth are available from the <a class="reference external" href="https://www.nlsinfo.org/content/cohorts/nlsy97">U.S. Bureau of Labor Statistics</a>.</p></li>
+<li><p>C.P. Snow’s lecture, “The Two Cultures”, was published as a book in 1959.</p></li>
+<li><p>The paper on Berkson’s paradox and COVID-19 is “Collider bias undermines our understanding of COVID-19 disease risk and severity” by Griffith et al. (2020).</p></li>
+<li><p>The General Social Survey (GSS) is a project of the independent research organization NORC at the University of Chicago, with principal funding from the National Science Foundation. The data is available from the <a class="reference external" href="https://gss.norc.org/">GSS website</a>.</p></li>
+<li><p>The paper on the consequences of Berkson’s paradox in psychological testing is “Psychological networks in clinical populations: Investigating the consequences of Berkson’s bias” by Deron et al. (2021).</p></li>
+<li><p>Lionel Page collected examples of Berkson’s paradox in a <a class="reference external" href="https://twitter.com/page_eco/status/1373266475230789633">Twitter thread</a>.</p></li>
+<li><p>Jordan Ellenberg wrote about Berkson’s paradox in <em>How not to be wrong: The power of mathematical thinking</em> (Penguin, 2015).</p></li>
+<li><p>Richard McElreath also suggests that restaurants in bad locations tend to have good food in <em>Statistical Rethinking</em> (CRC Press, 2020).</p></li>
+<li><p>Tyler Cowen suggests you should order the least appetizing thing on the menu in <a class="reference external" href="https://www.theatlantic.com/magazine/archive/2012/05/six-rules-for-dining-out/308929/">“Six Rules for Dining Out: How a frugal economist finds the perfect lunch”</a> (The Atlantic, 2012). In fact, the article is a catalog of Berkson paradoxes.</p></li>
+<li><p>In a <a class="reference external" href="https://www.youtube.com/watch?v=FUD8h9JpEVQ">Numberphile video</a>, Hannah Fry suggests that the apparent relationship between the quality of movies and the books is an example of Berkson’s bias.</p></li>
+</ul>
 </section>
 </section>
 
@@ -1695,6 +1734,10 @@ But we know that there is no such relationship in the simulated population, beca
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#less-elite-more-correlated">Less Elite, More Correlated</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secondtier-college">Secondtier College</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berksons-paradox-in-hospital-data">Berkson’s Paradox in Hospital Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berkson-and-covid-19">Berkson and COVID-19</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berkson-and-psychology">Berkson and Psychology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berkson-and-you">Berkson and You</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
   </nav></div>
 
