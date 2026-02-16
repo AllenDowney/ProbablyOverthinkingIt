@@ -341,7 +341,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-million-babies-cant-be-wrong">Three Million Babies Can’t Be Wrong</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-groups">Other Groups</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-end-of-the-paradox">The End of the Paradox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-twin-paradox">A Twin Paradox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-obesity-paradox">The Obesity Paradox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berksons-toaster">Berkson’s Toaster</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-diagrams">Causal diagrams</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
             </nav>
         </div>
@@ -355,8 +359,14 @@ document.write(`
                   
   <section id="causation-collision-and-confusion">
 <h1>Causation, Collision, and Confusion<a class="headerlink" href="#causation-collision-and-confusion" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/birthweight.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
 
@@ -367,38 +377,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
-
-<span class="c1"># Set the random seed so we get the same results every time</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+</details>
 </div>
 <p>The Low Birthweight Paradox was born in 1971, when Jacob Yerushalmy, a researcher at U.C. Berkeley, published “The relationship of parents’ cigarette smoking to outcome of pregnancy – implications as to the problem of inferring causation from observed associations”.
 As the title suggests, the paper is about the relationship between smoking during pregnancy, the weight of babies at birth, and mortality in the first month of life.</p>
@@ -464,26 +443,29 @@ Yerushalmy concluded:</p>
 </div>
 </div>
 </div>
+<p>Yerushalmy’s paper was influential.
+In 2014 the <em>International Journal of Epidemiology</em> reprinted it along with an editorial retrospective and five invited commentaries.</p>
+<p>They report, “Yerushalmy’s findings were widely publicized by tobacco companies during the 1970s, 80s and 90s”.
+Media attention included headlines like “Mothers needn’t worry, smoking little risk to baby”, in 1971, and a column in <em>Family Health</em> magazine titled “In defense of smoking moms”, in 1972.</p>
+<p>In 1973, after the U.S. Surgeon General reported a “strong, probably causal connection” between mothers’ smoking and infant mortality, Yerushalmy sent a letter to the United States Senate asserting that the case for a causal connection had not been proved.</p>
+<p>In the U.S., Yerushalmy’s legacy might be responsible for
+“holding up anti-smoking measures among pregnant women for perhaps a decade”, according to one commentary.
+Another suggests that in the U.K., it “postponed by several years any campaign to change mothers’ smoking habits.”</p>
 <p>But it was a mistake.
 At the risk of giving away the ending, the Low Birthweight Paradox is a statistical artifact.
 In fact, maternal smoking is harmful to babies, regardless of birthweight.
 It only seems beneficial because the analysis is misleading.</p>
-<p>An explanation came in 2006 from epidemiologists at Harvard University and the National Institutes of Health (NIH), based on data from 3 million babies born in 1991.
+<p>But it took some time for the error to be discovered.
+In 1983, epidemiologists Allen Wilcox and Ian Russell published a partial explanation.
+Using computer simulations, they showed that if you have two groups with the same mortality rate and different average birthweights, you get a version of the birthweight paradox: the group with lower birthweights has more LBW babies, but they are healthier; that is, their mortality rate is lower, compared to LBW babies from the other group.</p>
+<p>Their simulations show that the Low Birthweight Paradox can occur due to statistical bias, even if actual mortality rates are the same for both groups. But to me this conclusion is not entirely satisfying, partly because it is based on simulated data, and partly because it does not explain <em>why</em> the paradox occurs.</p>
+<p>A clearer explanation came in 2006 from epidemiologists at Harvard University and the National Institutes of Health (NIH), based on data from 3 million babies born in 1991.
 Using the same dataset, which is available from the National Center for Health Statistics (NCHS), I will replicate their results and summarize their explanation.
 Then I’ll repeat the analysis with data from 2018, and we’ll see what has changed.</p>
 <section id="three-million-babies-cant-be-wrong">
 <h2>Three Million Babies Can’t Be Wrong<a class="headerlink" href="#three-million-babies-cant-be-wrong" title="Permalink to this heading">#</a></h2>
 <p>The data are originally from the <a class="reference external" href="https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm">National Center for Health Statistics (NCHS)</a>.</p>
 <p>I selected the columns we need and stored them in a compressed HDF file.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/&quot;</span>
-
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s2">&quot;nchs.hdf&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s2">&quot;nchs.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;vs1991&quot;</span><span class="p">)</span>
@@ -517,15 +499,17 @@ Name: count, dtype: int64
 <p>Recode the tobacco variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="c1"># Convert numeric codes to string codes for consistency with 2018 data</span>
+<span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;N&quot;</span><span class="p">})</span>
 <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tobacco
-2.0    2471563
-1.0     533202
+N    2471563
+Y     533202
 Name: count, dtype: int64
 </pre></div>
 </div>
@@ -567,12 +551,12 @@ Name: count, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>1.0</th>
-      <td>0.177452</td>
+      <th>N</th>
+      <td>0.822548</td>
     </tr>
     <tr>
-      <th>2.0</th>
-      <td>0.822548</td>
+      <th>Y</th>
+      <td>0.177452</td>
     </tr>
   </tbody>
 </table>
@@ -630,7 +614,7 @@ Name: count, dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
 
-<span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">7777</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">7777</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -639,7 +623,7 @@ Name: count, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;birthweight&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/cf5f1c317f960b5f63e6d4f9ca9a2e5dd4be05bb174cb21c9c35c862d57f8ba3.png" src="_images/cf5f1c317f960b5f63e6d4f9ca9a2e5dd4be05bb174cb21c9c35c862d57f8ba3.png" />
+<img alt="_images/b81f50e1b8f0ce9d436cce5308c69e1f4078bfca357e68d096458e6af1f09cd1.png" src="_images/b81f50e1b8f0ce9d436cce5308c69e1f4078bfca357e68d096458e6af1f09cd1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -780,6 +764,10 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2292500/3685044362.py:2: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;nan&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  vs1991.loc[unknown, &quot;anomaly&quot;] = np.nan
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>498038
 </pre></div>
 </div>
@@ -820,8 +808,8 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 20.599922088040515
-2.0 18.1934659988842
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N 18.1934659988842
+Y 20.599922088040515
 </pre></div>
 </div>
 </div>
@@ -875,8 +863,8 @@ Name: count, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tobacco
-1.0    3145.189278
-2.0    3370.030102
+N    3370.030102
+Y    3145.189278
 Name: birthweight, dtype: float64
 </pre></div>
 </div>
@@ -901,8 +889,8 @@ Babies of smokers were lighter on average than babies of nonsmokers by about 7%,
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">kdeplot</span>
 
-<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Smokers&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Nonsmokers&quot;</span><span class="p">}</span>
-<span class="n">ls</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;--&quot;</span><span class="p">}</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;Smokers&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="s2">&quot;Nonsmokers&quot;</span><span class="p">}</span>
+<span class="n">ls</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="s2">&quot;--&quot;</span><span class="p">}</span>
 
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">subset</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">101</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">):</span>
@@ -919,7 +907,7 @@ Babies of smokers were lighter on average than babies of nonsmokers by about 7%,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4e66c00a1104ef2b0947b880cc16905940e4bbdbaa15762e08869cb9c772f51e.png" src="_images/4e66c00a1104ef2b0947b880cc16905940e4bbdbaa15762e08869cb9c772f51e.png" />
+<img alt="_images/43eea7cf77d4ed340e2284c6bf4ea66a8f9480fba09d991e3f506610b9601f58.png" src="_images/43eea7cf77d4ed340e2284c6bf4ea66a8f9480fba09d991e3f506610b9601f58.png" />
 </div>
 </div>
 <p>The shapes of the distributions are similar, but for smokers it is shifted to the left.
@@ -945,8 +933,8 @@ For mothers who smoked, the fraction of babies below 2500 grams is about 11%; fo
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 0.11421285960264155
-2.0 0.06365429478663773
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N 0.06365429478663773
+Y 0.11421285960264155
 </pre></div>
 </div>
 </div>
@@ -1000,8 +988,8 @@ So the risk of mortality was 54% higher for babies of mothers who smoked.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 11.874562261649707
-2.0 7.71068917473998
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N 7.71068917473998
+Y 11.874562261649707
 </pre></div>
 </div>
 </div>
@@ -1029,8 +1017,8 @@ However, if we select babies lighter than 2500 grams, the mortality rate is 20% 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0 60.138756452832666
-2.0 74.8512709572742
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N 74.8512709572742
+Y 60.138756452832666
 </pre></div>
 </div>
 </div>
@@ -1080,85 +1068,85 @@ The following figure shows the results.</p>
   <thead>
     <tr style="text-align: right;">
       <th>tobacco</th>
-      <th>1.0</th>
-      <th>2.0</th>
+      <th>N</th>
+      <th>Y</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>1125.0</th>
-      <td>102.376600</td>
       <td>106.864725</td>
+      <td>102.376600</td>
     </tr>
     <tr>
       <th>1375.0</th>
-      <td>65.099458</td>
       <td>72.467402</td>
+      <td>65.099458</td>
     </tr>
     <tr>
       <th>1625.0</th>
-      <td>43.963878</td>
       <td>48.194837</td>
+      <td>43.963878</td>
     </tr>
     <tr>
       <th>1875.0</th>
-      <td>31.085935</td>
       <td>32.530380</td>
+      <td>31.085935</td>
     </tr>
     <tr>
       <th>2125.0</th>
-      <td>22.160247</td>
       <td>20.968439</td>
+      <td>22.160247</td>
     </tr>
     <tr>
       <th>2375.0</th>
-      <td>16.087278</td>
       <td>13.399794</td>
+      <td>16.087278</td>
     </tr>
     <tr>
       <th>2625.0</th>
-      <td>9.483955</td>
       <td>7.970344</td>
+      <td>9.483955</td>
     </tr>
     <tr>
       <th>2875.0</th>
-      <td>7.015749</td>
       <td>4.987658</td>
+      <td>7.015749</td>
     </tr>
     <tr>
       <th>3125.0</th>
-      <td>5.610098</td>
       <td>3.629459</td>
+      <td>5.610098</td>
     </tr>
     <tr>
       <th>3375.0</th>
-      <td>5.005695</td>
       <td>2.534403</td>
+      <td>5.005695</td>
     </tr>
     <tr>
       <th>3625.0</th>
-      <td>3.994581</td>
       <td>2.394741</td>
+      <td>3.994581</td>
     </tr>
     <tr>
       <th>3875.0</th>
-      <td>4.040855</td>
       <td>1.983212</td>
+      <td>4.040855</td>
     </tr>
     <tr>
       <th>4125.0</th>
-      <td>3.064351</td>
       <td>1.966262</td>
+      <td>3.064351</td>
     </tr>
     <tr>
       <th>4375.0</th>
-      <td>4.212744</td>
       <td>2.005241</td>
+      <td>4.212744</td>
     </tr>
     <tr>
       <th>4625.0</th>
-      <td>5.084083</td>
       <td>2.539889</td>
+      <td>5.084083</td>
     </tr>
   </tbody>
 </table>
@@ -1167,8 +1155,8 @@ The following figure shows the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
-    <span class="n">table</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Smoker&quot;</span><span class="p">)</span>
-    <span class="n">table</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nonsmoker&quot;</span><span class="p">)</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Smoker&quot;</span><span class="p">)</span>
+    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nonsmoker&quot;</span><span class="p">)</span>
 
     <span class="n">decorate</span><span class="p">(</span>
         <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Birth weight (grams)&quot;</span><span class="p">,</span>
@@ -1186,7 +1174,7 @@ The following figure shows the results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ca125860057c3ecf586532de5505d774c6561a461fa8a6139e77674f9a28dc6a.png" src="_images/ca125860057c3ecf586532de5505d774c6561a461fa8a6139e77674f9a28dc6a.png" />
+<img alt="_images/36375503b01b38302a44babe07f26fa1e98b101e73e9e62f2862f549cfb60431.png" src="_images/36375503b01b38302a44babe07f26fa1e98b101e73e9e62f2862f549cfb60431.png" />
 </div>
 </div>
 <p>This figure provides a more detailed view of the Low Birthweight Paradox.
@@ -1196,7 +1184,7 @@ Among lighter babies, mortality is lower for children of smokers.</p>
 <section id="other-groups">
 <h2>Other Groups<a class="headerlink" href="#other-groups" title="Permalink to this heading">#</a></h2>
 <p>As it turns out, the Low Birthweight Paradox doesn’t apply only to smokers and nonsmokers.
-The 2006 paper describe a similar effect for babies born at high altitude: they are lighter on average than babies born at low altitude, but if we select LBW babies, the mortality rate is lower for the ones born at high altitude.</p>
+The 2006 paper describes a similar effect for babies born at high altitude: they are lighter on average than babies born at low altitude, but if we select LBW babies, the mortality rate is lower for the ones born at high altitude.</p>
 <p>And Yerushalmy reported another example.
 Babies of short mothers are lighter, on average, than babies of tall mothers. In his dataset, babies of short mothers were twice as likely to be LBW, but among LBW babies of short mothers, the mortality rate was 49% lower and the rate of birth defects was 34% lower.</p>
 <p>Yerushalmy called the relationship between smokers and nonsmokers, and between short and tall mothers, a “remarkable parallelism”.
@@ -1267,8 +1255,8 @@ If we do that, we find that babies of smokers have higher mortality rates in nea
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tobacco
-1.0    21.316747
-2.0    19.730921
+N    19.730921
+Y    21.316747
 Name: mort, dtype: float64
 </pre></div>
 </div>
@@ -1281,7 +1269,7 @@ Name: mort, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.037265001800348
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-7.4393451200994525
 </pre></div>
 </div>
 </div>
@@ -1314,85 +1302,85 @@ Name: mort, dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th>tobacco</th>
-      <th>1.0</th>
-      <th>2.0</th>
+      <th>N</th>
+      <th>Y</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>1125.0</th>
-      <td>90.295797</td>
       <td>88.376720</td>
+      <td>90.295797</td>
     </tr>
     <tr>
       <th>1375.0</th>
-      <td>50.944947</td>
       <td>54.970094</td>
+      <td>50.944947</td>
     </tr>
     <tr>
       <th>1625.0</th>
-      <td>30.974633</td>
       <td>32.201915</td>
+      <td>30.974633</td>
     </tr>
     <tr>
       <th>1875.0</th>
-      <td>24.103738</td>
       <td>21.577559</td>
+      <td>24.103738</td>
     </tr>
     <tr>
       <th>2125.0</th>
-      <td>17.170891</td>
       <td>13.721836</td>
+      <td>17.170891</td>
     </tr>
     <tr>
       <th>2375.0</th>
-      <td>12.980332</td>
       <td>8.864062</td>
+      <td>12.980332</td>
     </tr>
     <tr>
       <th>2625.0</th>
-      <td>8.139342</td>
       <td>5.766043</td>
+      <td>8.139342</td>
     </tr>
     <tr>
       <th>2875.0</th>
-      <td>6.234500</td>
       <td>3.911355</td>
+      <td>6.234500</td>
     </tr>
     <tr>
       <th>3125.0</th>
-      <td>5.139620</td>
       <td>2.867080</td>
+      <td>5.139620</td>
     </tr>
     <tr>
       <th>3375.0</th>
-      <td>4.480155</td>
       <td>2.117150</td>
+      <td>4.480155</td>
     </tr>
     <tr>
       <th>3625.0</th>
-      <td>3.559452</td>
       <td>2.045752</td>
+      <td>3.559452</td>
     </tr>
     <tr>
       <th>3875.0</th>
-      <td>3.715916</td>
       <td>1.655556</td>
+      <td>3.715916</td>
     </tr>
     <tr>
       <th>4125.0</th>
-      <td>2.733804</td>
       <td>1.659370</td>
+      <td>2.733804</td>
     </tr>
     <tr>
       <th>4375.0</th>
-      <td>3.903527</td>
       <td>1.799781</td>
+      <td>3.903527</td>
     </tr>
     <tr>
       <th>4625.0</th>
-      <td>4.558641</td>
       <td>2.009632</td>
+      <td>4.558641</td>
     </tr>
   </tbody>
 </table>
@@ -1405,12 +1393,16 @@ Name: mort, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/afb8b7c4f596fd7c9db763d45363d8b7e91bce74fb6cd1c59e8b94ff911a4cf8.png" src="_images/afb8b7c4f596fd7c9db763d45363d8b7e91bce74fb6cd1c59e8b94ff911a4cf8.png" />
+<img alt="_images/e0f8da2518b7b9bbeac7b3a79ab2848b892ce4838e8fc9ccf90ff51babba49a1.png" src="_images/e0f8da2518b7b9bbeac7b3a79ab2848b892ce4838e8fc9ccf90ff51babba49a1.png" />
 </div>
 </div>
+<p>Maternal smoking might be less harmful than many birth defects, but to be clear, it is still harmful.
+And Yerushalmy’s error might be understandable, but it was also harmful.
+At a time when the health risks of smoking were still contested, his paper created confusion and gave cover to people with an interest in minimizing the dangers.</p>
 </section>
 <section id="the-end-of-the-paradox">
 <h2>The End of the Paradox<a class="headerlink" href="#the-end-of-the-paradox" title="Permalink to this heading">#</a></h2>
+<p>When a paradoxical phenomenon is explained, it ceases to be a paradox. And in the case of the Low Birthweight Paradox, at about the same time it also ceased to be a phenomenon.</p>
 <p>In the most recent NCHS dataset, including 3.8 million babies born in 2018, the Low Birthweight Paradox has disappeared.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1481,7 +1473,7 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s2">&quot;U&quot;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s2">&quot;U&quot;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1570,7 +1562,7 @@ Name: count, Length: 5357, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">7777</span><span class="p">,</span> <span class="mi">8165</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">7777</span><span class="p">,</span> <span class="mi">8165</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1579,7 +1571,7 @@ Name: count, Length: 5357, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;birthweight&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/01db0ed6953760ff73bc9bd3cfc6a2fbe9ca5554fd84f97e953eefdf229d5f44.png" src="_images/01db0ed6953760ff73bc9bd3cfc6a2fbe9ca5554fd84f97e953eefdf229d5f44.png" />
+<img alt="_images/21c8f8b211786cae0995e20e0115c562f5c489509b63fb1786f9dd57342aefed.png" src="_images/21c8f8b211786cae0995e20e0115c562f5c489509b63fb1786f9dd57342aefed.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1716,7 +1708,7 @@ Name: birthweight, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e8596afa9249eda484c96e400401d24aefbb3a7d386c960c8e204e7c81a17cd6.png" src="_images/e8596afa9249eda484c96e400401d24aefbb3a7d386c960c8e204e7c81a17cd6.png" />
+<img alt="_images/1fd97630a2a4dcdc94a32d09a255bf3aa6e7426478a11a2fd5e0de473efe673a.png" src="_images/1fd97630a2a4dcdc94a32d09a255bf3aa6e7426478a11a2fd5e0de473efe673a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1943,28 +1935,91 @@ The following figure shows the results.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
-    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Smoker&quot;</span><span class="p">)</span>
-    <span class="n">table</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nonsmoker&quot;</span><span class="p">)</span>
-
-    <span class="n">decorate</span><span class="p">(</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Birth weight (grams)&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Mortality rate per 1000&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span>
-    <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="s2">&quot;Mortality rate vs birthweight, NCHS 2018&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9915affc04652a3d989f113c34549ec9d395c1595194b38f87f56b3925ec340b.png" src="_images/9915affc04652a3d989f113c34549ec9d395c1595194b38f87f56b3925ec340b.png" />
+<img alt="_images/e26eb6a369b085a71c1bbc876d030e45d3983479663b10c2dda8d28ea80042bf.png" src="_images/e26eb6a369b085a71c1bbc876d030e45d3983479663b10c2dda8d28ea80042bf.png" />
 </div>
 </div>
-<p>At every birthweight, mortality is higher for children of smokers.</p>
+<p>At every birthweight, mortality is higher for children of smokers.
+For better or worse, the low birthweight paradox is no more.</p>
+</section>
+<section id="a-twin-paradox">
+<h2>A Twin Paradox<a class="headerlink" href="#a-twin-paradox" title="Permalink to this heading">#</a></h2>
+<p>The Low Birthweight Paradox might seem like an esoteric issue, but similar phenomena are an ongoing source of confusion.
+As an example, in 2000, researchers at the University of Hong Kong reported a study of 1.5 million babies born in Sweden between 1982 and 1995.
+They computed mortality rates for single births, twins, and triplets as a function of gestational age (that is, number of weeks of pregnancy), and found:</p>
+<ul class="simple">
+<li><p>Twins and triplets are more likely to be born pre-term, that is, prior to 37 weeks of gestational age,</p></li>
+<li><p>Babies born pre-term have higher mortality rates than babies born full-term, and</p></li>
+<li><p>Overall mortality rates are higher for twins and triplets.</p></li>
+</ul>
+<p>These results were unsurprising. However, when they selected babies born pre-term, they found that survival rates were higher for twins and triplets, compared to single births.</p>
+<p>To explain this surprising result, they suggest “twins have better health than singletons initially”, that is, before 36 weeks of gestation, but that “they could not enjoy the benefit of a longer gestational duration as much as singletons could.”
+That is, they suggested a biological explanation, not a statistical one.</p>
+<p>In an invited commentary on their paper, medical statistician Rolv Lie reports similar results from 1.8 million babies born in Norway between 1967 and 1998.
+However, he comes to a different conclusion, one which I hope has occurred to you after reading this far.</p>
+<p>He suggests that the difference in mortality between single and multiple births “does not reflect the frailty among undelivered fetuses at the same gestational ages.”
+Rather, “Preterm babies have more than the prematurity problem of their specific gestational age, for they also suffer from the pathological causes of their preterm delivery, which are usually unknown.”</p>
+<p>In less flowery language, multiple pregnancy is one of several things that can cause preterm birth, and among them, it is relatively harmless.
+So if a preterm baby is a twin or triplet, it is less likely that they suffer from some other, more harmful, condition.</p>
+</section>
+<section id="the-obesity-paradox">
+<h2>The Obesity Paradox<a class="headerlink" href="#the-obesity-paradox" title="Permalink to this heading">#</a></h2>
+<p>The Low Birthweight Paradox is no more, and the Twin Paradox has been explained, but the Obesity Paradox is alive and well.</p>
+<p>The first example of the Obesity Paradox was reported in 1999.
+Although it was well known that obesity is a risk factor for kidney disease, and that kidney disease is often fatal, researchers found that among patients undergoing dialysis due to kidney failure, survival times for obese patients were <em>longer</em> than for other patients.
+They suggested as a possible explanation: “Overweight patients have an increase in adipose tissue and, therefore, are less likely to suffer from energy deficits.”
+Based on this conclusion, they recommended that “proper nutrition to maintain a high-end normal BMI [body mass index] should help reduce the high mortality and morbidity rates” in patients on dialysis.</p>
+<p>Since then, similar patterns have been reported for <em>many</em> other diseases.
+Among them:</p>
+<ul class="simple">
+<li><p>Obesity increases the risk of stroke, myocardial infarction, heart failure, and diabetes.</p></li>
+<li><p>All of these conditions are associated with increased mortality and morbidity.</p></li>
+<li><p>Nevertheless, if we select patients with any of these conditions, we find that obese patients have <em>lower</em> mortality and morbidity than normal-weight patients.</p></li>
+</ul>
+<p>To get a sense of the confusion these results have created, you only have to read the titles of the papers written about them.
+Here’s a sample from a quick search:</p>
+<ul class="simple">
+<li><p>2006: “The Obesity Paradox: Fact or Fiction?”</p></li>
+<li><p>2007: “Obesity-survival paradox-still a controversy?”</p></li>
+<li><p>2010: “The obesity paradox: perception vs knowledge”</p></li>
+<li><p>2011: “Effect of body mass index on outcomes after cardiac surgery: is there an obesity paradox?”</p></li>
+<li><p>2013: “Obesity Paradox Does Exist”</p></li>
+<li><p>2019: “Obesity paradox in cardiovascular disease: where do we stand?”</p></li>
+</ul>
+<p>So, where <em>do</em> we stand?</p>
+<p>In my opinion, the most likely explanation is the one offered in a letter to the editor of <em>Epidemiology</em> with the promising title, “The ‘Obesity Paradox’ Explained”.
+As an example, the authors consider the obesity paradox in patients with heart failure, and propose the following explanation:</p>
+<ul class="simple">
+<li><p>Obesity is one cause of heart failure, and heart failure causes mortality.</p></li>
+<li><p>But there are other causes of heart failure, which also cause mortality.</p></li>
+<li><p>Compared to other causes, obesity is relatively benign.</p></li>
+<li><p>If a patient with heart failure is obese, the other causes are less likely.</p></li>
+<li><p>Therefore, among patients with heart failure, obese patients have lower mortality.</p></li>
+</ul>
+<p>Using data from the National Health and Nutrition Examination Survey and the National Death Index, they show that this explanation is plausible; that is, the statistical relationships implied by their theory appear in the data, and they are strong enough to explain the Obesity Paradox even if obesity has no protective effect.</p>
+<p>I think their argument is convincing, but it does not rule out other causal mechanisms; for example, in the case of kidney failure, fat tissue might prevent organ damage by diluting the toxins that accumulate when kidney function is diminished.
+And it does not rule out other statistical explanations; for example, if long-term severe disease causes weight loss, obesity might be an indicator of relatively short-term mild disease.</p>
+<p>Nevertheless, until there is evidence for other explanations, the title of my article is “The Obesity Paradox: No.”</p>
+</section>
+<section id="berksons-toaster">
+<h2>Berkson’s Toaster<a class="headerlink" href="#berksons-toaster" title="Permalink to this heading">#</a></h2>
+<p>At some point while you were reading this chapter, you might have noticed connections between the Low Birthweight Paradox and Berkson’s Paradox.</p>
+<p>With Berkson’s paradox, if there are two ways to be included in a sample, we often find that the alternatives are negatively correlated in the sample, even if they are unrelated, or positively correlated, in the general population.
+For example, to dunk a basketball, you have to be tall or you have to be able to jump.
+If we sample people who can dunk, we find that the shorter people can jump higher, even if there is no such relationship in general.</p>
+<p>With the Low Birthweight Paradox, again, there are two causes for the same effect; if we select for the effect, we often find that the alternatives are negatively correlated in the sample.
+And if one of the causes is more harmful, the other might seem relatively benign.
+For example, if jumping is bad for your knees, we might find that, among people who can dunk, taller players have healthier knees. (I think I just invented a new paradox.)</p>
+<p>When you think of the Low Birthweight Paradox, and the related paradoxes in this chapter, I suggest you remember what I call “Berkson’s toaster”.</p>
+<p>Suppose you hear a smoke alarm in your kitchen.
+You get up and move quickly to the kitchen, where you find that someone has left a piece of toast in the toaster too long.
+You would probably feel relieved.</p>
+<p>Why? Because of all the things that could cause a smoke alarm, burnt toast is probably the least harmful.
+That doesn’t mean burning toast is good, but if the alarm is sounding, burnt toast is better than the alternatives.</p>
 </section>
 <section id="causal-diagrams">
 <h2>Causal diagrams<a class="headerlink" href="#causal-diagrams" title="Permalink to this heading">#</a></h2>
@@ -2010,14 +2065,28 @@ For example, here is a causal diagram that represents an explanation for the Low
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">2.9</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.9</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.9</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">],</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.9</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">],</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;birthweight1.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e52726fdb81208dfaf3255cc6b5d22497c51693bbb4fdfffdc2c2096617c66b6.png" src="_images/e52726fdb81208dfaf3255cc6b5d22497c51693bbb4fdfffdc2c2096617c66b6.png" />
+<img alt="_images/250a3ecd9a58d424aec4b7e705e555fef4ed8d93fbd6ff413e2ef00ecf8e67d3.png" src="_images/250a3ecd9a58d424aec4b7e705e555fef4ed8d93fbd6ff413e2ef00ecf8e67d3.png" />
 </div>
 </div>
+<p>Each arrow represents a causal relationship, so this diagram represents the following hypotheses:</p>
+<ul class="simple">
+<li><p>Maternal smoking causes low birthweight (LBW) and mortality, in the sense that it increases the probability of both.</p></li>
+<li><p>Additional unknown factors, including birth defects, also cause both LBW and mortality.</p></li>
+<li><p>LBW also causes mortality (regardless of what caused it).</p></li>
+</ul>
+<p>Importantly, these arrows represent truly causal relationships, not just statistical association.
+For example, the arrow from LBW to mortality means that low birthweight is harmful in and of itself, not only because it is statistical evidence of a harmful condition.
+And there is no arrow from mortality to LBW because, even though they are correlated, mortality does not cause low birthweight.</p>
+<p>However, this diagram does not contain all of the information we need to explain the Low Birthweight Paradox, because it does not represent the strengths of the different causal relationships.
+In order to explain the paradox, the total contribution of the unknown factors (U) to mortality has to exceed the total contribution of maternal smoking.
+Also, this diagram is not the only one that could explain the Low Birthweight Paradox.
+For example, the arrow from LBW to mortality is not necessary; the paradox could happen even if low birthweight were entirely harmless.
+Nevertheless, diagrams like this are a useful way to document a hypothetical set of causal relationships.</p>
 <p>The following causal diagram represents the explanation of the Obesity Paradox proposed in the 2013 paper:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2035,17 +2104,46 @@ For example, here is a causal diagram that represents an explanation for the Low
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.55</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">],</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">3.6</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.6</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">],</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
-<span class="kc">None</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;birthweight2.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9407a12b83aa9fb44c991bc0a12b8b8e9796ef437d0c0a7e7e2a4746f9e3974f.png" src="_images/9407a12b83aa9fb44c991bc0a12b8b8e9796ef437d0c0a7e7e2a4746f9e3974f.png" />
+<img alt="_images/19b6ddc02bcc5b975711f3d61f19434f77ccef055974a66851331519087cca8a.png" src="_images/19b6ddc02bcc5b975711f3d61f19434f77ccef055974a66851331519087cca8a.png" />
 </div>
 </div>
-<p>Probably Overthinking It</p>
-<p>Copyright 2022 Allen Downey</p>
-<p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
+<p>The arrows in this diagram represent the following hypotheses:</p>
+<ul class="simple">
+<li><p>Obesity causes heart failure, in the sense that it increases its probability.</p></li>
+<li><p>Other risk factors, including “genetic factors and lifestyle behaviors” cause both heart failure and mortality.</p></li>
+<li><p>Heart failure causes mortality.</p></li>
+</ul>
+<p>In this model, obesity causes mortality indirectly, by increasing the probability of heart failure, but it is not a direct cause of mortality.
+This assumption implies that an obese patient who does not have heart failure would not have increased mortality.
+In reality, that’s probably not true; for example, obesity also causes diabetes, which increases mortality.
+But we can leave that out of the model because it is not necessary to explain the paradox.
+What is necessary, but not shown in the diagram, is that the total contribution of the unknown factors to mortality must exceed the contribution of obesity indirectly through heart failure.</p>
+<p>Comparing these two diagrams, we can see what the two paradoxes have in common:</p>
+<ul class="simple">
+<li><p>In the Low Birthweight Paradox, the condition we selected has two causes, maternal smoking and other factors like birth defects.</p></li>
+<li><p>In the Obesity Paradox, the condition we selected has two causes, obesity and other genetic and lifestyle factors.</p></li>
+</ul>
+<p>Likewise, when we select babies born preterm, that condition has two causes, multiple birth and other risk factors.</p>
+<p>In the context of causal modeling, a condition that has two (or more) causes is called a “collider”, because in the causal diagram, the incoming arrows collide.
+So what I’ve been calling Berkson’s Paradox is more generally known as collider bias.</p>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Yerushalmy’s paper was originally published in the <em><a class="reference external" href="https://academic.oup.com/aje">American Journal of Epidemiology</a></em> in 1971 and reprinted in the <em><a class="reference external" href="https://academic.oup.com/ije/article/43/5/1355/2904402">International Journal of Epidemiology</a></em> in 2014.</p></li>
+<li><p>The editorial introduction to the reprinted version is by Shah Ebrahim, with commentaries by Keyes, Davey Smith, and Susser, Parascandola, Goldstein, Kramer, Zhang, and Platt, and VanderWeele.</p></li>
+<li><p>The paper that demonstrated the low birthweight paradox with a computer simulation is by Allen Wilcox and Ian Russell (1983).</p></li>
+<li><p>The paper that demonstrated it with NCHS data is by Hernández-Díaz, Schisterman, and Hernán (2006).</p></li>
+<li><p>The NCHS data is available from the <a class="reference external" href="https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm">Centers for Disease Control and Prevention (CDC)</a>.</p></li>
+<li><p>The paper reporting the Twin Paradox is by Cheung, Yip, and Karlberg (2000); the commentary explaining it is by Rolv Lie (2000).</p></li>
+<li><p>The paper reporting the Obesity Paradox is by Fleischmann, Teal, Dudley, May, Bower, and Salahudeen (1999); the 2013 paper explaining it is by Banack and Kaufman.</p></li>
+<li><p>If you would like to read more about causal modeling, a good introduction for a general audience is Judea Pearl’s book, “<a class="reference external" href="https://www.basicbooks.com/titles/judea-pearl/the-book-of-why/9780465097609/">The book of why: the new science of cause and effect</a>” (Basic Books, 2018).</p></li>
+</ul>
 </section>
 </section>
 
@@ -2119,7 +2217,11 @@ For example, here is a causal diagram that represents an explanation for the Low
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-million-babies-cant-be-wrong">Three Million Babies Can’t Be Wrong</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-groups">Other Groups</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-end-of-the-paradox">The End of the Paradox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-twin-paradox">A Twin Paradox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-obesity-paradox">The Obesity Paradox</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berksons-toaster">Berkson’s Toaster</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causal-diagrams">Causal diagrams</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
   </nav></div>
 
