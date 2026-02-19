@@ -347,6 +347,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-crime">Predicting Crime</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-groups">Comparing Groups</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-is-hard-to-define">Fairness is Hard to Define</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-is-hard-to-achieve">Fairness is Hard to Achieve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-about-the-base-rate">All about the base rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
             </nav>
         </div>
@@ -360,6 +363,7 @@ document.write(`
                   
   <section id="fairness-and-fallacy">
 <h1>Fairness and Fallacy<a class="headerlink" href="#fairness-and-fallacy" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/base_rate.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -407,10 +411,20 @@ At the end of the chapter, we’ll return to the problem of algorithms and crimi
 <section id="medical-tests">
 <h2>Medical Tests<a class="headerlink" href="#medical-tests" title="Permalink to this heading">#</a></h2>
 <p>During the COVID-19 pandemic, we all got a crash course in the science and statistics of infectious disease.
-One of the things we learned about is the accuracy of medical testing and possibility of errors, both false positives and false negatives.</p>
+One of the things we learned about is the accuracy of medical testing and the possibility of errors, both false positives and false negatives.</p>
 <p>As an example, suppose a friend tells you they have tested positive for COVID, and they want to know whether they are really infected, or whether the result might be a false positive. What information would you need to answer their question?</p>
 <p>One thing you clearly need to know is the accuracy of the test, but that turns out to be a little tricky. In the context of medical testing, we have to consider two kinds of accuracy: sensitivity and specificity.</p>
-<p>Let’s consider a case where the base rate is relatively low, like 1%. And let’s imagine a group of 1000 people who all take the test. In a group this size, we expect 10 people to be infected, because 10 out of 1000 is 1%.</p>
+<ul class="simple">
+<li><p><strong>Sensitivity</strong> is the ability of the test to detect the presence of an infection, usually expressed as a probability. For example, if the sensitivity of the test is 87%, that means 87 out of 100 people who are actually infected will get a positive test result, on average. The other 13 will get a <em>false negative</em>.</p></li>
+<li><p><strong>Specificity</strong> is the ability of the test to indicate the absence of an infection. For example, if the specificity is 98%, that means 98 out of 100 people who are not infected will get a negative test result, on average. The other 2 will get a <em>false positive</em>.</p></li>
+</ul>
+<p>I did not make those numbers up.
+They are the reported sensitivity of a particular rapid antigen test, the kind used for at-home testing, in December 2021.
+By the numbers, it sounds like the test is accurate, so if your friend tested positive, you might think they are likely to be infected.</p>
+<p>But that’s not necessarily true. It turns out that there is another piece of information we need to consider: the <em>base rate</em>, which is the probability that your friend was infected, based on everything we know about them <em>except</em> the outcome of the test.</p>
+<p>For example, if they live someplace where the infection rate is high, we know they have been in a room with someone who was infected, and they currently have symptoms, the base rate might be quite high.
+If they have been in strict isolation for 14 days and have no symptoms, it would be quite low.</p>
+<p>To see why it matters, let’s consider a case where the base rate is relatively low, like 1%. And let’s imagine a group of 1000 people who all take the test. In a group this size, we expect 10 people to be infected, because 10 out of 1000 is 1%.</p>
 <p>Of the 10 who are actually infected, we expect 9 to get a positive test result, because the sensitivity of the test is 87%.</p>
 <p>Of the other 990, we expect 970 to get a negative test result, because the specificity is 98%. But that means we expect 20 people to get a false positive.</p>
 <p>Before we go on, let’s put the numbers we have so far in a table.</p>
@@ -467,6 +481,12 @@ One of the things we learned about is the accuracy of medical testing and possib
 </table>
 </div></div></div>
 </div>
+<p>The first column is the number of people in each group: infected or not.</p>
+<p>The second column is the probability of a positive test for each group.
+For someone who is actually infected, the probability of a positive test is 0.87, because sensitivity is 87%.
+For someone who is not infected, the probability of a <em>negative</em> test is 0.98, because specificity is 98%, so the probability of a positive test is 0.02.</p>
+<p>The third column is the product of the first two columns, which is the number of positive tests we expect in each group, on average.
+Out of 1000 test results, 9 are true positives and 20 are false positives, for a total of 29.</p>
 <p>Now we are ready to answer your friend’s question: Given a positive test result, what is the probability that they are actually infected?
 In this example, the answer is 9 out of 29, or 31%.</p>
 <p>Here’s the table again, with a fourth column showing the probability of actual infection and the complementary probability that the test result is a false positive.</p>
@@ -533,8 +553,13 @@ In that case, out of 1000 people with the same symptoms, we would expect 100 to 
 If we modify the first column of the table accordingly, here are the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a table showing test results for infected and not infected groups.</span>
+<span class="sd">    </span>
+<span class="sd">    prior: tuple of (infected_count, not_infected_count)</span>
+<span class="sd">    likelihood: tuple of (sensitivity, 1 - specificity)</span>
+<span class="sd">    as_int: if True, round positive test counts to integers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Infected&quot;</span><span class="p">,</span> <span class="s2">&quot;Not infected&quot;</span><span class="p">])</span>
     <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prior</span>
     <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Prob positive&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">likelihood</span>
@@ -554,7 +579,7 @@ If we modify the first column of the table accordingly, here are the results.</p
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.98</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">900</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+<span class="n">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -617,7 +642,7 @@ With this test, assuming the same specificity, 98%, and the same base rate, 10%,
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.98</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">900</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+<span class="n">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -682,7 +707,7 @@ Let’s see what effect that has on the results.</p>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.999</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">900</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -739,7 +764,7 @@ Let’s see what effect that has on the results.</p>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.999</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">999</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -799,7 +824,7 @@ The researchers asked a “convenience sample” of doctors (probably their frie
 <blockquote>
 <div><p>“If a test to detect a disease whose prevalence is 1/1000 has a false positive rate of 5%, what is the chance that a person found to have a positive result actually has the disease, assuming you know nothing about the person’s symptoms or signs?”</p>
 </div></blockquote>
-<p>What they call “prevalence” is what I’ve been calling “base rate”. And what they call the “false positive rate” is the complement of specificity, so a false positive rate of 5% corresponds to a sensitivity of 95%.</p>
+<p>What they call “prevalence” is what I’ve been calling “base rate”. And what they call the “false positive rate” is the complement of specificity, so a false positive rate of 5% corresponds to a specificity of 95%.</p>
 <p>Before I tell you the results of the experiment, let’s work out the answer to the question.  We are not given the sensitivity of the test, so I’ll make the optimistic assumption that it is 99%. The following table shows the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -807,7 +832,7 @@ The researchers asked a “convenience sample” of doctors (probably their frie
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.95</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">999</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -861,6 +886,19 @@ The researchers asked a “convenience sample” of doctors (probably their frie
 <div><p>“Approximately three-quarters of respondents answered the question incorrectly. In our study, 14 of 61 respondents (23%) gave a correct response. […] the most common answer was 95%, given by 27 of 61 respondents.”</p>
 </div></blockquote>
 <p>If the correct answer is 2% and the most common response is 95%, that is an alarming level of misunderstanding.</p>
+<p>To be fair, the wording of the question might have been confusing. Informally, “false positive rate” could mean either:</p>
+<ul class="simple">
+<li><p>The fraction of uninfected people who get a positive test result,</p></li>
+<li><p>The fraction of positive test results that are false.</p></li>
+</ul>
+<p>The first is the technical definition of “false positive rate”; the second is called the “false discovery rate”. But even statisticians have trouble keeping these terms straight, and doctors are experts at medicine, not statistics.</p>
+<p>However, even if the respondents misunderstood the question, their confusion could have real consequences for patients.
+In the case of COVID testing, a false positive test result might lead to an unnecessary period of isolation, which would be disruptive, expensive, and possibly harmful.
+A state investigation of the lab that produced hundreds of false positive results concluded that their failures “put patients at immediate risk of harm”.</p>
+<p>Other medical tests involve similar risks.
+For example, in the case of cancer screening, a false positive might lead to additional tests, unnecessary biopsy or surgery, and substantial costs, not to mention emotional difficulty for the patient and their family.</p>
+<p>Doctors and patients need to know about the base rate fallacy.
+As we’ll see in the next section, lawyers, judges, and jurors do, too.</p>
 </section>
 <section id="driving-under-the-influence">
 <h2>Driving Under the Influence<a class="headerlink" href="#driving-under-the-influence" title="Permalink to this heading">#</a></h2>
@@ -907,6 +945,7 @@ That’s a base rate of 86%.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate percentage: 100 * y / (y + n).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">y</span> <span class="o">/</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -970,7 +1009,7 @@ That’s a base rate of 86%.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="s2">&quot;Suspects&quot;</span>
-<span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Prob Positive&quot;</span>
+<span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Prob positive&quot;</span>
 <span class="n">col3</span> <span class="o">=</span> <span class="s2">&quot;Cases&quot;</span>
 <span class="n">col4</span> <span class="o">=</span> <span class="s2">&quot;Percent&quot;</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -1007,7 +1046,7 @@ That’s a base rate of 86%.</p>
     <tr style="text-align: right;">
       <th></th>
       <th>Suspects</th>
-      <th>Prob Positive</th>
+      <th>Prob positive</th>
       <th>Cases</th>
       <th>Percent</th>
     </tr>
@@ -1082,7 +1121,7 @@ But as an example, let’s suppose it is 50%; the following table shows the resu
     <tr style="text-align: right;">
       <th></th>
       <th>Suspects</th>
-      <th>Prob Positive</th>
+      <th>Prob positive</th>
       <th>Cases</th>
       <th>Percent</th>
     </tr>
@@ -1300,13 +1339,13 @@ In reality, there were 1,272, so we can estimate that the vaccine saved about 2,
 </div>
 </div>
 <p>Of course, this analysis is based on some assumptions, most notably that the vaccinated and unvaccinated were similar except for their vaccination status.
-That might not be true: people with high risk or poor general heath might have been more likely to seek out the vaccine.
+That might not be true: people with high risk or poor general health might have been more likely to seek out the vaccine.
 If so, our estimate would be too low, and the vaccine might have saved more lives.
 If not, and people in poor health were <em>less</em> likely to be vaccinated, our estimate would be too high.
 I’ll leave it to you to judge which is more likely.</p>
 <p>We can repeat this analysis with the other age groups.
 The following table shows the number of deaths in each age group and the percentage of the people who died who were vaccinated.</p>
-<p>I’ve omitted the “Under 18” age group because there were only 6 deaths in this group, 4 among among the unvaccinated and 2 with unknown status.
+<p>I’ve omitted the “Under 18” age group because there were only 6 deaths in this group, 4 among the unvaccinated and 2 with unknown status.
 With such small numbers, we can’t make useful estimates for the death rate or effectiveness of the vaccine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1424,7 +1463,7 @@ With such small numbers, we can’t make useful estimates for the death rate or 
 </table>
 </div></div></div>
 </div>
-<p>Adding up the columns, there were a total of 2,284 deaths, 3,152 of them among the vaccinated.
+<p>Adding up the columns, there were a total of 3,152 deaths, 2,284 of them among the vaccinated.
 So 72% of the people who died had been vaccinated, as the unnamed journalist reported.
 Among people over 80, it was even higher, as we’ve already seen.</p>
 <p>However, in the younger age groups, the percentage of deaths among the vaccinated is substantially lower, which is a hint that this number might reflect something about the groups, not about the vaccine.</p>
@@ -1524,7 +1563,7 @@ The following table shows death rates per million people, reported by Public Hea
 In the youngest group it is 67%, but that might be inaccurate because the number of deaths is low and the estimated death rates are not precise.
 In the oldest group it is 68%, which suggests that the vaccine is less effective for older people, possibly because their immune systems are weaker.
 However, a treatment that reduces the probability of dying by 68% is still very good.</p>
-<p>Effectiveness is nearly the same most age groups because it reflects primarily something about the vaccines and only secondarily something about the groups.</p>
+<p>Effectiveness is nearly the same in most age groups because it reflects primarily something about the vaccines and only secondarily something about the groups.</p>
 <p>Now, given the number of deaths and death rates, we can infer the number of people in each age group who were vaccinated or not, and the percentage who had been vaccinated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1609,7 +1648,7 @@ However, a treatment that reduces the probability of dying by 68% is still very 
 </table>
 </div></div></div>
 </div>
-<p>By August 2021, nearly everyone in the England over 60 years old had been vaccinated.
+<p>By August 2021, nearly everyone in England over 60 years old had been vaccinated.
 In the younger groups, the percentages were lower, but even in the youngest group it was more than half.</p>
 <p>With this, it becomes clear why most deaths were among the vaccinated:</p>
 <ul class="simple">
@@ -1628,7 +1667,6 @@ First we compute the hypothetical number of the vaccinated who would have died i
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Hypothetical deaths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# vax (millions)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table3</span><span class="p">[</span><span class="s2">&quot;Death rate unvax&quot;</span><span class="p">]</span>
 <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Actual deaths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_vax</span>
-<span class="n">percent</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# vax (millions)&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">table4</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Lives saved&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Hypothetical deaths&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Actual deaths&quot;</span><span class="p">]</span>
 <span class="n">table5</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
@@ -1771,7 +1809,13 @@ As it turns out, they are not very good:</p>
 <p>The following table shows the results with this base rate, sensitivity, and specificity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_risk_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a table showing risk scores for charged and not charged groups.</span>
+<span class="sd">    </span>
+<span class="sd">    prior: array of (charged_count, not_charged_count)</span>
+<span class="sd">    likelihood: tuple of (sensitivity, 1 - specificity) for high risk scores</span>
+<span class="sd">    as_int: if True, round high risk counts to integers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Charged again&quot;</span><span class="p">,</span> <span class="s2">&quot;Not charged&quot;</span><span class="p">])</span>
     <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">table</span><span class="p">[</span><span class="s2">&quot;P(high risk)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">likelihood</span>
@@ -1792,7 +1836,7 @@ As it turns out, they are not very good:</p>
 <span class="n">prev</span> <span class="o">=</span> <span class="mf">0.45</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">prev</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prev</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+<span class="n">make_risk_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1851,7 +1895,7 @@ As it turns out, they are not very good:</p>
 <span class="n">prev</span> <span class="o">=</span> <span class="mf">0.45</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">prev</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prev</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">table</span> <span class="o">=</span> <span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">make_risk_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
 <span class="n">table</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;# of people&#39;</span><span class="p">,</span> <span class="s1">&#39;P(low risk)&#39;</span><span class="p">,</span> <span class="s1">&#39;# low risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Percent&#39;</span><span class="p">]</span>
 <span class="n">table</span>
 </pre></div>
@@ -1938,7 +1982,7 @@ But interpreting these results turns out to be complicated; I think it will be c
 <span class="n">prev</span> <span class="o">=</span> <span class="mf">0.47</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">prev</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prev</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+<span class="n">make_risk_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1995,7 +2039,7 @@ But interpreting these results turns out to be complicated; I think it will be c
 <span class="n">prev</span> <span class="o">=</span> <span class="mf">0.36</span>
 <span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">prev</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">prev</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sens</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">spec</span>
-<span class="n">make_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
+<span class="n">make_risk_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2078,6 +2122,107 @@ COMPAS could be calibrated to have equal error rates in all four groups, or equa
 <p>However, it cannot have the same error rates <em>and</em> the same predictive values.
 We have already seen why: if the error rates are the same and the base rates are different, we get different predictive values.
 And, going the other way, if the predictive values are the same and the base rates are different, we get different error rates.</p>
+<p>At this point it is tempting to conclude that algorithms are inherently unfair, so maybe we should rely on humans instead of algorithms. But this option is not as appealing as it might seem.</p>
+<p>First, it doesn’t actually solve the problem: just like an algorithm, a human judge cannot achieve equal error rates for different groups and equal predictive values at the same time. The math is inescapable by man or machine.</p>
+<p>Second, if the task is to use data to generate predictions, humans are almost always worse than algorithms. To see why, let’s consider the reasons a person and an algorithm might disagree:</p>
+<ol class="arabic simple">
+<li><p>A human might consider additional information that’s not available to the algorithm. For example, a judge might assess whether a defendant seems contrite, based on their behavior in court.</p></li>
+<li><p>A human might consider the same information as an algorithm, but give different weight to different factors. For example, a judge might give more weight to age than the algorithm, and less weight to prior arrests.</p></li>
+<li><p>A human might be influenced by factors that don’t affect algorithms, like political beliefs, personal biases, and mood.</p></li>
+</ol>
+<p>Taking these in turn:</p>
+<ol class="arabic simple">
+<li><p>If a human judge uses more information than the algorithm, the additional information may or may not be valid. If not, it provides no advantage. If so, it could be included in the algorithm. For example, if judges record their belief about whether a defendant is contrite or not, we could check whether their assessment is actually predictive, and if so, we could add it to the algorithm.</p></li>
+<li><p>If a human judge gives more weight to some factors, relative to the algorithm, and less weight to others, the results are unlikely to be better. After all, figuring out which factors are predictive, and how much weight to give each one, is exactly what algorithms are designed to do, and they are generally better at it than humans.</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>Finally, there is ample evidence that judges differ from each other in consistent ways, and differ from themselves over time. The outcome of a case should not depend on whether it is assigned to a harsh or a lenient judge, or whether it is heard before or after lunch. And it certainly should not depend on prejudices the judge may have based on race, sex, and other group membership.</p></li>
+</ol>
+<p>I don’t mean to say that algorithms are guaranteed to be free of this kind of prejudice. If they are based on previous outcomes, and if those outcomes are subject to bias, algorithms can replicate and perpetuate that bias.</p>
+<p>For example, the dataset used by ProPublica to validate COMPAS indicates whether each defendant was <em>charged</em> with another crime during the period of observation. But what we really want to know is whether the defendant <em>committed</em> another crime, and that is not the same thing.</p>
+<p>Not everyone who commits a crime gets charged – not even close. The probability of getting charged for a particular crime depends on the type of crime and location; the presence of witnesses and their willingness to work with police; the decisions of police about where to patrol, what crimes to investigate, and who to arrest; and decisions of prosecutors about who to charge.
+It is likely that every one of these factors depends on the race and sex of the defendant.</p>
+<p>This kind of data bias is a problem for algorithms like COMPAS.
+But it is also a problem for humans: exposed to biased data, we tend to make biased judgments. The difference is that humans can handle less data, and we are less good at extracting reliable information from it. Trained with the same data, an algorithm will be about as biased as the average judge, less biased than the worst judge, and less noisy than any judge.</p>
+<p>Also, algorithms are easier to correct than humans. If we discover that an algorithm is biased, and we can figure out how, we can often unbias it.
+If we could do that with humans, the world would be a better place.</p>
+<p>For all of these reasons, I think algorithms like COMPAS have a place in the criminal justice system.
+But that brings us back to the question of calibration.</p>
+</section>
+<section id="fairness-is-hard-to-achieve">
+<h2>Fairness is Hard to Achieve<a class="headerlink" href="#fairness-is-hard-to-achieve" title="Permalink to this heading">#</a></h2>
+<p>Even if you think we should not use predictive algorithms in the criminal justice system, the reality is that we do. So at least for now we have a difficult question to answer:</p>
+<ol class="arabic simple">
+<li><p>Should we calibrate algorithms so predictive values are the same in all groups, and accept different error rates (as we see with black and white defendants)?</p></li>
+<li><p>Or should we calibrate them so error rates are the same in all groups, and accept different predictive values (as we see with male and female defendants)?</p></li>
+<li><p>Or should we compromise between the extremes, and accept different error rates <em>and</em> different predictive values.</p></li>
+</ol>
+<p>If we choose either of the first two options, we run into two problems: the number of groups is large, and every defendant belongs to several of them.</p>
+<p>Consider a defendant who is a 50-year old African-American woman. What is the false positive rate for her group? As we’ve already seen, FPR for black defendants is 45%. But for black women it’s 40%, for women older than 45 it’s 15%, and for black women older than 45 it’s 24%.</p>
+<p>We have the same problem with the false negative rate. For example, FNR for white defendants is 48%, but for white women it is 43%, for women younger than 25, it’s 18% and for white women younger than 25, it’s just 4%!</p>
+<p>Predictive values (PPV and NPV) don’t differ as much between groups, but if you search for the extremes, you can find substantial differences.
+Among the subgroups I looked at (excluding very small groups):</p>
+<ul class="simple">
+<li><p>COMPAS has the highest positive predictive value for black men younger than 25, 70%. It has the lowest PPV for Hispanic defendants older than 45, 29%.</p></li>
+<li><p>It has the highest negative predictive value for white women younger than 25, 95%, and the lowest NPV for men under 25 whose racial category is “Other”, 49%.</p></li>
+</ul>
+<p>With six racial categories, three age groups, and two sexes, there are 81 subgroups.
+It is not possible to calibrate any algorithm to achieve the same error rates or the same predictive values in all of these groups.</p>
+<p>So, suppose we use an algorithm that allows error rates and predictive values to vary between groups.
+How should we design it, and how should we evaluate it?
+Let me suggest a few principles to start with:</p>
+<ol class="arabic simple">
+<li><p>If one of the goals of incarceration is to reduce crime, it is better to keep in prison someone who will commit another crime, if released, than someone who will not. Of course we don’t know with certainty who will re-offend, but we can make probablistic predictions.</p></li>
+<li><p>The public interest is better served if our predictions are accurate, otherwise we will keep more people in prison than necessary, or suffer more crime than necessary, or both.</p></li>
+<li><p>However, we should be willing to sacrifice some accuracy in the interest of justice. For example, suppose we find that, comparing male and female defendants who are alike in every other way, women are more likely to re-offend. In that case, including sex in the algorithm might improve its accuracy. Nevertheless, we might decide to exclude this information on the grounds that using it would violate the principle of equality before the law.</p></li>
+<li><p>The criminal justice system should be fair, and it should be perceived to be fair. However, we have seen that there are conflicting definitions of fairness, and it is mathematically impossible to satisfy all of them.</p></li>
+</ol>
+<p>Even if we agree that these principles should guide our decisions, they provide a framework for a discussion rather than a resolution.</p>
+<p>For example, reasonable people could disagree about what factors should be included in the algorithm. I suggested that sex should be excluded even if it improves the accuracy of the predictions. For the same reason, we might choose to exclude race.</p>
+<p>But what about age? If two defendants are similar except that one is 25 years old and the other is 50, the younger person is substantially more likely to re-offend. So an algorithm that includes age will be more accurate than one that does not. And on the face of it, releasing someone from prison because they are old does not seem obviously unjust.
+But a person does not choose their age any more than they choose their race or sex. So I’m not sure what principle justifies the decision to include age while excluding race and sex.</p>
+<p>The point of this example is that these decisions are hard because they depend on values that are not universal.</p>
+<p>Fortunately, we have tools for making decisions when people disagree, including public debate and representative democracy. But the key words in that sentence are “public” and “representative”. The algorithms we use in the criminal justice system should be a topic of public discussion, not a trade secret. And the debate should include everyone involved, including perpetrators and victims of crime.</p>
+</section>
+<section id="all-about-the-base-rate">
+<h2>All about the base rate<a class="headerlink" href="#all-about-the-base-rate" title="Permalink to this heading">#</a></h2>
+<p>Sometimes the base rate fallacy is funny. There’s a very old joke that goes like, “I read that 21% of car crashes are caused by drunk drivers. Do you know what that means? It means that 79% are caused by sober drivers. Those sober drivers aren’t safe – get them off the road!”</p>
+<p>And sometimes the base rate fallacy is obvious, like the xkcd comic that says “Remember, right-handed people commit 90% of all base rate errors”.</p>
+<p>But often it is more subtle.
+When someone says a medical test is accurate, they usually mean that is it sensitive and specific: that is, likely to be positive if the condition it detects is present, and likely to be negative if the condition is absent.
+And those are good properties for a test to have.</p>
+<p>But they are not enough to tell us what we really want to know, which is whether a particular result is correct. For that, we need the base rate, and it often depends on the circumstances of the test.</p>
+<p>For example, if you go to a doctor because you have symptoms of a particular disease and they test for the disease, that’s a diagnostic test. If the test is sensitive and specific, and the result is positive, it’s likely that you have the disease.</p>
+<p>But if you go to the doctor for a regular checkup, you have no symptoms, and they test for a rare disease, that’s a screening test. In that case, if the result is positive, the probability that you have the disease might be small, even if the test is highly specific.</p>
+<p>And it’s important for you to know this, because there’s a good chance your doctor does not.</p>
+</section>
+<section id="sources-and-related-reading">
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The sensitivity and specificity of COVID antigen tests was reported in the Wirecutter feature of <a class="reference external" href="https://www.nytimes.com/wirecutter/reviews/at-home-covid-test-kits"><em>The New York Times</em></a> (Lee, 2021).</p></li>
+<li><p>The false positive COVID tests from the Orig3n lab were reported in <a class="reference external" href="https://www.bostonglobe.com/2020/09/08/nation/state-suspends-covid-19-testing-orig3n-boston-based-lab-responsible-least-383-false-positive-results/"><em>The Boston Globe</em></a> (Moore, 2020).</p></li>
+<li><p>The experiment that asked doctors to interpret the results of a medical test was described in <a class="reference external" href="https://doi.org/10.1001/jamainternmed.2014.1059"><em>JAMA Internal Medicine</em></a> (Manrai et al., 2014).</p></li>
+</ul>
+<ul class="simple">
+<li><p>The story of the drivers in Georgia who were wrongly arrested for driving under the influence of cannabis was reported by <a class="reference external" href="https://www.11alive.com/article/news/investigations/the-drug-whisperer-drivers-arrested-while-stone-cold-sober/85-502132144">11 Alive, WXIA-TV in Atlanta, Georgia</a> (Keefe and King, 2018).</p></li>
+<li><p>The complaint filed on their behalf, and updates on the appeal, are available from the <a class="reference external" href="https://acluga.org/ebner-v-cobb-county">ACLU website</a> (2017).</p></li>
+<li><p>The 1985 lab test of the DRE protocol is reported in a <a class="reference external" href="http://www.decp.us/pdfs/Bigelow_1985_DRE_validation_study.pdf">technical report from the National Highway Traffic Safety Administration</a> (Bigelow et al., 1985). The 1986 field test is reported in <a class="reference external" href="https://trid.trb.org/view/466854">another technical report</a> (Compton, 1986).</p></li>
+</ul>
+<ul class="simple">
+<li><p>The podcast where the unnamed journalist committed the base rate fallacy is <a class="reference external" href="https://open.spotify.com/episode/1VNcMVzwgdU2gXdbw7yqCL?si=WjK0_EQ7TXGgFdVmda_gRw"><em>The Joe Rogan Experience</em></a> (2021).</p></li>
+<li><p>The data he reported is from <a class="reference external" href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1019992/Vaccine_surveillance_report_-_week_38.pdf">Public Health England</a> (2021).</p></li>
+</ul>
+<ul class="simple">
+<li><p>The ProPublica article about COMPAS is available online: <a class="reference external" href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">“Machine Bias”</a> (Angwin et al., 2016). The response in <em>The Washington Post</em> was published in 2016 (Corbett-Davies et al., 2016).</p></li>
+<li><p>My discussion of Machine Bias is based on a case study that is part of the <em>Elements of Data Science</em> curriculum (Downey, 2021). The Python code I used to analyze the data is available in <a class="reference external" href="https://allendowney.github.io/RecidivismCaseStudy">Jupyter notebooks</a> (Downey, 2021).</p></li>
+<li><p>For a discussion of the vagaries of human judges, I recommend Chapter 1 of <a class="reference external" href="https://books.google.com/books?id=vCZMzQEACAAJ"><em>Noise: A Flaw in Human Judgment</em></a> (Kahneman, Sibony, and Sunstein, 2021).</p></li>
+<li><p>The company that produces COMPAS was called Northpointe in 2016. After the ProPublica article was published, the name of the company was changed to Equivant.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://xkcd.com/2476/">xkcd comic about the base rate fallacy</a> is number 2476 (Munroe, 2021). The hover text is “Sure, you can talk about per-capita adjustment, but if you want to solve the problem, it’s obvious that this is the group you need to focus on.”</p></li>
+<li><p>A January 2022 feature in <a class="reference external" href="https://www.nytimes.com/2022/01/01/upshot/pregnancy-birth-genetic-testing.html"><em>TheUpshot</em></a> discusses the high false positive rates of screening tests for rare genetic disorders (Kliff and Bhatia, 2022).</p></li>
+<li><p>A 2022 article in <a class="reference external" href="https://www.nytimes.com/2022/06/10/health/cancer-blood-tests.html"><em>The New York Times</em></a> discusses potential harms of increased screening for rare cancers (Kolata, 2022).</p></li>
+</ul>
 <p>Probably Overthinking It</p>
 <p>Copyright 2022 Allen Downey</p>
 <p>The code in this notebook and <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> is under the <a class="reference external" href="https://mit-license.org/">MIT license</a>.</p>
@@ -2160,6 +2305,9 @@ And, going the other way, if the predictive values are the same and the base rat
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-crime">Predicting Crime</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-groups">Comparing Groups</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-is-hard-to-define">Fairness is Hard to Define</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness-is-hard-to-achieve">Fairness is Hard to Achieve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#all-about-the-base-rate">All about the base rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
 </ul>
   </nav></div>
 
