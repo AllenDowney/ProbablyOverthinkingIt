@@ -349,6 +349,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debunk-redux">Debunk Redux</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lives-saved">Lives saved</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-data-open-discussion">Open data, open discussion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#israeli-data">Israeli Data</a></li>
 </ul>
             </nav>
@@ -363,6 +364,7 @@ document.write(`
                   
   <section id="penguins-pessimists-and-paradoxes">
 <h1>Penguins, Pessimists, and Paradoxes<a class="headerlink" href="#penguins-pessimists-and-paradoxes" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/simpson.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -389,18 +391,12 @@ document.write(`
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
 
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
 </pre></div>
 </div>
 </div>
@@ -418,7 +414,9 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">decorate</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">set_pyplot_params</span><span class="p">,</span> <span class="n">decorate</span>
+
+<span class="n">set_pyplot_params</span><span class="p">()</span>
 
 <span class="c1"># Set the random seed so we get the same results every time</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
@@ -454,18 +452,6 @@ The circles show the percentage of people in each survey who said that people tr
 <span class="c1"># 1 = helpful</span>
 <span class="c1"># 2 = look out for themselves</span>
 <span class="c1"># 3 = depends</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This dataset is prepared in clean_simpson.ipynb</span>
-
-<span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/&quot;</span>
-
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;gss_simpson.hdf&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -512,10 +498,11 @@ Name: helpful, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0    888
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>helpful
+1.0    888
 2.0    543
 3.0     89
-Name: helpful, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -548,6 +535,10 @@ Name: helpful, dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>probs</th>
+    </tr>
+    <tr>
+      <th>helpful</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -596,10 +587,11 @@ Name: helpful, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0    940
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>helpful
+2.0    940
 1.0    790
 3.0     79
-Name: helpful, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -632,6 +624,10 @@ Name: helpful, dtype: int64
     <tr style="text-align: right;">
       <th></th>
       <th>probs</th>
+    </tr>
+    <tr>
+      <th>helpful</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -693,7 +689,7 @@ Name: helpful, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1d83836b8bf724a133b857794905c586ae7434e47e9dca0841467dfed18cfce6.png" src="_images/1d83836b8bf724a133b857794905c586ae7434e47e9dca0841467dfed18cfce6.png" />
+<img alt="_images/79564fae1bb84b19254460e42e895a4385286301dd28524a72efedb977f5b3d9.png" src="_images/79564fae1bb84b19254460e42e895a4385286301dd28524a72efedb977f5b3d9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -773,7 +769,7 @@ In particular, they depend strongly on when the respondents were born, as shown 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3296d143df2b14b204f96acc990fa21724a3ed446a5175f7c8661ff4cbe96610.png" src="_images/3296d143df2b14b204f96acc990fa21724a3ed446a5175f7c8661ff4cbe96610.png" />
+<img alt="_images/3dfc27eb6fc13ddc75b061a5ac5d054a10fbec1825d7a86eb5f373aa6420b95a.png" src="_images/3dfc27eb6fc13ddc75b061a5ac5d054a10fbec1825d7a86eb5f373aa6420b95a.png" />
 </div>
 </div>
 <p>Notice that the x-axis here is the respondent’s year of birth, not the year they participated in the survey.
@@ -882,11 +878,25 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f2d90eae8ecf35ea375495d3f5d2184e15e6ff7eb995277e8d6d4996692629ad.png" src="_images/f2d90eae8ecf35ea375495d3f5d2184e15e6ff7eb995277e8d6d4996692629ad.png" />
+<img alt="_images/e575bf6cd9e4799b7a875483a0f665cdbb292d171061771f0737b437d06b0e41.png" src="_images/e575bf6cd9e4799b7a875483a0f665cdbb292d171061771f0737b437d06b0e41.png" />
 </div>
 </div>
 <p>Again, different people were surveyed each year, so there is a lot of variability. Nevertheless, there is a clear increasing trend.
 When this cohort was interviewed in the 1970s, about 46% of them gave a positive response; when they were interviewed in the 2010s, about 61% did.</p>
+<p>So that’s surprising. So far, we’ve seen that</p>
+<ul class="simple">
+<li><p>People have become more pessimistic over time,</p></li>
+<li><p>And successive generations have become more pessimistic,</p></li>
+<li><p>But if we follow one cohort over time, they become more optimistic as they age.</p></li>
+</ul>
+<p>Now, maybe there’s something unusual about people born in the 1940s.
+They were children during the aftermath of World War II and they were young adults during the rise of the Soviet Union and the Cold War.
+These experiences might have made them more distrustful when they were interviewed in the 1970s.
+Then, from the 1980s to the present, they enjoyed decades of relative peace and increasing prosperity.
+And when they were interviewed in the 2010s, most were retired and many were wealthy.
+So maybe that put them in a more positive frame of mind.</p>
+<p>However, there is a problem with this line of conjecture: it wasn’t just one cohort that trended toward the positive over time.
+It was all of them.</p>
 <p>The following figure shows the responses to this question grouped by decade of birth and plotted over time.
 For clarity, I’ve dropped the circles showing the annual results and plotted only the smoothed lines.</p>
 <div class="cell docutils container">
@@ -907,11 +917,14 @@ For clarity, I’ve dropped the circles showing the annual results and plotted o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/61f8150f534073a28c40bb6832528e00ae089d2c6b221660f31cd61e57a18927.png" src="_images/61f8150f534073a28c40bb6832528e00ae089d2c6b221660f31cd61e57a18927.png" />
+<img alt="_images/a95bb997575eaca25231dee8eecda089a7929f8d9aa8c81461a2c45066dc4a5e.png" src="_images/a95bb997575eaca25231dee8eecda089a7929f8d9aa8c81461a2c45066dc4a5e.png" />
 </div>
 </div>
 <p>The solid lines show the trends within each cohort: people generally become more optimistic as they age.
 The dashed line shows the overall trend: on average, people are becoming less optimistic over time.</p>
+<p>This is an example of Simpson’s paradox, named for Edward H. Simpson, a codebreaker who worked at Bletchley Park during World War II.
+For people who have not seen it before, the effect often seems impossible:
+if all of the groups are increasing, and we combine them into a single group, how can the aggregate decrease?</p>
 <p>In this example, the explanation is <em>generational replacement</em>; as the oldest, more optimistic cohort dies off, it is replaced by the youngest, more pessimistic cohort.</p>
 <p>The differences between these generations are substantial.
 In the most recent data, only 39% of respondents born in the 1990s said people would try to be helpful, compared to 51% of those born in the 1960s and 64% of those born in the 1920s.</p>
@@ -966,7 +979,7 @@ The following figure shows the distribution of birth years for the respondents a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c30e455ea9cc3876d14209037275ab91b0002fb8b96d987ca18811d95a17c60d.png" src="_images/c30e455ea9cc3876d14209037275ab91b0002fb8b96d987ca18811d95a17c60d.png" />
+<img alt="_images/b766d7208d97e7965b56537f8ae6553c1ef55a0b5ed4ad05151c00d22126383e.png" src="_images/b766d7208d97e7965b56537f8ae6553c1ef55a0b5ed4ad05151c00d22126383e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -989,10 +1002,10 @@ The following figure shows the distribution of birth years for the respondents a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d2abcbc5c26e177f0df209c120e107191cc8b230b2322854cd045d9e8e1013fb.png" src="_images/d2abcbc5c26e177f0df209c120e107191cc8b230b2322854cd045d9e8e1013fb.png" />
+<img alt="_images/1467969caa09c9d7966b93123701cd38bff2cc707f55033ec5d45f44544dd9b9.png" src="_images/1467969caa09c9d7966b93123701cd38bff2cc707f55033ec5d45f44544dd9b9.png" />
 </div>
 </div>
-<p>In the earliest years of the survey, most the the respondents were born between 1890 and 1950.
+<p>In the earliest years of the survey, most of the respondents were born between 1890 and 1950.
 In the 1990 survey, most were born between 1901 and 1972.
 In the 2018 survey, most were born between 1929 and 2000.</p>
 <div class="cell docutils container">
@@ -1054,16 +1067,6 @@ If wages in all groups were doing down, how could overall wages go up?</p>
 <p>To explain what’s going on, I will replicate the results from Norris’s article using data from the Current Population Survey (CPS) conducted by the U.S. Census Bureau and the Bureau of Labor Statistics.
 This dataset includes real wages and education levels for almost 1.9 million participants between 1996 and 2021.
 Real wages are adjusted for inflation and reported in constant 1999 dollars.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this dataset is prepared in clean_cps.ipynb</span>
-
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;ipums_cps.hdf&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ipums_cps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;ipums_cps&quot;</span><span class="p">)</span>
@@ -1140,7 +1143,7 @@ Real wages are adjusted for inflation and reported in constant 1999 dollars.</p>
     <span class="s2">&quot;college&quot;</span><span class="p">:</span> <span class="s2">&quot;Some college&quot;</span><span class="p">,</span>
     <span class="s2">&quot;adv&quot;</span><span class="p">:</span> <span class="s2">&quot;Advanced&quot;</span><span class="p">,</span>
 <span class="p">}</span>
-<span class="n">ipums_cps</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ipums_cps</span> <span class="o">=</span> <span class="n">ipums_cps</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;degree&quot;</span><span class="p">:</span> <span class="n">d</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1373,13 +1376,13 @@ Some college -148.96847910461423
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.YTick at 0x7f5299f1caf0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f5299f1c490&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f5297d60310&gt;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.YTick at 0x7fb20093ba60&gt;,
+  &lt;matplotlib.axis.YTick at 0x7fb2009a2e00&gt;,
+  &lt;matplotlib.axis.YTick at 0x7fb2009e9a20&gt;],
  [Text(0, 10, &#39;10&#39;), Text(0, 30, &#39;30&#39;), Text(0, 50, &#39;50&#39;)])
 </pre></div>
 </div>
-<img alt="_images/00851ee879e008dda37a704b01d21c3fa9f800e1a0af52a7ec96822f543a542d.png" src="_images/00851ee879e008dda37a704b01d21c3fa9f800e1a0af52a7ec96822f543a542d.png" />
+<img alt="_images/7d8a779f0b10277dfb055dbef5be45ecae58005c2b0a578b69118d37e83ef50f.png" src="_images/7d8a779f0b10277dfb055dbef5be45ecae58005c2b0a578b69118d37e83ef50f.png" />
 </div>
 </div>
 <p>These results are consistent with Norris’s: real wages in every group decreased over this period.
@@ -1719,13 +1722,13 @@ The following figure shows the fraction of the population at each educational le
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x7f5299ef3370&gt;,
-  &lt;matplotlib.axis.XTick at 0x7f5299ef0280&gt;,
-  &lt;matplotlib.axis.XTick at 0x7f529b856020&gt;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x7fb200838d00&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fb200838cd0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fb200864760&gt;],
  [Text(2000, 0, &#39;2000&#39;), Text(2010, 0, &#39;2010&#39;), Text(2020, 0, &#39;2020&#39;)])
 </pre></div>
 </div>
-<img alt="_images/a3e1a71824b7f51ff43c54066925ba7bf71fe9973c9c9bcf1bc8686bcd5b45f4.png" src="_images/a3e1a71824b7f51ff43c54066925ba7bf71fe9973c9c9bcf1bc8686bcd5b45f4.png" />
+<img alt="_images/164838485f505a3dd6670ef7d221b010038b2a9d16d008a5e57ec1eb8123f183.png" src="_images/164838485f505a3dd6670ef7d221b010038b2a9d16d008a5e57ec1eb8123f183.png" />
 </div>
 </div>
 <p>Compared to 1996, people in 2021 have more education.
@@ -1753,25 +1756,20 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Simpson’s paradox does not require the variable on the <span class="math notranslate nohighlight">\(x\)</span> axis to be time.
+<p>In both examples so far, the explanation for Simpson’s paradox is that the population is a mixture of groups and the proportions of the mixture change over time.
+In the GSS examples, the population is a mixture of generations, and the older generations are replaced by younger generations.
+In the CPS example, the population is a mixture of education levels, and the fraction of people at each level changes over time.</p>
+<p>But Simpson’s paradox does not require the variable on the <span class="math notranslate nohighlight">\(x\)</span> axis to be time.
 More generally, it can happen with any variables on the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> axes and any set of groups.
 To demonstrate, let’s look at an example that doesn’t depend on time.</p>
 </section>
 <section id="penguins">
 <h2>Penguins<a class="headerlink" href="#penguins" title="Permalink to this heading">#</a></h2>
-<p>In 2014 a team of biologists published measurements they collected from three species of penguins living near Palmer Station in Antarctica.
+<p>In 2014 a team of biologists published measurements they collected from three species of penguins living near the Palmer Research Station in Antarctica.
 For 344 penguins, the dataset includes body mass, flipper length, and the length and depth of their beaks: more specifically, the part of the beak called the culmen.</p>
 <p>This dataset has become popular with machine learning experts because it is a fun way to demonstrate all kinds of statistical methods, especially classification algorithms.</p>
 <p>Allison Horst, an environmental scientist who helped make this dataset freely available, used it to demonstrate Simpson’s paradox.
 The following figure shows the example she discovered:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;penguins_raw.csv&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -1820,11 +1818,15 @@ The following figure shows the example she discovered:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scatterplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a scatter plot.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a scatter plot grouped by species.</span>
+<span class="sd">    </span>
+<span class="sd">    df: DataFrame with penguin data</span>
+<span class="sd">    var1: name of variable for x-axis</span>
+<span class="sd">    var2: name of variable for y-axis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Species2&quot;</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">species</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">:</span>
-        <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
             <span class="n">group</span><span class="p">[</span><span class="n">var1</span><span class="p">],</span>
             <span class="n">group</span><span class="p">[</span><span class="n">var2</span><span class="p">],</span>
@@ -1877,7 +1879,7 @@ The following figure shows the example she discovered:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/29bd4c27e9044823ac421f1b56dca2322015dece9a9f45b22e459017c245b33b.png" src="_images/29bd4c27e9044823ac421f1b56dca2322015dece9a9f45b22e459017c245b33b.png" />
+<img alt="_images/739da3e40e5cf6a99982a66f7dd7f2ca409718775c6d603f8cb5f3ace9505b5f.png" src="_images/739da3e40e5cf6a99982a66f7dd7f2ca409718775c6d603f8cb5f3ace9505b5f.png" />
 </div>
 </div>
 <p>Each marker represents the culmen length and depth of an individual penguin.
@@ -1909,6 +1911,17 @@ overall -0.08502128077717656
 </div>
 </div>
 </div>
+<p>These results are puzzling only if you think the trend within groups is necessarily the same as the the trend between groups.
+Once you realize that’s not true, the paradox is resolved.</p>
+<p>Penguins might be interesting, but dogs take Simpson’s paradox to a new level.
+In 2007, a team of biologists at Leiden University in the Netherlands and the Natural History Museum in Berne, Switzerland described the unusual case of one Simpson’s paradox nested inside another. They observe:</p>
+<ul class="simple">
+<li><p>When we compare species, there is a positive correlation between weight and lifespan: in general, bigger animals live longer.</p></li>
+<li><p>However, when we compare dog breeds, there is a negative correlation: bigger breeds have shorter lives, on average.</p></li>
+<li><p>However, if we compare dogs within a breed, there is a positive correlation again: a bigger dog is expected to live longer than a smaller dog of the same breed.</p></li>
+</ul>
+<p>In summary, elephants live longer than mice, Chihuahuas live longer than Great Danes, and big beagles live longer than small beagles.
+The trend is different at the level of species, breed, and individual because the relationship at each level is driven by different biological processes.</p>
 <p>These results are puzzling only if you think the trend within groups is necessarily the same as the the trend between groups.
 Once you realize that’s not true, the paradox is resolved.</p>
 </section>
@@ -1952,7 +1965,7 @@ About 49% of the respondents said it should be more difficult.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b03246af7f52c7aa7de58ecd0857552f248e8e3ed3ae1e9bf34853e78a4413f6.png" src="_images/b03246af7f52c7aa7de58ecd0857552f248e8e3ed3ae1e9bf34853e78a4413f6.png" />
+<img alt="_images/28c57aa2786a3980325e81e465dd6e926b1943c4f2d80f79e7e576daea8f0976.png" src="_images/28c57aa2786a3980325e81e465dd6e926b1943c4f2d80f79e7e576daea8f0976.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1987,7 +2000,7 @@ About 49% of the respondents said it should be more difficult.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05df5d147c27b0d1dd0d3f2f04ab91e50359508ab7e1830f5ca991d3eaff7472.png" src="_images/05df5d147c27b0d1dd0d3f2f04ab91e50359508ab7e1830f5ca991d3eaff7472.png" />
+<img alt="_images/53941f068bcfae6d162e1fd2003127649654d82875ba7ed0f60f0250189465dc.png" src="_images/53941f068bcfae6d162e1fd2003127649654d82875ba7ed0f60f0250189465dc.png" />
 </div>
 </div>
 <p>Now, if you had to guess, would you expect these responses to be correlated; that is, do you think someone who says they are afraid to walk alone at night might be more likely to say divorce should be more difficult?
@@ -2029,30 +2042,32 @@ As it turns out, they are slightly correlated:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fear&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;fear&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">0</span><span class="p">}})</span>
 <span class="n">data</span><span class="p">[</span><span class="s2">&quot;fear&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0    26872
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fear
+0.0    26872
 1.0    16701
-Name: fear, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">}})</span>
 <span class="n">data</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Female    23420
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sex
+Female    23420
 Male      20011
-Name: sex, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -2164,7 +2179,7 @@ Name: all, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/23cdd04add2cd42d53aaf9190e1e40858dbebf00349905bf11181368ba6b4cf5.png" src="_images/23cdd04add2cd42d53aaf9190e1e40858dbebf00349905bf11181368ba6b4cf5.png" />
+<img alt="_images/c5bbad017159179e2ab7b0934422b41a6c43fe4641c7ea4675acee15f991f292.png" src="_images/c5bbad017159179e2ab7b0934422b41a6c43fe4641c7ea4675acee15f991f292.png" />
 </div>
 </div>
 <p>Among women, people who are afraid are less likely to say divorce should be difficult.
@@ -2446,7 +2461,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f6a2aec3eb4d43341232c582e2b630e6edd9a8017c2d26428567a36e45267097.png" src="_images/f6a2aec3eb4d43341232c582e2b630e6edd9a8017c2d26428567a36e45267097.png" />
+<img alt="_images/cf0652e865b6cf2b4aa1e22d8e34500490d04022fd73929a633ad1596d88f96a.png" src="_images/cf0652e865b6cf2b4aa1e22d8e34500490d04022fd73929a633ad1596d88f96a.png" />
 </div>
 </div>
 <p>This figure resembles the previous one because the explanation is the same in both cases: the overall percentages, indicated by the square and triangle markers, are mixtures of the percentages from the two groups.
@@ -2532,14 +2547,6 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsbyvaccinationstatusengland</span>
 <span class="c1"># https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsbyvaccinationstatusengland/deathsoccurringbetween2januaryand24september2021/datasetfinalcorrected3.xlsx</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;datasetfinalcorrected3.xlsx&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2665,7 +2672,7 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Age-specific rate per 100,000&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;Age-specific rate per 100,000&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;:&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">}})</span>
 </pre></div>
 </div>
 </div>
@@ -2896,10 +2903,10 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/72169abf1be8d0180bdc9fafe97a00ebe84ad027e72ef4d12a18f4cc086402f2.png" src="_images/72169abf1be8d0180bdc9fafe97a00ebe84ad027e72ef4d12a18f4cc086402f2.png" />
+<img alt="_images/9e1920f9f05c22099f539eabd80e2a5fcecbfce9eafb8e0117a603189ae62db3.png" src="_images/9e1920f9f05c22099f539eabd80e2a5fcecbfce9eafb8e0117a603189ae62db3.png" />
 </div>
 </div>
-<p>The lines show weekly death rates from all causes, per 100,000 people age 10-59, from March to September  2021.
+<p>The lines show weekly death rates from all causes, per 100,000 people age 10-59, from March to September 2021.
 The solid line represents people who were fully vaccinated; the dashed line represents people who were unvaccinated.</p>
 <p>The journalist I won’t name concludes: “Vaccinated people under 60 are twice as likely to die as unvaccinated people. And overall deaths in Britain are running well above normal. I don’t know how to explain this other than vaccine-caused mortality.”
 Well, I do.</p>
@@ -2935,7 +2942,7 @@ First, here’s what the graph looks like if we include the entire dataset, whic
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aa044d2486473d2ecc699ca451b7939ce4926234eedfb79c6fcf76f1e5748162.png" src="_images/aa044d2486473d2ecc699ca451b7939ce4926234eedfb79c6fcf76f1e5748162.png" />
+<img alt="_images/bdb5063273438ac74dcbca6ce9ec9bc31bde825d8e28a01fdcac928ed8bf2b7d.png" src="_images/bdb5063273438ac74dcbca6ce9ec9bc31bde825d8e28a01fdcac928ed8bf2b7d.png" />
 </div>
 </div>
 <p>Overall death rates were “running well above normal” in January and February, when almost no one in the 10-59 age range had been vaccinated.
@@ -2954,7 +2961,7 @@ The following figures show death rates for people in their 60s and 70s, and peop
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c9a73c388ce3e0d1c85369130d7248674292a40511a68274e9e58be278324b99.png" src="_images/c9a73c388ce3e0d1c85369130d7248674292a40511a68274e9e58be278324b99.png" />
+<img alt="_images/84200bb9a44138218703b53c57396e126a7574328bcedc15d4d3294a9463caa6.png" src="_images/84200bb9a44138218703b53c57396e126a7574328bcedc15d4d3294a9463caa6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2968,7 +2975,7 @@ The following figures show death rates for people in their 60s and 70s, and peop
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ea2f930cd9c80305c2f42513695552d9fd0c8820795767d5761ba08a2f30beaf.png" src="_images/ea2f930cd9c80305c2f42513695552d9fd0c8820795767d5761ba08a2f30beaf.png" />
+<img alt="_images/7ce35c2f7b5a5a68827d5fd13db009682181c56c4943a7ff2dbd6c291c0da8bb.png" src="_images/7ce35c2f7b5a5a68827d5fd13db009682181c56c4943a7ff2dbd6c291c0da8bb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2982,7 +2989,7 @@ The following figures show death rates for people in their 60s and 70s, and peop
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05016f1ecdb0344bba9bf671b3dc20aa7d5acda0b3afd2c592081eca59316fd9.png" src="_images/05016f1ecdb0344bba9bf671b3dc20aa7d5acda0b3afd2c592081eca59316fd9.png" />
+<img alt="_images/4d1518350ec88419132bc9e78a6d34ebbc3ff419d9981f84c88db50d8c8af742.png" src="_images/4d1518350ec88419132bc9e78a6d34ebbc3ff419d9981f84c88db50d8c8af742.png" />
 </div>
 </div>
 <p>Notice that the <span class="math notranslate nohighlight">\(y\)</span> axes are on different scales; death rates are much higher in the older age groups.</p>
@@ -3508,7 +3515,7 @@ The following figure shows the results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/99bc55e322bfc81a0d20d8135e0228551a101e62b3c6e743affc91cb43eeadaa.png" src="_images/99bc55e322bfc81a0d20d8135e0228551a101e62b3c6e743affc91cb43eeadaa.png" />
+<img alt="_images/66e0b0441ec089a1957334b99cdb086ef12a87595d09d72181c739803f304c51.png" src="_images/66e0b0441ec089a1957334b99cdb086ef12a87595d09d72181c739803f304c51.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3533,13 +3540,13 @@ The following figure shows the results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.YTick at 0x7f52972af5e0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f52972ad720&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f52973ab100&gt;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.YTick at 0x7fb1f816ece0&gt;,
+  &lt;matplotlib.axis.YTick at 0x7fb1f816e1a0&gt;,
+  &lt;matplotlib.axis.YTick at 0x7fb1f81abd90&gt;],
  [Text(0, 0.005, &#39;0.005&#39;), Text(0, 0.015, &#39;0.015&#39;), Text(0, 0.025, &#39;0.025&#39;)])
 </pre></div>
 </div>
-<img alt="_images/fadff02b42044f990443986bc9f0b1c54ef5d8e5fa400954a251d0d64cffdfe1.png" src="_images/fadff02b42044f990443986bc9f0b1c54ef5d8e5fa400954a251d0d64cffdfe1.png" />
+<img alt="_images/b31f910278053d60be71af39797ca23ef32b1b6d02c69343c73f3d4e64b23756.png" src="_images/b31f910278053d60be71af39797ca23ef32b1b6d02c69343c73f3d4e64b23756.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3862,14 +3869,6 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;referencetable20220516accessiblecorrected.xlsx&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">,</span>
     <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Table 2&quot;</span><span class="p">,</span>
@@ -4009,6 +4008,12 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3010051/3117688496.py:1: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df[&quot;date&quot;] = pd.to_datetime(df[&quot;Year&quot;].astype(str) + &quot; &quot; + df[&quot;Month&quot;])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4021,7 +4026,7 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="s2">&quot;Count of deaths&quot;</span>
-<span class="n">df</span><span class="p">[</span><span class="n">count</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;3&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="n">count</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;3&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">}})</span>
 </pre></div>
 </div>
 </div>
@@ -4589,363 +4594,363 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
   <tbody>
     <tr>
       <th>2021-01-01</th>
-      <td>4652</td>
-      <td>26531</td>
-      <td>245</td>
-      <td>1298</td>
-      <td>0</td>
-      <td>0</td>
-      <td>919726</td>
-      <td>3808</td>
-      <td>19144</td>
-      <td>230</td>
+      <td>4652.0</td>
+      <td>26531.0</td>
+      <td>245.0</td>
+      <td>1298.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>919726.0</td>
+      <td>3808.0</td>
+      <td>19144.0</td>
+      <td>230.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>73526</td>
-      <td>2868</td>
-      <td>13697</td>
-      <td>435</td>
-      <td>2480</td>
-      <td>0</td>
-      <td>0</td>
-      <td>18501</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>73526.0</td>
+      <td>2868.0</td>
+      <td>13697.0</td>
+      <td>435.0</td>
+      <td>2480.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>18501.0</td>
     </tr>
     <tr>
       <th>2021-02-01</th>
-      <td>42417</td>
-      <td>39726</td>
-      <td>1796</td>
-      <td>702</td>
-      <td>0</td>
-      <td>0</td>
-      <td>775131</td>
-      <td>30464</td>
-      <td>30705</td>
-      <td>1725</td>
+      <td>42417.0</td>
+      <td>39726.0</td>
+      <td>1796.0</td>
+      <td>702.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>775131.0</td>
+      <td>30464.0</td>
+      <td>30705.0</td>
+      <td>1725.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>9636</td>
-      <td>20376</td>
-      <td>6965</td>
-      <td>3382</td>
-      <td>83</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3233</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>9636.0</td>
+      <td>20376.0</td>
+      <td>6965.0</td>
+      <td>3382.0</td>
+      <td>83.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3233.0</td>
     </tr>
     <tr>
       <th>2021-03-01</th>
-      <td>101611</td>
-      <td>63998</td>
-      <td>3920</td>
-      <td>10271</td>
-      <td>0</td>
-      <td>0</td>
-      <td>771499</td>
-      <td>77988</td>
-      <td>58483</td>
-      <td>3546</td>
+      <td>101611.0</td>
+      <td>63998.0</td>
+      <td>3920.0</td>
+      <td>10271.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>771499.0</td>
+      <td>77988.0</td>
+      <td>58483.0</td>
+      <td>3546.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>6529</td>
-      <td>26123</td>
-      <td>698</td>
-      <td>4282</td>
-      <td>4633</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1970</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6529.0</td>
+      <td>26123.0</td>
+      <td>698.0</td>
+      <td>4282.0</td>
+      <td>4633.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1970.0</td>
     </tr>
     <tr>
       <th>2021-04-01</th>
-      <td>139889</td>
-      <td>32920</td>
-      <td>24262</td>
-      <td>35289</td>
-      <td>0</td>
-      <td>0</td>
-      <td>687679</td>
-      <td>124715</td>
-      <td>61689</td>
-      <td>18918</td>
+      <td>139889.0</td>
+      <td>32920.0</td>
+      <td>24262.0</td>
+      <td>35289.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>687679.0</td>
+      <td>124715.0</td>
+      <td>61689.0</td>
+      <td>18918.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>5050</td>
-      <td>7455</td>
-      <td>161</td>
-      <td>13980</td>
-      <td>13616</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1502</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5050.0</td>
+      <td>7455.0</td>
+      <td>161.0</td>
+      <td>13980.0</td>
+      <td>13616.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1502.0</td>
     </tr>
     <tr>
       <th>2021-05-01</th>
-      <td>113834</td>
-      <td>54401</td>
-      <td>79347</td>
-      <td>52111</td>
-      <td>0</td>
-      <td>0</td>
-      <td>650418</td>
-      <td>166754</td>
-      <td>84731</td>
-      <td>60506</td>
+      <td>113834.0</td>
+      <td>54401.0</td>
+      <td>79347.0</td>
+      <td>52111.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>650418.0</td>
+      <td>166754.0</td>
+      <td>84731.0</td>
+      <td>60506.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4821</td>
-      <td>1448</td>
-      <td>71</td>
-      <td>32341</td>
-      <td>2854</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1408</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4821.0</td>
+      <td>1448.0</td>
+      <td>71.0</td>
+      <td>32341.0</td>
+      <td>2854.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1408.0</td>
     </tr>
     <tr>
       <th>2021-06-01</th>
-      <td>130731</td>
-      <td>148028</td>
-      <td>153165</td>
-      <td>53434</td>
-      <td>0</td>
-      <td>0</td>
-      <td>433521</td>
-      <td>164911</td>
-      <td>14535</td>
-      <td>130976</td>
+      <td>130731.0</td>
+      <td>148028.0</td>
+      <td>153165.0</td>
+      <td>53434.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>433521.0</td>
+      <td>164911.0</td>
+      <td>14535.0</td>
+      <td>130976.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4441</td>
-      <td>644</td>
-      <td>38</td>
-      <td>34772</td>
-      <td>412</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1294</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4441.0</td>
+      <td>644.0</td>
+      <td>38.0</td>
+      <td>34772.0</td>
+      <td>412.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1294.0</td>
     </tr>
     <tr>
       <th>2021-07-01</th>
-      <td>277344</td>
-      <td>99274</td>
-      <td>233284</td>
-      <td>61414</td>
-      <td>0</td>
-      <td>0</td>
-      <td>277646</td>
-      <td>64268</td>
-      <td>4330</td>
-      <td>247896</td>
+      <td>277344.0</td>
+      <td>99274.0</td>
+      <td>233284.0</td>
+      <td>61414.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>277646.0</td>
+      <td>64268.0</td>
+      <td>4330.0</td>
+      <td>247896.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4441</td>
-      <td>457</td>
-      <td>23</td>
-      <td>36701</td>
-      <td>138</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1295</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4441.0</td>
+      <td>457.0</td>
+      <td>23.0</td>
+      <td>36701.0</td>
+      <td>138.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1295.0</td>
     </tr>
     <tr>
       <th>2021-08-01</th>
-      <td>220983</td>
-      <td>20382</td>
-      <td>338822</td>
-      <td>127408</td>
-      <td>0</td>
-      <td>0</td>
-      <td>240885</td>
-      <td>21577</td>
-      <td>2046</td>
-      <td>355560</td>
+      <td>220983.0</td>
+      <td>20382.0</td>
+      <td>338822.0</td>
+      <td>127408.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>240885.0</td>
+      <td>21577.0</td>
+      <td>2046.0</td>
+      <td>355560.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4344</td>
-      <td>370</td>
-      <td>11</td>
-      <td>37036</td>
-      <td>62</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1271</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4344.0</td>
+      <td>370.0</td>
+      <td>11.0</td>
+      <td>37036.0</td>
+      <td>62.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1271.0</td>
     </tr>
     <tr>
       <th>2021-09-01</th>
-      <td>94196</td>
-      <td>10388</td>
-      <td>505837</td>
-      <td>88779</td>
-      <td>0</td>
-      <td>697</td>
-      <td>217515</td>
-      <td>14395</td>
-      <td>1297</td>
-      <td>369736</td>
+      <td>94196.0</td>
+      <td>10388.0</td>
+      <td>505837.0</td>
+      <td>88779.0</td>
+      <td>0.0</td>
+      <td>697.0</td>
+      <td>217515.0</td>
+      <td>14395.0</td>
+      <td>1297.0</td>
+      <td>369736.0</td>
       <td>...</td>
-      <td>0</td>
-      <td>3627</td>
-      <td>4142</td>
-      <td>321</td>
-      <td>7</td>
-      <td>35489</td>
-      <td>25</td>
-      <td>0</td>
-      <td>573</td>
-      <td>1214</td>
+      <td>0.0</td>
+      <td>3627.0</td>
+      <td>4142.0</td>
+      <td>321.0</td>
+      <td>7.0</td>
+      <td>35489.0</td>
+      <td>25.0</td>
+      <td>0.0</td>
+      <td>573.0</td>
+      <td>1214.0</td>
     </tr>
     <tr>
       <th>2021-10-01</th>
-      <td>67311</td>
-      <td>6356</td>
-      <td>615435</td>
-      <td>24779</td>
-      <td>3520</td>
-      <td>14868</td>
-      <td>215324</td>
-      <td>12672</td>
-      <td>994</td>
-      <td>370576</td>
+      <td>67311.0</td>
+      <td>6356.0</td>
+      <td>615435.0</td>
+      <td>24779.0</td>
+      <td>3520.0</td>
+      <td>14868.0</td>
+      <td>215324.0</td>
+      <td>12672.0</td>
+      <td>994.0</td>
+      <td>370576.0</td>
       <td>...</td>
-      <td>18622</td>
-      <td>62884</td>
-      <td>4219</td>
-      <td>292</td>
-      <td>12</td>
-      <td>22415</td>
-      <td>31</td>
-      <td>3168</td>
-      <td>11842</td>
-      <td>1237</td>
+      <td>18622.0</td>
+      <td>62884.0</td>
+      <td>4219.0</td>
+      <td>292.0</td>
+      <td>12.0</td>
+      <td>22415.0</td>
+      <td>31.0</td>
+      <td>3168.0</td>
+      <td>11842.0</td>
+      <td>1237.0</td>
     </tr>
     <tr>
       <th>2021-11-01</th>
-      <td>55034</td>
-      <td>4944</td>
-      <td>594332</td>
-      <td>12667</td>
-      <td>26066</td>
-      <td>22277</td>
-      <td>201381</td>
-      <td>10978</td>
-      <td>784</td>
-      <td>328710</td>
+      <td>55034.0</td>
+      <td>4944.0</td>
+      <td>594332.0</td>
+      <td>12667.0</td>
+      <td>26066.0</td>
+      <td>22277.0</td>
+      <td>201381.0</td>
+      <td>10978.0</td>
+      <td>784.0</td>
+      <td>328710.0</td>
       <td>...</td>
-      <td>104487</td>
-      <td>32240</td>
-      <td>4020</td>
-      <td>250</td>
-      <td>10</td>
-      <td>8868</td>
-      <td>27</td>
-      <td>19966</td>
-      <td>7466</td>
-      <td>1172</td>
+      <td>104487.0</td>
+      <td>32240.0</td>
+      <td>4020.0</td>
+      <td>250.0</td>
+      <td>10.0</td>
+      <td>8868.0</td>
+      <td>27.0</td>
+      <td>19966.0</td>
+      <td>7466.0</td>
+      <td>1172.0</td>
     </tr>
     <tr>
       <th>2021-12-01</th>
-      <td>47569</td>
-      <td>6244</td>
-      <td>489873</td>
-      <td>12516</td>
-      <td>63907</td>
-      <td>126969</td>
-      <td>199821</td>
-      <td>9915</td>
-      <td>945</td>
-      <td>202910</td>
+      <td>47569.0</td>
+      <td>6244.0</td>
+      <td>489873.0</td>
+      <td>12516.0</td>
+      <td>63907.0</td>
+      <td>126969.0</td>
+      <td>199821.0</td>
+      <td>9915.0</td>
+      <td>945.0</td>
+      <td>202910.0</td>
       <td>...</td>
-      <td>149236</td>
-      <td>9773</td>
-      <td>4082</td>
-      <td>227</td>
-      <td>11</td>
-      <td>3605</td>
-      <td>29</td>
-      <td>30572</td>
-      <td>3301</td>
-      <td>1186</td>
+      <td>149236.0</td>
+      <td>9773.0</td>
+      <td>4082.0</td>
+      <td>227.0</td>
+      <td>11.0</td>
+      <td>3605.0</td>
+      <td>29.0</td>
+      <td>30572.0</td>
+      <td>3301.0</td>
+      <td>1186.0</td>
     </tr>
     <tr>
       <th>2022-01-01</th>
-      <td>42878</td>
-      <td>6134</td>
-      <td>285156</td>
-      <td>9038</td>
-      <td>286671</td>
-      <td>125788</td>
-      <td>190750</td>
-      <td>9010</td>
-      <td>882</td>
-      <td>87018</td>
+      <td>42878.0</td>
+      <td>6134.0</td>
+      <td>285156.0</td>
+      <td>9038.0</td>
+      <td>286671.0</td>
+      <td>125788.0</td>
+      <td>190750.0</td>
+      <td>9010.0</td>
+      <td>882.0</td>
+      <td>87018.0</td>
       <td>...</td>
-      <td>161790</td>
-      <td>2083</td>
-      <td>4016</td>
-      <td>208</td>
-      <td>9</td>
-      <td>1845</td>
-      <td>19</td>
-      <td>34863</td>
-      <td>782</td>
-      <td>1164</td>
+      <td>161790.0</td>
+      <td>2083.0</td>
+      <td>4016.0</td>
+      <td>208.0</td>
+      <td>9.0</td>
+      <td>1845.0</td>
+      <td>19.0</td>
+      <td>34863.0</td>
+      <td>782.0</td>
+      <td>1164.0</td>
     </tr>
     <tr>
       <th>2022-02-01</th>
-      <td>39248</td>
-      <td>2948</td>
-      <td>232464</td>
-      <td>4913</td>
-      <td>388129</td>
-      <td>19277</td>
-      <td>167539</td>
-      <td>8078</td>
-      <td>405</td>
-      <td>68465</td>
+      <td>39248.0</td>
+      <td>2948.0</td>
+      <td>232464.0</td>
+      <td>4913.0</td>
+      <td>388129.0</td>
+      <td>19277.0</td>
+      <td>167539.0</td>
+      <td>8078.0</td>
+      <td>405.0</td>
+      <td>68465.0</td>
       <td>...</td>
-      <td>148653</td>
-      <td>380</td>
-      <td>3598</td>
-      <td>179</td>
-      <td>4</td>
-      <td>1380</td>
-      <td>10</td>
-      <td>32413</td>
-      <td>141</td>
-      <td>1036</td>
+      <td>148653.0</td>
+      <td>380.0</td>
+      <td>3598.0</td>
+      <td>179.0</td>
+      <td>4.0</td>
+      <td>1380.0</td>
+      <td>10.0</td>
+      <td>32413.0</td>
+      <td>141.0</td>
+      <td>1036.0</td>
     </tr>
     <tr>
       <th>2022-03-01</th>
-      <td>42386</td>
-      <td>1460</td>
-      <td>249676</td>
-      <td>3968</td>
-      <td>454596</td>
-      <td>10328</td>
-      <td>183341</td>
-      <td>8695</td>
-      <td>164</td>
-      <td>72977</td>
+      <td>42386.0</td>
+      <td>1460.0</td>
+      <td>249676.0</td>
+      <td>3968.0</td>
+      <td>454596.0</td>
+      <td>10328.0</td>
+      <td>183341.0</td>
+      <td>8695.0</td>
+      <td>164.0</td>
+      <td>72977.0</td>
       <td>...</td>
-      <td>165318</td>
-      <td>201</td>
-      <td>3966</td>
-      <td>191</td>
-      <td>2</td>
-      <td>1415</td>
-      <td>7</td>
-      <td>36170</td>
-      <td>67</td>
-      <td>1141</td>
+      <td>165318.0</td>
+      <td>201.0</td>
+      <td>3966.0</td>
+      <td>191.0</td>
+      <td>2.0</td>
+      <td>1415.0</td>
+      <td>7.0</td>
+      <td>36170.0</td>
+      <td>67.0</td>
+      <td>1141.0</td>
     </tr>
   </tbody>
 </table>
@@ -4959,14 +4964,15 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unvaccinated                                    105
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vaccination status
+Unvaccinated                                    105
 First dose, less than 21 days ago               105
 First dose, at least 21 days ago                105
 Second dose, less than 21 days ago              105
 Second dose, at least 21 days ago               105
 Third dose or booster, less than 21 days ago    105
 Third dose or booster, at least 21 days ago     105
-Name: Vaccination status, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -5076,7 +5082,7 @@ Name: Vaccination status, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9613d0ea807c232f0ee709e1895e756e39203fbf464ad75f3b0935676a31b726.png" src="_images/9613d0ea807c232f0ee709e1895e756e39203fbf464ad75f3b0935676a31b726.png" />
+<img alt="_images/1d47b18470cb7c1f0ec497f0108305ef2c94f7f4f155da1a988226a0ca246a1c.png" src="_images/1d47b18470cb7c1f0ec497f0108305ef2c94f7f4f155da1a988226a0ca246a1c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5089,7 +5095,7 @@ Name: Vaccination status, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6509bebc937eba1ff991cfba1d06d72f014aa89de563c16c1c53f8c643c77452.png" src="_images/6509bebc937eba1ff991cfba1d06d72f014aa89de563c16c1c53f8c643c77452.png" />
+<img alt="_images/45982d7e487da3ac9d8f8b4be2cf51f0b2b29d12d97cd5b101b2026cc8ca3e0e.png" src="_images/45982d7e487da3ac9d8f8b4be2cf51f0b2b29d12d97cd5b101b2026cc8ca3e0e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5100,7 +5106,7 @@ Name: Vaccination status, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dc641e7eaab9c12a00cfaea5d43952952db65ad99a9b5bbe92c5c1d2f0f953cb.png" src="_images/dc641e7eaab9c12a00cfaea5d43952952db65ad99a9b5bbe92c5c1d2f0f953cb.png" />
+<img alt="_images/4a7fe9fc9a72322b56333d8d811d9b0feb4a14430f3fd463bf8c32bbbb0f0112.png" src="_images/4a7fe9fc9a72322b56333d8d811d9b0feb4a14430f3fd463bf8c32bbbb0f0112.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5111,7 +5117,7 @@ Name: Vaccination status, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/752080eba6194fbabeedbd6716c34280ca185e377d33a05cb215598a4c79d260.png" src="_images/752080eba6194fbabeedbd6716c34280ca185e377d33a05cb215598a4c79d260.png" />
+<img alt="_images/b42aaedf1ef0a9614928f3335f441c1e5347c4f732bed5a31ce3f6bb5f468d1f.png" src="_images/b42aaedf1ef0a9614928f3335f441c1e5347c4f732bed5a31ce3f6bb5f468d1f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -5122,7 +5128,7 @@ Name: Vaccination status, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a225db7e5ffe294292af0bd547653c3be6d5ce92d2042c8326149fdc8525adf0.png" src="_images/a225db7e5ffe294292af0bd547653c3be6d5ce92d2042c8326149fdc8525adf0.png" />
+<img alt="_images/67c4156b5d1548c94966be801dc45968272b4fae55d3c36bab81c1dd6540d6e1.png" src="_images/67c4156b5d1548c94966be801dc45968272b4fae55d3c36bab81c1dd6540d6e1.png" />
 </div>
 </div>
 <p>Let’s start with the oldest of these subgroups.
@@ -5137,10 +5143,10 @@ Among people in their 50s, we see that the all-cause death rate was substantiall
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f529563ada0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb1f81fff40&gt;
 </pre></div>
 </div>
-<img alt="_images/e6214fba5ae2a4f6aa2da84b9f01fe787089bc4127b8a2a06561a3b13ec8f9a5.png" src="_images/e6214fba5ae2a4f6aa2da84b9f01fe787089bc4127b8a2a06561a3b13ec8f9a5.png" />
+<img alt="_images/297263a538ed02f67be81642353f426ddbd6d14bd73b91f5d83d29dc9748c777.png" src="_images/297263a538ed02f67be81642353f426ddbd6d14bd73b91f5d83d29dc9748c777.png" />
 </div>
 </div>
 <p>If we select people in their 40s, we see the same thing: death rates were higher for unvaccinated people over the entire interval.</p>
@@ -5154,10 +5160,10 @@ Among people in their 50s, we see that the all-cause death rate was substantiall
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f529539bee0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb1f823f3a0&gt;
 </pre></div>
 </div>
-<img alt="_images/2ba39391d3d89838c838d1a83061d3d42cc7ec23938217ec587fe656aa87d6ac.png" src="_images/2ba39391d3d89838c838d1a83061d3d42cc7ec23938217ec587fe656aa87d6ac.png" />
+<img alt="_images/a93fc57c0e04d64551728ca93ea263c5e5a7275cc29e2f6a810a782a0f8946b7.png" src="_images/a93fc57c0e04d64551728ca93ea263c5e5a7275cc29e2f6a810a782a0f8946b7.png" />
 </div>
 </div>
 <p>However, it is notable that death rates in both groups have declined since April or May 2021, and have nearly converged.
@@ -5172,7 +5178,7 @@ In the U.K., December 2021 is when the Delta variant was largely replaced by the
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/449c7cd1019e488797f3fc79735bc33864c3345d1b596fa93316147cb4eb2048.png" src="_images/449c7cd1019e488797f3fc79735bc33864c3345d1b596fa93316147cb4eb2048.png" />
+<img alt="_images/ecf905a484113a61ecc85af6c45f763bbd24283f1e5e9332c45738027979a8b9.png" src="_images/ecf905a484113a61ecc85af6c45f763bbd24283f1e5e9332c45738027979a8b9.png" />
 </div>
 </div>
 <p>In this age group, like the others, death rates are generally higher among unvaccinated people.
@@ -5180,7 +5186,7 @@ There are a few months where the pattern is reversed, but we should not take it 
 <ul class="simple">
 <li><p>Death rates in this age group are very low, less than 1 per 100,000 per week, vaccinated or not.</p></li>
 <li><p>The apparent differences between the groups are even smaller, and might be the result of random variation.</p></li>
-<li><p>Finally, this age group is still broad enough that the results are influenced by Simpson’s paradox. The vaccinated people in this group were older than the unvaccinated, and the  older people in this group were about 10 times more likely to die, just because of their age.</p></li>
+<li><p>Finally, this age group is still broad enough that the results are influenced by Simpson’s paradox. The vaccinated people in this group were older than the unvaccinated, and the older people in this group were about 10 times more likely to die, just because of their age.</p></li>
 </ul>
 <p>In summary, the excess mortality among vaccinated people in 2021 is entirely explained by Simpson’s paradox.
 If we break the dataset into appropriate age groups, we see that death rates were higher among the unvaccinated in all age groups over the entire time from the rollout of the vaccine to the present.
@@ -5532,14 +5538,6 @@ Name: rate, dtype: float64
 <h2>Lives saved<a class="headerlink" href="#lives-saved" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;referencetable20220516accessiblecorrected.xlsx&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">,</span>
     <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Table 2&quot;</span><span class="p">,</span>
@@ -5662,6 +5660,12 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3010051/3117688496.py:1: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  df[&quot;date&quot;] = pd.to_datetime(df[&quot;Year&quot;].astype(str) + &quot; &quot; + df[&quot;Month&quot;])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5679,7 +5683,7 @@ Name: rate, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate_col</span> <span class="o">=</span> <span class="s2">&quot;Age-standardised mortality rate / 100,000 person-years&quot;</span>
-<span class="n">df</span><span class="p">[</span><span class="n">rate_col</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="n">rate_col</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">}})</span>
 <span class="n">df</span><span class="p">[</span><span class="n">rate_col</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -5701,6 +5705,12 @@ Name: Age-standardised mortality rate / 100,000 person-years, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">estimate_saved_lives</span><span class="p">(</span><span class="n">period</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate lives saved by comparing actual deaths to possible deaths.</span>
+<span class="sd">    </span>
+<span class="sd">    period: DataFrame with vaccination status, deaths, population, and rates</span>
+<span class="sd">    </span>
+<span class="sd">    returns: number of lives saved (actual deaths - possible deaths)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">index</span> <span class="o">=</span> <span class="n">period</span><span class="p">[</span><span class="s2">&quot;Vaccination status&quot;</span><span class="p">]</span>
     <span class="n">deaths</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="s2">&quot;Count of deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
     <span class="n">pop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="s2">&quot;Person-years&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
@@ -5889,17 +5899,36 @@ Name: saved, dtype: float64
 <section id="sources-and-related-reading">
 <h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The General Social Survey (GSS) is a project of the University of Chicago’s independent research organization NORC, with primary financing from the National Science Foundation. Data is available from the GSS website \cite{gss2022}.</p></li>
-<li><p>Floyd Norris wrote about changes in real wages in <em>The New York Times</em> \cite{norris2013}. The following week, he wrote a blog article to respond to readers who thought he had made a mistake \cite{norris2013blog}.</p></li>
+<li><p>The General Social Survey (GSS) is a project of the University of Chicago’s independent research organization NORC, with primary financing from the National Science Foundation. Data is available from the <a class="reference external" href="https://gss.norc.org/Get-The-Data">GSS website</a>.</p></li>
+<li><p>Floyd Norris wrote about changes in real wages in <em>The New York Times</em> (<a class="reference external" href="https://www.nytimes.com/2013/04/27/business/economy/wage-disparity-continues-to-grow.html">Norris, 2013</a>). The following week, he wrote a blog article to respond to readers who thought he had made a mistake (<a class="reference external" href="https://economix.blogs.nytimes.com/2013/05/01/can-every-group-be-worse-than-average-yes">Norris, 2013</a>).</p></li>
 <li><p>The IPUMS CPS data is from the U.S. Census Bureau: Sarah Flood, Miriam King, Renae Rodgers, Steven Ruggles, J. Robert Warren, Daniel Backman, Annie Chen, Grace Cooper, Stephanie Richards, Megan Schouweiler, and Michael Westberry. Integrated Public Use Microdata Series, Current Population Survey: Version 11.0 [dataset]. Minneapolis, MN: IPUMS, 2023. <a class="reference external" href="https://doi.org/10.18128/D030.V11.0">https://doi.org/10.18128/D030.V11.0</a></p></li>
-<li><p>The penguin dataset was reported in “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins” \cite{gorman2014ecological}. Allison Horst pointed out the penguin paradox in the online documentation of the dataset \cite{horst2022}.</p></li>
-<li><p>The nested Simpson’s paradox among dog breeds is described in “Do large dogs die young?”
-\cite{galis2007large}.</p></li>
-<li><p>The paper that evaluates treatments for kidney stones was published in 1986 in the <em>British Medical Journal</em> \cite{charig1986comparison}.</p></li>
-<li><p>Derek Thompson wrote about the misleading journalist in <em>The Atlantic</em> \cite{thompson2021}. Jeffrey Morris debunks the misleading newsletter in a series of blog articles \cite{morris2021}.</p></li>
-<li><p>Information about the prevalence of different COVID variants is from the U.K. Health Security Agency \cite{ukhsa2022}.</p></li>
-<li><p>The COVID data I used is from the U.K. Office for National Statistics \cite{ukons2022}.</p></li>
+<li><p>The penguin dataset was reported in “Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins” (Gorman et al., 2014). Allison Horst pointed out the penguin paradox in the <a class="reference external" href="https://allisonhorst.github.io/palmerpenguins/articles/examples.html">online documentation of the dataset</a>.</p></li>
+<li><p>The nested Simpson’s paradox among dog breeds is described in “Do large dogs die young?” (Galis et al., 2007).</p></li>
+<li><p>The paper that evaluates treatments for kidney stones was published in 1986 in the <em>British Medical Journal</em> (Charig et al., 1986).</p></li>
+<li><p>Derek Thompson wrote about the misleading journalist in <em>The Atlantic</em> (<a class="reference external" href="https://www.theatlantic.com/ideas/archive/2021/04/pandemics-wrongest-man/618475">Thompson, 2021</a>). Jeffrey Morris debunks the misleading newsletter in a series of blog articles (<a class="reference external" href="https://www.covid-datascience.com/post/what-do-uk-data-say-about-real-world-impact-of-vaccines-on-all-cause-deaths">Morris, 2021</a>).</p></li>
+<li><p>Information about the prevalence of different COVID variants is from the U.K. Health Security Agency (<a class="reference external" href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1093275/covid-technical-briefing-44-22-july-2022.pdf">U.K. Health Security Agency, 2022</a>).</p></li>
+<li><p>The COVID data I used is from the U.K. Office for National Statistics (<a class="reference external" href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsbyvaccinationstatusengland">U.K. Office for National Statistics, 2022</a>).</p></li>
 </ul>
+</section>
+<section id="open-data-open-discussion">
+<h2>Open data, open discussion<a class="headerlink" href="#open-data-open-discussion" title="Permalink to this heading">#</a></h2>
+<p>Reflecting on this episode, we can identify several elements that went wrong.
+A journalist downloaded data he did not have the expertise to interpret correctly.
+He wrote about it in a newsletter that was published with no editorial review.
+Its spread was accelerated by a credulous podcaster who ignored numerous easily discoverable articles debunking its claims.
+And, given the circulation it achieved, it contributed to a body of vaccine misinformation that almost certainly caused preventable deaths.</p>
+<p>All that is true; nevertheless, it is also important to consider the elements that went right.</p>
+<p>First, the U.K. government collected reliable data about the pandemic and made it widely available.
+Other countries followed their example, albeit some more successfully than others.
+Groups like Our World in Data collected similar data from around the world and made it easier to use, which accelerated the ability of researchers to understand the pandemic, make predictions, and guide public policy decisions.
+This data saved lives.</p>
+<p>Second, after the misleading newsletter was posted on November 20, dozens of articles debunked its claims within days.
+If you do a web search for the article today, the first page of results includes rebuttals published on November 21, 22, and 23.</p>
+<p>Finally, even on social media sites that are infamous for spreading disinformation, public discussion of the article was not all bad.
+Simpson’s paradox is not easy to understand, but some of the explanations were very good.
+I think it’s a hopeful sign to see people grappling with statistical ideas in a public forum.</p>
+<p>The marketplace of ideas will never be perfect, but this episode, which shows its weaknesses, also shows its strengths.
+We are better off when our decisions are guided by evidence and reason, but that is only possible if we have access to data and open spaces to discuss difficult ideas.</p>
 </section>
 <section id="israeli-data">
 <h2>Israeli Data<a class="headerlink" href="#israeli-data" title="Permalink to this heading">#</a></h2>
@@ -5907,14 +5936,6 @@ Name: saved, dtype: float64
 <p>Downloaded from <a class="reference external" href="https://www.covid-datascience.com/post/israeli-data-how-can-efficacy-vs-severe-disease-be-strong-when-60-of-hospitalized-are-vaccinated">https://www.covid-datascience.com/post/israeli-data-how-can-efficacy-vs-severe-disease-be-strong-when-60-of-hospitalized-are-vaccinated</a></p>
 <p>Originally from an <a class="reference external" href="https://datadashboard.health.gov.il/COVID-19/general">Israeli government COVID dashboard</a> with headings translated by Jeffrey S. Morris, director of the Biostatistics Division at the University of Pennsylvania.</p>
 <p><a class="reference external" href="https://www.dbei.med.upenn.edu/bio/jeffrey-s-morris-phd">https://www.dbei.med.upenn.edu/bio/jeffrey-s-morris-phd</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;Israeli_data_August_15_2021.xlsx&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
@@ -6433,6 +6454,7 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debunk-redux">Debunk Redux</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lives-saved">Lives saved</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources-and-related-reading">Sources and related reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-data-open-discussion">Open data, open discussion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#israeli-data">Israeli Data</a></li>
 </ul>
   </nav></div>
