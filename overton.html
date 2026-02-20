@@ -368,6 +368,7 @@ document.write(`
                   
   <section id="chasing-the-overton-window">
 <h1>Chasing the Overton Window<a class="headerlink" href="#chasing-the-overton-window" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/overton.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -382,30 +383,6 @@ document.write(`
     <span class="kn">import</span> <span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -451,6 +428,11 @@ document.write(`
     <span class="n">make_lowess</span><span class="p">,</span>
     <span class="n">plot_series_lowess</span><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">set_pyplot_params</span>
+
+<span class="n">set_pyplot_params</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -488,13 +470,6 @@ First, let me show that each of these claims is true; then I’ll explain why.</
 <p>The points on the scale are Extremely liberal, Liberal, and Slightly liberal; Moderate;	Slightly conservative, Conservative, and Extremely conservative.</p>
 <p>I’ll lump the first three points into “Liberal” and the last three into “Conservative”, which makes the number of groups manageable and, it turns out, roughly equal in size.
 The following figure shows the percentage of respondents who consider themselves to be in each of these groups, as a function of age.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/PoliticalAlignmentCaseStudy/raw/master/gss_pacs_resampled.hdf&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;gss_pacs_resampled.hdf&quot;</span>
@@ -540,7 +515,7 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">])</span>
 <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -618,7 +593,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8e7ca41c5eac3de809af25af1c397d86d20c181dfbe6542646c743843e1df5ab.png" src="_images/8e7ca41c5eac3de809af25af1c397d86d20c181dfbe6542646c743843e1df5ab.png" />
+<img alt="_images/cec61f0a077ce97c0a45fa63347d2c2a4511339bf4e93a2a2a2b41692e25292e.png" src="_images/cec61f0a077ce97c0a45fa63347d2c2a4511339bf4e93a2a2a2b41692e25292e.png" />
 </div>
 </div>
 <p>At every age, the largest group of respondents describe themselves as moderate.
@@ -653,7 +628,7 @@ The following figure shows the percentage of people who identify as conservative
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b257e372f27a84e9f0ae7f98727739523f12249ba35ce45cd67b7c74fff33898.png" src="_images/b257e372f27a84e9f0ae7f98727739523f12249ba35ce45cd67b7c74fff33898.png" />
+<img alt="_images/b096e0e4fd4c20720cd1d4aff25a72c52bbe3611e2070b8cbd8244be9ba41b4e.png" src="_images/b096e0e4fd4c20720cd1d4aff25a72c52bbe3611e2070b8cbd8244be9ba41b4e.png" />
 </div>
 </div>
 <p>There is evidence here for an age effect; in many groups there is a notable increase around age 30 and a leveling off after age 40.
@@ -831,7 +806,7 @@ But if you are curious, the list of questions is at the end of this chapter.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># identify the responses considered conservative</span>
 
-<span class="n">convervative_values</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">conservative_values</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;abany&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
     <span class="s2">&quot;homosex&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
     <span class="s2">&quot;premarsx&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -849,7 +824,7 @@ But if you are curious, the list of questions is at the end of this chapter.</p>
     <span class="s2">&quot;pornlaw&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <span class="p">}</span>
 
-<span class="nb">len</span><span class="p">(</span><span class="n">convervative_values</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">conservative_values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -887,7 +862,7 @@ But if you are curious, the list of questions is at the end of this chapter.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">questions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">varname</span> <span class="ow">in</span> <span class="n">order</span><span class="p">:</span>
-    <span class="n">questions</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">convervative_values</span><span class="p">[</span><span class="n">varname</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">questions</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">conservative_values</span><span class="p">[</span><span class="n">varname</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">null</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
     <span class="n">questions</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">null</span><span class="p">,</span> <span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 
@@ -1150,7 +1125,7 @@ The following figure shows, for each question, the percentage of liberals, moder
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9c0979447f07a86a821f81d9ada6587c721c408769caa2fd46b01a78dbe1bf73.png" src="_images/9c0979447f07a86a821f81d9ada6587c721c408769caa2fd46b01a78dbe1bf73.png" />
+<img alt="_images/66619eadbc817c3697a32f7109cb4d0f7961543b5527280e5e302d55f38de7fa.png" src="_images/66619eadbc817c3697a32f7109cb4d0f7961543b5527280e5e302d55f38de7fa.png" />
 </div>
 </div>
 <p>Not surprisingly, conservatives are more likely than liberals to choose conservative responses, and moderates are somewhere in the middle.
@@ -1223,7 +1198,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9fb0ff97968f522f0cf730ca858b5c5ba4c7b109aa919d2cbe077729cda03a6a.png" src="_images/9fb0ff97968f522f0cf730ca858b5c5ba4c7b109aa919d2cbe077729cda03a6a.png" />
+<img alt="_images/e0197867335d2e829ebdc0754ee6e477aa86797cac6cd0083ac8b3b33ac63b1d.png" src="_images/e0197867335d2e829ebdc0754ee6e477aa86797cac6cd0083ac8b3b33ac63b1d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1242,7 +1217,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3f0570c0dc6dc72dc41b3d1630aa7413f8e9fa31dcd03d51eeb8cad26c684ad9.png" src="_images/3f0570c0dc6dc72dc41b3d1630aa7413f8e9fa31dcd03d51eeb8cad26c684ad9.png" />
+<img alt="_images/b61297fb98c3e511fbdde882c4ada45ab83aacafd3fc192da25731ae9660dccc.png" src="_images/b61297fb98c3e511fbdde882c4ada45ab83aacafd3fc192da25731ae9660dccc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1262,7 +1237,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1e528a1cc0d0e659b7ef41ec449f901b32b698171fe8c5235d05b43093284d3f.png" src="_images/1e528a1cc0d0e659b7ef41ec449f901b32b698171fe8c5235d05b43093284d3f.png" />
+<img alt="_images/f29ac97212a90c635f9d77a08dd7da9c1bf59586beafcca5feb2c88da983e724.png" src="_images/f29ac97212a90c635f9d77a08dd7da9c1bf59586beafcca5feb2c88da983e724.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1340,7 +1315,7 @@ Name: 5034, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7.746546988198355, 1.9404648754849896)
 </pre></div>
 </div>
-<img alt="_images/91b59b31337e3a38e0d2f0b8c061d83e951b5c65ce80d56627d81009f680779b.png" src="_images/91b59b31337e3a38e0d2f0b8c061d83e951b5c65ce80d56627d81009f680779b.png" />
+<img alt="_images/206fb96601078bd175edde6d5b8c536f8d06f72096a7b73247546b7f1a0f4c94.png" src="_images/206fb96601078bd175edde6d5b8c536f8d06f72096a7b73247546b7f1a0f4c94.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1509,7 +1484,7 @@ Name: 5034, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/673daf8248aff363957c73eeb46cc37e0000d446a2ac02462ed6a8e62c7322fc.png" src="_images/673daf8248aff363957c73eeb46cc37e0000d446a2ac02462ed6a8e62c7322fc.png" />
+<img alt="_images/c8702b896db34135ffdbd4ecdbde772d2511ace8ec551af3ebab936249d23733.png" src="_images/c8702b896db34135ffdbd4ecdbde772d2511ace8ec551af3ebab936249d23733.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1525,7 +1500,7 @@ Name: 5034, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/39f5b85c0e18c63f10e26170ad8af03838284f838e526512558422d635178bd3.png" src="_images/39f5b85c0e18c63f10e26170ad8af03838284f838e526512558422d635178bd3.png" />
+<img alt="_images/bbba7b5a99a98b954cdef2b9dbb1dcedc934fe89c53ed0d4f07baeeb24d13c45.png" src="_images/bbba7b5a99a98b954cdef2b9dbb1dcedc934fe89c53ed0d4f07baeeb24d13c45.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1624,7 +1599,7 @@ Length: 72, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f2014ebe3458cb4580932c49ebc28aefed4545bb21cbf743f683080755d66315.png" src="_images/f2014ebe3458cb4580932c49ebc28aefed4545bb21cbf743f683080755d66315.png" />
+<img alt="_images/2402e7a1eb2bd2a078545f9e04213dadac0bb141d5faeee0c4a0e36d195e3c61.png" src="_images/2402e7a1eb2bd2a078545f9e04213dadac0bb141d5faeee0c4a0e36d195e3c61.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1643,7 +1618,7 @@ Length: 72, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9476bc5b6a94dafe6644e040eb31cd2c3fb0d6424f6f752f1a67a63ea4417425.png" src="_images/9476bc5b6a94dafe6644e040eb31cd2c3fb0d6424f6f752f1a67a63ea4417425.png" />
+<img alt="_images/874fff318f8a8aa6c1e49d306cf91b5c07346737d1f339336fa8719272926d53.png" src="_images/874fff318f8a8aa6c1e49d306cf91b5c07346737d1f339336fa8719272926d53.png" />
 </div>
 </div>
 <p>The gray line shows the overall trend: older people hold more conservative views.
@@ -1831,7 +1806,7 @@ The following figure shows conservatism as a function of age, again, but with re
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9d0d600de001ce4316a7bc1384e76a67279f44f4e2d522307bea42c841d5cd85.png" src="_images/9d0d600de001ce4316a7bc1384e76a67279f44f4e2d522307bea42c841d5cd85.png" />
+<img alt="_images/0b3e595ef4b77f512ca01d3dced628f3ca5c5a46abeb3b27218ce9f2548e7404.png" src="_images/0b3e595ef4b77f512ca01d3dced628f3ca5c5a46abeb3b27218ce9f2548e7404.png" />
 </div>
 </div>
 <p>Almost every birth cohort became more liberal with age.
@@ -1918,7 +1893,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5bdcc626a578248234bb02335422a2f9a761b110e53e8bea3b1f36571ef7e1a1.png" src="_images/5bdcc626a578248234bb02335422a2f9a761b110e53e8bea3b1f36571ef7e1a1.png" />
+<img alt="_images/fff6379a78b39aaa6a47c3ddb24c0c25cc3938d51addeb542333d6116873dd2e.png" src="_images/fff6379a78b39aaa6a47c3ddb24c0c25cc3938d51addeb542333d6116873dd2e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1941,7 +1916,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/51a5393c61366e442160d780db622f84f457c58cd4d0a49aadf395c1a8f49041.png" src="_images/51a5393c61366e442160d780db622f84f457c58cd4d0a49aadf395c1a8f49041.png" />
+<img alt="_images/d154fbd4a217907034bba5827d4bad1a944edf9314888713395496dea30281ec.png" src="_images/d154fbd4a217907034bba5827d4bad1a944edf9314888713395496dea30281ec.png" />
 </div>
 </div>
 <p>The average number of conservative responses has decreased.
@@ -2122,7 +2097,7 @@ If anything, it might be accelerating.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ac66889732c349382b012d252ac14ade947c7054f506117f1349a13c58072742.png" src="_images/ac66889732c349382b012d252ac14ade947c7054f506117f1349a13c58072742.png" />
+<img alt="_images/0b9d279eb731fd49f21b97a3660e9a5a481e3bdd046a2c12c1153e09a4c61e04.png" src="_images/0b9d279eb731fd49f21b97a3660e9a5a481e3bdd046a2c12c1153e09a4c61e04.png" />
 </div>
 </div>
 <p>There is clearly a cohort effect: almost every birth cohort is more liberal than the one before it.</p>
@@ -2264,10 +2239,10 @@ In that example, we found that the cohort effect accounted for about one third o
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>  <td>   5647.</td>  
 </tr>
 <tr>
-  <th>Date:</th>             <td>Sat, 06 Jan 2024</td> <th>  Prob (F-statistic):</th>   <td>  0.00</td>   
+  <th>Date:</th>             <td>Fri, 20 Feb 2026</td> <th>  Prob (F-statistic):</th>   <td>  0.00</td>   
 </tr>
 <tr>
-  <th>Time:</th>                 <td>08:57:45</td>     <th>  Log-Likelihood:    </th> <td>-1.6237e+05</td>
+  <th>Time:</th>                 <td>13:52:34</td>     <th>  Log-Likelihood:    </th> <td>-1.6237e+05</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td> 64763</td>      <th>  AIC:               </th>  <td>3.247e+05</td> 
@@ -2353,6 +2328,12 @@ In that example, we found that the cohort effect accounted for about one third o
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">inter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute error for finding intercept that removes cohort effect.</span>
+<span class="sd">    </span>
+<span class="sd">    inter: intercept value to test</span>
+<span class="sd">    </span>
+<span class="sd">    returns: difference between period-only prediction and actual prediction</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">period_only</span> <span class="o">=</span> <span class="n">make_counterfact</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s2">&quot;cohort&quot;</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">period_only</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">-</span> <span class="n">pred</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
 
@@ -2397,10 +2378,10 @@ In that example, we found that the cohort effect accounted for about one third o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/084d58e22f5e46cb61df46f3f608b644e6818a0884d0bbbd75e9037635790333.png" src="_images/084d58e22f5e46cb61df46f3f608b644e6818a0884d0bbbd75e9037635790333.png" />
+<img alt="_images/44d6f13792cc17c69d92b3a8f4b459d32c7491911f7f5fee58d2e9b7669961be.png" src="_images/44d6f13792cc17c69d92b3a8f4b459d32c7491911f7f5fee58d2e9b7669961be.png" />
 </div>
 </div>
-<p>The the cohort effect is about five times bigger than the period effect, which means that the observed changes are due primarily to generational replacement, and only secondarily to changed minds.</p>
+<p>The cohort effect is about five times bigger than the period effect, which means that the observed changes are due primarily to generational replacement, and only secondarily to changed minds.</p>
 </section>
 <section id="everything-is-relative">
 <h2>Everything is Relative<a class="headerlink" href="#everything-is-relative" title="Permalink to this heading">#</a></h2>
@@ -2430,7 +2411,7 @@ As evidence, consider the following figure, which shows the percentage of people
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3ee1e58ab9daeec66237c0d2b9f3ab331630bacf51e73ef12aa7912a86fedb4c.png" src="_images/3ee1e58ab9daeec66237c0d2b9f3ab331630bacf51e73ef12aa7912a86fedb4c.png" />
+<img alt="_images/7d4e437436000bf4486f2bb112d6169caa5287318722b6819173d5c31babf6da.png" src="_images/7d4e437436000bf4486f2bb112d6169caa5287318722b6819173d5c31babf6da.png" />
 </div>
 </div>
 <p>The percentage of people who identify as “Moderate” has barely changed in 50 years.</p>
@@ -2568,7 +2549,7 @@ Moderate -3.2730804048192903
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0d03d0726f438f4d2f72c6eae25dcef38e573a0db6c9660c69820da5cd2faf07.png" src="_images/0d03d0726f438f4d2f72c6eae25dcef38e573a0db6c9660c69820da5cd2faf07.png" />
+<img alt="_images/196fcf988440c01648700d1e7cb9ffad297c573c90a975f3b0fea09f7a187e0e.png" src="_images/196fcf988440c01648700d1e7cb9ffad297c573c90a975f3b0fea09f7a187e0e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2590,7 +2571,7 @@ Moderate -3.2730804048192903
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad27d3e61d01cf16a99bec01e0de41c79f408db5805c44c571bf1a06bc2ba225.png" src="_images/ad27d3e61d01cf16a99bec01e0de41c79f408db5805c44c571bf1a06bc2ba225.png" />
+<img alt="_images/94365bb32f4a5d387ea56e4a11f950d288de295731784e5a50e2f0113c8cf5bd.png" src="_images/94365bb32f4a5d387ea56e4a11f950d288de295731784e5a50e2f0113c8cf5bd.png" />
 </div>
 </div>
 <p>All three groups have become more liberal; however, the slopes of the lines are somewhat different.
@@ -2669,7 +2650,7 @@ The following figure is the same as the previous one, except that the solid line
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bd3dce1291678d661f0a1fd214d5fac14a2b783c21ce90bce5737c8be7087f16.png" src="_images/bd3dce1291678d661f0a1fd214d5fac14a2b783c21ce90bce5737c8be7087f16.png" />
+<img alt="_images/fc05998f44b85e6269ef89c3fd795ebb13c34f5a1f54c2b05d19a670c15d8ea8.png" src="_images/fc05998f44b85e6269ef89c3fd795ebb13c34f5a1f54c2b05d19a670c15d8ea8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2681,7 +2662,7 @@ The following figure is the same as the previous one, except that the solid line
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60b9cc6c6625f8eb68018f5de7f6a6b3d7d70edfde434aa755a7a3fcc2729019.png" src="_images/60b9cc6c6625f8eb68018f5de7f6a6b3d7d70edfde434aa755a7a3fcc2729019.png" />
+<img alt="_images/803f4344e91a30af6ac52405c40a54199542bc10a77cfb6907134e5915064a52.png" src="_images/803f4344e91a30af6ac52405c40a54199542bc10a77cfb6907134e5915064a52.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2693,7 +2674,7 @@ The following figure is the same as the previous one, except that the solid line
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/33f8db2e07f69136b5c35d2c590cf9ff6383399348518af22109a0d8b4fadce4.png" src="_images/33f8db2e07f69136b5c35d2c590cf9ff6383399348518af22109a0d8b4fadce4.png" />
+<img alt="_images/4112f946644b6bfce61f9361d87ba0701c0b173c72242e71a9dc4297f8103882.png" src="_images/4112f946644b6bfce61f9361d87ba0701c0b173c72242e71a9dc4297f8103882.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2705,7 +2686,7 @@ The following figure is the same as the previous one, except that the solid line
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/134795cf0bf250bfcf1d3efbabd1c68c7fc1601dbf2cf9fa3cbd5d9e5a2d1c39.png" src="_images/134795cf0bf250bfcf1d3efbabd1c68c7fc1601dbf2cf9fa3cbd5d9e5a2d1c39.png" />
+<img alt="_images/3b4ce69d7859ad8e8ace600e901fe0200deb6d0829d46d2783bf4fcc51cf2e31.png" src="_images/3b4ce69d7859ad8e8ace600e901fe0200deb6d0829d46d2783bf4fcc51cf2e31.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2717,7 +2698,7 @@ The following figure is the same as the previous one, except that the solid line
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/78f70b9c90f5a255bd1de16083326d1efab2d9fb089d664d7060bf4fd1d9f4bc.png" src="_images/78f70b9c90f5a255bd1de16083326d1efab2d9fb089d664d7060bf4fd1d9f4bc.png" />
+<img alt="_images/4c6896488b3e08d087f9eda8f10ca4388b91d7aebe9067d08aa9fb659eb34441.png" src="_images/4c6896488b3e08d087f9eda8f10ca4388b91d7aebe9067d08aa9fb659eb34441.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2729,7 +2710,7 @@ The following figure is the same as the previous one, except that the solid line
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c2581df79a1bf2830dd351f667659096e1986cf3500a1f79a8ac4ee59310ca40.png" src="_images/c2581df79a1bf2830dd351f667659096e1986cf3500a1f79a8ac4ee59310ca40.png" />
+<img alt="_images/2e0525ec1d3cf415253d3ef26782bb66c9a18f77a1835e4695b660fa4158a36d.png" src="_images/2e0525ec1d3cf415253d3ef26782bb66c9a18f77a1835e4695b660fa4158a36d.png" />
 </div>
 </div>
 <p>In the 1970s, when they were in their 30s, they were almost as liberal, on average, as the people who identified as liberal.</p>
@@ -2751,9 +2732,9 @@ This chapter is a little different because it is mostly about my own investigati
 As a result, I have fewer sources to cite and less related reading to recommend.</p>
 <p>Also, it would be appropriate to consider the results in this chapter an initial exploration by a data scientist, intended to demonstrate certain tools and concepts, not definitive research by experts in political science.</p>
 <ul class="simple">
-<li><p>Quote Investigator explores the origin of the unattributable quote \cite{otoole2014}.</p></li>
-<li><p>The General Social Survey (GSS) is a project of the independent research organization NORC at the University of Chicago, with principal funding from the National Science Foundation. The data is available from the GSS website \cite{gss2022}.</p></li>
-<li><p>An article in <em>The Chicago Tribune</em> discusses social attitudes toward the word “liberal” \cite{page2007}.</p></li>
+<li><p><a class="reference external" href="https://quoteinvestigator.com/2014/02/24/heart-head">Quote Investigator</a> explores the origin of the unattributable quote (O’Toole, 2014).</p></li>
+<li><p>The General Social Survey (GSS) is a project of the independent research organization NORC at the University of Chicago, with principal funding from the National Science Foundation. The data is available from the <a class="reference external" href="https://gss.norc.org/Get-The-Data">GSS website</a> (NORC, 2022).</p></li>
+<li><p>An article in <em>The Chicago Tribune</em> by Clarence Page discusses social attitudes toward the word “liberal” (<a class="reference external" href="https://www.chicagotribune.com/news/ct-xpm-2007-07-29-0707280330-story.html">Page, 2007</a>).</p></li>
 </ul>
 </section>
 <section id="appendix-the-fifteen-questions">

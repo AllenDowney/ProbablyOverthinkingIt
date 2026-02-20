@@ -361,6 +361,7 @@ document.write(`
                   
   <section id="changing-hearts-and-minds">
 <h1>Changing Hearts and Minds<a class="headerlink" href="#changing-hearts-and-minds" title="Permalink to this heading">#</a></h1>
+<p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/progress.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -387,18 +388,12 @@ document.write(`
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
 
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
 </pre></div>
 </div>
 </div>
@@ -431,6 +426,8 @@ document.write(`
     <span class="n">make_lowess</span><span class="p">,</span>
     <span class="n">plot_series_lowess</span><span class="p">,</span>
 <span class="p">)</span>
+
+<span class="n">set_pyplot_params</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -490,16 +487,6 @@ To make it easy to compare answers to different questions, the <span class="math
 <p>The results vary from year to year, so I’ve plotted a smooth curve to fit the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/&quot;</span>
-
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;gss_eds.3.hdf&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;gss0&quot;</span><span class="p">)</span>
 <span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -542,7 +529,7 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">])</span>
 <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -614,7 +601,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6c1b283781f071f21a5cc10e1b5b7bcccc55bfb316906703a7eee3b84cb65a86.png" src="_images/6c1b283781f071f21a5cc10e1b5b7bcccc55bfb316906703a7eee3b84cb65a86.png" />
+<img alt="_images/93e15c04d161b3e22cf0170015f9698470576b38b77fc79f74542864bde8a82a.png" src="_images/93e15c04d161b3e22cf0170015f9698470576b38b77fc79f74542864bde8a82a.png" />
 </div>
 </div>
 <p>For all three questions, old people are substantially more likely to choose the racist response, so there is some truth to the stereotype.</p>
@@ -657,7 +644,7 @@ Name: 1980, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ff546dd79c8955093f7016b9f1f36e8e9c822c909e19f9ebdd38843823c87217.png" src="_images/ff546dd79c8955093f7016b9f1f36e8e9c822c909e19f9ebdd38843823c87217.png" />
+<img alt="_images/c74f8d14306b366205666050adaa0ac20272116f04f26ee910fe89f0deae1750.png" src="_images/c74f8d14306b366205666050adaa0ac20272116f04f26ee910fe89f0deae1750.png" />
 </div>
 </div>
 <p>The dotted line shows the trend for all respondents; as we saw in the previous figure, older respondents are more likely to favor a law against interracial marriage.
@@ -709,7 +696,7 @@ If 4% of respondents endorsed the lizard-people theory in error, the actual prev
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a17169127df90450dcf82840a023993faaf0738e287e0c9034d9a2d762b50f1c.png" src="_images/a17169127df90450dcf82840a023993faaf0738e287e0c9034d9a2d762b50f1c.png" />
+<img alt="_images/fb7e38b4aee77a500988f7650a0635955c14070fdcb568b6fef863d311aec07e.png" src="_images/fb7e38b4aee77a500988f7650a0635955c14070fdcb568b6fef863d311aec07e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -731,7 +718,7 @@ If 4% of respondents endorsed the lizard-people theory in error, the actual prev
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/270c481f944c86091b2036caacc47c59dd454a4b47bca31f3c5b09106f977fb4.png" src="_images/270c481f944c86091b2036caacc47c59dd454a4b47bca31f3c5b09106f977fb4.png" />
+<img alt="_images/1c970f1957c2ef1cfdacdab92a7a0b3456eb9d05e99f6e201d09388bfc915f80.png" src="_images/1c970f1957c2ef1cfdacdab92a7a0b3456eb9d05e99f6e201d09388bfc915f80.png" />
 </div>
 </div>
 <p>The responses to the other two questions follow the same pattern.</p>
@@ -858,7 +845,7 @@ Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c76abe246826c1b04495176ca66aa00e9a335124575981b763d41ed44b1bac4a.png" src="_images/c76abe246826c1b04495176ca66aa00e9a335124575981b763d41ed44b1bac4a.png" />
+<img alt="_images/b1e8c300fba755e1f53485ac40e197c441e55f8d2c7379cd26bd551ced94fce9.png" src="_images/b1e8c300fba755e1f53485ac40e197c441e55f8d2c7379cd26bd551ced94fce9.png" />
 </div>
 </div>
 <p>For all three questions, older people are more likely to choose the sexist response.
@@ -888,7 +875,7 @@ The difference is smaller for the other questions, although that is in part beca
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/909dd497af4f76994f4391df665acdbb737c6a2e6bcba05ea20c24728ef331e4.png" src="_images/909dd497af4f76994f4391df665acdbb737c6a2e6bcba05ea20c24728ef331e4.png" />
+<img alt="_images/50288873ae22f3f34b963f422aabb94a3d45ecc15df4e95ccd7717d5d59a6924.png" src="_images/50288873ae22f3f34b963f422aabb94a3d45ecc15df4e95ccd7717d5d59a6924.png" />
 </div>
 </div>
 <p>Overall, older people are more likely to be sexist, but within almost every cohort, people become less sexist as they get older.
@@ -913,7 +900,7 @@ The results from the other two questions show the same pattern.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3822a4e2c1e19f25714a078d566febc5ca63ed30e3456fc74244e48ba46bef65.png" src="_images/3822a4e2c1e19f25714a078d566febc5ca63ed30e3456fc74244e48ba46bef65.png" />
+<img alt="_images/b266bede2f52591bb773197f47b9e8329940bd06f44e2768c128b1b0c24e445a.png" src="_images/b266bede2f52591bb773197f47b9e8329940bd06f44e2768c128b1b0c24e445a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -936,7 +923,7 @@ The results from the other two questions show the same pattern.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c503c759a150857cfe85880dd8854c8e74064614c24ce76a35015103810ef230.png" src="_images/c503c759a150857cfe85880dd8854c8e74064614c24ce76a35015103810ef230.png" />
+<img alt="_images/24bbb087bbe2783cfaf43bf99f0cc45526b2df8cefec63d516064df3f086475f.png" src="_images/24bbb087bbe2783cfaf43bf99f0cc45526b2df8cefec63d516064df3f086475f.png" />
 </div>
 </div>
 <p>As in the previous examples, the reason is that the younger respondents are more likely to belong to recent birth cohorts, which are less sexist, and the older respondents are more likely to belong to earlier birth cohorts, which are more sexist.</p>
@@ -984,7 +971,7 @@ For example, the following figure shows responses to the first of the three ques
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0bddd6a04e3b45fd6dbe1d52b7b56889beb646250911eb4ac93c62e68706dbb0.png" src="_images/0bddd6a04e3b45fd6dbe1d52b7b56889beb646250911eb4ac93c62e68706dbb0.png" />
+<img alt="_images/76757bc242b5066b5ef69d84a43647e8cbc1f2cb0c9cdd947493f11da74b91f7.png" src="_images/76757bc242b5066b5ef69d84a43647e8cbc1f2cb0c9cdd947493f11da74b91f7.png" />
 </div>
 </div>
 <p>In this figure, there is evidence of a cohort effect: comparing people born in the 1920s through the 1950s, each cohort is less likely to choose a sexist response than the previous one.</p>
@@ -1084,7 +1071,7 @@ The following figure shows the percentage of people who chose a homophobic respo
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1158fd50778f2d8f74cb1c9e6038b9867be0b9aec92ff45ae70f2df3e3eb51d9.png" src="_images/1158fd50778f2d8f74cb1c9e6038b9867be0b9aec92ff45ae70f2df3e3eb51d9.png" />
+<img alt="_images/574326ff45931e129bc9edddf528499eafb4de0b78d535a115e27a25bd633163.png" src="_images/574326ff45931e129bc9edddf528499eafb4de0b78d535a115e27a25bd633163.png" />
 </div>
 </div>
 <p>It comes as no surprise that older people are more likely to hold homophobic beliefs.
@@ -1115,7 +1102,7 @@ In fact, within every birth cohort, they become less homophobic with age.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c95844111c35999d4428edd7fe5001cb7d8b60b0dd114d445a51abbd64c3646d.png" src="_images/c95844111c35999d4428edd7fe5001cb7d8b60b0dd114d445a51abbd64c3646d.png" />
+<img alt="_images/84c0901f63e65bce3078c93950e327220a8a1aff41d79a5ca0fc993c69a042dc.png" src="_images/84c0901f63e65bce3078c93950e327220a8a1aff41d79a5ca0fc993c69a042dc.png" />
 </div>
 </div>
 <p>There is clearly a cohort effect: each generation is substantially less homophobic than the one before.
@@ -1147,7 +1134,7 @@ But that doesn’t mean there is an age effect; if there were, we would expect t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/597a4cda62a936b632b719c774d9bc7965640578bc060564bc5e8e7c077e0378.png" src="_images/597a4cda62a936b632b719c774d9bc7965640578bc060564bc5e8e7c077e0378.png" />
+<img alt="_images/7c8f5cec2fc4a82345c0187b91ebb7d3b0ecb8748b6ae7f9a6b9038af6c3b70e.png" src="_images/7c8f5cec2fc4a82345c0187b91ebb7d3b0ecb8748b6ae7f9a6b9038af6c3b70e.png" />
 </div>
 </div>
 <p>If there is a period effect, we expect to see an inflection point in all cohorts at the same point in time.
@@ -1167,6 +1154,16 @@ Also, looking at the overall trend, it declined slowly before 1990 and much more
 <p>In general, questions like this are hard to answer.
 Societal changes are the result of interactions between many causes and effects.
 But in this case, I think there is an explanation that is at least plausible: advocacy for acceptance of homosexuality has been successful at changing people’s minds.</p>
+<p>In 1989, Marshall Kirk and Hunter Madsen published a book called <em>After the Ball</em> with the prophetic subtitle <em>How America Will Conquer Its Fear and Hatred of Gays in the ’90s</em>.
+The authors, with backgrounds in psychology and advertising, outlined a strategy for changing beliefs about homosexuality, which I will paraphrase in two parts: make homosexuality visible, and make it boring.
+Toward the first goal, they encouraged people to come out and acknowledge their sexual orientation publicly.
+Toward the second, they proposed a media campaign to depict homosexuality as ordinary.</p>
+<p>Some conservative opponents of gay rights latched onto this book as a textbook of propaganda and the written form of the “gay agenda”.
+Of course reality was more complicated than that: social change is the result of many people in many places, not a centrally-organized conspiracy.</p>
+<p>It’s not clear whether Kirk and Madsen’s book <em>caused</em> America to conquer its fear in the 1990s, but what they proposed turned out to be a remarkable prediction of what happened.
+Among many milestones, the first National Coming Out Day was celebrated in 1988;
+the first Gay Pride Day Parade was in 1994 (although previous similar events had used different names); and in 1999, President Bill Clinton proclaimed June as Gay and Lesbian Pride month.</p>
+<p>During this time, the number of people who came out to their friends and family grew exponentially, along with the number of openly gay public figures and the representation of gay characters on television and in movies.</p>
 <p>And as surveys by the Pew Research Center have shown repeatedly, “familiarity is closely linked to tolerance”.
 People who have a gay friend or family member – and know it – are substantially more likely to hold positive attitudes about homosexuality and to support gay rights.</p>
 <p>All of this adds up to a large period effect that has changed hearts and minds, especially among the most recent birth cohorts.</p>
@@ -1433,10 +1430,10 @@ The following figure shows the results.</p>
   <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     2</td> 
 </tr>
 <tr>
-  <th>Date:</th>            <td>Mon, 08 Jan 2024</td> <th>  Pseudo R-squ.:     </th>  <td>0.1139</td> 
+  <th>Date:</th>            <td>Fri, 20 Feb 2026</td> <th>  Pseudo R-squ.:     </th>  <td>0.1139</td> 
 </tr>
 <tr>
-  <th>Time:</th>                <td>16:46:17</td>     <th>  Log-Likelihood:    </th> <td> -16141.</td>
+  <th>Time:</th>                <td>13:39:28</td>     <th>  Log-Likelihood:    </th> <td> -16141.</td>
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -18216.</td>
@@ -1490,6 +1487,12 @@ The following figure shows the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">inter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute error for finding intercept that removes cohort effect.</span>
+<span class="sd">    </span>
+<span class="sd">    inter: intercept value to test</span>
+<span class="sd">    </span>
+<span class="sd">    returns: difference between period-only prediction and actual prediction</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">period_only</span> <span class="o">=</span> <span class="n">make_counterfact</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s2">&quot;cohort&quot;</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">period_only</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">-</span> <span class="n">pred</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
 </pre></div>
@@ -1536,7 +1539,7 @@ The following figure shows the results.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/af9103b0e318493b428d117858a5c567aed2560b6d03fda814d7041b57573090.png" src="_images/af9103b0e318493b428d117858a5c567aed2560b6d03fda814d7041b57573090.png" />
+<img alt="_images/34b0e45f09fa8bd97fbf25f34a8346b6b5465eb5ee0edfb39373ab3a2af8dc9d.png" src="_images/34b0e45f09fa8bd97fbf25f34a8346b6b5465eb5ee0edfb39373ab3a2af8dc9d.png" />
 </div>
 </div>
 <p>The circles show the actual data.
@@ -1614,6 +1617,37 @@ In other words, most of the change we’ve seen since 1987 has been due to chang
 </div>
 </div>
 </div>
+<p>In 2011, the San Francisco Gay Men’s Chorus performed a song called “A Message From the Gay Community” that satirically addresses the fears of people who oppose gay rights.
+The song includes lyrics like:</p>
+<blockquote>
+<div><p>You think that we’ll corrupt your kids,
+if our agenda goes unchecked.<br />
+Funny, just this once, you’re correct.<br />
+We’ll convert your children, happens bit by bit;<br />
+Quietly and subtly, and you will barely notice it.</p>
+</div></blockquote>
+<p>Of course, the reference to the “gay agenda” is tongue-in-cheek, and the threat to “convert your children” is only scary to someone who thinks (wrongly) that gay people can convert straight people to homosexuality, and believes (wrongly) that having a gay child is bad.
+For everyone else, it is clearly a joke.</p>
+<p>Then the refrain delivers the punchline:</p>
+<blockquote>
+<div><p>We’ll convert your children; we’ll make them tolerant and fair.</p>
+</div></blockquote>
+<p>For anyone who still doesn’t get it, later verses explain:</p>
+<blockquote>
+<div><p>Turning your children into accepting, caring people;<br />
+We’ll convert your children;
+someone’s gotta teach them not to hate.<br />
+Your children will care about fairness and justice for others.</p>
+</div></blockquote>
+<p>And finally,</p>
+<blockquote>
+<div><p>Your kids will start converting you;
+the gay agenda is coming home.<br />
+We’ll convert your children; and make an ally of you yet.</p>
+</div></blockquote>
+<p>The thesis of the song is that advocacy can change minds, especially among young people.
+Those changed minds create an environment where the next generation is more likely to be “tolerant and fair”, and where some older people change their minds, too.</p>
+<p>The data show that this thesis is, “just this once, correct”.</p>
 </section>
 <section id="the-overton-window">
 <h2>The Overton Window<a class="headerlink" href="#the-overton-window" title="Permalink to this heading">#</a></h2>
@@ -1624,7 +1658,7 @@ The view that interracial marriage should be illegal is racist.
 The view that women are less suited to politics than men is sexist.
 And the view that an “admitted” homosexual should not be allowed to teach at a university is homophobic.
 Now, so we can put the results on the same <span class="math notranslate nohighlight">\(y\)</span> axis, I will combine these responses into a group I will characterize as “bigoted”.</p>
-<p>The following figure shows how the the percentage of people choosing bigoted responses, for each of the ten questions we’ve looked at, has changed over time.</p>
+<p>The following figure shows how the percentage of people choosing bigoted responses, for each of the ten questions we’ve looked at, has changed over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">over_time</span> <span class="o">=</span> <span class="n">ten_questions</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1656,7 +1690,7 @@ Now, so we can put the results on the same <span class="math notranslate nohighl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3e07e5214805cb9ef029acd97d2f048a5a80e6a4579aadbf4ebdeae2f37e3d11.png" src="_images/3e07e5214805cb9ef029acd97d2f048a5a80e6a4579aadbf4ebdeae2f37e3d11.png" />
+<img alt="_images/9a2b349de7a01c3b16ed8a63c1325222f9a85509ecc8d2cea09bb87b8716b02d.png" src="_images/9a2b349de7a01c3b16ed8a63c1325222f9a85509ecc8d2cea09bb87b8716b02d.png" />
 </div>
 </div>
 <p>I didn’t label the lines because it doesn’t matter for now which is which; the point is that they are all headed in the direction of decreasing bigotry.</p>
@@ -1667,17 +1701,24 @@ That’s not a coincidence; the topics and the wording of the questions were cho
 There is not much point in asking whether murder is bad.</p>
 <p>However, many of the views that were mainstream in the 1970s had become unpopular, or on the fringe, by the 2010s.
 Three of the 10 questions were removed from the survey as they approached the territory of the lizard people, and several more are on their way out.</p>
+<p>These results illustrate the “Overton window”, which is a term from political science that refers to the range of topics that are part of mainstream discourse.
+At any point in time, ideas considered acceptable, sensible, or popular are inside the window; ideas considered radical or unthinkable are outside it.
+Successful politicians, according to the theory, are adept at identifying ideas inside the window and avoiding ideas that are outside it.</p>
+<p>Importantly, the Overton window can move over time.
+On some topics, like the ones we’ve seen in this chapter, it moves consistently in one direction.
+On other topics, it has moved back and forth; as an example, consider alcohol prohibition in the United States, which was outside the Overton window prior to the 1870s, became federal policy in 1920, then left the window again after 1933.</p>
+<p>In the next chapter, we’ll use the ideas in this chapter – age-period-cohort analysis and the Overton window – to explain a paradox of political identity.</p>
 </section>
 <section id="sources-and-related-reading">
 <h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Planck’s autobiography is called <em>Scientific autobiography and other papers</em> \cite{planck2014scientific}.</p></li>
-<li><p>William Lecky described the expanding moral circle in “History of European morals, from Augustus to Charlemagne” \cite{lecky1897history}. The philosopher Peter Singer wrote about it in <em>The expanding circle</em> \cite{singer1981}, as did Steven Pinker in <em>The better angels of our nature: Why violence has declined</em> \cite{pinker2012}. More recently, Sigal Samuel wrote an article on the topic for Vox \cite{samuel2019}.</p></li>
-<li><p>The General Social Survey (GSS) is a project of the independent research organization NORC at the University of Chicago, with principal funding from the National Science Foundation. The data is available from the GSS website \cite{gss2022}.</p></li>
-<li><p>Vox published an article about lizard people \cite{abadsantos2015}. Results from the lizard people poll are reported on the website of Public Policy Polling \cite{ppp2013}.</p></li>
-<li><p>The Pew Research study showing that familiarity breeds acceptance is “Four-in-Ten Americans Have Close Friends or Relatives Who are Gay” \cite{rosentiel2007}.</p></li>
-<li><p>You can see a performance of “A Message From the Gay Community” on YouTube \cite{sfgmc2021}.</p></li>
-<li><p><em>Politico Magazine</em> wrote about the origins of the Overton Window, and its use in popular culture \cite{robertson2018}. The example of alcohol prohibition is from the video, “The Overton Window of Political Possibility Explained” \cite{mackinac2020}.</p></li>
+<li><p>Planck’s autobiography is called <em>Scientific autobiography and other papers</em> (Planck, 2014).</p></li>
+<li><p>William Lecky described the expanding moral circle in <a class="reference external" href="https://www.gutenberg.org/files/39273/39273-h/39273-h.html">“History of European morals, from Augustus to Charlemagne”</a> (Lecky, 1897). The philosopher Peter Singer wrote about it in <em>The expanding circle</em> (Singer, 1981), as did Steven Pinker in <em>The better angels of our nature: Why violence has declined</em> (Pinker, 2012). More recently, Sigal Samuel wrote an article on the topic for <a class="reference external" href="https://www.vox.com/future-perfect/2019/4/4/18285986/robot-animal-nature-expanding-moral-circle-peter-singer">Vox</a> (Samuel, 2019).</p></li>
+<li><p>The General Social Survey (GSS) is a project of the independent research organization NORC at the University of Chicago, with principal funding from the National Science Foundation. The data is available from the <a class="reference external" href="https://gss.norc.org/Get-The-Data">GSS website</a>.</p></li>
+<li><p>Vox published an article about lizard people (<a class="reference external" href="https://www.vox.com/2014/11/5/7158371/lizard-people-conspiracy-theory-explainer">Abad-Santos, 2015</a>). Results from the lizard people poll are reported on the website of <a class="reference external" href="https://www.publicpolicypolling.com/wp-content/uploads/2017/09/PPP_Release_National_ConspiracyTheories_040213.pdf">Public Policy Polling</a> (2013).</p></li>
+<li><p>The Pew Research study showing that familiarity breeds acceptance is <a class="reference external" href="https://www.pewresearch.org/2007/05/22/fourinten-americans-have-close-friends-or-relatives-who-are-gay/">“Four-in-Ten Americans Have Close Friends or Relatives Who are Gay”</a> (Rosentiel, 2007).</p></li>
+<li><p>You can see a performance of <a class="reference external" href="https://www.youtube.com/watch?v=ArOQF4kadHA">“A Message From the Gay Community”</a> on YouTube (San Francisco Gay Men’s Chorus, 2021).</p></li>
+<li><p><em>Politico Magazine</em> wrote about the origins of the Overton Window, and its use in popular culture (<a class="reference external" href="https://www.politico.com/magazine/story/2018/02/25/overton-window-explained-definition-meaning-217010/">Robertson, 2018</a>). The example of alcohol prohibition is from the video, <a class="reference external" href="https://www.youtube.com/watch?v=ArOQF4kadHA">“The Overton Window of Political Possibility Explained”</a> (Mackinac Center, 2020).</p></li>
 </ul>
 <p>Probably Overthinking It</p>
 <p>Copyright 2022 Allen Downey</p>
