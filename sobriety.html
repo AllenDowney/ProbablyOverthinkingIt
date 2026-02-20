@@ -1,0 +1,861 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Field Sobriety Tests and the Base Rate Fallacy &#8212; Probably Overthinking It</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sobriety';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="The Girl Born on Tuesday" href="tuesday.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">The Long Tail of Disaster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_rate.html">Fairness and Fallacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simpson.html">Penguins, Pessimists, and Paradoxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progress.html">Changing Hearts and Minds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overton.html">Chasing the Overton Window</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als_ms.html">Simpson’s What?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration.html">Population Growth and Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="olympics.html">So Many Bronze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctokens.html">Power law? Or just a guideline?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="florida.html">The Girl Named Florida</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuesday.html">The Girl Born on Tuesday</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Field Sobriety Tests and the Base Rate Fallacy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/sobriety.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Field Sobriety Tests and the Base Rate Fallacy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-positives">False Positives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-bias">Selection Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-value">Predictive Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-rate">Base Rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="field-sobriety-tests-and-the-base-rate-fallacy">
+<h1>Field Sobriety Tests and the Base Rate Fallacy<a class="headerlink" href="#field-sobriety-tests-and-the-base-rate-fallacy" title="Permalink to this heading">#</a></h1>
+<p>In Chapter 9 of <a class="reference external" href="https://allendowney.github.io/ProbablyOverthinkingIt/base_rate.html#driving-under-the-influence">Probably Overthinking It</a> I wrote about Drug Recognition Experts (DREs), who are law enforcement officers trained to recognize impaired drivers.</p>
+<p>I reviewed the research papers that were supposed to evaluate the accuracy of DREs and I summarized my impressions like this:</p>
+<blockquote>
+<div><p>What I found was a collection of studies that are, across the board, deeply flawed. Every one of them features at least one methodological error so blatant it would be embarrassing at a middle school science fair.</p>
+</div></blockquote>
+<p>Recently the related topic of Field Sobriety Tests (FSTs) came up in this <a class="reference external" href="https://www.reddit.com/r/videos/comments/1r5ngps/sober_people_being_arrested_nationwide_for_dui/">Reddit discussion</a>, which links to <a class="reference external" href="https://www.youtube.com/watch?v=nmSnBOGbOzk">this TV news report</a> about sober drivers who were arrested based on FST results.</p>
+<p>The TV report refers to this <a class="reference external" href="https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2807719">2023 paper in JAMA Psychiatry</a>.
+Because it’s recent, published in a good quality journal, and called “Evaluation of Field Sobriety Tests for Identifying Drivers Under the Influence of Cannabis: A Randomized Clinical Trial”, I thought it might address the problems I found in previous research.</p>
+<p>Unfortunately, it has the same problems:</p>
+<ul class="simple">
+<li><p>Selection bias: It excludes as subjects people with conditions that might cause them to fail an FST while sober – but these are exactly the people most vulnerable to false positive results.</p></li>
+<li><p>Wrong metrics: The paper focuses on the true positive and false positive rates, and neglects the predictive value of the test – which is more relevant to the policy question.</p></li>
+<li><p>Unrealistic base rate: In the test conditions, two thirds of the participants were impaired, which is almost certainly higher than the relevant fraction in the real world.</p></li>
+</ul>
+<p>Despite all that, the false positive rate they reported is 49%, which means that <strong>nearly half of the sober participants were wrongly classified as impaired</strong>.</p>
+<p>Let’s look at each of these problems more closely.</p>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/sobriety.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="false-positives">
+<h2>False Positives<a class="headerlink" href="#false-positives" title="Permalink to this heading">#</a></h2>
+<p>The study tested 184 participants, 121 randomly assigned to the THC group and 63 to the placebo group.
+The THC group smoked cannabis cigarettes containing THC; the placebo group smoked cigarettes with almost none.
+Each participant was evaluated by one officer, who was “blinded to treatment assignment”.
+The paper reports</p>
+<blockquote>
+<div><p>Officers classified 98 participants (81.0%) in the THC group and 31 (49.2%) in the placebo group as FST impaired.</p>
+</div></blockquote>
+<p>The following table summarizes these results as a <a class="reference external" href="https://en.wikipedia.org/wiki/Confusion_matrix">confusion matrix</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TP</span> <span class="o">=</span> <span class="mi">98</span>
+<span class="n">FP</span> <span class="o">=</span> <span class="mi">31</span>
+<span class="n">FN</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">TN</span> <span class="o">=</span> <span class="mi">32</span>
+
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;FST Positive&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">TP</span><span class="p">,</span> <span class="n">FP</span><span class="p">],</span>
+        <span class="s1">&#39;FST Negative&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">FN</span><span class="p">,</span> <span class="n">TN</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;THC Group&#39;</span><span class="p">,</span> <span class="s1">&#39;Placebo Group&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">confusion_matrix</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">confusion_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">confusion_matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FST Positive</th>
+      <th>FST Negative</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>THC Group</th>
+      <td>98</td>
+      <td>23</td>
+      <td>121</td>
+    </tr>
+    <tr>
+      <th>Placebo Group</th>
+      <td>31</td>
+      <td>32</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <td>129</td>
+      <td>55</td>
+      <td>184</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s start with the most obvious problem: of 63 people in the placebo group, 31 were wrongly classified as impaired, so the false positive rate was 49%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpr</span> <span class="o">=</span> <span class="n">FP</span> <span class="o">/</span> <span class="p">(</span><span class="n">FP</span> <span class="o">+</span> <span class="n">TN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;False positive rate: </span><span class="si">{</span><span class="n">fpr</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False positive rate: 49.2%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Although the tests “were administered by certified DRE instructors (n = 11), the highest training level for impaired driving detection”, the results for sober participants were no better than a coin toss.
+That’s pretty bad, but in reality it’s probably worse, because of selection bias.</p>
+</section>
+<section id="selection-bias">
+<h2>Selection Bias<a class="headerlink" href="#selection-bias" title="Permalink to this heading">#</a></h2>
+<p>The study recruited 261 people who met these requirements: “age 21 to 55 years, cannabis use 4 or more times in the past month, holding a valid driver’s license, and driving at least 1000 miles in the past year.”</p>
+<p>But it excluded 62 recruits for reasons including “history of traumatic brain injury [and] significant medical conditions or psychiatric conditions”.
+They also excluded people with a positive urine test for nonprescription drugs or substance use disorder in the past year.</p>
+<p>That’s a problem because people with these kinds of medical conditions are more likely to fail an FST – even if they are not actually impaired.
+By excluding them, the study excludes exactly the people most vulnerable to a false positive result.</p>
+<p>A better experiment would recruit a representative sample of drivers, including people older than 55 and people with conditions that make it hard to pass a field sobriety test.
+The TV report highlights an example: an autistic man who was arrested for DUI because his autism-related differences were mistaken for impairment.
+I assume he would have been excluded from the study.</p>
+<p>To see how much difference the selection criteria could make, suppose 20 of the excluded participants (about one third) had been assigned to the placebo group.
+And suppose that because of their conditions 16 of them were wrongly classified as impaired – that’s 80%, somewhat higher than the rate among included participants.</p>
+<p>That would increase the number of false positives by 16 and the number of true negatives by 4, so the unbiased false positive rate might be 57%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased_fpr</span> <span class="o">=</span> <span class="p">(</span><span class="n">FP</span> <span class="o">+</span> <span class="mi">16</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">FP</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">+</span> <span class="n">TN</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;False positive rate: </span><span class="si">{</span><span class="n">unbiased_fpr</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False positive rate: 56.6%
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is just a guess: it’s not clear how many were excluded specifically for medical conditions or how many of the excluded would have failed the FST.
+But this calculation gives us a sense of how big the bias could be.</p>
+<p>As I wrote in <em>Probably Overthinking It</em>:</p>
+<blockquote>
+<div><p>How can you estimate the number of false positives if you exclude from the study everyone likely to yield a false positive? You can’t.</p>
+</div></blockquote>
+<p>And that brings us to the next problem.</p>
+</section>
+<section id="predictive-value">
+<h2>Predictive Value<a class="headerlink" href="#predictive-value" title="Permalink to this heading">#</a></h2>
+<p>The paper reports:</p>
+<blockquote>
+<div><p>Officers classified 98 participants (81.0%) in the THC group and 31 (49.2%) in the placebo group as FST impaired at the first evaluation</p>
+</div></blockquote>
+<p>They quantify this difference as 31.8 percentage points, with 95% CI, 16.4-47.2 percentage points, and report a p-value &lt; .001.
+Based on this analysis, they conclude:</p>
+<blockquote>
+<div><p>FSTs administered by highly trained law enforcement officers differentiated between individuals receiving THC vs placebo</p>
+</div></blockquote>
+<p>This conclusion is true in the sense that the difference in percentages is statistically significant, but the policy question is not whether THC exposure changes FST performance under laboratory conditions. <strong>The question is whether an FST result provides sufficiently strong evidence to justify detention or arrest</strong>.</p>
+<p>For that, the false positive rate is relevant, and as we have discussed, it is probably more than 50%.</p>
+<p>But even more important is the positive predictive value (PPV), which is the probability that a positive test is correct.
+In the confusion matrix, there are 129 positive tests, of which 98 are correct and 31 incorrect, so the PPV is 98 out of 129, about 76%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ppv</span> <span class="o">=</span> <span class="n">TP</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">FP</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PPV: </span><span class="si">{</span><span class="n">ppv</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PPV: 76.0%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of the people who failed the FST, 76% were actually impaired.
+That might sound good enough for probable cause, but that conclusion is misleading because there is still another problem – the base rate.</p>
+</section>
+<section id="base-rate">
+<h2>Base Rate<a class="headerlink" href="#base-rate" title="Permalink to this heading">#</a></h2>
+<p>In the study, two thirds of the participants were impaired.
+In the real world, it is unlikely that two thirds of drivers are impaired – or even two thirds of drivers who take an FST.
+So the base rate in the study is too high.</p>
+<p>To see why that matters, we have to do a little math.
+First we’ll use the confusion matrix to compute one more metric, sensitivity, which is the percentage of impaired participants who were classified correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensitivity</span> <span class="o">=</span> <span class="n">TP</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">FN</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sensitivity: </span><span class="si">{</span><span class="n">sensitivity</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sensitivity: 81.0%
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use sensitivity, along with the false positive rate we already computed, to figure out the positive predictive value of a test with a more realistic base rate.</p>
+<p>Of all people pulled over and given a field sobriety test, how many do you think are impaired by THC?
+That’s a hard question to answer, so we’ll try a couple of values.</p>
+<p>First, suppose the base rate is one third, rather than the two thirds in the study.
+If we imagine 100 drivers:</p>
+<ul class="simple">
+<li><p>If 33 are impaired, and sensitivity is 81%, we expect 27 true positive results.</p></li>
+<li><p>If 67 are not impaired, and the false positive rate is 49%, we expect 33 false positive results.</p></li>
+</ul>
+<p>In that case the positive predictive value is <code class="docutils literal notranslate"><span class="pre">27</span> <span class="pre">/</span> <span class="pre">(27</span> <span class="pre">+</span> <span class="pre">33)</span></code>, which means that only 45% of positive tests are correct.
+If we put those numbers in a table, the calculation might be clearer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="s2">&quot;Tests&quot;</span>
+<span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Prob pos&quot;</span>
+<span class="n">col3</span> <span class="o">=</span> <span class="s2">&quot;Pos tests&quot;</span>
+<span class="n">col4</span> <span class="o">=</span> <span class="s2">&quot;Percent&quot;</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Impaired&quot;</span><span class="p">,</span> <span class="s2">&quot;Not impaired&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">,</span> <span class="n">col4</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">67</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span> <span class="o">=</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">fpr</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">table</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tests</th>
+      <th>Prob pos</th>
+      <th>Pos tests</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Impaired</th>
+      <td>33</td>
+      <td>0.810</td>
+      <td>26.727</td>
+      <td>44.773</td>
+    </tr>
+    <tr>
+      <th>Not impaired</th>
+      <td>67</td>
+      <td>0.492</td>
+      <td>32.968</td>
+      <td>55.227</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>With a lower base rate, PPV is lower, which means that a positive test is weaker evidence of impairment.
+But even 45% might be too high.</p>
+<p>If we suppose that 15% of drivers who take an FST are impaired, we can run the numbers again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Impaired&quot;</span><span class="p">,</span> <span class="s2">&quot;Not impaired&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">,</span> <span class="n">col4</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">85</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span> <span class="o">=</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">fpr</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="p">[</span><span class="n">col2</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">table</span><span class="p">[</span><span class="n">col4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="n">col3</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="n">table</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Tests</th>
+      <th>Prob pos</th>
+      <th>Pos tests</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Impaired</th>
+      <td>15</td>
+      <td>0.810</td>
+      <td>12.149</td>
+      <td>22.508</td>
+    </tr>
+    <tr>
+      <th>Not impaired</th>
+      <td>85</td>
+      <td>0.492</td>
+      <td>41.825</td>
+      <td>77.492</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>With 15% base rate, the predictive value of the test is only 23% – which means 77% of drivers identified as impaired would actually be sober.</p>
+<p>In reality, the base rate depends on the context.
+At a checkpoint where every driver is stopped, the base rate might be lower than 15%.
+If a driver is stopped for driving erratically, the base rate might be relatively high.
+But even then, it is unlikely to be as high as 66%, as in the study.</p>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h2>
+<p>The JAMA Psychiatry study provides valuable data, but it suffers from the same methodological problems as previous DRE validation studies:</p>
+<ol class="arabic simple">
+<li><p><strong>High false positive rate</strong>: Nearly half of sober participants were incorrectly classified as impaired.</p></li>
+<li><p><strong>Selection bias</strong>: The study excluded exactly the people most likely to be falsely accused, making it impossible to assess the true false positive rate in the general population.</p></li>
+<li><p><strong>Unrealistic base rate</strong>: The base rate in the study is higher than what we expect in real-world use, which inflates the predictive value of the test.</p></li>
+</ol>
+<p>Although I have been critical of the study, I agree with their interpretation of the results:</p>
+<blockquote>
+<div><p>…the substantial overlap of FST impairment between groups and the high frequency at which FST impairment was suspected to be due to THC suggest that absent other indicators, <strong>FSTs alone may be insufficient to identify THC-specific driving impairment</strong>.</p>
+</div></blockquote>
+<p>Emphasis mine.</p>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h2>
+<p>In my interpretation of the results, I follow the methodology of the study, which treats assignment to the THC group as ground truth – that is, we assume that participants in the THC group were actually impaired and participants in the placebo group were not.
+And the paper reports:</p>
+<blockquote>
+<div><p>Median self-reported highness (scale of 0 to 100, with higher scores indicating more impairment) at 30 minutes was 64 (IQR, 32-76) for the THC group and 13 (IQR, 1-28) for the placebo group (P &lt; .001).</p>
+</div></blockquote>
+<p>The THC group felt that they were more impaired, but based on the IQRs, it looks like there might be overlap.
+That complicates the interpretation of “impaired”, but for this analysis I use the study’s operational definition.</p>
+<p>Copyright 2026 Allen B. Downey</p>
+<p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tuesday.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Girl Born on Tuesday</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#false-positives">False Positives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-bias">Selection Bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-value">Predictive Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-rate">Base Rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
