@@ -21,9 +21,13 @@ cp ../examples/ansur_pca.ipynb .
 cp ../examples/bertrand.ipynb .
 cp ../examples/ideology_gap.ipynb .
 cp ../examples/migration.ipynb .
+cp ../examples/midlife.ipynb .
 cp ../examples/olympics.ipynb .
 cp ../examples/ctokens.ipynb .
-cp ../examples/proteins.ipynb .
+cp ../examples/als_ms.ipynb .
+cp ../examples/florida.ipynb .
+cp ../examples/tuesday.ipynb .
+cp ../examples/sobriety.ipynb .
 
 # build the HTML version
 jb build .

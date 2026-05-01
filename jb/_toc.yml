@@ -18,9 +18,13 @@ parts:
 - caption: Examples
   chapters:
   - file: ansur_pca
+  - file: als_ms
   - file: bertrand
   - file: ideology_gap
   - file: migration
+  - file: midlife
   - file: olympics
   - file: ctokens
-  - file: proteins
+  - file: florida
+  - file: tuesday
+  - file: sobriety
