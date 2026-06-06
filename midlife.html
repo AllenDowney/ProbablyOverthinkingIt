@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
 <li class="toctree-l1"><a class="reference internal" href="als_ms.html">Simpson’s What?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chile.html">Chile Earthquake Magnitudes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Population Growth and Migration</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Are you middle-aged?</a></li>
@@ -574,13 +575,13 @@ The following function reads and cleans a table.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Remaining life expectancy&#39;</span><span class="p">)</span>
 <span class="n">age</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
-<span class="n">decorate</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Years&#39;</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Remaining life expectancy vs age, United States 2024&#39;</span><span class="p">)</span>
+<span class="n">decorate</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Years&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Remaining life expectancy vs age, United States 2024&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;midlife.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a55e9cbde25b36d9c42e2ede2a78a827460d537f230b5cc4e7dfcb519a44bbc6.png" src="_images/a55e9cbde25b36d9c42e2ede2a78a827460d537f230b5cc4e7dfcb519a44bbc6.png" />
+<img alt="_images/e45c22b06772659db851b1081dd95f569b00c4192f42bd2d42201c5ad09a6db9.png" src="_images/e45c22b06772659db851b1081dd95f569b00c4192f42bd2d42201c5ad09a6db9.png" />
 </div>
 </div>
 <p>“Middle age” is where the lines cross, which we can compute by linear interpolation.</p>
@@ -696,7 +697,7 @@ For a more complete picture let’s also look at the ratio.</p>
 </ul>
 <p>To interpret these results, we can think about the causes of death that contribute to age-specific death rates at different stages of life.</p>
 <ul class="simple">
-<li><p>In young adulthood, the causes of death that contribute most to gender gaps include road traffic, homicide, accidental injury, drug use disorders.</p></li>
+<li><p>In young adulthood, the causes of death that contribute most to gender gaps include road traffic, homicide, accidental injury, drug disorders.</p></li>
 <li><p>In advanced adulthood, they include cancer, cardiovascular disease, respiratory disease, liver disease, diabetes, and suicide.</p></li>
 </ul>
 <p>The causes that affect younger people have large gender gaps, but relatively low death rates.
