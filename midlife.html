@@ -177,7 +177,6 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Are You Normal? Hint: No.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inspection.html">Relay Races and Revolving Doors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preston.html">Defy Tradition, Save the World</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lognormal.html">Extremes, Outliers, and GOATs</a></li>
@@ -199,8 +198,6 @@
 <li class="toctree-l1"><a class="reference internal" href="cricket.html">Greatest GOAT of All Time?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Are you middle-aged?</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="ctokens.html">Power law? Or just a guideline?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="florida.html">The Girl Named Florida</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sobriety.html">Field Sobriety Tests and the Base Rate Fallacy</a></li>
@@ -367,14 +364,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Are you middle-aged?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gender-gap-and-age">The Gender Gap and Age</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gender-gap-and-age">The Gender Gap and Age</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -409,9 +404,8 @@ So 37.5 is not halfway!</p>
 </div>
 </div>
 </div>
-</section>
 <section id="data">
-<h1>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h1>
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <p>From the <a class="reference external" href="https://www.mortality.org/Country/Country?cntr=USA">Human Mortality Database</a> I downloaded life tables for the United States, combined and broken down for men and women.
 The following function reads and cleans a table.</p>
 <div class="cell docutils container">
@@ -603,7 +597,7 @@ The following function reads and cleans a table.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e45c22b06772659db851b1081dd95f569b00c4192f42bd2d42201c5ad09a6db9.png" src="_images/e45c22b06772659db851b1081dd95f569b00c4192f42bd2d42201c5ad09a6db9.png" />
+<img alt="_images/c311bfdbfee9e313b723e5a2de8d5a5fcfd15deee16d326eb653188baf51d071.png" src="_images/c311bfdbfee9e313b723e5a2de8d5a5fcfd15deee16d326eb653188baf51d071.png" />
 </div>
 </div>
 <p>“Middle age” is where the lines cross, which we can compute by linear interpolation.</p>
@@ -670,7 +664,7 @@ Let’s put the analysis we did in a function.</p>
 <p>Men hit middle age at 39.6, women at 41.6.</p>
 </section>
 <section id="the-gender-gap-and-age">
-<h1>The Gender Gap and Age<a class="headerlink" href="#the-gender-gap-and-age" title="Link to this heading">#</a></h1>
+<h2>The Gender Gap and Age<a class="headerlink" href="#the-gender-gap-and-age" title="Link to this heading">#</a></h2>
 <p>Finally, let’s see how the gender gap in life expectancy changes as a function of age.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -690,7 +684,7 @@ Let’s put the analysis we did in a function.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2cf48be5acc971ad8f6973506c224767a25ef2e38bcf53c5b12b0f895c26ed11.png" src="_images/2cf48be5acc971ad8f6973506c224767a25ef2e38bcf53c5b12b0f895c26ed11.png" />
+<img alt="_images/d4d1f3a3f9f664315cb4f64c22920bedb347987ee4a6679607640d56a19769a4.png" src="_images/d4d1f3a3f9f664315cb4f64c22920bedb347987ee4a6679607640d56a19769a4.png" />
 </div>
 </div>
 <p>At birth the life expectancy gap is close to five years.
@@ -708,7 +702,7 @@ For a more complete picture let’s also look at the ratio.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1a514d22895c3e18a767184700d6edf467975abb4b302afe044fd42c002ae21c.png" src="_images/1a514d22895c3e18a767184700d6edf467975abb4b302afe044fd42c002ae21c.png" />
+<img alt="_images/ead690e3fb2cba38ba81136402fd67b8c37a6cb53c8efdbe1b8fe58044d64209.png" src="_images/ead690e3fb2cba38ba81136402fd67b8c37a6cb53c8efdbe1b8fe58044d64209.png" />
 </div>
 </div>
 <p>The life expectancy ratio tells a more complicated story.</p>
@@ -727,7 +721,7 @@ As people get older, these low-rate causes contribute less to age-specific death
 <p>I think that’s a plausible explanation for the increasing ratio from age 0 to 80.
 For the decline that follows, I can only speculate that there is a selection effect: people who get to these advanced ages are likely to have better-than-average lifestyle histories (less smoking and drinking, better diet, more exercise) – and among people with better lifestyles, the gender gap is small.</p>
 <section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h2>
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h3>
 <p>Data credit: HMD. Human Mortality Database. Max Planck Institute for Demographic Research (Germany), University of California, Berkeley (USA), and French Institute for Demographic Studies (France). Available at [<a class="reference external" href="http://www.mortality.org">www.mortality.org</a>].</p>
 <p>Here are the columns of the 1×1 Period Life Tables:</p>
 <ul class="simple">
@@ -764,6 +758,7 @@ For the decline that follows, I can only speculate that there is a selection eff
 </ul>
 <div class="math notranslate nohighlight">
 \[e_x = \frac{T_x}{l_x}\]</div>
+</section>
 </section>
 </section>
 
@@ -831,14 +826,12 @@ For the decline that follows, I can only speculate that there is a selection eff
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Are you middle-aged?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gender-gap-and-age">The Gender Gap and Age</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gender-gap-and-age">The Gender Gap and Age</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
