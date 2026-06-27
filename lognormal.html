@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Extremes, Outliers, and GOATs &#8212; Probably Overthinking It</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lognormal';</script>
@@ -77,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,6 +139,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -139,10 +150,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Probably Overthinking It</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -174,6 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="als_ms.html">Simpson’s What?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chile.html">Chile Earthquake Magnitudes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cricket.html">Greatest GOAT of All Time?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Population Growth and Migration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="midlife.html">Are you middle-aged?</a></li>
@@ -199,7 +223,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -208,14 +232,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -305,26 +329,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -362,23 +388,23 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="extremes-outliers-and-goats">
-<h1>Extremes, Outliers, and GOATs<a class="headerlink" href="#extremes-outliers-and-goats" title="Permalink to this heading">#</a></h1>
+<h1>Extremes, Outliers, and GOATs<a class="headerlink" href="#extremes-outliers-and-goats" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/lognormal.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
 </pre></div>
@@ -436,7 +462,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">elo_prob</span><span class="p">(</span><span class="n">diff</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">elo_prob</span><span class="p">(</span><span class="n">diff</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">diff</span> <span class="o">/</span> <span class="mi">400</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -455,7 +481,7 @@ dtype: int64
 </div>
 </div>
 <section id="the-exception">
-<h2>The Exception<a class="headerlink" href="#the-exception" title="Permalink to this heading">#</a></h2>
+<h2>The Exception<a class="headerlink" href="#the-exception" title="Link to this heading">#</a></h2>
 <p>In Chapter 1, I presented bodily measurements from the Anthropometric Survey of US Army Personnel (ANSUR) and showed that a Gaussian model fits almost all of them.
 In fact, if you take almost any measurement from almost any species, the distribution tends to be Gaussian.</p>
 <p>But there is one exception: weight.
@@ -574,7 +600,7 @@ In fact, the heaviest woman is 286 kg and the heaviest man is 290 kg.
 These discrepancies suggest that the distributions of weight are not Gaussian.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">upper_bound</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">upper_bound</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the expected maximum value from a Gaussian model</span>
 <span class="sd">    </span>
 <span class="sd">    Use the sample to fit a Gaussian model and compute the largest</span>
@@ -618,7 +644,7 @@ These discrepancies suggest that the distributions of weight are not Gaussian.</
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">log_xlabels</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Place labels on the x-axis on a log scale.</span>
 <span class="sd">    </span>
 <span class="sd">    labels: sequence of numbers</span>
@@ -662,7 +688,7 @@ Notice that the logarithms are equally spaced, but the weights are not.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">two_scale</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="n">sample2</span><span class="p">,</span> <span class="n">label1</span><span class="p">,</span> <span class="n">label2</span><span class="p">,</span> <span class="n">xlabel1</span><span class="p">,</span> <span class="n">xlabel2</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">two_scale</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="n">sample2</span><span class="p">,</span> <span class="n">label1</span><span class="p">,</span> <span class="n">label2</span><span class="p">,</span> <span class="n">xlabel1</span><span class="p">,</span> <span class="n">xlabel2</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot two distributions and label the top and bottom.</span>
 <span class="sd">    </span>
 <span class="sd">    The sequence of operations is a little tricky.</span>
@@ -731,7 +757,7 @@ In the next section we’ll see that the distribution of birth weights follows a
 In the following sections I’ll try to explain why.</p>
 </section>
 <section id="birth-weights-are-gaussian">
-<h2>Birth Weights are Gaussian<a class="headerlink" href="#birth-weights-are-gaussian" title="Permalink to this heading">#</a></h2>
+<h2>Birth Weights are Gaussian<a class="headerlink" href="#birth-weights-are-gaussian" title="Link to this heading">#</a></h2>
 <p>To explore the distribution of birth weight, I’ll use data from the National Survey of Family Growth (NSFG), which is run by the CDC, the same people we have to thank for the BRFSS.</p>
 <p>Between 2015 and 2017, the NSFG collected data from a representative sample of women in the United States.
 Among other information, the survey records the birth weights of their children.
@@ -911,7 +937,7 @@ The heaviest babies are a little heavier than we would expect from a Gaussian di
 In the next section, I’ll propose a model that might explain how.</p>
 </section>
 <section id="simulating-weight-gain">
-<h2>Simulating Weight Gain<a class="headerlink" href="#simulating-weight-gain" title="Permalink to this heading">#</a></h2>
+<h2>Simulating Weight Gain<a class="headerlink" href="#simulating-weight-gain" title="Link to this heading">#</a></h2>
 <p>As a simple model of human growth, suppose people gain several pounds per year from birth until they turn 40.
 And let’s suppose their annual weight gain is a random quantity; that is, some years they gain a lot, some years less.
 If we add up these random gains, we expect the total to follow a Gaussian distribution because, according to the Central Limit Theorem, when you add up a large number of random values, the sum tends to be Gaussian.
@@ -926,11 +952,11 @@ This is not a realistic model, but let’s see what we get.
 The following figure shows the results and a Gaussian model, both on a log scale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">least_squares</span>
 
 
-<span class="k">def</span> <span class="nf">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.03</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.03</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate a simple model of annual weight gain.</span>
 <span class="sd">    </span>
 <span class="sd">    start: sequence of starting weights</span>
@@ -1031,7 +1057,7 @@ As a result, the distribution of simulated weights is approximately lognormal.</
 The following figure shows the actual distributions from the BRFSS along with the simulation results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func_sim_weight</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">log_weight</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">error_func_sim_weight</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">log_weight</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate weights with given parameters and compute differences</span>
 <span class="sd">    between the results and the actual weights.</span>
 <span class="sd">    </span>
@@ -1101,7 +1127,7 @@ The following figure shows the actual distributions from the BRFSS along with th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">make_cdf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_cdf</span>
 
 <span class="n">sim_weight_male</span> <span class="o">=</span> <span class="n">simulate_weights</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <span class="n">log_sim_weight_male</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sim_weight_male</span><span class="p">)</span>
@@ -1190,7 +1216,7 @@ And the shortest adult was Chandra Bahadur Dangi, who was 55 cm, which is 115 cm
 That’s pretty close to symmetric, too.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_symmetry</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">test_symmetry</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;See how far the percentiles are from the mean in each direction.</span>
 <span class="sd">    </span>
 <span class="sd">    series: sequence of values</span>
@@ -1355,7 +1381,7 @@ diffs [-0.23568625  0.26294652]
 </div>
 </section>
 <section id="running-speeds">
-<h2>Running Speeds<a class="headerlink" href="#running-speeds" title="Permalink to this heading">#</a></h2>
+<h2>Running Speeds<a class="headerlink" href="#running-speeds" title="Link to this heading">#</a></h2>
 <p>If you are a fan of the Atlanta Braves, a Major League Baseball team, or if you watch enough videos on the internet, you have probably seen one of the most popular forms of between-inning entertainment: a foot race between one of the fans and a spandex-suit-wearing mascot called the Freeze.</p>
 <p>The route of the race is the dirt track that runs across the outfield, a distance of about 160 meters, which the Freeze runs in less than 20 seconds.
 To keep things interesting, the fan gets a head start of about 5 seconds.
@@ -1464,7 +1490,7 @@ I downloaded the times for the 1,592 finishers and converted them to speeds in k
 The following figure shows the distribution of these speeds on a logarithmic scale, along with a Gaussian model I fit to the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
 <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Apr25_27thAn_set1.shtml&quot;</span><span class="p">),</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1589,7 +1615,7 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simulate_speeds</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simulate_speeds</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a sample of running speeds by multiplying factors.</span>
 <span class="sd">    </span>
 <span class="sd">    Using the same set of rvs, scale them to the given mean and std.</span>
@@ -1605,7 +1631,7 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">error_func_running</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">log_speeds</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">error_func_running</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">log_speeds</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Run simulation with given params and compute</span>
 <span class="sd">    differences from the mean and standard deviation of the data.</span>
 <span class="sd">    </span>
@@ -1655,7 +1681,7 @@ I adjusted the mean and standard deviation of the Gaussians so that the resultin
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cdf</span>
 
 <span class="n">sim_speeds</span> <span class="o">=</span> <span class="n">simulate_speeds</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 
@@ -1685,7 +1711,7 @@ Unfortunately, most abilities are not as easy to measure as running speed, but s
 For example, chess-playing skill can be quantified using the Elo rating system, which we’ll explore in the next section.</p>
 </section>
 <section id="chess-rankings">
-<h2>Chess Rankings<a class="headerlink" href="#chess-rankings" title="Permalink to this heading">#</a></h2>
+<h2>Chess Rankings<a class="headerlink" href="#chess-rankings" title="Link to this heading">#</a></h2>
 <p>In the Elo chess rating system, every player is assigned a score that reflects their ability.
 These scores are updated after every game.
 If you win, your score goes up; if you lose, it goes down.
@@ -1819,10 +1845,10 @@ The following figure shows the distribution of these scores on a log scale, alon
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_model_to_cdf</span><span class="p">(</span><span class="n">cdf</span><span class="p">,</span> <span class="n">x0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fit_model_to_cdf</span><span class="p">(</span><span class="n">cdf</span><span class="p">,</span> <span class="n">x0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the model that minimizes the errors in percentiles.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">error_func</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">error_func</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
         <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">params</span>
         <span class="n">ps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">)</span>
@@ -1839,7 +1865,7 @@ The following figure shows the distribution of these scores on a log scale, alon
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_normal_model</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_normal_model</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the error bounds based on a Gaussian model.</span>
 <span class="sd">    </span>
 <span class="sd">    dist: norm object</span>
@@ -1855,7 +1881,7 @@ The following figure shows the distribution of these scores on a log scale, alon
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span><span class="p">,</span> <span class="n">Cdf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span><span class="p">,</span> <span class="n">Cdf</span>
 
 <span class="n">pmf_chess</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">chess</span><span class="p">[</span><span class="s2">&quot;# PLAYERS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">chess</span><span class="p">[</span><span class="s2">&quot;ELO&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">pmf_chess</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
@@ -1921,7 +1947,7 @@ The following figure shows the distribution of these scores on a log scale, alon
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_chess</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_chess</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
     <span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">pmf</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
     <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">q_min</span><span class="p">,</span> <span class="n">q_max</span><span class="p">)</span>
     <span class="n">ps</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
@@ -2058,7 +2084,7 @@ For most people in most fields, natural attributes and circumstances impose an u
 In other words, the thing that distinguishes a world-class violinist from everyone else is not 10,000 hours of practice, but the passion, opportunity, and discipline it takes to spend 10,000 hours doing anything.</p>
 </section>
 <section id="the-greatest-of-all-time">
-<h2>The Greatest of All Time<a class="headerlink" href="#the-greatest-of-all-time" title="Permalink to this heading">#</a></h2>
+<h2>The Greatest of All Time<a class="headerlink" href="#the-greatest-of-all-time" title="Link to this heading">#</a></h2>
 <p>Lognormal distributions of ability might explain an otherwise surprising phenomenon: in many fields of endeavor, there is one person widely regarded as the Greatest of All Time or the G.O.A.T.</p>
 <p>For example, in hockey, Wayne Gretzky is the G.O.A.T. and it would be hard to find someone who knows hockey and disagrees.
 In basketball, it’s Michael Jordan; in women’s tennis, Serena Williams, and so on for most sports.
@@ -2072,7 +2098,7 @@ Then I generated a sample from a Gaussian distribution with the same mean and va
 The following figure shows the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">top_three</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">top_three</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the expected values of the top 3 in a given distribution.</span>
 <span class="sd">    </span>
 <span class="sd">    n: sample size</span>
@@ -2222,7 +2248,7 @@ Rather, he is an example of the natural behavior of lognormal distributions:</p>
 </ul>
 </section>
 <section id="what-should-you-do">
-<h2>What Should You Do?<a class="headerlink" href="#what-should-you-do" title="Permalink to this heading">#</a></h2>
+<h2>What Should You Do?<a class="headerlink" href="#what-should-you-do" title="Link to this heading">#</a></h2>
 <p>If you are not sure what to do with your life, the lognormal distribution can help.
 Suppose you have the good fortune to be offered three jobs and you are trying to decide which one to take.
 One of the companies is working a problem you think is important, but you are not sure whether they will have much impact on it.
@@ -2245,7 +2271,7 @@ And it suggests that you should not stay in one job for your entire career; you 
 <p>These are some of the principles that underlie the 80,000 Hours project, which is a collection of online resources intended to help people think about how to best spend the approximately 80,000 hours of their working lives.</p>
 </section>
 <section id="sources-and-related-reading">
-<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The ANSUR-II dataset is available from the <a class="reference external" href="https://www.openlab.psu.edu/ansur2/">Open Design Lab at Penn State</a> (U.S. Army Natick Soldier Research, Development and Engineering Center, 2012).</p></li>
 <li><p>Data from the Behavioral Risk Factor Surveillance System (BRFSS) is available from the <a class="reference external" href="https://www.cdc.gov/brfss">Centers for Disease Control and Prevention (CDC)</a> (2020).</p></li>
@@ -2287,11 +2313,10 @@ And it suggests that you should not stay in one job for your entire career; you 
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="preston.html"
@@ -2311,10 +2336,7 @@ And it suggests that you should not stay in one job for your entire career; you 
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2322,6 +2344,7 @@ And it suggests that you should not stay in one job for your entire career; you 
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2358,9 +2381,10 @@ By Allen B. Downey
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2384,8 +2408,8 @@ By Allen B. Downey
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

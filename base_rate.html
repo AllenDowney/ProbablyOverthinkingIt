@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Fairness and Fallacy &#8212; Probably Overthinking It</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'base_rate';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -75,19 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,6 +137,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -137,10 +148,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Probably Overthinking It</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -172,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="als_ms.html">Simpson’s What?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chile.html">Chile Earthquake Magnitudes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cricket.html">Greatest GOAT of All Time?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Population Growth and Migration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="midlife.html">Are you middle-aged?</a></li>
@@ -197,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -206,14 +230,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -303,26 +327,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -364,22 +390,22 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="fairness-and-fallacy">
-<h1>Fairness and Fallacy<a class="headerlink" href="#fairness-and-fallacy" title="Permalink to this heading">#</a></h1>
+<h1>Fairness and Fallacy<a class="headerlink" href="#fairness-and-fallacy" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/base_rate.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Set the random seed so we get the same results every time</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
@@ -414,7 +440,7 @@ To understand why, we have to understand the <em>base rate fallacy</em>.</p>
 <p>These examples might be surprising if you have not seen them before, but once you understand what’s going on, I think they will make sense.
 At the end of the chapter, we’ll return to the problem of algorithms and criminal justice.</p>
 <section id="medical-tests">
-<h2>Medical Tests<a class="headerlink" href="#medical-tests" title="Permalink to this heading">#</a></h2>
+<h2>Medical Tests<a class="headerlink" href="#medical-tests" title="Link to this heading">#</a></h2>
 <p>During the COVID-19 pandemic, we all got a crash course in the science and statistics of infectious disease.
 One of the things we learned about is the accuracy of medical testing and the possibility of errors, both false positives and false negatives.</p>
 <p>As an example, suppose a friend tells you they have tested positive for COVID, and they want to know whether they are really infected, or whether the result might be a false positive. What information would you need to answer their question?</p>
@@ -551,14 +577,14 @@ In this example, the answer is 9 out of 29, or 31%.</p>
 The reason it’s so low is that the base rate in this example is only 1%.</p>
 </section>
 <section id="more-prevalence">
-<h2>More prevalence<a class="headerlink" href="#more-prevalence" title="Permalink to this heading">#</a></h2>
+<h2>More prevalence<a class="headerlink" href="#more-prevalence" title="Link to this heading">#</a></h2>
 <p>To see why it matters, let’s change the scenario. Suppose your friend has mild flu-like symptoms; in that case it seems more likely that they are infected, compared to someone with no symptoms.
 Let’s say it is ten times more likely, so the probability that your friend is infected is 10% before we get the test results.
 In that case, out of 1000 people with the same symptoms, we would expect 100 to be infected.
 If we modify the first column of the table accordingly, here are the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a table showing test results for infected and not infected groups.</span>
 <span class="sd">    </span>
 <span class="sd">    prior: tuple of (infected_count, not_infected_count)</span>
@@ -698,7 +724,7 @@ With this test, assuming the same specificity, 98%, and the same base rate, 10%,
 <p>Increasing the sensitivity from 87% to 95% has only a small effect: the probability that the test result is a false positive goes from 17% to 16%.</p>
 </section>
 <section id="more-specificity">
-<h2>More specificity<a class="headerlink" href="#more-specificity" title="Permalink to this heading">#</a></h2>
+<h2>More specificity<a class="headerlink" href="#more-specificity" title="Link to this heading">#</a></h2>
 <p>Increasing specificity has a bigger effect.
 For example, lab tests that use PCR (polymerase chain reaction) are highly specific, about as close to 100% as can be.
 However, in practice it is always possible that a specimen is contaminated, a device malfunctions, or a result is reported incorrectly.</p>
@@ -823,7 +849,7 @@ So the probability is about 49% that a positive test is correct.
 That’s lower than most people think, including most doctors.</p>
 </section>
 <section id="bad-medicine">
-<h2>Bad medicine<a class="headerlink" href="#bad-medicine" title="Permalink to this heading">#</a></h2>
+<h2>Bad medicine<a class="headerlink" href="#bad-medicine" title="Link to this heading">#</a></h2>
 <p>A 2014 paper in <em>The Journal of the American Medical Association</em> reports the result of a sneaky experiment.
 The researchers asked a “convenience sample” of doctors (probably their friends and colleagues) the following question:</p>
 <blockquote>
@@ -906,7 +932,7 @@ For example, in the case of cancer screening, a false positive might lead to add
 As we’ll see in the next section, lawyers, judges, and jurors do, too.</p>
 </section>
 <section id="driving-under-the-influence">
-<h2>Driving Under the Influence<a class="headerlink" href="#driving-under-the-influence" title="Permalink to this heading">#</a></h2>
+<h2>Driving Under the Influence<a class="headerlink" href="#driving-under-the-influence" title="Link to this heading">#</a></h2>
 <p>The challenges of the base rate fallacy have become more salient as some states have cracked down on “drugged driving”.</p>
 <p>In September 2017 the American Civil Liberties Union (ACLU) filed suit against Cobb County, Georgia on behalf of four drivers who were arrested for driving under the influence of cannabis.
 All four were evaluated by Officer Tracy Carroll, who had been trained as a “Drug Recognition Expert” (DRE) as part of a program developed by the Los Angeles Police Department in the 1970s.</p>
@@ -949,7 +975,7 @@ Even so, they imply that 188 out of 219 blood tests would have been positive, if
 That’s a base rate of 86%.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">percent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate percentage: 100 * y / (y + n).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">y</span> <span class="o">/</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
@@ -1158,7 +1184,7 @@ As a result, the court did not consider the evidence for, or  against, the valid
 The ACLU has appealed the decision.</p>
 </section>
 <section id="vaccine-effectiveness">
-<h2>Vaccine Effectiveness<a class="headerlink" href="#vaccine-effectiveness" title="Permalink to this heading">#</a></h2>
+<h2>Vaccine Effectiveness<a class="headerlink" href="#vaccine-effectiveness" title="Link to this heading">#</a></h2>
 <p>Now that we understand the base rate fallacy, we’re ready to untangle a particularly confusing example of COVID disinformation.
 In October 2021, a journalist appeared on a well-known podcast with a surprising claim. He said, “In the [United Kingdom] 70-plus percent of the people who die now from COVID are fully vaccinated.”</p>
 <p>The incredulous host asked, “Seventy percent?” and the journalist repeated, “Seven in ten of the people [who died] – I want to keep saying because nobody believes it but the numbers are there in the government documents – the vast majority of people in Britain who died in September were fully vaccinated.”</p>
@@ -1790,7 +1816,7 @@ First we compute the hypothetical number of the vaccinated who would have died i
 And if you used misleading statistics to persuade a large, international audience that they should not get that vaccine, you should feel very bad.</p>
 </section>
 <section id="predicting-crime">
-<h2>Predicting Crime<a class="headerlink" href="#predicting-crime" title="Permalink to this heading">#</a></h2>
+<h2>Predicting Crime<a class="headerlink" href="#predicting-crime" title="Link to this heading">#</a></h2>
 <p>If we understand the base rate fallacy, we can correctly interpret medical and impaired driving tests, and we can avoid being misled by headlines about COVID vaccines.
 We can also shed light on an ongoing debate about the use of data and algorithms in the criminal justice system.</p>
 <p>In 2016 a team of journalists at ProPublica published a now-famous article about COMPAS, which is a statistical tool used in some states to inform decisions about which defendants should be released on bail before trial, how long convicted defendants should be imprisoned, and whether prisoners should be released on probation.</p>
@@ -1814,7 +1840,7 @@ As it turns out, they are not very good:</p>
 <p>The following table shows the results with this base rate, sensitivity, and specificity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_risk_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_risk_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a table showing risk scores for charged and not charged groups.</span>
 <span class="sd">    </span>
 <span class="sd">    prior: array of (charged_count, not_charged_count)</span>
@@ -1961,7 +1987,7 @@ So, people with high risk scores are about twice as likely to re-offend.</p>
 And they might not be fair.</p>
 </section>
 <section id="comparing-groups">
-<h2>Comparing Groups<a class="headerlink" href="#comparing-groups" title="Permalink to this heading">#</a></h2>
+<h2>Comparing Groups<a class="headerlink" href="#comparing-groups" title="Link to this heading">#</a></h2>
 <p>The authors of the ProPublica article considered whether COMPAS has the same accuracy for different groups. With respect to racial groups, they find:</p>
 <blockquote>
 <div><p>… In forecasting who would re-offend, the algorithm made mistakes with black and white defendants at roughly the same rate but in very different ways.</p>
@@ -2106,7 +2132,7 @@ But interpreting these results turns out to be complicated; I think it will be c
 <p>But that’s not the end of the story.</p>
 </section>
 <section id="fairness-is-hard-to-define">
-<h2>Fairness is Hard to Define<a class="headerlink" href="#fairness-is-hard-to-define" title="Permalink to this heading">#</a></h2>
+<h2>Fairness is Hard to Define<a class="headerlink" href="#fairness-is-hard-to-define" title="Link to this heading">#</a></h2>
 <p>A few months after the ProPublica article, the Washington Post published a response with the expositive title: “A computer program used for bail and sentencing decisions was labeled biased against blacks. It’s actually not that clear.”</p>
 <p>It acknowledges that the results of the ProPublica article are correct: the false positive rate for black defendants is higher and the false negative rate is lower.
 But it points out that the PPV and NPV are the nearly the same for both groups:</p>
@@ -2155,7 +2181,7 @@ If we could do that with humans, the world would be a better place.</p>
 But that brings us back to the question of calibration.</p>
 </section>
 <section id="fairness-is-hard-to-achieve">
-<h2>Fairness is Hard to Achieve<a class="headerlink" href="#fairness-is-hard-to-achieve" title="Permalink to this heading">#</a></h2>
+<h2>Fairness is Hard to Achieve<a class="headerlink" href="#fairness-is-hard-to-achieve" title="Link to this heading">#</a></h2>
 <p>Even if you think we should not use predictive algorithms in the criminal justice system, the reality is that we do. So at least for now we have a difficult question to answer:</p>
 <ol class="arabic simple">
 <li><p>Should we calibrate algorithms so predictive values are the same in all groups, and accept different error rates (as we see with black and white defendants)?</p></li>
@@ -2190,7 +2216,7 @@ But a person does not choose their age any more than they choose their race or s
 <p>Fortunately, we have tools for making decisions when people disagree, including public debate and representative democracy. But the key words in that sentence are “public” and “representative”. The algorithms we use in the criminal justice system should be a topic of public discussion, not a trade secret. And the debate should include everyone involved, including perpetrators and victims of crime.</p>
 </section>
 <section id="all-about-the-base-rate">
-<h2>All about the base rate<a class="headerlink" href="#all-about-the-base-rate" title="Permalink to this heading">#</a></h2>
+<h2>All about the base rate<a class="headerlink" href="#all-about-the-base-rate" title="Link to this heading">#</a></h2>
 <p>Sometimes the base rate fallacy is funny. There’s a very old joke that goes like, “I read that 21% of car crashes are caused by drunk drivers. Do you know what that means? It means that 79% are caused by sober drivers. Those sober drivers aren’t safe – get them off the road!”</p>
 <p>And sometimes the base rate fallacy is obvious, like the xkcd comic that says “Remember, right-handed people commit 90% of all base rate errors”.</p>
 <p>But often it is more subtle.
@@ -2202,7 +2228,7 @@ And those are good properties for a test to have.</p>
 <p>And it’s important for you to know this, because there’s a good chance your doctor does not.</p>
 </section>
 <section id="sources-and-related-reading">
-<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The sensitivity and specificity of COVID antigen tests was reported in the Wirecutter feature of <a class="reference external" href="https://www.nytimes.com/wirecutter/reviews/at-home-covid-test-kits"><em>The New York Times</em></a> (Lee, 2021).</p></li>
 <li><p>The false positive COVID tests from the Orig3n lab were reported in <a class="reference external" href="https://www.bostonglobe.com/2020/09/08/nation/state-suspends-covid-19-testing-orig3n-boston-based-lab-responsible-least-383-false-positive-results/"><em>The Boston Globe</em></a> (Moore, 2020).</p></li>
@@ -2259,11 +2285,10 @@ And those are good properties for a test to have.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="longtail.html"
@@ -2283,10 +2308,7 @@ And those are good properties for a test to have.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2294,6 +2316,7 @@ And those are good properties for a test to have.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2334,9 +2357,10 @@ By Allen B. Downey
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2360,8 +2384,8 @@ By Allen B. Downey
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

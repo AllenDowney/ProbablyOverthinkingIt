@@ -11,6 +11,8 @@ Before you read these notebooks, please keep in mind:
 
 * While preparing these notebooks, I made some changes to improve the readability of the code. There might be small differences between what appears in the book and what you get when you run the code.
 
+## Chapters
+
 **Chapter 1: Are You Normal? Hint: No.**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/gaussian.ipynb)
@@ -84,3 +86,53 @@ Before you read these notebooks, please keep in mind:
 **Chapter 12: Chasing the Overton Window**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/overton.ipynb)
+
+
+## Examples
+
+These notebooks are not tied to a single chapter; they explore topics from the book and related questions.
+
+**The Principal Components of Anthropometry**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ansur_pca.ipynb)
+
+
+**Chile Earthquake Magnitudes**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/chile.ipynb)
+
+**Greatest GOAT of All Time?**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/cricket.ipynb)
+
+**Is the Ideology Gap Growing?**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ideology_gap.ipynb)
+
+**Population Growth and Migration**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/migration.ipynb)
+
+**Are you middle-aged?**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/midlife.ipynb)
+
+**So Many Bronze**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/olympics.ipynb)
+
+**Power law? Or just a guideline?**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ctokens.ipynb)
+
+**The Girl Named Florida**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/florida.ipynb)
+
+**The Girl Born on Tuesday**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/tuesday.ipynb)
+
+**Field Sobriety Tests and the Base Rate Fallacy**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/sobriety.ipynb)

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Causation, Collision, and Confusion &#8212; Probably Overthinking It</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'birthweight';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -75,19 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,6 +137,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -137,10 +148,22 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Probably Overthinking It</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -172,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="als_ms.html">Simpson’s What?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bertrand.html">Bertrand’s Boxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chile.html">Chile Earthquake Magnitudes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cricket.html">Greatest GOAT of All Time?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Population Growth and Migration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="midlife.html">Are you middle-aged?</a></li>
@@ -197,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -206,14 +230,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -303,26 +327,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -360,23 +386,23 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="causation-collision-and-confusion">
-<h1>Causation, Collision, and Confusion<a class="headerlink" href="#causation-collision-and-confusion" title="Permalink to this heading">#</a></h1>
+<h1>Causation, Collision, and Confusion<a class="headerlink" href="#causation-collision-and-confusion" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/birthweight.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">empiricaldist</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
 </pre></div>
@@ -468,7 +494,7 @@ Using computer simulations, they showed that if you have two groups with the sam
 Using the same dataset, which is available from the National Center for Health Statistics (NCHS), I will replicate their results and summarize their explanation.
 Then I’ll repeat the analysis with data from 2018, and we’ll see what has changed.</p>
 <section id="three-million-babies-cant-be-wrong">
-<h2>Three Million Babies Can’t Be Wrong<a class="headerlink" href="#three-million-babies-cant-be-wrong" title="Permalink to this heading">#</a></h2>
+<h2>Three Million Babies Can’t Be Wrong<a class="headerlink" href="#three-million-babies-cant-be-wrong" title="Link to this heading">#</a></h2>
 <p>The data are originally from the <a class="reference external" href="https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm">National Center for Health Statistics (NCHS)</a>.</p>
 <p>I selected the columns we need and stored them in a compressed HDF file.</p>
 <div class="cell docutils container">
@@ -522,7 +548,7 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span>
 
 <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">])</span>
 </pre></div>
@@ -617,7 +643,7 @@ Name: count, dtype: int64
 <p>Checking the distribution of birthweights.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Cdf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cdf</span>
 
 <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">7777</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -821,7 +847,7 @@ Y 20.599922088040515
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percent_diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rel</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">percent_diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Percentage difference.</span>
 
 <span class="sd">    x: the number of interest</span>
@@ -892,7 +918,7 @@ Babies of smokers were lighter on average than babies of nonsmokers by about 7%,
 <p>The following figure shows the distribution of weights for the two groups. The vertical line is at 2500 grams, the threshold for low birthweight.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">kdeplot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">kdeplot</span>
 
 <span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;Smokers&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="s2">&quot;Nonsmokers&quot;</span><span class="p">}</span>
 <span class="n">ls</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="s2">&quot;--&quot;</span><span class="p">}</span>
@@ -1159,7 +1185,7 @@ The following figure shows the results.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
     <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Smoker&quot;</span><span class="p">)</span>
     <span class="n">table</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nonsmoker&quot;</span><span class="p">)</span>
 
@@ -1187,7 +1213,7 @@ Among babies heavier than 2000 grams, mortality is higher for children of smoker
 Among lighter babies, mortality is lower for children of smokers.</p>
 </section>
 <section id="other-groups">
-<h2>Other Groups<a class="headerlink" href="#other-groups" title="Permalink to this heading">#</a></h2>
+<h2>Other Groups<a class="headerlink" href="#other-groups" title="Link to this heading">#</a></h2>
 <p>As it turns out, the Low Birthweight Paradox doesn’t apply only to smokers and nonsmokers.
 The 2006 paper describes a similar effect for babies born at high altitude: they are lighter on average than babies born at low altitude, but if we select LBW babies, the mortality rate is lower for the ones born at high altitude.</p>
 <p>And Yerushalmy reported another example.
@@ -1406,7 +1432,7 @@ And Yerushalmy’s error might be understandable, but it was also harmful.
 At a time when the health risks of smoking were still contested, his paper created confusion and gave cover to people with an interest in minimizing the dangers.</p>
 </section>
 <section id="the-end-of-the-paradox">
-<h2>The End of the Paradox<a class="headerlink" href="#the-end-of-the-paradox" title="Permalink to this heading">#</a></h2>
+<h2>The End of the Paradox<a class="headerlink" href="#the-end-of-the-paradox" title="Link to this heading">#</a></h2>
 <p>When a paradoxical phenomenon is explained, it ceases to be a paradox. And in the case of the Low Birthweight Paradox, at about the same time it also ceased to be a phenomenon.</p>
 <p>In the most recent NCHS dataset, including 3.8 million babies born in 2018, the Low Birthweight Paradox has disappeared.</p>
 <div class="cell docutils container">
@@ -1495,7 +1521,7 @@ Name: count, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">empiricaldist</span> <span class="kn">import</span> <span class="n">Pmf</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span>
 
 <span class="n">Pmf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">])</span>
 </pre></div>
@@ -1952,7 +1978,7 @@ The following figure shows the results.</p>
 For better or worse, the low birthweight paradox is no more.</p>
 </section>
 <section id="a-twin-paradox">
-<h2>A Twin Paradox<a class="headerlink" href="#a-twin-paradox" title="Permalink to this heading">#</a></h2>
+<h2>A Twin Paradox<a class="headerlink" href="#a-twin-paradox" title="Link to this heading">#</a></h2>
 <p>The Low Birthweight Paradox might seem like an esoteric issue, but similar phenomena are an ongoing source of confusion.
 As an example, in 2000, researchers at the University of Hong Kong reported a study of 1.5 million babies born in Sweden between 1982 and 1995.
 They computed mortality rates for single births, twins, and triplets as a function of gestational age (that is, number of weeks of pregnancy), and found:</p>
@@ -1972,7 +1998,7 @@ Rather, “Preterm babies have more than the prematurity problem of their specif
 So if a preterm baby is a twin or triplet, it is less likely that they suffer from some other, more harmful, condition.</p>
 </section>
 <section id="the-obesity-paradox">
-<h2>The Obesity Paradox<a class="headerlink" href="#the-obesity-paradox" title="Permalink to this heading">#</a></h2>
+<h2>The Obesity Paradox<a class="headerlink" href="#the-obesity-paradox" title="Link to this heading">#</a></h2>
 <p>The Low Birthweight Paradox is no more, and the Twin Paradox has been explained, but the Obesity Paradox is alive and well.</p>
 <p>The first example of the Obesity Paradox was reported in 1999.
 Although it was well known that obesity is a risk factor for kidney disease, and that kidney disease is often fatal, researchers found that among patients undergoing dialysis due to kidney failure, survival times for obese patients were <em>longer</em> than for other patients.
@@ -2011,7 +2037,7 @@ And it does not rule out other statistical explanations; for example, if long-te
 <p>Nevertheless, until there is evidence for other explanations, the title of my article is “The Obesity Paradox: No.”</p>
 </section>
 <section id="berksons-toaster">
-<h2>Berkson’s Toaster<a class="headerlink" href="#berksons-toaster" title="Permalink to this heading">#</a></h2>
+<h2>Berkson’s Toaster<a class="headerlink" href="#berksons-toaster" title="Link to this heading">#</a></h2>
 <p>At some point while you were reading this chapter, you might have noticed connections between the Low Birthweight Paradox and Berkson’s Paradox.</p>
 <p>With Berkson’s paradox, if there are two ways to be included in a sample, we often find that the alternatives are negatively correlated in the sample, even if they are unrelated, or positively correlated, in the general population.
 For example, to dunk a basketball, you have to be tall or you have to be able to jump.
@@ -2027,7 +2053,7 @@ You would probably feel relieved.</p>
 That doesn’t mean burning toast is good, but if the alarm is sounding, burnt toast is better than the alternatives.</p>
 </section>
 <section id="causal-diagrams">
-<h2>Causal diagrams<a class="headerlink" href="#causal-diagrams" title="Permalink to this heading">#</a></h2>
+<h2>Causal diagrams<a class="headerlink" href="#causal-diagrams" title="Link to this heading">#</a></h2>
 <p>The 2006 paper explaining the Low Birthweight Paradox and the 2013 paper explaining the Obesity Paradox are noteworthy because they use causal diagrams to represent hypothetical causes and their effects.
 For example, here is a causal diagram that represents an explanation for the Low Birthweight Paradox:</p>
 <div class="cell docutils container">
@@ -2035,7 +2061,7 @@ For example, here is a causal diagram that represents an explanation for the Low
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># based on https://matplotlib.org/matplotblog/posts/mpl-for-making-diagrams/</span>
 
 
-<span class="k">def</span> <span class="nf">make_diagram</span><span class="p">(</span><span class="n">fig_width</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">fig_height</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bg_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_diagram</span><span class="p">(</span><span class="n">fig_width</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">fig_height</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bg_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">):</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">fig_width</span><span class="p">,</span> <span class="n">fig_height</span><span class="p">))</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fig_width</span><span class="p">)</span>
@@ -2138,7 +2164,7 @@ What is necessary, but not shown in the diagram, is that the total contribution 
 So what I’ve been calling Berkson’s Paradox is more generally known as collider bias.</p>
 </section>
 <section id="sources-and-related-reading">
-<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Permalink to this heading">#</a></h2>
+<h2>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Yerushalmy’s paper was originally published in the <em><a class="reference external" href="https://academic.oup.com/aje">American Journal of Epidemiology</a></em> in 1971 and reprinted in the <em><a class="reference external" href="https://academic.oup.com/ije/article/43/5/1355/2904402">International Journal of Epidemiology</a></em> in 2014.</p></li>
 <li><p>The editorial introduction to the reprinted version is by Shah Ebrahim, with commentaries by Keyes, Davey Smith, and Susser, Parascandola, Goldstein, Kramer, Zhang, and Platt, and VanderWeele.</p></li>
@@ -2177,11 +2203,10 @@ So what I’ve been calling Berkson’s Paradox is more generally known as colli
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="berkson.html"
@@ -2201,10 +2226,7 @@ So what I’ve been calling Berkson’s Paradox is more generally known as colli
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2212,6 +2234,7 @@ So what I’ve been calling Berkson’s Paradox is more generally known as colli
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2248,9 +2271,10 @@ By Allen B. Downey
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2274,8 +2298,8 @@ By Allen B. Downey
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
