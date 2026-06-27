@@ -109,17 +109,9 @@ These notebooks are not tied to a single chapter; they explore topics from the b
 
 [Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ideology_gap.ipynb)
 
-**Population Growth and Migration**
-
-[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/migration.ipynb)
-
 **Are you middle-aged?**
 
 [Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/midlife.ipynb)
-
-**So Many Bronze**
-
-[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/olympics.ipynb)
 
 **Power law? Or just a guideline?**
 
@@ -128,10 +120,6 @@ These notebooks are not tied to a single chapter; they explore topics from the b
 **The Girl Named Florida**
 
 [Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/florida.ipynb)
-
-**The Girl Born on Tuesday**
-
-[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/tuesday.ipynb)
 
 **Field Sobriety Tests and the Base Rate Fallacy**
 
