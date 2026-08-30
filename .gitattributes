@@ -1,0 +1,2 @@
+*.hdf filter=lfs diff=lfs merge=lfs -text
+data/Compustat-WRDS-2016-06-13.csv filter=lfs diff=lfs merge=lfs -text
