@@ -18,16 +18,14 @@ cp ../notebooks/progress.ipynb .
 cp ../notebooks/overton.ipynb .
 cp ../notebooks/overton_irt.ipynb .
 cp ../examples/ansur_pca.ipynb .
-cp ../examples/bertrand.ipynb .
 cp ../examples/ideology_gap.ipynb .
-cp ../examples/migration.ipynb .
 cp ../examples/midlife.ipynb .
-cp ../examples/olympics.ipynb .
 cp ../examples/ctokens.ipynb .
 cp ../examples/als_ms.ipynb .
 cp ../examples/florida.ipynb .
-cp ../examples/tuesday.ipynb .
 cp ../examples/sobriety.ipynb .
+cp ../examples/chile.ipynb .
+cp ../examples/cricket.ipynb .
 
 # build the HTML version
 jb build .
