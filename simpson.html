@@ -389,43 +389,8 @@ document.write(`
   <section id="penguins-pessimists-and-paradoxes">
 <h1><span class="section-number">10. </span>Penguins, Pessimists, and Paradoxes<a class="headerlink" href="#penguins-pessimists-and-paradoxes" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
+<p>If you like <em>Probably Overthinking It</em>, you’ll like my book in progress, <a class="reference external" href="https://allendowney.com/ywcn"><em>You Would Choose Now</em></a>, which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/simpson.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
 <div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -469,7 +434,12 @@ If you have not seen it before, Simpson’s paradox can seem impossible, but as 
 <p>Would you say that most of the time people try to be helpful, or that they are mostly just looking out for themselves? Almost every year since 1972, the General Social Survey (GSS) has posed that question to a representative sample of adult residents of the United States.</p>
 <p>The following figure shows how the responses have changed over time.
 The circles show the percentage of people in each survey who said that people try to be helpful.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://gssdataexplorer.norc.org/variables/439/vshow</span>
 
@@ -479,8 +449,14 @@ The circles show the percentage of people in each survey who said that people tr
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;gss&quot;</span><span class="p">)</span>
 <span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
@@ -492,8 +468,14 @@ The circles show the percentage of people in each survey who said that people tr
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1978</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="s2">&quot;helpful&quot;</span><span class="p">]</span>
@@ -514,8 +496,14 @@ Name: helpful, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
@@ -530,8 +518,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span>
 
@@ -539,6 +533,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -582,7 +577,12 @@ Name: count, dtype: int64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1987</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">year</span><span class="p">,</span> <span class="s2">&quot;helpful&quot;</span><span class="p">]</span>
@@ -603,8 +603,14 @@ Name: helpful, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
@@ -619,8 +625,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span>
 
@@ -628,6 +640,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -671,7 +684,12 @@ Name: count, dtype: int64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;helpful&quot;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">xtab</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
@@ -685,8 +703,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Would you say that most of the time people try to be helpful, </span>
 <span class="s2">or that they are mostly just looking out for themselves?</span>
@@ -696,8 +720,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_series_lowess</span>
 
@@ -712,11 +742,17 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/79564fae1bb84b19254460e42e895a4385286301dd28524a72efedb977f5b3d9.png" src="_images/79564fae1bb84b19254460e42e895a4385286301dd28524a72efedb977f5b3d9.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_lowess</span>
 
@@ -757,6 +793,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The percentages vary from year to year, in part because the GSS surveys a different group of people for each survey.
 Looking at the extremes: in 1978, about 58% said “helpful”; in 1996, it was only 40%.</p>
@@ -764,7 +801,12 @@ Looking at the extremes: in 1978, about 58% said “helpful”; in 1996, it was 
 Putting aside the extreme highs and lows, it looks like the fraction of optimists has decreased since 1990, from about 51% to 48%.</p>
 <p>These results don’t just depend on when you ask; they also depend on who you ask.
 In particular, they depend strongly on when the respondents were born, as shown in the following figure.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">prepare_yvar</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">chunk_series</span>
@@ -792,6 +834,7 @@ In particular, they depend strongly on when the respondents were born, as shown 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/3dfc27eb6fc13ddc75b061a5ac5d054a10fbec1825d7a86eb5f373aa6420b95a.png" src="_images/3dfc27eb6fc13ddc75b061a5ac5d054a10fbec1825d7a86eb5f373aa6420b95a.png" />
 </div>
@@ -802,7 +845,12 @@ Because the GSS only surveys adults, the youngest, as of 2021, was born in 2003.
 Again, the markers show variability in the survey results; the dashed line shows the long-term trend.</p>
 <p>Starting with people born in the 1940s, Americans’ faith in humanity has been declining consistently, from about 55% for people born before 1930 to about 30% for people born after 1990.
 That is a substantial decrease!</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
 </pre></div>
@@ -824,18 +872,30 @@ Length: 68, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>To get an idea of what’s happening, let’s zoom in on people born in the 1940s.
 The following figure shows the fraction of people in this cohort who said people would try to be helpful, plotted over time.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">subset</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_table</span>
 
@@ -853,8 +913,14 @@ The following figure shows the fraction of people in this cohort who said people
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">)</span>
 </pre></div>
@@ -887,8 +953,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Born in the 1940s&quot;</span><span class="p">)</span>
 
@@ -901,6 +973,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/e575bf6cd9e4799b7a875483a0f665cdbb292d171061771f0737b437d06b0e41.png" src="_images/e575bf6cd9e4799b7a875483a0f665cdbb292d171061771f0737b437d06b0e41.png" />
 </div>
@@ -923,7 +996,12 @@ So maybe that put them in a more positive frame of mind.</p>
 It was all of them.</p>
 <p>The following figure shows the responses to this question grouped by decade of birth and plotted over time.
 For clarity, I’ve dropped the circles showing the annual results and plotted only the smoothed lines.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">visualize_table</span><span class="p">,</span> <span class="n">label_table</span>
 
@@ -940,6 +1018,7 @@ For clarity, I’ve dropped the circles showing the annual results and plotted o
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/a95bb997575eaca25231dee8eecda089a7929f8d9aa8c81461a2c45066dc4a5e.png" src="_images/a95bb997575eaca25231dee8eecda089a7929f8d9aa8c81461a2c45066dc4a5e.png" />
 </div>
@@ -952,7 +1031,12 @@ if all of the groups are increasing, and we combine them into a single group, ho
 <p>In this example, the explanation is <em>generational replacement</em>; as the oldest, more optimistic cohort dies off, it is replaced by the youngest, more pessimistic cohort.</p>
 <p>The differences between these generations are substantial.
 In the most recent data, only 39% of respondents born in the 1990s said people would try to be helpful, compared to 51% of those born in the 1960s and 64% of those born in the 1920s.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="mi">1920</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -963,8 +1047,14 @@ In the most recent data, only 39% of respondents born in the 1990s said people w
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="mi">1960</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -975,8 +1065,14 @@ In the most recent data, only 39% of respondents born in the 1990s said people w
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="mi">1990</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -987,10 +1083,16 @@ In the most recent data, only 39% of respondents born in the 1990s said people w
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>And the composition of the population has changed a lot over 50 years.
 The following figure shows the distribution of birth years for the respondents at the beginning of the survey in 1973, near the middle in 1990, and most recently in 2018.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 
@@ -1002,11 +1104,17 @@ The following figure shows the distribution of birth years for the respondents a
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b766d7208d97e7965b56537f8ae6553c1ef55a0b5ed4ad05151c00d22126383e.png" src="_images/b766d7208d97e7965b56537f8ae6553c1ef55a0b5ed4ad05151c00d22126383e.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="kn">import</span> <span class="n">kdeplot</span>
 
@@ -1025,6 +1133,7 @@ The following figure shows the distribution of birth years for the respondents a
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/1467969caa09c9d7966b93123701cd38bff2cc707f55033ec5d45f44544dd9b9.png" src="_images/1467969caa09c9d7966b93123701cd38bff2cc707f55033ec5d45f44544dd9b9.png" />
 </div>
@@ -1032,7 +1141,12 @@ The following figure shows the distribution of birth years for the respondents a
 <p>In the earliest years of the survey, most of the respondents were born between 1890 and 1950.
 In the 1990 survey, most were born between 1901 and 1972.
 In the 2018 survey, most were born between 1929 and 2000.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year==1973&quot;</span><span class="p">)[</span><span class="s2">&quot;cohort&quot;</span><span class="p">]</span>
 <span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">series</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -1044,8 +1158,14 @@ In the 2018 survey, most were born between 1929 and 2000.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year==1990&quot;</span><span class="p">)[</span><span class="s2">&quot;cohort&quot;</span><span class="p">]</span>
 <span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">series</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -1057,8 +1177,14 @@ In the 2018 survey, most were born between 1929 and 2000.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year==2018&quot;</span><span class="p">)[</span><span class="s2">&quot;cohort&quot;</span><span class="p">]</span>
 <span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">series</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -1070,6 +1196,7 @@ In the 2018 survey, most were born between 1929 and 2000.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>With this explanation, I hope Simpson’s paradox no longer seems impossible.
 But if it is still surprising, let’s look at another example.</p>
@@ -1091,13 +1218,19 @@ If wages in all groups were doing down, how could overall wages go up?</p>
 <p>To explain what’s going on, I will replicate the results from Norris’s article using data from the Current Population Survey (CPS) conducted by the U.S. Census Bureau and the Bureau of Labor Statistics.
 This dataset includes real wages and education levels for almost 1.9 million participants between 1996 and 2021.
 Real wages are adjusted for inflation and reported in constant 1999 dollars.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ipums_cps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;ipums_cps&quot;</span><span class="p">)</span>
 <span class="n">ipums_cps</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1157,7 +1290,12 @@ Real wages are adjusted for inflation and reported in constant 1999 dollars.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;nohs&quot;</span><span class="p">:</span> <span class="s2">&quot;No diploma&quot;</span><span class="p">,</span>
@@ -1171,8 +1309,14 @@ Real wages are adjusted for inflation and reported in constant 1999 dollars.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="mi">1996</span>
 <span class="n">recent</span> <span class="o">=</span> <span class="n">ipums_cps</span><span class="p">[</span><span class="n">ipums_cps</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="p">]</span>
@@ -1180,6 +1324,7 @@ Real wages are adjusted for inflation and reported in constant 1999 dollars.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1239,7 +1384,12 @@ Real wages are adjusted for inflation and reported in constant 1999 dollars.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recent</span><span class="p">[</span><span class="s2">&quot;real_wage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -1258,8 +1408,14 @@ Name: real_wage, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recent</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -1274,8 +1430,14 @@ Name: degree, dtype: object
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recent</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -1294,8 +1456,14 @@ Name: year, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;real_wage&quot;</span>
@@ -1303,16 +1471,28 @@ Name: year, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overall</span> <span class="o">=</span> <span class="n">recent</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)[</span><span class="s2">&quot;real_wage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">overall</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;overall&quot;</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">linregress</span>
 
@@ -1326,8 +1506,14 @@ Name: year, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">recent</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;real_wage&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
@@ -1335,8 +1521,14 @@ Name: year, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">column</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span>
@@ -1354,8 +1546,14 @@ Some college -148.96847910461423
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;Advanced&quot;</span><span class="p">,</span>
@@ -1368,9 +1566,15 @@ Some college -148.96847910461423
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows average real wages for each level of education over time.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># figwidth = 3.835</span>
 <span class="c1"># plt.figure(figsize=(figwidth, 0.6 * figwidth))</span>
@@ -1399,6 +1603,7 @@ Some college -148.96847910461423
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.YTick at 0x7fb20093ba60&gt;,
   &lt;matplotlib.axis.YTick at 0x7fb2009a2e00&gt;,
@@ -1416,13 +1621,19 @@ The decrease was steepest among people with an associate degree, by about $190 p
 Again, this seems like a contradiction.</p>
 <p>In this example, the explanation is that levels of education changed substantially during this period.
 The following figure shows the fraction of the population at each educational level, plotted over time.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">recent</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">recent</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
 <span class="n">xtab</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1698,7 +1909,12 @@ The following figure shows the fraction of the population at each educational le
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns2</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;High school&quot;</span><span class="p">,</span>
@@ -1717,8 +1933,14 @@ The following figure shows the fraction of the population at each educational le
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nudge</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;No diploma&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Advanced&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="s2">&quot;Associate&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">}</span>
 
@@ -1745,6 +1967,7 @@ The following figure shows the fraction of the population at each educational le
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x7fb200838d00&gt;,
   &lt;matplotlib.axis.XTick at 0x7fb200838cd0&gt;,
@@ -1761,7 +1984,12 @@ Meanwhile, the groups with no diploma, high school, or some college have shrunk 
 <p>So the overall increase in real wages is driven by changes in education levels, not by higher wages at any level.
 For example, a person with a bachelor’s degree in 2021 makes less money, on average, than a person with a bachelor’s degree in 1996.
 But a random person in 2021 is more likely to have a bachelor’s degree (or more) than a person in 1996, so they make more money, on average.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2021</span><span class="p">]</span> <span class="o">-</span> <span class="n">xtab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1996</span><span class="p">]</span>
 </pre></div>
@@ -1779,6 +2007,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In both examples so far, the explanation for Simpson’s paradox is that the population is a mixture of groups and the proportions of the mixture change over time.
 In the GSS examples, the population is a mixture of generations, and the older generations are replaced by younger generations.
@@ -1794,7 +2023,12 @@ For 344 penguins, the dataset includes body mass, flipper length, and the length
 <p>This dataset has become popular with machine learning experts because it is a fun way to demonstrate all kinds of statistical methods, especially classification algorithms.</p>
 <p>Allison Horst, an environmental scientist who helped make this dataset freely available, used it to demonstrate Simpson’s paradox.
 The following figure shows the example she discovered:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
@@ -1806,8 +2040,14 @@ The following figure shows the example she discovered:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">shorten</span><span class="p">(</span><span class="n">species</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Select the first word from a string.&quot;&quot;&quot;</span>
@@ -1818,8 +2058,14 @@ The following figure shows the example she discovered:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var1</span> <span class="o">=</span> <span class="s2">&quot;Flipper Length (mm)&quot;</span>
 <span class="n">var2</span> <span class="o">=</span> <span class="s2">&quot;Culmen Length (mm)&quot;</span>
@@ -1828,8 +2074,14 @@ The following figure shows the example she discovered:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">Or70</span><span class="p">,</span> <span class="n">Pu50</span><span class="p">,</span> <span class="n">Gr30</span>
 
@@ -1838,8 +2090,14 @@ The following figure shows the example she discovered:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">scatterplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a scatter plot grouped by species.</span>
@@ -1867,8 +2125,14 @@ The following figure shows the example she discovered:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_line</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a linear regression line.</span>
@@ -1882,8 +2146,14 @@ The following figure shows the example she discovered:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">linregress</span>
 
@@ -1902,6 +2172,7 @@ The following figure shows the example she discovered:</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/739da3e40e5cf6a99982a66f7dd7f2ca409718775c6d603f8cb5f3ace9505b5f.png" src="_images/739da3e40e5cf6a99982a66f7dd7f2ca409718775c6d603f8cb5f3ace9505b5f.png" />
 </div>
@@ -1915,7 +2186,12 @@ Bigger penguins have bigger beaks.</p>
 <p>However, when we combine samples from different species and find that the correlation of these variables is negative, that’s a statistical artifact.
 It depends on the species we choose and how many penguins of each species we measure.
 So it doesn’t really mean anything.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">species</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">:</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="n">var2</span><span class="p">],</span> <span class="n">group</span><span class="p">[</span><span class="n">var3</span><span class="p">])</span>
@@ -1934,6 +2210,7 @@ overall -0.08502128077717656
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>These results are puzzling only if you think the trend within groups is necessarily the same as the the trend between groups.
 Once you realize that’s not true, the paradox is resolved.</p>
@@ -1957,7 +2234,12 @@ To understand examples like that, let’s start with an analogous example from t
 Out of more than 37,000 people who have answered this question, about 38% said “Yes”.</p>
 <p>Since 1974, they have also asked, “Should divorce in this country be easier or more difficult to obtain than it is now?”
 About 49% of the respondents said it should be more difficult.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;divlaw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
@@ -1968,8 +2250,14 @@ About 49% of the respondents said it should be more difficult.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;divlaw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -1980,19 +2268,31 @@ About 49% of the respondents said it should be more difficult.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;divlaw&quot;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
 <span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">xtab</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/28c57aa2786a3980325e81e465dd6e926b1943c4f2d80f79e7e576daea8f0976.png" src="_images/28c57aa2786a3980325e81e465dd6e926b1943c4f2d80f79e7e576daea8f0976.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;fear&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
@@ -2003,8 +2303,14 @@ About 49% of the respondents said it should be more difficult.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;fear&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -2015,14 +2321,21 @@ About 49% of the respondents said it should be more difficult.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">],</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;fear&quot;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
 <span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">xtab</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/53941f068bcfae6d162e1fd2003127649654d82875ba7ed0f60f0250189465dc.png" src="_images/53941f068bcfae6d162e1fd2003127649654d82875ba7ed0f60f0250189465dc.png" />
 </div>
@@ -2040,7 +2353,12 @@ As it turns out, they are slightly correlated:</p>
 <li><p>It is actually an artifact of Simpson’s paradox.</p></li>
 </ul>
 <p>To explain the third point, let’s look at responses from men and women separately. The following figure shows this breakdown.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This example doesn&#39;t work with the new 2021 data.</span>
 <span class="c1"># Examples of Simpson&#39;s paradox are not always robust, but the</span>
@@ -2056,15 +2374,27 @@ As it turns out, they are slightly correlated:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fear&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;fear&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">0</span><span class="p">}})</span>
 <span class="n">data</span><span class="p">[</span><span class="s2">&quot;fear&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -2079,8 +2409,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;sex&quot;</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Male&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Female&quot;</span><span class="p">}})</span>
 <span class="n">data</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -2095,8 +2431,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pivot_table</span>
 
@@ -2118,13 +2460,20 @@ Name: all, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2168,7 +2517,12 @@ Name: all, dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span>
 </pre></div>
@@ -2182,8 +2536,14 @@ Name: all, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">anchor_legend</span>
 
@@ -2202,6 +2562,7 @@ Name: all, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/c5bbad017159179e2ab7b0934422b41a6c43fe4641c7ea4675acee15f991f292.png" src="_images/c5bbad017159179e2ab7b0934422b41a6c43fe4641c7ea4675acee15f991f292.png" />
 </div>
@@ -2221,13 +2582,19 @@ You can actually see these proportions in the figure:</p>
 </ul>
 <p>In both cases, the overall proportion is a mixture of the male and female proportions. But it is a <em>different</em> mixture on the left and right.
 That’s why Simpson’s paradox is possible.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;fear&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
 <span class="n">xtab</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2277,7 +2644,12 @@ For our purposes, it doesn’t matter what these treatments are; I’ll just cal
 <p>Among 350 patients who received Treatment A, 78% had a positive outcome;
 among another 350 patients who received Treatment B, 83% had a positive outcome.
 So it seems like Treatment B is better.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">78</span><span class="p">,</span> <span class="mi">83</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
@@ -2292,8 +2664,14 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Small&quot;</span><span class="p">,</span> <span class="s2">&quot;Large&quot;</span><span class="p">]</span>
 <span class="n">numer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">81</span><span class="p">,</span> <span class="mi">192</span><span class="p">],</span> <span class="p">[</span><span class="mi">234</span><span class="p">,</span> <span class="mi">55</span><span class="p">]],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
@@ -2301,6 +2679,7 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2339,13 +2718,19 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">denom</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">87</span><span class="p">,</span> <span class="mi">263</span><span class="p">],</span> <span class="p">[</span><span class="mi">270</span><span class="p">,</span> <span class="mi">80</span><span class="p">]],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 <span class="n">denom</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2384,7 +2769,12 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">denom</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
@@ -2397,8 +2787,14 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">numer</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">denom</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
 <span class="n">series</span>
@@ -2412,6 +2808,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>However, when they split the patients into groups, they found that the results were reversed:</p>
 <ul class="simple">
@@ -2419,13 +2816,19 @@ dtype: float64
 <li><p>Among patients with larger kidney stones, Treatment A was better again, with a success rate of 73% compared to 69%.</p></li>
 </ul>
 <p>The following figure shows these results in graphical form.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">numer</span> <span class="o">/</span> <span class="n">denom</span> <span class="o">*</span> <span class="mi">100</span>
 <span class="n">table</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2464,7 +2867,12 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;Small&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
 <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Large&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">)</span>
@@ -2484,6 +2892,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/cf0652e865b6cf2b4aa1e22d8e34500490d04022fd73929a633ad1596d88f96a.png" src="_images/cf0652e865b6cf2b4aa1e22d8e34500490d04022fd73929a633ad1596d88f96a.png" />
 </div>
@@ -2493,13 +2902,19 @@ But they are different mixtures on the left and right.</p>
 <p>For medical reasons, patients with larger kidney stones were more likely to receive Treatment A; patients with smaller kidney stones were more likely to receive Treatment B.</p>
 <p>As a result, among people who received Treatment A, 75% had large kidney stones, which is why the square marker on the left is closer to the Large group.
 And among people who received Treatment B, 77% had small kidney stones, which is why the triangle marker is closer to the Small group.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">props</span> <span class="o">=</span> <span class="n">denom</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">denom</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">props</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2560,22 +2975,39 @@ If you are choosing a treatment, you should look at the results within the group
 <p>Now that we have mastered Simpson’s paradox, let’s get back to the example from the beginning of the chapter, the newsletter that went viral with the claim that “Vaccinated English adults under 60 are dying at twice the rate of unvaccinated people the same age”.</p>
 <p>The newsletter includes a graph based on data from the U.K. Office for National Statistics.
 I downloaded the same data and replicated the graph, which looks like this:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fbdca5329-b20b-4518-a733-fff84cc22124_1098x681.png</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsbyvaccinationstatusengland</span>
 <span class="c1"># https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsbyvaccinationstatusengland/deathsoccurringbetween2januaryand24september2021/datasetfinalcorrected3.xlsx</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">,</span>
@@ -2587,6 +3019,7 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2694,14 +3127,25 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;Age-specific rate per 100,000&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;:&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">}})</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
@@ -2717,8 +3161,14 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="s2">&quot;Week ending&quot;</span><span class="p">,</span>
@@ -2729,13 +3179,20 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2903,14 +3360,25 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recent</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2021-3-19&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="n">recent</span><span class="p">][</span><span class="s2">&quot;Second dose&quot;</span><span class="p">,</span> <span class="s2">&quot;10-59&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vaccinated&quot;</span><span class="p">)</span>
 <span class="n">table</span><span class="p">[</span><span class="n">recent</span><span class="p">][</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;10-59&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">)</span>
@@ -2926,6 +3394,7 @@ I downloaded the same data and replicated the graph, which looks like this:</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/9e1920f9f05c22099f539eabd80e2a5fcecbfce9eafb8e0117a603189ae62db3.png" src="_images/9e1920f9f05c22099f539eabd80e2a5fcecbfce9eafb8e0117a603189ae62db3.png" />
 </div>
@@ -2941,22 +3410,39 @@ Well, I do.</p>
 </ul>
 <p>Let’s debunk one thing at a time.
 First, here’s what the graph looks like if we include the entire dataset, which starts in January:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2021-01-01&quot;</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2021-09-30&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Weekly deaths per 100k&quot;</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;Second dose&quot;</span><span class="p">,</span> <span class="s2">&quot;10-59&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vaccinated&quot;</span><span class="p">)</span>
 <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;10-59&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">)</span>
@@ -2965,6 +3451,7 @@ First, here’s what the graph looks like if we include the entire dataset, whic
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/bdb5063273438ac74dcbca6ce9ec9bc31bde825d8e28a01fdcac928ed8bf2b7d.png" src="_images/bdb5063273438ac74dcbca6ce9ec9bc31bde825d8e28a01fdcac928ed8bf2b7d.png" />
 </div>
@@ -2974,7 +3461,12 @@ Those deaths cannot have been caused by the vaccine; in fact, they were caused b
 <p>The unnamed journalist leaves out the time range that contradicts him; he also leaves out the age ranges that contradict him.
 In all of the older age ranges, death rates were consistently lower among people who had been vaccinated.
 The following figures show death rates for people in their 60s and 70s, and people over 80.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="s2">&quot;60-69&quot;</span>
 <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">,</span> <span class="n">ages</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">)</span>
@@ -2984,11 +3476,17 @@ The following figures show death rates for people in their 60s and 70s, and peop
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/84200bb9a44138218703b53c57396e126a7574328bcedc15d4d3294a9463caa6.png" src="_images/84200bb9a44138218703b53c57396e126a7574328bcedc15d4d3294a9463caa6.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="s2">&quot;70-79&quot;</span>
 <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">,</span> <span class="n">ages</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">)</span>
@@ -2998,11 +3496,17 @@ The following figures show death rates for people in their 60s and 70s, and peop
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/7ce35c2f7b5a5a68827d5fd13db009682181c56c4943a7ff2dbd6c291c0da8bb.png" src="_images/7ce35c2f7b5a5a68827d5fd13db009682181c56c4943a7ff2dbd6c291c0da8bb.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="s2">&quot;80+&quot;</span>
 <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">,</span> <span class="n">ages</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">)</span>
@@ -3012,12 +3516,18 @@ The following figures show death rates for people in their 60s and 70s, and peop
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/4d1518350ec88419132bc9e78a6d34ebbc3ff419d9981f84c88db50d8c8af742.png" src="_images/4d1518350ec88419132bc9e78a6d34ebbc3ff419d9981f84c88db50d8c8af742.png" />
 </div>
 </div>
 <p>Notice that the <span class="math notranslate nohighlight">\(y\)</span> axes are on different scales; death rates are much higher in the older age groups.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="s2">&quot;80+&quot;</span>
 <span class="n">ratio</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">,</span> <span class="n">ages</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Second dose&quot;</span><span class="p">,</span> <span class="n">ages</span><span class="p">]</span>
@@ -3041,6 +3551,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In all of these groups, death rates are substantially lower for people who are vaccinated, which is what we expect from a vaccine that has been shown in large clinical trials to be safe and effective.</p>
 <p>So what explains the apparent reversal among people between 10 and 59 years old?
@@ -3061,7 +3572,12 @@ Finally, to estimate the fraction of people in each age group, he uses data from
 Not to get lost in the details, these are all reliable data sources.</p>
 <p>Combining these datasets, Morris is able to compute the distribution of ages in the vaccinated and unvaccinated groups at the beginning of August 2021 (choosing a point near the middle of the interval in the original graph).
 The following figure shows the results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;10-14&quot;</span><span class="p">,</span>
@@ -3078,8 +3594,14 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">8.8</span><span class="p">,</span> <span class="mf">23.1</span><span class="p">,</span> <span class="mf">39.1</span><span class="p">,</span> <span class="mf">48.4</span><span class="p">,</span> <span class="mf">66.9</span><span class="p">,</span> <span class="mf">97.3</span><span class="p">,</span> <span class="mf">143.3</span><span class="p">,</span> <span class="mf">219.6</span><span class="p">,</span> <span class="mf">321.5</span><span class="p">,</span> <span class="mf">478.2</span><span class="p">]</span>
 <span class="n">pct_vax</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">26.7</span><span class="p">,</span> <span class="mf">59.6</span><span class="p">,</span> <span class="mf">59.7</span><span class="p">,</span> <span class="mf">63.3</span><span class="p">,</span> <span class="mf">63.3</span><span class="p">,</span> <span class="mf">74.6</span><span class="p">,</span> <span class="mf">80.5</span><span class="p">,</span> <span class="mf">85.6</span><span class="p">,</span> <span class="mf">88.2</span><span class="p">]</span>
@@ -3087,8 +3609,14 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -3099,14 +3627,21 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">,</span> <span class="n">pct_vax</span><span class="o">=</span><span class="n">pct_vax</span><span class="p">,</span> <span class="n">pct_pop</span><span class="o">=</span><span class="n">pct_pop</span><span class="p">),</span> <span class="n">index</span><span class="p">)</span>
 <span class="n">sheet</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3196,13 +3731,19 @@ The following figure shows the results.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_pop&quot;</span><span class="p">]</span> <span class="o">/=</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_pop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">sheet</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3292,7 +3833,12 @@ The following figure shows the results.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_vax_age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_pop&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_vax&quot;</span><span class="p">]</span>
 <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_vax_age&quot;</span><span class="p">]</span> <span class="o">/=</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_vax_age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -3300,6 +3846,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3400,7 +3947,12 @@ The following figure shows the results.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_novax_age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_pop&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_vax&quot;</span><span class="p">])</span>
 <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_novax_age&quot;</span><span class="p">]</span> <span class="o">/=</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_novax_age&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -3408,6 +3960,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3519,7 +4072,12 @@ The following figure shows the results.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span>
 
@@ -3538,11 +4096,17 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/66e0b0441ec089a1957334b99cdb086ef12a87595d09d72181c739803f304c51.png" src="_images/66e0b0441ec089a1957334b99cdb086ef12a87595d09d72181c739803f304c51.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">57</span><span class="p">]</span>
 
@@ -3563,6 +4127,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.YTick at 0x7fb1f816ece0&gt;,
   &lt;matplotlib.axis.YTick at 0x7fb1f816e1a0&gt;,
@@ -3573,7 +4138,12 @@ The following figure shows the results.</p>
 <img alt="_images/b31f910278053d60be71af39797ca23ef32b1b6d02c69343c73f3d4e64b23756.png" src="_images/b31f910278053d60be71af39797ca23ef32b1b6d02c69343c73f3d4e64b23756.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_vax</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">xs</span>
 <span class="n">pmf_novax</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">xs</span>
@@ -3586,6 +4156,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>At this point during the rollout of the vaccines, people who were vaccinated were more likely to be at the high end of the age range, and people who were unvaccinated were more likely to be at the low end.
 Among the vaccinated, the average age was about 40; among the unvaccinated, it was 27.</p>
@@ -3595,12 +4166,18 @@ The ratio of these two rates is about 2.4.</p>
 <p>So, prior to the pandemic, we would expect people with the age distribution of the vaccinated to die at a rate 2.4 times higher than people with the age distribution of the unvaccinated, just because they are older.</p>
 <p>In reality, the pandemic increased the death rate in both groups, so the actual ratio was smaller, about 1.8.
 Thus, the results the journalist presented are not evidence that vaccines are harmful; as Morris concludes, they are “not unexpected, and can be fully explained by the Simpson’s paradox artifact”.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3712,7 +4289,12 @@ Thus, the results the journalist presented are not evidence that vaccines are ha
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;death_vax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;rate&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_vax_age&quot;</span><span class="p">]</span>
 <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;death_novax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;rate&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;pct_novax_age&quot;</span><span class="p">]</span>
@@ -3720,6 +4302,7 @@ Thus, the results the journalist presented are not evidence that vaccines are ha
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3853,7 +4436,12 @@ Thus, the results the journalist presented are not evidence that vaccines are ha
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;death_vax&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;death_novax&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
@@ -3864,8 +4452,14 @@ Thus, the results the journalist presented are not evidence that vaccines are ha
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;death_vax&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;death_novax&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
@@ -3876,6 +4470,7 @@ Thus, the results the journalist presented are not evidence that vaccines are ha
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="debunk-redux">
@@ -3883,15 +4478,26 @@ Thus, the results the journalist presented are not evidence that vaccines are ha
 <p>So far we have used only data that was publicly available in November 2021, but if we take advantage of more recent data, we can get a clearer picture of what was happening then and what has happened since.</p>
 <p>In more recent reports, data from the U.K. Office of National Statistics are broken into smaller age groups.
 Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 to 49, and 50 to 59.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsbyvaccinationstatusengland</span>
 <span class="c1"># https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/deathsbyvaccinationstatusengland/deathsoccurringbetween1january2021and31march2022/referencetable20220516accessiblecorrected.xlsx</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">,</span>
@@ -3902,6 +4508,7 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -4009,7 +4616,12 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
@@ -4025,8 +4637,14 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Month&quot;</span><span class="p">])</span>
 </pre></div>
@@ -4038,24 +4656,42 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate</span> <span class="o">=</span> <span class="s2">&quot;Age-standardised mortality rate / 100,000 person-years&quot;</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;rate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">rate</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="o">/</span> <span class="mi">52</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="s2">&quot;Count of deaths&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="n">count</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;&lt;3&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">}})</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_cause</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Cause of Death&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;All causes&quot;</span>
 <span class="n">all_cause_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">all_cause</span><span class="p">]</span>
@@ -4068,8 +4704,14 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">all_cause_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
@@ -4081,6 +4723,7 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -4525,7 +5168,12 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 <p>15 rows × 49 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="n">all_cause_df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
@@ -4537,6 +5185,7 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -4981,7 +5630,12 @@ Instead of one group from ages 10 to 59, we have three groups from 18 to 39, 40 
 <p>15 rows × 49 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_cause_df</span><span class="p">[</span><span class="s2">&quot;Vaccination status&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
@@ -5000,8 +5654,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unvax_stat</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Unvaccinated&quot;</span><span class="p">]</span>
 
@@ -5014,8 +5674,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">weighted_sum</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Weighted sum of table and weight.</span>
@@ -5039,8 +5705,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_groups</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">status</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Select age groups and vax status.</span>
@@ -5056,8 +5728,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_plot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">groups</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot mortality for vaxed and unvaxed.</span>
@@ -5095,8 +5773,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This figure shows what happens if we combine the youngest three groups,</span>
 <span class="c1"># as in the original data</span>
@@ -5105,11 +5789,17 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/1d47b18470cb7c1f0ec497f0108305ef2c94f7f4f155da1a988226a0ca246a1c.png" src="_images/1d47b18470cb7c1f0ec497f0108305ef2c94f7f4f155da1a988226a0ca246a1c.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following figures look at the older age groups, which I won&#39;t present again</span>
 
@@ -5118,46 +5808,70 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/45982d7e487da3ac9d8f8b4be2cf51f0b2b29d12d97cd5b101b2026cc8ca3e0e.png" src="_images/45982d7e487da3ac9d8f8b4be2cf51f0b2b29d12d97cd5b101b2026cc8ca3e0e.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;80-89&quot;</span><span class="p">]</span>
 <span class="n">make_plot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/4a7fe9fc9a72322b56333d8d811d9b0feb4a14430f3fd463bf8c32bbbb0f0112.png" src="_images/4a7fe9fc9a72322b56333d8d811d9b0feb4a14430f3fd463bf8c32bbbb0f0112.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;70-79&quot;</span><span class="p">]</span>
 <span class="n">make_plot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b42aaedf1ef0a9614928f3335f441c1e5347c4f732bed5a31ce3f6bb5f468d1f.png" src="_images/b42aaedf1ef0a9614928f3335f441c1e5347c4f732bed5a31ce3f6bb5f468d1f.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;60-69&quot;</span><span class="p">]</span>
 <span class="n">make_plot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/67c4156b5d1548c94966be801dc45968272b4fae55d3c36bab81c1dd6540d6e1.png" src="_images/67c4156b5d1548c94966be801dc45968272b4fae55d3c36bab81c1dd6540d6e1.png" />
 </div>
 </div>
 <p>Let’s start with the oldest of these subgroups.
 Among people in their 50s, we see that the all-cause death rate was substantially higher among unvaccinated people over the entire interval from March 2021 to April 2022.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;50-59&quot;</span><span class="p">]</span>
 <span class="n">make_plot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
@@ -5166,6 +5880,7 @@ Among people in their 50s, we see that the all-cause death rate was substantiall
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb1f81fff40&gt;
 </pre></div>
@@ -5174,7 +5889,12 @@ Among people in their 50s, we see that the all-cause death rate was substantiall
 </div>
 </div>
 <p>If we select people in their 40s, we see the same thing: death rates were higher for unvaccinated people over the entire interval.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;40-49&quot;</span><span class="p">]</span>
 <span class="n">make_plot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
@@ -5183,6 +5903,7 @@ Among people in their 50s, we see that the all-cause death rate was substantiall
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb1f823f3a0&gt;
 </pre></div>
@@ -5194,13 +5915,19 @@ Among people in their 50s, we see that the all-cause death rate was substantiall
 Possible explanations include improved treatment for coronavirus disease and the decline of more lethal variants of the COVID virus.
 In the U.K., December 2021 is when the Delta variant was largely replaced by the Omicron variant, which is less deadly.</p>
 <p>Finally, let’s see what happened in the youngest group, people aged 18 to 39.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;18-39&quot;</span><span class="p">]</span>
 <span class="n">make_plot</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/ecf905a484113a61ecc85af6c45f763bbd24283f1e5e9332c45738027979a8b9.png" src="_images/ecf905a484113a61ecc85af6c45f763bbd24283f1e5e9332c45738027979a8b9.png" />
 </div>
@@ -5215,7 +5942,12 @@ There are a few months where the pattern is reversed, but we should not take it 
 <p>In summary, the excess mortality among vaccinated people in 2021 is entirely explained by Simpson’s paradox.
 If we break the dataset into appropriate age groups, we see that death rates were higher among the unvaccinated in all age groups over the entire time from the rollout of the vaccine to the present.
 And we can conclude that the vaccine saved many lives.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">may</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2021</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Month&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;May&quot;</span><span class="p">)</span>
 <span class="n">may</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -5227,8 +5959,14 @@ And we can conclude that the vaccine saved many lives.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fully</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Vaccination status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Second dose, at least 21 days ago&quot;</span>
 <span class="n">fully</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -5240,8 +5978,14 @@ And we can conclude that the vaccine saved many lives.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Age group&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;18-39&quot;</span>
 <span class="n">age</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -5253,13 +5997,20 @@ And we can conclude that the vaccine saved many lives.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">may</span> <span class="o">&amp;</span> <span class="n">fully</span> <span class="o">&amp;</span> <span class="n">age</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -5347,12 +6098,18 @@ And we can conclude that the vaccine saved many lives.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -5486,7 +6243,12 @@ And we can conclude that the vaccine saved many lives.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mortality</span> <span class="o">=</span> <span class="n">sheet</span><span class="p">[</span><span class="s2">&quot;rate&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">52</span>
 <span class="n">mortality</span>
@@ -5508,8 +6270,14 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mortality</span><span class="p">[</span><span class="s2">&quot;55-59&quot;</span><span class="p">],</span> <span class="n">mortality</span><span class="p">[</span><span class="s2">&quot;20-24&quot;</span><span class="p">]</span>
 </pre></div>
@@ -5520,8 +6288,14 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mortality</span><span class="p">[</span><span class="s2">&quot;55-59&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">mortality</span><span class="p">[</span><span class="s2">&quot;20-24&quot;</span><span class="p">]</span>
 </pre></div>
@@ -5532,8 +6306,14 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;55-59&quot;</span><span class="p">,</span> <span class="s2">&quot;pct_vax&quot;</span><span class="p">],</span> <span class="n">sheet</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;20-24&quot;</span><span class="p">,</span> <span class="s2">&quot;pct_vax&quot;</span><span class="p">]</span>
 </pre></div>
@@ -5544,8 +6324,14 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;55-59&quot;</span><span class="p">,</span> <span class="s2">&quot;pct_vax&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">sheet</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;20-24&quot;</span><span class="p">,</span> <span class="s2">&quot;pct_vax&quot;</span><span class="p">]</span>
 </pre></div>
@@ -5556,11 +6342,17 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="lives-saved">
 <h2><span class="section-number">10.7. </span>Lives saved<a class="headerlink" href="#lives-saved" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
     <span class="n">filename</span><span class="p">,</span>
@@ -5571,6 +6363,7 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -5678,7 +6471,12 @@ Name: rate, dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Month&quot;</span><span class="p">])</span>
 </pre></div>
@@ -5690,8 +6488,14 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_cause</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Cause of Death&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;All causes&quot;</span>
 <span class="n">all_cause</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -5703,8 +6507,14 @@ Name: rate, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate_col</span> <span class="o">=</span> <span class="s2">&quot;Age-standardised mortality rate / 100,000 person-years&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="n">rate_col</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">}})</span>
@@ -5725,8 +6535,14 @@ Name: Age-standardised mortality rate / 100,000 person-years, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">estimate_saved_lives</span><span class="p">(</span><span class="n">period</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimate lives saved by comparing actual deaths to possible deaths.</span>
@@ -5748,8 +6564,14 @@ Name: Age-standardised mortality rate / 100,000 person-years, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">period</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="n">all_cause</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Age group&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">]):</span>
@@ -5761,6 +6583,7 @@ Name: Age-standardised mortality rate / 100,000 person-years, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -5857,7 +6680,12 @@ Name: Age-standardised mortality rate / 100,000 person-years, dtype: float64
 <p>105 rows × 3 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">saved_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)[</span><span class="s2">&quot;saved&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">series</span>
@@ -5885,8 +6713,14 @@ Name: saved, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">period</span><span class="p">[</span><span class="s2">&quot;Vaccination status&quot;</span><span class="p">]</span>
 <span class="n">deaths</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="s2">&quot;Count of deaths&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
@@ -5918,6 +6752,7 @@ Name: saved, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="sources-and-related-reading">
@@ -5960,7 +6795,12 @@ We are better off when our decisions are guided by evidence and reason, but that
 <p>Downloaded from <a class="reference external" href="https://www.covid-datascience.com/post/israeli-data-how-can-efficacy-vs-severe-disease-be-strong-when-60-of-hospitalized-are-vaccinated">https://www.covid-datascience.com/post/israeli-data-how-can-efficacy-vs-severe-disease-be-strong-when-60-of-hospitalized-are-vaccinated</a></p>
 <p>Originally from an <a class="reference external" href="https://datadashboard.health.gov.il/COVID-19/general">Israeli government COVID dashboard</a> with headings translated by Jeffrey S. Morris, director of the Biostatistics Division at the University of Pennsylvania.</p>
 <p><a class="reference external" href="https://www.dbei.med.upenn.edu/bio/jeffrey-s-morris-phd">https://www.dbei.med.upenn.edu/bio/jeffrey-s-morris-phd</a></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
 <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;age group&quot;</span><span class="p">]</span>
@@ -5969,6 +6809,7 @@ We are better off when our decisions are guided by evidence and reason, but that
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -6281,7 +7122,12 @@ We are better off when our decisions are guided by evidence and reason, but that
 <p>10 rows × 24 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
@@ -6300,8 +7146,14 @@ We are better off when our decisions are guided by evidence and reason, but that
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overall</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">overall</span>
@@ -6337,8 +7189,14 @@ dtype: object
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overall_risk_vax</span> <span class="o">=</span> <span class="n">overall</span><span class="p">[</span><span class="s2">&quot;severe vax&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">overall</span><span class="p">[</span><span class="s2">&quot;population vax&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e5</span>
 <span class="n">overall_risk_vax</span>
@@ -6350,8 +7208,14 @@ dtype: object
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overall_risk_unvax</span> <span class="o">=</span> <span class="n">overall</span><span class="p">[</span><span class="s2">&quot;severe unvax&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">overall</span><span class="p">[</span><span class="s2">&quot;population unvax&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e5</span>
 <span class="n">overall_risk_unvax</span>
@@ -6363,8 +7227,14 @@ dtype: object
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_group</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
 <span class="n">risk_vax</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;severe vax 100k&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">age_group</span><span class="p">)</span>
@@ -6389,13 +7259,20 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;age_group&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Probably Overthinking It</p>
 <p>Copyright 2022 Allen Downey</p>

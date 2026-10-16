@@ -386,43 +386,8 @@ document.write(`
   <section id="changing-hearts-and-minds">
 <h1><span class="section-number">11. </span>Changing Hearts and Minds<a class="headerlink" href="#changing-hearts-and-minds" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
+<p>If you like <em>Probably Overthinking It</em>, you’ll like my book in progress, <a class="reference external" href="https://allendowney.com/ywcn"><em>You Would Choose Now</em></a>, which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/progress.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
 <div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -509,7 +474,12 @@ The words in parentheses indicate that the wording of these questions has change
 <p>The following figure shows the responses to these questions as a function of the respondents’ ages.
 To make it easy to compare answers to different questions, the <span class="math notranslate nohighlight">\(y\)</span> axis shows the percentage who chose what I characterize as the racist responses: that interracial marriage should be illegal; that the respondent would not vote for a black presidential candidate; and that it should be legal to refuse to sell a house to someone based on their race.</p>
 <p>The results vary from year to year, so I’ve plotted a smooth curve to fit the data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;gss0&quot;</span><span class="p">)</span>
 <span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
@@ -521,8 +491,14 @@ To make it easy to compare answers to different questions, the <span class="math
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1889</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
@@ -550,24 +526,42 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">])</span>
 <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;cohort10&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Start with an empty DataFrame and add columns for the 10 questions used in this chapter.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ten_questions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racmar&quot;</span>
@@ -580,8 +574,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racpres&quot;</span>
@@ -594,8 +594,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racopen&quot;</span>
@@ -608,8 +614,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_racopen</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Housing law&quot;</span><span class="p">)</span>
 <span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_racmar</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Marriage&quot;</span><span class="p">)</span>
@@ -624,6 +636,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/93e15c04d161b3e22cf0170015f9698470576b38b77fc79f74542864bde8a82a.png" src="_images/93e15c04d161b3e22cf0170015f9698470576b38b77fc79f74542864bde8a82a.png" />
 </div>
@@ -632,7 +645,12 @@ Name: count, dtype: int64
 <p>But that raises a question: do people <em>become</em> more racist as they age, or do they persist in the beliefs they were raised with?
 We can answer that with another view of the data.</p>
 <p>The following figure shows responses to the first question, about interracial marriage, grouped by decade of birth and plotted by age.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racmar&quot;</span>
@@ -651,8 +669,14 @@ Name: 1980, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_table</span><span class="p">(</span><span class="n">series_racmar</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">plot_series</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -667,6 +691,7 @@ Name: 1980, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/c74f8d14306b366205666050adaa0ac20272116f04f26ee910fe89f0deae1750.png" src="_images/c74f8d14306b366205666050adaa0ac20272116f04f26ee910fe89f0deae1750.png" />
 </div>
@@ -700,7 +725,12 @@ In that case, the number of errors is small compared to the number of legitimate
 But when the actual prevalence is low, there might be more false positive responses than true ones.
 If 4% of respondents endorsed the lizard-people theory in error, the actual prevalence might be zero.</p>
 <p>The point of this diversion is that it is hard to measure small percentages with survey data, which is one reason the GSS stops asking about rare beliefs.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racpres&quot;</span>
@@ -719,11 +749,17 @@ If 4% of respondents endorsed the lizard-people theory in error, the actual prev
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/fb7e38b4aee77a500988f7650a0635955c14070fdcb568b6fef863d311aec07e.png" src="_images/fb7e38b4aee77a500988f7650a0635955c14070fdcb568b6fef863d311aec07e.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racopen&quot;</span>
@@ -741,6 +777,7 @@ If 4% of respondents endorsed the lizard-people theory in error, the actual prev
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/1c970f1957c2ef1cfdacdab92a7a0b3456eb9d05e99f6e201d09388bfc915f80.png" src="_images/1c970f1957c2ef1cfdacdab92a7a0b3456eb9d05e99f6e201d09388bfc915f80.png" />
 </div>
@@ -752,7 +789,12 @@ If 4% of respondents endorsed the lizard-people theory in error, the actual prev
 </ul>
 <p>So, even if you observe that older people are more likely to hold racist beliefs, that doesn’t mean people become more racist with age.
 In fact, the opposite is true: in every generation, going back to 1900, people grew less racist over time.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racopen&quot;</span>
@@ -769,8 +811,14 @@ In fact, the opposite is true: in every generation, going back to 1900, people g
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;racpres&quot;</span>
@@ -787,6 +835,7 @@ In fact, the opposite is true: in every generation, going back to 1900, people g
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="young-feminists">
@@ -802,7 +851,12 @@ The GSS includes three questions related to sexism:</p>
 </div></blockquote>
 <p>The following figure shows the results as a function of the respondents’ ages.
 Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows the percentage of respondents who chose what I characterize as a sexist response: that it is much better for everyone if women stay home, that men are more suited emotionally for politics, and that the respondent would not vote for a female presidential candidate.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># [1977-2021]</span>
 <span class="c1"># [1974-2021]</span>
@@ -810,8 +864,14 @@ Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows th
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fefam&quot;</span>
@@ -824,8 +884,14 @@ Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows th
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fepol&quot;</span>
@@ -838,8 +904,14 @@ Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows th
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fepres&quot;</span>
@@ -852,8 +924,14 @@ Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows th
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_fefam</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;At work or home&quot;</span><span class="p">)</span>
 <span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">series_fepol</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;In politics&quot;</span><span class="p">)</span>
@@ -868,6 +946,7 @@ Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows th
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b1e8c300fba755e1f53485ac40e197c441e55f8d2c7379cd26bd551ced94fce9.png" src="_images/b1e8c300fba755e1f53485ac40e197c441e55f8d2c7379cd26bd551ced94fce9.png" />
 </div>
@@ -876,7 +955,12 @@ Again, the <span class="math notranslate nohighlight">\(y\)</span> axis shows th
 The difference is most dramatic for the first question, related to women working outside the home.
 The difference is smaller for the other questions, although that is in part because the third question, related to voting for a female presidential candidate, was retired after 2010 as the prevalence dropped into lizard people territory.</p>
 <p>The following figure shows responses to the second question grouped by decade of birth and plotted by age.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fepol&quot;</span>
@@ -898,13 +982,19 @@ The difference is smaller for the other questions, although that is in part beca
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/50288873ae22f3f34b963f422aabb94a3d45ecc15df4e95ccd7717d5d59a6924.png" src="_images/50288873ae22f3f34b963f422aabb94a3d45ecc15df4e95ccd7717d5d59a6924.png" />
 </div>
 </div>
 <p>Overall, older people are more likely to be sexist, but within almost every cohort, people become less sexist as they get older.
 The results from the other two questions show the same pattern.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fefam&quot;</span>
@@ -923,11 +1013,17 @@ The results from the other two questions show the same pattern.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b266bede2f52591bb773197f47b9e8329940bd06f44e2768c128b1b0c24e445a.png" src="_images/b266bede2f52591bb773197f47b9e8329940bd06f44e2768c128b1b0c24e445a.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fepres&quot;</span>
@@ -946,6 +1042,7 @@ The results from the other two questions show the same pattern.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/24bbb087bbe2783cfaf43bf99f0cc45526b2df8cefec63d516064df3f086475f.png" src="_images/24bbb087bbe2783cfaf43bf99f0cc45526b2df8cefec63d516064df3f086475f.png" />
 </div>
@@ -968,7 +1065,12 @@ Other than registering to vote when you are 18, most political acts don’t depe
 <p>The previous figure shows one way to distinguish cohort and age effects: grouping people by cohort and plotting their responses as a function of age.
 Similarly, to distinguish cohort and period effects, we can group people by birth cohort, again, and plot their responses over time.
 For example, the following figure shows responses to the first of the three questions, about whether everyone would be better off if women stayed home, plotted over time.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;fefam&quot;</span>
@@ -994,6 +1096,7 @@ For example, the following figure shows responses to the first of the three ques
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/76757bc242b5066b5ef69d84a43647e8cbc1f2cb0c9cdd947493f11da74b91f7.png" src="_images/76757bc242b5066b5ef69d84a43647e8cbc1f2cb0c9cdd947493f11da74b91f7.png" />
 </div>
@@ -1019,7 +1122,12 @@ In general, the GSS avoids changing the wording of questions, because subtle wor
 But the price of this consistency is that a phrasing that might have been neutral in 1970 seems loaded today.</p>
 <p>Nevertheless, let’s look at the results.
 The following figure shows the percentage of people who chose a homophobic response to these questions as a function of age.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;homosex&quot;</span>
@@ -1032,8 +1140,14 @@ The following figure shows the percentage of people who chose a homophobic respo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;colhomo&quot;</span>
@@ -1046,8 +1160,14 @@ The following figure shows the percentage of people who chose a homophobic respo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;libhomo&quot;</span>
@@ -1060,8 +1180,14 @@ The following figure shows the percentage of people who chose a homophobic respo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;spkhomo&quot;</span>
@@ -1074,8 +1200,14 @@ The following figure shows the percentage of people who chose a homophobic respo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#figwidth = 3.835</span>
 <span class="c1">#plt.figure(figsize=(figwidth, 0.7*figwidth))</span>
@@ -1094,6 +1226,7 @@ The following figure shows the percentage of people who chose a homophobic respo
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/574326ff45931e129bc9edddf528499eafb4de0b78d535a115e27a25bd633163.png" src="_images/574326ff45931e129bc9edddf528499eafb4de0b78d535a115e27a25bd633163.png" />
 </div>
@@ -1102,7 +1235,12 @@ The following figure shows the percentage of people who chose a homophobic respo
 But that doesn’t mean people adopt these attitudes as they age.
 In fact, within every birth cohort, they become less homophobic with age.</p>
 <p>The following figure show the results from the first question, showing the percentage of respondents who said homosexuality was wrong (with or without an adverb).</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;age&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;homosex&quot;</span>
@@ -1125,6 +1263,7 @@ In fact, within every birth cohort, they become less homophobic with age.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/84c0901f63e65bce3078c93950e327220a8a1aff41d79a5ca0fc993c69a042dc.png" src="_images/84c0901f63e65bce3078c93950e327220a8a1aff41d79a5ca0fc993c69a042dc.png" />
 </div>
@@ -1133,7 +1272,12 @@ In fact, within every birth cohort, they become less homophobic with age.</p>
 And in almost every cohort, homophobia declines with age.
 But that doesn’t mean there is an age effect; if there were, we would expect to see a change in all cohorts at about the same age. And there’s no sign of that.</p>
 <p>So let’s see if it might be a period effect. The following figure shows the same results plotted over time rather than age.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xvarname</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span>
 <span class="n">yvarname</span> <span class="o">=</span> <span class="s2">&quot;homosex&quot;</span>
@@ -1157,6 +1301,7 @@ But that doesn’t mean there is an age effect; if there were, we would expect t
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/7c8f5cec2fc4a82345c0187b91ebb7d3b0ecb8748b6ae7f9a6b9038af6c3b70e.png" src="_images/7c8f5cec2fc4a82345c0187b91ebb7d3b0ecb8748b6ae7f9a6b9038af6c3b70e.png" />
 </div>
@@ -1204,7 +1349,12 @@ But that raises a question: how much of the overall trend is due to the cohort e
 <p>To answer that, I used a model that estimates the contributions of the two effects separately (a logistic regression model, if you want the details).
 Then I used the model to generate predictions for two counterfactual scenarios: what if there had been no cohort effect, and what if there had been no period effect?
 The following figure shows the results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_subgroups</span>
 
@@ -1218,6 +1368,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1339,14 +1490,25 @@ The following figure shows the results.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actual</span> <span class="o">=</span> <span class="n">chunk_series</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="n">xvarname</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="nb">dict</span><span class="p">(</span>
@@ -1361,6 +1523,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1426,7 +1589,12 @@ The following figure shows the results.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
 
@@ -1436,6 +1604,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
          Current function value: 0.570330
@@ -1481,15 +1650,26 @@ The following figure shows the results.</p>
 </tr>
 </table></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;predict&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">pred</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)[</span><span class="s2">&quot;predict&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">1987</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;year==1987&quot;</span><span class="p">)[</span><span class="s2">&quot;cohort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1497,8 +1677,14 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_counterfact</span>
 
@@ -1507,8 +1693,14 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">error_func</span><span class="p">(</span><span class="n">inter</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute error for finding intercept that removes cohort effect.</span>
@@ -1522,8 +1714,14 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g0</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c</span>
 <span class="n">error_func</span><span class="p">(</span><span class="n">g0</span><span class="p">)</span>
@@ -1535,8 +1733,14 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">fsolve</span>
 
@@ -1545,8 +1749,14 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actual</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
 <span class="n">cohort_only</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Cohort only&quot;</span><span class="p">)</span>
@@ -1562,6 +1772,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/34b0e45f09fa8bd97fbf25f34a8346b6b5465eb5ee0edfb39373ab3a2af8dc9d.png" src="_images/34b0e45f09fa8bd97fbf25f34a8346b6b5465eb5ee0edfb39373ab3a2af8dc9d.png" />
 </div>
@@ -1576,7 +1787,12 @@ The total change is about 46 percentage points.</p>
 That’s not an error; in a model like this, we don’t expect percentage points to add up (because it’s linear on a logistic scale, not a percentage scale).</p>
 <p>Nevertheless, we can conclude that the magnitude of the period effect is about twice the magnitude of the cohort effect.
 In other words, most of the change we’ve seen since 1987 has been due to changed minds, with the smaller part due to generational replacement.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pred</span><span class="p">[</span><span class="mi">2021</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cohort_only</span><span class="p">[</span><span class="mi">2021</span><span class="p">],</span> <span class="n">period_only</span><span class="p">[</span><span class="mi">2021</span><span class="p">]])</span>
 <span class="n">preds</span>
@@ -1588,8 +1804,14 @@ In other words, most of the change we’ve seen since 1987 has been due to chang
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="mi">1987</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">preds</span>
 <span class="n">diffs</span>
@@ -1601,8 +1823,14 @@ In other words, most of the change we’ve seen since 1987 has been due to chang
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs</span> <span class="o">/</span> <span class="n">diffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -1613,8 +1841,14 @@ In other words, most of the change we’ve seen since 1987 has been due to chang
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">logit</span>
 
@@ -1628,8 +1862,14 @@ In other words, most of the change we’ve seen since 1987 has been due to chang
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">logits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">logits</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
@@ -1640,6 +1880,7 @@ In other words, most of the change we’ve seen since 1987 has been due to chang
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In 2011, the San Francisco Gay Men’s Chorus performed a song called “A Message From the Gay Community” that satirically addresses the fears of people who oppose gay rights.
 The song includes lyrics like:</p>
@@ -1683,23 +1924,40 @@ The view that women are less suited to politics than men is sexist.
 And the view that an “admitted” homosexual should not be allowed to teach at a university is homophobic.
 Now, so we can put the results on the same <span class="math notranslate nohighlight">\(y\)</span> axis, I will combine these responses into a group I will characterize as “bigoted”.</p>
 <p>The following figure shows how the percentage of people choosing bigoted responses, for each of the ten questions we’ve looked at, has changed over time.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">over_time</span> <span class="o">=</span> <span class="n">ten_questions</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">columns</span> <span class="o">=</span> <span class="n">over_time</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">muted</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;muted&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">color_map</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">muted</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
     <span class="n">plot_series_lowess</span><span class="p">(</span><span class="n">over_time</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -1713,6 +1971,7 @@ Now, so we can put the results on the same <span class="math notranslate nohighl
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/9a2b349de7a01c3b16ed8a63c1325222f9a85509ecc8d2cea09bb87b8716b02d.png" src="_images/9a2b349de7a01c3b16ed8a63c1325222f9a85509ecc8d2cea09bb87b8716b02d.png" />
 </div>

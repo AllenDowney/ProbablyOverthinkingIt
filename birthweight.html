@@ -385,6 +385,7 @@ document.write(`
   <section id="causation-collision-and-confusion">
 <h1><span class="section-number">7. </span>Causation, Collision, and Confusion<a class="headerlink" href="#causation-collision-and-confusion" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
+<p>If you like <em>Probably Overthinking It</em>, you’ll like my book in progress, <a class="reference external" href="https://allendowney.com/ywcn"><em>You Would Choose Now</em></a>, which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/birthweight.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
@@ -393,12 +394,27 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_pyplot_params</span><span class="p">,</span> <span class="n">decorate</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
+<span class="n">set_pyplot_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -414,7 +430,12 @@ As the title suggests, the paper is about the relationship between smoking durin
 </ul>
 <p>These results were not surprising. At that time, it was well known that children of smokers were lighter at birth, and that low-birthweight babies were more likely to die.</p>
 <p>In the first part of this notebook, there are several cells like the following that compute percentages based on numbers from tables in Yerushalmy’s paper.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">3464</span> <span class="o">-</span> <span class="mi">3255</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3255</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
@@ -425,6 +446,7 @@ As the title suggests, the paper is about the relationship between smoking durin
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Putting those results together, you might expect mortality rates to be higher for children of smokers.
 And you would be right, but the difference was not very big. For White mothers, the mortality rate was 11.3 per 1000 for children of smokers, compared to 11.0 for children of nonsmokers.</p>
@@ -433,7 +455,12 @@ And you would be right, but the difference was not very big. For White mothers, 
 <li><p>For LBW babies of nonsmokers, the mortality rate was 218 per 1000;</p></li>
 <li><p>For LBW babies of smokers, it was only 114 per 1000, about 48% lower.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">218</span> <span class="o">-</span> <span class="mi">114</span><span class="p">)</span> <span class="o">/</span> <span class="mi">218</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
@@ -444,6 +471,7 @@ And you would be right, but the difference was not very big. For White mothers, 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Yerushalmy also compared rates of congenital anomalies (birth defects).</p>
 <ul class="simple">
@@ -456,7 +484,12 @@ Yerushalmy concluded:</p>
 <div><p>These paradoxical findings raise doubts and argue against the proposition that cigarette smoking acts as an exogenous factor which interferes with intrauterine development of the fetus.</p>
 </div></blockquote>
 <p>In other words, maybe maternal smoking isn’t bad for babies after all.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">147</span> <span class="o">-</span> <span class="mi">72</span><span class="p">)</span> <span class="o">/</span> <span class="mi">142</span>
 </pre></div>
@@ -467,6 +500,7 @@ Yerushalmy concluded:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Yerushalmy’s paper was influential.
 In 2014 the <em>International Journal of Epidemiology</em> reprinted it along with an editorial retrospective and five invited commentaries.</p>
@@ -491,7 +525,12 @@ Then I’ll repeat the analysis with data from 2018, and we’ll see what has ch
 <h2><span class="section-number">7.1. </span>Three Million Babies Can’t Be Wrong<a class="headerlink" href="#three-million-babies-cant-be-wrong" title="Link to this heading">#</a></h2>
 <p>The data are originally from the <a class="reference external" href="https://www.cdc.gov/nchs/data_access/vitalstatsonline.htm">National Center for Health Statistics (NCHS)</a>.</p>
 <p>I selected the columns we need and stored them in a compressed HDF file.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s2">&quot;nchs.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;vs1991&quot;</span><span class="p">)</span>
 <span class="n">vs1991</span><span class="o">.</span><span class="n">shape</span>
@@ -503,9 +542,15 @@ Then I’ll repeat the analysis with data from 2018, and we’ll see what has ch
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>If age of death is NaN, that means the baby survived.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;aged&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span>
 <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -520,9 +565,15 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Recode the tobacco variable.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 <span class="c1"># Convert numeric codes to string codes for consistency with 2018 data</span>
@@ -539,8 +590,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span>
 
@@ -548,6 +605,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -588,7 +646,12 @@ Name: count, dtype: int64
 </div></div></div>
 </div>
 <p>Getting some numbers from the paper into a PMF.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">white</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">6067</span><span class="p">,</span> <span class="mi">3726</span><span class="p">])</span>
 <span class="n">black</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2219</span><span class="p">,</span> <span class="mi">1071</span><span class="p">])</span>
@@ -599,6 +662,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -635,7 +699,12 @@ Name: count, dtype: int64
 </div></div></div>
 </div>
 <p>Checking the distribution of birthweights.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cdf</span>
 
@@ -644,6 +713,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;birthweight&#39;&gt;
 </pre></div>
@@ -651,7 +721,12 @@ Name: count, dtype: int64
 <img alt="_images/b81f50e1b8f0ce9d436cce5308c69e1f4078bfca357e68d096458e6af1f09cd1.png" src="_images/b81f50e1b8f0ce9d436cce5308c69e1f4078bfca357e68d096458e6af1f09cd1.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -672,17 +747,29 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Flagging low birthweight babies.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;lbw&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2500</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Dividing birthweights into bins.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
 <span class="n">bins</span>
@@ -695,8 +782,14 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
 <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
@@ -724,9 +817,15 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Checking the codes for congenital birth defects.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;congenit&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
@@ -749,9 +848,15 @@ Name: count, Length: 1008, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Each code is a vector that indicates the presence or absence of a particular condition. All 2’s means no anomalies.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;anomaly&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;congenit&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;2222222222222222222222&quot;</span>
 <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;anomaly&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -766,8 +871,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_defect</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;congenit&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2222222222222222222222&quot;</span>
 <span class="n">no_defect</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -779,8 +890,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unknown</span> <span class="o">=</span> <span class="n">vs1991</span><span class="p">[</span><span class="s2">&quot;congenit&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;9999999999999999999999&quot;</span>
 <span class="n">vs1991</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">unknown</span><span class="p">,</span> <span class="s2">&quot;anomaly&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
@@ -797,8 +914,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">known_defect</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">no_defect</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">unknown</span><span class="p">)</span>
 <span class="n">known_defect</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -810,9 +933,15 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>If we select cases with known tobacco use and birthweight, we’re down to about three million live births.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">vs1991</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">,</span> <span class="s2">&quot;birthweight&quot;</span><span class="p">])</span>
 <span class="n">subset</span><span class="o">.</span><span class="n">shape</span>
@@ -824,8 +953,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;anomaly&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
@@ -838,8 +973,14 @@ Y 20.599922088040515
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">percent_diff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Percentage difference.</span>
@@ -853,8 +994,14 @@ Y 20.599922088040515
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mf">20.6</span><span class="p">,</span> <span class="mf">18.2</span><span class="p">)</span>
 </pre></div>
@@ -865,8 +1012,14 @@ Y 20.599922088040515
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset_no_defect</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;anomaly&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">subset_no_defect</span><span class="o">.</span><span class="n">shape</span>
@@ -878,8 +1031,14 @@ Y 20.599922088040515
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">)[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">weights</span>
@@ -894,8 +1053,14 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mi">3145</span><span class="p">,</span> <span class="mi">3370</span><span class="p">)</span>
 </pre></div>
@@ -906,11 +1071,17 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In the 1991 data from NCHS, about 18% of the mothers reported smoking during pregnancy, down from 37% in Yerushalmy’s dataset from the 1960s.
 Babies of smokers were lighter on average than babies of nonsmokers by about 7%, which is comparable to the difference in the 1960s data.</p>
 <p>The following figure shows the distribution of weights for the two groups. The vertical line is at 2500 grams, the threshold for low birthweight.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">kdeplot</span>
 
@@ -931,13 +1102,19 @@ Babies of smokers were lighter on average than babies of nonsmokers by about 7%,
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/43eea7cf77d4ed340e2284c6bf4ea66a8f9480fba09d991e3f506610b9601f58.png" src="_images/43eea7cf77d4ed340e2284c6bf4ea66a8f9480fba09d991e3f506610b9601f58.png" />
 </div>
 </div>
 <p>The shapes of the distributions are similar, but for smokers it is shifted to the left.
 For mothers who smoked, the fraction of babies below 2500 grams is about 11%; for nonsmokers it is only 6%.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;lbw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -948,8 +1125,14 @@ For mothers who smoked, the fraction of babies below 2500 grams is about 11%; fo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">):</span>
     <span class="n">lbw_rate</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;lbw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -963,8 +1146,14 @@ Y 0.11421285960264155
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mf">11.4</span><span class="p">,</span> <span class="mf">6.4</span><span class="p">)</span>
 </pre></div>
@@ -975,8 +1164,14 @@ Y 0.11421285960264155
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">9793</span> <span class="o">*</span> <span class="mf">11.1</span> <span class="o">+</span> <span class="mi">3290</span> <span class="o">*</span> <span class="mf">18.5</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">9793</span> <span class="o">+</span> <span class="mi">3290</span><span class="p">)</span>
 </pre></div>
@@ -987,8 +1182,14 @@ Y 0.11421285960264155
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
 </pre></div>
@@ -999,12 +1200,18 @@ Y 0.11421285960264155
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Overall infant mortality was substantially lower in 1991.
 In the 1960s dataset, about 13 per 1000 babies died within the first <em>month</em> of life; in 1991, about 8.5 per 1000 died in the first <em>year</em>.</p>
 <p>In 1991, the mortality rate was higher for babies of smokers, almost 12 per 1000, than babies of nonsmokers, 7.7 per 1000.
 So the risk of mortality was 54% higher for babies of mothers who smoked.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">):</span>
     <span class="n">rate</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
@@ -1018,8 +1225,14 @@ Y 11.874562261649707
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mi">1187</span><span class="p">,</span> <span class="mi">771</span><span class="p">)</span>
 </pre></div>
@@ -1030,10 +1243,16 @@ Y 11.874562261649707
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In summary, babies of mothers who smoked were about twice as likely to be underweight, and underweight babies were about 50% more likely to die.
 However, if we select babies lighter than 2500 grams, the mortality rate is 20% <em>lower</em> for babies of smokers, compared to LBW babies of nonsmokers.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;lbw&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">):</span>
     <span class="n">rate</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
@@ -1047,8 +1266,14 @@ Y 60.138756452832666
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mf">60.1</span><span class="p">,</span> <span class="mf">74.85</span><span class="p">)</span>
 </pre></div>
@@ -1059,13 +1284,19 @@ Y 60.138756452832666
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The analysis so far is based on only two groups, babies born lighter or heavier than 2500 grams.
 But it might be a mistake to lump all LBW babies together.
 In reality, a baby born close to 2500 grams has a better chance of surviving than a baby born at 1500 grams.</p>
 <p>So, following the analysis in the 2006 paper, I partitioned the dataset into groups with similar birthweight and computed the mortality rate in each group.
 The following figure shows the results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;tobacco&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;mort&quot;</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">*=</span> <span class="mi">1000</span>
@@ -1074,6 +1305,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1177,7 +1409,12 @@ The following figure shows the results.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
     <span class="n">table</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Smoker&quot;</span><span class="p">)</span>
@@ -1191,13 +1428,20 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="s2">&quot;Mortality rate vs birthweight, NCHS 1991&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/36375503b01b38302a44babe07f26fa1e98b101e73e9e62f2862f549cfb60431.png" src="_images/36375503b01b38302a44babe07f26fa1e98b101e73e9e62f2862f549cfb60431.png" />
 </div>
@@ -1219,7 +1463,12 @@ Instead, he doubled down:</p>
 <div><p>This comparison is presented not as proof that the differences between smokers and nonsmokers are necessarily of biological origin, rather it is to indicate that a biological hypothesis is not unreasonable.</p>
 </div></blockquote>
 <p>With the benefit of further research, we can see that Yerushalmy was mistaken. Smoking, high altitude, and short mothers do not protect low-birthweight babies from birth defects and mortality. Rather, they provide a relatively benign explanation for low birthweight.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">214</span><span class="p">)</span>
 </pre></div>
@@ -1230,8 +1479,14 @@ Instead, he doubled down:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mi">96</span><span class="p">,</span> <span class="mi">146</span><span class="p">)</span>
 </pre></div>
@@ -1242,6 +1497,7 @@ Instead, he doubled down:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>To see why, suppose four things can cause low birthweight:</p>
 <ul class="simple">
@@ -1262,7 +1518,12 @@ In retrospect, he had all the evidence he needed, including the smoking gun (sor
 It’s because low birthweight generally has a cause, and if the cause is not smoking, it is more likely to be something else, including a birth defect.</p>
 <p>We can confirm that this explanation is correct by selecting babies with no congenital anomalies observed at birth.
 If we do that, we find that babies of smokers have higher mortality rates in nearly every weight category, as expected.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lbw</span> <span class="o">=</span> <span class="p">(</span><span class="n">subset_no_defect</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span>
     <span class="n">subset_no_defect</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2500</span>
@@ -1270,8 +1531,14 @@ If we do that, we find that babies of smokers have higher mortality rates in nea
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate</span> <span class="o">=</span> <span class="n">subset_no_defect</span><span class="p">[</span><span class="n">lbw</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">)[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="n">rate</span>
@@ -1286,8 +1553,14 @@ Name: mort, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="o">*</span><span class="n">rate</span><span class="p">)</span>
 </pre></div>
@@ -1298,8 +1571,14 @@ Name: mort, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">subset_no_defect</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;tobacco&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;mort&quot;</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">*=</span> <span class="mi">1000</span>
@@ -1308,6 +1587,7 @@ Name: mort, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1411,12 +1691,18 @@ Name: mort, dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="s2">&quot;Mortality rate vs birthweight, no anomaly&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/e0f8da2518b7b9bbeac7b3a79ab2848b892ce4838e8fc9ccf90ff51babba49a1.png" src="_images/e0f8da2518b7b9bbeac7b3a79ab2848b892ce4838e8fc9ccf90ff51babba49a1.png" />
 </div>
@@ -1429,14 +1715,25 @@ At a time when the health risks of smoking were still contested, his paper creat
 <h2><span class="section-number">7.3. </span>The End of the Paradox<a class="headerlink" href="#the-end-of-the-paradox" title="Link to this heading">#</a></h2>
 <p>When a paradoxical phenomenon is explained, it ceases to be a paradox. And in the case of the Low Birthweight Paradox, at about the same time it also ceased to be a phenomenon.</p>
 <p>In the most recent NCHS dataset, including 3.8 million babies born in 2018, the Low Birthweight Paradox has disappeared.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s2">&quot;nchs.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;vs2018&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -1447,8 +1744,14 @@ At a time when the health risks of smoking were still contested, his paper creat
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;yod&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
@@ -1463,8 +1766,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;yod&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span>
 <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -1479,8 +1788,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
@@ -1495,8 +1810,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s2">&quot;U&quot;</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1512,8 +1833,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span>
 
@@ -1521,6 +1848,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1561,7 +1889,12 @@ Name: count, dtype: int64
 </div></div></div>
 </div>
 <p>In this dataset, only 6% of the mothers reported smoking during pregnancy, down from 18% in 1991 and 37% in the 1960s.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 </pre></div>
@@ -1584,14 +1917,21 @@ Name: count, Length: 5357, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">7777</span><span class="p">,</span> <span class="mi">8165</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;birthweight&#39;&gt;
 </pre></div>
@@ -1599,7 +1939,12 @@ Name: count, Length: 5357, dtype: int64
 <img alt="_images/21c8f8b211786cae0995e20e0115c562f5c489509b63fb1786f9dd57342aefed.png" src="_images/21c8f8b211786cae0995e20e0115c562f5c489509b63fb1786f9dd57342aefed.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -1620,15 +1965,27 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;lbw&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2500</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
 <span class="n">bins</span>
@@ -1641,8 +1998,14 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="p">)</span>
 <span class="n">vs2018</span><span class="p">[</span><span class="s2">&quot;bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
@@ -1670,8 +2033,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">vs2018</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tobacco&quot;</span><span class="p">,</span> <span class="s2">&quot;birthweight&quot;</span><span class="p">])</span>
 <span class="n">subset</span><span class="o">.</span><span class="n">shape</span>
@@ -1683,8 +2052,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">)[</span><span class="s2">&quot;birthweight&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">weights</span>
@@ -1699,8 +2074,14 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mi">3067</span><span class="p">,</span> <span class="mi">3275</span><span class="p">)</span>
 </pre></div>
@@ -1711,9 +2092,15 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Babies of smokers were lighter on average than babies of nonsmokers by about 6%, comparable to the difference in the previous two datasets.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;Smokers&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="s2">&quot;Nonsmokers&quot;</span><span class="p">}</span>
 <span class="n">ls</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="s2">&quot;--&quot;</span><span class="p">}</span>
@@ -1732,11 +2119,17 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/1fd97630a2a4dcdc94a32d09a255bf3aa6e7426478a11a2fd5e0de473efe673a.png" src="_images/1fd97630a2a4dcdc94a32d09a255bf3aa6e7426478a11a2fd5e0de473efe673a.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;lbw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -1747,8 +2140,14 @@ Name: birthweight, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">):</span>
     <span class="n">lbw_rate</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;lbw&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1762,8 +2161,14 @@ Y 0.1438352533387705
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mf">14.38</span><span class="p">,</span> <span class="mf">7.84</span><span class="p">)</span>
 </pre></div>
@@ -1774,11 +2179,17 @@ Y 0.1438352533387705
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In 2018, fewer babies died in the first year of life;
 the mortality rate was 5.5 per 1000, down from 8.5 in 1991.
 And the mortality rate for babies of smokers was more than twice the rate for babies of nonsmokers, almost 11 per 1000 compared to 5.1.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
 </pre></div>
@@ -1789,8 +2200,14 @@ And the mortality rate for babies of smokers was more than twice the rate for ba
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">):</span>
     <span class="n">rate</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
@@ -1804,8 +2221,14 @@ Y 10.724844530533185
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mf">10.72</span><span class="p">,</span> <span class="mf">5.16</span><span class="p">)</span>
 </pre></div>
@@ -1816,8 +2239,14 @@ Y 10.724844530533185
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;lbw&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;tobacco&quot;</span><span class="p">):</span>
     <span class="n">rate</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;mort&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span>
@@ -1831,8 +2260,14 @@ Y 43.20707643456566
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_diff</span><span class="p">(</span><span class="mf">60.1</span><span class="p">,</span> <span class="mf">74.85</span><span class="p">)</span>
 </pre></div>
@@ -1843,10 +2278,16 @@ Y 43.20707643456566
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Again, we can partition the dataset into groups with similar birthweight and compute the mortality rate in each group.
 The following figure shows the results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;bin&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;tobacco&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;mort&quot;</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">*=</span> <span class="mi">1000</span>
@@ -1855,6 +2296,7 @@ The following figure shows the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1958,12 +2400,18 @@ The following figure shows the results.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="s2">&quot;Mortality rate vs birthweight, NCHS 2018&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/e26eb6a369b085a71c1bbc876d030e45d3983479663b10c2dda8d28ea80042bf.png" src="_images/e26eb6a369b085a71c1bbc876d030e45d3983479663b10c2dda8d28ea80042bf.png" />
 </div>
@@ -2050,7 +2498,12 @@ That doesn’t mean burning toast is good, but if the alarm is sounding, burnt t
 <h2><span class="section-number">7.7. </span>Causal diagrams<a class="headerlink" href="#causal-diagrams" title="Link to this heading">#</a></h2>
 <p>The 2006 paper explaining the Low Birthweight Paradox and the 2013 paper explaining the Obesity Paradox are noteworthy because they use causal diagrams to represent hypothetical causes and their effects.
 For example, here is a causal diagram that represents an explanation for the Low Birthweight Paradox:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># based on https://matplotlib.org/matplotblog/posts/mpl-for-making-diagrams/</span>
 
@@ -2069,8 +2522,14 @@ For example, here is a causal diagram that represents an explanation for the Low
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">make_diagram</span><span class="p">()</span>
 
@@ -2094,6 +2553,7 @@ For example, here is a causal diagram that represents an explanation for the Low
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/250a3ecd9a58d424aec4b7e705e555fef4ed8d93fbd6ff413e2ef00ecf8e67d3.png" src="_images/250a3ecd9a58d424aec4b7e705e555fef4ed8d93fbd6ff413e2ef00ecf8e67d3.png" />
 </div>
@@ -2113,7 +2573,12 @@ Also, this diagram is not the only one that could explain the Low Birthweight Pa
 For example, the arrow from LBW to mortality is not necessary; the paradox could happen even if low birthweight were entirely harmless.
 Nevertheless, diagrams like this are a useful way to document a hypothetical set of causal relationships.</p>
 <p>The following causal diagram represents the explanation of the Obesity Paradox proposed in the 2013 paper:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">make_diagram</span><span class="p">()</span>
 
@@ -2133,6 +2598,7 @@ Nevertheless, diagrams like this are a useful way to document a hypothetical set
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/19b6ddc02bcc5b975711f3d61f19434f77ccef055974a66851331519087cca8a.png" src="_images/19b6ddc02bcc5b975711f3d61f19434f77ccef055974a66851331519087cca8a.png" />
 </div>

@@ -386,6 +386,7 @@ document.write(`
   <section id="better-than-new">
 <h1><span class="section-number">5. </span>Better Than New<a class="headerlink" href="#better-than-new" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
+<p>If you like <em>Probably Overthinking It</em>, you’ll like my book in progress, <a class="reference external" href="https://allendowney.com/ywcn"><em>You Would Choose Now</em></a>, which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nbue.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
@@ -394,18 +395,51 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_pyplot_params</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
+<span class="n">set_pyplot_params</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_normal</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_cdf</span>
@@ -415,6 +449,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Suppose you work in a hospital, and one day you have lunch with three of your colleagues.
 One is a facilities engineer working on a new lighting system, one is an obstetrician who works in the maternity ward, and one is an oncologist who works with cancer patients.
@@ -456,22 +491,19 @@ So, it turns out, a patient who survives one year after diagnosis is then <em>mo
 They installed 50 new incandescent light bulbs in a large rectangular area, turned them on, and left them burning continuously until the last bulb expired 2,568 hours later.
 During this period, which is more than three months, they checked the bulbs every 12 hours and recorded the number that had expired.</p>
 <p>The data are available in a gist:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span>
-    <span class="s2">&quot;https://gist.github.com/epogrebnyak/7933e16c0ad215742c4c104be4fbdeb1/raw/c932bc5b6aa6317770c4cbf43eb591511fec08f9/lamps.csv&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bulb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;lamps.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">bulb</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -538,7 +570,12 @@ During this period, which is more than three months, they checked the bulbs ever
 </div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">h</span></code> column contains the quantities; the <code class="docutils literal notranslate"><span class="pre">k</span></code> column contains the frequencies (counts).</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pmf</span>
 
@@ -547,9 +584,15 @@ During this period, which is more than three months, they checked the bulbs ever
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>We can use a <code class="docutils literal notranslate"><span class="pre">Counter</span></code> to reconstitute the 50 individual lifetimes.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
 
@@ -571,9 +614,15 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here’s a normal distribution that has the same mean and standard deviation as the data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 
@@ -588,9 +637,15 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the distribution of survival times for these light bulbs, plotted as a cumulative distribution function (CDF), along with a Gaussian model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cdf</span>
 
@@ -612,11 +667,17 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/f2e4f45ae5d018a0126548255050111a34ba7a77300d52e6d695a7bf8d6cfb02.png" src="_images/f2e4f45ae5d018a0126548255050111a34ba7a77300d52e6d695a7bf8d6cfb02.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">gaussian_kde</span>
 
@@ -632,8 +693,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">lifetimes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">mean</span>
@@ -645,8 +712,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">decorate_kde</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
     <span class="n">decorate</span><span class="p">(</span>
@@ -659,8 +732,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_density</span><span class="p">(</span><span class="n">density</span><span class="p">):</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="n">density</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -671,19 +750,31 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_density</span><span class="p">(</span><span class="n">density</span><span class="p">)</span>
 <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;nbue1a.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b7b389525747977c3a7ca91642436e58f8c4734fe6840ecd38dd83168a641825.png" src="_images/b7b389525747977c3a7ca91642436e58f8c4734fe6840ecd38dd83168a641825.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_conditional</span><span class="p">(</span><span class="n">density</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
     <span class="n">left</span> <span class="o">=</span> <span class="n">density</span><span class="p">[</span><span class="n">density</span><span class="o">.</span><span class="n">qs</span> <span class="o">&lt;</span> <span class="n">age</span><span class="p">]</span>
@@ -698,8 +789,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">conditional</span> <span class="o">=</span> <span class="n">plot_conditional</span><span class="p">(</span><span class="n">density</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
@@ -707,11 +804,17 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/7bf5c030fd96921368395e92d01a7f1b340cd3e74724203864581262cd05a782.png" src="_images/7bf5c030fd96921368395e92d01a7f1b340cd3e74724203864581262cd05a782.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">conditional</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">conditional</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="n">age</span><span class="p">)</span>
 <span class="n">shifted</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
@@ -720,11 +823,17 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/ebb570f1bcf0ffd47cf8c8cc2e95a937d93caeb8c167792830d7f7ccb59e8ae3.png" src="_images/ebb570f1bcf0ffd47cf8c8cc2e95a937d93caeb8c167792830d7f7ccb59e8ae3.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="n">conditional</span> <span class="o">=</span> <span class="n">plot_conditional</span><span class="p">(</span><span class="n">shifted</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
@@ -732,11 +841,17 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/03e9d02da6f05dcd9f8d75e02f0faac0b701ac0162c80c18253dc5653033dfab.png" src="_images/03e9d02da6f05dcd9f8d75e02f0faac0b701ac0162c80c18253dc5653033dfab.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shifted</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">conditional</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">conditional</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="n">age</span><span class="p">)</span>
 <span class="n">shifted</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
@@ -745,6 +860,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/8ada8e86c38f234bf476231d8496b20afd0bd896342ee7862111875b1058bf64.png" src="_images/8ada8e86c38f234bf476231d8496b20afd0bd896342ee7862111875b1058bf64.png" />
 </div>
@@ -757,7 +873,12 @@ Based on a statistical model of this evaporation, they show that the resulting d
 <p>In this dataset, the average lifetime for a new light bulb is about 1414 hours.
 For a bulb that has been used for 1000 hours, the average lifetime is higher, about 1495 hours; however, since it has already burned 1000 hours, its average remaining lifetime is only 495 hours.
 So we would rather have the new bulb.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lifetimes</span><span class="p">)</span>
 </pre></div>
@@ -768,8 +889,14 @@ So we would rather have the new bulb.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lifetimes</span><span class="p">[</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1000</span>
 </pre></div>
@@ -780,8 +907,14 @@ So we would rather have the new bulb.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lifetimes</span><span class="p">[</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1500</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1500</span>
 </pre></div>
@@ -792,10 +925,16 @@ So we would rather have the new bulb.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>We can do the same calculation for a range of elapsed times from 0 to 2568 hours (the lifespan of the oldest bulb).
 At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, we can compute the average lifetime for bulbs that survive past <span class="math notranslate nohighlight">\(t\)</span> and the average remaining lifetime we expect.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">remaining_lifetimes_seq</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute average remaining lifetimes.</span>
@@ -819,9 +958,15 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>To compute error bounds, we’ll use resampling.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">resample</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Resample a sequence of quantities.</span>
@@ -834,8 +979,14 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">lifetimes</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">lifetimes</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 <span class="n">dist</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
@@ -845,9 +996,15 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following loop generates multiple resamplings and compute the remaining lifetimes for each.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 
@@ -862,8 +1019,14 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">lifetimes</span><span class="p">[</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span>
@@ -876,9 +1039,15 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following two functions compile the results and compute error bounds.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_percentiles</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">percentile_rows</span>
@@ -892,9 +1061,15 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the result.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">fillna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -908,6 +1083,7 @@ At each point in time, <span class="math notranslate nohighlight">\(t\)</span>, 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/3a831089db5e8533d8de8a6cc263dbbb48df06ccbbf01f779acee8aa2ae4a7f1.png" src="_images/3a831089db5e8533d8de8a6cc263dbbb48df06ccbbf01f779acee8aa2ae4a7f1.png" />
 </div>
@@ -924,7 +1100,12 @@ So one way to think about what’s going on is that there are two kinds of bulbs
 The longer a bulb lasts, the more likely it is to be a Super Bulb.
 And the more likely it is to be a Super Bulb, the longer we expect it to last.</p>
 <p>Nevertheless, a new bulb generally lasts longer than a used bulb.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1450</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">(</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1710</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">(</span><span class="n">lifetimes</span> <span class="o">&gt;</span> <span class="mi">1800</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
@@ -935,6 +1116,7 @@ And the more likely it is to be a Super Bulb, the longer we expect it to last.</
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="any-day-now">
@@ -945,14 +1127,12 @@ Which one do you think will deliver first?</p>
 <p>To answer this question, we need to know the distribution of gestation times, which we can get from the National Survey of Family Growth (NSFG), which was the source of the birth weights in Chapter 4.
 I gathered data collected between 2002 and 2017, which includes information about 43,939 live births.</p>
 <p>I’ve made a subset of the data available in an HDF file.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s2">&quot;nsfg.hdf5&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data cleaning is in FirstLateNSFG repo</span>
 <span class="c1"># includes data from 2002, 2006-2010, 2011-2013, 2013-2015,  2015-2017</span>
@@ -967,13 +1147,20 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nsfg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1058,7 +1245,12 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </div></div></div>
 </div>
 <p>I selected live births with pregnancy lengths less than 45 weeks (the outliers are probably errors).</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">live</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;outcome&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="n">reasonable</span> <span class="o">=</span> <span class="n">nsfg</span><span class="p">[</span><span class="s2">&quot;prglngth&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">45</span>
@@ -1074,8 +1266,14 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">lengths</span> <span class="o">&lt;</span> <span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
@@ -1086,17 +1284,29 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gt</span> <span class="o">=</span> <span class="n">pmf_length</span><span class="o">.</span><span class="n">qs</span> <span class="o">&gt;=</span> <span class="mi">28</span>
 <span class="n">pmf_length_gt</span> <span class="o">=</span> <span class="n">Pmf</span><span class="p">(</span><span class="n">pmf_length</span><span class="p">[</span><span class="n">gt</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the distribution of their durations (except for the 1% of babies born prior to 28 weeks).</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_length_gt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
@@ -1110,6 +1320,7 @@ I gathered data collected between 2002 and 2017, which includes information abou
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/6e0012ee204e16cb75af6e728a18898ff2ec53b2430cefa1f735be3ac86dfc42.png" src="_images/6e0012ee204e16cb75af6e728a18898ff2ec53b2430cefa1f735be3ac86dfc42.png" />
 </div>
@@ -1120,7 +1331,12 @@ It is not symmetric like a Gaussian distribution, or skewed to the right like mo
 And the most common value is more common than we would expect from either model.
 As we’ve seen several times now, nature is under no obligation to follow simple rules; this distribution is what it is.
 Nevertheless, we can use it to compute the average remaining time as a function of elapsed time, as shown in the following figure.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lengths</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">pmf_length_gt</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">pmf_length_gt</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span>
 </pre></div>
@@ -1131,17 +1347,29 @@ Nevertheless, we can use it to compute the average remaining time as a function 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>I’ll use resampling to compute error bounds. Since the sampling weights are specific to each cycle, I’ll do the resampling within the cycles.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">nsfg</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;cycle&quot;</span><span class="p">):</span>
     <span class="k">pass</span>  <span class="c1"># Check cycle groups</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sample_by_cycle</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="n">sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;cycle&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="s2">&quot;finalwgt&quot;</span><span class="p">)</span>
@@ -1149,9 +1377,15 @@ Nevertheless, we can use it to compute the average remaining time as a function 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following loop computes the remaining lifetimes for each resampling.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">44</span><span class="p">)</span>
 <span class="n">mrt_seq</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1169,8 +1403,14 @@ Nevertheless, we can use it to compute the average remaining time as a function 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">decorate_pregnancy</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
     <span class="n">decorate</span><span class="p">(</span>
@@ -1182,8 +1422,14 @@ Nevertheless, we can use it to compute the average remaining time as a function 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">mrt_seq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">)</span>
 
@@ -1193,6 +1439,7 @@ Nevertheless, we can use it to compute the average remaining time as a function 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/0c735e7384638a23b48c7da3a91836a3c4fcb7b089e83d9ee76d5621b5ca856b.png" src="_images/0c735e7384638a23b48c7da3a91836a3c4fcb7b089e83d9ee76d5621b5ca856b.png" />
 </div>
@@ -1211,7 +1458,12 @@ Another week has passed and the finish line is only 7 hours closer!</p>
 <p>This is why, if you ask a doctor how long it will be until a baby is born, they generally say something noncommittal like “Any day now.”
 As infuriating as this answer might be, it sums up the situation pretty well, and it is probably kinder than the truth.</p>
 <p>Here’s the computation for the average remaining time at the end of each week.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">percentile_rows</span>
 
@@ -1221,6 +1473,7 @@ As infuriating as this answer might be, it sums up the situation pretty well, an
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1298,7 +1551,12 @@ As infuriating as this answer might be, it sums up the situation pretty well, an
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">41</span><span class="p">]]</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">24</span>
 </pre></div>
@@ -1311,8 +1569,14 @@ Name: 50.0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp1d</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hazard</span>
@@ -1334,6 +1598,7 @@ Name: 50.0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/2735cf42a4220bbb47b6608bd401846a940fd6451e957b2677a3185001fccf20.png" src="_images/2735cf42a4220bbb47b6608bd401846a940fd6451e957b2677a3185001fccf20.png" />
 <img alt="_images/c32b91d9680605ac7a3cf8cf53db012493f101cce882796b888bdd9cff1d848d.png" src="_images/c32b91d9680605ac7a3cf8cf53db012493f101cce882796b888bdd9cff1d848d.png" />
@@ -1351,15 +1616,12 @@ Name: 50.0, dtype: float64
 Starting in 1973, SEER has collected data on cancer cases from registries in several locations in the United States.
 In the most recent datasets, these registries cover about one third of the U.S. population.</p>
 <p>NOTE: I am definitely not allowed to redistribute SEER data, so the data in this example is synthetic; that is, I have generated random data that is statistically similar to the actual data I reported in the book. The results below will differ from what’s in the book, but the conclusions are qualitatively similar.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;brain.hdf&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s2">&quot;brain.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;brain&quot;</span><span class="p">)</span>
 <span class="n">brain</span><span class="o">.</span><span class="n">shape</span>
@@ -1371,13 +1633,20 @@ In the most recent datasets, these registries cover about one third of the U.S. 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brain</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1436,7 +1705,12 @@ We can use this data to infer the distribution of survival times, but first we h
 <p>For these cases, the time until their death is unknown, which is a good thing.
 However, in order to work with data like this, we need a special method, called Kaplan-Meier estimation, to compute the distribution of lifetimes.</p>
 <p><code class="docutils literal notranslate"><span class="pre">duration</span></code> is the observed duration in months, for both complete and ongoing cases.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duration</span> <span class="o">=</span> <span class="n">brain</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span>
 <span class="n">duration</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1456,9 +1730,15 @@ Name: duration, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">observed</span></code> is a boolean that indicates whether each case is complete or ongoing.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">observed</span> <span class="o">=</span> <span class="n">brain</span><span class="p">[</span><span class="s2">&quot;observed&quot;</span><span class="p">]</span>
 <span class="n">observed</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1470,8 +1750,14 @@ Name: duration, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">duration</span><span class="p">[</span><span class="n">observed</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="p">(</span><span class="n">duration</span><span class="p">[</span><span class="o">~</span><span class="n">observed</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -1482,9 +1768,15 @@ Name: duration, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>As we should expect, the distributions are different for the complete and ongoing cases.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">duration</span><span class="p">[</span><span class="n">observed</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;complete&quot;</span><span class="p">)</span>
 <span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">duration</span><span class="p">[</span><span class="o">~</span><span class="n">observed</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;ongoing&quot;</span><span class="p">)</span>
@@ -1493,12 +1785,18 @@ Name: duration, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/33875b8be7cb42b82709d615543fdaf71cf1cc476a19465268892eee71d8d04c.png" src="_images/33875b8be7cb42b82709d615543fdaf71cf1cc476a19465268892eee71d8d04c.png" />
 </div>
 </div>
 <p>With Kaplan-Meier estimation, we can use all cases to estimate the survival function.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">lifelines</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Surv</span>
@@ -1523,14 +1821,21 @@ Name: duration, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_km</span><span class="p">,</span> <span class="n">surv_low</span><span class="p">,</span> <span class="n">surv_high</span> <span class="o">=</span> <span class="n">km_fit</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">observed</span><span class="p">)</span>
 <span class="n">surv_km</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1574,7 +1879,12 @@ Name: duration, dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_fit</span><span class="p">(</span><span class="n">surv_km</span><span class="p">,</span> <span class="n">surv_low</span><span class="p">,</span> <span class="n">surv_high</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot an estimated survival curve with error bounds.</span>
@@ -1589,9 +1899,15 @@ Name: duration, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the result on a log scale, plotted in the familiar form of a CDF and in a new form called a survival curve.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 <span class="n">surv_km</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Survival curve&quot;</span><span class="p">)</span>
@@ -1619,11 +1935,17 @@ Name: duration, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/8a3062904dc775319ae7f5933aae4bb9a3cd25e3173b0252e6ab518547169064.png" src="_images/8a3062904dc775319ae7f5933aae4bb9a3cd25e3173b0252e6ab518547169064.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_km</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Survival curve&quot;</span><span class="p">)</span>
 
@@ -1639,6 +1961,7 @@ Name: duration, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/65fcc930b4b05179124b043348fbb452a3c8fa018307528ee3643d71753ad804.png" src="_images/65fcc930b4b05179124b043348fbb452a3c8fa018307528ee3643d71753ad804.png" />
 </div>
@@ -1653,7 +1976,12 @@ The median survival time after diagnosis is less than 9 months, and only about 1
 Survival times depend on all of these factors, so this curve does not provide a prognosis for any specific patient.
 In particular, as treatment has gradually improved, the prognosis is better for someone with a more recent diagnosis.
 If you or someone you know is diagnosed with glioblastoma, you should get a prognosis from a doctor, based on specifics of the case, not from aggregated data in a book demonstrating basic statistical methods.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_km</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">surv_km</span><span class="p">(</span><span class="mi">24</span><span class="p">),</span> <span class="n">surv_km</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span><span class="o">/</span><span class="n">surv_km</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 </pre></div>
@@ -1664,10 +1992,16 @@ If you or someone you know is diagnosed with glioblastoma, you should get a prog
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>As we did with light bulbs and pregnancy lengths, we can use this distribution to compute the average remaining survival time for patients at each time after diagnosis.
 The following figure shows the result.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">remaining_lifetimes_pmf</span>
 
@@ -1686,8 +2020,14 @@ The following figure shows the result.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gray_box</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_max</span><span class="o">=</span><span class="mi">170</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a gray box that spans the y-axis.</span>
@@ -1699,8 +2039,14 @@ The following figure shows the result.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">rem_seq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">)</span>
 <span class="n">gray_box</span><span class="p">(</span><span class="mi">125</span><span class="p">)</span>
@@ -1716,11 +2062,17 @@ The following figure shows the result.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/0de4e2967124995b96fd2fac9c6205e03cf64aa5e26aa8c877adb9f6e0d04c33.png" src="_images/0de4e2967124995b96fd2fac9c6205e03cf64aa5e26aa8c877adb9f6e0d04c33.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">165</span><span class="p">)</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">surv_km</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">(),</span> <span class="n">qs</span><span class="p">)</span>
@@ -1738,8 +2090,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">]</span>
 <span class="n">xs</span><span class="p">,</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">percentile_rows</span><span class="p">(</span><span class="n">rem_seq</span><span class="p">,</span> <span class="n">ps</span><span class="p">)</span>
@@ -1747,8 +2105,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1765,6 +2129,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/71c0452d17cd4a89d5394596faee7edb855b592ed1f64de5184f5b526d5c0c31.png" src="_images/71c0452d17cd4a89d5394596faee7edb855b592ed1f64de5184f5b526d5c0c31.png" />
 <img alt="_images/0e95ba61921a2ad905968dd3528491527b7061f67067c712b66b83d0b87b8ad7.png" src="_images/0e95ba61921a2ad905968dd3528491527b7061f67067c712b66b83d0b87b8ad7.png" />
@@ -1796,7 +2161,12 @@ It is also contrary to the behavior of a Gaussian distribution.</p>
 <p>For example, if you hear that the average survival time after diagnosis is 14 months, you might imagine a Gaussian distribution where 14 months is the most common value and an equal number of patients live more or less than 14 months.
 But that would be a very misleading picture.</p>
 <p>To show how bad it would be, I chose a Gaussian distribution that matches the distribution of survival times as well as possible – which is not very well – and used it to compute average remaining survival times.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_normal_model</span>
 
@@ -1813,11 +2183,17 @@ But that would be a very misleading picture.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/bda7d6e85bb3ef3972ff82155e78f66539a9eda851e2703384f39e0a09ea4308.png" src="_images/bda7d6e85bb3ef3972ff82155e78f66539a9eda851e2703384f39e0a09ea4308.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf_normal</span><span class="p">)</span>
 <span class="n">series</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
@@ -1834,9 +2210,15 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>As a result, the remaining lifetimes from the model don’t resemble the remaining lifetimes from the data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">rem_seq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual data&quot;</span><span class="p">)</span>
 <span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C4&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gaussian model&quot;</span><span class="p">)</span>
@@ -1851,6 +2233,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/223ceaee27a85ec07b9b69b12bedc5d85ac61f1c0573069f31922412883f5954.png" src="_images/223ceaee27a85ec07b9b69b12bedc5d85ac61f1c0573069f31922412883f5954.png" />
 </div>
@@ -1861,7 +2244,12 @@ So it behaves nothing like the actual averages.</p>
 <p>On the other hand, if your mental model of the distribution is lognormal, you would get it about right.
 To demonstrate, I chose a lognormal distribution that fits the actual distribution of survival times and used it to compute average remaining lifetimes.</p>
 <p>Here’s the function that fits the distribution.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">least_squares</span>
 
@@ -1896,24 +2284,42 @@ To demonstrate, I chose a lognormal distribution that fits the actual distributi
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_lognormal</span> <span class="o">=</span> <span class="n">fit_lognormal</span><span class="p">(</span><span class="n">surv_km</span><span class="p">)</span>
 <span class="n">pmf_lognormal</span> <span class="o">=</span> <span class="n">surv_lognormal</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf_lognormal</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the result.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">rem_seq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Actual data&quot;</span><span class="p">)</span>
 <span class="n">series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C4&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lognormal model&quot;</span><span class="p">)</span>
@@ -1929,6 +2335,7 @@ To demonstrate, I chose a lognormal distribution that fits the actual distributi
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/3408bb3b2ad042fec76f8e0a7dd97f3ddec2accf891bd94f081c6965e6095653.png" src="_images/3408bb3b2ad042fec76f8e0a7dd97f3ddec2accf891bd94f081c6965e6095653.png" />
 </div>
@@ -1946,21 +2353,19 @@ And you would understand why a patient who has survived three years is likely to
 They chose Sweden because it “has the deepest historical record of high-quality [demographic] data.”</p>
 <p>For ages from 0 to 91 years, they estimated the mortality rate, which is the fraction of people at each age who die.</p>
 <p>I used an online graph digitizer to get the data from the figure in their paper and store it in a CSV file.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;mortality_rates_beltran2012.csv&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mortality</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">mortality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2031,7 +2436,12 @@ They chose Sweden because it “has the deepest historical record of high-qualit
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_series</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a pandas Series.</span>
@@ -2045,8 +2455,14 @@ They chose Sweden because it “has the deepest historical record of high-qualit
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mort1800</span> <span class="o">=</span> <span class="n">make_series</span><span class="p">(</span><span class="n">mortality</span><span class="p">[</span><span class="s2">&quot;1800&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">],</span> <span class="n">mortality</span><span class="p">[</span><span class="s2">&quot;1800&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">mort1800</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2064,8 +2480,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mort1905</span> <span class="o">=</span> <span class="n">make_series</span><span class="p">(</span><span class="n">mortality</span><span class="p">[</span><span class="s2">&quot;1905&quot;</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">],</span> <span class="n">mortality</span><span class="p">[</span><span class="s2">&quot;1905&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">mort1905</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2083,8 +2505,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mort1800</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mort1905</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
@@ -2095,9 +2523,15 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following function interpolates the data from the figure and puts it in a Hazard function.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_hazard</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a Hazard function by interpolating a Series.</span>
@@ -2113,17 +2547,29 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz1800</span> <span class="o">=</span> <span class="n">make_hazard</span><span class="p">(</span><span class="n">mort1800</span><span class="p">)</span>
 <span class="n">haz1905</span> <span class="o">=</span> <span class="n">make_hazard</span><span class="p">(</span><span class="n">mort1905</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the results for two cohorts: people born between 1800 and 1810, and people born between 1905 and 1915.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz1800</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Born 1800–1810&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
 <span class="n">haz1905</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Born 1905–1915&quot;</span><span class="p">)</span>
@@ -2135,6 +2581,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/c9454fbeb2e58f2a48702f7c379b6abc523055fd73b1361ee44f7f36be787939.png" src="_images/c9454fbeb2e58f2a48702f7c379b6abc523055fd73b1361ee44f7f36be787939.png" />
 </div>
@@ -2146,7 +2593,12 @@ dtype: float64
 <li><p>Both curves drop quickly to a minimum in young adulthood. In the earlier cohort, the mortality rate at age 14 is about 5 per 1000. In the later cohort, it is about 2 per 1000.</p></li>
 <li><p>On the right side, mortality rates increase with age. For example, of people in the earlier cohort who made it to age 80, about 13% died at age 80. In the later cohort, the same mortality rate was about 6%.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz1800</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">haz1905</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -2157,8 +2609,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz1800</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">haz1800</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(),</span> <span class="n">haz1905</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span>
 </pre></div>
@@ -2169,8 +2627,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haz1800</span><span class="p">[</span><span class="mi">80</span><span class="p">],</span> <span class="n">haz1905</span><span class="p">[</span><span class="mi">80</span><span class="p">]</span>
 </pre></div>
@@ -2181,6 +2645,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>We can use these curves to compute “life expectancy at birth”.
 For people born around 1800, the average lifespan was about 36 years; for people born around 1900, it was 66 years.
@@ -2193,7 +2658,12 @@ And if they made it to 65, they would expect to live another 11 years, for a tot
 <p>The reason for this counterintuitive behavior is child mortality.
 If child mortality is high, life expectancy at birth is low.
 But if someone survives the first few years, their life expectancy goes up.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1800</span> <span class="o">=</span> <span class="n">haz1800</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">()</span>
 <span class="n">pmf1800</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
@@ -2205,8 +2675,14 @@ But if someone survives the first few years, their life expectancy goes up.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1905</span> <span class="o">=</span> <span class="n">haz1905</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">()</span>
 <span class="n">pmf1905</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
@@ -2218,8 +2694,14 @@ But if someone survives the first few years, their life expectancy goes up.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf1800</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">pmf1905</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -2230,9 +2712,15 @@ But if someone survives the first few years, their life expectancy goes up.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows life expectancy as a function of age for people born in Sweden around 1800 and 1905.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">91</span><span class="p">)</span>
 <span class="n">series1905</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf1905</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
@@ -2248,11 +2736,17 @@ But if someone survives the first few years, their life expectancy goes up.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/ade26cedb029294cb44661ce8711cf2fb5843be970df666cc3be083b6bc17249.png" src="_images/ade26cedb029294cb44661ce8711cf2fb5843be970df666cc3be083b6bc17249.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">draw_lines</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">series</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -2261,8 +2755,14 @@ But if someone survives the first few years, their life expectancy goes up.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">91</span><span class="p">)</span>
 <span class="n">series1905</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf1905</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
@@ -2280,6 +2780,7 @@ But if someone survives the first few years, their life expectancy goes up.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/60c0bd8eb05fe1f4e38cd3e4d1fb1c7776ffb8442ec617459d1726565fe3d75f.png" src="_images/60c0bd8eb05fe1f4e38cd3e4d1fb1c7776ffb8442ec617459d1726565fe3d75f.png" />
 </div>
@@ -2289,7 +2790,12 @@ For someone born around 1800, life expectancy at birth was only 36.
 But if they survived the first 5 years, they would expect to live another 50 years, for a total of 55.</p>
 <p>Similarly, for someone born in 1905, life expectancy at birth was 66 years.
 But if they survived the first 2 years, they would expect to live another 70, for a total of 72.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series1800</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">series1800</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="n">series1800</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
@@ -2300,8 +2806,14 @@ But if they survived the first 2 years, they would expect to live another 70, fo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series1905</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">series1905</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="n">series1905</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
@@ -2312,8 +2824,14 @@ But if they survived the first 2 years, they would expect to live another 70, fo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series1800</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">series1800</span><span class="p">[</span><span class="mi">36</span><span class="p">],</span> <span class="n">series1800</span><span class="p">[</span><span class="mi">65</span><span class="p">]</span>
 </pre></div>
@@ -2324,8 +2842,14 @@ But if they survived the first 2 years, they would expect to live another 70, fo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series1905</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
@@ -2336,8 +2860,14 @@ But if they survived the first 2 years, they would expect to live another 70, fo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series1905</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">series1905</span><span class="p">[</span><span class="mi">66</span><span class="p">],</span> <span class="n">series1905</span><span class="p">[</span><span class="mi">82</span><span class="p">]</span>
 </pre></div>
@@ -2348,6 +2878,7 @@ But if they survived the first 2 years, they would expect to live another 70, fo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="child-mortality">
@@ -2357,21 +2888,19 @@ The following figure shows the percentage of children who die before age 5 for f
 These data were combined from several sources by Gapminder, a foundation based in Sweden that “promotes sustainable global development […] by increased use and understanding of statistics.”</p>
 <p>Documentation of the data is at <a class="reference external" href="https://www.gapminder.org/data/documentation/gd005">https://www.gapminder.org/data/documentation/gd005</a></p>
 <p>The data is in <a class="reference external" href="https://docs.google.com/spreadsheets/d/1Av7eps_zEK73-AdbFYEmtTrwFKlfruBYXdrnXAOFVpM/edit#gid=501532268">this online spreadsheet</a>, which I downloaded in August 2022.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;GM-ChildMortality-Dataset-v11.xlsx&quot;</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;data-for-regions-by-year&quot;</span><span class="p">)</span>
 <span class="n">gap</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2437,7 +2966,12 @@ These data were combined from several sources by Gapminder, a foundation based i
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">gap</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;geo&quot;</span><span class="p">)</span>
 <span class="n">line_styles</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;africa&quot;</span><span class="p">:</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;asia&quot;</span><span class="p">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;americas&quot;</span><span class="p">:</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="s2">&quot;europe&quot;</span><span class="p">:</span> <span class="s2">&quot;-.&quot;</span><span class="p">}</span>
@@ -2458,6 +2992,7 @@ These data were combined from several sources by Gapminder, a foundation based i
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/1926cb7afc61db97acb2122a936f3f2be7bcaffdf60597025d936517f34e4170.png" src="_images/1926cb7afc61db97acb2122a936f3f2be7bcaffdf60597025d936517f34e4170.png" />
 </div>
@@ -2470,7 +3005,12 @@ As a result, most people now are better new than used.</p>
 <p>To demonstrate this change, I collected recent mortality data from the <a class="reference external" href="https://apps.who.int/gho/data/node.main.LIFECOUNTRY?lang=en">Global Health Observatory</a> of the World Health Organization (WHO).
 For people born in 2019, we don’t know what their future lifetimes will be, but we can estimate it if we assume that the mortality rate in each age group will not change over their lifetimes.</p>
 <p>Based on that simplification, the following figure shows average remaining lifetime as a function of age for Sweden and Nigeria in 2019, compared to Sweden in 1905.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_hazard</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read age-specific death rates and make a Hazard object.</span>
@@ -2496,16 +3036,14 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s2">&quot;life_table_sweden_2019.csv&quot;</span><span class="p">)</span>
-<span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s2">&quot;life_table_nigeria_2019.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;life_table_sweden_2019.csv&quot;</span>
 <span class="n">hazard</span> <span class="o">=</span> <span class="n">read_hazard</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -2521,8 +3059,14 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;../data/life_table_nigeria_2019.csv&quot;</span>
 <span class="n">hazard</span> <span class="o">=</span> <span class="n">read_hazard</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -2530,6 +3074,7 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2569,7 +3114,12 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pmf_nga</span> <span class="o">=</span> <span class="n">hazard</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">()</span>
 <span class="n">pmf_nga</span><span class="o">.</span><span class="n">normalize</span><span class="p">()</span>
@@ -2582,8 +3132,14 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem_swe</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf_swe</span><span class="p">)</span>
 <span class="n">rem_nga</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">pmf_nga</span><span class="p">)</span>
@@ -2596,8 +3152,14 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem_swe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sweden 2019&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
 <span class="n">series1905</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sweden 1905&quot;</span><span class="p">)</span>
@@ -2611,11 +3173,17 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/0d42550cf107c195ba2b5e0403bd4019ca8cea8d62a5cc699cf69fe3c5a87a54.png" src="_images/0d42550cf107c195ba2b5e0403bd4019ca8cea8d62a5cc699cf69fe3c5a87a54.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem_swe</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sweden 2019&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
 
@@ -2630,11 +3198,17 @@ For people born in 2019, we don’t know what their future lifetimes will be, bu
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/c3607253b78c78d728bd318f21da0195bddf066a899660f410085b28ffc5abdf.png" src="_images/c3607253b78c78d728bd318f21da0195bddf066a899660f410085b28ffc5abdf.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem_nga</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -2650,6 +3224,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Since 1905, Sweden has continued to make progress; life expectancy at every age is higher in 2019 than in 1905.
 And Swedes now have the new-better-than-used property.
@@ -2665,14 +3240,12 @@ Or maybe we can do even better than that.</p>
 <p>In the previous section, I showed that child mortality declined quickly in the last century, and we saw the effect of these changes on life expectancy.
 In this section we’ll look more closely at adult mortality.
 Going back to the data from Sweden, the following figure shows the mortality rate for each age group, updated every ten years from 2000 to 2019.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">+</span> <span class="s2">&quot;life_table_sweden.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Indicator&quot;</span><span class="p">,</span> <span class="s2">&quot;Age Group&quot;</span><span class="p">,</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
 <span class="n">sweden</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;life_table_sweden.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -2681,6 +3254,7 @@ Going back to the data from Sweden, the following figure shows the mortality rat
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2764,7 +3338,12 @@ Going back to the data from Sweden, the following figure shows the mortality rat
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">sweden</span><span class="p">[</span><span class="s2">&quot;Age Group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">ages</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -2798,8 +3377,14 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweden</span> <span class="o">=</span> <span class="n">sweden</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Indicator&quot;</span><span class="p">,</span> <span class="s2">&quot;Age Group&quot;</span><span class="p">])</span>
 <span class="n">sweden</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">age_series</span><span class="o">.</span><span class="n">values</span>
@@ -2807,6 +3392,7 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2990,7 +3576,12 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">Re70</span><span class="p">,</span> <span class="n">Or70</span><span class="p">,</span> <span class="n">Gr60</span><span class="p">,</span> <span class="n">Bl50</span><span class="p">,</span> <span class="n">Pu40</span>
 
@@ -3010,8 +3601,14 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_mortality</span><span class="p">(</span><span class="n">sweden</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1/10&quot;</span><span class="p">,</span> <span class="s2">&quot;1/100&quot;</span><span class="p">,</span> <span class="s2">&quot;1/1000&quot;</span><span class="p">,</span> <span class="s2">&quot;1/10000&quot;</span><span class="p">]</span>
@@ -3023,6 +3620,7 @@ dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/9ca57f4c9e6613dbb0921190e8025ebec9336f0c06ffe2e415a14b275d4ae736.png" src="_images/9ca57f4c9e6613dbb0921190e8025ebec9336f0c06ffe2e415a14b275d4ae736.png" />
 </div>
@@ -3038,7 +3636,12 @@ dtype: int64
 <p>The straight-line increase after age 35 was described by Benjamin Gompertz in 1825, so this phenomenon is called the Gompertz Law.
 It is an empirical law, which is to say that it names a pattern we see in nature, but at this point we don’t have an explanation of why it’s true, or whether it is certain to be true in the future.
 Nevertheless, the data in this example fall in a remarkably straight line.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweden</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="mi">2019</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
@@ -3051,8 +3654,14 @@ Name: 2019, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sweden</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span> <span class="mi">2019</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
@@ -3067,10 +3676,16 @@ Name: 2019, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The previous figure also shows that mortality rates decreased between 2000 and 2019 in almost every age group.
 If we zoom in on the age range from 40 to 80, we can see the changes in adult mortality more clearly.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">sweden</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">40</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span>
 <span class="n">plot_mortality</span><span class="p">(</span><span class="n">subset</span><span class="p">)</span>
@@ -3089,6 +3704,7 @@ If we zoom in on the age range from 40 to 80, we can see the changes in adult mo
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/45e493e45e6faaf789298019c70a818c693ab02eff4e3d5ed9cbe60df9034b0d.png" src="_images/45e493e45e6faaf789298019c70a818c693ab02eff4e3d5ed9cbe60df9034b0d.png" />
 </div>
@@ -3097,7 +3713,12 @@ If we zoom in on the age range from 40 to 80, we can see the changes in adult mo
 By fitting a model to this data, we can estimate the rate of change as a function of both age and time.
 According to the model, as you move from one age group to the next, your mortality rate increases by about 11% per year.
 At the same time, for the reasons I just mentioned, the mortality rate in every age group decreases by about 2% per year.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;rate&quot;</span><span class="p">]</span>
@@ -3106,6 +3727,7 @@ At the same time, for the reasons I just mentioned, the mortality rate in every 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3171,7 +3793,12 @@ At the same time, for the reasons I just mentioned, the mortality rate in every 
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
 
@@ -3182,6 +3809,7 @@ At the same time, for the reasons I just mentioned, the mortality rate in every 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><table class="simpletable">
 <caption>OLS Regression Results</caption>
@@ -3245,7 +3873,12 @@ At the same time, for the reasons I just mentioned, the mortality rate in every 
 <p>These results imply that the life expectancies we computed in the previous section are too pessimistic because they take into account only the first effect – the increase with age – and not the second – the decrease over time.
 So let’s see what happens if we include the second effect as well, that is, if we assume that mortality rates will continue to decrease.</p>
 <p>The following figure shows the actual mortality rates for 2000 and 2019 again, along with predictions for 2040 and 2060.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ratios</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">results</span><span class="o">.</span><span class="n">params</span>
 <span class="n">ratios</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ratios</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
@@ -3257,9 +3890,15 @@ So let’s see what happens if we include the second effect as well, that is, if
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following function uses the results from the model to generate predictions – assuming future trends at current rates.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pred_hazard</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">pred_frame</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Predict hazard rates</span>
@@ -3270,8 +3909,14 @@ So let’s see what happens if we include the second effect as well, that is, if
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">pred_frame</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">105</span><span class="p">)</span>
@@ -3280,8 +3925,14 @@ So let’s see what happens if we include the second effect as well, that is, if
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">pred_frame</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
@@ -3290,8 +3941,14 @@ So let’s see what happens if we include the second effect as well, that is, if
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_pred</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Use a regression model to generate predictions.</span>
@@ -3312,8 +3969,14 @@ So let’s see what happens if we include the second effect as well, that is, if
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="p">[</span><span class="mi">2000</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;x-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Re70</span><span class="p">)</span>
 <span class="n">subset</span><span class="p">[</span><span class="mi">2019</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Pu40</span><span class="p">)</span>
@@ -3338,6 +4001,7 @@ So let’s see what happens if we include the second effect as well, that is, if
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/330c82db99a07c3e92d8108efd4bc37d53aad957797287289c7b4d2d3a453c4e.png" src="_images/330c82db99a07c3e92d8108efd4bc37d53aad957797287289c7b4d2d3a453c4e.png" />
 </div>
@@ -3346,7 +4010,12 @@ So let’s see what happens if we include the second effect as well, that is, if
 When they are 60, it will be 2040, so we expect them to have the mortality rate of a 60-year-old in 2040, indicated by a triangle.
 And when they are 80, it will be 2060, so we expect them to have the mortality rate of an 80-year-old in 2060, indicated by a square.</p>
 <p>We can use these mortality rates to compute survival curves, as shown in the following figure.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_no_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Without progress&quot;</span><span class="p">)</span>
 
@@ -3359,11 +4028,17 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/044038b78293fa0a7271b1f0f2c38483cd14c01a0eb389eb90f3737983acc958.png" src="_images/044038b78293fa0a7271b1f0f2c38483cd14c01a0eb389eb90f3737983acc958.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_no_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Without progress&quot;</span><span class="p">)</span>
 <span class="n">hazard_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;With current progress&quot;</span><span class="p">)</span>
@@ -3377,11 +4052,17 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/ad6eea8faab557c6f78d8d59891a67185ca283809d2275163493eeae23f8a43e.png" src="_images/ad6eea8faab557c6f78d8d59891a67185ca283809d2275163493eeae23f8a43e.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hypothetical_results</span><span class="p">(</span><span class="n">b2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make RegressionResults with a counterfactual slope.</span>
@@ -3399,8 +4080,14 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hazard_hypo_progress</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="n">upper</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute a Hazard function with hypothetical progress.</span>
@@ -3418,32 +4105,56 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b2</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
 <span class="n">hazard_progress2</span> <span class="o">=</span> <span class="n">hazard_hypo_progress</span><span class="p">(</span><span class="n">b2</span><span class="p">,</span> <span class="mi">145</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b3</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
 <span class="n">hazard_progress3</span> <span class="o">=</span> <span class="n">hazard_hypo_progress</span><span class="p">(</span><span class="n">b3</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b4</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
 <span class="n">hazard_progress4</span> <span class="o">=</span> <span class="n">hazard_hypo_progress</span><span class="p">(</span><span class="n">b4</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span>
 </pre></div>
@@ -3454,16 +4165,28 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b49</span> <span class="o">=</span> <span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">]</span>
 <span class="n">hazard_progress49</span> <span class="o">=</span> <span class="n">hazard_hypo_progress</span><span class="p">(</span><span class="n">b49</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_progress</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">hazard_progress2</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -3475,11 +4198,17 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/d2ad6477d51fe224dc45f39d118b6ae32595885be5f07ce077c04707f1147b29.png" src="_images/d2ad6477d51fe224dc45f39d118b6ae32595885be5f07ce077c04707f1147b29.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_no_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Without progress&quot;</span><span class="p">)</span>
 <span class="n">hazard_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;With current progress&quot;</span><span class="p">)</span>
@@ -3494,13 +4223,19 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/4850e33abe57e91f780955e162e2ddb3fa40d6f7aa6357d7a7bd53561ad9762f.png" src="_images/4850e33abe57e91f780955e162e2ddb3fa40d6f7aa6357d7a7bd53561ad9762f.png" />
 </div>
 </div>
 <p>The dashed line on the left shows the survival curve we expect if there is no further decrease in mortality rates; in that scenario, life expectancy at age 40 is 82 years and the probability of living to 100 is only 1.4%.</p>
 <p>The solid line shows the survival curve if mortality continues to decrease at the current rate; in that case, life expectancy for the same 40-year-old is 90 years and the chance of living to 100 is 25%.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">hazard</span><span class="p">):</span>
     <span class="n">pmf</span> <span class="o">=</span> <span class="n">hazard</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">()</span>
@@ -3509,8 +4244,14 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span><span class="p">(</span><span class="n">hazard_no_progress</span><span class="p">),</span> <span class="n">mean</span><span class="p">(</span><span class="n">hazard_progress</span><span class="p">),</span> <span class="n">mean</span><span class="p">(</span><span class="n">hazard_progress2</span><span class="p">)</span>
 </pre></div>
@@ -3521,8 +4262,14 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span><span class="p">(</span><span class="n">hazard_progress3</span><span class="p">),</span> <span class="n">mean</span><span class="p">(</span><span class="n">hazard_progress4</span><span class="p">)</span>
 </pre></div>
@@ -3533,8 +4280,14 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_no_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()(</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
@@ -3545,8 +4298,14 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()(</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
@@ -3557,8 +4316,14 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_progress2</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">140</span><span class="p">])</span>
 </pre></div>
@@ -3569,6 +4334,7 @@ And when they are 80, it will be 2060, so we expect them to have the mortality r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Finally, the dotted line on the right shows the survival curve if mortality decreases at twice the current rate.
 Life expectancy at age 40 would be 102 and the probability of living to 100 would be 60%.</p>
@@ -3586,7 +4352,12 @@ In a recent survey, demographers in Denmark and the United States listed possibl
 But even then, everyone would die eventually.
 Maybe we can do better.</p>
 <p>The following figure shows the survival curve under the assumption that mortality rates, starting in 2019, decrease at four times the current rate.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_progress4</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;With progress ×4&quot;</span><span class="p">)</span>
 
@@ -3598,11 +4369,17 @@ Maybe we can do better.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/4940450a26066864bc1dea4fe2abd655b77c9375736a306a091216eb74f19c2c.png" src="_images/4940450a26066864bc1dea4fe2abd655b77c9375736a306a091216eb74f19c2c.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hazard_no_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Without progress&quot;</span><span class="p">)</span>
 <span class="n">hazard_progress</span><span class="o">.</span><span class="n">make_surv</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;With current progress&quot;</span><span class="p">)</span>
@@ -3618,6 +4395,7 @@ Maybe we can do better.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/8611f2189c9cc601eb3eac310259a44904d9721da4028d51ccfa2de1d531ccb8.png" src="_images/8611f2189c9cc601eb3eac310259a44904d9721da4028d51ccfa2de1d531ccb8.png" />
 </div>
@@ -3625,7 +4403,12 @@ Maybe we can do better.</p>
 <p>In this scenario, some people live to be 300 years old!
 However, even with these optimistic assumptions, the shape of the curve is similar to what we get with slower rates of progress.
 And, as shown in the following figure, average remaining lifetimes decrease with almost the same slope.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="n">hazard_progress4</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="n">rem_progress4</span> <span class="o">=</span> <span class="n">remaining_lifetimes_pmf</span><span class="p">(</span><span class="n">hazard_progress4</span><span class="o">.</span><span class="n">make_pmf</span><span class="p">(),</span> <span class="n">qs</span><span class="p">)</span>
@@ -3644,8 +4427,14 @@ And, as shown in the following figure, average remaining lifetimes decrease with
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rem_progress4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;With progress ×4&quot;</span><span class="p">)</span>
 <span class="c1"># rem_progress3.plot(ls=&#39;:&#39;, label=&#39;With progress ×3&#39;)</span>
@@ -3662,6 +4451,7 @@ And, as shown in the following figure, average remaining lifetimes decrease with
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/65311236272f751059002a9d2aae42fa1e7438570fc94ee960b394df360d202e.png" src="_images/65311236272f751059002a9d2aae42fa1e7438570fc94ee960b394df360d202e.png" />
 </div>
@@ -3671,7 +4461,12 @@ And, as shown in the following figure, average remaining lifetimes decrease with
 At that speed, the increase in mortality due to aging by one year is exactly offset by the decrease due to progress.
 That means that the probability of dying is the same from one year to the next, forever.
 The result is a survival curve that looks like this.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dashdotdot</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
@@ -3693,6 +4488,7 @@ The result is a survival curve that looks like this.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b5ba2750e1bf76ab0591c31c554a15727236e0d549ea9adb62cadb90d0d5565a.png" src="_images/b5ba2750e1bf76ab0591c31c554a15727236e0d549ea9adb62cadb90d0d5565a.png" />
 </div>
@@ -3708,7 +4504,12 @@ And if you survive those years, your expected remaining lifetime is <em>still</e
 <p>Every year, your risk of dying goes up because you are older, but it goes down by just as much due to progress.
 People in this scenario are not immortal; each year about 8 out of 10,000 die.
 But as each year passes, you take one step toward the grave, and the grave takes one step away from you.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lam</span> <span class="o">=</span> <span class="n">hazard_no_progress</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span>
 <span class="n">lam</span> <span class="o">*</span> <span class="mf">1e4</span>
@@ -3720,8 +4521,14 @@ But as each year passes, you take one step toward the grave, and the grave takes
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="n">lam</span><span class="p">,</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">lam</span>
 </pre></div>
@@ -3732,8 +4539,14 @@ But as each year passes, you take one step toward the grave, and the grave takes
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">expon</span>
 
@@ -3747,8 +4560,14 @@ But as each year passes, you take one step toward the grave, and the grave takes
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">])</span>
 </pre></div>
@@ -3759,8 +4578,14 @@ But as each year passes, you take one step toward the grave, and the grave takes
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">7e9</span><span class="p">)</span>
 </pre></div>
@@ -3771,6 +4596,7 @@ But as each year passes, you take one step toward the grave, and the grave takes
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In the near future, if child mortality continues to decrease, everyone will be better new than used.
 But eventually, if adult mortality decreases fast enough, everyone will have the same remaining time, on average: new, used, or in between.</p>

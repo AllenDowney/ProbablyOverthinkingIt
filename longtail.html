@@ -389,25 +389,8 @@ document.write(`
   <section id="the-long-tail-of-disaster">
 <h1><span class="section-number">8. </span>The Long Tail of Disaster<a class="headerlink" href="#the-long-tail-of-disaster" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
+<p>If you like <em>Probably Overthinking It</em>, you’ll like my book in progress, <a class="reference external" href="https://allendowney.com/ywcn"><em>You Would Choose Now</em></a>, which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/longtail.ipynb">Click here to run this notebook on Colab</a>.</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
 <div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -492,30 +475,32 @@ The worst disasters, in terms of both lives lost and property destroyed, are tho
 <p>That fact might not be surprising, but there is a pattern to these costs that is less obvious.
 One way to see this pattern is to plot the magnitudes of the biggest disasters on a logarithmic scale.
 To demonstrate, I’ll use the estimated costs from a list of 125 disasters on Wikipedia.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you want a more recent list, try this, but it might not work if the</span>
-<span class="c1"># page has been reorganized.</span>
-
-<span class="c1"># download(&quot;https://en.wikipedia.org/wiki/List_of_disasters_by_cost&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">disasters</span> <span class="o">=</span> <span class="n">tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">disasters</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -615,7 +600,12 @@ The list of human-made disasters includes four other instances of contamination 
 <p>This list is biased: disasters that affect wealthy countries are more likely to damage high-value assets, and the reckoning of the costs is likely to be more complete.
 A disaster that affects more lives – and more severely – in other parts of the world might not appear on the list.
 Nevertheless, it provides a way to quantify the sizes of some large disasters.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">disasters</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
@@ -652,9 +642,15 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Some of the costs are reported as a range, so I compute the midpoints.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">costs</span> <span class="o">=</span> <span class="n">disasters</span><span class="p">[</span><span class="s2">&quot;Cost ($billions)&quot;</span><span class="p">,</span> <span class="s2">&quot;(2021)[5]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="n">costs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">774.9</span>
@@ -671,6 +667,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -714,7 +711,12 @@ Name: count, dtype: int64
 </div></div></div>
 </div>
 <p>Remove the dollar signs and convert to float.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">cost</span> <span class="ow">in</span> <span class="n">costs</span><span class="p">:</span>
@@ -729,9 +731,15 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Get the magnitudes and ranks</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
@@ -739,9 +747,15 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows a “rank-size plot” of the data: the x-axis shows the ranks of the disasters from 1 to 125, where 1 is the most costly; the y-axis shows their costs in billions of U.S. dollars.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ranks</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span>
@@ -759,6 +773,7 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/8da14e5688903ff8e28e1c5fdc9d44e8ee15fba29ec1a5ca637a6df23c2ebf2d.png" src="_images/8da14e5688903ff8e28e1c5fdc9d44e8ee15fba29ec1a5ca637a6df23c2ebf2d.png" />
 </div>
@@ -766,7 +781,12 @@ Name: count, dtype: int64
 <p>With both axes on a log scale, the rank-size plot is a nearly straight line, at least for the top 100 disasters.
 And the slope of this line is close to 1, which implies that each time we double the rank, we cut the costs by one half.
 That is, compared to the costliest disaster, the cost of the second-worst is one half; the cost of the fourth-worst is one quarter; the cost of the eighth is one eighth, and so on.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">steps</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">mags</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
@@ -781,6 +801,7 @@ That is, compared to the costliest disaster, the cost of the second-worst is one
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In this chapter I will explain where this pattern comes from, but I’ll warn you that the answers we have are incomplete.
 There are several ways that natural and engineered systems can generate distributions like this.
@@ -809,7 +830,12 @@ In Chapter 5, we used a tail distribution to represent survival times for cancer
 In that context, it shows the fraction of patients that survive a given time after diagnosis.
 In the context of disasters, it shows the fraction of disasters whose costs exceed a given threshold.
 The following figure shows the tail distribution of the 125 costliest disasters, on a log scale, along with a lognormal model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_surv</span><span class="p">,</span> <span class="n">fit_truncated_normal</span>
 
@@ -834,8 +860,14 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">surv</span><span class="o">=</span><span class="n">surv</span><span class="p">))</span>
 <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;magnitude&#39;</span>
@@ -843,6 +875,7 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -927,7 +960,12 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 <p>108 rows × 2 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;disaster_magnitude.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="o">!</span>head<span class="w"> </span>disaster_magnitude.csv
@@ -948,8 +986,14 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">truncated_normal_sf</span>
 
@@ -959,8 +1003,14 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Percentage with cost ≥ $x$&quot;</span>
 <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Cost (billions of 2021 dollars)&quot;</span>
@@ -973,8 +1023,14 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">ylabels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;100%&quot;</span><span class="p">,</span> <span class="s2">&quot;75%&quot;</span><span class="p">,</span> <span class="s2">&quot;50%&quot;</span><span class="p">,</span> <span class="s2">&quot;25%&quot;</span><span class="p">,</span> <span class="s2">&quot;0%&quot;</span><span class="p">]</span>
@@ -987,8 +1043,14 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_linear</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">surv_linear</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
@@ -1001,11 +1063,17 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/27bd3f3102906b81c9964e45e0338c55a586b97d50321a29a10c14d00a3e4242.png" src="_images/27bd3f3102906b81c9964e45e0338c55a586b97d50321a29a10c14d00a3e4242.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
 
@@ -1018,11 +1086,17 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/934f6089e7b6b3dbb902609f3f54b67f106a4b9828d9e6582f3a365b30f80fe6.png" src="_images/934f6089e7b6b3dbb902609f3f54b67f106a4b9828d9e6582f3a365b30f80fe6.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lognormal model&quot;</span><span class="p">)</span>
 <span class="n">plot_error_bounds</span><span class="p">(</span><span class="n">surv_model</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
@@ -1037,11 +1111,17 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/49c1a111f180311e268b3b6fc53aca44fd40bfb6459f3735928aa7f69ecc9520.png" src="_images/49c1a111f180311e268b3b6fc53aca44fd40bfb6459f3735928aa7f69ecc9520.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
@@ -1052,6 +1132,7 @@ The following figure shows the tail distribution of the 125 costliest disasters,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The dashed line shows the fraction of disasters that exceed each magnitude of cost.
 For example, 98% of the disasters exceed a cost of <span class="math notranslate nohighlight">\(1 billion, 54% exceed \)</span>10 billion, and 7% exceed $100 billion.</p>
@@ -1059,7 +1140,12 @@ For example, 98% of the disasters exceed a cost of <span class="math notranslate
 Most of the data fall within the bounds of the shaded area, which means that they are consistent with the lognormal model.</p>
 <p>However, if you look closely, there are more large-cost disasters than we expect in a lognormal distribution.
 To see this part of the distribution more clearly, we can plot the y-axis on a log scale; the following figure shows what that looks like.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">surv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1073,8 +1159,14 @@ To see this part of the distribution more clearly, we can plot the y-axis on a l
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The Surv object doesn&#39;t interpolate, so y1 ends up too high in this example</span>
 
@@ -1085,8 +1177,14 @@ To see this part of the distribution more clearly, we can plot the y-axis on a l
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 
@@ -1109,6 +1207,7 @@ To see this part of the distribution more clearly, we can plot the y-axis on a l
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/718bd81838b0ddeeb986290f4e73185e270fd6cd57d2c795353f8c3a93c36cfb.png" src="_images/718bd81838b0ddeeb986290f4e73185e270fd6cd57d2c795353f8c3a93c36cfb.png" />
 </div>
@@ -1125,7 +1224,12 @@ In the literature of long-tailed distributions, there are several to choose from
 It was described in 1908 by William Sealy Gosset, using the pseudonym “Student”, while he was working on statistical problems related to quality control at the Guinness Brewery.</p>
 <p>The shape of the <span class="math notranslate nohighlight">\(t\)</span>-distribution is a bell curve similar to a Gaussian, but the tails extend farther to the right and left.
 It has two parameters that determine the center point and width of the curve, like the Gaussian distribution, plus a third parameter that controls the thickness of the tails, that is, what fraction of the values extend far from the mean.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">t</span> <span class="k">as</span> <span class="n">t_dist</span>
@@ -1147,11 +1251,17 @@ It has two parameters that determine the center point and width of the curve, li
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/a7d68b3aba0c46ee664fc19b0d5e30ec25be35228039b4c0a58df8b9af984348.png" src="_images/a7d68b3aba0c46ee664fc19b0d5e30ec25be35228039b4c0a58df8b9af984348.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">ys1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1171,6 +1281,7 @@ It has two parameters that determine the center point and width of the curve, li
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/8913a55062b9a498118f41fca0ba23c617140fa0bad4647d289d0a4136f01ebb.png" src="_images/8913a55062b9a498118f41fca0ba23c617140fa0bad4647d289d0a4136f01ebb.png" />
 </div>
@@ -1179,7 +1290,12 @@ It has two parameters that determine the center point and width of the curve, li
 The following figures shows the distribution of costs again, along with a log-<span class="math notranslate nohighlight">\(t\)</span> model I chose to fit the data.
 In the top figure, the y-axis shows the fraction of disasters on a linear scale;
 in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize_df</span>
 
@@ -1187,8 +1303,14 @@ in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_truncated_t</span>
 
@@ -1202,8 +1324,14 @@ in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">truncated_t_sf</span>
 
@@ -1213,8 +1341,14 @@ in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
 <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with cost ≥ x&quot;</span>
@@ -1231,6 +1365,7 @@ in the bottom figure, the y-axis shows the same fractions on a log scale.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/4ec11813b1f2cf8478ff70022a86b147b7a417d4ff93aa1c0a5bf61acfb8d079.png" src="_images/4ec11813b1f2cf8478ff70022a86b147b7a417d4ff93aa1c0a5bf61acfb8d079.png" />
 </div>
@@ -1240,7 +1375,12 @@ In the bottom figure, we see that the model fits the data well even in the extre
 <p>The agreement between the model and the data provides a hint about why the distribution might have this shape.
 Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</span> distribution is a mixture of Gaussian distributions with different standard deviations.</p>
 <p>The following figure was not included in the book, but it shows that if we generate values from Gaussian distributions with different standard deviations (drawn from an inverse gamma distribution), the values follow a <em>t</em> distribution.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">invgamma</span>
 
@@ -1257,8 +1397,14 @@ Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</sp
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
 
@@ -1267,15 +1413,27 @@ Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</sp
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_sample</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="n">sample</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Mix of lognormal&quot;</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
@@ -1289,6 +1447,7 @@ Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</sp
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/df568a73b8e15f8373445cf1c4fb69aa2dadd52b25c8ee972f51ffc79277d1e9.png" src="_images/df568a73b8e15f8373445cf1c4fb69aa2dadd52b25c8ee972f51ffc79277d1e9.png" />
 </div>
@@ -1300,7 +1459,12 @@ Mathematically, Student’s <span class="math notranslate nohighlight">\(t\)</sp
 Their archive goes all the way back to 1932, but the sensors they use and their coverage have changed over that time.
 For consistency, I selected data from January 1981 to April 2022, which includes records of 791,329 earthquakes.</p>
 <p>For information on catalog completeness and data sources, see <a class="reference external" href="http://www.data.scec.org/about/data_avail.html">http://www.data.scec.org/about/data_avail.html</a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quake_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">quake_df</span><span class="o">.</span><span class="n">shape</span>
@@ -1312,16 +1476,23 @@ For consistency, I selected data from January 1981 to April 2022, which includes
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The magnitude of an earthquake is measured on the “moment magnitude scale”, which is an updated version of the more well-known Richter scale.
 A moment magnitude is proportional to the logarithm of the energy released by an earthquake.
 A two-unit difference on this scale corresponds to a factor of 1000, so a magnitude 5 earthquake releases 1000 times more energy than a magnitude 3 earthquake and 1000 times less energy than a magnitude 7 earthquake.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quake_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1387,12 +1558,18 @@ A two-unit difference on this scale corresponds to a factor of 1000, so a magnit
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quake_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1458,7 +1635,12 @@ A two-unit difference on this scale corresponds to a factor of 1000, so a magnit
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">quake_df</span><span class="p">[</span><span class="s2">&quot;#YYY&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1989&quot;</span>
 <span class="n">year</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1470,13 +1652,20 @@ A two-unit difference on this scale corresponds to a factor of 1000, so a magnit
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quake_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;MAG&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1577,7 +1766,12 @@ A two-unit difference on this scale corresponds to a factor of 1000, so a magnit
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">quake_df</span><span class="p">[</span><span class="s2">&quot;MAG&quot;</span><span class="p">]</span>
 <span class="n">mags</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1597,8 +1791,14 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">mags</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -1609,8 +1809,14 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;#YYY&quot;</span><span class="p">)[</span><span class="s2">&quot;MAG&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -1629,8 +1835,14 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="n">n</span>
@@ -1642,15 +1854,27 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_normal</span><span class="p">(</span><span class="n">surv</span><span class="p">)</span>
 </pre></div>
@@ -1672,8 +1896,14 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">mags</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.99</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -1681,9 +1911,15 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the distribution of moment magnitudes compared to a Gaussian model, which is a lognormal model in terms of energy.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">surv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1691,8 +1927,14 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Magnitude (log energy)&quot;</span>
 <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with mag ≥ $x$&quot;</span>
@@ -1703,8 +1945,14 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Lognormal model&quot;</span>
 <span class="n">cutoff</span> <span class="o">=</span> <span class="n">surv_model</span> <span class="o">&gt;</span> <span class="mf">2e-7</span>
@@ -1721,6 +1969,7 @@ Name: MAG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b4d5ca7ab533542c3676fe05e3701cfed824d9fc9c4c52a24d694ee910ad8ca2.png" src="_images/b4d5ca7ab533542c3676fe05e3701cfed824d9fc9c4c52a24d694ee910ad8ca2.png" />
 </div>
@@ -1735,7 +1984,12 @@ But the actual fraction of earthquakes this big is about 1800 per million, more 
 According to the model, fewer than one earthquake in a million should exceed magnitude 5; in reality, about 170 per million do.
 If your job is to predict large earthquakes, and you underestimate their frequency by a factor of 170, you are in trouble.</p>
 <p>The following figures show the same distribution compared to a log-<span class="math notranslate nohighlight">\(t\)</span> model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">,</span> <span class="n">y2</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">,</span> <span class="n">y1</span> <span class="o">/</span> <span class="n">y2</span>
 </pre></div>
@@ -1746,8 +2000,14 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">surv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">,</span> <span class="n">surv_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e7</span>
@@ -1759,8 +2019,14 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">surv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">,</span> <span class="n">surv_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e18</span>
@@ -1774,8 +2040,14 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">minimize_df</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">surv</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)])</span>
 <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_t</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">surv</span><span class="p">)</span>
@@ -1788,8 +2060,14 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">t</span> <span class="k">as</span> <span class="n">t_dist</span>
 
@@ -1797,8 +2075,14 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quakes_per_year</span> <span class="o">=</span> <span class="n">quake_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;#YYY&quot;</span><span class="p">)[</span><span class="s2">&quot;MAG&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">quakes_per_year</span>
@@ -1810,8 +2094,14 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y522</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">522</span> <span class="o">/</span> <span class="n">quakes_per_year</span>
 <span class="n">y522</span>
@@ -1823,8 +2113,14 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="mf">1.1</span> <span class="o">*</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -1832,8 +2128,14 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
 <span class="n">xticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
@@ -1853,6 +2155,7 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/9821dc3e86a10e72212efe8cda691447d026647f464c8a1658d3ab5b49cd54d2.png" src="_images/9821dc3e86a10e72212efe8cda691447d026647f464c8a1658d3ab5b49cd54d2.png" />
 </div>
@@ -1861,7 +2164,12 @@ If your job is to predict large earthquakes, and you underestimate their frequen
 The bottom figure shows that it also fits the tail of the distribution.</p>
 <p>If we extrapolate beyond the data, we can use this model to compute the probability of earthquakes larger than the ones we have seen so far.
 For example, the square marker shows the predicted probability of an earthquake with magnitude 8, which is about 1.2 per million.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y8</span> <span class="o">*</span> <span class="mf">1e6</span>
 </pre></div>
@@ -1872,8 +2180,14 @@ For example, the square marker shows the predicted probability of an earthquake 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="n">quakes_per_year</span> <span class="o">/</span> <span class="n">y8</span>
 </pre></div>
@@ -1884,6 +2198,7 @@ For example, the square marker shows the predicted probability of an earthquake 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The number of earthquakes in this dataset is about 18,800 per year; at that rate we should expect an earthquake that exceeds magnitude 8 every 43 years, on average.
 To see how credible that expectation is, let’s compare it to predictions from sources more knowledgeable than me.</p>
@@ -1897,14 +2212,25 @@ So you might wonder which model to believe, theirs or mine.</p>
 <p>To find out, let’s see how their predictions from 2015 have turned out so far.
 For comparison, I ran the log-<span class="math notranslate nohighlight">\(t\)</span> model again using only data from prior to 2015.
 The following figure shows their predictions, mine, and the actual number of earthquakes that exceeded each magnitude in the 7.3 years between January 2015 and May 2022.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://pubs.usgs.gov/fs/2015/3009/pdf/fs2015-3009.pdf</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prefix</span> <span class="o">=</span> <span class="n">quake_df</span><span class="p">[</span><span class="s2">&quot;#YYY&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2015</span>
 <span class="n">quakes_per_year</span> <span class="o">=</span> <span class="n">quake_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">prefix</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;#YYY&quot;</span><span class="p">)[</span><span class="s2">&quot;MAG&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1917,16 +2243,28 @@ The following figure shows their predictions, mine, and the actual number of ear
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">quake_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">prefix</span><span class="p">,</span> <span class="s2">&quot;MAG&quot;</span><span class="p">]</span>
 <span class="n">surv</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">minimize_df</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">surv</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)])</span>
 <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_t</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">surv</span><span class="p">)</span>
@@ -1939,8 +2277,14 @@ The following figure shows their predictions, mine, and the actual number of ear
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert UCERF predictions to quakes per 7.33 years</span>
 
@@ -1961,8 +2305,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert log-t predictions to quakes per 7.33 years</span>
 
@@ -1983,8 +2333,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the actual number of quakes since 2015</span>
 
@@ -1998,8 +2354,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">quake_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">suffix</span><span class="p">,</span> <span class="s2">&quot;MAG&quot;</span><span class="p">]</span>
 <span class="n">actual</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mf">5.7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">6.3</span><span class="p">,</span> <span class="mf">6.7</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
@@ -2021,8 +2383,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">actual</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">actual</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -2041,6 +2409,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/040a2ae7f43857be28de3fd7919d5b2c035597f203c9be2f9534752e3775368c.png" src="_images/040a2ae7f43857be28de3fd7919d5b2c035597f203c9be2f9534752e3775368c.png" />
 </div>
@@ -2054,14 +2423,25 @@ In fact, there were two, so both models were close.</p>
 <p>On the right, the UCERF model expects 0.3 earthquakes with magnitude 7.0 or more in 7.3 years.
 The log-<span class="math notranslate nohighlight">\(t\)</span> expects 0.8 earthquakes of this size in the same interval.
 In fact, there was one: the main shock of the 2019 Ridgecrest earthquake sequence measured 7.1.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://en.wikipedia.org/wiki/2019_Ridgecrest_earthquakes</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">ucerf</span> <span class="o">/</span> <span class="mf">7.33</span><span class="p">)</span>
 </pre></div>
@@ -2078,8 +2458,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">logt</span> <span class="o">/</span> <span class="mf">7.33</span><span class="p">)</span>
 </pre></div>
@@ -2096,6 +2482,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The discrepancy between the two models increases for larger earthquakes.
 The UCERF model estimates 87 years between earthquakes that exceed 7.5; the log-<span class="math notranslate nohighlight">\(t\)</span> model estimates only 19.
@@ -2134,14 +2521,25 @@ Data from these sensors, going back to 1975, is available for download.</p>
 The magnitude of this flux is one way to quantify its potential for impact on Earth.
 This dataset includes measurements from more than 36,000 solar flares.
 The following figure shows the distribution of their magnitudes compared to a lognormal model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kurtzgesagt https://www.youtube.com/watch?v=oHHSSJDJ4oo</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flares_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">flares</span> <span class="o">=</span> <span class="n">flares_df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -2154,8 +2552,14 @@ The following figure shows the distribution of their magnitudes compared to a lo
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">flares</span><span class="p">)</span>
 <span class="n">mags</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2175,8 +2579,14 @@ Name: 0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="n">n</span>
@@ -2188,15 +2598,27 @@ Name: 0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_normal</span><span class="p">(</span><span class="n">surv</span><span class="p">)</span>
 </pre></div>
@@ -2215,8 +2637,14 @@ Name: 0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">mags</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.99</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -2224,8 +2652,14 @@ Name: 0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Integrated flux (Joules / square meter)&quot;</span>
 <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with flux ≥ $x$&quot;</span>
@@ -2236,8 +2670,14 @@ Name: 0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flares</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">flares</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">flares</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">/</span> <span class="n">flares</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 </pre></div>
@@ -2248,15 +2688,27 @@ Name: 0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cutoff</span> <span class="o">=</span> <span class="n">surv_model</span> <span class="o">&gt;</span> <span class="mf">1e-6</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">surv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -2270,8 +2722,14 @@ Name: 0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Lognormal Model&quot;</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
@@ -2285,6 +2743,7 @@ Name: 0, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/76cd3d3f2632a360a8e47248753c0652dbe9c382750fba1d74a24811e0659d5d.png" src="_images/76cd3d3f2632a360a8e47248753c0652dbe9c382750fba1d74a24811e0659d5d.png" />
 </div>
@@ -2301,14 +2760,25 @@ The dotted line in the figure shows this difference.</p>
 But for predicting the effect of space weather on Earth, it is the largest flares we care about, and for those the lognormal model might be dangerously inaccurate.</p>
 <p>Let’s see if the log-<span class="math notranslate nohighlight">\(t\)</span> model does any better.
 The following figures show the distribution of fluxes again, along with a log-<span class="math notranslate nohighlight">\(t\)</span> distribution.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">minimize_df</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">surv</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_t</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">surv</span><span class="p">)</span>
 <span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span>
@@ -2320,8 +2790,14 @@ The following figures show the distribution of fluxes again, along with a log-<s
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -2330,8 +2806,14 @@ The following figures show the distribution of fluxes again, along with a log-<s
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
@@ -2347,11 +2829,17 @@ The following figures show the distribution of fluxes again, along with a log-<s
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/f916bfabb94ef51ac7242cedd013e7ee0368c9b45ea7e2ae3ac7f9a4ad315a46.png" src="_images/f916bfabb94ef51ac7242cedd013e7ee0368c9b45ea7e2ae3ac7f9a4ad315a46.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -2366,8 +2854,14 @@ The following figures show the distribution of fluxes again, along with a log-<s
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
@@ -2383,6 +2877,7 @@ The following figures show the distribution of fluxes again, along with a log-<s
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/9431a9be5036218d009304e418228d4864ec87877577bafc3d27e971e8c2e27e.png" src="_images/9431a9be5036218d009304e418228d4864ec87877577bafc3d27e971e8c2e27e.png" />
 </div>
@@ -2391,7 +2886,12 @@ The following figures show the distribution of fluxes again, along with a log-<s
 Maybe we don’t detect small flares as reliably, or maybe there are just fewer of them than the model predicts.</p>
 <p>The bottom figure shows that the model fits the tail of the distribution except possibly for the most extreme values.
 Above 1 Joule per meter squared, the actual curve drops off faster than the model, although it is still within the range of variation we expect.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">mags</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
@@ -2402,10 +2902,16 @@ Above 1 Joule per meter squared, the actual curve drops off faster than the mode
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>This example shows that the distribution of the size of solar flares is longer-tailed than a lognormal distribution, which suggests that the largest possible solar flares might be substantially larger than the ones we have seen so far.</p>
 <p>If we use the model to extrapolate beyond the data – which is always an uncertain thing to do – we expect 2.4 flares per million to exceed 10 Joules per square meter, and 0.36 per million to exceed 100.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_dist</span><span class="o">.</span><span class="n">sf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">,</span> <span class="mf">20e6</span> <span class="o">/</span> <span class="n">n</span>
 </pre></div>
@@ -2416,8 +2922,14 @@ Above 1 Joule per meter squared, the actual curve drops off faster than the mode
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_dist</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e9</span><span class="p">,</span> <span class="mf">1e9</span> <span class="o">/</span> <span class="mi">36000</span>
 </pre></div>
@@ -2428,6 +2940,7 @@ Above 1 Joule per meter squared, the actual curve drops off faster than the mode
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In the last 20 years we have observed about 36,000 flares, so it would take more than 500 years to observe a million.
 But in that time, we might see a solar flare 10 or 100 times bigger than the biggest we have seen so far.</p>
@@ -2450,7 +2963,12 @@ To do that, we’ll look at evidence of damage they have done in the past: the i
 <p>In addition to large, visible craters like these, there are innumerable smaller craters.
 The Lunar Crater Database catalogs nearly all of the ones larger than one kilometer, about 1.3 million in total.
 It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent to the Moon in 2009.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.nytimes.com/2022/03/21/science/nasa-asteroid-strike.html</span>
 
@@ -2458,8 +2976,14 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.nasa.gov/centers/goddard/news/features/2010/biggest_crater.html</span>
 <span class="c1"># https://en.wikipedia.org/wiki/Bailly_(crater)</span>
@@ -2467,8 +2991,14 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://astrogeology.usgs.gov/search/map/Moon/Research/Craters/lunar_crater_database_robbins_2018</span>
 <span class="c1"># https://en.wikipedia.org/wiki/Lunar_Reconnaissance_Orbiter</span>
@@ -2476,8 +3006,14 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1740</span> <span class="o">*</span> <span class="mi">2</span>
 </pre></div>
@@ -2488,17 +3024,15 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Download the data from <a class="reference external" href="https://astrogeology.usgs.gov/search/map/Moon/Research/Craters/lunar_crater_database_robbins_2018">https://astrogeology.usgs.gov/search/map/Moon/Research/Craters/lunar_crater_database_robbins_2018</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Looks like the old URL doesn&#39;t work</span>
-<span class="c1"># download(&quot;https://pdsimage2.wr.usgs.gov/Individual_Investigations/moon_lro.kaguya_multi_craterdatabase_robbins_2018/data/lunar_crater_database_robbins_2018.csv&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>-lh<span class="w"> </span>lunar_crater_database_robbins_2018.csv
 </pre></div>
@@ -2509,8 +3043,14 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;lunar_crater_database_robbins_2018.csv&quot;</span>
 <span class="n">craters</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -2518,6 +3058,7 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2686,7 +3227,12 @@ It is based on images taken by the Lunar Reconnaissance Orbiter, which NASA sent
 <p>5 rows × 21 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diameters</span> <span class="o">=</span> <span class="n">craters</span><span class="p">[</span><span class="s2">&quot;DIAM_CIRC_IMG&quot;</span><span class="p">]</span>
 <span class="n">diameters</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2706,8 +3252,14 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">diameters</span><span class="p">)</span>
 <span class="n">mags</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -2727,8 +3279,14 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="n">n</span>
@@ -2740,15 +3298,27 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_normal</span><span class="p">(</span><span class="n">surv</span><span class="p">)</span>
 </pre></div>
@@ -2779,8 +3349,14 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">mags</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.99</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -2788,8 +3364,14 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Crater diameter (kilometers)&quot;</span>
 <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with diameter ≥ $x$&quot;</span>
@@ -2800,9 +3382,15 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the distribution of these crater sizes, compared to a log-<span class="math notranslate nohighlight">\(t\)</span> model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">,</span> <span class="n">y2</span> <span class="o">*</span> <span class="mf">1e6</span>
 </pre></div>
@@ -2813,8 +3401,14 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">surv</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">surv_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -2826,8 +3420,14 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 50 per sextillion</span>
 
@@ -2840,15 +3440,27 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">minimize_df</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">surv</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_t</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">surv</span><span class="p">)</span>
 <span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span>
@@ -2860,8 +3472,14 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -2870,8 +3488,14 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
@@ -2887,6 +3511,7 @@ Name: DIAM_CIRC_IMG, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/446a0b40e2937a713146d82dc6861c71d11d6538ffd23f04b7729fa4dfda9d79.png" src="_images/446a0b40e2937a713146d82dc6861c71d11d6538ffd23f04b7729fa4dfda9d79.png" />
 </div>
@@ -2912,7 +3537,12 @@ The smallest are less than one kilometer.</p>
 <li><p>Selecting Inner, outer, and main belt asteroids</p></li>
 <li><p>Variables: IAU name, diameter, GM (mass times gravitational constant G)</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asteroids</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">asteroids</span><span class="o">.</span><span class="n">shape</span>
@@ -2924,14 +3554,21 @@ The smallest are less than one kilometer.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Fans of <em>The Expanse</em> will recognize the names of the largest asteroids in <a class="reference external" href="https://expanse.fandom.com/wiki/Asteroid_Belt">the Belt</a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asteroids</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;diameter&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2991,12 +3628,18 @@ The smallest are less than one kilometer.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asteroids</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;diameter&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3056,7 +3699,12 @@ The smallest are less than one kilometer.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">asteroids</span><span class="p">[</span><span class="s2">&quot;diameter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -3075,8 +3723,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">asteroids</span><span class="p">[</span><span class="s2">&quot;diameter&quot;</span><span class="p">])</span>
 <span class="n">mags</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -3096,8 +3750,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="n">n</span>
@@ -3109,15 +3769,27 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_normal</span><span class="p">(</span><span class="n">surv</span><span class="p">)</span>
 </pre></div>
@@ -3139,8 +3811,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">truncated_normal_pmf</span>
 
@@ -3151,8 +3829,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Asteroid diameter (kilometers)&quot;</span>
 <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with diameter ≥ $x$&quot;</span>
@@ -3161,8 +3845,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.5</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">surv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -3176,8 +3866,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cutoff</span> <span class="o">=</span> <span class="n">surv_model</span> <span class="o">&gt;</span> <span class="mf">1e-6</span>
 <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">]</span>
@@ -3185,8 +3881,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Lognormal model&quot;</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
@@ -3200,19 +3902,31 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/9e9e6f9f5a60ed0a04c23c21bae7ccab5a248af76c8c2c8a94015ff87183e46a.png" src="_images/9e9e6f9f5a60ed0a04c23c21bae7ccab5a248af76c8c2c8a94015ff87183e46a.png" />
 </div>
 </div>
 <p>The following figure shows the distribution of asteroid sizes compared to a log-<span class="math notranslate nohighlight">\(t\)</span> model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">minimize_df</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">surv</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="mf">6.5</span>
 <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_t</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">surv</span><span class="p">)</span>
@@ -3225,8 +3939,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -3235,8 +3955,14 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
@@ -3251,6 +3977,7 @@ Name: diameter, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/0eeeb35c46c2c86bd9fbe2aeea15f1aeda03ee6526f9b745c7e5c580d24f21c2.png" src="_images/0eeeb35c46c2c86bd9fbe2aeea15f1aeda03ee6526f9b745c7e5c580d24f21c2.png" />
 </div>
@@ -3272,7 +3999,12 @@ It also depends on the density of the asteroid and the angle of impact.</p>
 <p>Source: Melosh, <em>Planetary Surface Processes</em>.</p>
 <p>As a simple model of this relationship, I’ll simulate the crater formation process by drawing asteroid diameters from the distribution in the previous section and drawing the other factors – density, velocity, and angle – from a lognormal distribution with parameters chosen to match the data.
 The following figure shows the results from this simulation along with the actual distribution of crater sizes.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diam_asteroid</span> <span class="o">=</span> <span class="n">asteroids</span><span class="p">[</span><span class="s2">&quot;diameter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">diam_crater</span> <span class="o">=</span> <span class="n">craters</span><span class="p">[</span><span class="s2">&quot;DIAM_CIRC_IMG&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -3285,15 +4017,27 @@ The following figure shows the results from this simulation along with the actua
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_crater</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">diam_crater</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="n">diam_crater</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -3309,8 +4053,14 @@ The following figure shows the results from this simulation along with the actua
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">error_func_pred</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Error function for finding parameters for the asteroid problem.</span>
@@ -3334,8 +4084,14 @@ The following figure shows the results from this simulation along with the actua
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.194</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.883</span>
@@ -3353,8 +4109,14 @@ The following figure shows the results from this simulation along with the actua
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">least_squares</span>
 
@@ -3371,8 +4133,14 @@ The following figure shows the results from this simulation along with the actua
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">rvs</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">+</span> <span class="n">mu</span><span class="p">)</span>
 <span class="n">pred_crater</span> <span class="o">=</span> <span class="n">factors</span> <span class="o">*</span> <span class="n">resample_asteroid</span><span class="o">**</span><span class="mf">0.78</span>
@@ -3383,6 +4151,7 @@ The following figure shows the results from this simulation along with the actua
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3426,7 +4195,12 @@ The following figure shows the results from this simulation along with the actua
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Crater diameter (kilometers)&quot;</span>
 <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with diameter ≥ $x$&quot;</span>
@@ -3450,6 +4224,7 @@ The following figure shows the results from this simulation along with the actua
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/220bc590b8037e015775f9e854e105ec32a2f82fca6dc143d384d723132f25f5.png" src="_images/220bc590b8037e015775f9e854e105ec32a2f82fca6dc143d384d723132f25f5.png" />
 </div>
@@ -3474,7 +4249,12 @@ The amount of wealth that disappeared in one day, at least on paper, exceeded th
 <p>Like natural disasters, the distribution of magnitudes of stock market crashes is long-tailed.
 To demonstrate, I’ll use data from the MeasuringWorth Foundation which has compiled the value of the Dow Jones Industrial Average at the end of each day from February 16, 1885 to the present, with adjustments at several points to make the values consistent.
 The series I collected ends on May 6, 2022, so it includes 37,512 days.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;Citation: Samuel H. Williamson, &#39;Daily Closing Value of the Dow Jones Average, 1885 to Present,&#39; MeasuringWorth, 2022. &quot;</span>
 
@@ -3482,8 +4262,14 @@ The series I collected ends on May 6, 2022, so it includes 37,512 days.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">djia</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">djia</span><span class="o">.</span><span class="n">shape</span>
@@ -3495,13 +4281,20 @@ The series I collected ends on May 6, 2022, so it includes 37,512 days.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">djia</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3555,12 +4348,18 @@ The series I collected ends on May 6, 2022, so it includes 37,512 days.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">djia</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3617,7 +4416,12 @@ The series I collected ends on May 6, 2022, so it includes 37,512 days.</p>
 <p>In percentage terms, the largest single-day drop was 22.6%, during the Black Monday crash.
 The second largest drop was 12.9% on March 16, 2020, during the crash caused by the COVID-19 pandemic.
 Numbers three and four on the list were 12.8% and 11.7%, on consecutive days during Wall Street Crash of 1929.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">djia</span><span class="p">[</span><span class="s2">&quot;DJIA&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
 <span class="n">djia</span><span class="p">[</span><span class="s2">&quot;change&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">diff</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
@@ -3625,6 +4429,7 @@ Numbers three and four on the list were 12.8% and 11.7%, on consecutive days dur
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3687,12 +4492,18 @@ Numbers three and four on the list were 12.8% and 11.7%, on consecutive days dur
 <p>On the positive side, the largest single-day gain was on March 15, 1933, when the index gained 15.3%.
 There were other large gains in October 1929 and October 1931.
 The largest gain of the 21st century, so far, was on March 24, 2020, when the index gained 11.4% in expectation that the U.S. Congress would pass a large economic stimulus bill.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">djia</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;change&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -3753,7 +4564,12 @@ The largest gain of the 21st century, so far, was on March 24, 2020, when the in
 </div></div></div>
 </div>
 <p>But these large moves are unusual; on 95% of days, the change is less than 2 percentage points either way.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">djia</span><span class="p">[</span><span class="s2">&quot;change&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -3772,8 +4588,14 @@ Name: change, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">djia</span><span class="p">[</span><span class="s2">&quot;change&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -3784,8 +4606,14 @@ Name: change, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">djia</span><span class="p">[</span><span class="s2">&quot;change&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -3796,8 +4624,14 @@ Name: change, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">djia</span><span class="p">[</span><span class="s2">&quot;DJIA&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
 <span class="n">all_mags</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -3817,8 +4651,14 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">all_mags</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="p">(</span><span class="n">all_mags</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="p">(</span><span class="n">all_mags</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -3829,8 +4669,14 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="n">all_mags</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
@@ -3842,12 +4688,18 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>As an aside, the index climbed on 52.3% of days, fell on 47.1% of days, and closed exactly where it opened on the remaining 0.06% of days.
 The average increase was only 0.02% per day, but with about 250 trading days per year, that amounts to an increase of 4.8% annually.
 After 37,512 days, the total increase is more than 100,000%.
 So that’s a pretty good return on investment, if you made the investment in 1885.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">**</span><span class="mi">250</span> <span class="o">-</span> <span class="mi">1</span>
 </pre></div>
@@ -3858,8 +4710,14 @@ So that’s a pretty good return on investment, if you made the investment in 18
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_mags</span><span class="p">)</span>
 <span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="o">**</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
@@ -3871,8 +4729,14 @@ So that’s a pretty good return on investment, if you made the investment in 18
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">djia</span><span class="p">[</span><span class="s2">&quot;DJIA&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">end</span> <span class="o">/</span> <span class="n">start</span> <span class="o">-</span> <span class="mi">1</span>
@@ -3884,8 +4748,14 @@ So that’s a pretty good return on investment, if you made the investment in 18
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">losses</span> <span class="o">=</span> <span class="n">all_mags</span> <span class="o">&lt;</span> <span class="mi">0</span>
 <span class="n">losses</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -3897,8 +4767,14 @@ So that’s a pretty good return on investment, if you made the investment in 18
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="o">-</span><span class="n">all_mags</span><span class="p">[</span><span class="n">losses</span><span class="p">]</span>
 <span class="n">mags</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -3918,8 +4794,14 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="n">mags</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 </pre></div>
@@ -3930,8 +4812,14 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="n">n</span>
@@ -3943,15 +4831,27 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_normal</span><span class="p">(</span><span class="n">surv</span><span class="p">)</span>
 <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span>
@@ -3989,8 +4889,14 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -3998,8 +4904,14 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;One day percent change&quot;</span>
 <span class="n">xlabels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;no change&quot;</span><span class="p">,</span> <span class="s2">&quot;-5%&quot;</span><span class="p">,</span> <span class="s2">&quot;-10%&quot;</span><span class="p">,</span> <span class="s2">&quot;-15%&quot;</span><span class="p">,</span> <span class="s2">&quot;-20%&quot;</span><span class="p">]</span>
@@ -4013,8 +4925,14 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span><span class="p">(</span><span class="n">xticks</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
@@ -4025,8 +4943,14 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cutoff</span> <span class="o">=</span> <span class="n">surv_model</span> <span class="o">&gt;</span> <span class="mf">1e-5</span>
 <span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">]</span>
@@ -4034,9 +4958,15 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Since we are interested in stock market crashes, I selected the 17,680 days when the value of the index dropped.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Lognormal model&quot;</span>
 <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Fraction with drop ≥ $x$&quot;</span>
@@ -4053,6 +4983,7 @@ Name: DJIA, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/25a121b4f28ed2d4687935a4115c38b895f1751a5104896952833f213d859b19.png" src="_images/25a121b4f28ed2d4687935a4115c38b895f1751a5104896952833f213d859b19.png" />
 </div>
@@ -4060,14 +4991,25 @@ Name: DJIA, dtype: float64
 <p>On the left, the lognormal model seems to fit the distribution well, but again there are big differences hiding in the tail.
 On the right, we can see that the lognormal model does not fit the tail of the distribution at all.</p>
 <p>The following figure shows the distribution of these negative percentage changes compared to a log-<span class="math notranslate nohighlight">\(t\)</span> model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">minimize_df</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">surv</span><span class="p">,</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_t</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">surv</span><span class="p">)</span>
 <span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span>
@@ -4079,8 +5021,14 @@ On the right, we can see that the lognormal model does not fit the tail of the d
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="mf">1.02</span> <span class="o">*</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -4089,8 +5037,14 @@ On the right, we can see that the lognormal model does not fit the tail of the d
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
 <span class="n">axs</span> <span class="o">=</span> <span class="n">plot_two</span><span class="p">(</span>
@@ -4107,6 +5061,7 @@ On the right, we can see that the lognormal model does not fit the tail of the d
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/3a16443d2439c3eaafbc11fa18a696c1d8631ed32c6e72c25da32be27b78c2c3.png" src="_images/3a16443d2439c3eaafbc11fa18a696c1d8631ed32c6e72c25da32be27b78c2c3.png" />
 </div>
@@ -4114,7 +5069,12 @@ On the right, we can see that the lognormal model does not fit the tail of the d
 <p>The top figure shows that the log-<span class="math notranslate nohighlight">\(t\)</span> model fits the left side of the distribution well.
 The bottom figure shows that it fits the tail well, with the possible exception of the last data point, the 1987 crash, which falls just at the edge of variation we expect.
 According to the model, there is only a 5% chance that we would see a crash as big as this one after 17,680 down days.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">surv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -4128,8 +5088,14 @@ According to the model, there is only a 5% chance that we would see a crash as b
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">-</span> <span class="n">t_dist</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="n">n</span>
 </pre></div>
@@ -4140,6 +5106,7 @@ According to the model, there is only a 5% chance that we would see a crash as b
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>There are two interpretations of this observation: maybe Black Monday was a deviation from the model, or maybe we were just unlucky.
 These possibilities are the topic of some controversy, as I’ll discuss in the next section.</p>
@@ -4152,7 +5119,12 @@ If the distribution of event sizes is actually long-tailed and the model is Gaus
 <p>For example, if we use a Gaussian distribution to model the magnitudes of earthquakes, we predict that the probability of a magnitude 7 earthquake is about 4 per sextillion (<span class="math notranslate nohighlight">\(10^{18}\)</span>).
 The actual rate in the dataset we looked at is about 6 per million, which is more likely by a factor of a trillion (<span class="math notranslate nohighlight">\(10^{12}\)</span>).
 When a magnitude 7 earthquake occurs, it would be a black swan if your predictions were based on the Gaussian model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x = 7</span>
 <span class="c1"># surv(x)*1e6, surv_model(x)*1e18</span>
@@ -4161,6 +5133,7 @@ When a magnitude 7 earthquake occurs, it would be a black swan if your predictio
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>However, black swans can be “tamed” by using appropriate long-tailed distributions, as we did in this chapter.
 According to the log-<span class="math notranslate nohighlight">\(t\)</span> model, based on the distribution of past earthquakes, and the UCERF3 model, which is based on geological physics in addition to data, we expect a magnitude 7 quake to occur once every few decades, on average.
@@ -4192,7 +5165,12 @@ Second, they are large, and people are bad at comprehending very large magnitude
 Specifically, suppose it follows a log-<span class="math notranslate nohighlight">\(t\)</span> distribution with the same tail thickness as the distribution of disaster costs, but with the same mean as the distribution of human height.</p>
 <p>If you woke up in this Long-Tailed World, you might not notice the difference immediately.
 The first few people you meet would probably be of unsurprising height.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">brfss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;brfss&quot;</span><span class="p">)</span>
 <span class="n">height</span> <span class="o">=</span> <span class="n">brfss</span><span class="p">[</span><span class="s2">&quot;HTM4&quot;</span><span class="p">]</span>
@@ -4207,8 +5185,14 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="n">mags</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -4229,15 +5213,27 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv</span> <span class="o">=</span> <span class="n">make_surv</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">minimize_df</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">surv</span><span class="p">,</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e6</span><span class="p">)])</span>
 <span class="n">df</span>
@@ -4249,8 +5245,14 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="mf">3.53</span>  <span class="c1"># same as distribution of disasters</span>
 <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_truncated_t</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">surv</span><span class="p">)</span>
@@ -4263,8 +5265,14 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">surv</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
@@ -4272,8 +5280,14 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_label</span> <span class="o">=</span> <span class="s2">&quot;Log-$t$ model&quot;</span>
 <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -4284,11 +5298,17 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/f8a590abf3448c805d8ed6813476f6aa7728460e63665bebd080199ed3a12157.png" src="_images/f8a590abf3448c805d8ed6813476f6aa7728460e63665bebd080199ed3a12157.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 <span class="n">surv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
@@ -4296,18 +5316,30 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/7138dfb2adb82b0a25e51931ff21eaae34224ad79c753572785b44c7c646c891.png" src="_images/7138dfb2adb82b0a25e51931ff21eaae34224ad79c753572785b44c7c646c891.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">=</span> <span class="n">t_dist</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">330e6</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">7e9</span><span class="p">]</span>
 <span class="n">ps</span>
@@ -4319,8 +5351,14 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">height</span> <span class="o">&gt;=</span> <span class="mi">277</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mf">7e9</span>
 </pre></div>
@@ -4331,6 +5369,7 @@ Name: HTM4, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Out of 100 people, the tallest might be 215 cm.</p>
 <p>If you see 1000 people, the tallest of them might be 277 cm.</p>
@@ -4354,6 +5393,103 @@ Otherwise, rare events will continue to take us by surprise and catch us unprepa
 </ul>
 <p>Collecting data like this requires satellites, space probes, seismometers, and other instruments; and processing it requires time, expertise, and other resources.
 These activities are expensive, but if we use the data to predict, prepare for, and mitigate the costs of disaster, it will pay for itself many times over.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># predicted heights converted from cm to m</span>
+
+<span class="n">qs</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="n">qs</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">series</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.862427e+00    0.900000
+2.157498e+00    0.990000
+2.770801e+00    0.999000
+4.416977e+00    0.999900
+5.888934e+01    0.999999
+1.575737e+08    1.000000
+1.445579e+19    1.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># height of the tallest person in light years</span>
+
+<span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">9.46073e15</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1527.9783031704246
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># double-checking that the &quot;tallest people&quot; examples are on the model curve</span>
+
+<span class="n">transformed</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">qs</span><span class="p">)</span>
+<span class="n">transformed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.270079     1.000000e-01
+2.333950     1.000000e-02
+2.442605     1.000000e-03
+2.645125     1.000000e-04
+3.770037     1.000000e-06
+10.197484    3.030303e-09
+21.160042    1.428572e-10
+dtype: float64
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surv_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">surv</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">transformed</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">yscale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/faec2d8eeb0102c56f76e51453cff85c624c1a3f011d12874bed02cf9cc0b484.png" src="_images/faec2d8eeb0102c56f76e51453cff85c624c1a3f011d12874bed02cf9cc0b484.png" />
+</div>
+</div>
 </section>
 <section id="sources-and-related-reading">
 <h2><span class="section-number">8.10. </span>Sources and related reading<a class="headerlink" href="#sources-and-related-reading" title="Link to this heading">#</a></h2>

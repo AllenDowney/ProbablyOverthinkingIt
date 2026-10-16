@@ -389,6 +389,7 @@ document.write(`
   <section id="fairness-and-fallacy">
 <h1><span class="section-number">9. </span>Fairness and Fallacy<a class="headerlink" href="#fairness-and-fallacy" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
+<p>If you like <em>Probably Overthinking It</em>, you’ll like my book in progress, <a class="reference external" href="https://allendowney.com/ywcn"><em>You Would Choose Now</em></a>, which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/base_rate.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
@@ -453,7 +454,12 @@ If they have been in strict isolation for 14 days and have no symptoms, it would
 <p>Of the 10 who are actually infected, we expect 9 to get a positive test result, because the sensitivity of the test is 87%.</p>
 <p>Of the other 990, we expect 970 to get a negative test result, because the specificity is 98%. But that means we expect 20 people to get a false positive.</p>
 <p>Before we go on, let’s put the numbers we have so far in a table.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Infected&quot;</span><span class="p">,</span> <span class="s2">&quot;Not infected&quot;</span><span class="p">])</span>
 <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# of people&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">990</span>
@@ -465,6 +471,7 @@ If they have been in strict isolation for 14 days and have no symptoms, it would
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -515,7 +522,12 @@ Out of 1000 test results, 9 are true positives and 20 are false positives, for a
 <p>Now we are ready to answer your friend’s question: Given a positive test result, what is the probability that they are actually infected?
 In this example, the answer is 9 out of 29, or 31%.</p>
 <p>Here’s the table again, with a fourth column showing the probability of actual infection and the complementary probability that the test result is a false positive.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">table</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f positive tests&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;# positive&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
@@ -523,6 +535,7 @@ In this example, the answer is 9 out of 29, or 31%.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -576,7 +589,12 @@ The reason it’s so low is that the base rate in this example is only 1%.</p>
 Let’s say it is ten times more likely, so the probability that your friend is infected is 10% before we get the test results.
 In that case, out of 1000 people with the same symptoms, we would expect 100 to be infected.
 If we modify the first column of the table accordingly, here are the results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_test_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a table showing test results for infected and not infected groups.</span>
@@ -597,8 +615,14 @@ If we modify the first column of the table accordingly, here are the results.</p
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.87</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.98</span>
@@ -608,6 +632,7 @@ If we modify the first column of the table accordingly, here are the results.</p
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -661,7 +686,12 @@ This example demonstrates two things:</p>
 <p>If the test is more sensitive, that helps, but maybe not as much as you expect.
 For example, another brand of rapid antigen tests claims 95% sensitivity, substantially better than the first brand, which was 87%.
 With this test, assuming the same specificity, 98%, and the same base rate, 10%, here’s what we get.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.95</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.98</span>
@@ -671,6 +701,7 @@ With this test, assuming the same specificity, 98%, and the same base rate, 10%,
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -726,7 +757,12 @@ However, in practice it is always possible that a specimen is contaminated, a de
 But all 19 turned out to be false positives, produced by a lab in Boston that was suspended by the Department of Public Health after they reported at least 383 false positive results.</p>
 <p>It’s hard to say how often something like that goes wrong, but if it happens one time in 1000, the specificity of the test would be 99.9%.
 Let’s see what effect that has on the results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.95</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.999</span>
@@ -736,6 +772,7 @@ Let’s see what effect that has on the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -783,7 +820,12 @@ Let’s see what effect that has on the results.</p>
 <p>With 95% sensitivity, 99.9% specificity, and 10% base rate, the probability is about 99% that your friend is actually infected, given a positive PCR test result.</p>
 <p>However, the base rate still matters. Suppose you tell me that your friend lives in New Zealand where (at least at the time I am writing) the rate of COVID infection is very low. In that case the base rate for someone with mild flu-like symptoms might be 1 in 1000.</p>
 <p>Here’s the table with 95% sensitivity, 99.9% specificity, and base rate 1 in 1000.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.95</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.999</span>
@@ -793,6 +835,7 @@ Let’s see what effect that has on the results.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -851,7 +894,12 @@ The researchers asked a “convenience sample” of doctors (probably their frie
 </div></blockquote>
 <p>What they call “prevalence” is what I’ve been calling “base rate”. And what they call the “false positive rate” is the complement of specificity, so a false positive rate of 5% corresponds to a specificity of 95%.</p>
 <p>Before I tell you the results of the experiment, let’s work out the answer to the question.  We are not given the sensitivity of the test, so I’ll make the optimistic assumption that it is 99%. The following table shows the results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.99</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.95</span>
@@ -861,6 +909,7 @@ The researchers asked a “convenience sample” of doctors (probably their frie
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -967,7 +1016,12 @@ With a few generous assumptions, I estimate that the base rate is 86%; in realit
 <p>Both of these assumptions are generous; that is, they probably overestimate the accuracy of the DREs.
 Even so, they imply that 188 out of 219 blood tests would have been positive, if they had been tested.
 That’s a base rate of 86%.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">percent</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate percentage: 100 * y / (y + n).&quot;&quot;&quot;</span>
@@ -975,8 +1029,14 @@ That’s a base rate of 86%.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_drug</span> <span class="o">=</span> <span class="mi">11</span>
 <span class="n">drug</span> <span class="o">=</span> <span class="mi">173</span> <span class="o">-</span> <span class="mi">11</span>
@@ -989,8 +1049,14 @@ That’s a base rate of 86%.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate</span> <span class="o">=</span> <span class="n">percent</span><span class="p">(</span><span class="n">drug</span><span class="p">,</span> <span class="n">no_drug</span><span class="p">)</span>
 <span class="n">rate</span>
@@ -1002,8 +1068,14 @@ That’s a base rate of 86%.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refused</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="n">total_pos</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">refused</span> <span class="o">+</span> <span class="n">drug</span>
@@ -1016,8 +1088,14 @@ That’s a base rate of 86%.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_pos</span> <span class="o">/</span> <span class="mi">219</span>
 </pre></div>
@@ -1028,10 +1106,16 @@ That’s a base rate of 86%.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Because the suspects who were released were not tested, there is no way to estimate the sensitivity of the test, but let’s assume it’s 99%, so if a suspect is under the influence of a drug, there is a 99% chance a DRE would detect it. In reality, it is probably lower.</p>
 <p>With these generous assumptions, we can use the following table to estimate the sensitivity of the DRE protocol.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="s2">&quot;Suspects&quot;</span>
 <span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Prob positive&quot;</span>
@@ -1051,6 +1135,7 @@ That’s a base rate of 86%.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1110,7 +1195,12 @@ And there are many other reasons for erratic driving, including distraction, sle
 It’s hard to say which explanation is most common.
 I’m sure it depends on time and location.
 But as an example, let’s suppose it is 50%; the following table shows the results with this base rate.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Impaired&quot;</span><span class="p">,</span> <span class="s2">&quot;Not impaired&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">,</span> <span class="n">col4</span><span class="p">]</span>
@@ -1126,6 +1216,7 @@ But as an example, let’s suppose it is 50%; the following table shows the resu
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1193,7 +1284,12 @@ In fact, we can use these numbers, along with additional information from the sa
 <p>Berenson “Yes, <em>but</em>… there’s another complexity here – and this is the part that the vaccine [advocates?] never admit – when you get to a place like Britain or Israel where almost everybody in that age range is vaccinated, who’s not being vaccinated? Do you think there’s a lot of people in the old age home who are saying, ‘You know what, I’m insisting on my personal rights; you can’t vaccinate me.’  Some 88 year old, no. The only people who aren’t being vaccinated in that age group? Are probably too sick or too close to the end of their lives …”</p>
 <p>Rogan: Isn’t that speculative, though?</p>
 <p>Berenson: You caught me, because you’re right, it is speculative. That is my speculation that there is this difference in these two groups.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">death_vax</span> <span class="o">=</span> <span class="mi">1272</span>
 <span class="n">death_unvax</span> <span class="o">=</span> <span class="mi">1521</span> <span class="o">-</span> <span class="n">death_vax</span>
@@ -1206,8 +1302,14 @@ In fact, we can use these numbers, along with additional information from the sa
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">death_vax</span> <span class="o">/</span> <span class="p">(</span><span class="n">death_vax</span> <span class="o">+</span> <span class="n">death_unvax</span><span class="p">)</span>
 </pre></div>
@@ -1218,8 +1320,14 @@ In fact, we can use these numbers, along with additional information from the sa
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rate_vax</span> <span class="o">=</span> <span class="mi">495</span>
 <span class="n">rate_unvax</span> <span class="o">=</span> <span class="mi">1560</span>
@@ -1234,6 +1342,7 @@ In fact, we can use these numbers, along with additional information from the sa
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Let’s start with the oldest age group, people who were 80 or more years old.
 In this group, there were 1521 deaths attributed to COVID during the four week period from August 23 to September 19, 2021.
@@ -1248,7 +1357,12 @@ So, the death rate was substantially lower among the vaccinated.</p>
 Given these numbers, we can work forward to compute the fourth column, which shows again that 84% of the people who died had been vaccinated.</p>
 <p>We can also work backward to compute the first column, which shows that there were about 2.57 million people in this age group who had been vaccinated, and only 0.16 million who had not.
 So, more than 94% of this age group had been vaccinated.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="s2">&quot;Population&quot;</span>
 <span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Death rate&quot;</span>
@@ -1268,6 +1382,7 @@ So, more than 94% of this age group had been vaccinated.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1312,7 +1427,12 @@ So, more than 94% of this age group had been vaccinated.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_vaccinated</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="p">[</span><span class="n">col1</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">percent_vaccinated</span>
@@ -1326,6 +1446,7 @@ Name: Population, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>From this table, we can also compute the effectiveness of the vaccine, which is the fraction of deaths the vaccine prevented.
 The difference in the death rate from 1560 per million to 495 is a decrease of 68%.
@@ -1334,7 +1455,12 @@ By definition, this decrease is the “effectiveness” of the vaccine in this a
 The answer is that there would have been 4,009 deaths.
 In reality, there were 1,272, so we can estimate that the vaccine saved about 2,737 lives in this age group, in just four weeks.</p>
 <p>In the United Kingdom right now, there are a lot of people visiting parents and grandparents at their homes, rather than a cemetery, because of the COVID vaccine.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counterfact</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Vaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;Population&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Not vaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;Death rate&quot;</span><span class="p">]</span>
@@ -1348,8 +1474,14 @@ In reality, there were 1,272, so we can estimate that the vaccine saved about 2,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># actual number, not rate, in one month</span>
 <span class="n">lives_saved</span> <span class="o">=</span> <span class="n">counterfact</span> <span class="o">-</span> <span class="n">table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Vaccinated&quot;</span><span class="p">,</span> <span class="s2">&quot;Deaths&quot;</span><span class="p">]</span>
@@ -1362,6 +1494,7 @@ In reality, there were 1,272, so we can estimate that the vaccine saved about 2,
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Of course, this analysis is based on some assumptions, most notably that the vaccinated and unvaccinated were similar except for their vaccination status.
 That might not be true: people with high risk or poor general health might have been more likely to seek out the vaccine.
@@ -1372,7 +1505,12 @@ I’ll leave it to you to judge which is more likely.</p>
 The following table shows the number of deaths in each age group and the percentage of the people who died who were vaccinated.</p>
 <p>I’ve omitted the “Under 18” age group because there were only 6 deaths in this group, 4 among the unvaccinated and 2 with unknown status.
 With such small numbers, we can’t make useful estimates for the death rate or effectiveness of the vaccine.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span>
     <span class="c1">#    &quot;Under 18&quot;,</span>
@@ -1387,8 +1525,14 @@ With such small numbers, we can’t make useful estimates for the death rate or 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cases per 28 days, August 23 to September 19</span>
 
@@ -1405,8 +1549,14 @@ With such small numbers, we can’t make useful estimates for the death rate or 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">table2</span><span class="p">[</span><span class="s2">&quot;Deaths vax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_vax</span>
@@ -1417,6 +1567,7 @@ With such small numbers, we can’t make useful estimates for the death rate or 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1494,15 +1645,26 @@ Among people over 80, it was even higher, as we’ve already seen.</p>
 <p>However, in the younger age groups, the percentage of deaths among the vaccinated is substantially lower, which is a hint that this number might reflect something about the groups, not about the vaccine.</p>
 <p>To compute something about the vaccine, we can use death rates rather than number of deaths.
 The following table shows death rates per million people, reported by Public Health England for each age group, and the implied effectiveness of the vaccine, which is the percent reduction in death rate.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rates_vax</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">131</span><span class="p">,</span> <span class="mi">495</span><span class="p">]</span>
 <span class="n">rates_unvax</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">124</span><span class="p">,</span> <span class="mi">231</span><span class="p">,</span> <span class="mi">664</span><span class="p">,</span> <span class="mi">1560</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">table3</span><span class="p">[</span><span class="s2">&quot;Death rate vax&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rates_vax</span>
@@ -1513,6 +1675,7 @@ The following table shows death rates per million people, reported by Public Hea
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1590,7 +1753,12 @@ In the oldest group it is 68%, which suggests that the vaccine is less effective
 However, a treatment that reduces the probability of dying by 68% is still very good.</p>
 <p>Effectiveness is nearly the same in most age groups because it reflects primarily something about the vaccines and only secondarily something about the groups.</p>
 <p>Now, given the number of deaths and death rates, we can infer the number of people in each age group who were vaccinated or not, and the percentage who had been vaccinated.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# vax (millions)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">deaths_vax</span> <span class="o">/</span> <span class="n">rates_vax</span>
@@ -1602,6 +1770,7 @@ However, a treatment that reduces the probability of dying by 68% is still very 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1687,7 +1856,12 @@ If the base rate is high, as in the older groups, the percentage of deaths is hi
 Because this percentage depends so strongly on the properties of the group, it doesn’t tell us much about the properties of the vaccine.</p>
 <p>Finally, we can estimate the number of lives saved in each age group.
 First we compute the hypothetical number of the vaccinated who would have died if their death rate had been the same as among the unvaccinated, then we subtract off the actual number of deaths.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">ages</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Hypothetical deaths&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table4</span><span class="p">[</span><span class="s2">&quot;# vax (millions)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">table3</span><span class="p">[</span><span class="s2">&quot;Death rate unvax&quot;</span><span class="p">]</span>
@@ -1697,6 +1871,7 @@ First we compute the hypothetical number of the vaccinated who would have died i
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1768,7 +1943,12 @@ First we compute the hypothetical number of the vaccinated who would have died i
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lives_saved</span> <span class="o">=</span> <span class="n">table5</span><span class="p">[</span><span class="s2">&quot;Lives saved&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">lives_saved</span>
@@ -1780,8 +1960,14 @@ First we compute the hypothetical number of the vaccinated who would have died i
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop_total</span>
 </pre></div>
@@ -1792,8 +1978,14 @@ First we compute the hypothetical number of the vaccinated who would have died i
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop_total</span> <span class="o">/</span> <span class="n">lives_saved</span> <span class="o">*</span> <span class="mf">1e6</span>
 </pre></div>
@@ -1804,6 +1996,7 @@ First we compute the hypothetical number of the vaccinated who would have died i
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In total, the COVID vaccine saved more than 7000 lives in a four-week period, in a relevant population of about 48 million.</p>
 <p>If you created a vaccine that saved 7000 lives in less than a month, in just one country, you would feel pretty good about yourself.
@@ -1832,7 +2025,12 @@ As it turns out, they are not very good:</p>
 <p>Now suppose you are a judge considering a bail request from a defendant who has been assigned a high risk score. Among other things, you would like to know the probability that they will commit a crime if released. Let’s see if we can figure that out.</p>
 <p>As you might guess by now, we need another piece of information: the base rate. In the sample from Broward County, it is 45%; that is, 45% of the defendants released from jail were charged with a crime within two years.</p>
 <p>The following table shows the results with this base rate, sensitivity, and specificity.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_risk_table</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">likelihood</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a table showing risk scores for charged and not charged groups.</span>
@@ -1853,8 +2051,14 @@ As it turns out, they are not very good:</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.63</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.68</span>
@@ -1865,6 +2069,7 @@ As it turns out, they are not very good:</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1913,7 +2118,12 @@ As it turns out, they are not very good:</p>
 <p>Based on the sensitivity and specificity of the test, we expect 283 of the offenders to be assigned a high risk score, along with 175 of the non-offenders. So, of all people with high risk scores, about 62% will be charged with another crime.</p>
 <p>This result is called the “positive predictive value”, or PPV, because it quantifies the accuracy of a positive test result. In this case, 62% of the positive tests turn out to be correct.</p>
 <p>We can do the same analysis with low risk scores.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.63</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.68</span>
@@ -1926,6 +2136,7 @@ As it turns out, they are not very good:</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2000,7 +2211,12 @@ But interpreting these results turns out to be complicated; I think it will be c
 </ul>
 <p>But the base rate is different: about 47% of male defendants were charged with another crime, compared to 36% of female defendants.</p>
 <p>In a group of 1000 male defendants, the following table shows the number we expect to get a high risk score and the fraction of them that will re-offend.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.63</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.68</span>
@@ -2011,6 +2227,7 @@ But interpreting these results turns out to be complicated; I think it will be c
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2057,7 +2274,12 @@ But interpreting these results turns out to be complicated; I think it will be c
 </div>
 <p>Of the high risk male defendants, about 64% were charged with another crime.</p>
 <p>Here is the corresponding table for 1000 female defendants.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="mf">0.61</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="mf">0.68</span>
@@ -2068,6 +2290,7 @@ But interpreting these results turns out to be complicated; I think it will be c
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>

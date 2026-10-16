@@ -386,6 +386,7 @@ document.write(`
   <section id="jumping-to-conclusions">
 <h1><span class="section-number">6. </span>Jumping to Conclusions<a class="headerlink" href="#jumping-to-conclusions" title="Link to this heading">#</a></h1>
 <p><em>Probably Overthinking It</em> is available from <a class="reference external" href="https://bookshop.org/a/98697/9780226822587">Bookshop.org</a> and <a class="reference external" href="https://amzn.to/3Kp629E">Amazon</a> (affiliate links).</p>
+<p>If you like <em>Probably Overthinking It</em>, you’ll like my book in progress, <a class="reference external" href="https://allendowney.com/ywcn"><em>You Would Choose Now</em></a>, which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/berkson.ipynb">Click here to run this notebook on Colab</a>.</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
@@ -394,12 +395,28 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empiricaldist if we don&#39;t already have it</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_pyplot_params</span><span class="p">,</span> <span class="n">decorate</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
+<span class="n">set_pyplot_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">linregress</span>
+
+<span class="c1"># Set the random seed so we get the same results every time</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -429,7 +446,12 @@ In other words, if someone is above average at one of these skills, would you ex
 <p>To answer this question, I will use data from the National Longitudinal Survey of Youth 1997 (NLSY97), which “follows the lives of a sample of 8,984 American youth born between 1980-84”.
 The public data set includes the participants’ scores on several standardized tests, including the tests most often used in college admissions, the SAT and ACT.</p>
 <p>I used the <a class="reference external" href="https://www.nlsinfo.org/investigator/pages/login">NLS Investigator</a> to create an excerpt that contains the variables I’ll use for this analysis. With their permission, I can redistribute this excerpt. The following cell downloads the data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;stand_test_corr.csv.gz&quot;</span><span class="p">)</span>
 <span class="n">nlsy</span><span class="o">.</span><span class="n">shape</span>
@@ -441,13 +463,20 @@ The public data set includes the participants’ scores on several standardized 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -617,7 +646,12 @@ The public data set includes the participants’ scores on several standardized 
 </div></div></div>
 </div>
 <p>The <a class="reference external" href="https://www.nlsinfo.org/investigator/pages/search?s=NLSY97">columns are documented in the codebook</a>.  The following dictionary maps the current column names to more memorable names.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;R9793200&quot;</span><span class="p">:</span> <span class="s2">&quot;psat_math&quot;</span><span class="p">,</span>
@@ -635,9 +669,15 @@ The public data set includes the participants’ scores on several standardized 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>For this analysis I’ll use only the SAT math and verbal scores. If you are curious, you could do something similar with ACT scores.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span>
 
@@ -647,11 +687,17 @@ The public data set includes the participants’ scores on several standardized 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In this cohort, about 1400 participants took the SAT.
 Their average scores were 502 on the verbal section and 503 on the math section, both close to the national average, which is calibrated to be 500.</p>
 <p>The standard deviation of their scores was 108 on the verbal section and 110 on the math section, both a little higher than the overall standard deviation, which is calibrated to be 100.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -670,8 +716,14 @@ Name: sat_verbal, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -690,13 +742,20 @@ Name: sat_math, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -736,7 +795,12 @@ Name: sat_math, dtype: float64
 </div></div></div>
 </div>
 <p>To show how the scores are related, here’s a scatter plot showing a data point for each participant, with verbal scores on the horizontal axis and math scores on the vertical.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">],</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
@@ -744,13 +808,19 @@ Name: sat_math, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/382eed4e2f2a1cb32816c4c150bee17f0476e5145008f9c0ba5f5d0c92b00c1c.png" src="_images/382eed4e2f2a1cb32816c4c150bee17f0476e5145008f9c0ba5f5d0c92b00c1c.png" />
 </div>
 </div>
 <p>People who do well on one section tend to do well on the other.
 The correlation between scores is 0.73, so someone who is one standard deviation above the mean on the verbal test is expected to be 0.73 standard deviations above the mean on the math test. For example, if you select people whose verbal score is near 600, which is 100 points above the mean, the average of their math scores is 570, about 70 points above the mean.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">near600</span> <span class="o">=</span> <span class="p">(</span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">550</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">650</span><span class="p">)</span>
 <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near600</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -762,6 +832,7 @@ The correlation between scores is 0.73, so someone who is one standard deviation
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>This is what we would see in a random sample of people who took the SAT: a strong correlation between verbal and mathematical ability.
 But colleges don’t select their students at random, so the ones we find on any particular campus are not a representative sample.
@@ -771,7 +842,12 @@ To see what effect the selection process has, let’s think about a few kinds of
 <h2><span class="section-number">6.2. </span>Elite University<a class="headerlink" href="#elite-university" title="Link to this heading">#</a></h2>
 <p>First, consider an imaginary institution of higher learning called Elite University.
 To be admitted to E.U., let’s suppose, your total SAT score (sum of the verbal and math scores) has to be 1320 or higher.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sat_total</span> <span class="o">=</span> <span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">]</span>
 <span class="n">sat_total</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -791,8 +867,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">admitted</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1320</span><span class="p">]</span>
 <span class="n">rejected</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1320</span><span class="p">]</span>
@@ -800,6 +882,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -874,12 +957,18 @@ For example, if you meet an E.U. student who got a 760 on the verbal section (60
 <p>In the population of test takers, the correlation between scores is positive.
 But in the population of E.U. students, the correlation is negative.
 The following figure shows how this happens.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">admitted</span><span class="p">[[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -918,7 +1007,12 @@ The following figure shows how this happens.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">admitted</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">])</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
@@ -926,8 +1020,14 @@ The following figure shows how this happens.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 
@@ -942,6 +1042,7 @@ The following figure shows how this happens.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/47ef1e7c0adc4fa2b11ec76e28faf28dc4c5a3722d8a60c38f5d98c7dc3cda12.png" src="_images/47ef1e7c0adc4fa2b11ec76e28faf28dc4c5a3722d8a60c38f5d98c7dc3cda12.png" />
 </div>
@@ -972,7 +1073,12 @@ As in the previous example, I’ll use a model of the selection process that wil
 </ul>
 <p>The following figure shows a range of thresholds on the horizontal axis, from a total score of 700 up to 1400.
 On the vertical axis, it shows the correlation between math and verbal scores among the students whose scores exceed the threshold, based on the NLSY data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">1450</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1006,8 +1112,14 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0.7&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">corr_series</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -1021,6 +1133,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/be7e9fc121c5757a49aa1d86fbd1629b86e0ce103917e8a277db33c0871e17e7.png" src="_images/be7e9fc121c5757a49aa1d86fbd1629b86e0ce103917e8a277db33c0871e17e7.png" />
 </div>
@@ -1034,7 +1147,12 @@ We can make it slightly more realistic by adding one more factor.</p>
 <h2><span class="section-number">6.4. </span>Secondtier College<a class="headerlink" href="#secondtier-college" title="Link to this heading">#</a></h2>
 <p>Suppose at Secondtier College (it’s pronounced “se-con-tee-ay”), a student with a total score of 1200 or more is admitted, but a student with 1300 or more is likely to go somewhere else.</p>
 <p>Using data from the NLSY again, the following figure shows the verbal and math score for applicants in three groups: rejected, enrolled, and the ones who were accepted but went somewhere else.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rejected</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1200</span><span class="p">]</span>
 <span class="n">rejected</span><span class="o">.</span><span class="n">shape</span>
@@ -1046,8 +1164,14 @@ We can make it slightly more realistic by adding one more factor.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elsewhere</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1300</span><span class="p">]</span>
 <span class="n">elsewhere</span><span class="o">.</span><span class="n">shape</span>
@@ -1059,8 +1183,14 @@ We can make it slightly more realistic by adding one more factor.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enrolled</span> <span class="o">=</span> <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">sat_total</span> <span class="o">&gt;=</span> <span class="mi">1200</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sat_total</span> <span class="o">&lt;</span> <span class="mi">1300</span><span class="p">)]</span>
 <span class="n">enrolled</span><span class="o">.</span><span class="n">shape</span>
@@ -1072,8 +1202,14 @@ We can make it slightly more realistic by adding one more factor.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">],</span> <span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_math&quot;</span><span class="p">])</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">730</span><span class="p">)</span>
@@ -1081,8 +1217,14 @@ We can make it slightly more realistic by adding one more factor.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 
@@ -1118,17 +1260,24 @@ We can make it slightly more realistic by adding one more factor.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b59cd1a07e21df8e5196a75e2e0966f7f97c58d85501ab56335a599a90f1dbb9.png" src="_images/b59cd1a07e21df8e5196a75e2e0966f7f97c58d85501ab56335a599a90f1dbb9.png" />
 </div>
 </div>
 <p>Among the students who enrolled, the correlation between math and verbal scores is strongly negative, about -0.84.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enrolled</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1167,12 +1316,18 @@ We can make it slightly more realistic by adding one more factor.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enrolled</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1241,7 +1396,12 @@ We can make it slightly more realistic by adding one more factor.</p>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">near650</span> <span class="o">=</span> <span class="p">(</span><span class="n">enrolled</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">630</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">nlsy</span><span class="p">[</span><span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">680</span><span class="p">)</span>
 <span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near650</span><span class="p">,</span> <span class="s2">&quot;sat_verbal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1253,8 +1413,14 @@ We can make it slightly more realistic by adding one more factor.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlsy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">near650</span><span class="p">,</span> <span class="s2">&quot;sat_math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -1265,6 +1431,7 @@ We can make it slightly more realistic by adding one more factor.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>At Secondtier, if you meet a student who got 650 on the verbal section, about 50 points above the mean, you should expect them to get 590 on the math section, about 40 points below the mean.</p>
 <p>So we have the answer to the question I posed: depending on how colleges select students, math and verbal scores might be correlated, unrelated, or anti-correlated.</p>
@@ -1289,25 +1456,42 @@ He assumes that people with either condition are more likely to go to the hospit
 Consider a population of one million people where 1% have diabetes, 3% have cholecystitis, and the conditions are unrelated.
 We’ll assume that someone with either condition has a 5% chance of appearing in the hospital sample, and someone with neither condition has a 1% chance.</p>
 <p>Here are the proportions as specified in the example.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_d</span> <span class="o">=</span> <span class="mf">0.01</span>
 <span class="n">p_c</span> <span class="o">=</span> <span class="mf">0.03</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>To make the table, it is helpful to define the complementary proportions, too.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q_d</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_d</span>
 <span class="n">q_c</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_c</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Now here are the fraction of people in each quadrant of the “four-fold table”.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -1323,6 +1507,7 @@ We’ll assume that someone with either condition has a 5% chance of appearing i
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1361,7 +1546,12 @@ We’ll assume that someone with either condition has a 5% chance of appearing i
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">table</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -1374,17 +1564,29 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here are the probabilities that a patient appears in the hospital sample, given that they have one of the conditions.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_d</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="n">s_c</span> <span class="o">=</span> <span class="mf">0.05</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
 </pre></div>
@@ -1399,9 +1601,15 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>So here are the probabilities for each of the four quadrants.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s_d</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s_c</span><span class="p">),</span> <span class="n">s_c</span><span class="p">,</span> <span class="n">s_d</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
 <span class="n">f</span>
@@ -1413,9 +1621,15 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Now we can compute the number of people from each quadrant we expect to see in the hospital sample.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">table</span><span class="o">.</span><span class="n">stack</span><span class="p">(),</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">))</span>
 <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;expected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;f&quot;</span><span class="p">]</span>
@@ -1423,6 +1637,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1479,13 +1694,19 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital</span> <span class="o">=</span> <span class="n">enum</span><span class="p">[</span><span class="s2">&quot;expected&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
 <span class="n">hospital</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1526,13 +1747,19 @@ dtype: float64
 </div>
 <p>If we simulate this sampling process, we can compute the number of people in the hospital sample with and without cholecystitis, and with and without diabetes.
 The following table shows the results in the form of what Berkson calls a “fourfold table”.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hospital</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">hospital</span><span class="o">.</span><span class="n">round</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1580,7 +1807,12 @@ The results indicate that, from a population of one million people:</p>
 <li><p>We expect a total 514 people with diabetes (top row) to appear in a sample of hospital patients; of them, we expect 29 to also have cholecystitis, and</p></li>
 <li><p>We expect 11,088 people without diabetes (bottom row) to appear in the sample; of them, we expect 1485 to have cholecystitis.</p></li>
 </ul>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hospital</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">hospital</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">]</span>
 </pre></div>
@@ -1593,6 +1825,7 @@ dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>If we compute the rate in each row, we find:</p>
 <ul class="simple">
