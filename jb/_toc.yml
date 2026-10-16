@@ -2,6 +2,7 @@ format: jb-book
 root: intro
 parts:
 - caption: Chapters
+  numbered: True
   chapters:
   - file: gaussian
   - file: inspection
