@@ -401,7 +401,12 @@ In particular, I’ll investigate the “clean bell curve” – it implies a Ga
 <li><p>It turns out that the data fit a Weibull distribution <em>very</em> well, and from that we can get a revised estimate of how much of a GOAT Bradman was.</p></li>
 </ul>
 <p>As it turns out, he was a pretty goaty GOAT – but not quite one in 7 billion.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -435,11 +440,17 @@ In particular, I’ll investigate the “clean bell curve” – it implies a Ga
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <section id="load-the-data">
 <h2>Load the data<a class="headerlink" href="#load-the-data" title="Link to this heading">#</a></h2>
 <p>I got the data from <a class="reference external" href="https://www.kaggle.com/datasets/udaytunguturi/batsmen-career-runs-data-for-cricket-analytics">Kaggle</a> (<code class="docutils literal notranslate"><span class="pre">runs_of_batsmen.csv</span></code>).</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="s2">&quot;runs_of_batsmen.csv&quot;</span>
 
@@ -451,22 +462,35 @@ In particular, I’ll investigate the “clean bell curve” – it implies a Ga
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>I select only batters with 10 or more innings.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Innings &gt;= 10&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here are the top ten.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Batting Average&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -660,7 +684,12 @@ In particular, I’ll investigate the “clean bell curve” – it implies a Ga
 </div></div></div>
 </div>
 <p>Here’s what the distribution looks like.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
@@ -669,6 +698,7 @@ In particular, I’ll investigate the “clean bell curve” – it implies a Ga
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/9e6e3e754fa48807f6d4f5b72552714ed01e3d2dec5cfb8bb37abb5ad845d7aa.png" src="_images/9e6e3e754fa48807f6d4f5b72552714ed01e3d2dec5cfb8bb37abb5ad845d7aa.png" />
 </div>
@@ -681,17 +711,28 @@ But let’s fit a Gaussian to it anyway.</p>
 <p>There are a lot of ways to fit a model to data.
 The one I like for applications like this is percentile matching – that is, finding a model that minimizes the average vertical distance between the empirical CDF of the data and the CDF of the model.
 That’s what <code class="docutils literal notranslate"><span class="pre">fit_normal</span></code> does.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Batting Average&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">gaussian_model</span> <span class="o">=</span> <span class="n">fit_normal</span><span class="p">(</span><span class="n">avg_series</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here’s what that looks like, plotting the tail distribution, which is the complement of the CDF.
 The shaded area shows the differences between the data and the model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_data</span> <span class="o">=</span> <span class="n">TailDist</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">avg_series</span><span class="p">)</span>
 <span class="n">plot_fit_with_area</span><span class="p">(</span><span class="n">tail_data</span><span class="p">,</span> <span class="n">gaussian_model</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tail&quot;</span><span class="p">)</span>
@@ -699,13 +740,19 @@ The shaded area shows the differences between the data and the model.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/4b2c95fa3fda1563ca2714d6361e97b106ed1984db9479b168798ca548a9d940.png" src="_images/4b2c95fa3fda1563ca2714d6361e97b106ed1984db9479b168798ca548a9d940.png" />
 </div>
 </div>
 <p>This is not a great fit. There are clear differences in the shapes of the tail distributions.</p>
 <p>And here’s the average error, which is related to the area between the curves.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mae_normal</span> <span class="o">=</span> <span class="n">average_error</span><span class="p">(</span><span class="n">avg_series</span><span class="p">,</span> <span class="n">gaussian_model</span><span class="p">)</span>
 <span class="n">mae_normal</span>
@@ -717,10 +764,16 @@ The shaded area shows the differences between the data and the model.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>When we plot the tail distributions on linear scales, it looks like the model might be good enough. The problem is that we can’t see what’s happening in the tail.
 For that, it’s useful to plot the tail distributions on a log-y scale.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">avg_series</span><span class="p">)</span>
 <span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">tail_data</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">tail_data</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span>
@@ -728,8 +781,14 @@ For that, it’s useful to plot the tail distributions on a log-y scale.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_bounds</span><span class="p">(</span><span class="n">gaussian_model</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="n">qs</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tail&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">tail_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
@@ -738,6 +797,7 @@ For that, it’s useful to plot the tail distributions on a log-y scale.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b8bccf875d3216eb826852be8de578e37cbfb0909184ce61df747e79bef1db5e.png" src="_images/b8bccf875d3216eb826852be8de578e37cbfb0909184ce61df747e79bef1db5e.png" />
 </div>
@@ -745,7 +805,12 @@ For that, it’s useful to plot the tail distributions on a log-y scale.</p>
 <p>The model fits the left side of the distribution well, but after that, it diverges badly.
 Around 60, the difference between the model and the data is about an order of magnitude.</p>
 <p>Nevertheless, we can use the Gaussian model to compute the probability of a batting average as high as Bradman’s 99.94.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BRADMAN</span> <span class="o">=</span> <span class="mf">99.94</span>
 
@@ -758,9 +823,15 @@ Around 60, the difference between the model and the data is about an order of ma
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>In the fitted distribution, the probability of a single batter achieving Bradman’s average is about one per 5.7 trillion.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_in</span><span class="p">,</span> <span class="n">in_sample</span> <span class="o">=</span> <span class="n">probability_of_exceeding</span><span class="p">(</span><span class="n">gaussian_model</span><span class="p">,</span> <span class="n">BRADMAN</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">one_in</span> <span class="o">/</span> <span class="mf">1e12</span>
@@ -772,10 +843,16 @@ Around 60, the difference between the model and the data is about an order of ma
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>And even if we account for the sample size, the probability that one of 3438 batsman reaches that level is 1.7 per billion.
 So, according to the Gaussian model, this outcome is basically impossible.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="p">,</span> <span class="n">in_sample</span> <span class="o">/</span> <span class="mf">1e9</span>
 </pre></div>
@@ -786,6 +863,7 @@ So, according to the Gaussian model, this outcome is basically impossible.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>But the Gaussian model doesn’t fit the data well – and there’s no reason it should.
 To see why not, let’s think about the process that generates the distribution of batting averages.</p>
@@ -801,7 +879,12 @@ There’s no obvious reason the results should fit a simple mathematical model.<
 <p>The Weibull distribution is not the first thing I thought of – I tried a lognormal distribution first.
 But a Weibull distribution fits the data really, really well.
 The <code class="docutils literal notranslate"><span class="pre">fit_scipy_dist</span></code> is a more general version of <code class="docutils literal notranslate"><span class="pre">fit_normal</span></code> that works with any of the SciPy distributions.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weibull_model</span> <span class="o">=</span> <span class="n">fit_scipy_dist</span><span class="p">(</span><span class="n">avg_series</span><span class="p">,</span> <span class="n">weibull_min</span><span class="p">)</span>
 <span class="n">weibull_model</span><span class="o">.</span><span class="n">args</span>
@@ -813,22 +896,34 @@ The <code class="docutils literal notranslate"><span class="pre">fit_scipy_dist<
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here’s the result. Again, the gray area shows the difference between the data and the model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_fit_with_area</span><span class="p">(</span><span class="n">tail_data</span><span class="p">,</span> <span class="n">weibull_model</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tail&quot;</span><span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Batting Average&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Weibull model&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/2c9b224b40833eea766b5d0cd386fc20182601b3ae5245f8f68f7ffca163a4cf.png" src="_images/2c9b224b40833eea766b5d0cd386fc20182601b3ae5245f8f68f7ffca163a4cf.png" />
 </div>
 </div>
 <p>The gray area is not visible.
 Here’s the average error.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mae_weibull</span> <span class="o">=</span> <span class="n">average_error</span><span class="p">(</span><span class="n">avg_series</span><span class="p">,</span> <span class="n">weibull_model</span><span class="p">)</span>
 <span class="n">mae_weibull</span>
@@ -840,9 +935,15 @@ Here’s the average error.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The average error of the Gaussian model is about 7x bigger.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mae_normal</span> <span class="o">/</span> <span class="n">mae_weibull</span>
 </pre></div>
@@ -853,16 +954,28 @@ Here’s the average error.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here’s what the tail looks like on a log-y axis.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_model</span> <span class="o">=</span> <span class="n">TailDist</span><span class="p">(</span><span class="n">weibull_model</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">qs</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">qs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_bounds</span><span class="p">(</span><span class="n">weibull_model</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="n">qs</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tail&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">tail_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
@@ -871,13 +984,19 @@ Here’s the average error.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/b42367fb1469d102aa278bd0b6f4c1a339ea7f78a8919fd2da3d27b61c2e3fc3.png" src="_images/b42367fb1469d102aa278bd0b6f4c1a339ea7f78a8919fd2da3d27b61c2e3fc3.png" />
 </div>
 </div>
 <p>The model fits the data well – within the bounds of variability we expect for this sample size – except for Bradman, who is still an outlier.</p>
 <p>Again, we can compute the probability that any batter exceeds Bradman’s level:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_in</span><span class="p">,</span> <span class="n">in_sample</span> <span class="o">=</span> <span class="n">probability_of_exceeding</span><span class="p">(</span><span class="n">weibull_model</span><span class="p">,</span> <span class="n">BRADMAN</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">one_in</span> <span class="o">/</span> <span class="mf">1e6</span>
@@ -889,9 +1008,15 @@ Here’s the average error.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>It’s about 8 per million. And in a sample of 3438 batsmen, the chance that any one of them reaches that level is 2 per thousand.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">in_sample</span> <span class="o">/</span> <span class="mf">1e3</span>
 </pre></div>
@@ -902,6 +1027,7 @@ Here’s the average error.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>So Bradman is still an outlier among outliers, but not quite the statistical anomaly that he would be in a normal distribution.</p>
 <p>Finally, let’s think about why a Weibull distribution fits this dataset so well.
@@ -913,7 +1039,12 @@ And if we relax the assumption that the hazard rate is constant, the distributio
 <section id="appendix-the-lognormal-model">
 <h2>Appendix: The Lognormal Model<a class="headerlink" href="#appendix-the-lognormal-model" title="Link to this heading">#</a></h2>
 <p>Just for completeness, here’s the lognormal model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_series</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">avg_series</span><span class="p">)</span>
 <span class="n">log_model</span> <span class="o">=</span> <span class="n">fit_normal</span><span class="p">(</span><span class="n">log_series</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">norm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">log_series</span><span class="p">))</span>
@@ -921,20 +1052,32 @@ And if we relax the assumption that the hazard rate is constant, the distributio
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_fit_with_area</span><span class="p">(</span><span class="n">tail_log_data</span><span class="p">,</span> <span class="n">log_model</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tail&quot;</span><span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;log10(Batting Average)&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Lognormal model&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/6344bb082e43613d7cc8910ef8f34769e420045404b8d576f8382bc64b0c8bc2.png" src="_images/6344bb082e43613d7cc8910ef8f34769e420045404b8d576f8382bc64b0c8bc2.png" />
 </div>
 </div>
 <p>The average error is slightly worse than the Gaussian model.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mae_lognormal</span> <span class="o">=</span> <span class="n">average_error</span><span class="p">(</span><span class="n">log_series</span><span class="p">,</span> <span class="n">log_model</span><span class="p">)</span>
 <span class="n">mae_lognormal</span>
@@ -946,17 +1089,29 @@ And if we relax the assumption that the hazard rate is constant, the distributio
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>And it doesn’t fit the tail well at all.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
 <span class="n">tail_model</span> <span class="o">=</span> <span class="n">TailDist</span><span class="p">(</span><span class="n">log_model</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">log_qs</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">log_qs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_model_bounds</span><span class="p">(</span><span class="n">log_model</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">qs</span><span class="o">=</span><span class="n">log_qs</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tail&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">tail_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
@@ -965,6 +1120,7 @@ And if we relax the assumption that the hazard rate is constant, the distributio
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/5d0319f985ddb2ca9f541683b89a467e19b0e12c468c4c00b5a969111401be6b.png" src="_images/5d0319f985ddb2ca9f541683b89a467e19b0e12c468c4c00b5a969111401be6b.png" />
 </div>

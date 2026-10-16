@@ -402,7 +402,12 @@ document.write(`
 </ul>
 <p>Most of the functions in this notebook are the ones I used to write <em>Probably Overthinking It</em>. All of <a class="reference external" href="https://allendowney.github.io/ProbablyOverthinkingIt/intro.html">the notebooks for that book are available in this repository</a>.</p>
 <p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ideology_gap.ipynb">Click here to run this notebook on Colab</a></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -410,8 +415,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.nonparametric.smoothers_lowess</span><span class="w"> </span><span class="kn">import</span> <span class="n">lowess</span>
 
@@ -433,6 +444,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
@@ -502,37 +514,12 @@ document.write(`
 <section id="read-the-data">
 <h2>Read the Data<a class="headerlink" href="#read-the-data" title="Link to this heading">#</a></h2>
 <p>I’m using data I previous cleaned in <a class="reference external" href="https://github.com/AllenDowney/GssExtract/blob/main/notebooks/01_make_pacs_extract.ipynb">this notebook</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlretrieve</span>
-
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Downloaded &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">local</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">filename</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/GssExtract/raw/main/data/interim/gss_pacs_2022.hdf&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;gss_pacs_2022.hdf&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="s2">&quot;gss_pacs_2022.hdf&quot;</span><span class="p">,</span> <span class="s2">&quot;gss&quot;</span><span class="p">)</span>
 <span class="n">gss</span><span class="o">.</span><span class="n">shape</span>
@@ -544,6 +531,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The primary variable we’ll use is <a class="reference external" href="https://subsetdataexplorer.norc.org/variables/178/vshow">polviews</a>, which asks</p>
 <blockquote>
@@ -551,15 +539,26 @@ document.write(`
 </div></blockquote>
 <p>The points on the scale are Extremely liberal, Liberal, and Slightly liberal; Moderate;	Slightly conservative, Conservative, and Extremely conservative.</p>
 <p>I’ll clean <code class="docutils literal notranslate"><span class="pre">polviews</span></code>, replacing cases where the question was not asked or the respondent did not answer.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>To confirm that my cleaning did not introduce errors, I compared the following cross-tabulation with the one in the <a class="reference external" href="https://subsetdataexplorer.norc.org/variables/178/vshow">GSS Explorer</a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span>
 <span class="n">column</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;polviews&quot;</span><span class="p">]</span>
@@ -568,6 +567,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -809,7 +809,12 @@ document.write(`
 </div></div></div>
 </div>
 <p>I’ll lump the first three points into “Liberal” and the last three into “Conservative”.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recode_polviews</span> <span class="o">=</span> <span class="p">{</span>
     <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Liberal&quot;</span><span class="p">,</span>
@@ -823,8 +828,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gss</span><span class="p">[</span><span class="s2">&quot;polviews3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;polviews&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">recode_polviews</span><span class="p">)</span>
 <span class="n">gss</span><span class="p">[</span><span class="s2">&quot;polviews3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
@@ -840,8 +851,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_diff</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute % liberal minus % conservative.</span>
@@ -856,8 +873,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_mean</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute % liberal minus % conservative.</span>
@@ -868,8 +891,14 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">decorate_plot</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
     <span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span>
@@ -878,12 +907,18 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="make-the-plot-with-all-respondents">
 <h2>Make the plot with all respondents<a class="headerlink" href="#make-the-plot-with-all-respondents" title="Link to this heading">#</a></h2>
 <p>The following functions generate a figure like the one in the FT.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_plot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot % liberal - % conservative for male and female respondents.</span>
@@ -900,25 +935,22 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Generate the plot for all respondents.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
-    <span class="k">if</span> <span class="s1">&#39;dpi&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
-        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">300</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">gss</span><span class="p">,</span> <span class="s1">&#39;All respondents&#39;</span><span class="p">)</span>
 <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ideology_gap1.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/226f0cae1c29bfc7f3335ab221fc18066c45636c5b3fd08f14881f46c136d3d5.png" src="_images/226f0cae1c29bfc7f3335ab221fc18066c45636c5b3fd08f14881f46c136d3d5.png" />
 </div>
@@ -929,7 +961,12 @@ Name: count, dtype: int64
 <section id="just-young-people">
 <h2>Just young people<a class="headerlink" href="#just-young-people" title="Link to this heading">#</a></h2>
 <p>Now let’s select just people under 30.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;age &lt; 30&#39;</span><span class="p">)</span>
 <span class="n">subset</span><span class="o">.</span><span class="n">shape</span>
@@ -941,15 +978,22 @@ Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>And make the same figure.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_plot</span><span class="p">(</span><span class="n">subset</span><span class="p">,</span> <span class="s1">&#39;Age &lt; 30&#39;</span><span class="p">)</span>
 <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;ideology_gap2.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/5d72f4588d6871fdab57f3f1b61ab17cc392f3091d9d822d08a1fc32c6b33b6a.png" src="_images/5d72f4588d6871fdab57f3f1b61ab17cc392f3091d9d822d08a1fc32c6b33b6a.png" />
 </div>
@@ -959,7 +1003,12 @@ Men are more likely to say they are conservative, by 5-10 percentage points.</p>
 <p>It’s possible that the gap has grown in the most recent data, but the evidence is weak and depends on how we draw a smooth curve through noisy data.</p>
 <p>Anyway, there is no evidence the trend for men is going down, and the gap in the most recent data is nowhere near 30 percentage points.</p>
 <p>Here are the sample sizes.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span>
 <span class="n">column</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span>
@@ -968,6 +1017,7 @@ Men are more likely to say they are conservative, by 5-10 percentage points.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1093,7 +1143,12 @@ Men are more likely to say they are conservative, by 5-10 percentage points.</p>
 <h2>With Sampling Weights<a class="headerlink" href="#with-sampling-weights" title="Link to this heading">#</a></h2>
 <p>In the previous figures, I have not taken into account the sampling weights.
 I didn’t expect them to make much difference, and they don’t except for men in 2022 – and as we’ll see, there is almost certainly something wrong with that data point.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">male</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;sex==1&#39;</span><span class="p">)</span>
 <span class="n">female</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;sex==2&#39;</span><span class="p">)</span>
@@ -1103,16 +1158,28 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>We only have weighted data since 1988, since that’s how far back the <code class="docutils literal notranslate"><span class="pre">wtssps</span></code> variable goes.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">recent</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;wtssps&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;age &lt; 30&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">resample_rows_weighted</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Resamples a DataFrame using probabilities proportional to given column.</span>
@@ -1128,8 +1195,14 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">resample_by_year</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Resample rows within each year.</span>
@@ -1146,8 +1219,14 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">percentile_rows</span><span class="p">(</span><span class="n">series_seq</span><span class="p">,</span> <span class="n">ps</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes percentiles from aligned series.</span>
@@ -1170,8 +1249,14 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_percentiles</span><span class="p">(</span><span class="n">series_seq</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot the low, median, and high percentiles.</span>
@@ -1192,8 +1277,14 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">resample_diffs</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">iters</span><span class="o">=</span><span class="mi">101</span><span class="p">):</span>
     <span class="n">diffs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1205,17 +1296,29 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs_male</span> <span class="o">=</span> <span class="n">resample_diffs</span><span class="p">(</span><span class="n">recent</span><span class="p">,</span> <span class="s1">&#39;sex==1&#39;</span><span class="p">)</span>
 <span class="n">diffs_female</span> <span class="o">=</span> <span class="n">resample_diffs</span><span class="p">(</span><span class="n">recent</span><span class="p">,</span> <span class="s1">&#39;sex==2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>This figure shows the median of 101 resamplings and a 90% CI, along with the unweighted data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_male</span><span class="p">)</span>
 <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_female</span><span class="p">)</span>
@@ -1228,6 +1331,7 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/e5fac031cc7e5557751490690c894c7e9a903f4257b3eb7446fd8cf9d9194820.png" src="_images/e5fac031cc7e5557751490690c894c7e9a903f4257b3eb7446fd8cf9d9194820.png" />
 </div>
@@ -1237,7 +1341,12 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </section>
 <section id="resampling-and-smoothing">
 <h2>Resampling and smoothing<a class="headerlink" href="#resampling-and-smoothing" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">resample_diffs_smooth</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">iters</span><span class="o">=</span><span class="mi">101</span><span class="p">):</span>
     <span class="n">diffs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1250,17 +1359,29 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs_male</span> <span class="o">=</span> <span class="n">resample_diffs_smooth</span><span class="p">(</span><span class="n">recent</span><span class="p">,</span> <span class="s1">&#39;sex==1&#39;</span><span class="p">)</span>
 <span class="n">diffs_female</span> <span class="o">=</span> <span class="n">resample_diffs_smooth</span><span class="p">(</span><span class="n">recent</span><span class="p">,</span> <span class="s1">&#39;sex==2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here’s a version of the same plot with moderate smoothing, and dropping the unweighted data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_male</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Male&#39;</span><span class="p">)</span>
 <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_female</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Female&#39;</span><span class="p">)</span>
@@ -1270,6 +1391,7 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/baf2755acfbd444ac55a4e3282c65a30bcff0ee307d45ee56aea317e3492e253.png" src="_images/baf2755acfbd444ac55a4e3282c65a30bcff0ee307d45ee56aea317e3492e253.png" />
 </div>
@@ -1279,22 +1401,39 @@ I didn’t expect them to make much difference, and they don’t except for men 
 <section id="resampling-and-smoothing-without-2022">
 <h2>Resampling and smoothing without 2022<a class="headerlink" href="#resampling-and-smoothing-without-2022" title="Link to this heading">#</a></h2>
 <p>Finally, here’s the analysis I think is the best choice, dropping the 2022 data for both men and women.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre2022</span> <span class="o">=</span> <span class="n">recent</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;year &lt; 2022&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs_male</span> <span class="o">=</span> <span class="n">resample_diffs_smooth</span><span class="p">(</span><span class="n">pre2022</span><span class="p">,</span> <span class="s1">&#39;sex==1&#39;</span><span class="p">)</span>
 <span class="n">diffs_female</span> <span class="o">=</span> <span class="n">resample_diffs_smooth</span><span class="p">(</span><span class="n">pre2022</span><span class="p">,</span> <span class="s1">&#39;sex==2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_male</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Male&#39;</span><span class="p">)</span>
 <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_female</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Female&#39;</span><span class="p">)</span>
@@ -1304,6 +1443,7 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/21e3230f146cefcc1f430020661d16e914b0f713b2b09f39aaaea54c30afcb7d.png" src="_images/21e3230f146cefcc1f430020661d16e914b0f713b2b09f39aaaea54c30afcb7d.png" />
 </div>
@@ -1316,7 +1456,12 @@ I didn’t expect them to make much difference, and they don’t except for men 
 <h2>Adjusting<a class="headerlink" href="#adjusting" title="Link to this heading">#</a></h2>
 <p>In <a class="reference external" href="https://twitter.com/jburnmurdoch/status/1751569229516550403">this tweet</a>, Burn-Murdoch explains that the adjustment mentioned in the figure is to subtract off the overall trend.</p>
 <p>Here’s the overall trend, not including the 2022 data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_overall</span> <span class="o">=</span> <span class="n">make_diff</span><span class="p">(</span><span class="n">pre2022</span><span class="p">)</span>
 
@@ -1325,11 +1470,17 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/271676c236f954004d04fd6cd7d1c62c2e344514eefee04b37b9de4a91815d2f.png" src="_images/271676c236f954004d04fd6cd7d1c62c2e344514eefee04b37b9de4a91815d2f.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">resample_diffs_smooth_adjusted</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">iters</span><span class="o">=</span><span class="mi">101</span><span class="p">):</span>
     <span class="n">diff_overall</span> <span class="o">=</span> <span class="n">make_diff</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -1345,17 +1496,29 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diffs_male</span> <span class="o">=</span> <span class="n">resample_diffs_smooth_adjusted</span><span class="p">(</span><span class="n">pre2022</span><span class="p">,</span> <span class="s1">&#39;sex==1&#39;</span><span class="p">)</span>
 <span class="n">diffs_female</span> <span class="o">=</span> <span class="n">resample_diffs_smooth_adjusted</span><span class="p">(</span><span class="n">pre2022</span><span class="p">,</span> <span class="s1">&#39;sex==2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here’s what the adjusted data looks like.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_male</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Male&#39;</span><span class="p">)</span>
 <span class="n">plot_percentiles</span><span class="p">(</span><span class="n">diffs_female</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Female&#39;</span><span class="p">)</span>
@@ -1365,6 +1528,7 @@ I didn’t expect them to make much difference, and they don’t except for men 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/322455b233fb27300e45dd1fb881fe2566066e524269925649c636db76160193.png" src="_images/322455b233fb27300e45dd1fb881fe2566066e524269925649c636db76160193.png" />
 </div>
@@ -1377,12 +1541,18 @@ They are increasingly likely to say they are liberal, but not increasing as fast
 <h2>What’s wrong with 2022?<a class="headerlink" href="#whats-wrong-with-2022" title="Link to this heading">#</a></h2>
 <p>I don’t know yet, but I’ll add some explorations here.</p>
 <p>For one thing, the magnitudes of the weights are substantially different than in previous years, which is why they are able to drag the results so far.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;year&gt;2010 and sex==2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;wtssall&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>

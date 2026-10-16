@@ -423,7 +423,12 @@ The paper reports</p>
 <div><p>Officers classified 98 participants (81.0%) in the THC group and 31 (49.2%) in the placebo group as FST impaired.</p>
 </div></blockquote>
 <p>The following table summarizes these results as a <a class="reference external" href="https://en.wikipedia.org/wiki/Confusion_matrix">confusion matrix</a>:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TP</span> <span class="o">=</span> <span class="mi">98</span>
 <span class="n">FP</span> <span class="o">=</span> <span class="mi">31</span>
@@ -444,6 +449,7 @@ The paper reports</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -492,7 +498,12 @@ The paper reports</p>
 </div></div></div>
 </div>
 <p>Let’s start with the most obvious problem: of 63 people in the placebo group, 31 were wrongly classified as impaired, so the false positive rate was 49%.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpr</span> <span class="o">=</span> <span class="n">FP</span> <span class="o">/</span> <span class="p">(</span><span class="n">FP</span> <span class="o">+</span> <span class="n">TN</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;False positive rate: </span><span class="si">{</span><span class="n">fpr</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -504,6 +515,7 @@ The paper reports</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Although the tests “were administered by certified DRE instructors (n = 11), the highest training level for impaired driving detection”, the results for sober participants were no better than a coin toss.
 That’s pretty bad, but in reality it’s probably worse, because of selection bias.</p>
@@ -521,7 +533,12 @@ I assume he would have been excluded from the study.</p>
 <p>To see how much difference the selection criteria could make, suppose 20 of the excluded participants (about one third) had been assigned to the placebo group.
 And suppose that because of their conditions 16 of them were wrongly classified as impaired – that’s 80%, somewhat higher than the rate among included participants.</p>
 <p>That would increase the number of false positives by 16 and the number of true negatives by 4, so the unbiased false positive rate might be 57%.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unbiased_fpr</span> <span class="o">=</span> <span class="p">(</span><span class="n">FP</span> <span class="o">+</span> <span class="mi">16</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">FP</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">+</span> <span class="n">TN</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;False positive rate: </span><span class="si">{</span><span class="n">unbiased_fpr</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -533,6 +550,7 @@ And suppose that because of their conditions 16 of them were wrongly classified 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>This is just a guess: it’s not clear how many were excluded specifically for medical conditions or how many of the excluded would have failed the FST.
 But this calculation gives us a sense of how big the bias could be.</p>
@@ -557,7 +575,12 @@ Based on this analysis, they conclude:</p>
 <p>For that, the false positive rate is relevant, and as we have discussed, it is probably more than 50%.</p>
 <p>But even more important is the positive predictive value (PPV), which is the probability that a positive test is correct.
 In the confusion matrix, there are 129 positive tests, of which 98 are correct and 31 incorrect, so the PPV is 98 out of 129, about 76%.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ppv</span> <span class="o">=</span> <span class="n">TP</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">FP</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PPV: </span><span class="si">{</span><span class="n">ppv</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -569,6 +592,7 @@ In the confusion matrix, there are 129 positive tests, of which 98 are correct a
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Of the people who failed the FST, 76% were actually impaired.
 That might sound good enough for probable cause, but that conclusion is misleading because there is still another problem – the base rate.</p>
@@ -580,7 +604,12 @@ In the real world, it is unlikely that two thirds of drivers are impaired – or
 So the base rate in the study is too high.</p>
 <p>To see why that matters, we have to do a little math.
 First we’ll use the confusion matrix to compute one more metric, sensitivity, which is the percentage of impaired participants who were classified correctly.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensitivity</span> <span class="o">=</span> <span class="n">TP</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">FN</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sensitivity: </span><span class="si">{</span><span class="n">sensitivity</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -592,6 +621,7 @@ First we’ll use the confusion matrix to compute one more metric, sensitivity, 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>We can use sensitivity, along with the false positive rate we already computed, to figure out the positive predictive value of a test with a more realistic base rate.</p>
 <p>Of all people pulled over and given a field sobriety test, how many do you think are impaired by THC?
@@ -604,7 +634,12 @@ If we imagine 100 drivers:</p>
 </ul>
 <p>In that case the positive predictive value is <code class="docutils literal notranslate"><span class="pre">27</span> <span class="pre">/</span> <span class="pre">(27</span> <span class="pre">+</span> <span class="pre">33)</span></code>, which means that only 45% of positive tests are correct.
 If we put those numbers in a table, the calculation might be clearer.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="s2">&quot;Tests&quot;</span>
 <span class="n">col2</span> <span class="o">=</span> <span class="s2">&quot;Prob pos&quot;</span>
@@ -624,6 +659,7 @@ If we put those numbers in a table, the calculation might be clearer.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -671,7 +707,12 @@ If we put those numbers in a table, the calculation might be clearer.</p>
 <p>With a lower base rate, PPV is lower, which means that a positive test is weaker evidence of impairment.
 But even 45% might be too high.</p>
 <p>If we suppose that 15% of drivers who take an FST are impaired, we can run the numbers again.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Impaired&quot;</span><span class="p">,</span> <span class="s2">&quot;Not impaired&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col1</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">col3</span><span class="p">,</span> <span class="n">col4</span><span class="p">]</span>
@@ -687,6 +728,7 @@ But even 45% might be too high.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>

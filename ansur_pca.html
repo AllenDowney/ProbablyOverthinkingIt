@@ -392,48 +392,6 @@ I had not, but now I have. Let’s look at the results.</p>
 <p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install empirical dist if we don&#39;t already have it</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">empiricaldist</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>empiricaldist
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download utils.py</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">basename</span><span class="p">,</span> <span class="n">exists</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlretrieve</span>
-        <span class="n">local</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloaded &#39;</span> <span class="o">+</span> <span class="n">local</span><span class="p">)</span>
-        
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/notebooks/utils.py&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -445,29 +403,214 @@ I had not, but now I have. Let’s look at the results.</p>
 <section id="the-data">
 <h2>The data<a class="headerlink" href="#the-data" title="Link to this heading">#</a></h2>
 <p>Here’s the ANSUR data, originally downloaded from <a class="reference external" href="https://www.openlab.psu.edu/ansur2/">The OPEN Design Lab</a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/ANSURIIFEMALEPublic.csv&quot;</span><span class="p">)</span>
-<span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://github.com/AllenDowney/ProbablyOverthinkingIt/raw/book/data/ANSURIIMALEPublic.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ansur_female</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ANSURIIFEMALEPublic.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span>
+<span class="n">ansur_female</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1986, 108)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ansur_male</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ANSURIIMALEPublic.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span>
+<span class="n">ansur_male</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4082, 108)
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <p>Since heights are in mm, I converted to cm.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_male</span> <span class="o">=</span> <span class="n">ansur_male</span><span class="p">[</span><span class="s2">&quot;stature&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span>
+<span class="n">height_female</span> <span class="o">=</span> <span class="n">ansur_female</span><span class="p">[</span><span class="s2">&quot;stature&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add_earratio</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earprotrusion&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;earbreadth&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measurements</span> <span class="o">=</span> <span class="p">[</span><span class="n">column</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">ansur_female</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">column</span><span class="p">]</span>
+<span class="n">measurements</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;abdominalextensiondepthsitting&#39;,
+ &#39;acromialheight&#39;,
+ &#39;acromionradialelength&#39;,
+ &#39;anklecircumference&#39;,
+ &#39;axillaheight&#39;,
+ &#39;balloffootcircumference&#39;,
+ &#39;balloffootlength&#39;,
+ &#39;biacromialbreadth&#39;,
+ &#39;bicepscircumferenceflexed&#39;,
+ &#39;bicristalbreadth&#39;,
+ &#39;bideltoidbreadth&#39;,
+ &#39;bimalleolarbreadth&#39;,
+ &#39;bitragionchinarc&#39;,
+ &#39;bitragionsubmandibulararc&#39;,
+ &#39;bizygomaticbreadth&#39;,
+ &#39;buttockcircumference&#39;,
+ &#39;buttockdepth&#39;,
+ &#39;buttockheight&#39;,
+ &#39;buttockkneelength&#39;,
+ &#39;buttockpopliteallength&#39;,
+ &#39;calfcircumference&#39;,
+ &#39;cervicaleheight&#39;,
+ &#39;chestbreadth&#39;,
+ &#39;chestcircumference&#39;,
+ &#39;chestdepth&#39;,
+ &#39;chestheight&#39;,
+ &#39;crotchheight&#39;,
+ &#39;crotchlengthomphalion&#39;,
+ &#39;crotchlengthposterioromphalion&#39;,
+ &#39;earbreadth&#39;,
+ &#39;earlength&#39;,
+ &#39;earprotrusion&#39;,
+ &#39;elbowrestheight&#39;,
+ &#39;eyeheightsitting&#39;,
+ &#39;footbreadthhorizontal&#39;,
+ &#39;footlength&#39;,
+ &#39;forearmcenterofgriplength&#39;,
+ &#39;forearmcircumferenceflexed&#39;,
+ &#39;forearmforearmbreadth&#39;,
+ &#39;forearmhandlength&#39;,
+ &#39;functionalleglength&#39;,
+ &#39;handbreadth&#39;,
+ &#39;handcircumference&#39;,
+ &#39;handlength&#39;,
+ &#39;headbreadth&#39;,
+ &#39;headcircumference&#39;,
+ &#39;headlength&#39;,
+ &#39;heelanklecircumference&#39;,
+ &#39;heelbreadth&#39;,
+ &#39;hipbreadth&#39;,
+ &#39;hipbreadthsitting&#39;,
+ &#39;iliocristaleheight&#39;,
+ &#39;interpupillarybreadth&#39;,
+ &#39;interscyei&#39;,
+ &#39;interscyeii&#39;,
+ &#39;kneeheightmidpatella&#39;,
+ &#39;kneeheightsitting&#39;,
+ &#39;lateralfemoralepicondyleheight&#39;,
+ &#39;lateralmalleolusheight&#39;,
+ &#39;lowerthighcircumference&#39;,
+ &#39;mentonsellionlength&#39;,
+ &#39;neckcircumference&#39;,
+ &#39;neckcircumferencebase&#39;,
+ &#39;overheadfingertipreachsitting&#39;,
+ &#39;palmlength&#39;,
+ &#39;poplitealheight&#39;,
+ &#39;radialestylionlength&#39;,
+ &#39;shouldercircumference&#39;,
+ &#39;shoulderelbowlength&#39;,
+ &#39;shoulderlength&#39;,
+ &#39;sittingheight&#39;,
+ &#39;sleevelengthspinewrist&#39;,
+ &#39;sleeveoutseam&#39;,
+ &#39;span&#39;,
+ &#39;stature&#39;,
+ &#39;suprasternaleheight&#39;,
+ &#39;tenthribheight&#39;,
+ &#39;thighcircumference&#39;,
+ &#39;thighclearance&#39;,
+ &#39;thumbtipreach&#39;,
+ &#39;tibialheight&#39;,
+ &#39;tragiontopofhead&#39;,
+ &#39;trochanterionheight&#39;,
+ &#39;verticaltrunkcircumferenceusa&#39;,
+ &#39;waistbacklength&#39;,
+ &#39;waistbreadth&#39;,
+ &#39;waistcircumference&#39;,
+ &#39;waistdepth&#39;,
+ &#39;waistfrontlengthsitting&#39;,
+ &#39;waistheightomphalion&#39;,
+ &#39;weightkg&#39;,
+ &#39;wristcircumference&#39;,
+ &#39;wristheight&#39;]
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>93
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ansur_male</span><span class="p">[</span><span class="n">measurements</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -780,19 +923,30 @@ I had not, but now I have. Let’s look at the results.</p>
 <p>4082 rows × 93 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">ansur_male</span><span class="p">[</span><span class="n">measurements</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="principle-component-analysis">
 <h2>Principle Component Analysis<a class="headerlink" href="#principle-component-analysis" title="Link to this heading">#</a></h2>
 <p>As you might guess from the comments below, I used ChatGPT to generate a lot of the code.
 It took some revision to get it working, but the head start definitely saved me some time.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -834,10 +988,16 @@ It took some revision to get it working, but the head start definitely saved me 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here’s a visualization of explained variance versus number of components.
 I lifted this from <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.09-principal-component-analysis.html">The Python Data Science Handbook</a>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
@@ -851,8 +1011,14 @@ I lifted this from <a class="reference external" href="https://jakevdp.github.io
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;number of components&#39;</span><span class="p">)</span>
@@ -862,6 +1028,7 @@ I lifted this from <a class="reference external" href="https://jakevdp.github.io
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/92b0c322f84939959e09422de76b65d92fa48ee6dfbe445a0db3db322e911fb2.png" src="_images/92b0c322f84939959e09422de76b65d92fa48ee6dfbe445a0db3db322e911fb2.png" />
 </div>
@@ -873,7 +1040,12 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
 <section id="loadings">
 <h2>Loadings<a class="headerlink" href="#loadings" title="Link to this heading">#</a></h2>
 <p>Looking at the loadings, we can see which measurements contribute the most to each of the components, so we can get a sense of which characteristics each component captures.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loadings</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">components_</span>  <span class="c1"># Get the loadings (eigenvectors)</span>
 
@@ -883,6 +1055,7 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1171,13 +1344,19 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
 <p>10 rows × 93 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loadings_transposed</span> <span class="o">=</span> <span class="n">loadings_df</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="n">loadings_transposed</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1358,7 +1537,12 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
 <p>93 rows × 10 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_top_features</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -1452,6 +1636,7 @@ Principal Component 10:
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>I won’t explain all of the measurements, but if there are any you are curious about, you can look them up in <a class="reference external" href="http://tools.openlab.psu.edu/publicData/ANSURII-TR11-017.pdf"><em>The Measurer’s Handbook</em></a> which includes details on “sampling strategy and measuring techniques” as well as descriptions and diagrams of the landmarks and measurements between them.</p>
 <ul class="simple">
@@ -1473,18 +1658,12 @@ Once you have exhausted the information carried by the most obvious measurements
 <section id="using-the-pca-module">
 <h2>Using the pca module<a class="headerlink" href="#using-the-pca-module" title="Link to this heading">#</a></h2>
 <p>I found <a class="reference external" href="https://erdogant.github.io/pca/pages/html/index.html">this module</a> and decided to experiment with it.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">pca</span><span class="w"> </span><span class="kn">import</span> <span class="n">pca</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pca
-    <span class="kn">from</span><span class="w"> </span><span class="nn">pca</span><span class="w"> </span><span class="kn">import</span> <span class="n">pca</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">pca</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">);</span>
@@ -1505,25 +1684,38 @@ Once you have exhausted the information carried by the most obvious measurements
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/1c173e78d0ef97e85b0ffb17beea92dd1d9837bb3c6068b8c085edb01eb1fc17.png" src="_images/1c173e78d0ef97e85b0ffb17beea92dd1d9837bb3c6068b8c085edb01eb1fc17.png" />
 </div>
 </div>
 <p>Unfortunately, the most interesting plots don’t seem to work well with the number of dimensions in this dataset.
 I’d be curious to know if they can be tuned to work better.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">biplot3d</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[scatterd] &gt;INFO&gt; Create scatterplot
 </pre></div>

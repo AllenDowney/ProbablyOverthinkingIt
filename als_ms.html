@@ -389,7 +389,12 @@ The pink line fits the female data, with correlation 0.75.</p>
 But I’m pretty sure that line is a mistake.</p>
 <p>If you want to replicate my analysis, you can
 <a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/als_ms.ipynb">click here to run this notebook on Colab</a></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -397,8 +402,14 @@ But I’m pretty sure that line is a mistake.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the figures smaller to save some screen real estate</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">75</span>
@@ -407,9 +418,15 @@ But I’m pretty sure that line is a mistake.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>I’ll use this function to generate correlated random values with the approximate distributions of the data in the figure.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">generate_correlated_rvs</span><span class="p">(</span><span class="n">mean1</span><span class="p">,</span> <span class="n">std1</span><span class="p">,</span> <span class="n">mean2</span><span class="p">,</span> <span class="n">std2</span><span class="p">,</span> <span class="n">correlation</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -445,9 +462,15 @@ But I’m pretty sure that line is a mistake.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here are synthesized deaths rates for males and females for each disease.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -456,11 +479,17 @@ But I’m pretty sure that line is a mistake.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>UPDATE: After I published the first draft of this article, I noticed that there are an unknown number of data points at (0, 0) in the original figure.
 They are probably states with missing data, but if they were included in the analysis – which they absolutely should not be – that would explain the flat line.</p>
 <p>If we assume there are two states with missing data, that strengthens the effect in the subgroups, and weakens the effect in the combined groups.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set this to True if you want to simulate the effect of treating missing data as zero</span>
 <span class="n">include_missing</span> <span class="o">=</span> <span class="kc">False</span>
@@ -472,9 +501,15 @@ They are probably states with missing data, but if they were included in the ana
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here’s a linear regression for the male data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">linregress</span>
 
@@ -490,9 +525,15 @@ They are probably states with missing data, but if they were included in the ana
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>And the female data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">female_result</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">female_ms</span><span class="p">,</span> <span class="n">female_als</span><span class="p">)</span>
 <span class="n">female_xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.75</span><span class="p">)</span>
@@ -506,10 +547,16 @@ They are probably states with missing data, but if they were included in the ana
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>And here’s my first attempt to replicate the horizontal line in the figure: I thought the author might have combined the dots from the male and female groups into a collection of 102 points, and fit a line to that.
 This is a nonsensical thing to do, but it does yield a Simpson-like reversal in the sign of the correlation.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined_ms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">male_ms</span><span class="p">,</span> <span class="n">female_ms</span><span class="p">])</span>
 <span class="n">combined_als</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">male_als</span><span class="p">,</span> <span class="n">female_als</span><span class="p">])</span>
@@ -526,9 +573,15 @@ This is a nonsensical thing to do, but it does yield a Simpson-like reversal in 
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The following figure shows the male and female data, the fitted lines, and the nonsensical line through all of the data points.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">male_ms</span><span class="p">,</span> <span class="n">male_als</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;male&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">male_xs</span><span class="p">,</span> <span class="n">male_ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">)</span>
@@ -546,6 +599,7 @@ This is a nonsensical thing to do, but it does yield a Simpson-like reversal in 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/3e7af43cbca8d3b134f479a3aa1cdd26131edd1562308344099d9f17782e7d57.png" src="_images/3e7af43cbca8d3b134f479a3aa1cdd26131edd1562308344099d9f17782e7d57.png" />
 </div>
@@ -554,7 +608,12 @@ This is a nonsensical thing to do, but it does yield a Simpson-like reversal in 
 So, I don’t know where that line came from.</p>
 <p>In any case, the correct way to combine the data is not to plot a line through 102 points in the scatterplot, but to fit a line to the combined death rates in the 51 states.
 Assuming that the gender ratios in the states are close to 50/50, the combined rates are just the means of the male and female rates, which we can compute like this.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_ms</span> <span class="o">=</span> <span class="p">(</span><span class="n">male_ms</span> <span class="o">+</span> <span class="n">female_ms</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="n">all_als</span> <span class="o">=</span> <span class="p">(</span><span class="n">male_als</span> <span class="o">+</span> <span class="n">female_als</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
@@ -571,10 +630,16 @@ Assuming that the gender ratios in the states are close to 50/50, the combined r
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The correlation in the combined data is about the same as what it is in the groups.</p>
 <p>And here’s what the correctly combined data look like.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">male_ms</span><span class="p">,</span> <span class="n">male_als</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;male&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">male_xs</span><span class="p">,</span> <span class="n">male_ys</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">)</span>
@@ -588,6 +653,7 @@ Assuming that the gender ratios in the states are close to 50/50, the combined r
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/21fd70a6c01747e4906e2c0e87286110ce9a96b1e6d1e145b5e69c2e987bf9f4.png" src="_images/21fd70a6c01747e4906e2c0e87286110ce9a96b1e6d1e145b5e69c2e987bf9f4.png" />
 </div>

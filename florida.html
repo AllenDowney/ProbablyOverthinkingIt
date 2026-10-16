@@ -449,6 +449,132 @@ I tell you that I got heads at least once, and ask you the probability that I go
 </ol>
 <p>So the conditional probability is 1/3.</p>
 <p>If that argument doesn’t entirely convince you, there’s another way to solve problems like this, called <em>enumeration</em>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">set_pyplot_params</span><span class="p">,</span>
+    <span class="n">underride</span><span class="p">,</span>
+    <span class="n">decorate</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">set_pyplot_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="n">underride</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;large&quot;</span><span class="p">)</span>
+    <span class="n">has</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">ha</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">has</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="n">ha</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_text_array</span><span class="p">(</span><span class="n">xorg</span><span class="p">,</span> <span class="n">yorg</span><span class="p">,</span> <span class="n">xoffsets</span><span class="p">,</span> <span class="n">yoffsets</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="n">text_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">yoffsets</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">xoffsets</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">yoffsets</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">xoffsets</span><span class="p">):</span>
+            <span class="n">plot_text</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">xorg</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">yorg</span><span class="p">,</span> <span class="n">text_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">colors</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">decorate_quad</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">titles</span><span class="p">):</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span>
+    <span class="n">gray</span> <span class="o">=</span> <span class="s2">&quot;0.8&quot;</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;large&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labeltop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="n">dx</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span>
+    <span class="p">)</span>
+
+    <span class="n">points</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">draw_rectangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="n">rect</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 </section>
 <section id="enumeration">
 <h2>Enumeration<a class="headerlink" href="#enumeration" title="Link to this heading">#</a></h2>
@@ -469,7 +595,31 @@ Here are the steps:</p>
 </ol>
 <p>This method is called enumerating the sample space, where the “sample space” is the list of outcomes.
 In the coin toss example, there are four possible outcomes, as shown in the following diagram.</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">utils</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Tails&quot;</span><span class="p">,</span> <span class="s2">&quot;Heads&quot;</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;First toss&quot;</span><span class="p">,</span> <span class="s2">&quot;Second toss&quot;</span><span class="p">]</span>
+<span class="n">text_array</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;TT&quot;</span><span class="p">,</span> <span class="s2">&quot;TH&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;HT&quot;</span><span class="p">,</span> <span class="s2">&quot;HH&quot;</span><span class="p">]]</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">Bl20</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">draw_rectangle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">blue</span><span class="p">,</span> <span class="n">blue</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">decorate_quad</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/cac73dbcec0ebbfe16b64c983c335aaa366de414ea093c872a9fc77de6b4fd05.png" src="_images/cac73dbcec0ebbfe16b64c983c335aaa366de414ea093c872a9fc77de6b4fd05.png" />
 </div>
@@ -500,7 +650,101 @@ Which do you think is more likely, that I rolled once or twice?</p>
 If I get a six, it is more likely that I rolled twice.</p>
 <p>To see how much more likely, let’s enumerate the possibilities.
 The following diagram shows 72 equally likely outcomes.</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_array1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">xs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)))</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="c1"># text_array1</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ys</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">text_array2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Y</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="c1"># text_array2</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">decorate_duple</span><span class="p">():</span>
+    <span class="n">gray</span> <span class="o">=</span> <span class="s2">&quot;0.8&quot;</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.07</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Heads, roll once&quot;</span><span class="p">,</span> <span class="s2">&quot;Tails, roll twice&quot;</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+    <span class="c1">#plt.title(&quot;Coin toss&quot;)</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">gray</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labeltop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gray</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">Gray70</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">Bl20</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">3.1</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="o">-</span><span class="mf">1.75</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array1</span><span class="p">,</span> <span class="p">[</span><span class="n">blue</span><span class="p">])</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array2</span><span class="p">,</span> <span class="p">[</span><span class="n">blue</span><span class="p">,</span> <span class="n">blue</span><span class="p">])</span>
+
+<span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">4.07</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.36</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.36</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">decorate_duple</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/d3adf32d7822666f1be1efc833f3b66dd154ffea3ce8389ddd6c3afe62f20d5b.png" src="_images/d3adf32d7822666f1be1efc833f3b66dd154ffea3ce8389ddd6c3afe62f20d5b.png" />
 </div>
@@ -509,6 +753,24 @@ The following diagram shows 72 equally likely outcomes.</p>
 The right side shows 36 cases where I roll the die twice: the first digit represents the first roll; the second digit represents the second roll.</p>
 <p>The shaded area indicates the outcomes where at least one die is a six. There are 17 in total, 6 when I roll the die once and 11 when I roll it twice.</p>
 <p>So if I tell you I rolled at least one six, the probability is 11/17 that I rolled the die twice, which is about 65%.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span> <span class="o">/</span> <span class="mi">17</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6470588235294118
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <p>So, if you succeed at something difficult, it is likely you had more than one chance.</p>
 </section>
 <section id="the-two-child-problems">
@@ -519,7 +781,30 @@ The right side shows 36 cases where I roll the die twice: the first digit repres
 </div></blockquote>
 <p>The real world is complicated, so let’s assume that these problems are set in a world where all children are boys or girls with equal probability.</p>
 <p>With that simplification, there are four equally likely combinations of two children, shown in the following diagram.</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Boy&quot;</span><span class="p">,</span> <span class="s2">&quot;Girl&quot;</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;First child&quot;</span><span class="p">,</span> <span class="s2">&quot;Second child&quot;</span><span class="p">]</span>
+<span class="n">text_array</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;BB&quot;</span><span class="p">,</span> <span class="s2">&quot;BG&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;GB&quot;</span><span class="p">,</span> <span class="s2">&quot;GG&quot;</span><span class="p">]]</span>
+<span class="n">blue</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">Bl20</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">draw_rectangle</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">draw_rectangle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">blue</span><span class="p">,</span> <span class="n">blue</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">decorate_quad</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;florida2.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/502b755caff85849b479f54f200cc4eeb645981da95d8f8a1c908832b6539896.png" src="_images/502b755caff85849b479f54f200cc4eeb645981da95d8f8a1c908832b6539896.png" />
 </div>
@@ -534,7 +819,22 @@ The probability that the second child is a girl is 1/2, regardless.</p>
 <div><p>Mr. Smith has two children. At least one of them is a [girl]. What is the probability that both children are [girls]?</p>
 </div></blockquote>
 <p>Again, there are four equally likely combinations of two children, shown in the following diagram.</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">draw_rectangle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">blue</span><span class="p">,</span> <span class="n">blue</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">decorate_quad</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;florida3.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/eaad730bbc578ce03f54e6d28126d38225e8c1d36f22add213a361922c82eead.png" src="_images/eaad730bbc578ce03f54e6d28126d38225e8c1d36f22add213a361922c82eead.png" />
 </div>
@@ -572,7 +872,53 @@ So if a family has at least one girl, it is more likely that they have only one.
 <p>I’ll represent days with the digits 1 through 7, with 1 for Sunday and 7 for Saturday.
 And I’ll represent families with two digit numbers; for example, the number 17 represents a family where the first child was born on Sunday and the second child was born on Saturday.</p>
 <p>The following diagram shows the four possible orders for boys and girls, and within them, the 49 possible orders for days of the week.</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ys</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">text_array</span> <span class="o">=</span> <span class="p">(</span><span class="n">Y</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">boy</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">Gray70</span>
+<span class="n">girl</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">Pu20</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Boy&quot;</span><span class="p">,</span> <span class="s2">&quot;Girl&quot;</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;First child&quot;</span><span class="p">,</span> <span class="s2">&quot;Second child&quot;</span><span class="p">]</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">3.9</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="o">-</span><span class="mf">1.76</span><span class="p">,</span> <span class="mf">1.76</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">boy</span><span class="p">,</span> <span class="n">boy</span><span class="p">])</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mf">0.22</span><span class="p">,</span> <span class="mf">1.76</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">boy</span><span class="p">,</span> <span class="n">girl</span><span class="p">])</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="o">-</span><span class="mf">1.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.22</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">girl</span><span class="p">,</span> <span class="n">boy</span><span class="p">])</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mf">0.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.22</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">girl</span><span class="p">,</span> <span class="n">girl</span><span class="p">])</span>
+
+<span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">1.9</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.9</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">3.8</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">3.84</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.27</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.28</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.9</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">1.82</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.84</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.27</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.28</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">decorate_quad</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;florida4.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/42bb6c763be3e28fa2d943e0fe2e59b450f3466146f26cd34063a3646d195b1c.png" src="_images/42bb6c763be3e28fa2d943e0fe2e59b450f3466146f26cd34063a3646d195b1c.png" />
 </div>
@@ -581,6 +927,24 @@ And I’ll represent families with two digit numbers; for example, the number 17
 And the darker area shows the possibilities where the statement is true – that is, both children are girls.</p>
 <p>There are 27 cases where the condition is true.
 In 13 of them, the statement is true, so the conditional probability is 13/27, which is about 48%.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">13</span> <span class="o">/</span> <span class="mi">27</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.48148148148148145
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <p>So it turns out that the day of the week is not irrelevant.
 If at least one child is a girl, the probability of two girls is about 33%.
 If at least one child is a girl born on Saturday, the probability of two girls is about 48%.</p>
@@ -594,7 +958,53 @@ If at least one child is a girl born on Saturday, the probability of two girls i
 <p>Let’s assume that 1 child in 10 is left-handed, and if one sibling is left-handed, it doesn’t change the probability that the other is.</p>
 <p>The following diagram shows the possible combinations, using “R” to represent a right-handed child and “L” to represent a left-handed child.
 Again, the shaded areas show where the condition is true; the darker area shows where the statement is true.</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">letters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;RRRRRRRRRL&quot;</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">letters</span><span class="p">)</span>
+<span class="n">text_array</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">+</span> <span class="n">X</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">5.9</span>
+<span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="o">-</span><span class="mf">1.76</span><span class="p">,</span> <span class="mf">1.76</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">boy</span><span class="p">,</span> <span class="n">boy</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mf">0.22</span><span class="p">,</span> <span class="mf">1.76</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">boy</span><span class="p">,</span> <span class="n">girl</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span>
+    <span class="o">-</span><span class="mf">1.76</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.22</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">girl</span><span class="p">,</span> <span class="n">boy</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span>
+<span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span>
+    <span class="mf">0.22</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.22</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="n">text_array</span><span class="p">,</span> <span class="p">[</span><span class="n">girl</span><span class="p">,</span> <span class="n">girl</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span>
+<span class="p">)</span>
+
+<span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">1.9</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.86</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">3.78</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">3.8</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.23</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.86</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">1.80</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.23</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">decorate_quad</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;florida5.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/fb32bf5f014d00840e8d73fb8405088d0378a13550e56894fe9452d437be5fd3.png" src="_images/fb32bf5f014d00840e8d73fb8405088d0378a13550e56894fe9452d437be5fd3.png" />
 </div>
@@ -602,6 +1012,24 @@ Again, the shaded areas show where the condition is true; the darker area shows 
 <p>There are 39 combinations where at least one child is a left-handed girl.
 Of them, there are 19 combinations where both children are girls.
 So the conditional probability is 19/39, which is about 49%.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">19</span> <span class="o">/</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">1999</span> <span class="o">/</span> <span class="mi">3999</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.48717948717948717, 0.49987496874218557)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <p>Now we’re starting to see a pattern.
 If the probability of a particular attribute, like birthday or handedness, is 1 in <span class="math notranslate nohighlight">\(n\)</span>, the number of cases where the condition is true is <span class="math notranslate nohighlight">\(4n-1\)</span>, and the number of cases where the statement is true is <span class="math notranslate nohighlight">\(2n-1\)</span>.
 So the conditional probability is <span class="math notranslate nohighlight">\((2n-1) / (4n-1)\)</span>.</p>
@@ -641,7 +1069,46 @@ For example, here’s a version of the problem dressed up with some storytelling
 To start, let’s assume that this father is equally likely to be out walking with either of his children.
 In that case, for each family, there are two possibilities: the father might be walking with the first child or the second.</p>
 <p>The following diagram enumerates these possibilities, where “Bx” indicates that the father is walking with the first child, who is a boy, and “xG” indicates that the father is walking with the second child, who is a girl.</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s2">&quot;xx-large&quot;</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Bx&quot;</span><span class="p">,</span> <span class="s2">&quot;xB&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">boy</span><span class="p">,</span> <span class="n">boy</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Bx&quot;</span><span class="p">,</span> <span class="s2">&quot;xG&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">boy</span><span class="p">,</span> <span class="n">girl</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span>
+    <span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;xB&quot;</span><span class="p">,</span> <span class="s2">&quot;Gx&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">girl</span><span class="p">,</span> <span class="n">boy</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span>
+<span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span>
+    <span class="mf">0.75</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Gx&quot;</span><span class="p">,</span> <span class="s2">&quot;xG&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">girl</span><span class="p">,</span> <span class="n">girl</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span>
+<span class="p">)</span>
+
+<span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">2.7</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">draw_rectangle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">decorate_quad</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/db996d2684fae510ea2b61060378467d107a2711966befaec6bcbf0ac09dc4e6.png" src="_images/db996d2684fae510ea2b61060378467d107a2711966befaec6bcbf0ac09dc4e6.png" />
 </div>
@@ -660,6 +1127,35 @@ Instead, suppose it turns out that, in a family with a boy and a girl, fathers w
 <p>In total, there are five cases where we see a father with his daughter.
 Of those, there are three cases where the family has two girls, so the conditional probability is 3/5.</p>
 <p>This example shows that subtly different versions of these problems can have substantially different answers.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="s2">&quot;xx-large&quot;</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="o">-</span><span class="mf">1.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">girl</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">girl</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="o">-</span><span class="mf">1.4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">girl</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">plot_text_array</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="o">-</span><span class="n">ys</span> <span class="o">/</span> <span class="n">scale</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">],</span> <span class="p">[</span><span class="n">girl</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+
+<span class="n">draw_polygon</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">2.7</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">draw_rectangle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">decorate_quad</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/8e22c11c3d9d36d92c9411389486e6455cda7e9683d49a2ef396341e12aecae3.png" src="_images/8e22c11c3d9d36d92c9411389486e6455cda7e9683d49a2ef396341e12aecae3.png" />
+</div>
+</div>
 </section>
 <section id="be-careful-what-you-ask-for">
 <h2>Be Careful What You Ask For<a class="headerlink" href="#be-careful-what-you-ask-for" title="Link to this heading">#</a></h2>

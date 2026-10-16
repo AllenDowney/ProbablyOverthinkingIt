@@ -392,7 +392,12 @@ But if 75 is life expectancy <em>at birth</em> and you survive to age 37.5, your
 So 37.5 is not halfway!</p>
 <p>If we really want to find the midpoint – and it wouldn’t be <em>Probably Overthinking It</em> if we didn’t – we have to find the age where your expected remaining lifetime equals your current age.</p>
 <p>Let’s do it.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -404,12 +409,18 @@ So 37.5 is not halfway!</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <p>From the <a class="reference external" href="https://www.mortality.org/Country/Country?cntr=USA">Human Mortality Database</a> I downloaded life tables for the United States, combined and broken down for men and women.
 The following function reads and cleans a table.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">read_life_table</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="n">lt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_fwf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">infer_nrows</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
@@ -418,15 +429,22 @@ The following function reads and cleans a table.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Here are the first few rows of the combined table (see notes below for details).</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blt</span> <span class="o">=</span> <span class="n">read_life_table</span><span class="p">(</span><span class="s1">&#39;../data/bltper_1x1.txt&#39;</span><span class="p">)</span>
 <span class="n">blt</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -529,40 +547,69 @@ The following function reads and cleans a table.</p>
 </div></div></div>
 </div>
 <p>We’ll also read the female and male tables.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flt</span> <span class="o">=</span> <span class="n">read_life_table</span><span class="p">(</span><span class="s1">&#39;../data/fltper_1x1.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlt</span> <span class="o">=</span> <span class="n">read_life_table</span><span class="p">(</span><span class="s1">&#39;../data/mltper_1x1.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The tables include data from 1933 to 2024, so we’ll select the most recent data.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">blt</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">blt</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Year == @year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>The column we’ll use is <code class="docutils literal notranslate"><span class="pre">ex</span></code>, which is life expectancy as a function of age.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
 <span class="n">ex</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;ex&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Life expectancy at birth is 79 years, so the naive midpoint is 39.5.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ex</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
@@ -573,9 +620,15 @@ The following function reads and cleans a table.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>But at age 40, expected remaining lifetime is 41.1, so 39.5 is not the midpoint.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">ex</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span>
 </pre></div>
@@ -586,9 +639,15 @@ The following function reads and cleans a table.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>This plot shows life expectancy at each age, compared to age.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Remaining life expectancy&#39;</span><span class="p">)</span>
 <span class="n">age</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
@@ -597,12 +656,18 @@ The following function reads and cleans a table.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/c311bfdbfee9e313b723e5a2de8d5a5fcfd15deee16d326eb653188baf51d071.png" src="_images/c311bfdbfee9e313b723e5a2de8d5a5fcfd15deee16d326eb653188baf51d071.png" />
 </div>
 </div>
 <p>“Middle age” is where the lines cross, which we can compute by linear interpolation.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp1d</span>
 
@@ -616,11 +681,17 @@ The following function reads and cleans a table.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>So the overall midpoint is 40.6 years.
 But as you might expect, it’s different for men and women.
 Let’s put the analysis we did in a function.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_midpoint</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="n">lt</span> <span class="o">=</span> <span class="n">read_life_table</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -635,9 +706,15 @@ Let’s put the analysis we did in a function.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>And run it for men.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_midpoint</span><span class="p">(</span><span class="s1">&#39;../data/mltper_1x1.txt&#39;</span><span class="p">)</span>
 </pre></div>
@@ -648,9 +725,15 @@ Let’s put the analysis we did in a function.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>And women.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_midpoint</span><span class="p">(</span><span class="s1">&#39;../data/fltper_1x1.txt&#39;</span><span class="p">)</span>
 </pre></div>
@@ -661,13 +744,19 @@ Let’s put the analysis we did in a function.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Men hit middle age at 39.6, women at 41.6.</p>
 </section>
 <section id="the-gender-gap-and-age">
 <h2>The Gender Gap and Age<a class="headerlink" href="#the-gender-gap-and-age" title="Link to this heading">#</a></h2>
 <p>Finally, let’s see how the gender gap in life expectancy changes as a function of age.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ex_male</span> <span class="o">=</span> <span class="n">mlt</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Year == @year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)[</span><span class="s1">&#39;ex&#39;</span><span class="p">]</span>
 <span class="n">ex_female</span> <span class="o">=</span> <span class="n">flt</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Year == @year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)[</span><span class="s1">&#39;ex&#39;</span><span class="p">]</span>
@@ -675,8 +764,14 @@ Let’s put the analysis we did in a function.</p>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 <span class="n">decorate</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Years&#39;</span><span class="p">,</span>
@@ -684,6 +779,7 @@ Let’s put the analysis we did in a function.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/d4d1f3a3f9f664315cb4f64c22920bedb347987ee4a6679607640d56a19769a4.png" src="_images/d4d1f3a3f9f664315cb4f64c22920bedb347987ee4a6679607640d56a19769a4.png" />
 </div>
@@ -692,7 +788,12 @@ Let’s put the analysis we did in a function.</p>
 At age 100, it is close to zero.</p>
 <p>But just looking at the gap might be misleading.
 For a more complete picture let’s also look at the ratio.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ratio</span> <span class="o">=</span> <span class="n">ex_female</span> <span class="o">/</span> <span class="n">ex_male</span>
 <span class="n">ratio</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -702,6 +803,7 @@ For a more complete picture let’s also look at the ratio.</p>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/ead690e3fb2cba38ba81136402fd67b8c37a6cb53c8efdbe1b8fe58044d64209.png" src="_images/ead690e3fb2cba38ba81136402fd67b8c37a6cb53c8efdbe1b8fe58044d64209.png" />
 </div>
