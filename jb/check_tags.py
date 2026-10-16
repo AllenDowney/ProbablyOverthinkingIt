@@ -15,6 +15,7 @@ Usage:
     python jb/check_tags.py                 # summary for all chapters
     python jb/check_tags.py preston -v      # list mismatched cells in one chapter
     python jb/check_tags.py preston --apply # tag notebooks/preston.md
+    python jb/check_tags.py --examples      # the examples in jb/_toc.yml
     jupytext --update --to ipynb notebooks/preston.md
 """
 
@@ -25,6 +26,18 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+EXAMPLES = [
+    "ansur_pca",
+    "als_ms",
+    "chile",
+    "cricket",
+    "ideology_gap",
+    "midlife",
+    "ctokens",
+    "florida",
+    "sobriety",
+]
 
 CHAPTERS = [
     "gaussian",
@@ -49,6 +62,15 @@ PLUMBING = re.compile(
 )
 
 IMAGE_TYPES = ("image/png", "image/svg+xml", "image/jpeg")
+
+
+def find_notebook(name):
+    """Return the path of notebooks/<name>.ipynb or examples/<name>.ipynb."""
+    for folder in ["notebooks", "examples"]:
+        path = ROOT / folder / f"{name}.ipynb"
+        if path.exists():
+            return path
+    raise FileNotFoundError(f"{name}.ipynb not in notebooks/ or examples/")
 
 
 def output_kind(cell):
@@ -85,7 +107,7 @@ def current_tag(cell):
 
 
 def check(name, verbose):
-    path = ROOT / "notebooks" / f"{name}.ipynb"
+    path = find_notebook(name)
     nb = json.loads(path.read_text())
     code = [c for c in nb["cells"] if c["cell_type"] == "code"]
 
@@ -121,16 +143,17 @@ def apply(name):
     """Write the expected Jupyter Book tag on each code cell of the .md version.
 
     Cells are classified from the .ipynb (which has the outputs); the tags are
-    written to notebooks/<name>.md, which must be a jupytext version of the same
+    written to <name>.md next to the .ipynb, which must be a jupytext version of the same
     notebook. Review the .md, then convert with
-    `jupytext --update --to ipynb notebooks/<name>.md`.
+    `jupytext --update --to ipynb <folder>/<name>.md`.
     """
     import jupytext
 
-    nb = json.loads((ROOT / "notebooks" / f"{name}.ipynb").read_text())
+    ipynb_path = find_notebook(name)
+    nb = json.loads(ipynb_path.read_text())
     expected = [classify(c)[1] for c in nb["cells"] if c["cell_type"] == "code"]
 
-    md_path = ROOT / "notebooks" / f"{name}.md"
+    md_path = ipynb_path.with_suffix(".md")
     md = jupytext.read(md_path)
     code = [c for c in md.cells if c.cell_type == "code"]
     if len(code) != len(expected):
@@ -149,11 +172,13 @@ def apply(name):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("chapters", nargs="*", default=CHAPTERS)
+    parser.add_argument("names", nargs="*", help="notebook names; default: all chapters")
+    parser.add_argument("--examples", action="store_true", help="the examples in jb/_toc.yml")
     parser.add_argument("-v", "--verbose", action="store_true")
     parser.add_argument("--apply", action="store_true", help="retag the notebooks")
     args = parser.parse_args()
-    for name in args.chapters:
+    names = args.names or (EXAMPLES if args.examples else CHAPTERS)
+    for name in names:
         if args.apply:
             apply(name)
         check(name, args.verbose)
