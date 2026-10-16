@@ -2,7 +2,8 @@
 
 Convention (see PROJECT_BOARD.md, Task 6):
     figure output           -> hide-input
-    text/numerical output   -> hide-cell
+    table output            -> hide-input
+    other text output       -> hide-cell
     no output (setup)       -> hide-cell
     plumbing                -> remove-cell
 
@@ -51,7 +52,7 @@ IMAGE_TYPES = ("image/png", "image/svg+xml", "image/jpeg")
 
 
 def output_kind(cell):
-    """Classify a code cell as 'figure', 'text', or 'none' by its saved outputs."""
+    """Classify a code cell as 'figure', 'table', 'text', or 'none' by its saved outputs."""
     kind = "none"
     for out in cell.get("outputs", []):
         if out["output_type"] == "error":
@@ -59,7 +60,10 @@ def output_kind(cell):
         data = out.get("data", {})
         if any(t in data for t in IMAGE_TYPES):
             return "figure"
-        if out["output_type"] == "stream" or data:
+        if "text/html" in data:
+            # DataFrames display as HTML tables
+            kind = "table"
+        elif (out["output_type"] == "stream" or data) and kind == "none":
             kind = "text"
     return kind
 
@@ -68,9 +72,9 @@ def classify(cell):
     """Return (kind, expected tag) for a code cell."""
     source = "".join(cell["source"])
     kind = output_kind(cell)
-    if kind != "figure" and PLUMBING.search(source):
+    if kind not in ("figure", "table") and PLUMBING.search(source):
         return "plumbing", "remove-cell"
-    if kind == "figure":
+    if kind in ("figure", "table"):
         return kind, "hide-input"
     return kind, "hide-cell"
 
@@ -97,9 +101,9 @@ def check(name, verbose):
             mismatches.append((i, kind, tag, expected, "".join(cell["source"])))
 
     unexecuted = sum(1 for c in code if c.get("execution_count") is None)
-    summary = " ".join(f"{k}={kinds[k]}" for k in ["figure", "text", "none", "plumbing"])
+    summary = " ".join(f"{k}={kinds[k]}" for k in ["figure", "table", "text", "none", "plumbing"])
     print(
-        f"{name:12s} code={len(code):3d}  {summary:40s} "
+        f"{name:12s} code={len(code):3d}  {summary:48s} "
         f"mismatch={len(mismatches):3d}  unexecuted={unexecuted}"
     )
 

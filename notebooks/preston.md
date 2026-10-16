@@ -20,6 +20,8 @@ This notebook contains the text from Chapter 3 *[Probably Overthinking It: How t
 
 *Probably Overthinking It* is available from [**Bookshop.org**](https://bookshop.org/a/98697/9780226822587) and [**Amazon**](https://amzn.to/3Kp629E) (affiliate links).
 
+If you like *Probably Overthinking It*, you'll like my book in progress, [*You Would Choose Now*](https://allendowney.com/ywcn), which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.
+
 [Click here to run this notebook on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/preston.ipynb).
 
 ```python tags=["remove-cell"]
@@ -134,7 +136,7 @@ download(
 )
 ```
 
-```python tags=["hide-cell"]
+```python tags=["hide-input"]
 rename_dict = {
     "Unnamed: 0": "Year",
     "Unnamed: 1": "Total",
@@ -147,7 +149,7 @@ h2 = h2.rename(columns=rename_dict)
 h2.head()
 ```
 
-```python tags=["hide-cell"]
+```python tags=["hide-input"]
 # Select women ages 40-44, and drop a row of missing data
 
 rows = h2.iloc[7:35].drop(32)
@@ -382,7 +384,7 @@ download(
 )
 ```
 
-```python tags=["hide-cell"]
+```python tags=["hide-input"]
 # When I made this dataset, I didn't change the default labels for the columns.
 
 family = pd.read_csv("preston_data.csv", skiprows=1)
