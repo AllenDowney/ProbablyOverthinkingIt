@@ -5,11 +5,13 @@ This site contains the Jupyter notebooks I used in my preparation of *[Probably 
 If you've read the book and you want to know how the analysis works, this is the place.
 And if you read these notebooks, and you want to get the book, you can order from [Bookshop.org](https://bookshop.org/a/98697/9780226822587) and [Amazon](https://amzn.to/3Kp629E) (affiliate links).
 
-Before you read these notebooks, please keep in mind:
+If you like *Probably Overthinking It*, you'll like my book in progress, [*You Would Choose Now*](https://allendowney.com/ywcn), which uses decades of survey data to track changing attitudes in the United States. The early access edition is available now.
 
-* There is some explanatory text in the notebooks, but some of the examples will not make sense until you have read the corresponding chapter in the book.
 
-* While preparing these notebooks, I made some changes to improve the readability of the code. There might be small differences between what appears in the book and what you get when you run the code.
+## Chapters
+
+While preparing these notebooks, I made some changes to improve the readability of the code. There might be small differences between what appears in the book and what you get when you run the code.
+
 
 **Chapter 1: Are You Normal? Hint: No.**
 
@@ -39,7 +41,7 @@ Before you read these notebooks, please keep in mind:
 [Run the code that prepares the NSFG data](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nsfg_clean.ipynb)
 
 
-**Chapter 5: Bettter Than New**
+**Chapter 5: Better Than New**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/nbue.ipynb)
 
@@ -84,3 +86,41 @@ Before you read these notebooks, please keep in mind:
 **Chapter 12: Chasing the Overton Window**
 
 [Run the code on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/notebooks/overton.ipynb)
+
+
+## Examples
+
+These notebooks are not tied to a single chapter; they explore topics from the book and related questions.
+
+**The Principal Components of Anthropometry**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ansur_pca.ipynb)
+
+
+**Chile Earthquake Magnitudes**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/chile.ipynb)
+
+**Greatest GOAT of All Time?**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/cricket.ipynb)
+
+**Is the Ideology Gap Growing?**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ideology_gap.ipynb)
+
+**Are you middle-aged?**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/midlife.ipynb)
+
+**Power law? Or just a guideline?**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/ctokens.ipynb)
+
+**The Girl Named Florida**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/florida.ipynb)
+
+**Field Sobriety Tests and the Base Rate Fallacy**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/sobriety.ipynb)
