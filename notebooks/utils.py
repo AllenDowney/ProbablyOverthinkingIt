@@ -1148,19 +1148,19 @@ def set_pyplot_params():
     plt.close(f)
 
     # for the book
-    # plt.rcParams["figure.figsize"] = (3.835, 3.835 / 2)
-    # plt.rcParams["font.size"] = 7.9
-    # plt.rcParams["legend.fontsize"] = 7.4
-    # plt.rcParams["axes.titlesize"] = 8.4
+    # plt.rcParams["figure.figsize"] = (6, 3.5)
+    # plt.rcParams["font.size"] = 8
+    # plt.rcParams["legend.fontsize"] = 7.5
+    # plt.rcParams["axes.titlesize"] = 8.5
     # plt.rcParams["font.sans-serif"] = ["Source Sans Pro"]
 
-    plt.rcParams["figure.figsize"] = 6, 3.5
-    plt.rcParams["figure.dpi"] = 75
+    plt.rcParams["figure.figsize"] = 6, 3.2
+    plt.rcParams["figure.dpi"] = 100
 
     plt.rcParams["axes.titlesize"] = "medium"
     # Not available on Colab
     # plt.rcParams["font.sans-serif"] = ["Roboto"]
-    plt.rcParams["font.size"] = 12
+    plt.rcParams["font.size"] = 10
 
     plt.rcParams["axes.prop_cycle"] = color_cycle
     plt.rcParams["lines.linewidth"] = 1.5
