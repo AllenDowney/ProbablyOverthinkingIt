@@ -26,6 +26,7 @@ cp ../examples/sobriety.ipynb .
 cp ../examples/chile.ipynb .
 cp ../examples/cricket.ipynb .
 cp ../examples/firm_size.ipynb .
+cp ../examples/firm_size_revenue.ipynb .
 cp ../examples/firm_size_france.ipynb .
 
 # build the HTML version

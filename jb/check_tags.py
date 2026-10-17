@@ -37,6 +37,7 @@ EXAMPLES = [
     "florida",
     "sobriety",
     "firm_size",
+    "firm_size_revenue",
     "firm_size_france",
 ]
 

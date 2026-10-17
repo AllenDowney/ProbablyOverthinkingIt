@@ -27,4 +27,5 @@ parts:
   - file: florida
   - file: sobriety
   - file: firm_size
+  - file: firm_size_revenue
   - file: firm_size_france
