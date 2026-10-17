@@ -200,6 +200,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ctokens.html">Power law? Or just a guideline?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="florida.html">The Girl Named Florida</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sobriety.html">Field Sobriety Tests and the Base Rate Fallacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firm_size.html">The Distribution of U.S. Firm Sizes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firm_size_france.html">The Distribution of French Firm Sizes</a></li>
 </ul>
 
     </div>
@@ -983,8 +985,8 @@ It took some revision to get it working, but the head start definitely saved me 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.1749688 , 0.04206542, 0.03248163, 0.0228476 ,
-       0.02117352, 0.01887385, 0.01486304, 0.01423664, 0.01332959])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.1749688 , 0.04206542, 0.03248169, 0.02284759,
+       0.02117402, 0.01887345, 0.01486669, 0.01423956, 0.01333269])
 </pre></div>
 </div>
 </div>
@@ -1006,8 +1008,8 @@ I lifted this from <a class="reference external" href="https://jakevdp.github.io
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.61731386, 0.65937928, 0.69186091, 0.71470851,
-       0.73588203, 0.75475588, 0.76961892, 0.78385556, 0.79718515])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44234507, 0.61731386, 0.65937928, 0.69186097, 0.71470856,
+       0.73588258, 0.75475603, 0.76962272, 0.78386228, 0.79719496])
 </pre></div>
 </div>
 </div>
@@ -1030,7 +1032,7 @@ I lifted this from <a class="reference external" href="https://jakevdp.github.io
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/92b0c322f84939959e09422de76b65d92fa48ee6dfbe445a0db3db322e911fb2.png" src="_images/92b0c322f84939959e09422de76b65d92fa48ee6dfbe445a0db3db322e911fb2.png" />
+<img alt="_images/6dfeec57607b54db5731eee5a03e0f6b11b2fa6cbb7cf24ed96229a504d45e38.png" src="_images/6dfeec57607b54db5731eee5a03e0f6b11b2fa6cbb7cf24ed96229a504d45e38.png" />
 </div>
 </div>
 <p>With one component, we can capture 44% of the variation in the measurements.
@@ -1149,195 +1151,195 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
     </tr>
     <tr>
       <th>2</th>
-      <td>-0.014402</td>
-      <td>-0.122855</td>
-      <td>0.012458</td>
-      <td>0.022607</td>
-      <td>-0.112586</td>
-      <td>0.073197</td>
-      <td>0.118906</td>
-      <td>0.059999</td>
-      <td>0.103362</td>
-      <td>-0.135291</td>
+      <td>-0.014415</td>
+      <td>-0.122852</td>
+      <td>0.012455</td>
+      <td>0.022595</td>
+      <td>-0.112583</td>
+      <td>0.073198</td>
+      <td>0.118903</td>
+      <td>0.059989</td>
+      <td>0.103379</td>
+      <td>-0.135286</td>
       <td>...</td>
-      <td>-0.167968</td>
-      <td>-0.179771</td>
-      <td>-0.081043</td>
-      <td>-0.045145</td>
-      <td>-0.021008</td>
-      <td>-0.228018</td>
-      <td>-0.030051</td>
-      <td>-0.003646</td>
-      <td>0.042591</td>
-      <td>-0.216040</td>
+      <td>-0.167965</td>
+      <td>-0.179761</td>
+      <td>-0.081045</td>
+      <td>-0.045152</td>
+      <td>-0.021020</td>
+      <td>-0.228031</td>
+      <td>-0.030049</td>
+      <td>-0.003644</td>
+      <td>0.042584</td>
+      <td>-0.216034</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.173902</td>
-      <td>0.015067</td>
-      <td>0.085738</td>
-      <td>-0.166805</td>
-      <td>0.009402</td>
-      <td>-0.247006</td>
-      <td>-0.099514</td>
-      <td>-0.044511</td>
-      <td>0.032614</td>
-      <td>0.021519</td>
+      <td>0.173835</td>
+      <td>0.015046</td>
+      <td>0.085668</td>
+      <td>-0.166709</td>
+      <td>0.009379</td>
+      <td>-0.247034</td>
+      <td>-0.099303</td>
+      <td>-0.044501</td>
+      <td>0.032602</td>
+      <td>0.021611</td>
       <td>...</td>
-      <td>-0.000912</td>
-      <td>0.023724</td>
-      <td>0.131986</td>
-      <td>0.161486</td>
-      <td>0.181409</td>
-      <td>-0.043193</td>
-      <td>0.010563</td>
-      <td>0.055897</td>
-      <td>-0.153280</td>
-      <td>-0.019526</td>
+      <td>-0.000887</td>
+      <td>0.023748</td>
+      <td>0.131975</td>
+      <td>0.161440</td>
+      <td>0.181350</td>
+      <td>-0.043284</td>
+      <td>0.010540</td>
+      <td>0.055891</td>
+      <td>-0.153328</td>
+      <td>-0.019573</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.067083</td>
-      <td>0.015880</td>
-      <td>-0.052733</td>
-      <td>0.179441</td>
-      <td>0.008818</td>
-      <td>0.148798</td>
-      <td>0.102851</td>
-      <td>-0.291578</td>
-      <td>0.025634</td>
-      <td>0.022352</td>
+      <td>0.066929</td>
+      <td>0.015922</td>
+      <td>-0.052847</td>
+      <td>0.179214</td>
+      <td>0.008862</td>
+      <td>0.148688</td>
+      <td>0.102660</td>
+      <td>-0.291544</td>
+      <td>0.025702</td>
+      <td>0.022706</td>
       <td>...</td>
-      <td>0.014742</td>
-      <td>0.006071</td>
-      <td>0.053438</td>
-      <td>0.058207</td>
-      <td>0.067641</td>
-      <td>-0.048584</td>
-      <td>-0.011554</td>
-      <td>0.043999</td>
-      <td>0.064798</td>
-      <td>0.057537</td>
+      <td>0.014710</td>
+      <td>0.006024</td>
+      <td>0.053549</td>
+      <td>0.058204</td>
+      <td>0.067503</td>
+      <td>-0.048844</td>
+      <td>-0.011521</td>
+      <td>0.043992</td>
+      <td>0.064811</td>
+      <td>0.057644</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0.068603</td>
-      <td>0.045339</td>
-      <td>0.009396</td>
-      <td>-0.080556</td>
-      <td>0.034854</td>
-      <td>-0.067952</td>
-      <td>-0.008425</td>
-      <td>-0.210178</td>
-      <td>-0.060257</td>
-      <td>0.028790</td>
+      <td>0.068020</td>
+      <td>0.045207</td>
+      <td>0.009170</td>
+      <td>-0.079944</td>
+      <td>0.034725</td>
+      <td>-0.068642</td>
+      <td>-0.007852</td>
+      <td>-0.210508</td>
+      <td>-0.059574</td>
+      <td>0.028846</td>
       <td>...</td>
-      <td>0.014812</td>
-      <td>0.083023</td>
-      <td>0.029290</td>
-      <td>0.050304</td>
-      <td>0.071416</td>
-      <td>0.007212</td>
-      <td>-0.017477</td>
-      <td>0.003683</td>
-      <td>-0.105896</td>
-      <td>0.075637</td>
+      <td>0.014737</td>
+      <td>0.083359</td>
+      <td>0.029012</td>
+      <td>0.049868</td>
+      <td>0.070885</td>
+      <td>0.007065</td>
+      <td>-0.017563</td>
+      <td>0.003736</td>
+      <td>-0.105828</td>
+      <td>0.075317</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0.093660</td>
-      <td>0.012428</td>
-      <td>0.032023</td>
-      <td>-0.109354</td>
-      <td>-0.004740</td>
-      <td>0.024016</td>
-      <td>0.038469</td>
-      <td>-0.041117</td>
-      <td>-0.045251</td>
-      <td>0.026545</td>
+      <td>0.093649</td>
+      <td>0.012374</td>
+      <td>0.031909</td>
+      <td>-0.108847</td>
+      <td>-0.004847</td>
+      <td>0.022886</td>
+      <td>0.039429</td>
+      <td>-0.041191</td>
+      <td>-0.045501</td>
+      <td>0.027304</td>
       <td>...</td>
-      <td>0.018426</td>
-      <td>0.284304</td>
-      <td>0.027542</td>
-      <td>0.069994</td>
-      <td>0.116852</td>
-      <td>0.202127</td>
-      <td>-0.123815</td>
-      <td>-0.022750</td>
-      <td>0.095576</td>
-      <td>0.009357</td>
+      <td>0.018137</td>
+      <td>0.283710</td>
+      <td>0.027891</td>
+      <td>0.070190</td>
+      <td>0.116803</td>
+      <td>0.201994</td>
+      <td>-0.123756</td>
+      <td>-0.022860</td>
+      <td>0.095987</td>
+      <td>0.009422</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>-0.050239</td>
-      <td>0.062544</td>
-      <td>-0.112495</td>
-      <td>-0.012928</td>
-      <td>0.049113</td>
-      <td>-0.001771</td>
-      <td>0.077509</td>
-      <td>-0.010888</td>
-      <td>0.096296</td>
-      <td>0.019468</td>
+      <td>-0.052688</td>
+      <td>0.061738</td>
+      <td>-0.115124</td>
+      <td>-0.010012</td>
+      <td>0.048177</td>
+      <td>-0.005232</td>
+      <td>0.088680</td>
+      <td>-0.011161</td>
+      <td>0.095275</td>
+      <td>0.027243</td>
       <td>...</td>
-      <td>-0.008819</td>
-      <td>0.041587</td>
-      <td>-0.065475</td>
-      <td>-0.050950</td>
-      <td>-0.027480</td>
-      <td>-0.143207</td>
-      <td>0.059189</td>
-      <td>0.006680</td>
-      <td>0.022722</td>
-      <td>0.201584</td>
+      <td>-0.009393</td>
+      <td>0.042837</td>
+      <td>-0.063307</td>
+      <td>-0.051032</td>
+      <td>-0.029532</td>
+      <td>-0.145553</td>
+      <td>0.058143</td>
+      <td>0.006287</td>
+      <td>0.020673</td>
+      <td>0.200656</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>-0.003643</td>
-      <td>-0.040762</td>
-      <td>0.010628</td>
-      <td>0.126513</td>
-      <td>-0.037450</td>
-      <td>0.077418</td>
-      <td>0.139245</td>
-      <td>0.112175</td>
-      <td>-0.130013</td>
-      <td>0.253391</td>
+      <td>-0.002601</td>
+      <td>-0.041691</td>
+      <td>0.011918</td>
+      <td>0.128483</td>
+      <td>-0.038433</td>
+      <td>0.077109</td>
+      <td>0.143232</td>
+      <td>0.113983</td>
+      <td>-0.133804</td>
+      <td>0.253301</td>
       <td>...</td>
-      <td>-0.067305</td>
-      <td>0.181409</td>
-      <td>0.108766</td>
-      <td>0.052406</td>
-      <td>0.018824</td>
-      <td>-0.061912</td>
-      <td>-0.047037</td>
-      <td>0.006009</td>
-      <td>-0.103649</td>
-      <td>-0.046352</td>
+      <td>-0.066053</td>
+      <td>0.180681</td>
+      <td>0.109480</td>
+      <td>0.053116</td>
+      <td>0.019980</td>
+      <td>-0.059466</td>
+      <td>-0.048724</td>
+      <td>0.005821</td>
+      <td>-0.105042</td>
+      <td>-0.049366</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>0.087035</td>
-      <td>-0.013592</td>
-      <td>0.074065</td>
-      <td>-0.045918</td>
-      <td>-0.003512</td>
-      <td>-0.102444</td>
-      <td>0.027862</td>
-      <td>0.003437</td>
-      <td>-0.009817</td>
-      <td>-0.076497</td>
+      <td>0.088042</td>
+      <td>-0.015056</td>
+      <td>0.071590</td>
+      <td>-0.043072</td>
+      <td>-0.004563</td>
+      <td>-0.106276</td>
+      <td>0.033972</td>
+      <td>0.002206</td>
+      <td>-0.011959</td>
+      <td>-0.078814</td>
       <td>...</td>
-      <td>0.053154</td>
-      <td>0.227852</td>
-      <td>0.021863</td>
-      <td>0.073011</td>
-      <td>0.097022</td>
-      <td>0.269341</td>
-      <td>-0.128553</td>
-      <td>0.027776</td>
-      <td>-0.010761</td>
-      <td>-0.086203</td>
+      <td>0.053774</td>
+      <td>0.227461</td>
+      <td>0.021029</td>
+      <td>0.072728</td>
+      <td>0.097588</td>
+      <td>0.268130</td>
+      <td>-0.129249</td>
+      <td>0.027296</td>
+      <td>-0.009578</td>
+      <td>-0.088460</td>
     </tr>
   </tbody>
 </table>
@@ -1393,66 +1395,66 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
       <th>abdominalextensiondepthsitting</th>
       <td>-0.085451</td>
       <td>-0.162882</td>
-      <td>-0.014402</td>
-      <td>0.173902</td>
-      <td>0.067083</td>
-      <td>0.068603</td>
-      <td>0.093660</td>
-      <td>-0.050239</td>
-      <td>-0.003643</td>
-      <td>0.087035</td>
+      <td>-0.014415</td>
+      <td>0.173835</td>
+      <td>0.066929</td>
+      <td>0.068020</td>
+      <td>0.093649</td>
+      <td>-0.052688</td>
+      <td>-0.002601</td>
+      <td>0.088042</td>
     </tr>
     <tr>
       <th>acromialheight</th>
       <td>-0.134108</td>
       <td>0.099494</td>
-      <td>-0.122855</td>
-      <td>0.015067</td>
-      <td>0.015880</td>
-      <td>0.045339</td>
-      <td>0.012428</td>
-      <td>0.062544</td>
-      <td>-0.040762</td>
-      <td>-0.013592</td>
+      <td>-0.122852</td>
+      <td>0.015046</td>
+      <td>0.015922</td>
+      <td>0.045207</td>
+      <td>0.012374</td>
+      <td>0.061738</td>
+      <td>-0.041691</td>
+      <td>-0.015056</td>
     </tr>
     <tr>
       <th>acromionradialelength</th>
       <td>-0.116021</td>
       <td>0.106095</td>
-      <td>0.012458</td>
-      <td>0.085738</td>
-      <td>-0.052733</td>
-      <td>0.009396</td>
-      <td>0.032023</td>
-      <td>-0.112495</td>
-      <td>0.010628</td>
-      <td>0.074065</td>
+      <td>0.012455</td>
+      <td>0.085668</td>
+      <td>-0.052847</td>
+      <td>0.009170</td>
+      <td>0.031909</td>
+      <td>-0.115124</td>
+      <td>0.011918</td>
+      <td>0.071590</td>
     </tr>
     <tr>
       <th>anklecircumference</th>
       <td>-0.100365</td>
       <td>-0.092119</td>
-      <td>0.022607</td>
-      <td>-0.166805</td>
-      <td>0.179441</td>
-      <td>-0.080556</td>
-      <td>-0.109354</td>
-      <td>-0.012928</td>
-      <td>0.126513</td>
-      <td>-0.045918</td>
+      <td>0.022595</td>
+      <td>-0.166709</td>
+      <td>0.179214</td>
+      <td>-0.079944</td>
+      <td>-0.108847</td>
+      <td>-0.010012</td>
+      <td>0.128483</td>
+      <td>-0.043072</td>
     </tr>
     <tr>
       <th>axillaheight</th>
       <td>-0.127055</td>
       <td>0.123047</td>
-      <td>-0.112586</td>
-      <td>0.009402</td>
-      <td>0.008818</td>
-      <td>0.034854</td>
-      <td>-0.004740</td>
-      <td>0.049113</td>
-      <td>-0.037450</td>
-      <td>-0.003512</td>
+      <td>-0.112583</td>
+      <td>0.009379</td>
+      <td>0.008862</td>
+      <td>0.034725</td>
+      <td>-0.004847</td>
+      <td>0.048177</td>
+      <td>-0.038433</td>
+      <td>-0.004563</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1471,66 +1473,66 @@ After that, the gains are smaller (as we expect), but with 10 measurements, we g
       <th>waistfrontlengthsitting</th>
       <td>-0.082944</td>
       <td>-0.061621</td>
-      <td>-0.228018</td>
-      <td>-0.043193</td>
-      <td>-0.048584</td>
-      <td>0.007212</td>
-      <td>0.202127</td>
-      <td>-0.143207</td>
-      <td>-0.061912</td>
-      <td>0.269341</td>
+      <td>-0.228031</td>
+      <td>-0.043284</td>
+      <td>-0.048844</td>
+      <td>0.007065</td>
+      <td>0.201994</td>
+      <td>-0.145553</td>
+      <td>-0.059466</td>
+      <td>0.268130</td>
     </tr>
     <tr>
       <th>waistheightomphalion</th>
       <td>-0.114016</td>
       <td>0.150431</td>
-      <td>-0.030051</td>
-      <td>0.010563</td>
-      <td>-0.011554</td>
-      <td>-0.017477</td>
-      <td>-0.123815</td>
-      <td>0.059189</td>
-      <td>-0.047037</td>
-      <td>-0.128553</td>
+      <td>-0.030049</td>
+      <td>0.010540</td>
+      <td>-0.011521</td>
+      <td>-0.017563</td>
+      <td>-0.123756</td>
+      <td>0.058143</td>
+      <td>-0.048724</td>
+      <td>-0.129249</td>
     </tr>
     <tr>
       <th>weightkg</th>
       <td>-0.131211</td>
       <td>-0.126668</td>
-      <td>-0.003646</td>
-      <td>0.055897</td>
-      <td>0.043999</td>
-      <td>0.003683</td>
-      <td>-0.022750</td>
-      <td>0.006680</td>
-      <td>0.006009</td>
-      <td>0.027776</td>
+      <td>-0.003644</td>
+      <td>0.055891</td>
+      <td>0.043992</td>
+      <td>0.003736</td>
+      <td>-0.022860</td>
+      <td>0.006287</td>
+      <td>0.005821</td>
+      <td>0.027296</td>
     </tr>
     <tr>
       <th>wristcircumference</th>
       <td>-0.115607</td>
       <td>-0.062109</td>
-      <td>0.042591</td>
-      <td>-0.153280</td>
-      <td>0.064798</td>
-      <td>-0.105896</td>
-      <td>0.095576</td>
-      <td>0.022722</td>
-      <td>-0.103649</td>
-      <td>-0.010761</td>
+      <td>0.042584</td>
+      <td>-0.153328</td>
+      <td>0.064811</td>
+      <td>-0.105828</td>
+      <td>0.095987</td>
+      <td>0.020673</td>
+      <td>-0.105042</td>
+      <td>-0.009578</td>
     </tr>
     <tr>
       <th>wristheight</th>
       <td>-0.120198</td>
       <td>0.048192</td>
-      <td>-0.216040</td>
-      <td>-0.019526</td>
-      <td>0.057537</td>
-      <td>0.075637</td>
-      <td>0.009357</td>
-      <td>0.201584</td>
-      <td>-0.046352</td>
-      <td>-0.086203</td>
+      <td>-0.216034</td>
+      <td>-0.019573</td>
+      <td>0.057644</td>
+      <td>0.075317</td>
+      <td>0.009422</td>
+      <td>0.200656</td>
+      <td>-0.049366</td>
+      <td>-0.088460</td>
     </tr>
   </tbody>
 </table>
@@ -1593,7 +1595,7 @@ Principal Component 4:
 0.212 	 sittingheight
 
 Principal Component 5:
-0.319 	 interscyeii
+0.32 	 interscyeii
 0.292 	 biacromialbreadth
 0.275 	 shoulderlength
 0.273 	 interscyei
@@ -1601,38 +1603,38 @@ Principal Component 5:
 
 Principal Component 6:
 -0.34 	 headcircumference
--0.321 	 headbreadth
-0.316 	 shoulderlength
--0.277 	 tragiontopofhead
--0.262 	 interpupillarybreadth
+-0.32 	 headbreadth
+0.317 	 shoulderlength
+-0.279 	 tragiontopofhead
+-0.263 	 interpupillarybreadth
 
 Principal Component 7:
-0.374 	 crotchlengthposterioromphalion
+0.373 	 crotchlengthposterioromphalion
 -0.321 	 earbreadth
--0.298 	 earlength
+-0.3 	 earlength
 -0.284 	 waistbacklength
-0.253 	 crotchlengthomphalion
+0.254 	 crotchlengthomphalion
 
 Principal Component 8:
 0.472 	 earprotrusion
-0.346 	 earlength
-0.215 	 crotchlengthposterioromphalion
--0.202 	 wristheight
-0.195 	 overheadfingertipreachsitting
+0.342 	 earlength
+0.217 	 crotchlengthposterioromphalion
+-0.201 	 wristheight
+-0.197 	 elbowrestheight
 
 Principal Component 9:
 -0.299 	 tragiontopofhead
-0.294 	 crotchlengthposterioromphalion
+0.292 	 crotchlengthposterioromphalion
 -0.253 	 bicristalbreadth
--0.228 	 shoulderlength
-0.189 	 neckcircumferencebase
+-0.226 	 shoulderlength
+0.193 	 bitragionchinarc
 
 Principal Component 10:
-0.406 	 earbreadth
-0.356 	 earprotrusion
--0.269 	 waistfrontlengthsitting
-0.239 	 earlength
--0.228 	 waistbacklength
+0.401 	 earbreadth
+0.358 	 earprotrusion
+-0.268 	 waistfrontlengthsitting
+0.236 	 earlength
+-0.227 	 waistbacklength
 </pre></div>
 </div>
 </div>
@@ -1699,7 +1701,7 @@ Once you have exhausted the information carried by the most obvious measurements
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/1c173e78d0ef97e85b0ffb17beea92dd1d9837bb3c6068b8c085edb01eb1fc17.png" src="_images/1c173e78d0ef97e85b0ffb17beea92dd1d9837bb3c6068b8c085edb01eb1fc17.png" />
+<img alt="_images/6a1b2e1e422c62752594c9fb4d51ddf71c9d2b11ba6b56d9c8b7003b4c9d1ddf.png" src="_images/6a1b2e1e422c62752594c9fb4d51ddf71c9d2b11ba6b56d9c8b7003b4c9d1ddf.png" />
 </div>
 </div>
 <p>Unfortunately, the most interesting plots don’t seem to work well with the number of dimensions in this dataset.
@@ -1723,7 +1725,7 @@ I’d be curious to know if they can be tuned to work better.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[pca] &gt;Plot PC1 vs PC2 vs PC3 with loadings.
 </pre></div>
 </div>
-<img alt="_images/12848dd5de4015fe7e096351008fcc214bb7ca354bac14f99509eb1d7ea39866.png" src="_images/12848dd5de4015fe7e096351008fcc214bb7ca354bac14f99509eb1d7ea39866.png" />
+<img alt="_images/ee7f9a1fb98faf7a67f8aa989ddf5ceb7c0266a41a1b3a180b59e8c318259b95.png" src="_images/ee7f9a1fb98faf7a67f8aa989ddf5ceb7c0266a41a1b3a180b59e8c318259b95.png" />
 </div>
 </div>
 <p>Copyright 2023 Allen Downey</p>

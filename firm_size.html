@@ -1,0 +1,1658 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Distribution of U.S. Firm Sizes &#8212; Probably Overthinking It</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'firm_size';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Distribution of French Firm Sizes" href="firm_size_france.html" />
+    <link rel="prev" title="Field Sobriety Tests and the Base Rate Fallacy" href="sobriety.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Probably Overthinking It</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Probably Overthinking It
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapters</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">1. Are You Normal? Hint: No.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inspection.html">2. Relay Races and Revolving Doors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preston.html">3. Defy Tradition, Save the World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lognormal.html">4. Extremes, Outliers, and GOATs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nbue.html">5. Better Than New</a></li>
+<li class="toctree-l1"><a class="reference internal" href="berkson.html">6. Jumping to Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="birthweight.html">7. Causation, Collision, and Confusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="longtail.html">8. The Long Tail of Disaster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base_rate.html">9. Fairness and Fallacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simpson.html">10. Penguins, Pessimists, and Paradoxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progress.html">11. Changing Hearts and Minds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overton.html">12. Chasing the Overton Window</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ansur_pca.html">The Principal Components of Anthropometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="als_ms.html">Simpson’s What?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chile.html">Chile Earthquake Magnitudes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cricket.html">Greatest GOAT of All Time?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ideology_gap.html">Is the Ideology Gap Growing?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="midlife.html">Are you middle-aged?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctokens.html">Power law? Or just a guideline?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="florida.html">The Girl Named Florida</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sobriety.html">Field Sobriety Tests and the Base Rate Fallacy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Distribution of U.S. Firm Sizes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firm_size_france.html">The Distribution of French Firm Sizes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/AllenDowney/ProbablyOverthinkingIt" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/firm_size.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Distribution of U.S. Firm Sizes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-back-and-forth">The back and forth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-distribution">Empirical distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-employment">Log employment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-truncated-models">Fitting truncated models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lognormal-model">Lognormal model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-student-t-model">Log-Student-<span class="math notranslate nohighlight">\(t\)</span> model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-generalized-normal-model">Log-generalized-normal model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pareto-model">Pareto model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison">Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness">Robustness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-distribution-of-u-s-firm-sizes">
+<h1>The Distribution of U.S. Firm Sizes<a class="headerlink" href="#the-distribution-of-u-s-firm-sizes" title="Link to this heading">#</a></h1>
+<p>Company sizes are skewed to the right – that is, most companies are small, but large companies are very large.
+Over the last few decades, researchers have gone back and forth on whether the distribution is best modeled by a lognormal distribution, a power law distribution, or something else.</p>
+<p>In my opinion, the back and forth has not been very productive because the methods are not what they could be. Specifically:</p>
+<ol class="arabic simple">
+<li><p>Most of the datasets are proprietary, so each paper uses a different dataset.</p></li>
+<li><p>The datasets are often binned, which makes it hard to characterize the tails of the distributions – often the part we care about.</p></li>
+<li><p>When fitting the model to the dataset, researchers have used different methods.</p></li>
+<li><p>When checking how well the model fits, researchers have used different metrics.</p></li>
+</ol>
+<p>In this article, I will use one of the few unbinned datasets I could get my hands one, and I’ll suggest a general strategy for fitting and assessing these models.</p>
+<p>But first, let me answer a question you might be thinking: why should we care which (if any) of these models fits the data?</p>
+<p>One reason is that these distributions give us hints about the ways companies grow and the limits of growth, which are related to corporate power – including monopoly power and political influence – and the causes of wealth inequality.
+If we see that the distribution of firm size follows a lognormal distribution, that suggests one kind of growth process, and a relatively low limit on the size of the largest firms.
+If we see that it follows a power law distribution, that suggests a different kind of growth process – one that tends to evolve toward economies with very large, powerful, wealthy firms.</p>
+<p>A secondary reason is that these distribution – if they are good models of the data – lend themselves to mathematical modeling of economic systems.</p>
+<section id="the-back-and-forth">
+<h2>The back and forth<a class="headerlink" href="#the-back-and-forth" title="Link to this heading">#</a></h2>
+<p>Here’s a quick look at a few significant papers on this topic.</p>
+<p><a class="reference external" href="https://doi.org/10.1016/0165-1765(95)00696-d">Stanley et al. (1995)</a> selected about 4,000 North American manufacturing firms from COMPUSTAT and found that firm sizes were approximately lognormal – but the largest firms were less common than a lognormal model predicts.</p>
+<p><a class="reference external" href="https://doi.org/10.1126/science.1062081">Axtell (2001)</a> argued that the COMPUSTAT data underrepresents small firms.
+Using more comprehensive Census data, he argued that a Zipf distribution, which has a power law tail, is a better model.
+But the data were binned, making it hard to assess the tail behavior.</p>
+<p><a class="reference internal" href="#"><span class="xref myst">Kondo, Lewis, and Stella (2022)</span></a> used confidential data from the Longitudinal Business Database, and found that the lognormal was a better model than Zipf, but still not a good fit in the extreme tail.
+So they suggested a model based on a convolution of lognormal and Pareto – which has a power law tail.</p>
+<p>To show visually how well each model fits the data, all three papers show a PMF on a log-log scale.
+On that scale, a distribution with a power law tail looks like a straight line.
+So that’s useful as a visual test, but I think it’s not the best way to visualize these results. I suggest:</p>
+<ol class="arabic simple">
+<li><p>We should look at cumulative distributions rather than PMFs, because they smooth out noise and show the shape of the distributions more clearly. Specifically use the “tail distribution”, which is similar to a complementary CDF (CDF) except that it’s <span class="math notranslate nohighlight">\(P(X \ge x)\)</span> rather than <span class="math notranslate nohighlight">\(P(X \gt x)\)</span>.</p></li>
+<li><p>We should always look at the tail distribution on two scales: linear-y and log-y. The first shows how well the model fits in the bulk of the distribution; the second shows how well it fits the tail.</p></li>
+</ol>
+<p>As an example, I’ll use data from COMPUSTAT that’s available because it was used in <a class="reference external" href="https://doi.org/10.1257/aer.20180338">this 2020 paper</a> and included in the replication materials.</p>
+<p>We’ll see that for this dataset</p>
+<ul class="simple">
+<li><p>The Zipf distribution doesn’t fit the data at all.</p></li>
+<li><p>A lognormal distribution fits the bulk of the distribution well, but in the tail there are fewer very large firms than the model would predict (consistent with Stanley et al.).</p></li>
+<li><p>A log-generalized-normal fits the distribution well in both the bulk and the tail.</p></li>
+</ul>
+<p><a class="reference external" href="https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/firm_size.ipynb">Click here to run this notebook on Colab</a>.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">empiricaldist</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cdf</span><span class="p">,</span> <span class="n">TailDist</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">decorate</span><span class="p">,</span> <span class="n">set_pyplot_params</span><span class="p">,</span> <span class="n">plot_error_bounds</span>
+
+<span class="n">set_pyplot_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<p>Bloom, Nicholas, Jones, Charles I., Van Reenen, John, and Webb, Michael.
+Data and Code for: Are Ideas Getting Harder to Find?: Compustat: Compustat WRDS 2016 06 13.csv.
+Nashville, TN: American Economic Association [publisher], 2020.
+Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributor], 2020-03-30.
+<a class="reference external" href="https://doi.org/10.3886/E111743V2-209061">https://doi.org/10.3886/E111743V2-209061</a></p>
+<p>The extract is distributed with the openICPSR replication archive under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, so we can redistribute it here.
+Individual firms count as research subjects under ICPSR rules, so we report only aggregate distributional results and do not identify particular companies.</p>
+<p>Fiscal years run from 1950 through 2015.
+Among the last few years, 2014 has more usable employment observations than 2015 (which looks truncated by the June 2016 archive date).</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span><span class="p">[</span><span class="s2">&quot;fyear&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">raw</span><span class="p">[</span><span class="s2">&quot;fyear&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1950.0, 2015.0)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="mi">2014</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fyear&quot;</span><span class="p">,</span> <span class="s2">&quot;emp&quot;</span><span class="p">,</span> <span class="s2">&quot;curcd&quot;</span><span class="p">,</span> <span class="s2">&quot;costat&quot;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw</span><span class="p">[</span><span class="s2">&quot;fyear&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">,</span> <span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(12321, 4)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Employment (<code class="docutils literal notranslate"><span class="pre">emp</span></code>) is reported in thousands of employees in COMPUSTAT.
+We convert to a headcount and keep firm-years with positive employment.
+Currency is mostly USD, with some CAD; for this first pass we keep all currencies.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;employees&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;emp&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">positive</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;employees&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;employees&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">firms</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">positive</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">firms</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7974, 5)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">firms</span><span class="p">[</span><span class="s2">&quot;curcd&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>curcd
+USD    7106
+CAD     868
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">firms</span><span class="p">[</span><span class="s2">&quot;employees&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    7.974000e+03
+mean     9.851874e+03
+std      4.230843e+04
+min      1.000000e+00
+25%      9.500000e+01
+50%      5.890000e+02
+75%      4.179750e+03
+max      2.200000e+06
+Name: employees, dtype: float64
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Even after restricting to firms with positive employment, the mean is thousands of employees — far above the Census mean near 20.
+That is the selection effect Axtell emphasized: this sample is still dominated by large, mostly publicly traded firms.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employees</span> <span class="o">=</span> <span class="n">firms</span><span class="p">[</span><span class="s2">&quot;employees&quot;</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">employees</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">(</span><span class="n">employees</span> <span class="o">&gt;=</span> <span class="mi">20_000</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">employees</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7974, 4192, 782, 2200000.0)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="empirical-distribution">
+<h2>Empirical distribution<a class="headerlink" href="#empirical-distribution" title="Link to this heading">#</a></h2>
+<p>Here is the CDF of employment on a log-<span class="math notranslate nohighlight">\(x\)</span> scale.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Cdf</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">employees</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Employees&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;CDF&quot;</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;COMPUSTAT employment, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/27fb69dee6ac43c956ea6fef99efe28213ba271debde8d41c328fca1e379c5a4.png" src="_images/27fb69dee6ac43c956ea6fef99efe28213ba271debde8d41c328fca1e379c5a4.png" />
+</div>
+</div>
+<p>The CDF on a log scale has the sigmoid shape characteristic of a normal distribution.
+So the lognormal model seems promising.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">=</span> <span class="n">TailDist</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">employees</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Employees&quot;</span>
+<span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Prob &gt;= $x$&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;COMPUSTAT employment, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/7c07709350714b5b03aa71e97bf69f1178318387a0de92e293379ea78293a948.png" src="_images/7c07709350714b5b03aa71e97bf69f1178318387a0de92e293379ea78293a948.png" />
+</div>
+</div>
+<p>On log-log axes, a Zipf distribution (<span class="math notranslate nohighlight">\(\alpha = 1\)</span>) would be a straight line with slope <span class="math notranslate nohighlight">\(-1\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+
+<span class="c1"># Reference Zipf line anchored near the median of the sample</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">employees</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tail</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">employees</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">employees</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">p0</span> <span class="o">*</span> <span class="p">(</span><span class="n">x0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Zipf ($\alpha=1$)&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">,</span>
+         <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;COMPUSTAT employment, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/e579df9c2420ebde4ab32e3515f23f436a7e6a4305eba36f068737acab228ddb.png" src="_images/e579df9c2420ebde4ab32e3515f23f436a7e6a4305eba36f068737acab228ddb.png" />
+</div>
+</div>
+</section>
+<section id="log-employment">
+<h2>Log employment<a class="headerlink" href="#log-employment" title="Link to this heading">#</a></h2>
+<p>Following the pattern used elsewhere in this book for heavy-tailed positive quantities, work with <span class="math notranslate nohighlight">\(\log_{10}\)</span> employment.
+A Gaussian fit on that scale is a lognormal model for employment.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">employees</span><span class="p">)</span>
+<span class="n">mags</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    7974.000000
+mean        2.762816
+std         1.170211
+min         0.000000
+25%         1.977724
+50%         2.770115
+75%         3.621150
+max         6.342423
+Name: employees, dtype: float64
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_log</span> <span class="o">=</span> <span class="n">TailDist</span><span class="o">.</span><span class="n">from_seq</span><span class="p">(</span><span class="n">mags</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel_log</span> <span class="o">=</span> <span class="s2">&quot;Employees (log10)&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_log</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel_log</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;COMPUSTAT employment, </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/952d948cb941591f9f1386655a4a6c0c31765f8bbfc6bf7bb00594f53bf191ee.png" src="_images/952d948cb941591f9f1386655a4a6c0c31765f8bbfc6bf7bb00594f53bf191ee.png" />
+</div>
+</div>
+</section>
+<section id="fitting-truncated-models">
+<h2>Fitting truncated models<a class="headerlink" href="#fitting-truncated-models" title="Link to this heading">#</a></h2>
+<p>COMPUSTAT is missing most small firms, so I’ll treat the smallest value in the sample as a cutoff and truncate each model there.
+I’ll fit four models the same way as in <a class="reference external" href="https://allendowney.github.io/ProbablyOverthinkingIt/firm_size_france.html">the French firm-size example</a>, using functions in <a class="reference external" href="https://github.com/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/tail_models.py"><code class="docutils literal notranslate"><span class="pre">tail_models.py</span></code></a>:</p>
+<ul class="simple">
+<li><p>Location and scale are chosen to match percentiles of the data (<code class="docutils literal notranslate"><span class="pre">fit_loc_scale</span></code>).</p></li>
+<li><p>A shape parameter, if the model has one, is chosen to match the largest values – it minimizes the squared differences between the logarithms of the tail probabilities, from 1% down to the second-largest value (<code class="docutils literal notranslate"><span class="pre">fit_shape</span></code>).</p></li>
+</ul>
+<p>For each model, <code class="docutils literal notranslate"><span class="pre">plot_two</span></code> shows the data and the model on a linear-<span class="math notranslate nohighlight">\(y\)</span> scale and a log-<span class="math notranslate nohighlight">\(y\)</span> scale, side by side; on the log-<span class="math notranslate nohighlight">\(y\)</span> scale, the shaded area shows how much variation we would expect due to sampling if the model were correct.
+And <code class="docutils literal notranslate"><span class="pre">model_errors</span></code> computes two kinds of error: the mean absolute difference between the tail distributions on the linear scale, which is mostly sensitive to discrepancies among most of the data, and the root mean squared difference between log tail probabilities, which is mostly sensitive to discrepancies among the largest firms.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tail_models</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">truncated_tail</span><span class="p">,</span>
+    <span class="n">fit_loc_scale</span><span class="p">,</span>
+    <span class="n">fit_shape</span><span class="p">,</span>
+    <span class="n">pareto2_tail</span><span class="p">,</span>
+    <span class="n">fit_pareto2_scale</span><span class="p">,</span>
+    <span class="n">fit_pareto2_alpha</span><span class="p">,</span>
+    <span class="n">plot_two</span><span class="p">,</span>
+    <span class="n">model_errors</span><span class="p">,</span>
+    <span class="n">fit_models</span><span class="p">,</span>
+    <span class="n">YTICKS_LOG</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>I’ll evaluate all models on the same grid, extending a little beyond the largest value.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">tail_log</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">tail_log</span><span class="o">.</span><span class="n">qs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">qs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">log_cutoff</span> <span class="o">=</span> <span class="n">low</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="lognormal-model">
+<h2>Lognormal model<a class="headerlink" href="#lognormal-model" title="Link to this heading">#</a></h2>
+<p>For the lognormal model, I fit a normal distribution to log employment, truncated at the cutoff, matching percentiles from the 10th to the 99th.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">fit_loc_scale</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">tail_log</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.7526170525860327, 1.2434875604466937)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_lognormal</span> <span class="o">=</span> <span class="n">truncated_tail</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">qs</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">plot_two</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">tail_lognormal</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot;lognormal model&quot;</span><span class="p">,</span> <span class="n">xlabel_log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/7b218868d9273b883af69ca64a0bae108113ea21f725ab972892c459e0394d94.png" src="_images/7b218868d9273b883af69ca64a0bae108113ea21f725ab972892c459e0394d94.png" />
+</div>
+</div>
+<p>On the linear-<span class="math notranslate nohighlight">\(y\)</span> scale, the lognormal model fits the data well.
+On the log-<span class="math notranslate nohighlight">\(y\)</span> scale, we can see that it doesn’t: above about 30,000 employees, the data fall below the model, and for the largest firms the discrepancy is more than an order of magnitude – well outside the range we would expect from random sampling.
+So the largest firms are <em>less</em> common than the lognormal model predicts, consistent with Stanley et al.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;lognormal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_errors</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">tail_lognormal</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s2">&quot;lognormal&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.004420969591287691, 0.6195509024771162)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="log-student-t-model">
+<h2>Log-Student-<span class="math notranslate nohighlight">\(t\)</span> model<a class="headerlink" href="#log-student-t-model" title="Link to this heading">#</a></h2>
+<p>The Student-<span class="math notranslate nohighlight">\(t\)</span> distribution has a parameter, <code class="docutils literal notranslate"><span class="pre">df</span></code>, that controls the thickness of the tails.
+With large values of <code class="docutils literal notranslate"><span class="pre">df</span></code>, it is nearly normal; with small values, it has much thicker tails.
+So a log-Student-<span class="math notranslate nohighlight">\(t\)</span> model can only have thicker tails than the lognormal model.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">t</span> <span class="k">as</span> <span class="n">t_dist</span>
+
+<span class="n">df_t</span> <span class="o">=</span> <span class="n">fit_shape</span><span class="p">(</span><span class="n">t_dist</span><span class="p">,</span> <span class="n">tail_log</span><span class="p">,</span> <span class="n">shape0</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="n">df_t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>999.9997120471248
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_t</span><span class="p">,</span> <span class="n">sigma_t</span> <span class="o">=</span> <span class="n">fit_loc_scale</span><span class="p">(</span><span class="n">t_dist</span><span class="p">,</span> <span class="n">tail_log</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">df_t</span><span class="p">,))</span>
+<span class="n">mu_t</span><span class="p">,</span> <span class="n">sigma_t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.752286387100959, 1.242587556285159)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_t</span> <span class="o">=</span> <span class="n">truncated_tail</span><span class="p">(</span><span class="n">t_dist</span><span class="p">,</span> <span class="n">qs</span><span class="p">,</span> <span class="n">df_t</span><span class="p">,</span> <span class="n">mu_t</span><span class="p">,</span> <span class="n">sigma_t</span><span class="p">)</span>
+<span class="n">plot_two</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">tail_t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot;log-t model&quot;</span><span class="p">,</span> <span class="n">xlabel_log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/a1ce0efd74c50ef927c9aca4c907e5f029acab6351deee06d9b02486b6138e5f.png" src="_images/a1ce0efd74c50ef927c9aca4c907e5f029acab6351deee06d9b02486b6138e5f.png" />
+</div>
+</div>
+<p>The fitted value of <code class="docutils literal notranslate"><span class="pre">df</span></code> is at the upper bound of the search, 1000, so the best log-<span class="math notranslate nohighlight">\(t\)</span> model is indistinguishable from the lognormal model.
+That’s what we should expect: the Student-<span class="math notranslate nohighlight">\(t\)</span> distribution can make the tails thicker, but these data need thinner tails.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;log-t&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_errors</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">tail_t</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s2">&quot;log-t&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.004444207486111745, 0.6208268143621467)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="log-generalized-normal-model">
+<h2>Log-generalized-normal model<a class="headerlink" href="#log-generalized-normal-model" title="Link to this heading">#</a></h2>
+<p>The generalized normal (exponential-power) distribution has a shape parameter, <span class="math notranslate nohighlight">\(\beta\)</span>, that can make the tails thicker or thinner than normal: <span class="math notranslate nohighlight">\(\beta = 2\)</span> is the normal distribution, <span class="math notranslate nohighlight">\(\beta &lt; 2\)</span> has thicker tails, and <span class="math notranslate nohighlight">\(\beta &gt; 2\)</span> has thinner tails.
+So the lognormal model is a special case, and the fitted value of <span class="math notranslate nohighlight">\(\beta\)</span> shows which way the data depart from it, if they do.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">gennorm</span>
+
+<span class="n">beta</span> <span class="o">=</span> <span class="n">fit_shape</span><span class="p">(</span><span class="n">gennorm</span><span class="p">,</span> <span class="n">tail_log</span><span class="p">,</span> <span class="n">shape0</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">beta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1702926757786543
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu_g</span><span class="p">,</span> <span class="n">alpha_g</span> <span class="o">=</span> <span class="n">fit_loc_scale</span><span class="p">(</span><span class="n">gennorm</span><span class="p">,</span> <span class="n">tail_log</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">beta</span><span class="p">,))</span>
+<span class="n">mu_g</span><span class="p">,</span> <span class="n">alpha_g</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.773603953301865, 1.8560689554953045)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_gennorm</span> <span class="o">=</span> <span class="n">truncated_tail</span><span class="p">(</span><span class="n">gennorm</span><span class="p">,</span> <span class="n">qs</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">mu_g</span><span class="p">,</span> <span class="n">alpha_g</span><span class="p">)</span>
+<span class="n">plot_two</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">tail_gennorm</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot;log-gennorm model&quot;</span><span class="p">,</span> <span class="n">xlabel_log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/8b2c426803ed15c664db68e1cdf64041ca76d6be1c588260558a8fc3f4f285d9.png" src="_images/8b2c426803ed15c664db68e1cdf64041ca76d6be1c588260558a8fc3f4f285d9.png" />
+</div>
+</div>
+<p>The fitted value of <span class="math notranslate nohighlight">\(\beta\)</span> is about 3.2, greater than 2, so the departure from the lognormal model is toward thinner tails.
+The log-generalized-normal model fits well on both scales.
+On the log-<span class="math notranslate nohighlight">\(y\)</span> scale, the data are mostly within the range we would expect from random sampling; the few largest firms are above the model, near the edge of that range.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;log-gennorm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_errors</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">tail_gennorm</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s2">&quot;log-gennorm&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0063481086616869135, 0.1131234415369943)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="pareto-model">
+<h2>Pareto model<a class="headerlink" href="#pareto-model" title="Link to this heading">#</a></h2>
+<p>A Pareto distribution has a tail distribution <span class="math notranslate nohighlight">\(P(X \ge x) = (x / x_m)^{-\alpha}\)</span>, which is a straight line with slope <span class="math notranslate nohighlight">\(-\alpha\)</span> on log-log axes; with <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, it is a Zipf distribution.
+Truncated at the cutoff, it has only one parameter, so I’ll use the more flexible Pareto II (Lomax) distribution, which has a scale parameter, <span class="math notranslate nohighlight">\(s\)</span>, as well as the exponent:</p>
+<div class="math notranslate nohighlight">
+\[P(X \ge x ~|~ X \ge c) = \left(1 + \frac{x - c}{s}\right)^{-\alpha}\]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is the cutoff.
+For values much larger than <span class="math notranslate nohighlight">\(c + s\)</span>, it behaves like a Pareto distribution with exponent <span class="math notranslate nohighlight">\(\alpha\)</span>; near the cutoff, the scale parameter controls how it bends.
+As with the other models, <code class="docutils literal notranslate"><span class="pre">fit_pareto2_alpha</span></code> chooses <span class="math notranslate nohighlight">\(\alpha\)</span> to match the largest values, and <code class="docutils literal notranslate"><span class="pre">fit_pareto2_scale</span></code> chooses the scale to match percentiles.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">fit_pareto2_alpha</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">log_cutoff</span><span class="p">)</span>
+<span class="n">alpha</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9145875096543682
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_scale</span> <span class="o">=</span> <span class="n">fit_pareto2_scale</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">log_cutoff</span><span class="p">)</span>
+<span class="n">log_scale</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="n">log_scale</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.7151528259576967, 518.9826340756359)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_pareto</span> <span class="o">=</span> <span class="n">pareto2_tail</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">log_scale</span><span class="p">,</span> <span class="n">log_cutoff</span><span class="p">)</span>
+<span class="n">plot_two</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">tail_pareto</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="s2">&quot;Pareto II model&quot;</span><span class="p">,</span> <span class="n">xlabel_log</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/76b167564390bdc8f03c5cd15a947d2e971f71a644b01fe72dc919a4d033902e.png" src="_images/76b167564390bdc8f03c5cd15a947d2e971f71a644b01fe72dc919a4d033902e.png" />
+</div>
+</div>
+<p>The fitted exponent is about 0.91, and the scale is about 500 employees.
+The Pareto II model does not fit this distribution: on the linear-<span class="math notranslate nohighlight">\(y\)</span> scale, it is visibly off over most of the range, and on the log-<span class="math notranslate nohighlight">\(y\)</span> scale it is below the data between about 1,000 and 300,000 employees and above the data for the largest firms.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;Pareto II&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_errors</span><span class="p">(</span><span class="n">tail_log</span><span class="p">,</span> <span class="n">tail_pareto</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="s2">&quot;Pareto II&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.07508412599596526, 0.3622964560323112)
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="comparison">
+<h2>Comparison<a class="headerlink" href="#comparison" title="Link to this heading">#</a></h2>
+<p>Here are all four models on a log-<span class="math notranslate nohighlight">\(y\)</span> scale.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tail_lognormal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;lognormal&quot;</span><span class="p">)</span>
+<span class="n">tail_t</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;log-t&quot;</span><span class="p">)</span>
+<span class="n">tail_gennorm</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;log-gennorm&quot;</span><span class="p">)</span>
+<span class="n">tail_pareto</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Pareto II&quot;</span><span class="p">)</span>
+<span class="n">tail_log</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+
+<span class="n">decorate</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel_log</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">YTICKS_LOG</span><span class="p">,</span> <span class="n">YTICKS_LOG</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/a84c705f4d74dad128ac19622366d9923e59eba5786e73e3f425036b625be985.png" src="_images/a84c705f4d74dad128ac19622366d9923e59eba5786e73e3f425036b625be985.png" />
+</div>
+</div>
+<p>And here are the errors.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Mean abs error&quot;</span><span class="p">,</span> <span class="s2">&quot;RMS log error&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mean abs error</th>
+      <th>RMS log error</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>lognormal</th>
+      <td>0.0044</td>
+      <td>0.6196</td>
+    </tr>
+    <tr>
+      <th>log-t</th>
+      <td>0.0044</td>
+      <td>0.6208</td>
+    </tr>
+    <tr>
+      <th>log-gennorm</th>
+      <td>0.0063</td>
+      <td>0.1131</td>
+    </tr>
+    <tr>
+      <th>Pareto II</th>
+      <td>0.0751</td>
+      <td>0.3623</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The lognormal and log-<span class="math notranslate nohighlight">\(t\)</span> curves are the same, so only one is visible.
+The log-generalized-normal model has the smallest error on the log scale by a wide margin; the lognormal model has a slightly smaller error on the linear scale; and the Pareto II model has the largest error on the linear scale.</p>
+</section>
+<section id="robustness">
+<h2>Robustness<a class="headerlink" href="#robustness" title="Link to this heading">#</a></h2>
+<p>To see whether these results depend on the year or the cutoff, I’ll fit the lognormal, log-generalized-normal, and Pareto II models for each fiscal year from 2005 through 2014, and for several cutoffs.
+The following function selects the data.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">select_employment</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select log employment at or above the cutoff for one fiscal year.&quot;&quot;&quot;</span>
+    <span class="n">employees</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw</span><span class="p">[</span><span class="s2">&quot;fyear&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">,</span> <span class="s2">&quot;emp&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">employees</span><span class="p">[</span><span class="n">employees</span> <span class="o">&gt;=</span> <span class="n">cutoff</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fit_models</span></code>, in <code class="docutils literal notranslate"><span class="pre">tail_models.py</span></code>, fits the lognormal, log-generalized-normal, and Pareto II models to one dataset and returns the parameters and errors.
+With no cutoff argument, it uses the smallest value, as above.</p>
+<p>Here are the results for each year, using all firms with positive employment.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_employees</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">{</span><span class="n">y</span><span class="p">:</span> <span class="n">fit_models</span><span class="p">(</span><span class="n">select_employment</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">min_employees</span><span class="p">))</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">2015</span><span class="p">)}</span>
+<span class="n">by_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">by_year</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>beta</th>
+      <th>alpha</th>
+      <th>log_scale</th>
+      <th>rmse_lognormal</th>
+      <th>rmse_gennorm</th>
+      <th>rmse_pareto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2005</th>
+      <td>9299.0</td>
+      <td>2.527</td>
+      <td>0.933</td>
+      <td>2.655</td>
+      <td>0.398</td>
+      <td>0.117</td>
+      <td>0.332</td>
+    </tr>
+    <tr>
+      <th>2006</th>
+      <td>9133.0</td>
+      <td>2.509</td>
+      <td>0.925</td>
+      <td>2.650</td>
+      <td>0.396</td>
+      <td>0.122</td>
+      <td>0.333</td>
+    </tr>
+    <tr>
+      <th>2007</th>
+      <td>8893.0</td>
+      <td>2.536</td>
+      <td>0.916</td>
+      <td>2.646</td>
+      <td>0.404</td>
+      <td>0.138</td>
+      <td>0.343</td>
+    </tr>
+    <tr>
+      <th>2008</th>
+      <td>8508.0</td>
+      <td>2.573</td>
+      <td>0.922</td>
+      <td>2.685</td>
+      <td>0.417</td>
+      <td>0.145</td>
+      <td>0.342</td>
+    </tr>
+    <tr>
+      <th>2009</th>
+      <td>8291.0</td>
+      <td>2.575</td>
+      <td>0.929</td>
+      <td>2.701</td>
+      <td>0.424</td>
+      <td>0.154</td>
+      <td>0.345</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>8211.0</td>
+      <td>2.724</td>
+      <td>0.927</td>
+      <td>2.707</td>
+      <td>0.482</td>
+      <td>0.145</td>
+      <td>0.350</td>
+    </tr>
+    <tr>
+      <th>2011</th>
+      <td>8118.0</td>
+      <td>2.799</td>
+      <td>0.919</td>
+      <td>2.705</td>
+      <td>0.511</td>
+      <td>0.142</td>
+      <td>0.355</td>
+    </tr>
+    <tr>
+      <th>2012</th>
+      <td>8107.0</td>
+      <td>3.004</td>
+      <td>0.909</td>
+      <td>2.684</td>
+      <td>0.575</td>
+      <td>0.125</td>
+      <td>0.361</td>
+    </tr>
+    <tr>
+      <th>2013</th>
+      <td>8182.0</td>
+      <td>3.117</td>
+      <td>0.906</td>
+      <td>2.675</td>
+      <td>0.603</td>
+      <td>0.121</td>
+      <td>0.365</td>
+    </tr>
+    <tr>
+      <th>2014</th>
+      <td>7974.0</td>
+      <td>3.170</td>
+      <td>0.915</td>
+      <td>2.715</td>
+      <td>0.620</td>
+      <td>0.113</td>
+      <td>0.362</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In every year from 2005 through 2014, the log-generalized-normal model fits best on the log scale, with <span class="math notranslate nohighlight">\(\beta\)</span> between 2.5 and 3.2 – always thinner-tailed than the lognormal model.
+The fitted value of <span class="math notranslate nohighlight">\(\beta\)</span> increases over the decade.
+The lognormal and Pareto II models fit substantially worse in every year, and the Pareto exponent is between 0.91 and 0.93.</p>
+<p>And here are the results for fiscal year 2014 with several cutoffs.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cutoffs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10_000</span><span class="p">]</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">fit_models</span><span class="p">(</span><span class="n">select_employment</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cutoffs</span><span class="p">}</span>
+<span class="n">by_cutoff</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">by_cutoff</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n</th>
+      <th>beta</th>
+      <th>alpha</th>
+      <th>log_scale</th>
+      <th>rmse_lognormal</th>
+      <th>rmse_gennorm</th>
+      <th>rmse_pareto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>7393.0</td>
+      <td>2.995</td>
+      <td>0.960</td>
+      <td>2.862</td>
+      <td>0.602</td>
+      <td>0.121</td>
+      <td>0.349</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>5928.0</td>
+      <td>5.443</td>
+      <td>1.078</td>
+      <td>3.208</td>
+      <td>0.603</td>
+      <td>0.091</td>
+      <td>0.312</td>
+    </tr>
+    <tr>
+      <th>1,000</th>
+      <td>3444.0</td>
+      <td>20.000</td>
+      <td>1.383</td>
+      <td>3.854</td>
+      <td>0.456</td>
+      <td>0.132</td>
+      <td>0.236</td>
+    </tr>
+    <tr>
+      <th>10,000</th>
+      <td>1236.0</td>
+      <td>19.984</td>
+      <td>2.110</td>
+      <td>4.654</td>
+      <td>0.443</td>
+      <td>0.394</td>
+      <td>0.146</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The results depend on the cutoff.
+As the cutoff increases, <span class="math notranslate nohighlight">\(\beta\)</span> increases, from about 3 with a cutoff of 10 employees to about 5.4 with a cutoff of 100.
+With cutoffs of 1,000 and 10,000 employees, <span class="math notranslate nohighlight">\(\beta\)</span> reaches the upper bound of the search, 20, where the generalized normal is nearly uniform, so those fits are not meaningful; with the 10,000 cutoff, the log-generalized-normal error is large.</p>
+<p>The Pareto II model goes the other way: as the cutoff increases, the exponent increases, from about 0.96 to about 2.1, and the fit gets better.
+With the 10,000 cutoff, it fits better than the other models, with exponent about 2 – a much steeper tail than a Zipf distribution.</p>
+<p>So among the roughly 1,200 firms with 10,000 or more employees, the distribution of employment is consistent with a Pareto II distribution with exponent about 2; over the whole sample, a log-generalized-normal distribution with thinner tails than the lognormal fits best.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Progress is slow for mutually reinforcing reasons: proprietary data, top-coded public tables, plots poorly suited to seeing the tail, and no shared definition of “best fit” when every candidate is an acknowledged approximation.</p></li>
+<li><p>COMPUSTAT is the wrong sample for the whole firm population and the right one for inspecting individual upper-tail sizes.</p></li>
+<li><p>In this 2014 extract, a lognormal describes most of log employment well; the extreme CCDF falls <em>below</em> that prediction — a lighter-than-lognormal tail. A log-Student-<span class="math notranslate nohighlight">\(t\)</span> model can’t help, because it can only make the tails thicker.</p></li>
+<li><p>A generalized normal on <span class="math notranslate nohighlight">\(\log_{10}\)</span> employment diagnoses the direction of failure (<span class="math notranslate nohighlight">\(\beta \approx 3.2\)</span> here, greater than 2) rather than declaring a new favorite family in advance. It fits best in every year from 2005 through 2014.</p></li>
+<li><p>A Pareto II model does not fit the whole sample, but among firms with 10,000 or more employees it fits better than the others, with exponent about 2.</p></li>
+</ol>
+<p>Copyright 2026 Allen B. Downey</p>
+<p>Example related to Chapters 4 and 8 from <a class="reference external" href="https://allendowney.github.io/ProbablyOverthinkingIt/">Probably Overthinking It</a>.</p>
+<p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sobriety.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Field Sobriety Tests and the Base Rate Fallacy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="firm_size_france.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Distribution of French Firm Sizes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-back-and-forth">The back and forth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-distribution">Empirical distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-employment">Log employment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-truncated-models">Fitting truncated models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lognormal-model">Lognormal model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-student-t-model">Log-Student-<span class="math notranslate nohighlight">\(t\)</span> model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-generalized-normal-model">Log-generalized-normal model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pareto-model">Pareto model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison">Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness">Robustness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Allen B. Downey
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
