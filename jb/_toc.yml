@@ -27,3 +27,5 @@ parts:
   - file: ctokens
   - file: florida
   - file: sobriety
+  - file: firm_size
+  - file: firm_size_france

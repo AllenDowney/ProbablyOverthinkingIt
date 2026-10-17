@@ -37,6 +37,8 @@ EXAMPLES = [
     "ctokens",
     "florida",
     "sobriety",
+    "firm_size",
+    "firm_size_france",
 ]
 
 CHAPTERS = [

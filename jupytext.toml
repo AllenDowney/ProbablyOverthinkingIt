@@ -1,0 +1,4 @@
+# Jupytext settings for this repo
+
+# start a new markdown cell at each heading when converting .md to .ipynb
+split_at_heading = true

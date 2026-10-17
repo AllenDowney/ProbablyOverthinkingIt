@@ -124,3 +124,11 @@ These notebooks are not tied to a single chapter; they explore topics from the b
 **Field Sobriety Tests and the Base Rate Fallacy**
 
 [Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/sobriety.ipynb)
+
+**The Distribution of U.S. Firm Sizes**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/firm_size.ipynb)
+
+**The Distribution of French Firm Sizes**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/firm_size_france.ipynb)
