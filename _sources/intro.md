@@ -129,6 +129,10 @@ These notebooks are not tied to a single chapter; they explore topics from the b
 
 [Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/firm_size.ipynb)
 
+**The Distribution of U.S. Firm Revenue**
+
+[Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/firm_size_revenue.ipynb)
+
 **The Distribution of French Firm Sizes**
 
 [Run on Colab](https://colab.research.google.com/github/AllenDowney/ProbablyOverthinkingIt/blob/book/examples/firm_size_france.ipynb)
