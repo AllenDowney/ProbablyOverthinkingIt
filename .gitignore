@@ -61,3 +61,10 @@ data/inpi_france/*.zip
 data/inpi_france/raw/
 data/inpi_france/*.parquet
 examples/inpi_comptes_annuels.parquet
+
+# Planning docs stay local
+PROJECT_BOARD.md
+blog_inventory_plan.md
+*_plan.md
+notebooks/plan.md
+data/inpi_france/
