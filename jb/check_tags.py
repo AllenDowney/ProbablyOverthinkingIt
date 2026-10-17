@@ -29,7 +29,6 @@ ROOT = Path(__file__).resolve().parent.parent
 
 EXAMPLES = [
     "ansur_pca",
-    "als_ms",
     "chile",
     "cricket",
     "ideology_gap",

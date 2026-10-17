@@ -19,7 +19,6 @@ parts:
 - caption: Examples
   chapters:
   - file: ansur_pca
-  - file: als_ms
   - file: chile
   - file: cricket
   - file: ideology_gap

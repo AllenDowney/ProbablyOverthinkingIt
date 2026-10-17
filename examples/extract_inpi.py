@@ -145,7 +145,7 @@ def extract_file(args):
     return name, n, complete, pd.DataFrame(rows)
 
 
-def main(zip_path, out_path, processes=8):
+def main(zip_path, out_path, processes=2):
     with zipfile.ZipFile(zip_path) as z:
         names = sorted(n for n in z.namelist() if n.endswith(".json"))
 

@@ -21,7 +21,6 @@ cp ../examples/ansur_pca.ipynb .
 cp ../examples/ideology_gap.ipynb .
 cp ../examples/midlife.ipynb .
 cp ../examples/ctokens.ipynb .
-cp ../examples/als_ms.ipynb .
 cp ../examples/florida.ipynb .
 cp ../examples/sobriety.ipynb .
 cp ../examples/chile.ipynb .
