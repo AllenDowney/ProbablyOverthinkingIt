@@ -1,4 +1,4 @@
-# Probably Overthinking It
+# Probably Overthinking It: Companion Notebooks
 
 This site contains the Jupyter notebooks I used in my preparation of *[Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions](https://greenteapress.com/wp/probably-overthinking-it/)*.
 
