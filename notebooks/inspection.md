@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "The inspection paradox: why relay races seem full of fast and slow runners, classes seem bigger than average, and your friends have more friends."
+  og:description: "The inspection paradox: why relay races seem full of fast and slow runners, classes seem bigger than average, and your friends have more friends."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

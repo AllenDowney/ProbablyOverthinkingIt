@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "When used is better than new: light bulbs, pregnancy, cancer survival, and child mortality, and how expected remaining lifetime changes with age."
+  og:description: "When used is better than new: light bulbs, pregnancy, cancer survival, and child mortality, and how expected remaining lifetime changes with age."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

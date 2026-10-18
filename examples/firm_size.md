@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Is the size of U.S. companies lognormal, power law, or something else? Fitting models to unbinned COMPUSTAT employment data."
+  og:description: "Is the size of U.S. companies lognormal, power law, or something else? Fitting models to unbinned COMPUSTAT employment data."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

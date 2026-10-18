@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Why people seem to get more conservative as they age, even though most become more liberal: the Overton window shifts faster than they do."
+  og:description: "Why people seem to get more conservative as they age, even though most become more liberal: the Overton window shifts faster than they do."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

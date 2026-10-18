@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Simpson's paradox with optimism, real wages, penguins, and COVID vaccine data: how an overall trend can reverse within every group."
+  og:description: "Simpson's paradox with optimism, real wages, penguins, and COVID vaccine data: how an overall trend can reverse within every group."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

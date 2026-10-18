@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "When does middle age start? Using U.S. life tables to find the age when your expected remaining lifetime equals your current age."
+  og:description: "When does middle age start? Using U.S. life tables to find the age when your expected remaining lifetime equals your current age."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

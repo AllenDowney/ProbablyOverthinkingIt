@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Why some people are so much better than everyone else: lognormal distributions of weight, running speed, and chess ratings explain the GOATs."
+  og:description: "Why some people are so much better than everyone else: lognormal distributions of weight, running speed, and chess ratings explain the GOATs."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

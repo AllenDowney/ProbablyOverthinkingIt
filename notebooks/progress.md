@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Survey data from the GSS show attitudes about race, gender, and homosexuality changing fast, through both generational replacement and changed minds."
+  og:description: "Survey data from the GSS show attitudes about race, gender, and homosexuality changing fast, through both generational replacement and changed minds."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

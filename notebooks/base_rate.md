@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "The base rate fallacy in medical tests, sobriety tests, vaccine effectiveness, and recidivism algorithms, and why fairness is hard to define."
+  og:description: "The base rate fallacy in medical tests, sobriety tests, vaccine effectiveness, and recidivism algorithms, and why fairness is hard to define."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

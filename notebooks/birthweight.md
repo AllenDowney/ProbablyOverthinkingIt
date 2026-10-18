@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "The low birthweight paradox: why low-weight babies of mothers who smoked seemed healthier, and how collider bias explains it."
+  og:description: "The low birthweight paradox: why low-weight babies of mothers who smoked seemed healthier, and how collider bias explains it."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

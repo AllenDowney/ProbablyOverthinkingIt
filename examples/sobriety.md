@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "How accurate are field sobriety tests? Why studies of DUI tests overstate their accuracy by ignoring the base rate."
+  og:description: "How accurate are field sobriety tests? Why studies of DUI tests overstate their accuracy by ignoring the base rate."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

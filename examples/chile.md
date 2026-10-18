@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "The distribution of earthquake magnitudes in Chile, 1982–2020, from the relocated CSN catalogue: what fits the long tail?"
+  og:description: "The distribution of earthquake magnitudes in Chile, 1982–2020, from the relocated CSN catalogue: what fits the long tail?"
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

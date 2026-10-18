@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Do token frequencies in computer code follow a power law? Comparing power law and Student t models of a long-tailed distribution."
+  og:description: "Do token frequencies in computer code follow a power law? Comparing power law and Student t models of a long-tailed distribution."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

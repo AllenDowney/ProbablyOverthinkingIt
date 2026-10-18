@@ -1,3 +1,10 @@
+---
+myst:
+  html_meta:
+    description: "Jupyter notebooks with the data and Python code behind every chapter of Probably Overthinking It, plus new examples that extend the book's ideas."
+og:description: "Jupyter notebooks with the data and Python code behind every chapter of Probably Overthinking It, plus new examples that extend the book's ideas."
+---
+
 # Probably Overthinking It: Companion Notebooks
 
 This site contains the Jupyter notebooks I used in my preparation of *[Probably Overthinking It: How to Use Data to Answer Questions, Avoid Statistical Traps, and Make Better Decisions](https://greenteapress.com/wp/probably-overthinking-it/)*.

@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "The distribution of French company revenue from public accounts: lognormal and log-t models of the long tail, as in Chapter 8."
+  og:description: "The distribution of French company revenue from public accounts: lognormal and log-t models of the long tail, as in Chapter 8."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

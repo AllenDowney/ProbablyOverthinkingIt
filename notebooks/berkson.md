@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Berkson's paradox: how selection creates misleading correlations, from SAT scores at elite colleges to hospital data, COVID-19, and psychology."
+  og:description: "Berkson's paradox: how selection creates misleading correlations, from SAT scores at elite colleges to hospital data, COVID-19, and psychology."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

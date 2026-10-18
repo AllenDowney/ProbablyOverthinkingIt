@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Preston's paradox: if every woman has fewer children than her mother, can average family size still grow? Answers from U.S. Census data on family size."
+  og:description: "Preston's paradox: if every woman has fewer children than her mother, can average family size still grow? Answers from U.S. Census data on family size."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

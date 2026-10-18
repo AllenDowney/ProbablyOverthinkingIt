@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "The Girl Named Florida: why knowing a child's unusual name changes the probability that both children are girls, explained step by step."
+  og:description: "The Girl Named Florida: why knowing a child's unusual name changes the probability that both children are girls, explained step by step."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

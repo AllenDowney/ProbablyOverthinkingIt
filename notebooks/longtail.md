@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Earthquakes, solar flares, asteroids, and stock market crashes have long-tailed distributions, so big disasters are more likely than we expect."
+  og:description: "Earthquakes, solar flares, asteroids, and stock market crashes have long-tailed distributions, so big disasters are more likely than we expect."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

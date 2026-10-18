@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Principal component analysis of 93 body measurements from the ANSUR-II survey of U.S. military personnel, with Python code."
+  og:description: "Principal component analysis of 93 body measurements from the ANSUR-II survey of U.S. military personnel, with Python code."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

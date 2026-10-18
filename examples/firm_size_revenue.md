@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "The distribution of U.S. company revenue from COMPUSTAT data, compared with lognormal, power law, and log-t models."
+  og:description: "The distribution of U.S. company revenue from COMPUSTAT data, compared with lognormal, power law, and log-t models."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

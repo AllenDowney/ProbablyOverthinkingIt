@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Was cricketer Don Bradman the most dominant athlete of all time? Fitting Gaussian, lognormal, and Weibull models to Test batting averages."
+  og:description: "Was cricketer Don Bradman the most dominant athlete of all time? Fitting Gaussian, lognormal, and Weibull models to Test batting averages."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

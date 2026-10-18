@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Is the political gap between young women and young men growing? Checking a Financial Times claim against General Social Survey data."
+  og:description: "Is the political gap between young women and young men growing? Checking a Financial Times claim against General Social Survey data."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python

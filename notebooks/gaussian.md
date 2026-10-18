@@ -6,6 +6,10 @@ jupyter:
       format_name: markdown
       format_version: '1.3'
       jupytext_version: 1.19.1
+  myst:
+    html_meta:
+      description: "Why nobody is normal: body measurements and Big Five personality traits are Gaussian one at a time, but almost everyone is unusual in some way."
+  og:description: "Why nobody is normal: body measurements and Big Five personality traits are Gaussian one at a time, but almost everyone is unusual in some way."
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
