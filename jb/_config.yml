@@ -9,6 +9,7 @@ repository:
   url: https://github.com/AllenDowney/ProbablyOverthinkingIt
 html:
   use_repository_button: true
+  baseurl: https://allendowney.github.io/ProbablyOverthinkingIt/
 
 parse:
   # myst_extended_syntax: true  # instead enable individual features below
@@ -29,7 +30,19 @@ parse:
     - tasklist
 
 sphinx:
+  extra_extensions:
+    - sphinx_sitemap
+    - sphinxext.opengraph
   config:
+    html_baseurl: https://allendowney.github.io/ProbablyOverthinkingIt/
+    sitemap_url_scheme: "{link}"
+    sitemap_excludes: [genindex.html, search.html, overton_irt.html, proteins.html]
+    ogp_site_url: https://allendowney.github.io/ProbablyOverthinkingIt/
+    ogp_site_name: Probably Overthinking It
+    ogp_image: https://greenteapress.com/wp/wp-content/uploads/2023/06/R2_Downey_9780226822587_smaller-3.jpeg
+    ogp_image_alt: Cover of Probably Overthinking It by Allen B. Downey
+    # page text often starts with the book CTA, so write meta descriptions per page instead
+    ogp_enable_meta_description: false
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     mathjax_config:
       tex2jax:

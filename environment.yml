@@ -22,3 +22,5 @@ dependencies:
   - pip
   - pip:
     - empiricaldist
+    - sphinx-sitemap
+    - sphinxext-opengraph
