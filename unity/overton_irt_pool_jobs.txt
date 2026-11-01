@@ -1,0 +1,4 @@
+# set key model
+pool gss0 m1
+pool gss1 m1
+pool gss2 m1

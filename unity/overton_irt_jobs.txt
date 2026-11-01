@@ -1,0 +1,13 @@
+# set key model
+v1 gss0 m1
+v1 gss1 m1
+v1 gss2 m1
+v1 gss0 m2
+v1 gss1 m2
+v1 gss2 m2
+v2 gss0 m1
+v2 gss1 m1
+v2 gss2 m1
+v2 gss0 m2
+v2 gss1 m2
+v2 gss2 m2
