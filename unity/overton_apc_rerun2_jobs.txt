@@ -1,2 +1,0 @@
-# period v2 national: R-hat 1.03 at 2000 draws, so more draws
---model period --set v2 --tune 4000 --target-accept 0.99 --draws 6000

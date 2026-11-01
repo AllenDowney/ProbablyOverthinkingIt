@@ -149,3 +149,7 @@ If you prefer not to set up a local environment, you can run the notebooks direc
 - **`Makefile`** - Build automation and environment setup
 - **`LICENSE`** - Project license
 
+
+## The Overton update
+
+The 2024 update of Chapter 12 (the Overton paradox), with GSS data through 2024, is in its own repository: [OvertonParadox](https://github.com/AllenDowney/OvertonParadox). The chapter's original notebooks stay here (`notebooks/overton.ipynb`, `notebooks/overton_irt.ipynb`).
