@@ -17,12 +17,27 @@ continuous-outcome ("mean") likelihood from its Task 165:
   index; here the index is age, within a window of survey years.
 
 Weights: wtsmerge (wtssall, or wtssps where it's missing), on the original
-extract, not resampled. The grid's difficulties use weighted prevalence.
-n_eff is Kish's effective sample size.
+extract, not resampled. n_eff is Kish's effective sample size.
+
+Difficulties (--difficulties):
+- "heuristic": the book's -logit of weighted prevalence (default);
+- "em": weighted EM (overton_em.py) calibrated on the primary pool (p43);
+  questions outside it (the confidence questions in the s{N} sets, natfare
+  in v1) are estimated with the primary difficulties held fixed. The
+  production choice after review (overton_difficulties_design.md, 2026-11-01);
+- "em66": weighted EM calibrated on all 66 candidates (sensitivity);
+- "emset": weighted EM calibrated separately on each set (sensitivity);
+- "m1pool": posterior means from Ricardo's m1 fitted to all 66 candidates
+  (overton_irt.py, set "pool"), averaged over the three resamplings
+  (validation of em66).
+Data and results other than the heuristic's carry the suffix on the set name
+(e.g. p43-em), so the versions can coexist. prepare also writes the
+difficulties to overton_apc/data/difficulties_{choice}.csv.
 
 Two steps; the fit needs only numpy, pandas, and PyMC (CultureWar env):
 
     python overton_apc.py prepare              # local: write respondent data
+    python overton_apc.py prepare --difficulties em
     python overton_apc.py fit --model period --set v1 [--by polviews3=Liberal]
     python overton_apc.py fit --model age --set v1 --window 1972-1979
     python overton_apc.py fit --model age --set v1 --cohorts 1946-1964
@@ -51,6 +66,7 @@ ECON_B = ECON_A + ["natenvir", "nateduc", "natmass", "natpark", "tax", "getahead
 ECON_C = ECON_B + ["helpblk", "natdrug"]
 NOT_SOCIAL = ECON_C + ["natarms", "nataid"]
 DOMAIN_SETS = {"econA": ECON_A, "econB": ECON_B, "econC": ECON_C, "social": None}  # social: the rest of the pool
+DIFFICULTIES = ["heuristic", "em", "em66", "emset", "m1pool"]
 SCALE = 15  # results are reported as conservative responses out of 15, whatever the set size
 
 # defaults from CultureWar time_model/settings.py and model10/settings.py
@@ -98,9 +114,53 @@ def names_primary(sets):
     return max((v for k, v in sets.items() if k.startswith("p")), key=len)
 
 
-def prepare(names=None):
+def data_name(name, difficulties="heuristic"):
+    """Name of a set's data and results, with the suffix for the difficulties."""
+    return name if difficulties == "heuristic" else f"{name}-{difficulties}"
+
+
+def pool_difficulties():
+    """Posterior mean difficulties from the m1 pool fits, averaged over the resamplings."""
+    from overton_data import KEYS
+    from overton_irt import RESULTS_DIR as IRT_RESULTS
+
+    means = [pd.read_csv(IRT_RESULTS / f"pool_{key}_m1_items.csv", index_col=0)["mean"] for key in KEYS]
+    d = pd.concat(means, axis=1).mean(axis=1)
+    d = d[d.index.str.startswith("d[")]
+    d.index = d.index.str[2:-1]
+    return d
+
+
+def calibrate(gss, questions, min_answered, fixed=None):
+    """EM difficulties from the respondents who answered at least min_answered questions."""
+    from overton_em import em_difficulties
+
+    keep = questions.notna().sum(axis=1) >= min_answered
+    return em_difficulties(questions[keep], gss.loc[keep, "weight"], fixed)
+
+
+def reference_difficulties(gss, sets, difficulties):
+    """EM difficulties for every question in any set, on one reference calibration.
+
+    em: calibrated on the primary pool; em66: on all 66 candidates. Questions
+    used by some set but outside the calibration pool are then estimated with
+    the calibrated difficulties held fixed.
+    """
+    from overton_irt import question_sets as irt_sets
+    from overton_pipeline import make_questions
+
+    base = sets[f"p{len(names_primary(sets))}"] if difficulties == "em" else irt_sets()["pool"]
+    d = calibrate(gss, make_questions(gss, base), MIN_ANSWERED)
+    used = {v: c for codes in sets.values() for v, c in codes.items()}
+    if set(used) - set(d.index):
+        d = calibrate(gss, make_questions(gss, {**base, **used}), MIN_ANSWERED, fixed=d)
+    return d
+
+
+def prepare(names=None, difficulties="heuristic"):
     """Weighted grid estimates for each question set, on the original extract."""
     from overton_data import CANDIDATES
+    from overton_drift import estimate_with_difficulties
     from overton_pipeline import RECODE_POLVIEWS, estimate_conservatism, make_questions
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -108,21 +168,34 @@ def prepare(names=None):
     gss["year"] = gss["year"].astype(int)
     gss["weight"] = gss["wtssall"].fillna(gss["wtssps"])
     sets = question_sets()
+    d = None
+    if difficulties == "m1pool":
+        d = pool_difficulties()
+    elif difficulties in ["em", "em66"]:
+        d = reference_difficulties(gss, sets, difficulties)
+    used = {}
     for name in names or sets:
         codes = sets[name]
         questions = make_questions(gss, codes)
-        con, _, _ = estimate_conservatism(questions, weights=gss["weight"])
+        min_answered = MIN_ANSWERED_BY_SET.get(name, MIN_ANSWERED)
+        if difficulties == "heuristic":
+            con, _, _ = estimate_conservatism(questions, weights=gss["weight"])
+        else:
+            d_set = calibrate(gss, questions, min_answered) if difficulties == "emset" else d[questions.columns]
+            used[name] = d_set
+            con = estimate_with_difficulties(questions, d_set.values)
         answered = questions.notna().sum(axis=1)
         df = gss[["year", "id", "age", "cohort", "polviews", "weight"]].copy()
         df["polviews3"] = df["polviews"].replace(RECODE_POLVIEWS)
         df["n_questions"] = questions.shape[1]
         df["conservatism"] = con
         df["answered"] = answered
-        min_answered = MIN_ANSWERED_BY_SET.get(name, MIN_ANSWERED)
         df = df[(answered >= min_answered) & df["cohort"].notna() & df["age"].notna()]
         df["y"] = df["conservatism"] / df["n_questions"]
-        df.to_parquet(DATA_DIR / f"{name}.parquet")
-        print(name, len(df), df.groupby("year")["y"].mean().iloc[[0, -1]].round(3).to_dict())
+        df.to_parquet(DATA_DIR / f"{data_name(name, difficulties)}.parquet")
+        print(data_name(name, difficulties), len(df), df.groupby("year")["y"].mean().iloc[[0, -1]].round(3).to_dict())
+    if used:
+        pd.DataFrame(used).to_csv(DATA_DIR / f"difficulties_{difficulties}.csv")
 
 
 def weighted_cells(df, keys):
@@ -312,8 +385,9 @@ def fit_period_cohort(df, scale, stem, args):
 
 
 def fit(args):
-    df = pd.read_parquet(DATA_DIR / f"{args.set}.parquet")
-    label = [args.model, args.set]
+    set_name = data_name(args.set, args.difficulties)
+    df = pd.read_parquet(DATA_DIR / f"{set_name}.parquet")
+    label = [args.model, set_name]
     if args.by:
         column, value = args.by.split("=")
         values = pd.Series([value]).astype(df[column].dtype).iloc[0] if column != "polviews3" else value
@@ -344,7 +418,7 @@ def fit(args):
     else:
         trace, summary, names = fit_period_cohort(df, scale, stem, args)
 
-    summary.update(run=run, model=args.model, set=args.set, by=args.by, window=summary.get("window", args.window),
+    summary.update(run=run, model=args.model, set=set_name, difficulties=args.difficulties, by=args.by, window=summary.get("window", args.window),
                    cohorts=args.cohorts, age_range=f"{int(df['age'].min())}-{int(df['age'].max())}",
                    respondents=len(df), n_questions=n_questions, elapsed_seconds=round(time.time() - start, 1),
                    tune=args.tune, draws=args.draws, chains=args.chains, seed=args.seed,
@@ -370,9 +444,10 @@ def main():
     parser.add_argument("--seed", type=int, default=17)
     parser.add_argument("--target-accept", type=float, default=None, help="default: CultureWar's setting for the model")
     parser.add_argument("--tag", default="")
+    parser.add_argument("--difficulties", choices=DIFFICULTIES, default="heuristic")
     args = parser.parse_args()
     if args.step == "prepare":
-        prepare(args.sets)
+        prepare(args.sets, args.difficulties)
     else:
         fit(args)
 

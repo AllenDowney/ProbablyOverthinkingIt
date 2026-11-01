@@ -766,9 +766,67 @@ Social questions by alignment. Dotted: the 1974 liberal.
 
 **Implication for the headline (to discuss).** The decision of 2026-10-31 framed "people don't get more conservative as they age" as robust across question sets. That's true across set sizes in the primary pool, but not across domains: on core economic questions, the within-cohort change is positive. The article and appendix should say so.
 
+## 2026-11-01: Difficulties: EM calibrated on the primary pool
+
+**Question.** The book sets each question's difficulty to −logit(prevalence). The m1 fit on all 66 candidates (Unity array 66448475, about 11 hours per resampling) gave difficulties that correlate 0.999 with the heuristic but are stretched by 1.14, plus a "who was asked" tilt: questions asked mostly in recent, more liberal years look harder by prevalence (residual correlation with mean year −0.9). The shift was small but systematic, so we wrote a design document (`overton_difficulties_design.md`) and sent it out for review.
+
+**New estimator.** Weighted EM on the grid (`overton_em.py`; marginal maximum likelihood, Bock and Aitkin). Same prior as the score, survey weights directly, no resampling; converges in about 5 iterations, seconds. On the 66 candidates, it reproduces the m1 posterior means to 0.016 on average (posterior SD of each difficulty about 0.02).
+
+**Decision (after review).** EM calibrated on the 43 primary questions is the production choice (`overton_apc.py --difficulties em`). Questions outside the primary pool (the 7 confidence questions in the sensitivity sets, `natfare` in the book's 15) are put on the same scale by anchored calibration: the 43 difficulties are held fixed, and the others are estimated. Reason for 43 rather than 66: the calibration pool should agree with the selection rules; otherwise questions excluded on construct grounds still shape the scale. The heuristic stays as a switch for comparison with the book; EM on all 66 (`em66`) and per set (`emset`) are sensitivity analyses; m1 is validation. No two-parameter model.
+
+**Calibration check.** The 43-question calibration stretches the difficulties 8% more than the 66 (the extra questions make the common trait less coherent), and per-set calibrations stretch more (up to 1.94 for the four core economic questions). Model-based results:
+
+| Set | Difficulties | Within-cohort slope [90%] | Generational replacement | Changing minds | Overton gap | Change, conservatives | Change, liberals |
+|---|---|---|---|---|---|---|---|
+| p43 (full primary pool) | heuristic | −0.09 [−0.12, −0.07] | −1.93 | −0.39 | 1.59 | −0.92 | −3.07 |
+| | **EM, 43 (production)** | **−0.14 [−0.17, −0.12]** | −1.92 | −0.68 | **1.31** | −1.17 | −3.34 |
+| | EM, 66 | −0.12 [−0.14, −0.09] | −1.93 | −0.53 | 1.44 | −1.05 | −3.21 |
+| s50 (with confidence) | heuristic | −0.01 [−0.04, +0.02] | −1.75 | −0.14 | 1.76 | −0.39 | −2.65 |
+| | EM, 43 + anchored | −0.05 [−0.09, −0.02] | −1.75 | −0.39 | 1.55 | −0.59 | −2.86 |
+| social | heuristic | −0.14 [−0.17, −0.12] | −2.25 | −0.52 | 1.05 | −1.60 | −3.27 |
+| | EM, 43 | −0.19 [−0.22, −0.17] | −2.24 | −0.82 | 0.74 | −1.91 | −3.53 |
+| | EM, 66 | −0.17 [−0.20, −0.14] | −2.25 | −0.68 | 0.88 | −1.77 | −3.41 |
+| | EM, per set | −0.21 [−0.24, −0.19] | −2.24 | −0.95 | 0.61 | −2.04 | −3.63 |
+| econA (core economic) | heuristic | +0.24 [+0.18, +0.29] | −1.36 | +0.84 | 3.78 | +1.11 | −1.89 |
+| | EM, 43 | +0.24 [+0.18, +0.29] | −1.36 | +0.80 | 3.73 | +1.07 | −1.93 |
+| | EM, 66 | +0.24 [+0.18, +0.29] | −1.36 | +0.82 | 3.76 | +1.10 | −1.91 |
+| | EM, per set | +0.22 [+0.17, +0.28] | −1.35 | +0.65 | 3.56 | +0.92 | −2.03 |
+| econB (broad economic) | heuristic | +0.07 [+0.02, +0.12] | −1.05 | +0.24 | 2.33 | +0.54 | −2.14 |
+| | EM, 43 | +0.02 [−0.02, +0.06] | −1.04 | +0.08 | 2.19 | +0.37 | −2.32 |
+| | EM, per set | +0.01 [−0.02, +0.04] | −1.04 | +0.13 | 2.24 | +0.31 | −2.27 |
+| econC (inclusive economic) | heuristic | +0.07 [+0.03, +0.11] | −0.93 | +0.29 | 2.15 | +0.62 | −2.38 |
+| | EM, 43 | +0.01 [−0.02, +0.05] | −0.93 | +0.13 | 2.00 | +0.41 | −2.55 |
+| | EM, per set | +0.01 [−0.02, +0.04] | −0.93 | +0.17 | 2.06 | +0.36 | −2.47 |
+
+**What this shows:**
+- **The signs of the age–period–cohort results are the same under every calibration except for broad and inclusive economic (below); the sizes differ.** With the production difficulties, the full primary pool's within-cohort slope goes from −0.09 to −0.14 per decade and the Overton gap from 1.59 to 1.31. Generational replacement doesn't change (−1.92 vs −1.93); the difference is all in the within-cohort ("changing minds") part.
+- **The sensitivity pool (with the confidence questions) is now credibly negative:** −0.05 [−0.09, −0.02], where it was −0.01 [−0.04, +0.02] with the heuristic.
+- **Core economic is unchanged:** +0.24 under every calibration except per set (+0.22). People get more economically conservative within cohorts, by every measure.
+- **Broad and inclusive economic change qualitatively:** +0.07, credibly positive with the heuristic, becomes +0.01 to +0.02 with intervals that include zero. The positive within-cohort result for economic questions now rests on the core set alone, which the review already recommended as the primary economic result.
+- **43 vs 66 calibration, model-based:** slope −0.14 vs −0.12, gap 1.31 vs 1.44 (full pool); −0.19 vs −0.17, 0.74 vs 0.88 (social). It's a real difference but a modest one, and in the same direction as everything else.
+- **Diagnostics:** 65 fits (6000 draws, target accept 0.99): at most 39 divergences (`period_s50-em`), R-hat ≤ 1.013, ESS ≥ 566. Full table: `overton_figs/calibration_models.csv`.
+
+**Second review (2026-11-01).** The design document went out again with the model-based results. Questions: whether the 43-question calibration is still justified; whether set-dependence warrants a 2PL; common vs per-set calibration for domain claims; how to report difficulty uncertainty. Decision, following the review:
+- keep the 43-question calibration as primary, described as a reference convention chosen on construct-validity grounds;
+- no 2PL;
+- common calibration for all domain scores, per-set as sensitivity;
+- intervals conditional on the calibration, with calibration choice reported separately as specification sensitivity;
+- economic claims scoped to the four core questions.
+
+Proposed future work, in priority order:
+1. a flexible latent distribution in the EM;
+2. item trends for core vs broad economic;
+3. residual associations within domains;
+4. the divergences in `period_s50-em`;
+5. an optional bootstrap of the calibration.
+
+Details: `overton_difficulties_design.md`, "Outcome of the second round".
+
+**Next.** Redo the by-N curves, the birth-group fits, and the figures with `--difficulties em`; revisit the headline numbers (full pool: within-cohort −0.14, Overton gap 1.31) and the economic framing (the positive within-cohort slope now holds for core economic questions only).
+
 ## Next
 
 - **Headline framing.** Decide how the article and appendix present the domain split: on social questions (and the full pool), people don't get more conservative within cohorts; on core economic questions, they do (+0.24 per decade), and opinion polarizes.
-- **Pool difficulties.** When the m1 fits on all pool questions finish (Unity array 66448475), feed their difficulties to the grid (`overton_pool_difficulties.py`) and redo the by-N, period–cohort, and domain results.
+- **Redo with EM difficulties** (`--difficulties em`): the by-N curves, the birth-group fits, and the figures.
 - **Mode sensitivity** for the final set: through 2018, and without the questions asked only in person.
 - **Birth-group figures** (by decade of birth and by generation) with the final question set; fine-tune labels only then.

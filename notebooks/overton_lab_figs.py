@@ -1,7 +1,7 @@
 """Figures for the Overton lab notebook (overton_lab.md).
 
 Reads the CSV files written by overton_drift.py, overton_sensitivity.py,
-and overton_larger_sets.py
+and overton_larger_sets.py, and the m1 fit on the whole pool (overton_irt.py),
 and saves figures in overton_figs/lab/.
 
 Usage: python overton_lab_figs.py
@@ -108,6 +108,34 @@ def plot_gap_by_size():
     savefig("gap_by_size.png")
 
 
+def plot_pool_difficulties(key="gss0"):
+    """Difficulties from the m1 fit on the pool vs the heuristic, -logit(prevalence)."""
+    from overton_data import CANDIDATES_RESAMPLED
+    from overton_irt import RESULTS_DIR, question_sets
+    from overton_irt_compare import item_means
+    from overton_larger_sets import CONFIDENCE
+    from overton_pipeline import load_gss, make_questions
+
+    questions = make_questions(load_gss(CANDIDATES_RESAMPLED, key), question_sets()["pool"])
+    names = list(questions.columns)
+    prevalence = questions.mean()
+    heuristic = -np.log(prevalence / (1 - prevalence)).values
+    fitted = item_means(pd.read_csv(RESULTS_DIR / f"pool_{key}_m1_items.csv", index_col=0), names)
+    confidence = pd.Index(names).str.match(CONFIDENCE)
+
+    slope, intercept = np.polyfit(heuristic, fitted, 1)
+    xs = np.array([heuristic.min(), heuristic.max()])
+    plt.figure(figsize=(5, 4.5))
+    plt.plot(xs, xs, ":", color="gray", label="Identity")
+    plt.plot(xs, intercept + slope * xs, "-", color="0.6", label=f"Fitted line, slope {slope:.2f}")
+    plt.plot(heuristic[~confidence], fitted[~confidence], "o", color="C0", alpha=0.7, label="Other questions")
+    plt.plot(heuristic[confidence], fitted[confidence], "s", color="C1", alpha=0.7, label="Confidence questions")
+    decorate(xlabel="Heuristic difficulty, -logit(prevalence)", ylabel="m1 difficulty (posterior mean)")
+    savefig("pool_difficulties.png")
+    print("slope", round(slope, 2), "intercept", round(intercept, 2),
+          "corr", round(np.corrcoef(heuristic, fitted)[0, 1], 3))
+
+
 def main():
     set_pyplot_params()
     LAB_DIR.mkdir(parents=True, exist_ok=True)
@@ -115,6 +143,7 @@ def main():
     plot_drift_by_year()
     plot_overton_gap()
     plot_gap_by_size()
+    plot_pool_difficulties()
 
 
 if __name__ == "__main__":

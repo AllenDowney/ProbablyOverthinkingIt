@@ -2,13 +2,14 @@
 
 In a 1PL model a question's difficulty doesn't depend on which other
 questions are in the set, so one fit of m1 (overton_irt.py, set "pool":
-66 questions) gives difficulties for every set: v1, v2, and the nested
-top-N sets from overton_larger_sets.py, with and without the confidence
-items. For each set, the grid is run twice on the same respondents:
+66 questions) gives difficulties for every set: v1, v2, the nested
+top-N sets from overton_apc.py (primary p{N} and sensitivity s{N}), and the
+domain sets (econA, econB, econC, social). For each set, the grid is run twice on the same respondents:
 - heuristic: difficulties = -logit(prevalence), as in the book;
 - m1 pool: posterior mean difficulties from the pool fit.
 Only the difficulties differ. Scores are rescaled to out of 15;
-respondents who answered fewer than 5 of the set's questions are dropped.
+respondents who answered fewer than 5 of the set's questions (2 for the
+domain sets) are dropped.
 
 Also compares the v1 and v2 difficulties from the pool fit with those
 from the fits on v1 and v2 alone (overton_irt_compare.py), because m1's
@@ -28,22 +29,16 @@ from overton_data import CANDIDATES_RESAMPLED, KEYS
 from overton_drift import estimate_with_difficulties
 from overton_irt import RESULTS_DIR, question_sets
 from overton_irt_compare import item_means, results_for
-from overton_larger_sets import CONFIDENCE, SIZES, ranked_questions
+from overton_apc import MIN_ANSWERED, MIN_ANSWERED_BY_SET
+from overton_apc import question_sets as apc_sets
 from overton_pipeline import FIG_DIR, load_gss, make_questions
 
-MIN_ANSWERED = 5
 
 
 def subsets():
     """Map from label to list of questions."""
-    sets = question_sets()
-    out = {"v1": list(sets["v1"]), "v2": list(sets["v2"])}
-    for pool, exclude in [("all", None), ("no confidence", CONFIDENCE)]:
-        ranked = list(ranked_questions(exclude).index)
-        sizes = [n for n in SIZES if n < len(ranked)] + [len(ranked)]
-        for n in sizes:
-            out[f"{pool} {n}"] = ranked[:n]
-    return out
+    # econA starts in 1975, and the book's summary needs 1974
+    return {name: list(codes) for name, codes in apc_sets().items() if name != "econA"}
 
 
 def main():
@@ -69,7 +64,7 @@ def main():
 
         for label, subset in labels.items():
             sub = questions[subset]
-            few = sub.notna().sum(axis=1) < MIN_ANSWERED
+            few = sub.notna().sum(axis=1) < MIN_ANSWERED_BY_SET.get(label, MIN_ANSWERED)
             for source, d in sources.items():
                 con = estimate_with_difficulties(sub, d[subset].values) * 15 / len(subset)
                 s = results_for(gss, pd.Series(con, gss.index).mask(few))
